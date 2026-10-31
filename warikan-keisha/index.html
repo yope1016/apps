@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>傾斜割り勘計算（幹事用）｜役職・飲む量で差をつけて100円単位で集金額を出す</title>
+<meta name="description" content="忘年会・飲み会の幹事向け傾斜割り勘計算ツール。役職や飲む量ごとに比率や固定額を決めるだけで、1人あたりの集金額を100円・500円・1000円単位で自動計算。余りや不足もひと目でわかり、LINEに貼れる集金連絡文もコピーできます。登録不要・入力内容は端末内だけで処理。">
+<meta property="og:title" content="傾斜割り勘計算（幹事用）">
+<meta property="og:description" content="役職・飲む量で差をつけた集金額を100円単位で。LINE用の集金文もコピーできる幹事ツール。">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1f2328;--sub:#5d6670;--line:#e3ded3;--acc:#c2410c;--acc2:#fff1e8;--ok:#15803d;--warn:#b45309;--in:#fbfaf7}
+@media (prefers-color-scheme:dark){:root{--bg:#16181b;--card:#202327;--ink:#eceae5;--sub:#a3a9b0;--line:#33373c;--acc:#fb923c;--acc2:#3a2618;--ok:#4ade80;--warn:#fbbf24;--in:#1a1c1f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;line-height:1.6;-webkit-text-size-adjust:100%}
+main{max-width:640px;margin:0 auto;padding:16px}
+header{padding:20px 0 8px}
+h1{font-size:1.45rem;line-height:1.35;margin:0 0 6px}
+.lead{color:var(--sub);margin:0;font-size:.95rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+h2{font-size:1.05rem;margin:0 0 10px}
+label{font-size:.85rem;color:var(--sub);display:block;margin-bottom:4px}
+input,select{font:inherit;color:var(--ink);background:var(--in);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:44px;width:100%}
+input:focus,select:focus{outline:2px solid var(--acc);outline-offset:1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.total input{font-size:1.4rem;font-weight:700}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+button{font:inherit;min-height:44px;border-radius:10px;border:1px solid var(--line);background:var(--in);color:var(--ink);padding:8px 14px;cursor:pointer}
+button.pri{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:700}
+@media (prefers-color-scheme:dark){button.pri{color:#1a1206}}
+.tier{border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:10px}
+.tier-top{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.tier-top input{flex:1}
+.del{min-width:44px;padding:0;color:var(--sub)}
+.tier-grid{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:8px}
+.hint{font-size:.8rem;color:var(--sub);margin:6px 0 0}
+.res-total{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:.92rem;color:var(--sub);margin-top:8px}
+.res-total b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{padding:10px 6px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.8rem;color:var(--sub);font-weight:600}
+td.amt{font-size:1.15rem;font-weight:800;color:var(--acc)}
+.diff{margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--acc2);font-size:.92rem}
+.diff.ok{color:var(--ok)}.diff.warn{color:var(--warn)}
+.err{color:var(--warn);font-weight:600}
+textarea{width:100%;min-height:150px;font:inherit;font-size:.9rem;color:var(--ink);background:var(--in);border:1px solid var(--line);border-radius:10px;padding:10px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.actions a{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border-radius:10px;border:1px solid var(--line);color:var(--ink);text-decoration:none}
+details{border-bottom:1px solid var(--line);padding:10px 0}
+summary{cursor:pointer;font-weight:600;min-height:28px}
+details p{margin:8px 0 0;color:var(--sub);font-size:.92rem}
+.small{font-size:.8rem;color:var(--sub)}
+footer{padding:24px 0 40px;font-size:.8rem;color:var(--sub);text-align:center}
+.sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>傾斜割り勘計算（幹事用）</h1>
+<p class="lead">役職や飲む量で差をつけて、集金しやすい単位（100円・500円・1000円）で1人あたりの金額を出します。余り・不足もひと目でわかります。</p>
+</header>
+
+<section class="card" aria-labelledby="h-total">
+<h2 id="h-total">① 支払い総額</h2>
+<div class="row2">
+<div class="total"><label for="total">お会計（円）</label><input id="total" type="number" inputmode="numeric" min="0" step="1" value="48000"></div>
+<div><label for="unit">集金の単位</label>
+<select id="unit"><option value="1">1円</option><option value="10">10円</option><option value="100" selected>100円</option><option value="500">500円</option><option value="1000">1000円</option></select></div>
+</div>
+<div style="margin-top:10px"><label for="mode">端数の扱い</label>
+<select id="mode"><option value="up" selected>切り上げ（幹事が不足しない・余りが出る）</option><option value="round">四捨五入（余り・不足が最小）</option><option value="down">切り捨て（不足分は幹事が負担）</option></select></div>
+</section>
+
+<section class="card" aria-labelledby="h-tier">
+<h2 id="h-tier">② 参加者のグループと比率</h2>
+<div class="presets" role="group" aria-label="プリセット">
+<button type="button" data-p="even">均等</button>
+<button type="button" data-p="boss">上司多め</button>
+<button type="button" data-p="drink">飲む人・飲まない人</button>
+<button type="button" data-p="free">新人無料</button>
+</div>
+<div id="tiers"></div>
+<button type="button" id="add">＋ グループを追加</button>
+<p class="hint">「比率」は一般を1としたときの重みです（例：部長2、一般1、飲まない人0.7）。「固定額」を入れたグループは比率を使わずその金額になり、残りを比率で分けます。0円にすると無料です。</p>
+</section>
+
+<section class="card" aria-labelledby="h-res" aria-live="polite">
+<h2 id="h-res">③ 1人あたりの集金額</h2>
+<div id="result"></div>
+</section>
+
+<section class="card" aria-labelledby="h-msg">
+<h2 id="h-msg">④ 集金連絡文（LINE・Slackにそのまま貼れます）</h2>
+<label for="event">会の名前</label>
+<input id="event" type="text" value="忘年会" maxlength="40">
+<div style="margin-top:10px"><label for="msg" class="sr">集金連絡文</label><textarea id="msg" readonly></textarea></div>
+<div class="actions">
+<button type="button" class="pri" id="copy">文面をコピー</button>
+<a id="share" href="#" target="_blank" rel="noopener">このツールをXで紹介</a>
+</div>
+<p class="small" id="copied" role="status"></p>
+</section>
+
+<section class="card" aria-labelledby="h-how">
+<h2 id="h-how">計算方法</h2>
+<p class="small" style="font-size:.9rem">1) 固定額のグループの合計を総額から引きます。<br>2) 残りを「比率×人数」の合計で割り、比率1あたりの金額を出します。<br>3) 各グループの金額＝比率1あたりの金額×比率を、選んだ単位で切り上げ／四捨五入／切り捨てします。<br>4) 集金合計と総額の差を「余り」または「不足」として表示します。</p>
+</section>
+
+<section class="card" aria-labelledby="h-faq">
+<h2 id="h-faq">よくある質問</h2>
+<details><summary>傾斜の比率はどのくらいが一般的？</summary><p>決まりはありませんが、役職者1.5〜2、一般1、新人や飲まない人0.5〜0.8くらいに設定する幹事が多いようです。差をつけすぎると不満が出やすいので、事前に上の方へひとこと相談しておくと安心です。</p></details>
+<details><summary>余りが出たらどうする？</summary><p>二次会の費用に回す、次回の会費に繰り越す、幹事のお礼として扱うなど、参加者に一言伝えておくとトラブルになりにくいです。余りを出したくない場合は「四捨五入」や単位を小さくしてください。</p></details>
+<details><summary>上司が多めに払う「固定額」はどう入れる？</summary><p>グループの「固定額」欄に金額（例：10000）を入れてください。その金額を先に差し引き、残りを他のグループで比率どおりに分けます。</p></details>
+<details><summary>入力した内容はどこかに送られますか？</summary><p>送られません。計算はすべてお使いの端末の中で行い、次回のために入力内容だけをこの端末のブラウザに保存します（保存できない環境でも計算はできます）。</p></details>
+<details><summary>お店の会計がカードやポイントのときは？</summary><p>総額にはお店に実際に支払う金額（クーポン・ポイント適用後）を入れてください。ポイントの扱いは参加者と相談して決めるのがおすすめです。</p></details>
+</section>
+
+<footer>このツールについて：飲み会の幹事さんの集金をラクにするための無料ツールです。計算結果は目安です。最終的な金額はお店の会計・参加者との合意に基づいてご判断ください。</footer>
+</main>
+
+<script>
+(function(){
+var KEY='warikan-keisha-v1';
+var PRESETS={
+ even:[{n:'参加者',c:10,w:1,f:''}],
+ boss:[{n:'部長',c:1,w:2,f:''},{n:'課長',c:2,w:1.5,f:''},{n:'一般',c:7,w:1,f:''}],
+ drink:[{n:'飲む人',c:7,w:1,f:''},{n:'飲まない人',c:3,w:0.7,f:''}],
+ free:[{n:'上司',c:2,w:1.5,f:''},{n:'一般',c:6,w:1,f:''},{n:'新人',c:2,w:1,f:'0'}]
+};
+var $=function(id){return document.getElementById(id)};
+var tiersEl=$('tiers');
+var state={tiers:PRESETS.boss.map(clone)};
+function clone(o){return {n:o.n,c:o.c,w:o.w,f:o.f}}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.tiers&&s.tiers.length){state.tiers=s.tiers;$('total').value=s.total||'';$('unit').value=s.unit||'100';$('mode').value=s.mode||'up';$('event').value=s.event||'忘年会';}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({tiers:state.tiers,total:$('total').value,unit:$('unit').value,mode:$('mode').value,event:$('event').value}))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function yen(n){return n.toLocaleString('ja-JP')+'円'}
+function render(){
+ tiersEl.innerHTML='';
+ state.tiers.forEach(function(t,i){
+  var d=document.createElement('div');d.className='tier';
+  d.innerHTML='<div class="tier-top"><label class="sr" for="n'+i+'">グループ名</label><input id="n'+i+'" data-k="n" data-i="'+i+'" type="text" maxlength="20" value="'+esc(t.n)+'" aria-label="グループ名">'+
+  '<button type="button" class="del" data-del="'+i+'" aria-label="このグループを削除">✕</button></div>'+
+  '<div class="tier-grid"><div><label for="c'+i+'">人数</label><input id="c'+i+'" data-k="c" data-i="'+i+'" type="number" inputmode="numeric" min="0" step="1" value="'+esc(t.c)+'"></div>'+
+  '<div><label for="w'+i+'">比率</label><input id="w'+i+'" data-k="w" data-i="'+i+'" type="number" inputmode="decimal" min="0" step="0.1" value="'+esc(t.w)+'"></div>'+
+  '<div><label for="f'+i+'">固定額</label><input id="f'+i+'" data-k="f" data-i="'+i+'" type="number" inputmode="numeric" min="0" step="1" placeholder="なし" value="'+esc(t.f)+'"></div></div>';
+  tiersEl.appendChild(d);
+ });
+ calc();
+}
+function rnd(v,u,m){var x=v/u;x=m==='up'?Math.ceil(x-1e-9):m==='down'?Math.floor(x+1e-9):Math.round(x);return x*u}
+function calc(){
+ var total=Math.max(0,Math.floor(+$('total').value||0)),unit=+$('unit').value,mode=$('mode').value;
+ var people=0,fixedSum=0,wsum=0;
+ state.tiers.forEach(function(t){var c=Math.max(0,Math.floor(+t.c||0));people+=c;if(t.f!==''&&t.f!=null&&!isNaN(+t.f)){fixedSum+=c*Math.max(0,+t.f)}else{wsum+=c*Math.max(0,+t.w||0)}});
+ var res=$('result'),rows=[],err='';
+ var rest=total-fixedSum;
+ if(!total){err='お会計の金額を入れてください。'}
+ else if(!people){err='参加人数を入れてください。'}
+ else if(rest<0){err='固定額の合計（'+yen(fixedSum)+'）がお会計を超えています。'}
+ else if(rest>0&&wsum<=0){err='比率で分けるグループがありません。比率を入れるか固定額を見直してください。'}
+ if(err){res.innerHTML='<p class="err">'+err+'</p>';$('msg').value='';return}
+ var per=wsum>0?rest/wsum:0,collected=0;
+ state.tiers.forEach(function(t){
+  var c=Math.max(0,Math.floor(+t.c||0)),fixed=(t.f!==''&&t.f!=null&&!isNaN(+t.f));
+  var a=fixed?Math.max(0,Math.floor(+t.f)):rnd(per*Math.max(0,+t.w||0),unit,mode);
+  collected+=a*c;rows.push({n:t.n||'グループ',c:c,a:a,w:fixed?'固定':(+t.w||0)});
+ });
+ var diff=collected-total;
+ var h='<table><thead><tr><th>グループ</th><th>人数</th><th>比率</th><th>1人あたり</th></tr></thead><tbody>';
+ rows.forEach(function(r){h+='<tr><td>'+esc(r.n)+'</td><td>'+r.c+'人</td><td>'+r.w+'</td><td class="amt">'+yen(r.a)+'</td></tr>'});
+ h+='</tbody></table><div class="res-total"><span>参加 <b>'+people+'人</b></span><span>お会計 <b>'+yen(total)+'</b></span><span>集金合計 <b>'+yen(collected)+'</b></span></div>';
+ h+=diff===0?'<div class="diff ok">ぴったりです。</div>':diff>0?'<div class="diff ok">余り <b>'+yen(diff)+'</b>（二次会・次回に回すなど、参加者に一言伝えましょう）</div>':'<div class="diff warn">不足 <b>'+yen(-diff)+'</b>（幹事が立て替えるか、端数の扱いを「切り上げ」に）</div>';
+ res.innerHTML=h;
+ var ev=$('event').value.trim()||'飲み会';
+ var m='【'+ev+' 会費のお知らせ】\nお会計：'+yen(total)+'（'+people+'名）\n\n';
+ rows.forEach(function(r){if(r.c>0)m+='・'+r.n+'：'+yen(r.a)+'\n'});
+ m+='\n当日またはお会計の後に幹事までお願いします。';
+ if(diff>0)m+='\n※端数の調整で'+yen(diff)+'余る見込みです。';
+ $('msg').value=m;
+}
+tiersEl.addEventListener('input',function(e){var k=e.target.getAttribute('data-k'),i=e.target.getAttribute('data-i');if(k&&i!==null){state.tiers[+i][k]=e.target.value;calc();save()}});
+tiersEl.addEventListener('click',function(e){var i=e.target.getAttribute('data-del');if(i!==null){state.tiers.splice(+i,1);if(!state.tiers.length)state.tiers.push({n:'参加者',c:1,w:1,f:''});render();save()}});
+$('add').addEventListener('click',function(){state.tiers.push({n:'グループ'+(state.tiers.length+1),c:1,w:1,f:''});render();save()});
+document.querySelectorAll('[data-p]').forEach(function(b){b.addEventListener('click',function(){state.tiers=PRESETS[b.getAttribute('data-p')].map(clone);render();save()})});
+['total','unit','mode','event'].forEach(function(id){$(id).addEventListener('input',function(){calc();save()})});
+$('copy').addEventListener('click',function(){var t=$('msg');var done=function(){$('copied').textContent='コピーしました。'};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t.value).then(done,function(){t.select();try{document.execCommand('copy');done()}catch(e){}})}else{t.select();try{document.execCommand('copy');done()}catch(e){}}});
+$('share').href='https://x.com/intent/post?text='+encodeURIComponent('忘年会の幹事、これで集金額が一発で決まった。役職や飲む量で差をつけて100円単位に丸めてくれる傾斜割り勘計算')+'&url='+encodeURIComponent(location.href.split('#')[0]);
+load();render();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
