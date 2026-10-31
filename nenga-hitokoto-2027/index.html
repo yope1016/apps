@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>年賀状ひとことジェネレーター 2027（ひつじ年）｜相手別の添え書き文例をワンタップで</title>
+<meta name="description" content="2027年（令和9年・丁未・ひつじ年）の年賀状に添える「ひとこと」を、相手・近況・トーンを選ぶだけで自動作成。上司・取引先・友人・親戚・ご無沙汰の人まで。賀詞の選び方と忌み言葉チェック付き。">
+<style>
+:root{--bg:#fbf6ef;--card:#fff;--ink:#2b2420;--sub:#7a6d63;--red:#c0392b;--red2:#e8b4ad;--gold:#b8892f;--line:#eadfd2;--ok:#2f7d4f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;line-height:1.7}
+.ui{font-family:-apple-system,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif}
+header{text-align:center;padding:28px 16px 8px}
+.seal{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border:3px solid var(--red);color:var(--red);border-radius:10px;font-size:26px;font-weight:700;transform:rotate(-4deg)}
+h1{font-size:22px;margin:12px 0 4px;letter-spacing:.04em}
+.lead{color:var(--sub);font-size:14px;margin:0}
+main{max-width:720px;margin:0 auto;padding:12px 14px 40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.card h2{font-size:16px;margin:0 0 12px;display:flex;gap:8px;align-items:center}
+.card h2 .n{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;align-items:center;justify-content:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:#fff;color:var(--ink);padding:8px 12px;border-radius:999px;cursor:pointer;transition:.15s}
+.chips button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.chips button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+label.small{font-size:13px;color:var(--sub)}
+input[type=text]{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;width:100%;max-width:320px}
+.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--red);color:#fff;padding:13px 20px;border-radius:12px;cursor:pointer;width:100%}
+.btn.ghost{background:#fff;color:var(--red);border:1px solid var(--red);font-size:14px;padding:9px 14px;width:auto;font-weight:600}
+.postcard{position:relative;background:#fffdf9;border:1px solid var(--line);border-radius:6px;padding:26px 22px 22px;margin-top:6px;min-height:200px;background-image:radial-gradient(circle at 92% 12%,rgba(192,57,43,.08) 0 46px,transparent 47px)}
+.postcard .gashi{font-size:26px;font-weight:700;letter-spacing:.12em;color:var(--red);margin:0 0 10px}
+.postcard p{margin:0 0 10px;font-size:16px;white-space:pre-wrap}
+.postcard .date{color:var(--sub);font-size:14px;margin-top:12px}
+.hitsuji{position:absolute;right:16px;top:14px;width:62px;height:auto;opacity:.95}
+.alts{margin-top:12px;display:grid;gap:8px}
+.alt{border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start;background:#fff}
+.alt span{flex:1}
+.copy{font-size:12px;border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 9px;cursor:pointer;white-space:nowrap;color:var(--sub)}
+.warn{background:#fff6e5;border:1px solid #f1d9a6;border-radius:10px;padding:10px 12px;font-size:13px;margin-top:10px}
+.ok{color:var(--ok)}
+details{margin-top:8px}
+summary{cursor:pointer;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:13px}
+td,th{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top}th{white-space:nowrap;width:5.5em;font-size:12px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#2b2420;color:#fff;padding:9px 16px;border-radius:999px;font-size:13px;opacity:0;transition:.2s;pointer-events:none}
+.toast.show{opacity:1}
+footer{text-align:center;color:var(--sub);font-size:12px;padding:10px 16px 30px}
+textarea{font:inherit;width:100%;min-height:90px;padding:10px;border:1px solid var(--line);border-radius:10px;font-size:15px}
+@media (max-width:420px){h1{font-size:19px}.postcard .gashi{font-size:22px}.hitsuji{width:48px}}
+</style>
+</head>
+<body>
+<header class="ui">
+  <div class="seal" aria-hidden="true">未</div>
+  <h1>年賀状ひとことジェネレーター 2027</h1>
+  <p class="lead">令和9年・丁未（ひのとひつじ）年。相手と近況を選ぶだけで、賀詞と添え書きを作ります。</p>
+</header>
+<main>
+  <section class="card ui">
+    <h2><span class="n">1</span>誰に送りますか？</h2>
+    <div class="chips" id="to"></div>
+  </section>
+  <section class="card ui">
+    <h2><span class="n">2</span>あなたの近況（任意・複数可）</h2>
+    <div class="chips" id="news"></div>
+  </section>
+  <section class="card ui">
+    <h2><span class="n">3</span>雰囲気と仕上げ</h2>
+    <div class="chips" id="tone"></div>
+    <div class="row">
+      <label class="small"><input type="checkbox" id="pun"> ひつじ年ならではの一言を入れる</label>
+    </div>
+    <div class="row">
+      <label class="small" for="name">相手の呼び方（任意・例：〇〇さん）※入力内容はこの端末の中だけで使われ、送信されません</label>
+      <input type="text" id="name" maxlength="20" placeholder="例：佐藤さん" autocomplete="off">
+    </div>
+    <div class="row"><button class="btn" id="gen">ひとことを作る</button></div>
+  </section>
+
+  <section class="card" id="out" hidden>
+    <h2 class="ui"><span class="n">4</span>できあがり</h2>
+    <div class="postcard" id="pc">
+      <svg class="hitsuji" viewBox="0 0 80 70" aria-hidden="true">
+        <g fill="#fff" stroke="#c0392b" stroke-width="2">
+          <circle cx="30" cy="30" r="12"/><circle cx="44" cy="26" r="13"/><circle cx="56" cy="33" r="11"/>
+          <circle cx="36" cy="42" r="12"/><circle cx="50" cy="44" r="11"/>
+        </g>
+        <ellipse cx="20" cy="36" rx="9" ry="8" fill="#f6e3dc" stroke="#c0392b" stroke-width="2"/>
+        <circle cx="17" cy="35" r="1.6" fill="#2b2420"/>
+        <path d="M14 30c-4-3-6 1-4 4" fill="none" stroke="#c0392b" stroke-width="2"/>
+        <g stroke="#c0392b" stroke-width="2.4" stroke-linecap="round"><path d="M34 53v9"/><path d="M48 54v9"/></g>
+      </svg>
+      <div class="gashi" id="gashi"></div>
+      <p id="body1"></p>
+      <p id="hito"></p>
+      <div class="date">令和九年　元旦</div>
+    </div>
+    <div class="row ui">
+      <button class="btn ghost" id="copyAll">全文をコピー</button>
+      <button class="btn ghost" id="again">別の案にする</button>
+    </div>
+    <div class="warn ui" id="check"></div>
+    <h3 class="ui" style="font-size:14px;margin:16px 0 4px">ほかのひとこと候補</h3>
+    <div class="alts ui" id="alts"></div>
+    <details class="ui"><summary>自分で手直しする</summary>
+      <textarea id="edit" aria-label="手直し用テキスト"></textarea>
+      <div class="warn" id="editCheck">忌み言葉チェック：入力すると自動で確認します。</div>
+    </details>
+  </section>
+
+  <section class="card ui">
+    <h2>失敗しない年賀状マナー（要点）</h2>
+    <table>
+      <tr><th>目上の人へ</th><td>「謹賀新年」「謹んで新春のお慶びを申し上げます」など4文字以上・敬意のある賀詞を。「賀正」「迎春」「寿」など1〜2文字の賀詞は略式なので避けるのが無難。</td></tr>
+      <tr><th>重ね言葉</th><td>「新年あけましておめでとう」「1月1日元旦」は意味が重複します。「元旦」だけで「1月1日の朝」の意味です。</td></tr>
+      <tr><th>忌み言葉</th><td>「去る」「失う」「滅びる」「倒れる」「切れる」「終わる」など。「去年」は「昨年」「旧年」に言い換えます。</td></tr>
+      <tr><th>句読点</th><td>伝統的には「区切りをつけない」意味で句読点を使わない書き方もあります。気になる相手には読点を外して空白で区切ると安心です。</td></tr>
+      <tr><th>喪中の相手</th><td>年賀状ではなく、松の内が明けてから「寒中見舞い」を送ります（下の「寒中見舞い」を選ぶと文例を作れます）。</td></tr>
+    </table>
+    <p class="lead" style="margin-top:10px">※マナーには地域・業界による違いがあります。迷ったら丁寧な方を選ぶのがおすすめです。</p>
+  </section>
+</main>
+<div class="toast ui" id="toast">コピーしました</div>
+<footer class="ui">このツールは入力内容を外部に送信・保存しません。文例は自由にお使いいただけます。</footer>
+
+<script>
+(function(){
+"use strict";
+var TO=[
+ {k:"boss",l:"上司・先輩",lv:3},{k:"client",l:"取引先",lv:3},{k:"teacher",l:"恩師",lv:3},
+ {k:"relative",l:"親戚",lv:2},{k:"colleague",l:"同僚",lv:2},{k:"friend",l:"友人",lv:1},
+ {k:"longtime",l:"ご無沙汰の人",lv:2},{k:"kids",l:"子ども・甥姪",lv:1},{k:"mourning",l:"寒中見舞い（喪中の相手）",lv:2}
+];
+var NEWS=[
+ {k:"none",l:"特になし"},{k:"marry",l:"結婚した"},{k:"baby",l:"子どもが生まれた"},{k:"move",l:"引っ越した"},
+ {k:"job",l:"転職した"},{k:"promo",l:"昇進・異動した"},{k:"school",l:"子どもが入学・進学"},{k:"retire",l:"退職した"},{k:"hobby",l:"新しい趣味を始めた"}
+];
+var TONE=[{k:"formal",l:"丁寧"},{k:"warm",l:"あたたかく"},{k:"casual",l:"カジュアル"},{k:"fun",l:"ユーモア"}];
+
+var state={to:"boss",news:["none"],tone:"formal"};
+function chips(id,list,multi,key){
+  var el=document.getElementById(id);
+  list.forEach(function(o){
+    var b=document.createElement("button");b.type="button";b.textContent=o.l;b.dataset.k=o.k;
+    b.setAttribute("aria-pressed",String(multi?state[key].indexOf(o.k)>=0:state[key]===o.k));
+    b.onclick=function(){
+      if(multi){
+        var a=state[key];
+        if(o.k==="none"){state[key]=["none"];}
+        else{a=a.filter(function(x){return x!=="none"});var i=a.indexOf(o.k);if(i>=0)a.splice(i,1);else a.push(o.k);state[key]=a.length?a:["none"];}
+      }else{state[key]=o.k;}
+      Array.prototype.forEach.call(el.children,function(c){c.setAttribute("aria-pressed",String(multi?state[key].indexOf(c.dataset.k)>=0:state[key]===c.dataset.k));});
+    };
+    el.appendChild(b);
+  });
+}
+chips("to",TO,false,"to");chips("news",NEWS,true,"news");chips("tone",TONE,false,"tone");
+
+function pick(a){return a[Math.floor(Math.random()*a.length)];}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+var GASHI={
+ 3:["謹賀新年","謹んで新春のお慶びを申し上げます","恭賀新年"],
+ 2:["謹賀新年","新春のお慶びを申し上げます","あけましておめでとうございます"],
+ 1:["あけましておめでとう","HAPPY NEW YEAR","あけましておめでとう！"]
+};
+var BODY={
+ boss:["旧年中は格別のご指導を賜り　心より御礼申し上げます\n本年も変わらぬご指導のほど　よろしくお願い申し上げます",
+       "昨年は大変お世話になりました\n本年も一層精進してまいりますので　ご指導ご鞭撻のほどよろしくお願いいたします"],
+ client:["旧年中は格別のお引き立てを賜り　厚く御礼申し上げます\n本年も変わらぬご愛顧のほど　よろしくお願い申し上げます",
+         "昨年は多大なるご支援をいただき　誠にありがとうございました\n皆様のご繁栄を心よりお祈り申し上げます"],
+ teacher:["ご無沙汰しておりますが　お変わりなくお過ごしでしょうか\n先生のご健康とご多幸を心よりお祈り申し上げます",
+          "旧年中は大変お世話になりました\n先生にとって実り多き一年となりますようお祈り申し上げます"],
+ relative:["旧年中は大変お世話になりました\n皆様お健やかに新年をお迎えのことと存じます\n本年もどうぞよろしくお願いいたします",
+           "昨年はいろいろとありがとうございました\n皆様にとって笑顔あふれる一年になりますように"],
+ colleague:["昨年は本当にお世話になりました\n今年もチームで良い仕事をしましょう　どうぞよろしくお願いします",
+            "昨年はたくさん助けていただきありがとうございました\n今年もよろしくお願いします"],
+ friend:["昨年はありがとう！\n今年もたくさん会えるといいな　よろしくね",
+         "昨年はありがとう\n今年もお互い元気に楽しくいこう！"],
+ longtime:["すっかりご無沙汰してしまいましたが　お元気でお過ごしでしょうか\n本年が素晴らしい一年となりますようお祈りしております",
+           "なかなかお会いできずにおりますが　いかがお過ごしですか\n今年こそゆっくりお話しできたら嬉しいです"],
+ kids:["あけましておめでとう！\n今年もげんきにすごしてね",
+       "あたらしい一年　たのしいことがいっぱいありますように！"],
+ mourning:["寒中お見舞い申し上げます\nご服喪中と伺い　年頭のご挨拶は控えさせていただきました\n寒さ厳しき折　どうぞご自愛くださいませ",
+           "寒中お見舞い申し上げます\n喪中のこととて　新年のご挨拶は失礼させていただきました\n皆様のご健康を心よりお祈り申し上げます"]
+};
+
+var NEWSLINE={
+ formal:{marry:["昨年結婚いたしました　未熟な二人ですが今後ともよろしくお願い申し上げます"],
+  baby:["昨年　家族が一人増えました　賑やかな毎日を過ごしております"],
+  move:["昨年　下記へ転居いたしました　お近くへお越しの際はぜひお立ち寄りください"],
+  job:["昨年より新しい職場で働いております　心機一転　努めてまいります"],
+  promo:["昨年より新たな役目を拝命いたしました　一層精進してまいります"],
+  school:["子どもが春から新しい学校に通います　家族一同元気に過ごしております"],
+  retire:["昨年　長年勤めた職場を退職いたしました　これからの時間を大切に過ごしてまいります"],
+  hobby:["昨年から新しい趣味を始め　日々の楽しみが増えました"]},
+ casual:{marry:["実は昨年結婚しました！これからもよろしくね"],
+  baby:["家族が一人増えて毎日にぎやかです！"],
+  move:["引っ越しました！近くに来たら遊びに来てね"],
+  job:["転職して新しい環境でがんばってます！"],
+  promo:["春から新しい仕事を任されてバタバタしてます"],
+  school:["子どもがこの春いよいよ進学です"],
+  retire:["退職して第二の人生スタートしました！"],
+  hobby:["最近新しい趣味にハマってます　今度話を聞いてね"]}
+};
+var HITO={
+ 3:["本年もどうぞよろしくお願い申し上げます","皆様のご健勝とご多幸をお祈り申し上げます","寒さ厳しき折　くれぐれもご自愛ください","貴社の益々のご発展を心よりお祈り申し上げます","本年も変わらぬお付き合いのほどお願い申し上げます","穏やかで実り多き一年となりますように"],
+ 2:["今年も健康第一でいきましょう","皆様にとって素敵な一年になりますように","またお会いできる日を楽しみにしています","お体に気をつけてお過ごしください","今年もどうぞよろしくお願いします","笑顔の多い一年になりますように"],
+ 1:["今年こそ飲みに行こう！","今年もよろしく！","落ち着いたらご飯行こうね","今年もいっぱい笑おう","また近いうちに会おうね","健康第一でいこう！"]
+};
+var PUN={
+ 3:["未年の羊のように　穏やかで温かな一年となりますようお祈り申し上げます","羊が群れをなすように　皆様のもとに多くの幸せが集まりますように"],
+ 2:["ひつじのように穏やかで　ふんわり温かい一年になりますように","もこもこの羊毛のように　温かな毎日が続きますように"],
+ 1:["今年はメェ〜いっぱい楽しもう！","ひつじ年だし　今年はのんびりモコモコいこう","今年もメェ〜わくかけるけどよろしく！"]
+};
+var FUN={1:["ひつじを数える前に一度会おう！","今年の目標：寝る前にひつじを数えない（すぐ寝る）"],2:["今年は羊毛のようにふわっと軽やかにいきましょう"],3:[]};
+var MOURN_HITO=["どうぞお健やかにお過ごしください","本年も変わらぬお付き合いのほどお願い申し上げます","春の訪れが待ち遠しいですね　くれぐれもご自愛ください"];
+
+var NG=[["去年","昨年／旧年"],["去る","「過ぎる」などに言い換え"],["失う","別の表現に"],["失礼","「ご無沙汰」などに（寒中見舞いでは可）"],["滅","別の表現に"],["倒","別の表現に"],["破","別の表現に"],["枯","別の表現に"],["衰","別の表現に"],["病","別の表現に"],["終わ","別の表現に"],["切れ","別の表現に"],["別れ","別の表現に"],["新年明けまして","重ね言葉：「明けましておめでとう」だけでOK"],["新年あけまして","重ね言葉：「あけましておめでとう」だけでOK"],["1月1日元旦","重ね言葉：「元旦」だけでOK"],["一月一日元旦","重ね言葉：「元旦」だけでOK"]];
+function ngCheck(t,isMourn){
+  var hits=[];NG.forEach(function(p){if(isMourn&&p[0]==="失礼")return;if(t.indexOf(p[0])>=0)hits.push("「"+p[0]+"」→ "+p[1]);});
+  return hits;
+}
+
+var cur={};
+function lvOf(){var t=TO.filter(function(o){return o.k===state.to})[0];var lv=t.lv;
+  if(state.tone==="formal"&&lv<2)lv=2; if((state.tone==="casual"||state.tone==="fun")&&lv>1&&state.to!=="boss"&&state.to!=="client"&&state.to!=="teacher")lv=1; return lv;}
+function gen(){
+  var mourn=state.to==="mourning",lv=mourn?2:lvOf();
+  var name=document.getElementById("name").value.trim().replace(/[<>]/g,"");
+  var gashi=mourn?"寒中お見舞い申し上げます":pick(GASHI[lv]);
+  var body=pick(BODY[state.to]);
+  if(mourn)body=body.replace(/^寒中お見舞い申し上げます\n/,"");
+  body=body.replace(/^あけましておめでとう！\n/,"");
+  var style=(lv===1)?"casual":"formal";
+  var nl=state.news.filter(function(x){return x!=="none"}).map(function(k){return pick(NEWSLINE[style][k])});
+  if(mourn)nl=nl.filter(function(s){return /転居|転職|職場|拝命/.test(s)}); // 慶事は寒中見舞いでは控える
+  var pool=mourn?MOURN_HITO.slice():HITO[lv].slice();
+  if(!mourn&&document.getElementById("pun").checked)pool=PUN[lv].concat(pool);
+  if(!mourn&&state.tone==="fun")pool=FUN[lv].concat(PUN[lv]).concat(pool);
+  if(!mourn&&state.tone==="warm")pool=pool.concat(["あなたの毎日が穏やかでありますように","心温まる一年になりますように"]);
+  var first=(document.getElementById("pun").checked||state.tone==="fun")&&!mourn?pool[0]:pick(pool);
+  var hito=(name?name+"　":"")+first;
+  var bodyAll=body+(nl.length?"\n"+nl.join("\n"):"");
+  cur={gashi:gashi,body:bodyAll,hito:hito,mourn:mourn,date:mourn?"令和九年　一月":"令和九年　元旦"};
+  document.getElementById("gashi").textContent=gashi;
+  document.getElementById("body1").textContent=bodyAll;
+  document.getElementById("hito").textContent=hito;
+  document.querySelector("#pc .date").textContent=cur.date;
+  var alts=document.getElementById("alts");alts.innerHTML="";
+  shuffle(pool.filter(function(x){return x!==first})).slice(0,5).forEach(function(s){
+    var d=document.createElement("div");d.className="alt";var sp=document.createElement("span");sp.textContent=s;
+    var b=document.createElement("button");b.className="copy";b.type="button";b.textContent="これにする";
+    b.onclick=function(){cur.hito=(name?name+"　":"")+s;document.getElementById("hito").textContent=cur.hito;syncEdit();toast("差し替えました");};
+    d.appendChild(sp);d.appendChild(b);alts.appendChild(d);
+  });
+  var tips=[];
+  if(lv===3&&!mourn)tips.push("目上の方向けに、略式の賀詞（賀正・迎春など）を避けています。");
+  if(mourn)tips.push("寒中見舞いは松の内（一般に1月7日、地域により15日）が明けてから立春の前日までに届くよう出します。おめでたい言葉と慶事の報告は控えています。");
+  var hits=ngCheck(gashi+"\n"+bodyAll+"\n"+hito,mourn);
+  tips.unshift(hits.length?"⚠ 気になる言葉："+hits.join("、"):"✓ 忌み言葉・重ね言葉は見つかりませんでした。");
+  document.getElementById("check").textContent=tips.join("　");
+  syncEdit();
+  var out=document.getElementById("out");out.hidden=false;out.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function full(){return cur.gashi+"\n\n"+cur.body+"\n"+cur.hito+"\n\n"+cur.date;}
+function syncEdit(){var e=document.getElementById("edit");e.value=full();checkEdit();}
+function checkEdit(){var t=document.getElementById("edit").value;var h=ngCheck(t,cur.mourn);
+  document.getElementById("editCheck").textContent=h.length?"⚠ 気になる言葉："+h.join("、"):"✓ 忌み言葉・重ね言葉は見つかりませんでした。";}
+function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},1400);}
+function copy(text){
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){toast("コピーしました")},fallback);}else fallback();
+  function fallback(){var ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast("コピーしました")}catch(e){toast("コピーできませんでした")}document.body.removeChild(ta);}
+}
+document.getElementById("gen").onclick=gen;
+document.getElementById("again").onclick=gen;
+document.getElementById("copyAll").onclick=function(){var e=document.getElementById("edit");copy(e.value||full());};
+document.getElementById("edit").addEventListener("input",checkEdit);
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
