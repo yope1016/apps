@@ -2,195 +2,326 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>傾斜割り勘計算（幹事用）｜役職・飲む量で差をつけて100円単位で集金額を出す</title>
-<meta name="description" content="忘年会・飲み会の幹事向け傾斜割り勘計算ツール。役職や飲む量ごとに比率や固定額を決めるだけで、1人あたりの集金額を100円・500円・1000円単位で自動計算。余りや不足もひと目でわかり、LINEに貼れる集金連絡文もコピーできます。登録不要・入力内容は端末内だけで処理。">
-<meta property="og:title" content="傾斜割り勘計算（幹事用）">
-<meta property="og:description" content="役職・飲む量で差をつけた集金額を100円単位で。LINE用の集金文もコピーできる幹事ツール。">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>傾斜割り勘計算｜役職・飲む量で差をつける幹事用ツール</title>
+<meta name="description" content="忘年会・飲み会の幹事向け。役職や飲む量で比率・固定額を決めるだけで、1人あたりの集金額を100円単位で自動計算。LINE用の集金文もコピーできます。登録不要・無料。">
+<meta name="theme-color" content="#ff6b3d">
 <style>
-:root{--bg:#f6f4ef;--card:#fff;--ink:#1f2328;--sub:#5d6670;--line:#e3ded3;--acc:#c2410c;--acc2:#fff1e8;--ok:#15803d;--warn:#b45309;--in:#fbfaf7}
-@media (prefers-color-scheme:dark){:root{--bg:#16181b;--card:#202327;--ink:#eceae5;--sub:#a3a9b0;--line:#33373c;--acc:#fb923c;--acc2:#3a2618;--ok:#4ade80;--warn:#fbbf24;--in:#1a1c1f}}
+:root{
+ --bg:#fff7f2;--bg2:#ffe9dc;--card:rgba(255,255,255,.82);--card-solid:#fff;--ink:#1d1a24;--sub:#6b6575;--line:rgba(60,30,20,.10);
+ --a1:#ff6b3d;--a2:#ff3d7f;--a3:#ffb03d;--ok:#12a46a;--warn:#e0631b;--in:#fffaf7;--shadow:0 10px 30px -12px rgba(200,70,30,.28),0 2px 6px rgba(0,0,0,.04);
+ --grad:linear-gradient(135deg,var(--a3) 0%,var(--a1) 45%,var(--a2) 100%);
+}
+@media (prefers-color-scheme:dark){:root{
+ --bg:#120f17;--bg2:#1d1424;--card:rgba(32,26,40,.78);--card-solid:#201a28;--ink:#f3eef7;--sub:#a99fb4;--line:rgba(255,255,255,.08);
+ --in:#17121d;--ok:#3ddc97;--warn:#ffa25c;--shadow:0 12px 34px -14px rgba(0,0,0,.7),0 1px 0 rgba(255,255,255,.04) inset;
+}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;line-height:1.6;-webkit-text-size-adjust:100%}
-main{max-width:640px;margin:0 auto;padding:16px}
-header{padding:20px 0 8px}
-h1{font-size:1.45rem;line-height:1.35;margin:0 0 6px}
-.lead{color:var(--sub);margin:0;font-size:.95rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
-h2{font-size:1.05rem;margin:0 0 10px}
-label{font-size:.85rem;color:var(--sub);display:block;margin-bottom:4px}
-input,select{font:inherit;color:var(--ink);background:var(--in);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:44px;width:100%}
-input:focus,select:focus{outline:2px solid var(--acc);outline-offset:1px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.total input{font-size:1.4rem;font-weight:700}
-.presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-button{font:inherit;min-height:44px;border-radius:10px;border:1px solid var(--line);background:var(--in);color:var(--ink);padding:8px 14px;cursor:pointer}
-button.pri{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:700}
-@media (prefers-color-scheme:dark){button.pri{color:#1a1206}}
-.tier{border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:10px}
-.tier-top{display:flex;gap:8px;align-items:center;margin-bottom:8px}
-.tier-top input{flex:1}
-.del{min-width:44px;padding:0;color:var(--sub)}
-.tier-grid{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:8px}
-.hint{font-size:.8rem;color:var(--sub);margin:6px 0 0}
-.res-total{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:.92rem;color:var(--sub);margin-top:8px}
-.res-total b{color:var(--ink)}
-table{width:100%;border-collapse:collapse;font-size:.95rem}
-th,td{padding:10px 6px;border-bottom:1px solid var(--line);text-align:right}
-th:first-child,td:first-child{text-align:left}
-th{font-size:.8rem;color:var(--sub);font-weight:600}
-td.amt{font-size:1.15rem;font-weight:800;color:var(--acc)}
-.diff{margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--acc2);font-size:.92rem}
-.diff.ok{color:var(--ok)}.diff.warn{color:var(--warn)}
-.err{color:var(--warn);font-weight:600}
-textarea{width:100%;min-height:150px;font:inherit;font-size:.9rem;color:var(--ink);background:var(--in);border:1px solid var(--line);border-radius:10px;padding:10px}
-.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.actions a{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border-radius:10px;border:1px solid var(--line);color:var(--ink);text-decoration:none}
-details{border-bottom:1px solid var(--line);padding:10px 0}
-summary{cursor:pointer;font-weight:600;min-height:28px}
-details p{margin:8px 0 0;color:var(--sub);font-size:.92rem}
-.small{font-size:.8rem;color:var(--sub)}
-footer{padding:24px 0 40px;font-size:.8rem;color:var(--sub);text-align:center}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;line-height:1.6;
+ background:radial-gradient(900px 500px at 110% -10%,rgba(255,61,127,.18),transparent 60%),radial-gradient(800px 500px at -20% 10%,rgba(255,176,61,.22),transparent 60%),linear-gradient(180deg,var(--bg),var(--bg2));background-attachment:fixed;min-height:100vh}
+main{max-width:660px;margin:0 auto;padding:0 16px calc(32px + env(safe-area-inset-bottom))}
+.pr-note{font-size:.72rem;color:var(--sub);text-align:center;padding:8px 0 0}
+.hero{position:relative;margin:12px 0 18px;padding:26px 22px 24px;border-radius:26px;background:var(--grad);color:#fff;overflow:hidden;box-shadow:0 18px 40px -16px rgba(255,80,60,.55)}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.16)}
+.hero::before{width:220px;height:220px;right:-70px;top:-90px}
+.hero::after{width:140px;height:140px;right:40px;bottom:-80px;background:rgba(255,255,255,.10)}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;letter-spacing:.04em;background:rgba(255,255,255,.22);padding:5px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+.hero h1{font-size:1.6rem;line-height:1.3;margin:12px 0 8px;letter-spacing:.01em}
+.hero p{margin:0;font-size:.92rem;opacity:.95;max-width:30em}
+.hero .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.hero .chips span{font-size:.74rem;background:rgba(0,0,0,.14);padding:4px 10px;border-radius:999px}
+.card{position:relative;background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;padding:18px;margin:14px 0;box-shadow:var(--shadow);animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+.card:nth-of-type(2){animation-delay:.05s}.card:nth-of-type(3){animation-delay:.1s}.card:nth-of-type(4){animation-delay:.15s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.h{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:1.05rem}
+.ic{flex:none;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:var(--grad);color:#fff;box-shadow:0 6px 14px -6px rgba(255,80,60,.6)}
+.ic svg{width:18px;height:18px}
+.step{font-size:.7rem;font-weight:800;color:var(--a1);letter-spacing:.08em;display:block;line-height:1}
+label{font-size:.8rem;color:var(--sub);display:block;margin-bottom:5px;font-weight:600}
+input,select{font:inherit;color:var(--ink);background:var(--in);border:1.5px solid var(--line);border-radius:14px;padding:11px 12px;min-height:48px;width:100%;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus{outline:none;border-color:var(--a1);box-shadow:0 0 0 4px rgba(255,107,61,.18)}
+.yen-in{position:relative}
+.yen-in input{font-size:1.9rem;font-weight:800;padding:12px 44px 12px 16px;min-height:64px;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.yen-in::after{content:"円";position:absolute;right:16px;top:50%;transform:translateY(-50%);font-weight:700;color:var(--sub)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.seg{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;background:var(--in);padding:5px;border-radius:14px;border:1.5px solid var(--line)}
+.seg button{min-height:40px;border:0;background:transparent;border-radius:10px;font-weight:700;color:var(--sub);padding:0}
+.seg button[aria-pressed=true]{background:var(--grad);color:#fff;box-shadow:0 4px 10px -4px rgba(255,80,60,.6)}
+button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .12s,background .2s,box-shadow .2s}
+button:active{transform:scale(.97)}
+.presets{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 10px;margin:0 -2px 4px;scrollbar-width:none}
+.presets::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:44px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card-solid);color:var(--ink);font-weight:700;font-size:.88rem;display:inline-flex;align-items:center;gap:6px}
+.chip.on{border-color:transparent;background:var(--grad);color:#fff}
+.tier{border:1.5px solid var(--line);border-radius:18px;padding:12px;margin-bottom:10px;background:var(--card-solid);animation:rise .35s both}
+.tier-top{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.dot{flex:none;width:12px;height:12px;border-radius:50%}
+.tier-top input{flex:1;font-weight:700;min-height:44px;border-color:transparent;background:var(--in)}
+.del{flex:none;width:44px;height:44px;border-radius:12px;border:0;background:var(--in);color:var(--sub);display:grid;place-items:center}
+.tier-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:8px}
+.stepper{display:flex;align-items:center;background:var(--in);border:1.5px solid var(--line);border-radius:14px;min-height:48px}
+.stepper button{width:40px;height:44px;border:0;background:transparent;font-size:1.3rem;font-weight:700;color:var(--a1);flex:none}
+.stepper input{border:0;background:transparent;text-align:center;padding:0;min-height:44px;font-weight:800;box-shadow:none!important}
+.add{width:100%;min-height:50px;border-radius:16px;border:2px dashed var(--line);background:transparent;color:var(--a1);font-weight:800}
+.hint{font-size:.78rem;color:var(--sub);margin:10px 0 0}
+/* results */
+.res-hero{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.kpi{background:var(--card-solid);border:1px solid var(--line);border-radius:16px;padding:10px 10px 12px;text-align:center}
+.kpi small{display:block;font-size:.7rem;color:var(--sub);font-weight:700}
+.kpi b{display:block;font-size:1.15rem;font-variant-numeric:tabular-nums;margin-top:2px}
+.person{display:flex;align-items:center;gap:12px;padding:14px;border-radius:18px;background:var(--card-solid);border:1px solid var(--line);margin-bottom:8px;animation:rise .35s both}
+.av{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1rem}
+.pmeta{flex:1;min-width:0}
+.pmeta .nm{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pmeta .sb{font-size:.76rem;color:var(--sub)}
+.bar{height:6px;border-radius:6px;background:var(--line);margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:6px;background:var(--grad);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.amt{text-align:right;font-size:1.65rem;font-weight:900;letter-spacing:-.01em;font-variant-numeric:tabular-nums;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.amt span{font-size:.8rem;font-weight:800;margin-left:2px}
+.diff{margin-top:12px;padding:12px 14px;border-radius:16px;font-size:.9rem;display:flex;gap:10px;align-items:flex-start}
+.diff svg{flex:none;width:20px;height:20px;margin-top:2px}
+.diff.ok{background:rgba(18,164,106,.10);color:var(--ok)}
+.diff.warn{background:rgba(224,99,27,.12);color:var(--warn)}
+.err{padding:14px;border-radius:16px;background:rgba(224,99,27,.12);color:var(--warn);font-weight:700;margin:0}
+.pop{animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{0%{transform:scale(.96);opacity:.6}100%{transform:none;opacity:1}}
+/* PR slot */
+.pr{margin-top:14px;border-radius:18px;padding:14px;border:1.5px solid var(--line);background:linear-gradient(135deg,rgba(255,176,61,.12),rgba(255,61,127,.08))}
+.pr .tag{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.06em;padding:2px 8px;border-radius:6px;background:var(--ink);color:var(--card-solid);margin-bottom:6px}
+.pr p{margin:0 0 8px;font-size:.88rem}
+.pr .links{display:flex;flex-direction:column;gap:6px}
+.pr a,.pr .ph{display:flex;align-items:center;justify-content:space-between;min-height:48px;padding:10px 14px;border-radius:14px;background:var(--card-solid);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:700;font-size:.9rem}
+.pr .ph{color:var(--sub);font-weight:600;border-style:dashed}
+/* message */
+textarea{width:100%;min-height:170px;font:inherit;font-size:.9rem;color:var(--ink);background:var(--in);border:1.5px solid var(--line);border-radius:16px;padding:12px;resize:vertical}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.btn{min-height:52px;border-radius:16px;border:0;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-size:.95rem}
+.btn.pri{background:var(--grad);color:#fff;box-shadow:0 10px 22px -10px rgba(255,80,60,.7)}
+.btn.sec{background:var(--card-solid);color:var(--ink);border:1.5px solid var(--line)}
+.btn svg{width:18px;height:18px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,40px);opacity:0;background:var(--ink);color:var(--card-solid);padding:12px 18px;border-radius:999px;font-weight:700;font-size:.88rem;transition:.3s;pointer-events:none;z-index:9}
+.toast.show{transform:translate(-50%,0);opacity:1}
+/* checklist */
+.check{list-style:none;margin:0;padding:0}
+.check li{margin-bottom:6px}
+.check label{display:flex;gap:12px;align-items:center;min-height:48px;padding:10px 12px;border-radius:14px;background:var(--card-solid);border:1px solid var(--line);font-size:.9rem;color:var(--ink);font-weight:600;margin:0;cursor:pointer}
+.check input{width:22px;height:22px;min-height:0;accent-color:var(--a1);flex:none}
+.check input:checked+span{text-decoration:line-through;color:var(--sub)}
+.prog{font-size:.8rem;color:var(--sub);margin-bottom:8px}
+details{border-bottom:1px solid var(--line);padding:12px 0}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::after{content:"+";color:var(--a1);font-weight:900}
+details[open] summary::after{content:"−"}
+details p{margin:8px 0 0;color:var(--sub);font-size:.9rem}
+.small{font-size:.86rem;color:var(--sub)}
+.more{display:grid;gap:8px}
+.more a{display:flex;align-items:center;gap:12px;min-height:56px;padding:10px 14px;border-radius:16px;background:var(--card-solid);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:700;font-size:.92rem}
+.more a i{flex:none;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-style:normal;color:#fff;font-weight:900}
+footer{padding:20px 4px 10px;font-size:.76rem;color:var(--sub);text-align:center}
 .sr{position:absolute;left:-9999px}
+@media (max-width:380px){.hero h1{font-size:1.4rem}.amt{font-size:1.4rem}.tier-grid{grid-template-columns:1fr 1fr}.tier-grid>div:first-child{grid-column:1/-1}}
 </style>
+
+<!-- SEO/OGP (webfactory 2026-11-01 14:30 公開前チェック) -->
+<link rel="canonical" href="https://yope1016.github.io/apps/warikan-keisha/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍻%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://yope1016.github.io/apps/warikan-keisha/">
+<meta property="og:title" content="傾斜割り勘計算｜役職・飲む量で差をつける幹事用ツール">
+<meta property="og:description" content="役職・飲む量で差をつけた集金額を100円単位で。LINE用の集金文もコピーできる幹事ツール。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<meta name="twitter:title" content="傾斜割り勘計算｜役職・飲む量で差をつける幹事用ツール">
+<meta name="twitter:description" content="役職・飲む量で差をつけた集金額を100円単位で。LINE用の集金文もコピーできる幹事ツール。">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "傾斜割り勘計算", "url": "https://yope1016.github.io/apps/warikan-keisha/", "description": "忘年会・飲み会の幹事向け。役職や飲む量で比率・固定額を決めるだけで、1人あたりの集金額を100円単位で自動計算。LINE用の集金文もコピーできます。登録不要・無料。", "applicationCategory": "FinanceApplication", "operatingSystem": "All", "inLanguage": "ja", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "傾斜の比率はどのくらいが一般的？", "acceptedAnswer": {"@type": "Answer", "text": "決まりはありませんが、役職者1.5〜2、一般1、新人や飲まない人0.5〜0.8くらいにする幹事が多いようです。差をつけすぎると不満が出やすいので、上の方へ事前にひとこと相談しておくと安心です。"}}, {"@type": "Question", "name": "余りが出たらどうする？", "acceptedAnswer": {"@type": "Answer", "text": "二次会の費用に回す、次回の会費に繰り越すなど、参加者に一言伝えておくとトラブルになりにくいです。余りを出したくない場合は「四捨五入」や小さい単位を選んでください。"}}, {"@type": "Question", "name": "上司が多めに払う「固定額」はどう入れる？", "acceptedAnswer": {"@type": "Answer", "text": "グループの「固定額」に金額（例：10000）を入れてください。その金額を先に差し引き、残りを他のグループで比率どおりに分けます。"}}, {"@type": "Question", "name": "計算方法は？", "acceptedAnswer": {"@type": "Answer", "text": "①固定額の合計を総額から引く ②残りを「比率×人数」の合計で割り、比率1あたりの金額を出す ③比率1あたり×比率を、選んだ単位で丸める ④集金合計と総額の差を余り／不足として表示します。"}}, {"@type": "Question", "name": "入力した内容はどこかに送られますか？", "acceptedAnswer": {"@type": "Answer", "text": "送られません。計算はすべてお使いの端末の中で行い、次回のために入力内容だけをこの端末のブラウザに保存します。"}}]}</script>
 </head>
 <body>
 <main>
-<header>
-<h1>傾斜割り勘計算（幹事用）</h1>
-<p class="lead">役職や飲む量で差をつけて、集金しやすい単位（100円・500円・1000円）で1人あたりの金額を出します。余り・不足もひと目でわかります。</p>
+<p class="pr-note">本ページはプロモーション（PR）を含みます</p>
+
+<header class="hero">
+ <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>忘年会シーズン対応</span>
+ <h1>傾斜割り勘計算<br>幹事のための集金ツール</h1>
+ <p>役職や飲む量で差をつけて、集金しやすい単位で1人あたりの金額を出します。余り・不足もひと目で。</p>
+ <div class="chips"><span>登録不要</span><span>データ送信なし</span><span>LINE文面コピー</span></div>
 </header>
 
 <section class="card" aria-labelledby="h-total">
-<h2 id="h-total">① 支払い総額</h2>
-<div class="row2">
-<div class="total"><label for="total">お会計（円）</label><input id="total" type="number" inputmode="numeric" min="0" step="1" value="48000"></div>
-<div><label for="unit">集金の単位</label>
-<select id="unit"><option value="1">1円</option><option value="10">10円</option><option value="100" selected>100円</option><option value="500">500円</option><option value="1000">1000円</option></select></div>
-</div>
-<div style="margin-top:10px"><label for="mode">端数の扱い</label>
-<select id="mode"><option value="up" selected>切り上げ（幹事が不足しない・余りが出る）</option><option value="round">四捨五入（余り・不足が最小）</option><option value="down">切り捨て（不足分は幹事が負担）</option></select></div>
+ <h2 class="h" id="h-total"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20M6 15h4"/></svg></span><span><span class="step">STEP 1</span>お会計</span></h2>
+ <label for="total">支払い総額（クーポン適用後）</label>
+ <div class="yen-in"><input id="total" type="number" inputmode="numeric" min="0" step="1" value="48000"></div>
+ <div style="margin-top:14px"><span class="sr" id="unit-l">集金の単位</span><label aria-hidden="true">集金の単位</label>
+  <div class="seg" id="unit" role="group" aria-labelledby="unit-l">
+   <button type="button" data-u="1">1円</button><button type="button" data-u="10">10円</button><button type="button" data-u="100">100円</button><button type="button" data-u="500">500円</button><button type="button" data-u="1000">千円</button>
+  </div>
+ </div>
+ <div style="margin-top:12px"><label for="mode">端数の扱い</label>
+  <select id="mode"><option value="up">切り上げ（余りが出る・安全）</option><option value="round">四捨五入（余り・不足が最小）</option><option value="down">切り捨て（不足は幹事が負担）</option></select></div>
 </section>
 
 <section class="card" aria-labelledby="h-tier">
-<h2 id="h-tier">② 参加者のグループと比率</h2>
-<div class="presets" role="group" aria-label="プリセット">
-<button type="button" data-p="even">均等</button>
-<button type="button" data-p="boss">上司多め</button>
-<button type="button" data-p="drink">飲む人・飲まない人</button>
-<button type="button" data-p="free">新人無料</button>
-</div>
-<div id="tiers"></div>
-<button type="button" id="add">＋ グループを追加</button>
-<p class="hint">「比率」は一般を1としたときの重みです（例：部長2、一般1、飲まない人0.7）。「固定額」を入れたグループは比率を使わずその金額になり、残りを比率で分けます。0円にすると無料です。</p>
+ <h2 class="h" id="h-tier"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2c2.9.3 5 2.6 5 5.8"/></svg></span><span><span class="step">STEP 2</span>参加者と傾斜</span></h2>
+ <div class="presets" role="group" aria-label="よくある設定">
+  <button type="button" class="chip" data-p="even">均等</button>
+  <button type="button" class="chip" data-p="boss">上司多め</button>
+  <button type="button" class="chip" data-p="drink">飲む・飲まない</button>
+  <button type="button" class="chip" data-p="free">新人無料</button>
+  <button type="button" class="chip" data-p="fixed">部長1万円固定</button>
+ </div>
+ <div id="tiers"></div>
+ <button type="button" class="add" id="add">＋ グループを追加</button>
+ <p class="hint">比率は一般を1としたときの重み（例：部長2、一般1、飲まない人0.7）。固定額を入れたグループはその金額になり、残りを比率で分けます。0円＝無料。</p>
 </section>
 
-<section class="card" aria-labelledby="h-res" aria-live="polite">
-<h2 id="h-res">③ 1人あたりの集金額</h2>
-<div id="result"></div>
+<section class="card" aria-labelledby="h-res">
+ <h2 class="h" id="h-res"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span><span class="step">RESULT</span>1人あたりの集金額</span></h2>
+ <div id="result" aria-live="polite"></div>
+
+ <!-- AFFILIATE:飲食店予約（ホットペッパーグルメ／一休.comレストラン等。テキストリンクのみ、計測用imgは入れない） -->
+ <div class="pr" id="pr-slot">
+  <span class="tag">PR</span>
+  <p><b>次の会のお店選びに</b>　二次会・新年会の予約もネットで済ませると、幹事の電話がゼロになります。</p>
+  <div class="links">
+   <span class="ph">飲み会のお店をネット予約する（準備中）</span>
+  </div>
+ </div>
 </section>
 
 <section class="card" aria-labelledby="h-msg">
-<h2 id="h-msg">④ 集金連絡文（LINE・Slackにそのまま貼れます）</h2>
-<label for="event">会の名前</label>
-<input id="event" type="text" value="忘年会" maxlength="40">
-<div style="margin-top:10px"><label for="msg" class="sr">集金連絡文</label><textarea id="msg" readonly></textarea></div>
-<div class="actions">
-<button type="button" class="pri" id="copy">文面をコピー</button>
-<a id="share" href="#" target="_blank" rel="noopener">このツールをXで紹介</a>
-</div>
-<p class="small" id="copied" role="status"></p>
+ <h2 class="h" id="h-msg"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><span><span class="step">STEP 3</span>集金の連絡文</span></h2>
+ <label for="event">会の名前</label>
+ <input id="event" type="text" value="忘年会" maxlength="40">
+ <div style="margin-top:10px"><label for="pay">支払い方法（任意）</label>
+  <input id="pay" type="text" value="" maxlength="40" placeholder="例：当日現金／PayPayで幹事まで"></div>
+ <div style="margin-top:10px"><label for="msg" class="sr">集金連絡文</label><textarea id="msg" readonly></textarea></div>
+ <div class="actions">
+  <button type="button" class="btn pri" id="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>文面をコピー</button>
+  <a class="btn sec" id="line" href="#" target="_blank" rel="noopener">LINEで送る</a>
+ </div>
 </section>
 
-<section class="card" aria-labelledby="h-how">
-<h2 id="h-how">計算方法</h2>
-<p class="small" style="font-size:.9rem">1) 固定額のグループの合計を総額から引きます。<br>2) 残りを「比率×人数」の合計で割り、比率1あたりの金額を出します。<br>3) 各グループの金額＝比率1あたりの金額×比率を、選んだ単位で切り上げ／四捨五入／切り捨てします。<br>4) 集金合計と総額の差を「余り」または「不足」として表示します。</p>
+<section class="card" aria-labelledby="h-chk">
+ <h2 class="h" id="h-chk"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg></span><span><span class="step">BONUS</span>幹事の段取りチェック</span></h2>
+ <p class="prog" id="prog"></p>
+ <ul class="check" id="check"></ul>
 </section>
 
 <section class="card" aria-labelledby="h-faq">
-<h2 id="h-faq">よくある質問</h2>
-<details><summary>傾斜の比率はどのくらいが一般的？</summary><p>決まりはありませんが、役職者1.5〜2、一般1、新人や飲まない人0.5〜0.8くらいに設定する幹事が多いようです。差をつけすぎると不満が出やすいので、事前に上の方へひとこと相談しておくと安心です。</p></details>
-<details><summary>余りが出たらどうする？</summary><p>二次会の費用に回す、次回の会費に繰り越す、幹事のお礼として扱うなど、参加者に一言伝えておくとトラブルになりにくいです。余りを出したくない場合は「四捨五入」や単位を小さくしてください。</p></details>
-<details><summary>上司が多めに払う「固定額」はどう入れる？</summary><p>グループの「固定額」欄に金額（例：10000）を入れてください。その金額を先に差し引き、残りを他のグループで比率どおりに分けます。</p></details>
-<details><summary>入力した内容はどこかに送られますか？</summary><p>送られません。計算はすべてお使いの端末の中で行い、次回のために入力内容だけをこの端末のブラウザに保存します（保存できない環境でも計算はできます）。</p></details>
-<details><summary>お店の会計がカードやポイントのときは？</summary><p>総額にはお店に実際に支払う金額（クーポン・ポイント適用後）を入れてください。ポイントの扱いは参加者と相談して決めるのがおすすめです。</p></details>
+ <h2 class="h" id="h-faq"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M9.3 9a2.8 2.8 0 0 1 5.4 1c0 2-2.7 2.5-2.7 4M12 17.5h.01"/></svg></span>よくある質問</h2>
+ <details><summary>傾斜の比率はどのくらいが一般的？</summary><p>決まりはありませんが、役職者1.5〜2、一般1、新人や飲まない人0.5〜0.8くらいにする幹事が多いようです。差をつけすぎると不満が出やすいので、上の方へ事前にひとこと相談しておくと安心です。</p></details>
+ <details><summary>余りが出たらどうする？</summary><p>二次会の費用に回す、次回の会費に繰り越すなど、参加者に一言伝えておくとトラブルになりにくいです。余りを出したくない場合は「四捨五入」や小さい単位を選んでください。</p></details>
+ <details><summary>上司が多めに払う「固定額」はどう入れる？</summary><p>グループの「固定額」に金額（例：10000）を入れてください。その金額を先に差し引き、残りを他のグループで比率どおりに分けます。</p></details>
+ <details><summary>計算方法は？</summary><p>①固定額の合計を総額から引く ②残りを「比率×人数」の合計で割り、比率1あたりの金額を出す ③比率1あたり×比率を、選んだ単位で丸める ④集金合計と総額の差を余り／不足として表示します。</p></details>
+ <details><summary>入力した内容はどこかに送られますか？</summary><p>送られません。計算はすべてお使いの端末の中で行い、次回のために入力内容だけをこの端末のブラウザに保存します。</p></details>
 </section>
 
-<footer>このツールについて：飲み会の幹事さんの集金をラクにするための無料ツールです。計算結果は目安です。最終的な金額はお店の会計・参加者との合意に基づいてご判断ください。</footer>
+<section class="card" aria-labelledby="h-more">
+ <h2 class="h" id="h-more">年末に使えるほかのツール</h2>
+ <div class="more">
+  <a href="../furusato-jogen-2026/"><i style="background:linear-gradient(135deg,#34d399,#0ea5e9)">税</i>ふるさと納税 上限額シミュレーター 2026</a>
+  <a href="../nenga-hitokoto-2027/"><i style="background:linear-gradient(135deg,#f472b6,#a855f7)">賀</i>年賀状ひとことジェネレーター 2027</a>
+ </div>
+</section>
+
+<footer>飲み会の幹事さんの集金をラクにする無料ツールです。計算結果は目安です。最終的な金額はお店の会計と参加者との合意にもとづいてご判断ください。</footer>
 </main>
+<div class="toast" id="toast" role="status"></div>
 
 <script>
 (function(){
-var KEY='warikan-keisha-v1';
+var KEY='warikan-keisha-v2';
+var COLORS=['#ff6b3d','#ff3d7f','#a855f7','#0ea5e9','#12a46a','#ffb03d','#6366f1','#14b8a6'];
 var PRESETS={
  even:[{n:'参加者',c:10,w:1,f:''}],
  boss:[{n:'部長',c:1,w:2,f:''},{n:'課長',c:2,w:1.5,f:''},{n:'一般',c:7,w:1,f:''}],
  drink:[{n:'飲む人',c:7,w:1,f:''},{n:'飲まない人',c:3,w:0.7,f:''}],
- free:[{n:'上司',c:2,w:1.5,f:''},{n:'一般',c:6,w:1,f:''},{n:'新人',c:2,w:1,f:'0'}]
+ free:[{n:'上司',c:2,w:1.5,f:''},{n:'一般',c:6,w:1,f:''},{n:'新人',c:2,w:1,f:'0'}],
+ fixed:[{n:'部長',c:1,w:1,f:'10000'},{n:'一般',c:9,w:1,f:''}]
 };
+var CHECK=['日程と人数の候補を決める','お店を予約（人数・コース・飲み放題の時間）','参加者に日時・場所・会費の目安を連絡','上司に傾斜（多めの負担）を相談','前日にお店へ人数の最終連絡','当日：会計前に人数と金額を確認','集金の連絡文を送る','余り・立て替えを清算して報告'];
 var $=function(id){return document.getElementById(id)};
 var tiersEl=$('tiers');
-var state={tiers:PRESETS.boss.map(clone)};
-function clone(o){return {n:o.n,c:o.c,w:o.w,f:o.f}}
-function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.tiers&&s.tiers.length){state.tiers=s.tiers;$('total').value=s.total||'';$('unit').value=s.unit||'100';$('mode').value=s.mode||'up';$('event').value=s.event||'忘年会';}}catch(e){}}
-function save(){try{localStorage.setItem(KEY,JSON.stringify({tiers:state.tiers,total:$('total').value,unit:$('unit').value,mode:$('mode').value,event:$('event').value}))}catch(e){}}
+var st={tiers:PRESETS.boss.map(cl),unit:'100',preset:'boss',checks:[]};
+function cl(o){return {n:o.n,c:o.c,w:o.w,f:o.f}}
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.tiers&&s.tiers.length){st.tiers=s.tiers;st.unit=s.unit||'100';st.preset=s.preset||'';st.checks=s.checks||[];$('total').value=s.total||'';$('mode').value=s.mode||'up';$('event').value=s.event||'忘年会';$('pay').value=s.pay||''}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({tiers:st.tiers,unit:st.unit,preset:st.preset,checks:st.checks,total:$('total').value,mode:$('mode').value,event:$('event').value,pay:$('pay').value}))}catch(e){}}
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function yen(n){return n.toLocaleString('ja-JP')+'円'}
+function num(n){return n.toLocaleString('ja-JP')}
+function hasF(t){return t.f!==''&&t.f!=null&&!isNaN(+t.f)}
+function syncUI(){
+ [].forEach.call($('unit').children,function(b){b.setAttribute('aria-pressed',b.getAttribute('data-u')===st.unit?'true':'false')});
+ [].forEach.call(document.querySelectorAll('[data-p]'),function(b){b.classList.toggle('on',b.getAttribute('data-p')===st.preset)});
+}
 function render(){
  tiersEl.innerHTML='';
- state.tiers.forEach(function(t,i){
+ st.tiers.forEach(function(t,i){
   var d=document.createElement('div');d.className='tier';
-  d.innerHTML='<div class="tier-top"><label class="sr" for="n'+i+'">グループ名</label><input id="n'+i+'" data-k="n" data-i="'+i+'" type="text" maxlength="20" value="'+esc(t.n)+'" aria-label="グループ名">'+
-  '<button type="button" class="del" data-del="'+i+'" aria-label="このグループを削除">✕</button></div>'+
-  '<div class="tier-grid"><div><label for="c'+i+'">人数</label><input id="c'+i+'" data-k="c" data-i="'+i+'" type="number" inputmode="numeric" min="0" step="1" value="'+esc(t.c)+'"></div>'+
-  '<div><label for="w'+i+'">比率</label><input id="w'+i+'" data-k="w" data-i="'+i+'" type="number" inputmode="decimal" min="0" step="0.1" value="'+esc(t.w)+'"></div>'+
-  '<div><label for="f'+i+'">固定額</label><input id="f'+i+'" data-k="f" data-i="'+i+'" type="number" inputmode="numeric" min="0" step="1" placeholder="なし" value="'+esc(t.f)+'"></div></div>';
+  d.innerHTML='<div class="tier-top"><span class="dot" style="background:'+COLORS[i%COLORS.length]+'"></span><input data-k="n" data-i="'+i+'" type="text" maxlength="20" value="'+esc(t.n)+'" aria-label="グループ名">'+
+  '<button type="button" class="del" data-del="'+i+'" aria-label="このグループを削除"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'+
+  '<div class="tier-grid"><div><label>人数</label><div class="stepper"><button type="button" data-st="-1" data-i="'+i+'" aria-label="人数を減らす">−</button><input data-k="c" data-i="'+i+'" type="number" inputmode="numeric" min="0" step="1" value="'+esc(t.c)+'" aria-label="人数"><button type="button" data-st="1" data-i="'+i+'" aria-label="人数を増やす">＋</button></div></div>'+
+  '<div><label>比率</label><input data-k="w" data-i="'+i+'" type="number" inputmode="decimal" min="0" step="0.1" value="'+esc(t.w)+'" aria-label="比率"'+(hasF(t)?' disabled style="opacity:.45"':'')+'></div>'+
+  '<div><label>固定額</label><input data-k="f" data-i="'+i+'" type="number" inputmode="numeric" min="0" step="1" placeholder="なし" value="'+esc(t.f)+'" aria-label="固定額"></div></div>';
   tiersEl.appendChild(d);
  });
- calc();
+ syncUI();calc();
 }
 function rnd(v,u,m){var x=v/u;x=m==='up'?Math.ceil(x-1e-9):m==='down'?Math.floor(x+1e-9):Math.round(x);return x*u}
+var lastSig='';
 function calc(){
- var total=Math.max(0,Math.floor(+$('total').value||0)),unit=+$('unit').value,mode=$('mode').value;
+ var total=Math.max(0,Math.floor(+$('total').value||0)),unit=+st.unit,mode=$('mode').value;
  var people=0,fixedSum=0,wsum=0;
- state.tiers.forEach(function(t){var c=Math.max(0,Math.floor(+t.c||0));people+=c;if(t.f!==''&&t.f!=null&&!isNaN(+t.f)){fixedSum+=c*Math.max(0,+t.f)}else{wsum+=c*Math.max(0,+t.w||0)}});
- var res=$('result'),rows=[],err='';
- var rest=total-fixedSum;
- if(!total){err='お会計の金額を入れてください。'}
- else if(!people){err='参加人数を入れてください。'}
- else if(rest<0){err='固定額の合計（'+yen(fixedSum)+'）がお会計を超えています。'}
- else if(rest>0&&wsum<=0){err='比率で分けるグループがありません。比率を入れるか固定額を見直してください。'}
+ st.tiers.forEach(function(t){var c=Math.max(0,Math.floor(+t.c||0));people+=c;if(hasF(t)){fixedSum+=c*Math.max(0,+t.f)}else{wsum+=c*Math.max(0,+t.w||0)}});
+ var res=$('result'),rows=[],err='',rest=total-fixedSum;
+ if(!total)err='お会計の金額を入れてください。';
+ else if(!people)err='参加人数を入れてください。';
+ else if(rest<0)err='固定額の合計（'+yen(fixedSum)+'）がお会計を超えています。';
+ else if(rest>0&&wsum<=0)err='比率で分けるグループがありません。比率を入れるか固定額を見直してください。';
  if(err){res.innerHTML='<p class="err">'+err+'</p>';$('msg').value='';return}
- var per=wsum>0?rest/wsum:0,collected=0;
- state.tiers.forEach(function(t){
-  var c=Math.max(0,Math.floor(+t.c||0)),fixed=(t.f!==''&&t.f!=null&&!isNaN(+t.f));
-  var a=fixed?Math.max(0,Math.floor(+t.f)):rnd(per*Math.max(0,+t.w||0),unit,mode);
-  collected+=a*c;rows.push({n:t.n||'グループ',c:c,a:a,w:fixed?'固定':(+t.w||0)});
+ var per=wsum>0?rest/wsum:0,collected=0,max=0;
+ st.tiers.forEach(function(t,i){
+  var c=Math.max(0,Math.floor(+t.c||0)),fx=hasF(t);
+  var a=fx?Math.max(0,Math.floor(+t.f)):rnd(per*Math.max(0,+t.w||0),unit,mode);
+  collected+=a*c;if(a>max)max=a;rows.push({n:t.n||'グループ',c:c,a:a,w:fx?'固定額':'比率 '+(+t.w||0),i:i});
  });
  var diff=collected-total;
- var h='<table><thead><tr><th>グループ</th><th>人数</th><th>比率</th><th>1人あたり</th></tr></thead><tbody>';
- rows.forEach(function(r){h+='<tr><td>'+esc(r.n)+'</td><td>'+r.c+'人</td><td>'+r.w+'</td><td class="amt">'+yen(r.a)+'</td></tr>'});
- h+='</tbody></table><div class="res-total"><span>参加 <b>'+people+'人</b></span><span>お会計 <b>'+yen(total)+'</b></span><span>集金合計 <b>'+yen(collected)+'</b></span></div>';
- h+=diff===0?'<div class="diff ok">ぴったりです。</div>':diff>0?'<div class="diff ok">余り <b>'+yen(diff)+'</b>（二次会・次回に回すなど、参加者に一言伝えましょう）</div>':'<div class="diff warn">不足 <b>'+yen(-diff)+'</b>（幹事が立て替えるか、端数の扱いを「切り上げ」に）</div>';
- res.innerHTML=h;
- var ev=$('event').value.trim()||'飲み会';
+ var h='<div class="res-hero"><div class="kpi"><small>参加</small><b>'+people+'人</b></div><div class="kpi"><small>お会計</small><b>'+num(total)+'</b></div><div class="kpi"><small>集金合計</small><b>'+num(collected)+'</b></div></div>';
+ rows.forEach(function(r){var col=COLORS[r.i%COLORS.length];var pct=max?Math.round(r.a/max*100):0;
+  h+='<div class="person"><div class="av" style="background:'+col+'">'+esc((r.n||'?').slice(0,1))+'</div><div class="pmeta"><div class="nm">'+esc(r.n)+'</div><div class="sb">'+r.c+'人・'+r.w+'</div><div class="bar"><i style="width:'+pct+'%"></i></div></div><div class="amt">'+num(r.a)+'<span>円</span></div></div>'});
+ var okI='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.5l3 3 5-6"/></svg>';
+ var wI='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17.5h.01"/></svg>';
+ h+=diff===0?'<div class="diff ok">'+okI+'<span>ぴったりです。</span></div>':diff>0?'<div class="diff ok">'+okI+'<span>余り <b>'+yen(diff)+'</b>　二次会や次回に回すなど、参加者に一言伝えましょう。</span></div>':'<div class="diff warn">'+wI+'<span>不足 <b>'+yen(-diff)+'</b>　幹事が立て替えるか、端数を「切り上げ」にしてください。</span></div>';
+ var sig=h;if(sig!==lastSig){res.innerHTML=h;res.classList.remove('pop');void res.offsetWidth;res.classList.add('pop');lastSig=sig}
+ var ev=$('event').value.trim()||'飲み会',pay=$('pay').value.trim();
  var m='【'+ev+' 会費のお知らせ】\nお会計：'+yen(total)+'（'+people+'名）\n\n';
  rows.forEach(function(r){if(r.c>0)m+='・'+r.n+'：'+yen(r.a)+'\n'});
- m+='\n当日またはお会計の後に幹事までお願いします。';
- if(diff>0)m+='\n※端数の調整で'+yen(diff)+'余る見込みです。';
+ m+='\n'+(pay?pay:'当日またはお会計の後に幹事まで')+'お願いします。';
+ if(diff>0)m+='\n※端数の調整で'+yen(diff)+'余る見込みです（二次会・次回に充てます）。';
  $('msg').value=m;
+ $('line').href='https://line.me/R/share?text='+encodeURIComponent(m);
 }
-tiersEl.addEventListener('input',function(e){var k=e.target.getAttribute('data-k'),i=e.target.getAttribute('data-i');if(k&&i!==null){state.tiers[+i][k]=e.target.value;calc();save()}});
-tiersEl.addEventListener('click',function(e){var i=e.target.getAttribute('data-del');if(i!==null){state.tiers.splice(+i,1);if(!state.tiers.length)state.tiers.push({n:'参加者',c:1,w:1,f:''});render();save()}});
-$('add').addEventListener('click',function(){state.tiers.push({n:'グループ'+(state.tiers.length+1),c:1,w:1,f:''});render();save()});
-document.querySelectorAll('[data-p]').forEach(function(b){b.addEventListener('click',function(){state.tiers=PRESETS[b.getAttribute('data-p')].map(clone);render();save()})});
-['total','unit','mode','event'].forEach(function(id){$(id).addEventListener('input',function(){calc();save()})});
-$('copy').addEventListener('click',function(){var t=$('msg');var done=function(){$('copied').textContent='コピーしました。'};
+function renderCheck(){
+ var ul=$('check');ul.innerHTML='';var done=0;
+ CHECK.forEach(function(t,i){var on=st.checks.indexOf(i)>=0;if(on)done++;var li=document.createElement('li');li.innerHTML='<label><input type="checkbox" data-ck="'+i+'"'+(on?' checked':'')+'><span>'+esc(t)+'</span></label>';ul.appendChild(li)});
+ $('prog').textContent='完了 '+done+' / '+CHECK.length;
+}
+function toast(t){var el=$('toast');el.textContent=t;el.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(function(){el.classList.remove('show')},1800)}
+tiersEl.addEventListener('input',function(e){var k=e.target.getAttribute('data-k'),i=e.target.getAttribute('data-i');if(k&&i!==null){st.tiers[+i][k]=e.target.value;st.preset='';syncUI();if(k==='f'){var w=tiersEl.querySelector('[data-k="w"][data-i="'+i+'"]');if(w){w.disabled=hasF(st.tiers[+i]);w.style.opacity=w.disabled?'.45':''}}calc();save()}});
+tiersEl.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var d=b.getAttribute('data-del');if(d!==null){st.tiers.splice(+d,1);if(!st.tiers.length)st.tiers.push({n:'参加者',c:1,w:1,f:''});st.preset='';render();save();return}
+ var s=b.getAttribute('data-st');if(s!==null){var i=+b.getAttribute('data-i');var t=st.tiers[i];t.c=Math.max(0,(Math.floor(+t.c||0))+(+s));var inp=tiersEl.querySelector('[data-k="c"][data-i="'+i+'"]');if(inp)inp.value=t.c;st.preset='';syncUI();calc();save()}});
+$('add').addEventListener('click',function(){st.tiers.push({n:'グループ'+(st.tiers.length+1),c:1,w:1,f:''});st.preset='';render();save()});
+[].forEach.call(document.querySelectorAll('[data-p]'),function(b){b.addEventListener('click',function(){st.preset=b.getAttribute('data-p');st.tiers=PRESETS[st.preset].map(cl);render();save()})});
+$('unit').addEventListener('click',function(e){var b=e.target.closest('[data-u]');if(!b)return;st.unit=b.getAttribute('data-u');syncUI();calc();save()});
+['total','mode','event','pay'].forEach(function(id){$(id).addEventListener('input',function(){calc();save()})});
+$('check').addEventListener('change',function(e){var i=e.target.getAttribute('data-ck');if(i===null)return;i=+i;var p=st.checks.indexOf(i);if(e.target.checked&&p<0)st.checks.push(i);if(!e.target.checked&&p>=0)st.checks.splice(p,1);renderCheck();save()});
+$('copy').addEventListener('click',function(){var t=$('msg');var done=function(){toast('コピーしました')};
  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t.value).then(done,function(){t.select();try{document.execCommand('copy');done()}catch(e){}})}else{t.select();try{document.execCommand('copy');done()}catch(e){}}});
-$('share').href='https://x.com/intent/post?text='+encodeURIComponent('忘年会の幹事、これで集金額が一発で決まった。役職や飲む量で差をつけて100円単位に丸めてくれる傾斜割り勘計算')+'&url='+encodeURIComponent(location.href.split('#')[0]);
-load();render();
+load();render();renderCheck();
 })();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->

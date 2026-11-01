@@ -2,280 +2,546 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>年賀状ひとことジェネレーター 2027（ひつじ年）｜相手別の添え書き文例をワンタップで</title>
-<meta name="description" content="2027年（令和9年・丁未・ひつじ年）の年賀状に添える「ひとこと」を、相手・近況・トーンを選ぶだけで自動作成。上司・取引先・友人・親戚・ご無沙汰の人まで。賀詞の選び方と忌み言葉チェック付き。">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>年賀状のひとこと例文 2027（ひつじ年）｜上司・友人・喪中はがきも</title>
+<meta name="description" content="2027年（ひつじ年）の年賀状に添えるひとことを、相手と近況を選ぶだけで自動作成。忌み言葉チェック付き。喪中はがき・寒中見舞いの文例、元日に届く投函日の目安も。登録不要・無料。">
+<meta name="theme-color" content="#b3202a">
 <style>
-:root{--bg:#fbf6ef;--card:#fff;--ink:#2b2420;--sub:#7a6d63;--red:#c0392b;--red2:#e8b4ad;--gold:#b8892f;--line:#eadfd2;--ok:#2f7d4f}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;line-height:1.7}
-.ui{font-family:-apple-system,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif}
-header{text-align:center;padding:28px 16px 8px}
-.seal{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border:3px solid var(--red);color:var(--red);border-radius:10px;font-size:26px;font-weight:700;transform:rotate(-4deg)}
-h1{font-size:22px;margin:12px 0 4px;letter-spacing:.04em}
-.lead{color:var(--sub);font-size:14px;margin:0}
-main{max-width:720px;margin:0 auto;padding:12px 14px 40px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0;box-shadow:0 1px 0 rgba(0,0,0,.02)}
-.card h2{font-size:16px;margin:0 0 12px;display:flex;gap:8px;align-items:center}
-.card h2 .n{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;align-items:center;justify-content:center}
+:root{
+  --bg:#fbf5ee;--bg2:#f4e9dc;--card:#ffffff;--ink:#2a1f1b;--sub:#7b6b60;--line:#eadccd;
+  --red:#c0262f;--red2:#e0525a;--gold:#c9973a;--gold2:#f2d27f;--ok:#22865a;--warn:#b7791f;
+  --shadow:0 10px 30px -12px rgba(120,40,20,.25),0 2px 6px -2px rgba(120,40,20,.08);
+  --paper:#fffdf8;--chip:#fff;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#17110f;--bg2:#201815;--card:#241b18;--ink:#f5ece4;--sub:#bba99b;--line:#3a2d27;
+    --red:#ef5a62;--red2:#ff8a8f;--gold:#e2b75e;--gold2:#f6dc98;--ok:#4cc38a;--warn:#e6b350;
+    --shadow:0 10px 30px -12px rgba(0,0,0,.6),0 2px 6px -2px rgba(0,0,0,.4);--paper:#2c221e;--chip:#2c221e}
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(1200px 600px at 50% -200px,var(--bg2),var(--bg));color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic UI",sans-serif;line-height:1.7;min-height:100vh}
+.mincho{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif}
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;padding:34px 18px 72px;text-align:center;
+  background:linear-gradient(135deg,#8e1220 0%,#c0262f 45%,#d9573a 100%)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 15% 20%,rgba(255,215,120,.35) 0 2px,transparent 3px),
+  radial-gradient(circle at 80% 30%,rgba(255,215,120,.3) 0 2px,transparent 3px),
+  radial-gradient(circle at 60% 75%,rgba(255,255,255,.25) 0 1.5px,transparent 2.5px),
+  radial-gradient(circle at 30% 70%,rgba(255,255,255,.2) 0 1.5px,transparent 2.5px);
+  background-size:180px 140px;animation:twinkle 6s linear infinite;opacity:.9}
+@keyframes twinkle{to{background-position:180px 140px}}
+.hero::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-60px;height:120px;background:var(--bg);border-radius:50% 50% 0 0}
+.hero-in{position:relative;z-index:1;max-width:680px;margin:0 auto}
+.badge{display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
+  backdrop-filter:blur(6px);padding:5px 12px;border-radius:999px;font-size:12px;letter-spacing:.06em}
+.hero h1{font-size:clamp(22px,6vw,34px);line-height:1.35;margin:14px 0 8px;letter-spacing:.03em;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+.hero h1 small{display:block;font-size:.5em;font-weight:600;opacity:.9;letter-spacing:.2em;margin-bottom:4px}
+.hero p{margin:0 auto;max-width:520px;font-size:14px;opacity:.95}
+.sheep{width:96px;height:auto;margin:6px auto 0;display:block;animation:bob 3.2s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+@keyframes bob{50%{transform:translateY(-6px) rotate(-2deg)}}
+main{max-width:720px;margin:-44px auto 0;padding:0 14px 40px;position:relative;z-index:2}
+/* countdown */
+.cd{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;background:var(--card);border-radius:20px;padding:16px 18px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.cd .num{font-size:44px;font-weight:800;line-height:1;background:linear-gradient(135deg,var(--red),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.cd .num span{font-size:16px;font-weight:700;color:var(--sub);-webkit-text-fill-color:var(--sub)}
+.cd .t{font-size:13px;color:var(--sub)}
+.cd .t b{color:var(--ink);font-size:15px}
+.tl{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.tl i{font-style:normal;font-size:11px;padding:3px 8px;border-radius:999px;background:var(--bg2);color:var(--sub);border:1px solid var(--line)}
+.tl i.now{background:var(--red);color:#fff;border-color:var(--red)}
+.tl i.done{text-decoration:line-through;opacity:.6}
+/* tabs */
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--card);padding:6px;border-radius:16px;margin:16px 0 6px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.tabs button{font:inherit;font-weight:700;font-size:14px;border:0;background:transparent;color:var(--sub);padding:11px 4px;border-radius:12px;cursor:pointer;transition:.2s}
+.tabs button[aria-selected="true"]{background:linear-gradient(135deg,var(--red),#d9573a);color:#fff;box-shadow:0 6px 16px -6px rgba(192,38,47,.6)}
+.tabs button small{display:block;font-size:10px;font-weight:500;opacity:.85}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:14px 0;box-shadow:var(--shadow);animation:rise .4s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+.card h2{font-size:16px;margin:0 0 12px;display:flex;gap:10px;align-items:center}
+.step{display:inline-flex;width:26px;height:26px;border-radius:9px;background:linear-gradient(135deg,var(--red),var(--gold));color:#fff;font-size:13px;align-items:center;justify-content:center;flex:none}
+.hint{font-size:12px;color:var(--sub);margin:-6px 0 10px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:#fff;color:var(--ink);padding:8px 12px;border-radius:999px;cursor:pointer;transition:.15s}
-.chips button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
-.chips button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
-label.small{font-size:13px;color:var(--sub)}
-input[type=text]{font:inherit;font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;width:100%;max-width:320px}
-.btn{font:inherit;font-weight:700;font-size:16px;border:0;background:var(--red);color:#fff;padding:13px 20px;border-radius:12px;cursor:pointer;width:100%}
-.btn.ghost{background:#fff;color:var(--red);border:1px solid var(--red);font-size:14px;padding:9px 14px;width:auto;font-weight:600}
-.postcard{position:relative;background:#fffdf9;border:1px solid var(--line);border-radius:6px;padding:26px 22px 22px;margin-top:6px;min-height:200px;background-image:radial-gradient(circle at 92% 12%,rgba(192,57,43,.08) 0 46px,transparent 47px)}
-.postcard .gashi{font-size:26px;font-weight:700;letter-spacing:.12em;color:var(--red);margin:0 0 10px}
-.postcard p{margin:0 0 10px;font-size:16px;white-space:pre-wrap}
-.postcard .date{color:var(--sub);font-size:14px;margin-top:12px}
-.hitsuji{position:absolute;right:16px;top:14px;width:62px;height:auto;opacity:.95}
-.alts{margin-top:12px;display:grid;gap:8px}
-.alt{border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start;background:#fff}
+.chips button{font:inherit;font-size:14px;border:1.5px solid var(--line);background:var(--chip);color:var(--ink);padding:9px 14px;min-height:44px;border-radius:999px;cursor:pointer;transition:transform .12s,background .2s,border-color .2s;display:inline-flex;gap:6px;align-items:center}
+.chips button:active{transform:scale(.96)}
+.chips button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 6px 14px -8px rgba(192,38,47,.8)}
+.chips button:focus-visible,.btn:focus-visible,.tabs button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.field{margin-top:12px}
+.field label{font-size:13px;color:var(--sub);display:block;margin-bottom:4px}
+input[type=text],select{font:inherit;font-size:16px;padding:11px 14px;border:1.5px solid var(--line);border-radius:12px;width:100%;background:var(--paper);color:var(--ink)}
+.toggle{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:14px;cursor:pointer;user-select:none}
+.toggle input{appearance:none;width:46px;height:28px;border-radius:999px;background:var(--line);position:relative;transition:.2s;flex:none;cursor:pointer}
+.toggle input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:.2s}
+.toggle input:checked{background:var(--red)}
+.toggle input:checked::after{left:21px}
+.btn{font:inherit;font-weight:800;font-size:17px;border:0;color:#fff;padding:16px 20px;border-radius:16px;cursor:pointer;width:100%;margin-top:16px;
+  background:linear-gradient(135deg,#a8172a,#d9573a);box-shadow:0 12px 24px -10px rgba(192,38,47,.7);transition:transform .12s;letter-spacing:.04em}
+.btn:active{transform:scale(.98)}
+.btn.sub{background:var(--card);color:var(--red);border:1.5px solid var(--red);box-shadow:none;font-size:14px;padding:11px 14px;width:auto;margin:0;font-weight:700}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+/* postcard */
+.pcwrap{perspective:1000px}
+.postcard{position:relative;background:var(--paper);border-radius:10px;padding:28px 22px 22px;min-height:240px;border:1px solid var(--line);
+  box-shadow:0 18px 40px -18px rgba(120,40,20,.45);overflow:hidden;animation:flip .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes flip{from{opacity:0;transform:rotateX(18deg) translateY(10px)}}
+.postcard::before{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(201,151,58,.22),transparent 70%)}
+.postcard::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,var(--red),var(--gold),var(--red))}
+.postcard.mochu::after{background:linear-gradient(90deg,#6b6b78,#a5a5b3,#6b6b78)}
+.postcard.mochu::before{background:radial-gradient(circle,rgba(120,120,140,.18),transparent 70%)}
+.gashi{font-size:28px;font-weight:700;letter-spacing:.14em;color:var(--red);margin:0 0 12px;line-height:1.4}
+.mochu .gashi{color:var(--ink);font-size:20px;letter-spacing:.08em}
+.postcard p{margin:0 0 10px;font-size:16px;white-space:pre-wrap;position:relative}
+.postcard .hito{color:var(--red);font-weight:600}
+.mochu .hito{color:var(--ink)}
+.postcard .date{color:var(--sub);font-size:14px;margin-top:14px}
+.pc-sheep{position:absolute;right:14px;top:12px;width:64px;opacity:.95}
+.mochu .pc-sheep{display:none}
+.checkbox{margin-top:12px;border-radius:14px;padding:12px 14px;font-size:13px;display:flex;gap:10px;align-items:flex-start}
+.checkbox.good{background:rgba(34,134,90,.1);color:var(--ok);border:1px solid rgba(34,134,90,.25)}
+.checkbox.bad{background:rgba(183,121,31,.12);color:var(--warn);border:1px solid rgba(183,121,31,.3)}
+.checkbox .ic{font-size:16px;line-height:1.3}
+.tips{font-size:13px;color:var(--sub);margin-top:8px}
+.alts{margin-top:8px;display:grid;gap:8px}
+.alt{border:1.5px dashed var(--line);border-radius:14px;padding:10px 12px;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:center;background:var(--paper)}
 .alt span{flex:1}
-.copy{font-size:12px;border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 9px;cursor:pointer;white-space:nowrap;color:var(--sub)}
-.warn{background:#fff6e5;border:1px solid #f1d9a6;border-radius:10px;padding:10px 12px;font-size:13px;margin-top:10px}
-.ok{color:var(--ok)}
-details{margin-top:8px}
-summary{cursor:pointer;font-weight:600}
+.mini{font:inherit;font-size:12px;font-weight:700;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 10px;cursor:pointer;white-space:nowrap;color:var(--red);min-height:36px}
+details{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+summary{cursor:pointer;font-weight:700;font-size:14px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:"＋";color:var(--red)}
+details[open] summary::after{content:"−"}
+summary::-webkit-details-marker{display:none}
+textarea{font:inherit;width:100%;min-height:150px;padding:12px;border:1.5px solid var(--line);border-radius:12px;font-size:15px;background:var(--paper);color:var(--ink);margin-top:8px}
+/* PR */
+.pr{position:relative;border-radius:20px;padding:18px;margin:14px 0;background:linear-gradient(135deg,rgba(201,151,58,.14),rgba(192,38,47,.08));border:1.5px solid rgba(201,151,58,.45)}
+.pr .tag{position:absolute;top:12px;right:12px;font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;background:var(--gold);color:#2a1f1b;letter-spacing:.08em}
+.pr h3{margin:0 0 6px;font-size:16px;padding-right:44px}
+.pr p{margin:0 0 10px;font-size:13px;color:var(--sub)}
+.prlist{display:grid;gap:8px}
+.prlink{display:flex;align-items:center;justify-content:space-between;gap:8px;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:700;font-size:14px;min-height:48px}
+.prlink small{display:block;font-weight:500;color:var(--sub);font-size:12px}
+.prlink.soon{opacity:.7;pointer-events:none}
+.prlink .arw{color:var(--red);font-size:18px}
+.prnote{font-size:11px;color:var(--sub);margin-top:8px}
+/* info */
 table{border-collapse:collapse;width:100%;font-size:13px}
-td,th{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top}th{white-space:nowrap;width:5.5em;font-size:12px}
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#2b2420;color:#fff;padding:9px 16px;border-radius:999px;font-size:13px;opacity:0;transition:.2s;pointer-events:none}
-.toast.show{opacity:1}
-footer{text-align:center;color:var(--sub);font-size:12px;padding:10px 16px 30px}
-textarea{font:inherit;width:100%;min-height:90px;padding:10px;border:1px solid var(--line);border-radius:10px;font-size:15px}
-@media (max-width:420px){h1{font-size:19px}.postcard .gashi{font-size:22px}.hitsuji{width:48px}}
+td,th{border-bottom:1px solid var(--line);padding:9px 6px;text-align:left;vertical-align:top}
+th{white-space:nowrap;width:6em;font-size:12px;color:var(--red)}
+.faq details{border-top:1px solid var(--line)}
+.faq p{font-size:14px;color:var(--sub);margin:6px 0 4px}
+.more{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.more a{display:block;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px;font-weight:700;font-size:14px;transition:transform .15s}
+.more a:active{transform:scale(.98)}
+.more a span{display:block;font-size:22px;margin-bottom:4px}
+.more a small{display:block;color:var(--sub);font-weight:500;font-size:12px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#2a1f1b;color:#fff;padding:11px 18px;border-radius:999px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:9;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{text-align:center;color:var(--sub);font-size:12px;padding:10px 16px 40px}
+[hidden]{display:none!important}
+@media (max-width:420px){.gashi{font-size:23px}.pc-sheep{width:50px}.cd .num{font-size:38px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
+
+<!-- SEO/OGP (webfactory 2026-11-01 14:30 公開前チェック) -->
+<link rel="canonical" href="https://yope1016.github.io/apps/nenga-hitokoto-2027/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐑%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://yope1016.github.io/apps/nenga-hitokoto-2027/">
+<meta property="og:title" content="年賀状のひとこと例文 2027（ひつじ年）｜上司・友人・喪中はがきも">
+<meta property="og:description" content="相手と近況を選ぶだけで、年賀状のひとことを自動作成。喪中はがき・寒中見舞いの文例も。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<meta name="twitter:title" content="年賀状のひとこと例文 2027（ひつじ年）｜上司・友人・喪中はがきも">
+<meta name="twitter:description" content="相手と近況を選ぶだけで、年賀状のひとことを自動作成。喪中はがき・寒中見舞いの文例も。">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "年賀状のひとこと例文 2027（ひつじ年）", "url": "https://yope1016.github.io/apps/nenga-hitokoto-2027/", "description": "2027年（ひつじ年）の年賀状に添えるひとことを、相手と近況を選ぶだけで自動作成。忌み言葉チェック付き。喪中はがき・寒中見舞いの文例、元日に届く投函日の目安も。登録不要・無料。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "All", "inLanguage": "ja", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "2027年は何年（干支）？", "acceptedAnswer": {"@type": "Answer", "text": "2027年は令和9年、干支は丁未（ひのと・ひつじ）、ひつじ年です。"}}, {"@type": "Question", "name": "上司への年賀状に「賀正」はダメ？", "acceptedAnswer": {"@type": "Answer", "text": "失礼とまでは言えませんが、1〜2文字の賀詞は略式とされます。目上の方には「謹賀新年」や文章の賀詞が無難です。"}}, {"@type": "Question", "name": "喪中はがきはいつまでに出す？", "acceptedAnswer": {"@type": "Answer", "text": "一般に11月から12月上旬、相手が年賀状の準備を始める前に届くように出します。12月に不幸があり間に合わない場合は、年明けに寒中見舞いで報告する方法もあります。"}}, {"@type": "Question", "name": "喪中の相手から年賀状が届いたら？", "acceptedAnswer": {"@type": "Answer", "text": "年賀状は出さず、松の内が明けてから立春の前日までに寒中見舞いを送るのが一般的です。"}}, {"@type": "Question", "name": "入力した内容は保存されますか？", "acceptedAnswer": {"@type": "Answer", "text": "保存も送信もしません。文面の作成はすべてお使いの端末の中で行われます。"}}]}</script>
 </head>
 <body>
-<header class="ui">
-  <div class="seal" aria-hidden="true">未</div>
-  <h1>年賀状ひとことジェネレーター 2027</h1>
-  <p class="lead">令和9年・丁未（ひのとひつじ）年。相手と近況を選ぶだけで、賀詞と添え書きを作ります。</p>
+<header class="hero">
+  <div class="hero-in">
+    <span class="badge">🎍 令和9年・丁未（ひのとひつじ）</span>
+    <h1 class="mincho"><small>2027 ひつじ年</small>年賀状ひとこと<br>ジェネレーター</h1>
+    <p>相手と近況をタップするだけ。賀詞・本文・添え書きを作って、忌み言葉も自動でチェックします。</p>
+    <svg class="sheep" viewBox="0 0 120 100" aria-hidden="true">
+      <g fill="#fff"><circle cx="48" cy="44" r="18"/><circle cx="68" cy="38" r="19"/><circle cx="86" cy="48" r="16"/><circle cx="56" cy="62" r="18"/><circle cx="76" cy="64" r="16"/><circle cx="40" cy="58" r="13"/></g>
+      <ellipse cx="30" cy="52" rx="14" ry="12" fill="#ffe2d6"/>
+      <circle cx="25" cy="50" r="2.4" fill="#2a1f1b"/><circle cx="34" cy="50" r="2.4" fill="#2a1f1b"/>
+      <ellipse cx="22" cy="57" rx="3" ry="2" fill="#f7a8a0"/><ellipse cx="37" cy="57" rx="3" ry="2" fill="#f7a8a0"/>
+      <path d="M26 59q3.5 3 7 0" stroke="#2a1f1b" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <path d="M18 44c-8-6-12 2-6 7M42 44c8-6 12 2 6 7" stroke="#f2d27f" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <g stroke="#fff" stroke-width="5" stroke-linecap="round"><path d="M52 78v12"/><path d="M76 78v12"/></g>
+    </svg>
+  </div>
 </header>
+
 <main>
-  <section class="card ui">
-    <h2><span class="n">1</span>誰に送りますか？</h2>
-    <div class="chips" id="to"></div>
-  </section>
-  <section class="card ui">
-    <h2><span class="n">2</span>あなたの近況（任意・複数可）</h2>
-    <div class="chips" id="news"></div>
-  </section>
-  <section class="card ui">
-    <h2><span class="n">3</span>雰囲気と仕上げ</h2>
-    <div class="chips" id="tone"></div>
-    <div class="row">
-      <label class="small"><input type="checkbox" id="pun"> ひつじ年ならではの一言を入れる</label>
+  <section class="cd" aria-live="polite">
+    <div class="num" id="cdNum">--<span>日</span></div>
+    <div class="t"><b id="cdTitle">元日に届く投函目安（12/27）まで</b><br><span id="cdSub">年賀はがきは11月2日発売・年賀状の受付は12月20日から</span>
+      <div class="tl" id="tl"></div>
     </div>
-    <div class="row">
-      <label class="small" for="name">相手の呼び方（任意・例：〇〇さん）※入力内容はこの端末の中だけで使われ、送信されません</label>
-      <input type="text" id="name" maxlength="20" placeholder="例：佐藤さん" autocomplete="off">
-    </div>
-    <div class="row"><button class="btn" id="gen">ひとことを作る</button></div>
   </section>
 
+  <nav class="tabs" role="tablist" aria-label="作るものを選ぶ">
+    <button role="tab" aria-selected="true" data-mode="nenga">🎍 年賀状<small>添え書き</small></button>
+    <button role="tab" aria-selected="false" data-mode="mochu">🕊 喪中はがき<small>自分が喪中</small></button>
+    <button role="tab" aria-selected="false" data-mode="kanchu">❄ 寒中見舞い<small>相手が喪中など</small></button>
+  </nav>
+
+  <!-- 年賀状・寒中見舞い -->
+  <div id="formNenga">
+    <section class="card">
+      <h2><span class="step">1</span>誰に送りますか？</h2>
+      <div class="chips" id="to"></div>
+    </section>
+    <section class="card">
+      <h2><span class="step">2</span>あなたの近況</h2>
+      <p class="hint">任意・複数えらべます</p>
+      <div class="chips" id="news"></div>
+    </section>
+    <section class="card">
+      <h2><span class="step">3</span>雰囲気と仕上げ</h2>
+      <div class="chips" id="tone"></div>
+      <label class="toggle" id="punRow"><input type="checkbox" id="pun"> ひつじ年ならではの一言を入れる 🐑</label>
+      <label class="toggle"><input type="checkbox" id="noPunct"> 句読点を使わない（伝統的な書き方）</label>
+      <div class="field">
+        <label for="name">相手の呼び方（任意）</label>
+        <input type="text" id="name" maxlength="20" placeholder="例：佐藤さん" autocomplete="off">
+      </div>
+      <button class="btn" id="gen" type="button">✨ ひとことを作る</button>
+    </section>
+  </div>
+
+  <!-- 喪中はがき -->
+  <div id="formMochu" hidden>
+    <section class="card">
+      <h2><span class="step">1</span>どなたが亡くなられましたか？</h2>
+      <div class="chips" id="rel"></div>
+      <div class="field">
+        <label for="mMonth">亡くなった月（2026年）</label>
+        <select id="mMonth"></select>
+      </div>
+      <div class="field">
+        <label for="mAge">享年（任意・数字のみ）</label>
+        <input type="text" id="mAge" inputmode="numeric" maxlength="3" placeholder="例：88" autocomplete="off">
+      </div>
+    </section>
+    <section class="card">
+      <h2><span class="step">2</span>文面のタイプ</h2>
+      <div class="chips" id="mType"></div>
+      <label class="toggle"><input type="checkbox" id="mThanks" checked> 生前のお礼の一文を入れる</label>
+      <label class="toggle"><input type="checkbox" id="mWelcome"> 「年賀状は今後も嬉しい」の一文を入れる</label>
+      <button class="btn" id="genM" type="button">🕊 文面を作る</button>
+      <p class="hint" style="margin:10px 0 0">喪中はがきは、相手が年賀状を準備する前の<b>11月〜12月上旬</b>に届くように出すのが一般的です。</p>
+    </section>
+  </div>
+
   <section class="card" id="out" hidden>
-    <h2 class="ui"><span class="n">4</span>できあがり</h2>
-    <div class="postcard" id="pc">
-      <svg class="hitsuji" viewBox="0 0 80 70" aria-hidden="true">
-        <g fill="#fff" stroke="#c0392b" stroke-width="2">
-          <circle cx="30" cy="30" r="12"/><circle cx="44" cy="26" r="13"/><circle cx="56" cy="33" r="11"/>
-          <circle cx="36" cy="42" r="12"/><circle cx="50" cy="44" r="11"/>
-        </g>
-        <ellipse cx="20" cy="36" rx="9" ry="8" fill="#f6e3dc" stroke="#c0392b" stroke-width="2"/>
-        <circle cx="17" cy="35" r="1.6" fill="#2b2420"/>
-        <path d="M14 30c-4-3-6 1-4 4" fill="none" stroke="#c0392b" stroke-width="2"/>
-        <g stroke="#c0392b" stroke-width="2.4" stroke-linecap="round"><path d="M34 53v9"/><path d="M48 54v9"/></g>
+    <h2><span class="step">✓</span>できあがり</h2>
+    <div class="pcwrap"><div class="postcard mincho" id="pc">
+      <svg class="pc-sheep" viewBox="0 0 120 100" aria-hidden="true">
+        <g fill="#fff" stroke="#c0262f" stroke-width="2.5"><circle cx="48" cy="44" r="18"/><circle cx="68" cy="38" r="19"/><circle cx="86" cy="48" r="16"/><circle cx="56" cy="62" r="18"/><circle cx="76" cy="64" r="16"/></g>
+        <ellipse cx="30" cy="52" rx="14" ry="12" fill="#ffe2d6" stroke="#c0262f" stroke-width="2.5"/>
+        <circle cx="25" cy="50" r="2.2" fill="#2a1f1b"/><circle cx="34" cy="50" r="2.2" fill="#2a1f1b"/>
+        <path d="M18 44c-8-6-12 2-6 7" stroke="#c9973a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
       </svg>
       <div class="gashi" id="gashi"></div>
       <p id="body1"></p>
-      <p id="hito"></p>
-      <div class="date">令和九年　元旦</div>
+      <p id="hito" class="hito"></p>
+      <div class="date" id="pcDate"></div>
+    </div></div>
+    <div class="btns">
+      <button class="btn sub" id="copyAll" type="button">📋 全文コピー</button>
+      <button class="btn sub" id="again" type="button">🔄 別の案</button>
+      <button class="btn sub" id="share" type="button">💬 LINEなどで送る</button>
     </div>
-    <div class="row ui">
-      <button class="btn ghost" id="copyAll">全文をコピー</button>
-      <button class="btn ghost" id="again">別の案にする</button>
+    <div class="checkbox" id="check"></div>
+    <div class="tips" id="tips"></div>
+    <div id="altWrap">
+      <h3 style="font-size:14px;margin:16px 0 4px">ほかのひとこと候補</h3>
+      <div class="alts" id="alts"></div>
     </div>
-    <div class="warn ui" id="check"></div>
-    <h3 class="ui" style="font-size:14px;margin:16px 0 4px">ほかのひとこと候補</h3>
-    <div class="alts ui" id="alts"></div>
-    <details class="ui"><summary>自分で手直しする</summary>
+    <details>
+      <summary>自分で手直しする（忌み言葉を自動チェック）</summary>
       <textarea id="edit" aria-label="手直し用テキスト"></textarea>
-      <div class="warn" id="editCheck">忌み言葉チェック：入力すると自動で確認します。</div>
+      <div class="checkbox good" id="editCheck"><span class="ic">✓</span><span>入力すると自動で確認します。</span></div>
     </details>
   </section>
 
-  <section class="card ui">
-    <h2>失敗しない年賀状マナー（要点）</h2>
+  <!-- 収益導線：印刷サービス（ASP提携後にリンクを差し込む） -->
+  <section class="pr" id="prBox" hidden>
+    <span class="tag">PR</span>
+    <h3 id="prTitle">文面が決まったら、印刷までネットで</h3>
+    <p id="prLead">デザインを選んで文面を貼り付けるだけ。宛名印刷や投函代行に対応したサービスもあります。早割の期間は各サービスでご確認ください。</p>
+    <div class="prlist" id="prNenga">
+      <!-- AFFILIATE:nenga_print_1 -->
+      <a class="prlink soon" href="#" rel="sponsored noopener" target="_blank"><span>ネットで年賀状印刷 ①<small>準備中</small></span><span class="arw">›</span></a>
+      <!-- AFFILIATE:nenga_print_2 -->
+      <a class="prlink soon" href="#" rel="sponsored noopener" target="_blank"><span>ネットで年賀状印刷 ②<small>準備中</small></span><span class="arw">›</span></a>
+    </div>
+    <div class="prlist" id="prMochu" hidden>
+      <!-- AFFILIATE:mochu_print_1 -->
+      <a class="prlink soon" href="#" rel="sponsored noopener" target="_blank"><span>喪中はがきの印刷サービス<small>準備中</small></span><span class="arw">›</span></a>
+    </div>
+    <p class="prnote">※このエリアには広告（アフィリエイトリンク）を含みます。料金・納期はリンク先で必ずご確認ください。</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="step">📅</span>2027年用 年賀状のスケジュール</h2>
     <table>
-      <tr><th>目上の人へ</th><td>「謹賀新年」「謹んで新春のお慶びを申し上げます」など4文字以上・敬意のある賀詞を。「賀正」「迎春」「寿」など1〜2文字の賀詞は略式なので避けるのが無難。</td></tr>
-      <tr><th>重ね言葉</th><td>「新年あけましておめでとう」「1月1日元旦」は意味が重複します。「元旦」だけで「1月1日の朝」の意味です。</td></tr>
-      <tr><th>忌み言葉</th><td>「去る」「失う」「滅びる」「倒れる」「切れる」「終わる」など。「去年」は「昨年」「旧年」に言い換えます。</td></tr>
-      <tr><th>句読点</th><td>伝統的には「区切りをつけない」意味で句読点を使わない書き方もあります。気になる相手には読点を外して空白で区切ると安心です。</td></tr>
-      <tr><th>喪中の相手</th><td>年賀状ではなく、松の内が明けてから「寒中見舞い」を送ります（下の「寒中見舞い」を選ぶと文例を作れます）。</td></tr>
+      <tr><th>11月2日</th><td>2027年用 年賀はがきの販売開始（日本郵便）。通常の年賀はがきは1枚85円。</td></tr>
+      <tr><th>11月〜12月上旬</th><td>喪中はがきを出す時期の目安（相手が年賀状を書く前に届くように）。</td></tr>
+      <tr><th>12月20日</th><td>年賀状の受付（年賀特別郵便）開始。</td></tr>
+      <tr><th>12月27日</th><td>元日に届けるための投函の目安。これ以降は元日に届かない場合があります。</td></tr>
+      <tr><th>1月7日ごろ</th><td>松の内の終わり（地域により15日）。これ以降は寒中見舞いに。</td></tr>
+      <tr><th>立春の前日</th><td>寒中見舞いを出せる期限の目安（2027年は2月3日）。</td></tr>
     </table>
-    <p class="lead" style="margin-top:10px">※マナーには地域・業界による違いがあります。迷ったら丁寧な方を選ぶのがおすすめです。</p>
+    <p class="hint" style="margin:10px 0 0">出典：日本郵便「2027（令和9）年用年賀葉書等の発行・販売」（2026年8月31日）。料金・日程は最新の発表をご確認ください。</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="step">📝</span>失敗しない年賀状マナー</h2>
+    <table>
+      <tr><th>目上の人</th><td>「謹賀新年」「謹んで新春のお慶びを申し上げます」など敬意のある賀詞を。「賀正」「迎春」など1〜2文字の賀詞は略式なので避けるのが無難です。</td></tr>
+      <tr><th>重ね言葉</th><td>「新年あけましておめでとう」「1月1日元旦」は意味が重複します。「元旦」だけで1月1日の朝の意味です。</td></tr>
+      <tr><th>忌み言葉</th><td>「去る」「失う」「滅びる」「倒れる」「切れる」「終わる」など。「去年」は「昨年」「旧年」に言い換えます。</td></tr>
+      <tr><th>句読点</th><td>伝統的には「区切りをつけない」意味で使わない書き方もあります。気になる相手には上の切り替えで外せます。</td></tr>
+      <tr><th>喪中の相手</th><td>年賀状は送らず、松の内が明けてから「寒中見舞い」を。上のタブで文例を作れます。</td></tr>
+    </table>
+    <p class="hint" style="margin:10px 0 0">※マナーには地域・業界による違いがあります。迷ったら丁寧な方を選ぶと安心です。</p>
+  </section>
+
+  <section class="card faq">
+    <h2><span class="step">？</span>よくある質問</h2>
+    <details><summary>2027年は何年（干支）？</summary><p>2027年は令和9年、干支は丁未（ひのと・ひつじ）、ひつじ年です。</p></details>
+    <details><summary>上司への年賀状に「賀正」はダメ？</summary><p>失礼とまでは言えませんが、1〜2文字の賀詞は略式とされます。目上の方には「謹賀新年」や文章の賀詞が無難です。</p></details>
+    <details><summary>喪中はがきはいつまでに出す？</summary><p>一般に11月から12月上旬、相手が年賀状の準備を始める前に届くように出します。12月に不幸があり間に合わない場合は、年明けに寒中見舞いで報告する方法もあります。</p></details>
+    <details><summary>喪中の相手から年賀状が届いたら？</summary><p>年賀状は出さず、松の内が明けてから立春の前日までに寒中見舞いを送るのが一般的です。</p></details>
+    <details><summary>入力した内容は保存されますか？</summary><p>保存も送信もしません。文面の作成はすべてお使いの端末の中で行われます。</p></details>
+  </section>
+
+  <section class="card">
+    <h2><span class="step">🧰</span>年末に役立つ無料ツール</h2>
+    <div class="more">
+      <a href="../furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額<small>12/31までに寄附を</small></a>
+      <a href="../warikan-keisha/"><span>🍻</span>傾斜割り勘計算<small>忘年会・新年会の幹事に</small></a>
+    </div>
   </section>
 </main>
-<div class="toast ui" id="toast">コピーしました</div>
-<footer class="ui">このツールは入力内容を外部に送信・保存しません。文例は自由にお使いいただけます。</footer>
+<div class="toast" id="toast" role="status">コピーしました</div>
+<footer>入力内容は外部に送信・保存しません。文例はご自由にお使いください。<br>© ひとりラボ</footer>
 
 <script>
 (function(){
 "use strict";
+var $=function(id){return document.getElementById(id)};
+/* ---------- countdown ---------- */
+(function(){
+  var now=new Date(),y=now.getFullYear(),m=now.getMonth()+1;
+  var base=(m===1)?y-1:y; // 1月は前年の暦で判定
+  function d(mo,da,yy){return new Date(yy||base,mo-1,da)}
+  var today=new Date(y,now.getMonth(),now.getDate());
+  var ms=[{l:"はがき発売 11/2",d:d(11,2)},{l:"受付開始 12/20",d:d(12,20)},{l:"元日着の目安 12/27",d:d(12,27)},{l:"元日",d:d(1,1,base+1)},{l:"寒中見舞い〜2/3",d:d(2,3,base+1)}];
+  var target=d(12,27),title="元日に届く投函目安（12/27）まで",sub="年賀はがきは11月2日発売・年賀状の受付は12月20日から";
+  var diff=Math.round((target-today)/864e5);
+  if(diff<0){target=d(1,7,base+1);diff=Math.round((target-today)/864e5);title="松の内（1/7）まで";sub="元日着の目安は過ぎました。届き次第でも大丈夫、松の内に届けば年賀状として失礼ありません";
+    if(diff<0){target=d(2,3,base+1);diff=Math.max(0,Math.round((target-today)/864e5));title="寒中見舞いの期限（立春の前日）まで";sub="松の内を過ぎたら寒中見舞いで";}}
+  $("cdNum").innerHTML=diff+"<span>日</span>";$("cdTitle").textContent=title;$("cdSub").textContent=sub;
+  var nowSet=false;
+  ms.forEach(function(o){var i=document.createElement("i");i.textContent=o.l;if(o.d<today)i.className="done";else if(!nowSet){i.className="now";nowSet=true;}$("tl").appendChild(i);});
+})();
+
+/* ---------- data ---------- */
 var TO=[
- {k:"boss",l:"上司・先輩",lv:3},{k:"client",l:"取引先",lv:3},{k:"teacher",l:"恩師",lv:3},
- {k:"relative",l:"親戚",lv:2},{k:"colleague",l:"同僚",lv:2},{k:"friend",l:"友人",lv:1},
- {k:"longtime",l:"ご無沙汰の人",lv:2},{k:"kids",l:"子ども・甥姪",lv:1},{k:"mourning",l:"寒中見舞い（喪中の相手）",lv:2}
+ {k:"boss",l:"👔 上司・先輩",lv:3},{k:"client",l:"🤝 取引先",lv:3},{k:"teacher",l:"🎓 恩師",lv:3},
+ {k:"relative",l:"🏠 親戚",lv:2},{k:"colleague",l:"💼 同僚",lv:2},{k:"friend",l:"😊 友人",lv:1},
+ {k:"longtime",l:"✉ ご無沙汰の人",lv:2},{k:"kids",l:"🧒 子ども・甥姪",lv:1}
+];
+var TO_K=[
+ {k:"kboss",l:"👔 目上の方",lv:3},{k:"krel",l:"🏠 親戚",lv:2},{k:"kfriend",l:"😊 友人・同僚",lv:1}
 ];
 var NEWS=[
- {k:"none",l:"特になし"},{k:"marry",l:"結婚した"},{k:"baby",l:"子どもが生まれた"},{k:"move",l:"引っ越した"},
- {k:"job",l:"転職した"},{k:"promo",l:"昇進・異動した"},{k:"school",l:"子どもが入学・進学"},{k:"retire",l:"退職した"},{k:"hobby",l:"新しい趣味を始めた"}
+ {k:"none",l:"特になし"},{k:"marry",l:"💍 結婚"},{k:"baby",l:"👶 出産"},{k:"move",l:"🚚 引っ越し"},
+ {k:"job",l:"🔁 転職"},{k:"promo",l:"📈 昇進・異動"},{k:"school",l:"🎒 子の入学・進学"},{k:"retire",l:"🌿 退職"},{k:"hobby",l:"🎨 新しい趣味"}
 ];
-var TONE=[{k:"formal",l:"丁寧"},{k:"warm",l:"あたたかく"},{k:"casual",l:"カジュアル"},{k:"fun",l:"ユーモア"}];
+var TONE=[{k:"formal",l:"🎌 丁寧"},{k:"warm",l:"☀ あたたかく"},{k:"casual",l:"👋 カジュアル"},{k:"fun",l:"😆 ユーモア"}];
+var REL=[{k:"父",l:"父"},{k:"母",l:"母"},{k:"義父",l:"義父"},{k:"義母",l:"義母"},{k:"祖父",l:"祖父"},{k:"祖母",l:"祖母"},{k:"夫",l:"夫"},{k:"妻",l:"妻"},{k:"兄",l:"兄"},{k:"姉",l:"姉"},{k:"弟",l:"弟"},{k:"妹",l:"妹"}];
+var MTYPE=[{k:"std",l:"📄 標準"},{k:"soft",l:"🌸 やわらかめ"},{k:"short",l:"✂ 簡潔"}];
 
-var state={to:"boss",news:["none"],tone:"formal"};
+var mode="nenga";
+var state={to:"boss",news:["none"],tone:"formal",kto:"kboss",rel:"父",mtype:"std"};
+
 function chips(id,list,multi,key){
-  var el=document.getElementById(id);
+  var el=$(id);el.innerHTML="";
   list.forEach(function(o){
     var b=document.createElement("button");b.type="button";b.textContent=o.l;b.dataset.k=o.k;
-    b.setAttribute("aria-pressed",String(multi?state[key].indexOf(o.k)>=0:state[key]===o.k));
     b.onclick=function(){
-      if(multi){
-        var a=state[key];
+      if(multi){var a=state[key];
         if(o.k==="none"){state[key]=["none"];}
         else{a=a.filter(function(x){return x!=="none"});var i=a.indexOf(o.k);if(i>=0)a.splice(i,1);else a.push(o.k);state[key]=a.length?a:["none"];}
       }else{state[key]=o.k;}
-      Array.prototype.forEach.call(el.children,function(c){c.setAttribute("aria-pressed",String(multi?state[key].indexOf(c.dataset.k)>=0:state[key]===c.dataset.k));});
+      paint();
+      if(navigator.vibrate)try{navigator.vibrate(8)}catch(e){}
     };
     el.appendChild(b);
   });
+  function paint(){Array.prototype.forEach.call(el.children,function(c){c.setAttribute("aria-pressed",String(multi?state[key].indexOf(c.dataset.k)>=0:state[key]===c.dataset.k));});}
+  paint();
 }
-chips("to",TO,false,"to");chips("news",NEWS,true,"news");chips("tone",TONE,false,"tone");
+function renderTo(){ if(mode==="kanchu"){chips("to",TO_K,false,"kto");}else{chips("to",TO,false,"to");} }
+renderTo();chips("news",NEWS,true,"news");chips("tone",TONE,false,"tone");chips("rel",REL,false,"rel");chips("mType",MTYPE,false,"mtype");
+(function(){var s=$("mMonth");for(var i=1;i<=12;i++){var o=document.createElement("option");o.value=i;o.textContent=i+"月";if(i===10)o.selected=true;s.appendChild(o);}var x=document.createElement("option");x.value="0";x.textContent="記載しない";s.appendChild(x);})();
 
 function pick(a){return a[Math.floor(Math.random()*a.length)];}
 function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+var KANJI=["〇","一","二","三","四","五","六","七","八","九"];
+function kan(n){n=String(n);if(n.length===1)return KANJI[+n];if(n.length===2){var t=+n[0],o=+n[1];return (t===1?"":KANJI[t])+"十"+(o?KANJI[o]:"");}
+  if(n.length===3){var h=+n[0],r=+n.slice(1);return (h===1?"":KANJI[h])+"百"+(r?kan(r):"");}return n;}
 
-var GASHI={
- 3:["謹賀新年","謹んで新春のお慶びを申し上げます","恭賀新年"],
- 2:["謹賀新年","新春のお慶びを申し上げます","あけましておめでとうございます"],
- 1:["あけましておめでとう","HAPPY NEW YEAR","あけましておめでとう！"]
-};
+var GASHI={3:["謹賀新年","謹んで新春のお慶びを申し上げます","恭賀新年"],2:["謹賀新年","新春のお慶びを申し上げます","あけましておめでとうございます"],1:["あけましておめでとう","HAPPY NEW YEAR","あけましておめでとう！"]};
 var BODY={
- boss:["旧年中は格別のご指導を賜り　心より御礼申し上げます\n本年も変わらぬご指導のほど　よろしくお願い申し上げます",
-       "昨年は大変お世話になりました\n本年も一層精進してまいりますので　ご指導ご鞭撻のほどよろしくお願いいたします"],
- client:["旧年中は格別のお引き立てを賜り　厚く御礼申し上げます\n本年も変わらぬご愛顧のほど　よろしくお願い申し上げます",
-         "昨年は多大なるご支援をいただき　誠にありがとうございました\n皆様のご繁栄を心よりお祈り申し上げます"],
- teacher:["ご無沙汰しておりますが　お変わりなくお過ごしでしょうか\n先生のご健康とご多幸を心よりお祈り申し上げます",
-          "旧年中は大変お世話になりました\n先生にとって実り多き一年となりますようお祈り申し上げます"],
- relative:["旧年中は大変お世話になりました\n皆様お健やかに新年をお迎えのことと存じます\n本年もどうぞよろしくお願いいたします",
-           "昨年はいろいろとありがとうございました\n皆様にとって笑顔あふれる一年になりますように"],
- colleague:["昨年は本当にお世話になりました\n今年もチームで良い仕事をしましょう　どうぞよろしくお願いします",
-            "昨年はたくさん助けていただきありがとうございました\n今年もよろしくお願いします"],
- friend:["昨年はありがとう！\n今年もたくさん会えるといいな　よろしくね",
-         "昨年はありがとう\n今年もお互い元気に楽しくいこう！"],
- longtime:["すっかりご無沙汰してしまいましたが　お元気でお過ごしでしょうか\n本年が素晴らしい一年となりますようお祈りしております",
-           "なかなかお会いできずにおりますが　いかがお過ごしですか\n今年こそゆっくりお話しできたら嬉しいです"],
- kids:["あけましておめでとう！\n今年もげんきにすごしてね",
-       "あたらしい一年　たのしいことがいっぱいありますように！"],
- mourning:["寒中お見舞い申し上げます\nご服喪中と伺い　年頭のご挨拶は控えさせていただきました\n寒さ厳しき折　どうぞご自愛くださいませ",
-           "寒中お見舞い申し上げます\n喪中のこととて　新年のご挨拶は失礼させていただきました\n皆様のご健康を心よりお祈り申し上げます"]
+ boss:["旧年中は格別のご指導を賜り　心より御礼申し上げます\n本年も変わらぬご指導のほど　よろしくお願い申し上げます","昨年は大変お世話になりました\n本年も一層精進してまいりますので　ご指導ご鞭撻のほどよろしくお願いいたします"],
+ client:["旧年中は格別のお引き立てを賜り　厚く御礼申し上げます\n本年も変わらぬご愛顧のほど　よろしくお願い申し上げます","昨年は多大なるご支援をいただき　誠にありがとうございました\n皆様のご繁栄を心よりお祈り申し上げます"],
+ teacher:["ご無沙汰しておりますが　お変わりなくお過ごしでしょうか\n先生のご健康とご多幸を心よりお祈り申し上げます","旧年中は大変お世話になりました\n先生にとって実り多き一年となりますようお祈り申し上げます"],
+ relative:["旧年中は大変お世話になりました\n皆様お健やかに新年をお迎えのことと存じます\n本年もどうぞよろしくお願いいたします","昨年はいろいろとありがとうございました\n皆様にとって笑顔あふれる一年になりますように"],
+ colleague:["昨年は本当にお世話になりました\n今年もチームで良い仕事をしましょう　どうぞよろしくお願いします","昨年はたくさん助けていただきありがとうございました\n今年もよろしくお願いします"],
+ friend:["昨年はありがとう！\n今年もたくさん会えるといいな　よろしくね","昨年はありがとう\n今年もお互い元気に楽しくいこう！"],
+ longtime:["すっかりご無沙汰してしまいましたが　お元気でお過ごしでしょうか\n本年が素晴らしい一年となりますようお祈りしております","なかなかお会いできずにおりますが　いかがお過ごしですか\n今年こそゆっくりお話しできたら嬉しいです"],
+ kids:["今年もげんきにすごしてね","あたらしい一年　たのしいことがいっぱいありますように！"]
 };
-
+var KBODY={
+ kboss:["ご服喪中と伺い　年頭のご挨拶は控えさせていただきました\n寒さ厳しき折　どうぞご自愛くださいませ","喪中のこととて　新年のご挨拶は失礼させていただきました\n皆様のご健康を心よりお祈り申し上げます"],
+ krel:["ご服喪中と伺い　新年のご挨拶を控えさせていただきました\n寂しい冬をお過ごしのことと存じますが　どうかお体を大切になさってください"],
+ kfriend:["喪中と聞いて　年賀状は控えさせてもらいました\n寒い日が続くので　体に気をつけてね\n落ち着いたら　また会えたら嬉しいです"]
+};
 var NEWSLINE={
- formal:{marry:["昨年結婚いたしました　未熟な二人ですが今後ともよろしくお願い申し上げます"],
-  baby:["昨年　家族が一人増えました　賑やかな毎日を過ごしております"],
-  move:["昨年　下記へ転居いたしました　お近くへお越しの際はぜひお立ち寄りください"],
-  job:["昨年より新しい職場で働いております　心機一転　努めてまいります"],
-  promo:["昨年より新たな役目を拝命いたしました　一層精進してまいります"],
-  school:["子どもが春から新しい学校に通います　家族一同元気に過ごしております"],
-  retire:["昨年　長年勤めた職場を退職いたしました　これからの時間を大切に過ごしてまいります"],
-  hobby:["昨年から新しい趣味を始め　日々の楽しみが増えました"]},
- casual:{marry:["実は昨年結婚しました！これからもよろしくね"],
-  baby:["家族が一人増えて毎日にぎやかです！"],
-  move:["引っ越しました！近くに来たら遊びに来てね"],
-  job:["転職して新しい環境でがんばってます！"],
-  promo:["春から新しい仕事を任されてバタバタしてます"],
-  school:["子どもがこの春いよいよ進学です"],
-  retire:["退職して第二の人生スタートしました！"],
-  hobby:["最近新しい趣味にハマってます　今度話を聞いてね"]}
+ formal:{marry:["昨年結婚いたしました　未熟な二人ですが今後ともよろしくお願い申し上げます"],baby:["昨年　家族が一人増えました　賑やかな毎日を過ごしております"],move:["昨年　下記へ転居いたしました　お近くへお越しの際はぜひお立ち寄りください"],job:["昨年より新しい職場で働いております　心機一転　努めてまいります"],promo:["昨年より新たな役目を拝命いたしました　一層精進してまいります"],school:["子どもが春から新しい学校に通います　家族一同元気に過ごしております"],retire:["昨年　長年勤めた職場を退職いたしました　これからの時間を大切に過ごしてまいります"],hobby:["昨年から新しい趣味を始め　日々の楽しみが増えました"]},
+ casual:{marry:["実は昨年結婚しました！これからもよろしくね"],baby:["家族が一人増えて毎日にぎやかです！"],move:["引っ越しました！近くに来たら遊びに来てね"],job:["転職して新しい環境でがんばってます！"],promo:["春から新しい仕事を任されてバタバタしてます"],school:["子どもがこの春いよいよ進学です"],retire:["退職して第二の人生スタートしました！"],hobby:["最近新しい趣味にハマってます　今度話を聞いてね"]}
 };
 var HITO={
  3:["本年もどうぞよろしくお願い申し上げます","皆様のご健勝とご多幸をお祈り申し上げます","寒さ厳しき折　くれぐれもご自愛ください","貴社の益々のご発展を心よりお祈り申し上げます","本年も変わらぬお付き合いのほどお願い申し上げます","穏やかで実り多き一年となりますように"],
  2:["今年も健康第一でいきましょう","皆様にとって素敵な一年になりますように","またお会いできる日を楽しみにしています","お体に気をつけてお過ごしください","今年もどうぞよろしくお願いします","笑顔の多い一年になりますように"],
  1:["今年こそ飲みに行こう！","今年もよろしく！","落ち着いたらご飯行こうね","今年もいっぱい笑おう","また近いうちに会おうね","健康第一でいこう！"]
 };
-var PUN={
- 3:["未年の羊のように　穏やかで温かな一年となりますようお祈り申し上げます","羊が群れをなすように　皆様のもとに多くの幸せが集まりますように"],
- 2:["ひつじのように穏やかで　ふんわり温かい一年になりますように","もこもこの羊毛のように　温かな毎日が続きますように"],
- 1:["今年はメェ〜いっぱい楽しもう！","ひつじ年だし　今年はのんびりモコモコいこう","今年もメェ〜わくかけるけどよろしく！"]
-};
+var PUN={3:["未年の羊のように　穏やかで温かな一年となりますようお祈り申し上げます","羊が群れをなすように　皆様のもとに多くの幸せが集まりますように"],2:["ひつじのように穏やかで　ふんわり温かい一年になりますように","もこもこの羊毛のように　温かな毎日が続きますように"],1:["今年はメェ〜いっぱい楽しもう！","ひつじ年だし　今年はのんびりモコモコいこう","今年もメェ〜わくかけるけどよろしく！"]};
 var FUN={1:["ひつじを数える前に一度会おう！","今年の目標：寝る前にひつじを数えない（すぐ寝る）"],2:["今年は羊毛のようにふわっと軽やかにいきましょう"],3:[]};
-var MOURN_HITO=["どうぞお健やかにお過ごしください","本年も変わらぬお付き合いのほどお願い申し上げます","春の訪れが待ち遠しいですね　くれぐれもご自愛ください"];
+var KHITO={3:["本年も変わらぬお付き合いのほどお願い申し上げます","春の訪れが待ち遠しいですね　どうぞご自愛ください","皆様のご平安を心よりお祈り申し上げます"],2:["どうぞお健やかにお過ごしください","暖かくなったら　またお会いできますように"],1:["無理しないでね","春になったらご飯行こうね","何かあったらいつでも声をかけてね"]};
 
-var NG=[["去年","昨年／旧年"],["去る","「過ぎる」などに言い換え"],["失う","別の表現に"],["失礼","「ご無沙汰」などに（寒中見舞いでは可）"],["滅","別の表現に"],["倒","別の表現に"],["破","別の表現に"],["枯","別の表現に"],["衰","別の表現に"],["病","別の表現に"],["終わ","別の表現に"],["切れ","別の表現に"],["別れ","別の表現に"],["新年明けまして","重ね言葉：「明けましておめでとう」だけでOK"],["新年あけまして","重ね言葉：「あけましておめでとう」だけでOK"],["1月1日元旦","重ね言葉：「元旦」だけでOK"],["一月一日元旦","重ね言葉：「元旦」だけでOK"]];
-function ngCheck(t,isMourn){
-  var hits=[];NG.forEach(function(p){if(isMourn&&p[0]==="失礼")return;if(t.indexOf(p[0])>=0)hits.push("「"+p[0]+"」→ "+p[1]);});
-  return hits;
+var NG=[["去年","昨年／旧年"],["去る","「過ぎる」などに言い換え"],["失う","別の表現に"],["失礼","「ご無沙汰」などに"],["滅","別の表現に"],["倒","別の表現に"],["破","別の表現に"],["枯","別の表現に"],["衰","別の表現に"],["病","別の表現に"],["終わ","別の表現に"],["切れ","別の表現に"],["別れ","別の表現に"],["新年明けまして","重ね言葉：「明けましておめでとう」だけでOK"],["新年あけまして","重ね言葉：「あけましておめでとう」だけでOK"],["1月1日元旦","重ね言葉：「元旦」だけでOK"],["一月一日元旦","重ね言葉：「元旦」だけでOK"]];
+var NG_MOCHU=[["重ね重ね","重ね言葉（不幸が重なる連想）"],["再び","別の表現に"],["くれぐれも","重ね言葉"],["たびたび","重ね言葉"],["ますます","重ね言葉"],["おめでとう","喪中・弔事では使いません"],["賀","「賀」の字は使いません"]];
+function ngCheck(t){
+  var list=(mode==="nenga")?NG:(mode==="kanchu"?NG.filter(function(p){return p[0]!=="失礼"}).concat(NG_MOCHU):NG_MOCHU.concat([["去年","昨年／旧年"]]));
+  var hits=[];list.forEach(function(p){var tt=(p[0]==="賀")?t.replace(/年賀/g,""):t;if(tt.indexOf(p[0])>=0)hits.push("「"+p[0]+"」→ "+p[1]);});return hits;
+}
+function showCheck(el,t){
+  var h=ngCheck(t);el.className="checkbox "+(h.length?"bad":"good");
+  el.innerHTML="";var i=document.createElement("span");i.className="ic";i.textContent=h.length?"⚠":"✓";
+  var s=document.createElement("span");s.textContent=h.length?"気になる言葉："+h.join("、"):(mode==="nenga"?"忌み言葉・重ね言葉は見つかりませんでした。":"弔事で避けたい言葉は見つかりませんでした。");
+  el.appendChild(i);el.appendChild(s);
 }
 
-var cur={};
-function lvOf(){var t=TO.filter(function(o){return o.k===state.to})[0];var lv=t.lv;
-  if(state.tone==="formal"&&lv<2)lv=2; if((state.tone==="casual"||state.tone==="fun")&&lv>1&&state.to!=="boss"&&state.to!=="client"&&state.to!=="teacher")lv=1; return lv;}
-function gen(){
-  var mourn=state.to==="mourning",lv=mourn?2:lvOf();
-  var name=document.getElementById("name").value.trim().replace(/[<>]/g,"");
-  var gashi=mourn?"寒中お見舞い申し上げます":pick(GASHI[lv]);
-  var body=pick(BODY[state.to]);
-  if(mourn)body=body.replace(/^寒中お見舞い申し上げます\n/,"");
-  body=body.replace(/^あけましておめでとう！\n/,"");
-  var style=(lv===1)?"casual":"formal";
-  var nl=state.news.filter(function(x){return x!=="none"}).map(function(k){return pick(NEWSLINE[style][k])});
-  if(mourn)nl=nl.filter(function(s){return /転居|転職|職場|拝命/.test(s)}); // 慶事は寒中見舞いでは控える
-  var pool=mourn?MOURN_HITO.slice():HITO[lv].slice();
-  if(!mourn&&document.getElementById("pun").checked)pool=PUN[lv].concat(pool);
-  if(!mourn&&state.tone==="fun")pool=FUN[lv].concat(PUN[lv]).concat(pool);
-  if(!mourn&&state.tone==="warm")pool=pool.concat(["あなたの毎日が穏やかでありますように","心温まる一年になりますように"]);
-  var first=(document.getElementById("pun").checked||state.tone==="fun")&&!mourn?pool[0]:pick(pool);
-  var hito=(name?name+"　":"")+first;
-  var bodyAll=body+(nl.length?"\n"+nl.join("\n"):"");
-  cur={gashi:gashi,body:bodyAll,hito:hito,mourn:mourn,date:mourn?"令和九年　一月":"令和九年　元旦"};
-  document.getElementById("gashi").textContent=gashi;
-  document.getElementById("body1").textContent=bodyAll;
-  document.getElementById("hito").textContent=hito;
-  document.querySelector("#pc .date").textContent=cur.date;
-  var alts=document.getElementById("alts");alts.innerHTML="";
-  shuffle(pool.filter(function(x){return x!==first})).slice(0,5).forEach(function(s){
+/* ---------- generate ---------- */
+var cur={},lastPool=[];
+function lvOf(){
+  if(mode==="kanchu"){return TO_K.filter(function(o){return o.k===state.kto})[0].lv;}
+  var lv=TO.filter(function(o){return o.k===state.to})[0].lv;
+  if(state.tone==="formal"&&lv<2)lv=2;
+  if((state.tone==="casual"||state.tone==="fun")&&lv>1&&["boss","client","teacher"].indexOf(state.to)<0)lv=1;
+  return lv;
+}
+function cleanName(){return $("name").value.trim().replace(/[<>&"']/g,"");}
+function punct(s){return $("noPunct").checked?s.replace(/[、。]/g,"　").replace(/！/g,"").replace(/　+/g,"　").replace(/　$/,""):s;}
+function genNenga(){
+  var lv=lvOf(),k=mode==="kanchu",name=cleanName();
+  var gashi=k?"寒中お見舞い申し上げます":pick(GASHI[lv]);
+  var body=k?pick(KBODY[state.kto]):pick(BODY[state.to]);
+  var style=lv===1?"casual":"formal";
+  var nl=state.news.filter(function(x){return x!=="none"}).map(function(x){return pick(NEWSLINE[style][x])});
+  if(k)nl=nl.filter(function(s){return /転居|引っ越|転職|職場|拝命|新しい仕事/.test(s)});
+  var pool=k?KHITO[lv].slice():HITO[lv].slice();
+  var lead=null;
+  if(!k&&$("pun").checked){pool=PUN[lv].concat(pool);lead=pick(PUN[lv]);}
+  if(!k&&state.tone==="fun"){var f=FUN[lv].concat(PUN[lv]);pool=f.concat(pool);if(f.length)lead=pick(f);}
+  if(!k&&state.tone==="warm")pool=["あなたの毎日が穏やかでありますように","心温まる一年になりますように"].concat(pool);
+  var first=lead||pick(pool);
+  lastPool=pool;
+  cur={gashi:gashi,body:body+(nl.length?"\n"+nl.join("\n"):""),hito:(name?name+"　":"")+first,first:first,name:name,
+       date:k?"令和九年　一月":"令和九年　元旦",cls:k?"mochu":""};
+  render();
+  var tips=[];
+  if(lv===3&&!k)tips.push("目上の方向けに、略式の賀詞（賀正・迎春など）を避けています。");
+  if(k)tips.push("寒中見舞いは松の内（一般に1月7日、地域により15日）が明けてから、立春の前日（2027年は2月3日）までに届くように出します。慶事の報告は控えています。");
+  if(state.news.indexOf("move")>=0)tips.push("引っ越しの報告は、新しい住所を差出人欄にはっきり書くと親切です。");
+  $("tips").textContent=tips.join("　");
+}
+function genMochu(){
+  var r=state.rel,t=state.mtype,mo=$("mMonth").value,age=$("mAge").value.replace(/[^0-9]/g,"").slice(0,3);
+  var gashi=t==="soft"?"喪中につき年末年始のご挨拶をご遠慮申し上げます":"喪中につき年頭のご挨拶を失礼させていただきます";
+  var when=(mo!=="0"?"本年"+kan(mo)+"月に":"本年");
+  var who=r+(age?"（享年"+kan(age)+"）":"");
+  var lines=[];
+  if(t==="short"){lines.push(when+"　"+who+"が永眠いたしました");}
+  else if(t==="soft"){lines.push(when+"　"+who+"が永眠いたしました");lines.push("穏やかな最期でございました");}
+  else{lines.push(when+"　"+who+"が永眠いたしました");}
+  if($("mThanks").checked)lines.push(t==="short"?"生前のご厚情に深く感謝いたします":"ここに生前賜りましたご厚情に深く感謝いたしますとともに");
+  if($("mThanks").checked&&t!=="short")lines.push("明年も変わらぬご交誼のほどよろしくお願い申し上げます");
+  else lines.push("明年も変わらぬお付き合いのほどお願い申し上げます");
+  if($("mWelcome").checked)lines.push("なお　皆様からの年賀状は励みになりますので　どうぞお送りくださいませ");
+  if(t!=="short")lines.push("寒さに向かう折から　皆様のご健康をお祈り申し上げます");
+  cur={gashi:gashi,body:lines.join("\n"),hito:"",first:"",name:"",date:"令和八年　十一月",cls:"mochu"};
+  lastPool=[];
+  render();
+  $("tips").textContent="喪中はがきでは句読点を使わないのが一般的なため、空白で区切っています。故人の名前を入れる場合は「父 太郎」のように続柄の後に書きます。差出人の住所・氏名を忘れずに。";
+}
+function render(){
+  $("pc").className="postcard mincho "+cur.cls;
+  void $("pc").offsetWidth;$("pc").style.animation="none";void $("pc").offsetWidth;$("pc").style.animation="";
+  $("gashi").textContent=cur.gashi;$("body1").textContent=punct(cur.body);$("hito").textContent=punct(cur.hito);$("hito").hidden=!cur.hito;$("pcDate").textContent=cur.date;
+  var alts=$("alts");alts.innerHTML="";
+  $("altWrap").hidden=!lastPool.length;
+  shuffle(lastPool.filter(function(x){return x!==cur.first})).slice(0,5).forEach(function(s){
     var d=document.createElement("div");d.className="alt";var sp=document.createElement("span");sp.textContent=s;
-    var b=document.createElement("button");b.className="copy";b.type="button";b.textContent="これにする";
-    b.onclick=function(){cur.hito=(name?name+"　":"")+s;document.getElementById("hito").textContent=cur.hito;syncEdit();toast("差し替えました");};
+    var b=document.createElement("button");b.className="mini";b.type="button";b.textContent="これにする";
+    b.onclick=function(){cur.first=s;cur.hito=(cur.name?cur.name+"　":"")+s;$("hito").textContent=punct(cur.hito);syncEdit();toast("差し替えました");};
     d.appendChild(sp);d.appendChild(b);alts.appendChild(d);
   });
-  var tips=[];
-  if(lv===3&&!mourn)tips.push("目上の方向けに、略式の賀詞（賀正・迎春など）を避けています。");
-  if(mourn)tips.push("寒中見舞いは松の内（一般に1月7日、地域により15日）が明けてから立春の前日までに届くよう出します。おめでたい言葉と慶事の報告は控えています。");
-  var hits=ngCheck(gashi+"\n"+bodyAll+"\n"+hito,mourn);
-  tips.unshift(hits.length?"⚠ 気になる言葉："+hits.join("、"):"✓ 忌み言葉・重ね言葉は見つかりませんでした。");
-  document.getElementById("check").textContent=tips.join("　");
-  syncEdit();
-  var out=document.getElementById("out");out.hidden=false;out.scrollIntoView({behavior:"smooth",block:"start"});
+  syncEdit();showCheck($("check"),full());
+  $("out").hidden=false;$("prBox").hidden=false;
+  var m=mode==="mochu";$("prNenga").hidden=m;$("prMochu").hidden=!m;
+  $("prTitle").textContent=m?"喪中はがきの印刷もネットで":(mode==="kanchu"?"寒中見舞いの印刷もネットで":"文面が決まったら、印刷までネットで");
+  $("prLead").textContent=m?"文面を貼り付けて、落ち着いたデザインから選べるサービスがあります。急ぎの場合は納期を必ずご確認ください。":"デザインを選んで文面を貼り付けるだけ。宛名印刷や投函代行に対応したサービスもあります。早割の期間は各サービスでご確認ください。";
+  $("out").scrollIntoView({behavior:"smooth",block:"start"});
 }
-function full(){return cur.gashi+"\n\n"+cur.body+"\n"+cur.hito+"\n\n"+cur.date;}
-function syncEdit(){var e=document.getElementById("edit");e.value=full();checkEdit();}
-function checkEdit(){var t=document.getElementById("edit").value;var h=ngCheck(t,cur.mourn);
-  document.getElementById("editCheck").textContent=h.length?"⚠ 気になる言葉："+h.join("、"):"✓ 忌み言葉・重ね言葉は見つかりませんでした。";}
-function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},1400);}
+function full(){return punct(cur.gashi+"\n\n"+cur.body+(cur.hito?"\n"+cur.hito:"")+"\n\n"+cur.date);}
+function syncEdit(){$("edit").value=full();showCheck($("editCheck"),$("edit").value);}
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove("show")},1500);}
 function copy(text){
-  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){toast("コピーしました")},fallback);}else fallback();
-  function fallback(){var ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast("コピーしました")}catch(e){toast("コピーできませんでした")}document.body.removeChild(ta);}
+  function fb(){var ta=document.createElement("textarea");ta.value=text;ta.setAttribute("readonly","");ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast("コピーしました")}catch(e){toast("コピーできませんでした")}document.body.removeChild(ta);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){toast("コピーしました")},fb);}else fb();
 }
-document.getElementById("gen").onclick=gen;
-document.getElementById("again").onclick=gen;
-document.getElementById("copyAll").onclick=function(){var e=document.getElementById("edit");copy(e.value||full());};
-document.getElementById("edit").addEventListener("input",checkEdit);
+function generate(){if(mode==="mochu")genMochu();else genNenga();}
+$("gen").onclick=generate;$("genM").onclick=generate;$("again").onclick=generate;
+$("copyAll").onclick=function(){copy($("edit").value||full());};
+$("share").onclick=function(){var t=$("edit").value||full();
+  if(navigator.share){navigator.share({text:t}).catch(function(){});}
+  else{location.href="https://line.me/R/share?text="+encodeURIComponent(t);} };
+$("edit").addEventListener("input",function(){showCheck($("editCheck"),this.value);});
+$("noPunct").addEventListener("change",function(){if(!$("out").hidden){$("body1").textContent=punct(cur.body);$("hito").textContent=punct(cur.hito);syncEdit();showCheck($("check"),full());}});
+
+/* ---------- tabs ---------- */
+Array.prototype.forEach.call(document.querySelectorAll(".tabs button"),function(b){
+  b.onclick=function(){
+    mode=b.dataset.mode;
+    Array.prototype.forEach.call(document.querySelectorAll(".tabs button"),function(x){x.setAttribute("aria-selected",String(x===b));});
+    $("formNenga").hidden=mode==="mochu";$("formMochu").hidden=mode!=="mochu";
+    $("punRow").hidden=mode!=="nenga";
+    renderTo();
+    $("out").hidden=true;$("prBox").hidden=true;
+  };
+});
 })();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>引っ越し手続きチェックリスト｜日付を入れるだけで期限つきの段取り表</title>
+<meta name="description" content="引っ越し日と状況を選ぶだけで、転出届・転入届・マイナンバーカード・免許・郵便・電気ガス・ネットなどの手続きを、期限の日付つきで一覧に。カレンダー登録・LINE共有つき。登録不要。">
+<meta name="theme-color" content="#0ea5e9">
+<link rel="canonical" href="https://yope1016.github.io/apps/hikkoshi-checklist/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:title" content="引っ越し手続きチェックリスト｜期限つきの段取り表">
+<meta property="og:description" content="引っ越し日を入れるだけで、役所・免許・郵便・ライフライン・ネットの手続きを期限の日付つきで一覧に。登録不要。">
+<meta property="og:url" content="https://yope1016.github.io/apps/hikkoshi-checklist/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"引っ越し手続きチェックリスト","url":"https://yope1016.github.io/apps/hikkoshi-checklist/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"転出届はいつから出せますか？","acceptedAnswer":{"@type":"Answer","text":"窓口では引っ越しの約14日前から出せる自治体が多いです。マイナンバーカードがあれば、マイナポータルの引越しワンストップサービスで引っ越し予定日の30日前から申請できます。"}},
+{"@type":"Question","name":"転入届の期限は？","acceptedAnswer":{"@type":"Answer","text":"新しい住所に住み始めた日から14日以内です。マイナンバーカードを使ったオンラインの転出をした場合は、あわせて転出予定日から30日以内という条件もあります。"}},
+{"@type":"Question","name":"同じ市区町村の中での引っ越しは？","acceptedAnswer":{"@type":"Answer","text":"転出届・転入届ではなく、転居届を引っ越し後14日以内に出します。"}},
+{"@type":"Question","name":"運転免許証の住所変更は必要ですか？","acceptedAnswer":{"@type":"Answer","text":"従来の免許証は警察署や運転免許センターで住所変更します。マイナ免許証だけを持ち、事前に住所変更等ワンストップサービスの利用同意をしている人は、市区町村での住所変更で済みます。"}},
+{"@type":"Question","name":"ふるさと納税のワンストップ特例を申請済みですが、引っ越したら？","acceptedAnswer":{"@type":"Answer","text":"寄附した翌年の1月1日までに住所が変わった場合は、寄附先の自治体に申請事項の変更届出書を翌年1月10日（必着）までに出します。"}}
+]}]}
+</script>
+<style>
+:root{
+  --bg:#f3f8fc;--card:#fff;--ink:#132033;--sub:#57677d;--line:#dde7f1;
+  --pri:#0284c7;--pri2:#14b8a6;--acc:#f59e0b;--ok:#10b981;--warn:#ef4444;
+  --chip:#e8f3fb;--shadow:0 12px 32px -14px rgba(20,60,110,.30);
+  --grad:linear-gradient(135deg,#14b8a6 0%,#0ea5e9 45%,#6366f1 100%);
+  --r:20px;
+}
+:root[data-theme="dark"]{--bg:#0a1220;--card:#121c2e;--ink:#e8f0fb;--sub:#9fb0c8;--line:#24324a;--chip:#1a2a42;--pri:#38bdf8;--shadow:0 12px 32px -14px rgba(0,0,0,.7)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1220;--card:#121c2e;--ink:#e8f0fb;--sub:#9fb0c8;--line:#24324a;--chip:#1a2a42;--pri:#38bdf8;--shadow:0 12px 32px -14px rgba(0,0,0,.7)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+button{font-family:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:26px 0 96px}
+.road{position:absolute;left:0;right:0;bottom:26px;height:3px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 18px,transparent 18px 34px);animation:road 1.2s linear infinite;opacity:.6}
+@keyframes road{to{background-position:-34px 0}}
+.truck{position:absolute;bottom:22px;font-size:46px;animation:drive 9s linear infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25));transform:scaleX(-1)}
+@keyframes drive{0%{left:-70px}100%{left:110%}}
+.box{position:absolute;font-size:26px;opacity:.35;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(8deg)}}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px}
+.hero h1{font-size:clamp(26px,7.2vw,40px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.44em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+main{margin-top:-62px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line)}
+.card h2{font-size:19px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ico{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:0 0 38px;background:var(--chip)}
+.step{font-size:12px;font-weight:800;color:var(--pri);letter-spacing:.1em;margin:14px 0 6px}
+.step:first-of-type{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 14px;font-size:14px;cursor:pointer;min-height:42px;transition:.15s;font-weight:600}
+.chip.on{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 6px 16px -6px var(--pri)}
+.chip:active{transform:scale(.96)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.opt{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:10px;cursor:pointer;min-height:58px;transition:.15s;background:var(--card);text-align:left;color:var(--ink);font-size:14px;font-weight:700;line-height:1.3}
+.opt small{display:block;font-weight:500;color:var(--sub);font-size:11px}
+.opt .e{font-size:22px}
+.opt.on{border-color:var(--pri);background:var(--chip);box-shadow:inset 0 0 0 1px var(--pri)}
+.daterow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+input[type=date]{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-size:17px;font-weight:700;background:var(--card);color:var(--ink);min-height:48px}
+.left{font-size:14px;color:var(--sub);font-weight:700}
+.left b{font-size:22px;color:var(--pri);font-variant-numeric:tabular-nums}
+.go{width:100%;border:none;border-radius:18px;padding:16px;font-size:18px;font-weight:900;color:#fff;background:var(--grad);cursor:pointer;box-shadow:0 14px 30px -12px #0284c7;min-height:58px;letter-spacing:.04em;margin-top:18px}
+.go:active{transform:scale(.98)}
+#result{display:none}
+#result.show{display:block;animation:pop .45s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.sum div{background:var(--chip);border-radius:14px;padding:10px;text-align:center}
+.sum b{display:block;font-size:24px;font-weight:900;color:var(--pri);font-variant-numeric:tabular-nums;line-height:1.2}
+.sum span{font-size:11px;color:var(--sub);font-weight:700}
+.prog{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:4px 0 6px}
+.prog i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px;transition:width .5s ease}
+.progt{font-size:12px;color:var(--sub);font-weight:700;text-align:right}
+.next{background:linear-gradient(135deg,rgba(14,165,233,.12),rgba(99,102,241,.10));border:1.5px solid var(--pri);border-radius:16px;padding:12px 14px;margin:12px 0 4px;font-size:14px}
+.next b{color:var(--pri)}
+.phase{border-radius:18px;padding:14px;margin-bottom:12px;border:1px solid var(--line);position:relative;overflow:hidden;background:var(--card)}
+.phase:before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c)}
+.phead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;padding-left:6px}
+.pname{font-weight:900;font-size:16px;display:flex;gap:8px;align-items:center}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-size:16px;flex:0 0 34px}
+.pdate{font-size:12px;color:var(--sub);font-weight:800;text-align:right;font-variant-numeric:tabular-nums}
+.task{display:flex;gap:10px;align-items:flex-start;padding:10px 6px;border-top:1px dashed var(--line);cursor:pointer}
+.task input{width:22px;height:22px;accent-color:var(--pri);flex:0 0 22px;margin-top:2px}
+.task .tt{flex:1;font-size:14px;line-height:1.5}
+.task .tt b{font-weight:800}
+.task .tt small{display:block;color:var(--sub);font-size:12px}
+.due{font-size:12px;font-weight:800;color:var(--pri);white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+.due.late{color:var(--warn)}
+.task.done .tt{text-decoration:line-through;opacity:.5}
+.tag{display:inline-block;font-size:10px;font-weight:800;border-radius:6px;padding:1px 6px;margin-right:4px;vertical-align:1px}
+.tag.must{background:#fee2e2;color:#991b1b}
+.tag.web{background:#dbeafe;color:#1e40af}
+.tag.money{background:#fef3c7;color:#92400e}
+.alert{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;border-radius:14px;padding:12px;font-size:13px;margin:10px 0}
+:root[data-theme="dark"] .alert{background:#2a1d10;border-color:#5b3a12;color:#fde0b8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .alert{background:#2a1d10;border-color:#5b3a12;color:#fde0b8}}
+.pr{border:1.5px solid var(--acc);border-radius:18px;padding:16px;position:relative;background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(14,165,233,.06));margin-top:14px}
+.prlab{position:absolute;top:-10px;left:14px;background:var(--acc);color:#fff;font-size:11px;font-weight:900;border-radius:6px;padding:1px 8px;letter-spacing:.1em}
+.pr h3{font-size:16px;margin-bottom:6px}
+.pr p{font-size:14px;color:var(--sub)}
+.pr .soon{display:inline-block;margin-top:8px;background:var(--chip);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--sub);font-weight:700}
+.share{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.share a,.share button{flex:1;min-width:140px;text-align:center;text-decoration:none;border-radius:14px;padding:12px;font-weight:800;font-size:14px;border:none;cursor:pointer;min-height:48px}
+.line{background:#06c755;color:#fff}
+.copy{background:var(--chip);color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#132033;color:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;transition:.3s;z-index:9;opacity:0}
+.toast.show{transform:translateX(-50%);opacity:1}
+details{border-top:1px solid var(--line);padding:12px 0}
+details summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:"＋";color:var(--pri)}
+details[open] summary:after{content:"－"}
+details p{font-size:14px;color:var(--sub);margin-top:8px}
+.links a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px;font-weight:700;font-size:14px;background:var(--card)}
+.links a span{font-size:24px}
+.src{font-size:12px;color:var(--sub)}
+.src li{margin:4px 0 4px 1.2em;word-break:break-all}
+footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
+.confetti{position:fixed;top:-20px;font-size:22px;z-index:8;pointer-events:none;animation:fall 1.8s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:380px){.grid2{grid-template-columns:1fr}.sum b{font-size:20px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="box" style="left:8%;top:30%">📦</span><span class="box" style="left:62%;top:14%;animation-delay:1.5s">📦</span><span class="box" style="left:84%;top:46%;animation-delay:3s">🔑</span>
+  <div class="road"></div><div class="truck">🚚</div>
+  <div class="wrap">
+    <div class="topbar"><span class="brand">HITORI LAB</span><button class="mode" id="mode" type="button">🌙 ダーク</button></div>
+    <h1><small>役所・免許・郵便・電気ガス・ネット</small>引っ越し手続き<br>チェックリスト</h1>
+    <p class="lead">引っ越し日と状況を選ぶだけ。やることが「いつまでに」の日付つきで並びます。</p>
+    <div class="badges"><span class="badge">⏱ 1分</span><span class="badge">📅 期限を自動計算</span><span class="badge">🔒 登録不要・入力は端末の中だけ</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2><span class="ico">📝</span>あなたの引っ越し</h2>
+    <div class="step">STEP 1　引っ越し日（新居に住み始める日）</div>
+    <div class="daterow"><input type="date" id="mdate" aria-label="引っ越し日"><span class="left" id="left"></span></div>
+
+    <div class="step">STEP 2　どこへ？</div>
+    <div class="grid2" id="area">
+      <button type="button" class="opt on" data-v="other"><span class="e">🗾</span><span>別の市区町村へ<small>転出届＋転入届</small></span></button>
+      <button type="button" class="opt" data-v="same"><span class="e">🏘️</span><span>同じ市区町村の中<small>転居届だけ</small></span></button>
+    </div>
+
+    <div class="step">STEP 3　今の住まい・運び方</div>
+    <div class="chips" id="house">
+      <button type="button" class="chip on" data-k="rent">今は賃貸</button>
+      <button type="button" class="chip" data-k="own">今は持ち家</button>
+    </div>
+    <div class="chips" id="carry" style="margin-top:8px">
+      <button type="button" class="chip on" data-k="gyosha">業者に頼む</button>
+      <button type="button" class="chip" data-k="self">自分で運ぶ</button>
+    </div>
+
+    <div class="step">STEP 4　当てはまるものをすべて</div>
+    <div class="chips" id="flags">
+      <button type="button" class="chip on" data-k="mynum">🪪 マイナンバーカードあり</button>
+      <button type="button" class="chip on" data-k="license">🚗 運転免許証あり</button>
+      <button type="button" class="chip" data-k="mainamenkyo">マイナ免許証（ワンストップ同意済み）</button>
+      <button type="button" class="chip" data-k="car">🚙 車・バイクを持っている</button>
+      <button type="button" class="chip" data-k="kids">👶 児童手当を受けている</button>
+      <button type="button" class="chip" data-k="school">🎒 小中学生が転校する</button>
+      <button type="button" class="chip" data-k="kokuho">🏥 国民健康保険</button>
+      <button type="button" class="chip" data-k="inkan">🖋 印鑑登録をしている</button>
+      <button type="button" class="chip" data-k="dog">🐕 犬を飼っている</button>
+      <button type="button" class="chip on" data-k="net">🌐 家でネット回線を使う</button>
+      <button type="button" class="chip" data-k="furusato">🎁 ふるさと納税のワンストップ特例を申請した</button>
+    </div>
+    <button class="go" id="go" type="button">📋 やることリストを作る</button>
+  </section>
+
+  <section id="result">
+    <div class="card">
+      <h2><span class="ico">✅</span>あなたのやることリスト</h2>
+      <div class="sum">
+        <div><b id="sAll">0</b><span>やること</span></div>
+        <div><b id="sMust">0</b><span>期限のある手続き</span></div>
+        <div><b id="sLeft">0</b><span>引っ越しまで（日）</span></div>
+      </div>
+      <div class="prog"><i id="bar"></i></div>
+      <div class="progt" id="progt">0 / 0 完了</div>
+      <div class="next" id="next"></div>
+      <div id="alerts"></div>
+      <div id="phases"></div>
+      <div class="share">
+        <a class="line" id="lineBtn" href="#" target="_blank" rel="noopener">LINEで送る</a>
+        <button class="copy" id="copyBtn" type="button">📋 テキストでコピー</button>
+        <button class="copy" id="icsBtn" type="button">📅 期限をカレンダーに</button>
+      </div>
+      <p class="src" style="margin-top:8px">※チェックは画面を閉じると消えます。カレンダー登録（.icsファイル）がおすすめです。</p>
+    </div>
+
+    <div class="card" id="prCard">
+      <h2><span class="ico">💡</span>引っ越しでお金が変わるところ</h2>
+      <p style="font-size:14px;color:var(--sub)">引っ越しは、見積もりの取り方や回線・電気の選び方で、数万円の差が出やすいタイミングです。</p>
+      <div class="pr" id="prMove">
+        <span class="prlab">PR</span>
+        <h3>🚚 引っ越し料金は「相見積もり」で比べる</h3>
+        <p>同じ荷物・同じ日でも会社によって料金が変わります。日程に余裕があるうちに、複数社の見積もりを比べておくと安心です。</p>
+        <!-- AFFILIATE:hikkoshi_mitsumori -->
+        <span class="soon">比較サイトのご案内は準備中です</span>
+      </div>
+      <div class="pr" id="prNet">
+        <span class="prlab">PR</span>
+        <h3>🌐 ネット回線は工事まで時間がかかることも</h3>
+        <p>新居で光回線を使うなら、開通工事の予約が必要な場合があります。引っ越しを機に、乗り換えと移転のどちらが得か比べてみましょう。工事不要のホームルーターという選択肢もあります。</p>
+        <!-- AFFILIATE:hikari_kaisen -->
+        <!-- AFFILIATE:home_router -->
+        <span class="soon">回線の比較は準備中です</span>
+      </div>
+      <div class="pr" id="prEne">
+        <span class="prlab">PR</span>
+        <h3>⚡ 電気・ガスは新居で選び直せる</h3>
+        <p>引っ越しは電気・ガスの契約先を見直しやすいタイミングです。使用開始の連絡と一緒に、料金プランを比べておきましょう。</p>
+        <!-- AFFILIATE:denki_gas -->
+        <span class="soon">比較サービスのご案内は準備中です</span>
+      </div>
+      <div class="pr" id="prJunk">
+        <span class="prlab">PR</span>
+        <h3>♻️ 運ぶ前に、減らす</h3>
+        <p>荷物が減ると見積もりも下がりやすくなります。粗大ごみの収集は予約が埋まりやすいので、出張買取・不用品回収も選択肢に。</p>
+        <!-- AFFILIATE:fuyouhin -->
+        <span class="soon">買取・回収サービスのご案内は準備中です</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">❓</span>よくある質問</h2>
+    <details><summary>転出届はいつから出せる？</summary><p>窓口では引っ越しの約14日前から出せる自治体が多いです（自治体により異なります）。マイナンバーカードがあれば、マイナポータルの「引越しワンストップサービス」で、引っ越し予定日の30日前から申請できます。</p></details>
+    <details><summary>転入届の期限は？</summary><p>新しい住所に住み始めた日から14日以内です。オンラインで転出した場合は「転出予定日から30日以内」という条件も重なります。期限を過ぎると、マイナンバーカードが使えなくなる場合があります。</p></details>
+    <details><summary>同じ市区町村の中での引っ越しは？</summary><p>転出届・転入届ではなく、引っ越し後14日以内に「転居届」を出します。印鑑登録や国民健康保険は、多くの場合そのまま引き継がれます。</p></details>
+    <details><summary>運転免許証の住所変更は必要？</summary><p>従来の免許証は、新住所を管轄する警察署や運転免許センターで住所変更します。マイナ免許証だけを持ち、事前に「住所変更等ワンストップサービス」の利用同意をしている人は、市区町村でのマイナンバーカードの住所変更で済みます。</p></details>
+    <details><summary>ふるさと納税のワンストップ特例を申請済み。引っ越したら？</summary><p>寄附した翌年の1月1日までに住所が変わった場合は、寄附先の自治体に「申請事項変更届出書」を翌年1月10日（必着）までに出します。寄附先が複数あれば、それぞれに必要です。</p></details>
+  </section>
+
+  <section class="card links">
+    <h2><span class="ico">🧰</span>ほかの便利ツール</h2>
+    <a href="../furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額シミュレーター</a>
+    <a href="../warikan-keisha/"><span>🍻</span>傾斜割り勘計算（送別会・歓迎会の幹事に）</a>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📚</span>参考にした情報</h2>
+    <ul class="src">
+      <li>中央区「引越しワンストップサービス」 https://www.city.chuo.lg.jp/a0012/kurashi/touroku/juuminidou/hikkoshioss.html</li>
+      <li>神奈川県警察「マイナ免許証の住所変更等ワンストップサービス」 https://www.police.pref.kanagawa.jp/tetsuzuki/menkyo/mes83070.html</li>
+      <li>江戸川区「他区へ転出する場合の児童手当」 https://www.city.edogawa.tokyo.jp/e049/qa/kosodate/kosodate/teate/teate13.html</li>
+      <li>日本郵便「転居・転送サービス」 https://www.post.japanpost.jp/service/tenkyo/</li>
+    </ul>
+    <p class="src" style="margin-top:8px">期限や持ち物は自治体・会社によって異なります。最終的には各窓口の案内を確認してください。（2026年11月時点の情報）</p>
+  </section>
+  <footer>© ひとりラボ ・ 入力内容はどこにも送信されません</footer>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var root=document.documentElement;
+function curDark(){var t=root.getAttribute("data-theme");if(t)return t==="dark";return window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches}
+function setModeLabel(){$("mode").textContent=curDark()?"☀️ ライト":"🌙 ダーク"}
+$("mode").onclick=function(){root.setAttribute("data-theme",curDark()?"light":"dark");setModeLabel()};
+setModeLabel();
+
+// ---- state
+var st={area:"other",house:"rent",carry:"gyosha",f:{mynum:1,license:1,net:1}};
+function single(id,key){var g=$(id);g.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(g.children,function(c){c.classList.remove("on")});b.classList.add("on");st[key]=b.dataset.v||b.dataset.k})}
+single("area","area");single("house","house");single("carry","carry");
+$("flags").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var k=b.dataset.k;st.f[k]=st.f[k]?0:1;b.classList.toggle("on",!!st.f[k]);
+  if(k==="mainamenkyo"&&st.f[k]&&!st.f.license){st.f.license=1;document.querySelector('[data-k="license"]').classList.add("on")}
+});
+
+// ---- dates
+function today(){var d=new Date();d.setHours(0,0,0,0);return d}
+function addD(d,n){var x=new Date(d.getTime());x.setDate(x.getDate()+n);return x}
+function ymd(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
+var W="日月火水木金土";
+function md(d){return (d.getMonth()+1)+"/"+d.getDate()+"("+W[d.getDay()]+")"}
+function parse(v){var p=v.split("-");return new Date(+p[0],+p[1]-1,+p[2])}
+var di=$("mdate");di.value=ymd(addD(today(),30));
+function diff(a,b){return Math.round((a-b)/86400000)}
+function showLeft(){var m=parse(di.value);if(isNaN(m))return;var n=diff(m,today());$("left").innerHTML=n>0?"引っ越しまで あと <b>"+n+"</b> 日":n===0?"<b>今日</b> が引っ越し日":"引っ越しから <b>"+(-n)+"</b> 日経過"}
+di.addEventListener("input",showLeft);showLeft();
+
+// ---- tasks: o = 目安（引っ越し日からの日数）, dl = 期限（日数・法定など）, c = 条件
+// tag: must=法定の期限, web=オンライン可, money=お金が変わる
+var PH=[
+ {id:"m30",n:"1か月前まで",e:"🗓",c:"#6366f1",from:-999,to:-15},
+ {id:"m14",n:"2週間前〜1週間前",e:"📦",c:"#0ea5e9",from:-14,to:-4},
+ {id:"m3",n:"直前（3日前〜当日）",e:"🚚",c:"#f59e0b",from:-3,to:0},
+ {id:"p14",n:"引っ越し後 14日以内",e:"🏛",c:"#ef4444",from:1,to:14},
+ {id:"p30",n:"引っ越し後 落ち着いたら",e:"🏠",c:"#14b8a6",from:15,to:999}
+];
+var T=[
+ {t:"引っ越し業者の見積もりを比べて予約",d:"3〜4月は特に混むので早めに。訪問かオンラインで荷物量を伝える",o:-30,tag:"money",c:function(s){return s.carry==="gyosha"},pr:"prMove"},
+ {t:"レンタカー・手伝いの人を手配",d:"軽トラ・ハイエースは週末に埋まりやすい",o:-30,c:function(s){return s.carry==="self"}},
+ {t:"今の家の解約を連絡（管理会社・大家さん）",d:"多くは1か月前までの通知。契約書の「解約予告」を確認",o:-30,tag:"must",c:function(s){return s.house==="rent"}},
+ {t:"ネット回線の移転または新規申し込み",d:"開通工事は予約から2週間〜1か月かかることも。乗り換えも比較",o:-30,tag:"money",c:function(s){return s.f.net},pr:"prNet"},
+ {t:"小中学校に転校を連絡",d:"今の学校で「在学証明書」「教科書給与証明書」を受け取る",o:-30,c:function(s){return s.f.school}},
+ {t:"粗大ごみの収集を予約・不用品を処分",d:"収集日は予約制で先まで埋まりやすい",o:-21,pr:"prJunk"},
+ {t:"転出届をオンライン申請（引越しワンストップ）",d:"マイナポータルで引っ越し予定日の30日前から。転入の来庁予定日も入力",o:-14,tag:"web",c:function(s){return s.area==="other"&&s.f.mynum}},
+ {t:"役所の窓口で転出届",d:"本人確認書類を持参。「転出証明書」を受け取る（14日前から受付の自治体が多い）",o:-14,tag:"must",c:function(s){return s.area==="other"&&!s.f.mynum}},
+ {t:"国民健康保険の資格喪失の手続き",d:"転出届と同じ窓口で。保険証（資格確認書）を返却",o:-14,c:function(s){return s.area==="other"&&s.f.kokuho}},
+ {t:"電気・ガス・水道の停止と開始を連絡",d:"Webで24時間受付が多い。ガスの開栓は立ち会いが必要",o:-7,tag:"money",pr:"prEne"},
+ {t:"郵便の転居届（e転居）",d:"届出日から1年間、旧住所あての郵便を新住所へ転送",o:-7,tag:"web"},
+ {t:"冷蔵庫の中身を減らす・洗濯機の水抜き",d:"冷蔵庫は前日に電源を切って霜取り",o:-2},
+ {t:"旧居の掃除・ガスの閉栓・鍵の返却",d:"退去立ち会いの日時を確認",o:0},
+ {t:"転入届＋マイナンバーカードの住所変更",d:"転出証明書（またはマイナンバーカード）を持って新住所の役所へ。家族全員分のカードを持参",o:3,dl:14,tag:"must",c:function(s){return s.area==="other"}},
+ {t:"転居届（同じ市区町村内）＋マイナンバーカードの住所変更",d:"本人確認書類と家族全員分のマイナンバーカードを持参",o:3,dl:14,tag:"must",c:function(s){return s.area==="same"}},
+ {t:"国民健康保険に加入",d:"転入届と同じ日に。世帯主・加入者のマイナンバーがわかるもの",o:3,dl:14,tag:"must",c:function(s){return s.area==="other"&&s.f.kokuho}},
+ {t:"児童手当の申請（転入先で新たに）",d:"転出予定日の翌日から15日以内。遅れると受け取れない月が出ることも",o:3,dl:15,tag:"must",c:function(s){return s.area==="other"&&s.f.kids}},
+ {t:"児童手当の住所変更",d:"子育て支援の窓口で。転居届と同じ日に",o:3,dl:14,c:function(s){return s.area==="same"&&s.f.kids}},
+ {t:"新しい学校への転入手続き",d:"役所で「転入学通知書」を受け取り、在学証明書などと一緒に学校へ",o:3,c:function(s){return s.f.school}},
+ {t:"印鑑登録をし直す",d:"別の市区町村へ移ると、前の登録は転出で自動的に廃止",o:3,c:function(s){return s.area==="other"&&s.f.inkan}},
+ {t:"運転免許証の住所変更",d:"新住所の警察署・運転免許センターへ。住民票やマイナンバーカードを持参",o:7,c:function(s){return s.f.license&&!s.f.mainamenkyo}},
+ {t:"マイナ免許証：役所の住所変更で完了",d:"ワンストップの利用同意済みなら、警察署での手続きは不要",o:3,c:function(s){return s.f.mainamenkyo}},
+ {t:"車検証の住所変更（車庫証明も）",d:"変更から15日以内に運輸支局へ。軽自動車は軽自動車検査協会",o:7,dl:15,tag:"must",c:function(s){return s.f.car}},
+ {t:"犬の登録の住所変更",d:"30日以内に新住所の市区町村へ。鑑札を持参",o:10,dl:30,tag:"must",c:function(s){return s.f.dog}},
+ {t:"ふるさと納税：寄附先に住所の変更届出書",d:"ワンストップ特例は、翌年1月10日（必着）までに寄附先ごとに提出",o:14,c:function(s){return s.f.furusato},fixed:"furusato"},
+ {t:"銀行・クレジットカード・証券の住所変更",d:"アプリやWebで変更できるところが多い",o:20,tag:"web"},
+ {t:"携帯電話・保険・通販サイトの住所変更",d:"火災保険は新居の補償内容も確認",o:20,tag:"web"},
+ {t:"勤務先に住所変更を届け出る",d:"通勤手当・年末調整・社会保険のため",o:15}
+];
+
+function build(){
+  var m=parse(di.value);if(isNaN(m)){toast("引っ越し日を入れてください");return null}
+  var td=today(),list=[];
+  T.forEach(function(x){
+    if(x.c&&!x.c(st))return;
+    var at=addD(m,x.o),due=null,dueTxt="";
+    if(x.dl){due=addD(m,x.dl);dueTxt="期限 "+md(due)}
+    if(x.fixed==="furusato"){var y=m.getFullYear()+1;due=new Date(y,0,10);dueTxt="期限 "+y+"/"+md(due);at=due<addD(m,14)?due:addD(m,14)}
+    list.push({x:x,at:at,due:due,dueTxt:dueTxt||("目安 "+md(at)),late:(due||at)<td});
+  });
+  return {m:m,td:td,list:list};
+}
+var cur=null,done={};
+function render(){
+  cur=build();if(!cur)return;
+  done={};
+  var html="",must=0,alerts="";
+  PH.forEach(function(p){
+    var items=cur.list.filter(function(it){return it.x.o>=p.from&&it.x.o<=p.to}).sort(function(a,b){return a.at-b.at||a.x.o-b.x.o});
+    if(!items.length)return;
+    var a=addD(cur.m,Math.max(p.from,-30)),b=addD(cur.m,Math.min(p.to,30));
+    html+='<div class="phase" style="--c:'+p.c+'"><div class="phead"><div class="pname"><span class="av">'+p.e+'</span>'+p.n+'</div><div class="pdate">'+(p.from<-100?"〜"+md(b):p.to>100?md(a)+"〜":md(a)+"〜"+md(b))+'</div></div>';
+    items.forEach(function(it){
+      var i=cur.list.indexOf(it),x=it.x,tags="";
+      if(x.tag==="must"){tags+='<span class="tag must">期限あり</span>';must++}
+      if(x.tag==="web")tags+='<span class="tag web">オンライン可</span>';
+      if(x.tag==="money")tags+='<span class="tag money">比べると得</span>';
+      html+='<label class="task" data-i="'+i+'"><input type="checkbox" data-i="'+i+'"><span class="tt">'+tags+'<b>'+x.t+'</b><small>'+x.d+'</small></span><span class="due'+(it.late?" late":"")+'">'+it.dueTxt+(it.late?"<br>過ぎています":"")+'</span></label>';
+    });
+    html+='</div>';
+  });
+  $("phases").innerHTML=html;
+  var n=diff(cur.m,cur.td);
+  $("sAll").textContent=cur.list.length;$("sMust").textContent=must;$("sLeft").textContent=n>=0?n:0;
+  if(n<14&&n>=0)alerts+='<div class="alert">⚠️ 引っ越しまで2週間を切っています。業者・ネット回線・解約の連絡を最優先に。</div>';
+  if(n<0)alerts+='<div class="alert">⚠️ すでに引っ越し済みの日付です。赤い「過ぎています」の項目は、できるだけ早く窓口に相談してください。</div>';
+  var mo=cur.m.getMonth()+1;if(mo===3||mo===4)alerts+='<div class="alert">🌸 3〜4月は引っ越し・役所の窓口ともに1年でいちばん混む時期です。予約と見積もりは早めに。</div>';
+  if(st.area==="other"&&st.f.mynum)alerts+='<div class="alert">🪪 転入届を期限内に出さないと、マイナンバーカードが使えなくなる場合があります。家族全員分のカードを持って行きましょう。</div>';
+  $("alerts").innerHTML=alerts;
+  ["prMove","prNet","prEne","prJunk"].forEach(function(id){var need=cur.list.some(function(it){return it.x.pr===id});$(id).style.display=need?"":"none"});
+  progress();
+  var r=$("result");r.classList.remove("show");void r.offsetWidth;r.classList.add("show");
+  setTimeout(function(){r.scrollIntoView({behavior:"smooth",block:"start"})},60);
+  shareLinks();
+}
+function progress(){
+  var tot=cur.list.length,d=Object.keys(done).filter(function(k){return done[k]}).length;
+  $("bar").style.width=(tot?d/tot*100:0)+"%";$("progt").textContent=d+" / "+tot+" 完了";
+  var nx=null;cur.list.forEach(function(it,i){if(!done[i]&&(!nx||it.at<nx.at))nx=it});
+  $("next").innerHTML=nx?"👉 次にやること：<b>"+nx.x.t+"</b>（"+nx.dueTxt+"）":"🎉 すべて完了！新生活を楽しんでください";
+  if(tot&&d===tot)confetti();
+}
+$("phases").addEventListener("change",function(e){var i=e.target.dataset.i;if(i==null)return;done[i]=e.target.checked;e.target.closest(".task").classList.toggle("done",e.target.checked);progress()});
+$("go").onclick=render;
+
+function text(){
+  var s="【引っ越し やることリスト】引っ越し日 "+md(cur.m)+"\n";
+  cur.list.slice().sort(function(a,b){return a.at-b.at}).forEach(function(it){s+="□ "+it.dueTxt+"　"+it.x.t+"\n"});
+  return s+"\n作成：引っ越し手続きチェックリスト https://yope1016.github.io/apps/hikkoshi-checklist/";
+}
+function shareLinks(){$("lineBtn").href="https://line.me/R/share?text="+encodeURIComponent(text())}
+$("copyBtn").onclick=function(){var t=text();if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast("コピーしました")},fallback)}else fallback();function fallback(){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("コピーしました")}catch(e){toast("コピーできませんでした")}a.remove()}};
+$("icsBtn").onclick=function(){
+  if(!cur)return;
+  var L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//hitorilab//hikkoshi//JA","CALSCALE:GREGORIAN"];
+  var stamp=new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d+/,"");
+  cur.list.forEach(function(it,i){var d=it.due||it.at,e=addD(d,1);
+    L.push("BEGIN:VEVENT","UID:hk"+i+"-"+ymd(cur.m)+"@hitorilab","DTSTAMP:"+stamp,"DTSTART;VALUE=DATE:"+ymd(d).replace(/-/g,""),"DTEND;VALUE=DATE:"+ymd(e).replace(/-/g,""),"SUMMARY:"+(it.due?"【期限】":"")+it.x.t.replace(/[,;]/g," "),"DESCRIPTION:"+it.x.d.replace(/[,;]/g," "),"END:VEVENT")});
+  L.push("END:VCALENDAR");
+  var blob=new Blob([L.join("\r\n")],{type:"text/calendar"}),a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);a.download="hikkoshi_"+ymd(cur.m)+".ics";document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500);toast("カレンダー用ファイルを保存しました");
+};
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove("show")},1800)}
+function confetti(){var em=["🎉","📦","🔑","✨","🏠"];for(var i=0;i<18;i++){var c=document.createElement("span");c.className="confetti";c.textContent=em[i%em.length];c.style.left=Math.random()*100+"vw";c.style.animationDelay=Math.random()*.6+"s";document.body.appendChild(c);(function(c){setTimeout(function(){c.remove()},2600)})(c)}}
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

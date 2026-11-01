@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>大掃除の分担表を自動作成 2026｜家族で誰がどこをやるか決める</title>
+<meta name="description" content="年末の大掃除を、家族の人数・空き時間・掃除する場所から自動で分担。高い所は大人、子どもに任せやすい場所、終わる時刻まで一覧に。LINEで送れる分担表つき。登録不要・無料。">
+<meta name="theme-color" content="#7c3aed">
+<style>
+:root{
+  --bg:#f6f5fc;--card:#fff;--ink:#1d1b2e;--sub:#605c7d;--line:#e6e3f3;
+  --pri:#7c3aed;--pri2:#06b6d4;--acc:#f59e0b;--ok:#10b981;--warn:#ef4444;
+  --chip:#f0ecfd;--shadow:0 12px 32px -14px rgba(60,40,120,.28);
+  --grad:linear-gradient(135deg,#06b6d4 0%,#6366f1 45%,#a855f7 100%);
+  --r:20px;
+}
+:root[data-theme="dark"]{--bg:#0e0d18;--card:#191729;--ink:#efedff;--sub:#a7a3c6;--line:#2c2947;--chip:#252244;--shadow:0 12px 32px -14px rgba(0,0,0,.65)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0d18;--card:#191729;--ink:#efedff;--sub:#a7a3c6;--line:#2c2947;--chip:#252244;--shadow:0 12px 32px -14px rgba(0,0,0,.65)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+button{font-family:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:26px 0 90px}
+.bubble{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.9),rgba(255,255,255,.15) 60%,rgba(255,255,255,0) 70%);animation:rise 9s linear infinite;opacity:.55}
+@keyframes rise{0%{transform:translateY(40px) scale(.8);opacity:0}15%{opacity:.6}100%{transform:translateY(-260px) scale(1.1);opacity:0}}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px}
+.hero h1{font-size:clamp(26px,7.2vw,40px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.44em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+.mascot{position:absolute;right:14px;bottom:18px;font-size:58px;z-index:1;animation:sway 3.2s ease-in-out infinite;filter:drop-shadow(0 8px 12px rgba(0,0,0,.2))}
+@keyframes sway{50%{transform:rotate(-12deg) translateY(-6px)}}
+main{margin-top:-62px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line)}
+.card h2{font-size:19px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ico{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:0 0 38px;background:var(--chip)}
+.count{display:flex;gap:12px;align-items:center;background:var(--chip);border-radius:16px;padding:12px 14px;margin-bottom:16px}
+.count b{font-size:30px;font-weight:900;color:var(--pri);font-variant-numeric:tabular-nums}
+.count span{font-size:13px;color:var(--sub)}
+.step{font-size:12px;font-weight:800;color:var(--pri);letter-spacing:.1em;margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 14px;font-size:14px;cursor:pointer;min-height:42px;transition:.15s;font-weight:600}
+.chip.on{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 6px 16px -6px var(--pri)}
+.chip:active{transform:scale(.96)}
+.member{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:10px;background:linear-gradient(180deg,var(--card),var(--chip))}
+.member input[type=text]{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-size:16px;background:var(--card);color:var(--ink)}
+.mrow{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.mrow .chip{padding:6px 11px;min-height:36px;font-size:13px}
+.del{border:none;background:transparent;color:var(--sub);font-size:22px;cursor:pointer;width:42px;height:42px;border-radius:12px}
+.stepper{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+.stepper button{width:40px;height:38px;border:none;background:transparent;color:var(--pri);font-size:20px;font-weight:800;cursor:pointer}
+.stepper output{min-width:62px;text-align:center;font-weight:800;font-variant-numeric:tabular-nums;font-size:14px}
+.add{width:100%;border:2px dashed var(--line);background:transparent;color:var(--pri);border-radius:16px;padding:12px;font-weight:800;font-size:15px;cursor:pointer;min-height:48px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.place{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:10px;cursor:pointer;min-height:56px;transition:.15s;background:var(--card);text-align:left;color:var(--ink);font-size:14px;font-weight:700;line-height:1.3}
+.place small{display:block;font-weight:500;color:var(--sub);font-size:11px}
+.place .e{font-size:22px}
+.place.on{border-color:var(--pri);background:var(--chip);box-shadow:inset 0 0 0 1px var(--pri)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+label.sel{font-size:14px;color:var(--sub);font-weight:700}
+select,input[type=time],input[type=date]{border:1.5px solid var(--line);border-radius:12px;padding:9px 10px;font-size:16px;background:var(--card);color:var(--ink);min-height:44px}
+.go{width:100%;border:none;border-radius:18px;padding:16px;font-size:18px;font-weight:900;color:#fff;background:var(--grad);cursor:pointer;box-shadow:0 14px 30px -12px #7c3aed;min-height:58px;letter-spacing:.04em}
+.go:active{transform:scale(.98)}
+.sub2{display:flex;gap:8px;margin-top:10px}
+.ghost{flex:1;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:12px;font-weight:800;cursor:pointer;min-height:48px;font-size:14px}
+#result{display:none}
+#result.show{display:block;animation:pop .45s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.sum div{background:var(--chip);border-radius:14px;padding:10px;text-align:center}
+.sum b{display:block;font-size:24px;font-weight:900;color:var(--pri);font-variant-numeric:tabular-nums;line-height:1.2}
+.sum span{font-size:11px;color:var(--sub);font-weight:700}
+.pcard{border-radius:18px;padding:14px;margin-bottom:12px;border:1px solid var(--line);position:relative;overflow:hidden;background:var(--card)}
+.pcard:before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c)}
+.phead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;padding-left:6px}
+.pname{font-weight:900;font-size:17px;display:flex;gap:8px;align-items:center}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-size:16px}
+.ptime{font-size:12px;color:var(--sub);font-weight:700;text-align:right}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin:0 0 10px 6px}
+.bar i{display:block;height:100%;background:var(--c);border-radius:99px;transition:width .8s ease}
+.task{display:flex;gap:10px;align-items:flex-start;padding:9px 6px;border-top:1px dashed var(--line);cursor:pointer}
+.task input{width:22px;height:22px;accent-color:var(--pri);flex:0 0 22px;margin-top:2px}
+.task .tt{flex:1;font-size:14px;line-height:1.45}
+.task .tt b{font-weight:800}
+.task .tt small{display:block;color:var(--sub);font-size:12px}
+.task .clock{font-size:12px;font-weight:800;color:var(--pri);white-space:nowrap;font-variant-numeric:tabular-nums}
+.task.done .tt{text-decoration:line-through;opacity:.5}
+.tag{display:inline-block;font-size:10px;font-weight:800;border-radius:6px;padding:1px 6px;margin-left:4px;vertical-align:1px}
+.tag.pro{background:#fef3c7;color:#92400e}
+.tag.kid{background:#d1fae5;color:#065f46}
+.tag.hi{background:#fee2e2;color:#991b1b}
+.alert{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;border-radius:14px;padding:12px;font-size:13px;margin:10px 0}
+:root[data-theme="dark"] .alert{background:#2a1d10;border-color:#5b3a12;color:#fde0b8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .alert{background:#2a1d10;border-color:#5b3a12;color:#fde0b8}}
+.pr{border:1.5px solid var(--acc);border-radius:18px;padding:16px;position:relative;background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(168,85,247,.06))}
+.prlab{position:absolute;top:-10px;left:14px;background:var(--acc);color:#fff;font-size:11px;font-weight:900;border-radius:6px;padding:1px 8px;letter-spacing:.1em}
+.pr h3{font-size:16px;margin-bottom:6px}
+.pr ul{padding-left:1.2em;font-size:14px}
+.pr .soon{display:inline-block;margin-top:8px;background:var(--chip);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--sub);font-weight:700}
+.share{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.share a,.share button{flex:1;min-width:140px;text-align:center;text-decoration:none;border-radius:14px;padding:12px;font-weight:800;font-size:14px;border:none;cursor:pointer;min-height:48px}
+.line{background:#06c755;color:#fff}
+.copy{background:var(--chip);color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#1d1b2e;color:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;transition:.3s;z-index:9;opacity:0}
+.toast.show{transform:translateX(-50%);opacity:1}
+.tips li{margin:6px 0 6px 1.2em;font-size:14px}
+details{border-top:1px solid var(--line);padding:12px 0}
+details summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+details summary:after{content:"＋";color:var(--pri)}
+details[open] summary:after{content:"－"}
+details p{font-size:14px;color:var(--sub);margin-top:8px}
+.links a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px;font-weight:700;font-size:14px;background:var(--card)}
+.links a span{font-size:24px}
+footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
+.confetti{position:fixed;top:-20px;font-size:22px;z-index:8;pointer-events:none;animation:fall 1.8s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:380px){.grid2{grid-template-columns:1fr}.sum b{font-size:20px}}
+</style>
+
+<!-- SEO/OGP (webfactory 2026-11-01 14:30 公開前チェック) -->
+<link rel="canonical" href="https://yope1016.github.io/apps/oosouji-buntan-2026/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧹%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://yope1016.github.io/apps/oosouji-buntan-2026/">
+<meta property="og:title" content="大掃除の分担表を自動作成 2026｜家族で誰がどこをやるか決める">
+<meta property="og:description" content="家族の人数と時間から、大掃除で誰がどこをやるかを自動で分担。LINEで送れる分担表つき。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<meta name="twitter:title" content="大掃除の分担表を自動作成 2026｜家族で誰がどこをやるか決める">
+<meta name="twitter:description" content="家族の人数と時間から、大掃除で誰がどこをやるかを自動で分担。LINEで送れる分担表つき。">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "大掃除の分担表を自動作成 2026", "url": "https://yope1016.github.io/apps/oosouji-buntan-2026/", "description": "年末の大掃除を、家族の人数・空き時間・掃除する場所から自動で分担。高い所は大人、子どもに任せやすい場所、終わる時刻まで一覧に。LINEで送れる分担表つき。登録不要・無料。", "applicationCategory": "LifestyleApplication", "operatingSystem": "All", "inLanguage": "ja", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "大掃除はいつやる人が多い？", "acceptedAnswer": {"@type": "Answer", "text": "大手清掃サービスの2024年の調査では、予定日として多かったのは12月29日・28日・30日でした。年末ぎりぎりは疲れやすいので、場所を分けて12月の週末2回に分けるのもおすすめです。"}}, {"@type": "Question", "name": "所要時間の目安はどうやって出している？", "acceptedAnswer": {"@type": "Answer", "text": "場所ごとの一般的な作業時間（家の広さで補正）を目安にしています。汚れ具合や道具によって変わるので、終わらない場所は「次の週末」に回してください。"}}, {"@type": "Question", "name": "子どもにはどこを任せればいい？", "acceptedAnswer": {"@type": "Answer", "text": "玄関のたたき、低い棚のほこり取り、自分の部屋のおもちゃの片付け、テーブル拭きなどが向いています。このツールでは、子どもに洗剤や高所の作業を割り当てないようにしています。"}}, {"@type": "Question", "name": "一人暮らしでも使える？", "acceptedAnswer": {"@type": "Answer", "text": "使えます。参加者を1人にすると、場所の順番と終わる時刻がわかるタイムテーブルになります。"}}, {"@type": "Question", "name": "入力したデータはどこかに送られる？", "acceptedAnswer": {"@type": "Answer", "text": "送られません。計算はすべてこの画面の中で行い、ページを閉じると消えます。"}}]}</script>
+</head>
+<body>
+<header class="hero">
+  <div class="bubble" style="width:40px;height:40px;left:12%;bottom:0;animation-delay:0s"></div>
+  <div class="bubble" style="width:22px;height:22px;left:38%;bottom:0;animation-delay:2.4s"></div>
+  <div class="bubble" style="width:54px;height:54px;left:66%;bottom:0;animation-delay:4.1s"></div>
+  <div class="bubble" style="width:18px;height:18px;left:84%;bottom:0;animation-delay:6.3s"></div>
+  <div class="wrap">
+    <div class="topbar"><div class="brand">ひとりラボ ✦ TOOLS</div><button class="mode" id="mode" aria-label="表示モード切り替え">🌙 ダーク</button></div>
+    <h1><small>年末の大掃除 2026</small>大掃除の<br>分担ジェネレーター</h1>
+    <p class="lead">家族の人数と空いている時間を入れるだけ。<br>「誰が・どこを・何時までに」を自動で決めます。</p>
+    <div class="badges"><span class="badge">🧽 30秒で分担表</span><span class="badge">👧 子ども向けの場所も</span><span class="badge">📱 LINEで送れる</span><span class="badge">🔒 登録不要</span></div>
+  </div>
+  <div class="mascot" aria-hidden="true">🧹</div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <div class="count"><div style="font-size:30px">📅</div><div><span>大掃除の日まで</span><br><b id="days">--</b> <span id="dlabel">日</span></div></div>
+    <div class="step">STEP 1</div>
+    <h2><span class="ico">👨‍👩‍👧</span>だれが参加する？</h2>
+    <div id="members"></div>
+    <button class="add" id="addM">＋ 参加する人を追加</button>
+    <p style="font-size:12px;color:var(--sub);margin-top:8px">名前はニックネームでOK。入力した内容はこの端末の中だけで計算し、どこにも送りません。</p>
+  </section>
+
+  <section class="card">
+    <div class="step">STEP 2</div>
+    <h2><span class="ico">🏠</span>家の広さと、掃除する場所</h2>
+    <div class="chips" id="house"></div>
+    <div class="row" style="margin-top:14px"><button class="chip" id="allOn">すべて選ぶ</button><button class="chip" id="recOn">定番だけ</button><button class="chip" id="allOff">すべて外す</button></div>
+    <div class="grid2" id="places" style="margin-top:12px"></div>
+  </section>
+
+  <section class="card">
+    <div class="step">STEP 3</div>
+    <h2><span class="ico">⏰</span>いつ、どう分ける？</h2>
+    <div class="row"><label class="sel" for="day">実施日</label><input type="date" id="day"><label class="sel" for="start">開始</label><input type="time" id="start" value="09:30"></div>
+    <div class="row"><span class="sel">分け方</span>
+      <div class="chips" id="how"><button class="chip on" data-v="fair">公平に（時間で均等）</button><button class="chip" data-v="skill">得意を活かす</button><button class="chip" data-v="lucky">くじ引き🎲</button></div>
+    </div>
+    <div style="margin-top:18px"><button class="go" id="go">✨ 分担表をつくる</button></div>
+  </section>
+
+  <section id="result">
+    <div class="card">
+      <h2><span class="ico">📋</span>わが家の大掃除 分担表</h2>
+      <div class="sum"><div><b id="sTask">0</b><span>やること</span></div><div><b id="sTime">0</b><span>1人あたり</span></div><div><b id="sEnd">--</b><span>終わる目安</span></div></div>
+      <div id="warn"></div>
+      <div id="plist"></div>
+      <div class="share"><a class="line" id="lineBtn" href="#" target="_blank" rel="noopener">LINEで家族に送る</a><button class="copy" id="copyBtn">分担表をコピー</button></div>
+      <div class="sub2"><button class="ghost" id="reroll">🔄 組み替える</button><button class="ghost" id="toTop">✏️ 条件を直す</button></div>
+    </div>
+
+    <div class="card">
+      <div class="pr">
+        <span class="prlab">PR</span>
+        <h3>🧑‍🔧 時間がかかる場所だけ、プロに頼む手も</h3>
+        <p style="font-size:14px;color:var(--sub)" id="proText">レンジフード・換気扇、エアコン、浴室は、家族でやると半日がかりになりやすい場所です。年末は予約が混み合いやすいので、頼むなら早めの予約がおすすめです。</p>
+        <!-- AFFILIATE:house_cleaning -->
+        <!-- AFFILIATE:aircon_cleaning -->
+        <!-- AFFILIATE:kajidaiko -->
+        <span class="soon">🔗 比較できるサービスを準備中です</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pr">
+        <span class="prlab">PR</span>
+        <h3>🧴 あると早く終わる道具</h3>
+        <ul><li>メラミンスポンジ（水あか・手あか）</li><li>マイクロファイバークロス（窓・照明）</li><li>アルカリ電解水（キッチンの油汚れ）</li><li>伸縮ハンディモップ（高い所のほこり）</li></ul>
+        <!-- AFFILIATE:cleaning_goods -->
+        <span class="soon">🔗 おすすめの商品リンクを準備中です</span>
+        <p style="font-size:12px;color:var(--sub);margin-top:8px">洗剤は製品の表示に従って使ってください。「まぜるな危険」の塩素系と酸性タイプは同時に使わず、換気をしながら掃除しましょう。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">💡</span>早く終わる大掃除のコツ</h2>
+    <ul class="tips">
+      <li><b>上から下へ、奥から手前へ。</b>照明やエアコンのほこりを先に落とすと、床掃除が1回で済みます。</li>
+      <li><b>乾いた場所 → 水回りの順。</b>分担表もこの順番に並べています。</li>
+      <li><b>つけ置きを先に仕込む。</b>換気扇のフィルターや五徳は最初に浸けておき、最後に洗うと楽です。</li>
+      <li><b>窓は曇りの日が向いています。</b>直射日光だと洗剤が乾いて筋が残りやすくなります。</li>
+      <li><b>高い所・脚立の作業は大人が。</b>子どもには床・低い棚・玄関などを任せると安全です。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">❓</span>よくある質問</h2>
+    <details><summary>大掃除はいつやる人が多い？</summary><p>大手清掃サービスの2024年の調査では、予定日として多かったのは12月29日・28日・30日でした。年末ぎりぎりは疲れやすいので、場所を分けて12月の週末2回に分けるのもおすすめです。</p></details>
+    <details><summary>所要時間の目安はどうやって出している？</summary><p>場所ごとの一般的な作業時間（家の広さで補正）を目安にしています。汚れ具合や道具によって変わるので、終わらない場所は「次の週末」に回してください。</p></details>
+    <details><summary>子どもにはどこを任せればいい？</summary><p>玄関のたたき、低い棚のほこり取り、自分の部屋のおもちゃの片付け、テーブル拭きなどが向いています。このツールでは、子どもに洗剤や高所の作業を割り当てないようにしています。</p></details>
+    <details><summary>一人暮らしでも使える？</summary><p>使えます。参加者を1人にすると、場所の順番と終わる時刻がわかるタイムテーブルになります。</p></details>
+    <details><summary>入力したデータはどこかに送られる？</summary><p>送られません。計算はすべてこの画面の中で行い、ページを閉じると消えます。</p></details>
+  </section>
+
+  <section class="card links">
+    <h2><span class="ico">🧰</span>年末年始に使えるツール</h2>
+    <a href="../nenga-hitokoto-2027/"><span>🐑</span>年賀状ひとことジェネレーター 2027</a>
+    <a href="../furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額シミュレーター 2026</a>
+    <a href="../warikan-keisha/"><span>🍻</span>忘年会の傾斜割り勘計算（幹事用）</a>
+  </section>
+  <footer>© ひとりラボ ・ 時間は目安です。安全に配慮して作業してください。</footer>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+// ---- theme
+var root=document.documentElement;
+function curDark(){var t=root.getAttribute("data-theme");if(t)return t==="dark";return window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches}
+function setModeLabel(){$("mode").textContent=curDark()?"☀️ ライト":"🌙 ダーク"}
+$("mode").onclick=function(){root.setAttribute("data-theme",curDark()?"light":"dark");setModeLabel()};
+setModeLabel();
+
+// ---- data
+// m: 1K基準の分, lv: 1-3 体力, kid: 子どもOK, hi: 高所/脚立, wet: 水回り, ord: 作業順（上→下・乾→湿）, pro: プロ依頼向き
+var PLACES=[
+ {id:"light",e:"💡",n:"照明・カーテンレール",d:"ほこりを上から落とす",m:15,lv:1,hi:1,ord:1,rec:1},
+ {id:"aircon",e:"❄️",n:"エアコン（フィルター）",d:"フィルター洗い・外側拭き",m:25,lv:2,hi:1,ord:2,pro:1,rec:1,per:1},
+ {id:"window",e:"🪟",n:"窓・網戸・サッシ",d:"内外のガラスとレール",m:45,lv:3,ord:3,rec:1,per:1},
+ {id:"living",e:"🛋️",n:"リビング・ダイニング",d:"棚・テーブル・床",m:35,lv:1,kid:1,ord:4,rec:1},
+ {id:"bed",e:"🛏️",n:"寝室・子ども部屋",d:"片付け・ほこり・床",m:30,lv:1,kid:1,ord:5,per:1},
+ {id:"closet",e:"🗄️",n:"クローゼット・押入れ",d:"不要品を分けて整理",m:40,lv:2,ord:6},
+ {id:"fridge",e:"🧊",n:"冷蔵庫",d:"中身チェック・棚拭き",m:25,lv:1,ord:7,rec:1},
+ {id:"kitchen",e:"🍳",n:"キッチン（コンロ・シンク）",d:"油汚れ・五徳・排水口",m:50,lv:2,wet:1,ord:8,rec:1},
+ {id:"hood",e:"🌀",n:"レンジフード・換気扇",d:"フィルターのつけ置き",m:50,lv:3,hi:1,wet:1,ord:9,pro:1,rec:1},
+ {id:"bath",e:"🛁",n:"浴室",d:"カビ・水あか・排水口",m:50,lv:3,wet:1,ord:10,pro:1,rec:1},
+ {id:"wash",e:"🚰",n:"洗面所・洗濯機まわり",d:"鏡・ボウル・糸くずフィルター",m:25,lv:1,wet:1,ord:11},
+ {id:"toilet",e:"🚽",n:"トイレ",d:"便器・床・壁",m:20,lv:2,wet:1,ord:12,rec:1},
+ {id:"veranda",e:"🌿",n:"ベランダ",d:"排水口・手すり・床",m:30,lv:2,ord:13},
+ {id:"entrance",e:"👟",n:"玄関・靴箱",d:"たたき掃き・靴の整理",m:20,lv:1,kid:1,ord:14,rec:1},
+ {id:"floor",e:"🧹",n:"床の仕上げ（全部屋）",d:"掃除機→水拭き",m:30,lv:1,kid:1,ord:15,rec:1},
+ {id:"trash",e:"🗑️",n:"ごみの分別・まとめ出し",d:"粗大ごみの確認も",m:15,lv:1,kid:1,ord:16,rec:1}
+];
+var HOUSES=[{id:"1k",n:"1K・1R",f:1,rooms:1,ac:1,win:1},{id:"1ldk",n:"1LDK",f:1.3,rooms:2,ac:2,win:2},{id:"2ldk",n:"2LDK",f:1.45,rooms:3,ac:2,win:3},{id:"3ldk",n:"3LDK",f:1.9,rooms:4,ac:3,win:4},{id:"house",n:"一戸建て",f:2.3,rooms:5,ac:4,win:5}];
+var TYPES=[{id:"adult",n:"大人",e:"🧑"},{id:"elder",n:"シニア",e:"👵"},{id:"teen",n:"中高生",e:"🧑‍🎓"},{id:"kid",n:"小学生以下",e:"🧒"}];
+var COLORS=["#7c3aed","#06b6d4","#f59e0b","#ec4899","#10b981","#3b82f6","#ef4444","#84cc16"];
+var state={members:[{name:"パパ",type:"adult",h:4},{name:"ママ",type:"adult",h:4},{name:"子ども",type:"kid",h:2}],house:"2ldk",sel:{},how:"fair",seed:1};
+PLACES.forEach(function(p){if(p.rec)state.sel[p.id]=true});
+
+// ---- date default: next 12/28 (or today if already late Dec)
+function pad(n){return(n<10?"0":"")+n}
+var now=new Date();
+var y=now.getMonth()===11&&now.getDate()>28?now.getFullYear()+1:now.getFullYear();
+$("day").value=y+"-12-28";
+function updDays(){
+  var v=$("day").value;if(!v){$("days").textContent="--";return}
+  var p=v.split("-");var t=new Date(+p[0],+p[1]-1,+p[2]);var t0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var d=Math.round((t-t0)/864e5);
+  if(d>0){$("days").textContent=d;$("dlabel").textContent="日"}else if(d===0){$("days").textContent="今日";$("dlabel").textContent="！"}else{$("days").textContent="--";$("dlabel").textContent="（日付を選び直してください）"}
+}
+$("day").onchange=updDays;updDays();
+
+// ---- members UI
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function renderMembers(){
+  var h="";
+  state.members.forEach(function(m,i){
+    h+='<div class="member"><input type="text" maxlength="10" value="'+esc(m.name)+'" data-i="'+i+'" aria-label="名前"><button class="del" data-del="'+i+'" aria-label="削除">×</button><div class="mrow">';
+    TYPES.forEach(function(t){h+='<button class="chip'+(m.type===t.id?" on":"")+'" data-t="'+t.id+'" data-i="'+i+'">'+t.e+" "+t.n+'</button>'});
+    h+='<span class="stepper" style="margin-left:auto"><button data-h="-1" data-i="'+i+'" aria-label="減らす">−</button><output>'+fmtH(m.h)+'</output><button data-h="1" data-i="'+i+'" aria-label="増やす">＋</button></span></div></div>';
+  });
+  $("members").innerHTML=h;
+}
+function fmtH(h){var mm=Math.round(h*60);var a=Math.floor(mm/60),b=mm%60;return(a?a+"時間":"")+(b?b+"分":"")||"0分"}
+$("members").addEventListener("input",function(e){if(e.target.dataset.i!=null)state.members[+e.target.dataset.i].name=e.target.value});
+$("members").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;var i=+b.dataset.i;
+  if(b.dataset.del!=null){if(state.members.length<=1){toast("1人は必要です");return}state.members.splice(+b.dataset.del,1)}
+  else if(b.dataset.t){state.members[i].type=b.dataset.t}
+  else if(b.dataset.h){var m=state.members[i];m.h=Math.min(10,Math.max(0.5,m.h+0.5*(+b.dataset.h)))}
+  renderMembers();
+});
+$("addM").onclick=function(){if(state.members.length>=8){toast("8人までです");return}state.members.push({name:"メンバー"+(state.members.length+1),type:"adult",h:2});renderMembers()};
+
+// ---- house & places
+function renderHouse(){$("house").innerHTML=HOUSES.map(function(x){return'<button class="chip'+(state.house===x.id?" on":"")+'" data-v="'+x.id+'">'+x.n+'</button>'}).join("")}
+$("house").onclick=function(e){var b=e.target.closest("button");if(!b)return;state.house=b.dataset.v;renderHouse();renderPlaces()};
+function houseObj(){for(var i=0;i<HOUSES.length;i++)if(HOUSES[i].id===state.house)return HOUSES[i];return HOUSES[0]}
+function minsOf(p){var H=houseObj();var f=H.f;if(p.id==="aircon")return p.m*H.ac*0.9;if(p.id==="window")return p.m*H.win*0.7;if(p.id==="bed")return p.m*Math.max(1,H.rooms-1)*0.8;if(p.id==="fridge"||p.id==="toilet"&&H.id!=="house"||p.id==="hood"||p.id==="trash")return p.m*(p.id==="trash"?f:1);return p.m*f}
+function r5(x){return Math.max(5,Math.round(x/5)*5)}
+function renderPlaces(){
+  $("places").innerHTML=PLACES.map(function(p){return'<button class="place'+(state.sel[p.id]?" on":"")+'" data-p="'+p.id+'"><span class="e">'+p.e+'</span><span>'+p.n+'<small>約'+r5(minsOf(p))+'分 ・ '+p.d+'</small></span></button>'}).join("");
+}
+$("places").onclick=function(e){var b=e.target.closest("button");if(!b)return;var id=b.dataset.p;state.sel[id]=!state.sel[id];b.classList.toggle("on",!!state.sel[id])};
+$("allOn").onclick=function(){PLACES.forEach(function(p){state.sel[p.id]=true});renderPlaces()};
+$("allOff").onclick=function(){state.sel={};renderPlaces()};
+$("recOn").onclick=function(){state.sel={};PLACES.forEach(function(p){if(p.rec)state.sel[p.id]=true});renderPlaces()};
+$("how").onclick=function(e){var b=e.target.closest("button");if(!b)return;state.how=b.dataset.v;[].forEach.call($("how").children,function(c){c.classList.toggle("on",c===b)})};
+
+// ---- assignment
+function rnd(){state.seed=(state.seed*9301+49297)%233280;return state.seed/233280}
+function canDo(m,p){
+  if(m.type==="kid")return !!p.kid;           // 子どもは洗剤・高所なし
+  if(m.type==="elder")return !p.hi&&p.lv<3;   // シニアは脚立・重労働なし
+  if(m.type==="teen")return !p.hi||p.id==="light";
+  return true;
+}
+function speed(m){return m.type==="kid"?0.6:m.type==="elder"?0.8:m.type==="teen"?0.9:1}
+function skillScore(m,p){ // 得意を活かす：体力のいる所は大人、軽い所はシニア・子ども
+  if(m.type==="adult")return p.lv;
+  if(m.type==="teen")return p.lv>=2?2:1.5;
+  return 4-p.lv;
+}
+function build(){
+  var ms=state.members.map(function(m,i){return{name:(m.name||"").trim()||("メンバー"+(i+1)),type:m.type,cap:m.h*60,load:0,tasks:[],c:COLORS[i%COLORS.length],i:i}});
+  var tasks=PLACES.filter(function(p){return state.sel[p.id]}).map(function(p){return{p:p,min:r5(minsOf(p))}});
+  if(!tasks.length){toast("掃除する場所を選んでください");return null}
+  // 大きい順に割り当て（くじ引きはシャッフル）
+  if(state.how==="lucky"){for(var k=tasks.length-1;k>0;k--){var j=Math.floor(rnd()*(k+1));var t=tasks[k];tasks[k]=tasks[j];tasks[j]=t}}
+  else tasks.sort(function(a,b){return b.min-a.min});
+  var left=[];
+  tasks.forEach(function(t){
+    var cand=ms.filter(function(m){return canDo(m,t.p)});
+    if(!cand.length){left.push(t);return}
+    var best=null,bs=1e9;
+    cand.forEach(function(m){
+      var cost=t.min/speed(m);
+      var ratio=(m.load+cost)/Math.max(30,m.cap);
+      var s=ratio;
+      if(state.how==="skill")s=ratio-skillScore(m,t.p)*0.18;
+      if(state.how==="lucky")s=ratio+rnd()*0.5;
+      if(s<bs){bs=s;best=m}
+    });
+    var cost2=r5(t.min/speed(best));
+    best.tasks.push({p:t.p,min:cost2});best.load+=cost2;
+  });
+  ms.forEach(function(m){m.tasks.sort(function(a,b){return a.p.ord-b.p.ord})});
+  return{ms:ms,left:left,count:tasks.length};
+}
+function addMin(hm,min){var p=hm.split(":");var t=(+p[0])*60+(+p[1])+min;var d=Math.floor(t/1440);t=t%1440;return pad(Math.floor(t/60))+":"+pad(t%60)+(d?"（翌日）":"")}
+var last=null;
+function render(res){
+  last=res;var st=$("start").value||"09:30";
+  var maxLoad=0,sum=0;res.ms.forEach(function(m){if(m.load>maxLoad)maxLoad=m.load;sum+=m.load});
+  var breakMin=maxLoad>150?Math.floor(maxLoad/120)*10:0;
+  $("sTask").textContent=res.count;
+  $("sTime").textContent=fmtH(Math.round(sum/res.ms.length/5)*5/60).replace("時間","h").replace("分","m");
+  $("sEnd").textContent=addMin(st,maxLoad+breakMin).replace("（翌日）","+");
+  var w="";
+  var over=res.ms.filter(function(m){return m.load>m.cap+15});
+  if(over.length)w+='<div class="alert">⏳ '+over.map(function(m){return esc(m.name)}).join("・")+' さんは空き時間を超えそうです。場所を減らすか、プロに頼む場所を作ると予定どおり終わります。</div>';
+  if(res.left.length)w+='<div class="alert">🪜 「'+res.left.map(function(t){return t.p.n}).join("、")+'」は高い所や力のいる作業のため、大人の参加者がいないと割り当てられません。</div>';
+  if(breakMin)w+='<div class="alert" style="background:var(--chip);border-color:var(--line);color:var(--ink)">☕ 2時間ごとに10分の休憩を入れた終了時刻です。</div>';
+  $("warn").innerHTML=w;
+  var h="";
+  res.ms.forEach(function(m){
+    var T=TYPES.filter(function(t){return t.id===m.type})[0];
+    var pct=Math.min(100,Math.round(m.load/Math.max(1,m.cap)*100));
+    h+='<div class="pcard" style="--c:'+m.c+'"><div class="phead"><div class="pname"><span class="av">'+T.e+'</span>'+esc(m.name)+'</div><div class="ptime">'+fmtH(m.load/60)+' / 空き '+fmtH(m.cap/60)+'</div></div><div class="bar"><i style="width:0" data-w="'+pct+'"></i></div>';
+    if(!m.tasks.length)h+='<div class="task"><div class="tt">今回はお休み（応援・買い出し・ごみ出し係）</div></div>';
+    var cur=0;
+    m.tasks.forEach(function(t){
+      var tags=(t.p.pro?'<span class="tag pro">プロ依頼も◎</span>':"")+(t.p.kid&&m.type==="kid"?'<span class="tag kid">任せやすい</span>':"")+(t.p.hi?'<span class="tag hi">脚立注意</span>':"");
+      h+='<label class="task"><input type="checkbox"><div class="tt"><b>'+t.p.e+" "+t.p.n+'</b>'+tags+'<small>'+t.p.d+' ・ 約'+t.min+'分</small></div><span class="clock">'+addMin(st,cur)+'〜</span></label>';
+      cur+=t.min;
+    });
+    h+='</div>';
+  });
+  $("plist").innerHTML=h;
+  var pros=res.ms.reduce(function(a,m){return a.concat(m.tasks.filter(function(t){return t.p.pro}).map(function(t){return t.p.n}))},[]);
+  if(pros.length)$("proText").textContent="今回の分担では「"+pros.join("、")+"」が時間のかかる場所です。ここだけプロに頼むと、家族の作業時間を大きく減らせます。年末は予約が混み合いやすいので、頼むなら12月前半までの予約がおすすめです。";
+  $("result").classList.remove("show");void $("result").offsetWidth;$("result").classList.add("show");
+  setTimeout(function(){[].forEach.call(document.querySelectorAll(".bar i"),function(i){i.style.width=i.dataset.w+"%"})},60);
+  var txt=shareText(res,st);
+  $("lineBtn").href="https://line.me/R/share?text="+encodeURIComponent(txt);
+}
+function shareText(res,st){
+  var d=$("day").value?$("day").value.replace(/^\d+-0?(\d+)-0?(\d+)$/,"$1/$2"):"";
+  var s="【大掃除の分担表】"+(d?d+" ":"")+st+"スタート\n";
+  res.ms.forEach(function(m){s+="\n■"+m.name+"（約"+fmtH(m.load/60)+"）\n";m.tasks.forEach(function(t){s+="・"+t.p.n+"\n"});if(!m.tasks.length)s+="・応援係\n"});
+  s+="\n作成：https://yope1016.github.io/apps/oosouji-buntan-2026/";
+  return s;
+}
+$("go").onclick=function(){var r=build();if(!r)return;render(r);setTimeout(function(){$("result").scrollIntoView({behavior:"smooth",block:"start"})},80);burst()};
+$("reroll").onclick=function(){state.seed=Math.floor(Math.random()*233280);if(state.how!=="lucky"){state.how="lucky";[].forEach.call($("how").children,function(c){c.classList.toggle("on",c.dataset.v==="lucky")})}var r=build();if(r){render(r);toast("くじ引きで組み替えました🎲")}};
+$("toTop").onclick=function(){window.scrollTo({top:0,behavior:"smooth"})};
+$("start").onchange=function(){if(last)render(last)};
+$("copyBtn").onclick=function(){if(!last)return;var t=shareText(last,$("start").value||"09:30");
+  function ok(){toast("コピーしました")}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fallback)}else fallback();
+  function fallback(){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");ok()}catch(e){toast("コピーできませんでした")}document.body.removeChild(a)}
+};
+$("plist").addEventListener("change",function(e){
+  if(e.target.type!=="checkbox")return;e.target.closest(".task").classList.toggle("done",e.target.checked);
+  var all=document.querySelectorAll("#plist input[type=checkbox]"),n=0;[].forEach.call(all,function(c){if(c.checked)n++});
+  if(n===all.length&&n>0){burst();toast("大掃除コンプリート！おつかれさまでした🎉")}
+});
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove("show")},2200)}
+function burst(){if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;var em=["✨","🫧","🧽","⭐","🧹"];for(var i=0;i<14;i++){var s=document.createElement("span");s.className="confetti";s.textContent=em[i%em.length];s.style.left=Math.random()*100+"vw";s.style.animationDelay=Math.random()*.4+"s";document.body.appendChild(s);setTimeout(function(x){return function(){x.remove()}}(s),2400)}}
+renderMembers();renderHouse();renderPlaces();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

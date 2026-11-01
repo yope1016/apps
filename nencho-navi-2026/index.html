@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>年末調整 書き方ナビ 2026（令和8年分）｜出す書類と書く欄がわかる</title>
+<meta name="description" content="令和8年分の年末調整に対応。質問に答えるだけで、提出する申告書・書く欄・書く金額がわかります。基礎控除104万円・扶養の年収136万円などの新ルールに対応。登録不要・無料。">
+<meta name="theme-color" content="#4338ca">
+<style>
+:root{
+  --bg:#f5f6fb;--bg2:#eef0fa;--card:#ffffff;--ink:#1b1d2e;--sub:#5d6380;--line:#e3e6f2;
+  --pri:#4f46e5;--pri2:#0ea5a4;--acc:#f59e0b;--ok:#10b981;--warn:#ef4444;
+  --chip:#eef0ff;--chipOn:#4f46e5;--shadow:0 10px 30px -12px rgba(40,44,90,.25);
+  --grad:linear-gradient(135deg,#4338ca 0%,#6d28d9 45%,#0ea5a4 100%);
+  --r:20px;
+}
+:root[data-theme="dark"]{
+  --bg:#0d0f1a;--bg2:#141729;--card:#181b2f;--ink:#eef0ff;--sub:#a3a9c7;--line:#2a2e4a;
+  --chip:#22264a;--shadow:0 10px 30px -12px rgba(0,0,0,.6);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d0f1a;--bg2:#141729;--card:#181b2f;--ink:#eef0ff;--sub:#a3a9c7;--line:#2a2e4a;
+    --chip:#22264a;--shadow:0 10px 30px -12px rgba(0,0,0,.6);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s}
+a{color:var(--pri)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+/* hero */
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:28px 0 84px}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.25}
+.hero:before{width:280px;height:280px;background:#fff;top:-120px;right:-80px}
+.hero:after{width:200px;height:200px;background:#22d3ee;bottom:-90px;left:-60px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em;opacity:.95}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px}
+.hero h1{font-size:clamp(26px,7vw,40px);line-height:1.25;font-weight:900;letter-spacing:.01em;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.45em;font-weight:700;opacity:.9;margin-bottom:6px;letter-spacing:.12em}
+.hero p.lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;backdrop-filter:blur(4px)}
+.doc-float{position:absolute;right:18px;bottom:18px;width:86px;height:110px;background:rgba(255,255,255,.92);border-radius:10px;box-shadow:0 20px 40px -10px rgba(0,0,0,.35);transform:rotate(8deg);animation:float 5s ease-in-out infinite;z-index:1;padding:12px 10px}
+.doc-float i{display:block;height:6px;border-radius:3px;background:#c7d2fe;margin-bottom:8px}
+.doc-float i:nth-child(2){width:70%}.doc-float i:nth-child(4){width:55%;background:#99f6e4}
+.doc-float b{position:absolute;right:-10px;bottom:-10px;width:36px;height:36px;border-radius:50%;background:#10b981;color:#fff;display:grid;place-items:center;font-size:20px;box-shadow:0 6px 14px rgba(16,185,129,.5)}
+@keyframes float{50%{transform:rotate(4deg) translateY(-8px)}}
+@media(max-width:480px){.doc-float{width:62px;height:80px;right:10px;bottom:12px;padding:8px}.doc-float i{height:4px;margin-bottom:6px}}
+/* cards */
+main{margin-top:-60px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line)}
+.card h2{font-size:19px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ico{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:0 0 38px;background:var(--chip)}
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:600px){.news{grid-template-columns:1fr}}
+.nw{background:var(--bg2);border-radius:16px;padding:14px;border:1px solid var(--line)}
+.nw .big{font-size:26px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+.nw .t{font-size:13px;font-weight:800}
+.nw .s{font-size:12px;color:var(--sub)}
+.note{font-size:12px;color:var(--sub);margin-top:10px}
+/* stepper */
+.steps{display:flex;gap:6px;margin-bottom:16px}
+.steps span{flex:1;height:6px;border-radius:3px;background:var(--line);transition:background .4s}
+.steps span.on{background:var(--grad)}
+.stepname{font-size:12px;color:var(--sub);font-weight:700;margin-bottom:4px}
+.q{margin:18px 0 8px;font-weight:800;font-size:15px}
+.q small{display:block;font-weight:500;color:var(--sub);font-size:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:10px 16px;font-size:14px;font-weight:700;cursor:pointer;min-height:44px;transition:all .2s;font-family:inherit}
+.chip.on{background:var(--chipOn);border-color:var(--chipOn);color:#fff;box-shadow:0 6px 16px -6px rgba(79,70,229,.7);transform:translateY(-1px)}
+.num{display:flex;align-items:center;gap:8px;margin-top:8px}
+.num button{width:48px;height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--chip);color:var(--ink);font-size:22px;font-weight:800;cursor:pointer;flex:0 0 48px}
+.num input{flex:1;min-width:0;height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;font-weight:800;text-align:right;padding:0 12px;font-family:inherit}
+.num .u{font-weight:800;color:var(--sub)}
+input:focus,button:focus-visible{outline:3px solid rgba(79,70,229,.35);outline-offset:1px}
+.hint{font-size:12px;color:var(--sub);margin-top:6px}
+.fam{border:1.5px dashed var(--line);border-radius:16px;padding:14px;margin-top:12px;position:relative;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:scale(.97)}}
+.fam .del{position:absolute;top:8px;right:8px;border:none;background:transparent;color:var(--sub);font-size:13px;cursor:pointer;min-height:36px;padding:0 8px;font-family:inherit}
+.fam .tag{display:inline-block;font-size:12px;font-weight:800;border-radius:8px;padding:2px 8px;margin-top:10px}
+.tag.g{background:rgba(16,185,129,.15);color:#059669}.tag.y{background:rgba(245,158,11,.18);color:#b45309}.tag.r{background:rgba(239,68,68,.14);color:#dc2626}.tag.b{background:rgba(79,70,229,.14);color:#4f46e5}
+:root[data-theme="dark"] .tag.g{color:#34d399}:root[data-theme="dark"] .tag.y{color:#fbbf24}:root[data-theme="dark"] .tag.r{color:#f87171}:root[data-theme="dark"] .tag.b{color:#a5b4fc}
+.add{width:100%;margin-top:12px;border:1.5px dashed var(--pri);background:transparent;color:var(--pri);border-radius:16px;min-height:52px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit}
+.nav{display:flex;gap:10px;margin-top:22px}
+.btn{flex:1;min-height:54px;border-radius:16px;border:none;font-weight:900;font-size:16px;cursor:pointer;font-family:inherit;transition:transform .15s}
+.btn:active{transform:scale(.98)}
+.btn.main{background:var(--grad);color:#fff;box-shadow:0 12px 24px -10px rgba(79,70,229,.8)}
+.btn.ghost{background:var(--chip);color:var(--ink);flex:0 0 32%}
+.pane{display:none;animation:fade .35s ease}.pane.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+/* result */
+.hero-res{background:var(--grad);color:#fff;border-radius:var(--r);padding:22px 18px;position:relative;overflow:hidden}
+.hero-res:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.12);right:-50px;top:-60px}
+.hero-res .lbl{font-size:13px;font-weight:700;opacity:.9}
+.hero-res .amt{font-size:clamp(36px,11vw,54px);font-weight:900;line-height:1.1;letter-spacing:-.01em}
+.hero-res .amt small{font-size:.4em;margin-left:4px}
+.hero-res .sub{font-size:13px;opacity:.92;margin-top:6px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.kpi{background:rgba(255,255,255,.16);border-radius:14px;padding:10px 12px}
+.kpi b{display:block;font-size:20px;font-weight:900}
+.kpi span{font-size:11px;opacity:.9;line-height:1.5;display:block}
+.docs{margin-top:14px}
+.doc{border:1px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden;background:var(--card)}
+.doc summary{list-style:none;cursor:pointer;padding:14px 14px;display:flex;align-items:center;gap:12px;font-weight:800}
+.doc summary::-webkit-details-marker{display:none}
+.doc .chk{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;flex:0 0 28px;font-size:15px;color:#fff}
+.doc.need .chk{background:var(--ok)}.doc.skip .chk{background:var(--line);color:var(--sub)}
+.doc.skip summary{color:var(--sub);font-weight:700}
+.doc summary .st{margin-left:auto;font-size:11px;border-radius:8px;padding:2px 8px;white-space:nowrap}
+.doc.need .st{background:rgba(16,185,129,.15);color:#059669}.doc.skip .st{background:var(--bg2);color:var(--sub)}
+.doc .body{padding:0 14px 14px;font-size:14px}
+.row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 10px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:none}
+.row .k{color:var(--sub);flex:1 1 auto;min-width:0}.row .v{font-weight:800;text-align:right;margin-left:auto;max-width:100%}
+.row .v.hl{color:var(--pri);font-size:16px}
+.alert{border-radius:16px;padding:14px;margin-top:12px;font-size:14px;display:flex;gap:10px}
+.alert.y{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4)}
+.alert.b{background:rgba(79,70,229,.08);border:1px solid rgba(79,70,229,.3)}
+.alert.r{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.35)}
+.alert .e{font-size:20px;line-height:1.3}
+.pr{border:1.5px solid var(--line);border-radius:18px;padding:16px;margin-top:12px;background:var(--bg2);position:relative}
+.pr .prl{position:absolute;top:10px;right:12px;font-size:10px;font-weight:900;border:1px solid var(--sub);color:var(--sub);border-radius:6px;padding:0 6px;letter-spacing:.08em}
+.pr h3{font-size:15px;font-weight:900;margin-bottom:4px;padding-right:36px}
+.pr p{font-size:13px;color:var(--sub)}
+.pr .soon{display:inline-block;margin-top:8px;font-size:12px;font-weight:800;color:var(--sub);background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:6px 10px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.acts .chip{flex:1;text-align:center}
+.links{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:480px){.links{grid-template-columns:1fr}}
+.lk{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:12px;min-height:60px;transition:transform .2s}
+.lk:hover{transform:translateY(-2px)}
+.lk b{font-size:14px;display:block}.lk span{font-size:12px;color:var(--sub)}
+.faq details{border-bottom:1px solid var(--line);padding:12px 0}
+.faq summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;gap:8px}
+.faq summary:before{content:"Q";color:var(--pri);font-weight:900}
+.faq p{font-size:14px;color:var(--sub);margin-top:8px}
+footer{text-align:center;color:var(--sub);font-size:12px;padding:10px 16px 40px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:#111827;color:#fff;padding:12px 18px;border-radius:14px;font-weight:700;font-size:14px;transition:transform .3s;z-index:20}
+.toast.on{transform:translateX(-50%) translateY(0)}
+@media print{.hero,.nav,.acts,.pr,.links,.faq,.mode,#pw{display:none!important}main{margin-top:0}.card{box-shadow:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<!-- SEO/OGP (webfactory 2026-11-01 14:30 公開前チェック) -->
+<link rel="canonical" href="https://yope1016.github.io/apps/nencho-navi-2026/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📝%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://yope1016.github.io/apps/nencho-navi-2026/">
+<meta property="og:title" content="年末調整 書き方ナビ 2026（令和8年分）｜出す書類と書く欄がわかる">
+<meta property="og:description" content="質問に答えるだけで、年末調整で出す書類と書く欄・金額がわかる。令和8年分の改正に対応。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<meta name="twitter:title" content="年末調整 書き方ナビ 2026（令和8年分）｜出す書類と書く欄がわかる">
+<meta name="twitter:description" content="質問に答えるだけで、年末調整で出す書類と書く欄・金額がわかる。令和8年分の改正に対応。">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "年末調整 書き方ナビ 2026（令和8年分）", "url": "https://yope1016.github.io/apps/nencho-navi-2026/", "description": "令和8年分の年末調整に対応。質問に答えるだけで、提出する申告書・書く欄・書く金額がわかります。基礎控除104万円・扶養の年収136万円などの新ルールに対応。登録不要・無料。", "applicationCategory": "FinanceApplication", "operatingSystem": "All", "inLanguage": "ja", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "今年の年末調整は去年と何が違いますか？", "acceptedAnswer": {"@type": "Answer", "text": "令和8年分から、基礎控除が最大104万円、給与所得控除の最低額が74万円に上がり、家族を扶養にできる所得の上限が58万円→62万円（給与だけなら年収136万円）になりました。また、23歳未満の扶養親族がいる人は、一般の生命保険料控除（新契約）の上限が4万円→6万円になります。改正は12月1日施行のため、年末調整でまとめて精算されます。"}}, {"@type": "Question", "name": "大学生の子どものバイト代が136万円を超えそうです", "acceptedAnswer": {"@type": "Answer", "text": "12月31日時点で19〜22歳の子なら、給与収入197万円まで「特定親族特別控除」で親が控除を受けられます（給与159万円までは満額63万円、それを超えると段階的に減額）。「特定親族特別控除申告書」を提出します。ただし、社会保険の扶養（健康保険）は別の基準なので、勤務先の健康保険組合に確認してください。"}}, {"@type": "Question", "name": "「178万円の壁」とは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "給与所得控除74万円＋基礎控除104万円＝178万円まで、所得税がかからないという目安です。住民税や社会保険（106万・130万円の壁）、会社の家族手当の基準とは別物なので注意してください。"}}, {"@type": "Question", "name": "年末調整をしたのに確定申告が必要な人は？", "acceptedAnswer": {"@type": "Answer", "text": "給与が2,000万円を超える人、給与以外の所得が20万円を超える人、住宅ローン控除の1年目の人、医療費控除を受ける人、ふるさと納税を6自治体以上にした人（ワンストップ特例が使えない）などです。"}}, {"@type": "Question", "name": "入力した内容はどこかに送信されますか？", "acceptedAnswer": {"@type": "Answer", "text": "送信されません。計算はすべてお使いの端末の中で行われ、ページを閉じると消えます。名前やマイナンバーの入力も不要です。"}}]}</script>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar"><div class="brand">ひとりラボ ツール</div><button class="mode" id="mode" aria-label="表示モード切り替え">🌙 ダーク</button></div>
+    <h1><small>令和8年分（2026年）対応</small>年末調整<br>書き方ナビ</h1>
+    <p class="lead">質問に答えるだけで、<b>出す書類・書く欄・書く金額</b>がわかります。今年の「178万円の壁」の新ルールにも対応。</p>
+    <div class="badges"><span class="badge">⏱ 約3分</span><span class="badge">🔒 入力は端末の中だけ</span><span class="badge">登録不要・無料</span></div>
+  </div>
+  <div class="doc-float" aria-hidden="true"><i></i><i></i><i></i><i></i><b>✓</b></div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2><span class="ico">🆕</span>今年（令和8年分）変わった3つのこと</h2>
+    <div class="news">
+      <div class="nw"><div class="t">基礎控除が最大</div><div class="big">104万円</div><div class="s">所得に応じて62万〜104万円。去年は最大95万円</div></div>
+      <div class="nw"><div class="t">家族を扶養にできる年収</div><div class="big">136万円</div><div class="s">給与だけの場合。去年は123万円まで</div></div>
+      <div class="nw"><div class="t">23歳未満の子がいる人</div><div class="big">最大6万円</div><div class="s">一般の生命保険料控除（新契約）が4万→6万円に</div></div>
+    </div>
+    <p class="note">改正は令和8年12月1日施行。11月までの毎月の天引きは従来どおりで、差額は12月の年末調整でまとめて精算されます（還付が増える人が多い見込み）。</p>
+  </section>
+
+  <section class="card" id="wiz">
+    <div class="steps" id="steps"><span class="on"></span><span></span><span></span><span></span></div>
+
+    <!-- STEP 1 -->
+    <div class="pane on" data-step="1">
+      <div class="stepname">STEP 1 / 4　あなたのこと</div>
+      <h2><span class="ico">🙋</span>あなたの今年の給与</h2>
+      <div class="q">この会社は「メインの勤め先」ですか？<small>2か所以上で働いている人は、メインの1社でだけ年末調整をします</small></div>
+      <div class="chips" data-k="main"><button class="chip on" data-v="1">はい（メイン）</button><button class="chip" data-v="0">いいえ（副業・掛け持ち先）</button></div>
+      <div class="q">今年1年間の給与（税込・ボーナス込み）の見込み<small>源泉徴収票の「支払金額」にあたる額。だいたいでOK</small></div>
+      <div class="num"><button type="button" data-step-for="inc" data-d="-10">−</button><input id="inc" inputmode="numeric" value="450" aria-label="給与の見込み（万円）"><span class="u">万円</span><button type="button" data-step-for="inc" data-d="10">＋</button></div>
+      <div class="chips" style="margin-top:10px" data-set="inc"><button class="chip" data-v="200">200万</button><button class="chip" data-v="350">350万</button><button class="chip" data-v="500">500万</button><button class="chip" data-v="700">700万</button><button class="chip" data-v="1000">1000万</button></div>
+      <div class="q">給与以外の所得（副業・年金など）はありますか？</div>
+      <div class="chips" data-k="other"><button class="chip on" data-v="0">ない／20万円以下</button><button class="chip" data-v="1">20万円を超える</button></div>
+      <div class="nav"><button class="btn main" data-go="2">次へ：配偶者 →</button></div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="pane" data-step="2">
+      <div class="stepname">STEP 2 / 4　配偶者</div>
+      <h2><span class="ico">💑</span>配偶者（夫・妻）について</h2>
+      <div class="q">配偶者はいますか？<small>法律上の婚姻関係にある人。事実婚は対象外です</small></div>
+      <div class="chips" data-k="sp"><button class="chip on" data-v="0">いない</button><button class="chip" data-v="1">いる</button></div>
+      <div id="spBox" style="display:none">
+        <div class="q">配偶者の今年の給与（税込）の見込み<small>パート代など。給与以外の収入がある場合は下の注意を確認</small></div>
+        <div class="num"><button type="button" data-step-for="spinc" data-d="-10">−</button><input id="spinc" inputmode="numeric" value="100" aria-label="配偶者の給与（万円）"><span class="u">万円</span><button type="button" data-step-for="spinc" data-d="10">＋</button></div>
+        <div class="chips" style="margin-top:10px" data-set="spinc"><button class="chip" data-v="0">0（専業）</button><button class="chip" data-v="103">103万</button><button class="chip" data-v="130">130万</button><button class="chip" data-v="150">150万</button><button class="chip" data-v="200">200万</button></div>
+        <div class="q">配偶者は12月31日時点で70歳以上ですか？</div>
+        <div class="chips" data-k="sp70"><button class="chip on" data-v="0">いいえ</button><button class="chip" data-v="1">はい</button></div>
+        <p class="hint">※ 配偶者が自営業・年金などの収入を得ている場合は、収入ではなく「所得」で判定します。ここでは給与だけとして計算します。</p>
+        <div id="spTag"></div>
+      </div>
+      <div class="nav"><button class="btn ghost" data-go="1">← 戻る</button><button class="btn main" data-go="3">次へ：家族 →</button></div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="pane" data-step="3">
+      <div class="stepname">STEP 3 / 4　扶養している家族</div>
+      <h2><span class="ico">👨‍👩‍👧</span>一緒に生活している家族</h2>
+      <p class="hint">子ども・親など、生活費をあなたが出している家族（配偶者以外）を追加してください。年齢は<b>2026年12月31日時点</b>です。</p>
+      <div id="famList"></div>
+      <button class="add" id="addFam">＋ 家族を追加</button>
+      <div class="nav"><button class="btn ghost" data-go="2">← 戻る</button><button class="btn main" data-go="4">次へ：保険など →</button></div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="pane" data-step="4">
+      <div class="stepname">STEP 4 / 4　保険・その他</div>
+      <h2><span class="ico">🧾</span>保険料など（控除証明書を見ながら）</h2>
+      <p class="hint">10〜11月に届く「控除証明書」の<b>年間の見込み額（申告額）</b>を入れてください。2012年以降に契約した保険（新契約）として計算します。</p>
+      <div class="q">一般の生命保険料（年間）</div>
+      <div class="num"><button type="button" data-step-for="lifeG" data-d="-1">−</button><input id="lifeG" inputmode="numeric" value="0"><span class="u">万円</span><button type="button" data-step-for="lifeG" data-d="1">＋</button></div>
+      <div class="q">介護医療保険料（医療保険・がん保険など）</div>
+      <div class="num"><button type="button" data-step-for="lifeM" data-d="-1">−</button><input id="lifeM" inputmode="numeric" value="0"><span class="u">万円</span><button type="button" data-step-for="lifeM" data-d="1">＋</button></div>
+      <div class="q">個人年金保険料</div>
+      <div class="num"><button type="button" data-step-for="lifeP" data-d="-1">−</button><input id="lifeP" inputmode="numeric" value="0"><span class="u">万円</span><button type="button" data-step-for="lifeP" data-d="1">＋</button></div>
+      <div class="q">地震保険料</div>
+      <div class="num"><button type="button" data-step-for="eq" data-d="-0.5">−</button><input id="eq" inputmode="decimal" value="0"><span class="u">万円</span><button type="button" data-step-for="eq" data-d="0.5">＋</button></div>
+      <div class="q">iDeCo・小規模企業共済の掛金（自分で払っている分）<small>給与天引き（会社経由）の場合は会社が把握しているので0でOK</small></div>
+      <div class="num"><button type="button" data-step-for="ideco" data-d="-1">−</button><input id="ideco" inputmode="numeric" value="0"><span class="u">万円</span><button type="button" data-step-for="ideco" data-d="1">＋</button></div>
+      <div class="q">国民年金・国民健康保険を自分で払った（家族の分を含む）</div>
+      <div class="num"><button type="button" data-step-for="soc" data-d="-1">−</button><input id="soc" inputmode="numeric" value="0"><span class="u">万円</span><button type="button" data-step-for="soc" data-d="1">＋</button></div>
+      <div class="q">住宅ローン控除は？</div>
+      <div class="chips" data-k="loan"><button class="chip on" data-v="0">なし</button><button class="chip" data-v="1">今年から（1年目）</button><button class="chip" data-v="2">2年目以降</button></div>
+      <div class="q">今年、医療費が多かった／ふるさと納税を6自治体以上にした？</div>
+      <div class="chips" data-k="extra"><button class="chip on" data-v="0">どちらもない</button><button class="chip" data-v="1">医療費が10万円超</button><button class="chip" data-v="2">ふるさと納税6か所以上</button></div>
+      <div class="nav"><button class="btn ghost" data-go="3">← 戻る</button><button class="btn main" id="calc">結果を見る ✨</button></div>
+    </div>
+  </section>
+
+  <section id="result" style="display:none">
+    <div class="hero-res card" style="border:none">
+      <div class="lbl">あなたの所得控除の合計（見込み）</div>
+      <div class="amt"><span id="rTotal">0</span><small>円</small></div>
+      <div class="sub" id="rSub"></div>
+      <div class="kpis">
+        <div class="kpi"><b id="rTax">0円</b><span>家族・保険の控除による所得税の軽減の目安</span></div>
+        <div class="kpi"><b id="rDocs">0枚</b><span>提出が必要な申告書</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">✅</span>出す書類と、書く欄・書く金額</h2>
+      <p class="hint">タップで開きます。金額は「申告書にそのまま書く数字」の目安です。</p>
+      <div class="docs" id="rList"></div>
+      <div id="rAlerts"></div>
+      <div class="acts"><button class="chip" id="copy">📋 結果をコピー</button><button class="chip" id="print">🖨 印刷・PDF</button><button class="chip" id="again">↺ 入力し直す</button></div>
+    </div>
+
+    <div class="card" id="prBox">
+      <h2><span class="ico">💡</span>年末調整が終わったら</h2>
+      <div id="prList"></div>
+      <p class="note">「PR」の枠は広告（アフィリエイト）を含みます。掲載の有無は計算結果に影響しません。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🧰</span>この時期に使えるツール</h2>
+    <div class="links">
+      <a class="lk" href="https://yope1016.github.io/apps/furusato-jogen-2026/"><span class="ico">🎁</span><div><b>ふるさと納税 上限額シミュレーター</b><span>12/31の締切前に上限を確認</span></div></a>
+      <a class="lk" href="https://yope1016.github.io/apps/nenga-hitokoto-2027/"><span class="ico">🐑</span><div><b>年賀状ひとことジェネレーター</b><span>喪中はがき・寒中見舞いも</span></div></a>
+      <a class="lk" href="https://yope1016.github.io/apps/warikan-keisha/"><span class="ico">🍻</span><div><b>傾斜割り勘計算</b><span>忘年会の幹事に</span></div></a>
+    </div>
+  </section>
+
+  <section class="card faq">
+    <h2><span class="ico">❓</span>よくある質問</h2>
+    <details><summary>今年の年末調整は去年と何が違いますか？</summary><p>令和8年分から、基礎控除が最大104万円、給与所得控除の最低額が74万円に上がり、家族を扶養にできる所得の上限が58万円→62万円（給与だけなら年収136万円）になりました。また、23歳未満の扶養親族がいる人は、一般の生命保険料控除（新契約）の上限が4万円→6万円になります。改正は12月1日施行のため、年末調整でまとめて精算されます。</p></details>
+    <details><summary>大学生の子どものバイト代が136万円を超えそうです</summary><p>12月31日時点で19〜22歳の子なら、給与収入197万円まで「特定親族特別控除」で親が控除を受けられます（給与159万円までは満額63万円、それを超えると段階的に減額）。「特定親族特別控除申告書」を提出します。ただし、社会保険の扶養（健康保険）は別の基準なので、勤務先の健康保険組合に確認してください。</p></details>
+    <details><summary>「178万円の壁」とは何ですか？</summary><p>給与所得控除74万円＋基礎控除104万円＝178万円まで、所得税がかからないという目安です。住民税や社会保険（106万・130万円の壁）、会社の家族手当の基準とは別物なので注意してください。</p></details>
+    <details><summary>年末調整をしたのに確定申告が必要な人は？</summary><p>給与が2,000万円を超える人、給与以外の所得が20万円を超える人、住宅ローン控除の1年目の人、医療費控除を受ける人、ふるさと納税を6自治体以上にした人（ワンストップ特例が使えない）などです。</p></details>
+    <details><summary>入力した内容はどこかに送信されますか？</summary><p>送信されません。計算はすべてお使いの端末の中で行われ、ページを閉じると消えます。名前やマイナンバーの入力も不要です。</p></details>
+  </section>
+</main>
+<footer>
+  2026年10月時点の国税庁「令和8年分 年末調整のしかた」などの公表資料をもとにした目安です。最終的な判断は勤務先の担当者または税務署にご確認ください。障害者控除・寡婦／ひとり親控除・旧契約の保険などは簡略化しています。<br>© ひとりラボ
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var st={main:1,other:0,sp:0,sp70:0,loan:0,extra:0};
+var fam=[];
+
+/* theme */
+var root=document.documentElement,modeBtn=$("#mode");
+function isDark(){var t=root.getAttribute("data-theme");if(t)return t==="dark";return window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches}
+function paintMode(){modeBtn.textContent=isDark()?"☀️ ライト":"🌙 ダーク"}
+modeBtn.onclick=function(){root.setAttribute("data-theme",isDark()?"light":"dark");paintMode()};paintMode();
+
+/* chips */
+function bindChips(scope){
+  $$(".chips[data-k]",scope).forEach(function(g){
+    if(g._b)return;g._b=1;
+    g.addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;
+      $$(".chip",g).forEach(function(x){x.classList.remove("on")});b.classList.add("on");
+      var k=g.getAttribute("data-k"),v=+b.getAttribute("data-v");
+      if(g._cb)g._cb(v);else{st[k]=v;onChange(k)}});
+  });
+}
+bindChips(document);
+$$(".chips[data-set]").forEach(function(g){g.addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;var i=$("#"+g.getAttribute("data-set"));i.value=b.getAttribute("data-v");i.dispatchEvent(new Event("input"))})});
+document.addEventListener("click",function(e){var b=e.target.closest("[data-step-for]");if(!b)return;var i=document.getElementById(b.getAttribute("data-step-for"));var v=Math.max(0,Math.round((num(i.value)+ +b.getAttribute("data-d"))*10)/10);i.value=v;i.dispatchEvent(new Event("input"))});
+function num(v){v=String(v).replace(/[^\d.]/g,"");var n=parseFloat(v);return isFinite(n)?n:0}
+function onChange(k){if(k==="sp"){$("#spBox").style.display=st.sp?"block":"none"}spTag()}
+$("#spinc").addEventListener("input",spTag);$("#inc").addEventListener("input",spTag);
+
+/* steps */
+var cur=1;
+function go(n){cur=n;$$(".pane").forEach(function(p){p.classList.toggle("on",+p.getAttribute("data-step")===n)});
+  $$("#steps span").forEach(function(s,i){s.classList.toggle("on",i<n)});
+  $("#wiz").scrollIntoView({behavior:"smooth",block:"start"})}
+$$("[data-go]").forEach(function(b){b.onclick=function(){go(+b.getAttribute("data-go"))}});
+
+/* ===== tax rules (令和8年分) ===== */
+var MAN=10000;
+// 給与所得控除後の給与等の金額（簡略：円単位）
+function kyuyoShotoku(y){
+  if(y<=0)return 0;
+  if(y<=2200000)return Math.max(0,y-740000);
+  var d;
+  if(y<=3600000)d=y*0.3+80000;
+  else if(y<=6600000)d=y*0.2+440000;
+  else if(y<=8500000)d=y*0.1+1100000;
+  else d=1950000;
+  var s=Math.floor(y-d);
+  // 所得金額調整控除（子・特別障害者等）は簡略化のため省略
+  return s;
+}
+function kisoKojo(g){ // 合計所得
+  if(g<=1320000)return 1040000;if(g<=3360000)return 880000;if(g<=4890000)return 680000;
+  if(g<=6550000)return 670000;if(g<=23500000)return 620000;if(g<=24000000)return 480000;
+  if(g<=24500000)return 320000;if(g<=25000000)return 160000;return 0}
+var FUYO_LIM=620000;
+// 配偶者控除・配偶者特別控除
+function spouseKojo(me,sg,old){
+  if(me>10000000)return {type:"none",amt:0,why:"あなたの合計所得が1,000万円を超えるため、配偶者控除・配偶者特別控除は受けられません"};
+  var col=me<=9000000?0:me<=9500000?1:2;
+  if(sg<=FUYO_LIM){var a=old?[480000,320000,160000]:[380000,260000,130000];return {type:"kojo",amt:a[col]}}
+  if(sg>1330000)return {type:"none",amt:0,why:"配偶者の合計所得が133万円を超えるため対象外です"};
+  var T=[[950000,380000,260000,130000],[1000000,360000,240000,120000],[1050000,310000,210000,110000],[1100000,260000,180000,90000],[1150000,210000,140000,70000],[1200000,160000,110000,60000],[1250000,110000,80000,40000],[1300000,60000,40000,20000],[1330000,30000,20000,10000]];
+  for(var i=0;i<T.length;i++)if(sg<=T[i][0])return {type:"toku",amt:T[i][col+1]};
+  return {type:"none",amt:0}}
+// 特定親族特別控除（19〜22歳、合計所得62万超123万以下）
+var TOKUTEI=[[850000,630000,10],[900000,610000,20],[950000,510000,30],[1000000,410000,40],[1050000,310000,50],[1100000,210000,60],[1150000,110000,70],[1200000,60000,80],[1230000,30000,90]];
+function tokuteiShinzoku(g){for(var i=0;i<TOKUTEI.length;i++)if(g<=TOKUTEI[i][0])return {amt:TOKUTEI[i][1],code:TOKUTEI[i][2]};return null}
+// 生命保険料控除（新契約）
+function lifeNew(p){if(p<=20000)return p;if(p<=40000)return Math.ceil(p/2+10000);if(p<=80000)return Math.ceil(p/4+20000);return 40000}
+function lifeNewU23(p){if(p<=30000)return p;if(p<=60000)return Math.ceil(p/2+15000);if(p<=120000)return Math.ceil(p/4+30000);return 60000}
+function incomeTax(t){ // 課税所得（千円未満切捨て）→ 所得税（復興特別所得税込み）
+  t=Math.floor(Math.max(0,t)/1000)*1000;var r,d;
+  if(t<=1949000){r=.05;d=0}else if(t<=3299000){r=.1;d=97500}else if(t<=6949000){r=.2;d=427500}
+  else if(t<=8999000){r=.23;d=636000}else if(t<=17999000){r=.33;d=1536000}else if(t<=39999000){r=.4;d=2796000}else{r=.45;d=4796000}
+  return Math.max(0,(t*r-d)*1.021)}
+
+/* family UI */
+var REL=["子","親","祖父母","兄弟姉妹","その他"];
+function famHTML(f,i){
+  var rel=REL.map(function(r){return '<button class="chip'+(f.rel===r?' on':'')+'" data-v="'+r+'">'+r+'</button>'}).join("");
+  return '<div class="fam" data-i="'+i+'"><button class="del" data-del="'+i+'">✕ 削除</button>'+
+  '<div class="q" style="margin-top:0">家族 '+(i+1)+'：続柄</div><div class="chips fr">'+rel+'</div>'+
+  '<div class="q">12/31時点の年齢</div><div class="num"><button type="button" data-fa="'+i+'" data-d="-1">−</button><input data-fage="'+i+'" inputmode="numeric" value="'+f.age+'"><span class="u">歳</span><button type="button" data-fa="'+i+'" data-d="1">＋</button></div>'+
+  '<div class="q">今年の給与（税込）の見込み<small>収入がなければ0。年金などがある場合は所得で判定が必要です</small></div><div class="num"><button type="button" data-fi="'+i+'" data-d="-10">−</button><input data-finc="'+i+'" inputmode="numeric" value="'+f.inc+'"><span class="u">万円</span><button type="button" data-fi="'+i+'" data-d="10">＋</button></div>'+
+  (f.rel==="親"||f.rel==="祖父母"?'<div class="q">同居していますか？</div><div class="chips fd"><button class="chip'+(!f.dou?' on':'')+'" data-v="0">別居</button><button class="chip'+(f.dou?' on':'')+'" data-v="1">同居</button></div>':'')+
+  '<div class="ftag" data-ft="'+i+'"></div></div>'}
+function renderFam(){var L=$("#famList");L.innerHTML=fam.map(famHTML).join("");fam.forEach(function(f,i){famTag(i)})}
+function famJudge(f){
+  var g=kyuyoShotoku(f.inc*MAN);
+  if(f.age<16){return g<=FUYO_LIM?{cls:"b",t:"16歳未満：所得税の扶養控除はなし（住民税の欄に記入）",kind:"nenshou",g:g}:{cls:"r",t:"16歳未満・所得が62万円超：記入不要",kind:"none",g:g}}
+  if(g<=FUYO_LIM){
+    if(f.age>=19&&f.age<=22)return {cls:"g",t:"特定扶養親族：控除 63万円",kind:"fuyo",amt:630000,cat:"特定扶養親族",g:g};
+    if(f.age>=70){var dou=f.dou&&(f.rel==="親"||f.rel==="祖父母");return {cls:"g",t:(dou?"同居老親等：控除 58万円":"老人扶養親族：控除 48万円"),kind:"fuyo",amt:dou?580000:480000,cat:dou?"老人扶養親族（同居老親等）":"老人扶養親族",g:g}}
+    return {cls:"g",t:"一般の扶養親族：控除 38万円",kind:"fuyo",amt:380000,cat:"一般の控除対象扶養親族",g:g}}
+  if(f.age>=19&&f.age<=22){var t=tokuteiShinzoku(g);if(t)return {cls:"y",t:"特定親族特別控除："+(t.amt/MAN)+"万円（区分 "+t.code+"）",kind:"tokutei",amt:t.amt,code:t.code,g:g}}
+  return {cls:"r",t:"所得が62万円を超えるため扶養控除の対象外",kind:"none",g:g}}
+function famTag(i){var j=famJudge(fam[i]);var el=$('[data-ft="'+i+'"]');if(el)el.innerHTML='<span class="tag '+j.cls+'">'+j.t+'</span>'}
+$("#addFam").onclick=function(){fam.push({rel:"子",age:10,inc:0,dou:0});renderFam();var l=$$(".fam");l[l.length-1].scrollIntoView({behavior:"smooth",block:"center"})};
+$("#famList").addEventListener("click",function(e){
+  var d=e.target.closest("[data-del]");if(d){fam.splice(+d.getAttribute("data-del"),1);renderFam();return}
+  var c=e.target.closest(".chip");var box=e.target.closest(".fam");if(c&&box){var i=+box.getAttribute("data-i");
+    if(c.parentNode.classList.contains("fr")){fam[i].rel=c.getAttribute("data-v");renderFam();return}
+    if(c.parentNode.classList.contains("fd")){fam[i].dou=+c.getAttribute("data-v");$$(".chip",c.parentNode).forEach(function(x){x.classList.remove("on")});c.classList.add("on");famTag(i);return}}
+  var a=e.target.closest("[data-fa]");if(a){var k=+a.getAttribute("data-fa");fam[k].age=Math.max(0,Math.min(110,fam[k].age+ +a.getAttribute("data-d")));$('[data-fage="'+k+'"]').value=fam[k].age;famTag(k);return}
+  var b=e.target.closest("[data-fi]");if(b){var m=+b.getAttribute("data-fi");fam[m].inc=Math.max(0,fam[m].inc+ +b.getAttribute("data-d"));$('[data-finc="'+m+'"]').value=fam[m].inc;famTag(m)}
+});
+$("#famList").addEventListener("input",function(e){var t=e.target;
+  if(t.hasAttribute("data-fage")){var i=+t.getAttribute("data-fage");fam[i].age=Math.min(110,Math.floor(num(t.value)));famTag(i)}
+  if(t.hasAttribute("data-finc")){var j=+t.getAttribute("data-finc");fam[j].inc=num(t.value);famTag(j)}});
+
+function spTag(){if(!st.sp){$("#spTag").innerHTML="";return}
+  var me=kyuyoShotoku(num($("#inc").value)*MAN),sg=kyuyoShotoku(num($("#spinc").value)*MAN);var r=spouseKojo(me,sg,st.sp70);
+  var h=r.type==="kojo"?'<span class="tag g">配偶者控除：'+r.amt/MAN+'万円</span>':r.type==="toku"?'<span class="tag y">配偶者特別控除：'+r.amt/MAN+'万円</span>':'<span class="tag r">'+(r.why||"対象外")+'</span>';
+  $("#spTag").innerHTML='<div style="margin-top:10px">'+h+'</div>'}
+
+/* ===== calc ===== */
+function yen(n){return Math.round(n).toLocaleString("ja-JP")+"円"}
+function countUp(el,to){var s=performance.now(),d=900;function f(t){var p=Math.min(1,(t-s)/d);p=1-Math.pow(1-p,3);el.textContent=Math.round(to*p).toLocaleString("ja-JP");if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+var lastText="";
+function calc(){
+  var inc=num($("#inc").value)*MAN;var me=kyuyoShotoku(inc);
+  var docs=[],alerts=[],txt=["【年末調整 書き方ナビ 2026 の結果（目安）】"];
+  if(!st.main){alerts.push(["r","⚠️","メインの勤め先ではないため、この会社では年末調整を行いません。扶養控除等申告書も提出しません（メインの会社に提出）。この会社の給与は、確定申告が必要になる場合があります。"])}
+  if(inc>20000000){alerts.push(["r","⚠️","給与が2,000万円を超える人は年末調整の対象外です。確定申告をしてください。"])}
+  var kiso=kisoKojo(me);
+  // spouse
+  var sp=null;if(st.sp){var sinc=num($("#spinc").value)*MAN;var sg=kyuyoShotoku(sinc);sp=spouseKojo(me,sg,st.sp70);sp.g=sg;sp.inc=sinc}
+  // family
+  var fj=fam.map(function(f){var j=famJudge(f);j.f=f;return j});
+  var fuyo=fj.filter(function(j){return j.kind==="fuyo"}),tok=fj.filter(function(j){return j.kind==="tokutei"}),nen=fj.filter(function(j){return j.kind==="nenshou"});
+  var u23=fj.some(function(j){return j.f.age<23&&j.g<=FUYO_LIM});
+  // insurance
+  var G=num($("#lifeG").value)*MAN,M=num($("#lifeM").value)*MAN,P=num($("#lifeP").value)*MAN,EQ=num($("#eq").value)*MAN,ID=num($("#ideco").value)*MAN,SOC=num($("#soc").value)*MAN;
+  var lg=u23?lifeNewU23(G):lifeNew(G),lm=lifeNew(M),lp=lifeNew(P),life=Math.min(120000,lg+lm+lp),eq=Math.min(50000,EQ);
+  var famAmt=fuyo.reduce(function(a,j){return a+j.amt},0)+tok.reduce(function(a,j){return a+j.amt},0)+(sp?sp.amt:0);
+  var plus=famAmt+life+eq+ID+SOC;
+  var total=kiso+plus;
+  // tax effect estimate (社会保険料を給与の約15%と仮定)
+  var shaho=inc*0.15;var base=me-shaho-kiso;var effect=incomeTax(base)-incomeTax(base-plus);
+  // 1 扶養控除等申告書
+  var d1=[];
+  if(sp&&sp.g<=950000&&me<=9000000)d1.push(["源泉控除対象配偶者の欄","記入する（所得見積額 "+yen(sp.g)+"）"]);
+  else if(sp)d1.push(["源泉控除対象配偶者の欄","記入しない"+(sp.g>950000?"（配偶者の所得95万円超）":"（あなたの所得900万円超）")]);
+  fuyo.forEach(function(j){d1.push(["控除対象扶養親族の欄："+j.f.rel+"（"+j.f.age+"歳）",j.cat+"・所得見積額 "+yen(j.g)])});
+  nen.forEach(function(j){d1.push(["住民税に関する事項（16歳未満）："+j.f.rel+"（"+j.f.age+"歳）","氏名・個人番号・所得見積額 "+yen(j.g)])});
+  if(!d1.length)d1.push(["記入する家族","なし（氏名・住所などの本人欄だけ記入）"]);
+  docs.push({n:"給与所得者の扶養控除等（異動）申告書",need:!!st.main,note:"令和9年分（来年分）の提出も同時に求められることが多いので、年の違いに注意。",rows:d1});
+  // 2 基礎・配偶者・特定親族・所得金額調整（4つで1枚の様式）
+  var d2=[["基礎控除申告書：あなたの合計所得金額の見積額",yen(me)],["基礎控除の額",yen(kiso)]];
+  if(sp){if(sp.type==="none")d2.push(["配偶者控除等申告書","記入しない（"+(sp.why||"対象外")+"）"]);else{d2.push(["配偶者の合計所得金額の見積額",yen(sp.g)]);d2.push([sp.type==="kojo"?(st.sp70?"配偶者控除（老人控除対象配偶者）":"配偶者控除の額"):"配偶者特別控除の額",yen(sp.amt)])}}
+  tok.forEach(function(j){d2.push(["特定親族特別控除申告書："+j.f.rel+"（"+j.f.age+"歳）","所得見積額 "+yen(j.g)+"／区分 "+j.code+"／控除額 "+yen(j.amt)])});
+  if(inc>8500000)d2.push(["所得金額調整控除申告書","23歳未満の扶養親族や特別障害者がいる場合に記入"]);
+  docs.push({n:"基礎控除申告書 兼 配偶者控除等申告書 兼 特定親族特別控除申告書 兼 所得金額調整控除申告書",need:st.main&&inc<=20000000,note:"4つの申告書が1枚になった様式です。全員「基礎控除申告書」の部分は記入します。",rows:d2});
+  // 3 保険料控除申告書
+  var hasIns=G+M+P+EQ+ID+SOC>0;var d3=[];
+  if(G)d3.push(["一般の生命保険料（新）"+(u23?"・23歳未満の扶養親族あり":""),yen(G)+" → 控除 "+yen(lg)]);
+  if(M)d3.push(["介護医療保険料",yen(M)+" → 控除 "+yen(lm)]);
+  if(P)d3.push(["個人年金保険料（新）",yen(P)+" → 控除 "+yen(lp)]);
+  if(G||M||P)d3.push(["生命保険料控除の合計（上限12万円）",yen(life)]);
+  if(EQ)d3.push(["地震保険料控除（上限5万円）",yen(eq)]);
+  if(SOC)d3.push(["社会保険料控除（国民年金・国保など）",yen(SOC)]);
+  if(ID)d3.push(["小規模企業共済等掛金控除（iDeCo等）",yen(ID)]);
+  if(u23&&G)d3.push(["新設欄：23歳未満の扶養親族","該当する子などの氏名・生年月日などを記入"]);
+  docs.push({n:"給与所得者の保険料控除申告書",need:st.main&&hasIns,note:"控除証明書（はがき・PDF）の添付が必要です。国民年金は控除証明書、国保は領収書の添付は不要です。",rows:d3.length?d3:[["該当","なし"]]});
+  // 4 住宅ローン
+  docs.push({n:"住宅借入金等特別控除申告書",need:st.main&&st.loan===2,note:st.loan===1?"1年目は年末調整ではなく確定申告が必要です。2年目から年末調整で受けられます。":"税務署から届く申告書と、金融機関の残高証明書を一緒に提出します。",rows:[["状況",st.loan===2?"記入して提出（残高証明書を添付）":st.loan===1?"今年は提出しない（確定申告へ）":"該当なし"]]});
+  // alerts
+  if(st.other)alerts.push(["y","🧾","給与以外の所得が20万円を超える場合は、年末調整のあとに確定申告が必要です。"]);
+  if(st.loan===1)alerts.push(["y","🏠","住宅ローン控除の1年目は確定申告が必要です（2027年2月16日〜3月15日が目安）。"]);
+  if(st.extra===1)alerts.push(["b","🏥","医療費控除は年末調整では受けられません。確定申告で申告します。"]);
+  if(st.extra===2)alerts.push(["y","🎁","ふるさと納税を6自治体以上にした場合、ワンストップ特例は使えないため確定申告が必要です。"]);
+  if(tok.length)alerts.push(["b","🎓","特定親族特別控除は税金の話です。健康保険の扶養（社会保険）は別の基準なので、勤務先の健康保険組合に確認してください。"]);
+  if(sp&&sp.inc>1060000)alerts.push(["b","💼","配偶者の年収が106万円・130万円を超える場合、税金とは別に社会保険の扶養から外れることがあります。"]);
+  // render
+  var need=docs.filter(function(d){return d.need});
+  $("#rList").innerHTML=docs.map(function(d,i){
+    return '<details class="doc '+(d.need?'need':'skip')+'"'+(d.need&&i<2?' open':'')+'><summary><span class="chk">'+(d.need?'✓':'–')+'</span><span>'+d.n+'</span><span class="st">'+(d.need?'提出する':'不要')+'</span></summary><div class="body">'+
+    d.rows.map(function(r){return '<div class="row"><span class="k">'+r[0]+'</span><span class="v'+(/円$/.test(r[1])?' hl':'')+'">'+r[1]+'</span></div>'}).join("")+'<p class="hint">'+d.note+'</p></div></details>'}).join("");
+  $("#rAlerts").innerHTML=alerts.map(function(a){return '<div class="alert '+a[0]+'"><span class="e">'+a[1]+'</span><span>'+a[2]+'</span></div>'}).join("");
+  countUp($("#rTotal"),total);
+  $("#rSub").textContent="基礎控除 "+yen(kiso)+"＋家族 "+yen(famAmt)+"＋保険など "+yen(life+eq+ID+SOC)+"（会社が天引きした社会保険料は別）";
+  $("#rTax").textContent="約"+(Math.round(effect/100)*100).toLocaleString("ja-JP")+"円";
+  $("#rDocs").textContent=need.length+"枚";
+  // PR slots
+  var pr=[];
+  pr.push('<div class="pr"><span class="prl">PR</span><h3>保険料、払いすぎていませんか？</h3><p>控除の上限（生命保険は合計12万円）を超えて払っている保険料は、税金の面ではメリットがありません。年末は保障内容を見直す人が多い時期です。無料の保険相談で、今の保険をそのまま見てもらえます。</p><!-- AFFILIATE:hoken_soudan --><span class="soon">リンク準備中</span></div>');
+  pr.push('<div class="pr"><span class="prl">PR</span><h3>来年の控除を増やすなら iDeCo</h3><p>iDeCoの掛金は全額が所得控除になります。来年の年末調整で控除を増やしたい人は、手数料の安いネット証券で始めるのが一般的です。</p><!-- AFFILIATE:ideco --><span class="soon">リンク準備中</span></div>');
+  if(st.other||st.loan===1||st.extra)pr.unshift('<div class="pr"><span class="prl">PR</span><h3>確定申告が必要そうな人へ</h3><p>確定申告ソフトなら、スマホで源泉徴収票を撮影して申告書を作れます。e-Taxでそのまま提出できます。</p><!-- AFFILIATE:kakutei_soft --><span class="soon">リンク準備中</span></div>');
+  pr.push('<div class="pr"><span class="prl">PR</span><h3>12/31まで：ふるさと納税</h3><p>年末調整の金額がわかったら、ふるさと納税の上限も確定できます。<a href="https://yope1016.github.io/apps/furusato-jogen-2026/">上限額シミュレーター</a>で確認してから寄附先を選びましょう。</p><!-- AFFILIATE:furusato_site --><span class="soon">寄附先サイトのリンク準備中</span></div>');
+  $("#prList").innerHTML=pr.join("");
+  // text
+  txt.push("出す書類："+need.map(function(d){return d.n.split(" 兼 ")[0]}).join("、"));
+  txt.push("合計所得金額の見積額："+yen(me)+"／基礎控除："+yen(kiso));
+  if(sp&&sp.type!=="none")txt.push((sp.type==="kojo"?"配偶者控除：":"配偶者特別控除：")+yen(sp.amt)+"（配偶者の所得見積額 "+yen(sp.g)+"）");
+  fj.forEach(function(j){txt.push(j.f.rel+"（"+j.f.age+"歳・所得見積額 "+yen(j.g)+"）："+j.t)});
+  if(G||M||P)txt.push("生命保険料控除："+yen(life));if(EQ)txt.push("地震保険料控除："+yen(eq));
+  alerts.forEach(function(a){txt.push("※"+a[2])});
+  txt.push("https://yope1016.github.io/apps/nencho-navi-2026/");
+  lastText=txt.join("\n");
+  $("#result").style.display="block";
+  setTimeout(function(){$("#result").scrollIntoView({behavior:"smooth",block:"start"})},50);
+  return {me:me,kiso:kiso,sp:sp,fj:fj,life:life,eq:eq,total:total,effect:effect,docs:need.length};
+}
+window.__nencho={calc:calc,kyuyoShotoku:kyuyoShotoku,kisoKojo:kisoKojo,spouseKojo:spouseKojo,tokuteiShinzoku:tokuteiShinzoku,lifeNew:lifeNew,lifeNewU23:lifeNewU23,fam:fam,st:st};
+$("#calc").onclick=calc;
+function toast(m){var t=$("#toast");t.textContent=m;t.classList.add("on");setTimeout(function(){t.classList.remove("on")},1800)}
+$("#copy").onclick=function(){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(lastText).then(function(){toast("コピーしました")},function(){toast("コピーできませんでした")})}else{toast("この端末ではコピーできません")}};
+$("#print").onclick=function(){window.print()};
+$("#again").onclick=function(){$("#result").style.display="none";go(1)};
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
