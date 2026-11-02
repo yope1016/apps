@@ -159,6 +159,16 @@ footer{text-align:center;color:var(--sub);font-size:11.5px;padding:6px 18px 40px
 @keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.04)}100%{transform:scale(1)}}
 @media (max-width:420px){.hero h1{font-size:22px}.res .big{font-size:44px}.salary input{font-size:30px}.vs{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* PR links (A8.net codes inserted as-is) */
+.promo-note{font-size:11px;color:var(--sub,#666);text-align:center;padding:6px 12px 0;opacity:.85}
+.afl{display:flex;flex-direction:column;gap:10px;margin-top:12px;position:relative}
+body .afl a,body .pr .afl a,body .pr .links .afl a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border-radius:14px;background:var(--main,#4f46e5) !important;background-image:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0)) !important;border:0 !important;color:#fff !important;font-weight:700;font-size:15px;line-height:1.45;text-decoration:none !important;box-shadow:0 8px 20px -10px rgba(0,0,0,.45);transition:transform .15s ease,box-shadow .15s ease}
+.afl a::after{content:"\203A";font-size:22px;line-height:1;flex:none}
+.afl a:hover{transform:translateY(-1px);box-shadow:0 12px 24px -10px rgba(0,0,0,.5)}
+.afl a:active{transform:scale(.98)}
+.afl img[width="1"]{position:absolute;left:0;bottom:0}
+.afl-note{font-size:11px;color:var(--sub,#777);margin-top:6px}
 </style>
 
 <!-- SEO/OGP (webfactory 2026-11-01 14:30 公開前チェック) -->
@@ -235,10 +245,13 @@ footer{text-align:center;color:var(--sub);font-size:11.5px;padding:6px 18px 40px
       <h3><span class="tag">PR</span>上限額がわかったら、寄附先を探す</h3>
       <p>目安の範囲内で、応援したい自治体や使い道から選べます。ワンストップ特例の申請書の送付に対応したサイトも多くあります。</p>
       <div class="links">
+        <!-- AFFILIATE:furusato_site_0 --> <div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738779" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738779" height="1" width="1" border="0">ふるなび</a></div>
         <!-- AFFILIATE:furusato_site_1 -->
-        <span class="soon">ふるさと納税サイト A <em>準備中</em></span>
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+2XDRMI+54OC+5YJRM" rel="nofollow">au PAY ふるさと納税</a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGAV2+2XDRMI+54OC+5YJRM" alt=""></div>
         <!-- AFFILIATE:furusato_site_2 -->
-        <span class="soon">ふるさと納税サイト B <em>準備中</em></span>
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" rel="nofollow">ふるさと本舗</a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" alt=""></div>
       </div>
     </div>
   </section>

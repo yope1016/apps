@@ -156,6 +156,16 @@ label.doc input:checked+.chk{background:var(--ok);color:#fff}
 label.doc input:checked~span:last-child{text-decoration:line-through;color:var(--sub)}
 #result .card:first-child{animation:fade .45s ease}
 .nb{display:inline-block}
+
+/* PR links (A8.net codes inserted as-is) */
+.promo-note{font-size:11px;color:var(--sub,#666);text-align:center;padding:6px 12px 0;opacity:.85}
+.afl{display:flex;flex-direction:column;gap:10px;margin-top:12px;position:relative}
+body .afl a,body .pr .afl a,body .pr .links .afl a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border-radius:14px;background:var(--pri,#4f46e5) !important;background-image:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0)) !important;border:0 !important;color:#fff !important;font-weight:700;font-size:15px;line-height:1.45;text-decoration:none !important;box-shadow:0 8px 20px -10px rgba(0,0,0,.45);transition:transform .15s ease,box-shadow .15s ease}
+.afl a::after{content:"\203A";font-size:22px;line-height:1;flex:none}
+.afl a:hover{transform:translateY(-1px);box-shadow:0 12px 24px -10px rgba(0,0,0,.5)}
+.afl a:active{transform:scale(.98)}
+.afl img[width="1"]{position:absolute;left:0;bottom:0}
+.afl-note{font-size:11px;color:var(--sub,#777);margin-top:6px}
 </style>
 
 <!-- SEO/OGP (webfactory 2026-11-01 14:30 公開前チェック) -->
@@ -175,6 +185,7 @@ label.doc input:checked~span:last-child{text-decoration:line-through;color:var(-
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "副業が20万円以下なら、何もしなくていい？", "acceptedAnswer": {"@type": "Answer", "text": "所得税の確定申告は原則不要ですが、住民税の申告は別に必要です（お住まいの市区町村へ）。また、医療費控除などで確定申告をするときは、20万円以下の副業の所得も含めて申告します。"}}, {"@type": "Question", "name": "「20万円」は売上？利益？", "acceptedAnswer": {"@type": "Answer", "text": "売上から経費を引いた所得（もうけ）で判定します。アフィリエイト・フリマの継続的な転売・仮想通貨の利益なども、給与以外の所得として合計します。"}}, {"@type": "Question", "name": "ふるさと納税のワンストップ特例を出したのに確定申告することになったら？", "acceptedAnswer": {"@type": "Answer", "text": "確定申告をすると、ワンストップ特例はすべて無効になります。ワンストップで出した分も含めて、すべての寄附を確定申告に書いてください。"}}, {"@type": "Question", "name": "住宅ローン控除は毎年申告が必要？", "acceptedAnswer": {"@type": "Answer", "text": "会社員は1年目だけ確定申告が必要で、2年目以降は年末調整で受けられます。"}}, {"@type": "Question", "name": "申告期限を過ぎたら？", "acceptedAnswer": {"@type": "Answer", "text": "納める税金がある人は、遅れるほど延滞税や無申告加算税がかかることがあります。気づいた時点で早めに申告しましょう。還付申告は5年以内なら出せます。"}}]}</script>
 </head>
 <body>
+<div class="promo-note">本ページはプロモーション（広告）を含みます</div>
 <header class="hero">
   <div class="wrap">
     <div class="topbar"><div class="brand">ひとりラボ ツール</div><button class="mode" id="mode" aria-label="表示モード切り替え">🌙 ダーク</button></div>
@@ -374,9 +385,9 @@ function judge(){
   var u=[];docs.forEach(function(d){if(u.indexOf(d)<0)u.push(d)});
   $('#docs').innerHTML=lv==='none'?'<p class="hint">確定申告の書類は不要です。'+(side>0?'住民税の申告では、副収入の売上・経費がわかるメモを用意しましょう。':'')+'</p>':u.map(function(d,i){return '<label class="doc need"><input type="checkbox"><span class="chk">✓</span><span>'+d+'</span></label>'}).join('');
   var pr='';
-  if(lv!=='none')pr+='<div class="pr"><span class="prl">PR</span><h3>スマホで申告書を作るなら、確定申告ソフト</h3><p>源泉徴収票をスマホで撮影して読み取り、e-Taxでそのまま提出できるソフトが主流です。副業や医療費控除の申告にも使えます。</p><!-- AFFILIATE:kakutei_soft --><span class="soon">リンク準備中</span></div>';
+  if(lv!=='none')pr+='<div class="pr"><span class="prl">PR</span><h3>スマホで申告書を作るなら、確定申告ソフト</h3><p>源泉徴収票をスマホで撮影して読み取り、e-Taxでそのまま提出できるソフトが主流です。副業や医療費控除の申告にも使えます。</p><!-- AFFILIATE:kakutei_soft -->'+aff("kakutei_soft")+'</div>';
   if(w==='free'||st.types.indexOf('rent')>=0||st.sal==='high'||has('loan'))pr+='<div class="pr"><span class="prl">PR</span><h3>自分でやるのが不安なら、税理士に相談</h3><p>事業・家賃収入・住宅ローン1年目などは書類が多めです。申告だけを依頼できる税理士の紹介サービスもあります。</p><!-- AFFILIATE:zeirishi --><span class="soon">リンク準備中</span></div>';
-  pr+='<div class="pr"><span class="prl">PR</span><h3>12/31まで：ふるさと納税</h3><p>2026年分の寄附は12月31日まで。'+(lv!=='none'?'確定申告をする人は、寄附の数を気にせず選べます。':'')+'先に<a href="https://yope1016.github.io/apps/furusato-jogen-2026/">上限額シミュレーター</a>で上限を確認してから寄附先を選びましょう。</p><!-- AFFILIATE:furusato_site --><span class="soon">寄附先サイトのリンク準備中</span></div>';
+  pr+='<div class="pr"><span class="prl">PR</span><h3>12/31まで：ふるさと納税</h3><p>2026年分の寄附は12月31日まで。'+(lv!=='none'?'確定申告をする人は、寄附の数を気にせず選べます。':'')+'先に<a href="https://yope1016.github.io/apps/furusato-jogen-2026/">上限額シミュレーター</a>で上限を確認してから寄附先を選びましょう。</p><!-- AFFILIATE:furusato_site -->'+aff("furusato_site")+'</div>';
   pr+='<div class="alert b"><span class="e">🗓️</span><div><b>おすすめの段取り</b><br>①12月：年末調整・ふるさと納税を済ませる → ②1月：源泉徴収票と証明書を集める → ③'+(lv==='ref'?'1月〜：スマホで還付申告（早いほど早く戻る）':'2/16〜3/15：e-Taxで申告')+'</div></div>';
   $('#pr').innerHTML=pr;
   $('#quiz').style.display='none';$('#result').style.display='block';
@@ -389,6 +400,20 @@ $('#copy').onclick=function(){if(navigator.clipboard)navigator.clipboard.writeTe
 $('#line').onclick=function(){location.href='https://line.me/R/share?text='+encodeURIComponent(st.text)};
 function toast(t){var x=$('#toast');x.textContent=t;x.classList.add('on');setTimeout(function(){x.classList.remove('on')},1800)}
 })();
+</script>
+<template id="aff-kakutei_soft">
+<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3U4LWA+35XE+601S2" rel="nofollow">やよいの白色申告オンライン</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGAV2+3U4LWA+35XE+601S2" alt="">
+<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+33XJA2+3SPO+9FDXOI" rel="nofollow">クラウド記帳代行で会計を自動化【freee会計】</a>
+<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGAV2+33XJA2+3SPO+9FDXOI" alt="">
+</template>
+<template id="aff-furusato_site">
+<a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738779" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738779" height="1" width="1" border="0">ふるなび</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" rel="nofollow">ふるさと本舗</a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" alt="">
+</template>
+<script>
+function aff(k){var t=document.getElementById("aff-"+k);return t?'<div class="afl">'+t.innerHTML+'</div><p class="afl-note">※広告（PR）です。料金・条件はリンク先でご確認ください。</p>':'<span class="soon">リンク準備中</span>'}
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

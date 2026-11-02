@@ -120,6 +120,16 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:20px 16px 40px}
 @keyframes drop{to{transform:translateY(105vh) rotate(540deg)}}
 @media (max-width:420px){.grid3 .stat b{font-size:19px}.kid input{width:92px}.amt output{min-width:72px;font-size:16px}.amt button{width:36px;height:36px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* PR links (A8.net codes inserted as-is) */
+.promo-note{font-size:11px;color:var(--sub,#666);text-align:center;padding:6px 12px 0;opacity:.85}
+.afl{display:flex;flex-direction:column;gap:10px;margin-top:12px;position:relative}
+body .afl a,body .pr .afl a,body .pr .links .afl a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border-radius:14px;background:var(--pri,#4f46e5) !important;background-image:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0)) !important;border:0 !important;color:#fff !important;font-weight:700;font-size:15px;line-height:1.45;text-decoration:none !important;box-shadow:0 8px 20px -10px rgba(0,0,0,.45);transition:transform .15s ease,box-shadow .15s ease}
+.afl a::after{content:"\203A";font-size:22px;line-height:1;flex:none}
+.afl a:hover{transform:translateY(-1px);box-shadow:0 12px 24px -10px rgba(0,0,0,.5)}
+.afl a:active{transform:scale(.98)}
+.afl img[width="1"]{position:absolute;left:0;bottom:0}
+.afl-note{font-size:11px;color:var(--sub,#777);margin-top:6px}
 </style>
 
 <!-- SEO/OGP (webfactory 2026-11-01 14:30 公開前チェック) -->
@@ -139,6 +149,7 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:20px 16px 40px}
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "お年玉は何歳から何歳まで渡す？", "acceptedAnswer": {"@type": "Answer", "text": "決まりはありません。幼稚園入園や小学校入学をきっかけに渡し始め、高校卒業や成人を区切りにする家庭が多いとされています。0〜2歳は渡さない、または祖父母だけが渡すことも多いです。"}}, {"@type": "Question", "name": "2,000円・4,000円・9,000円はダメ？", "acceptedAnswer": {"@type": "Answer", "text": "「4」は死、「9」は苦を連想させるとして避ける人が多く、2,000円も割り切れる数として避けるという考え方があります。厳密なルールではありませんが、気になる場合はこのツールの「2・4・9の金額は避ける」をオンにしてください。"}}, {"@type": "Question", "name": "新札はどこで用意できる？", "acceptedAnswer": {"@type": "Answer", "text": "銀行の窓口や両替機で両替できます。口座の有無や枚数によって手数料がかかる場合があるので、利用する銀行で確認してください。年末は混み合うため、12月の早い時期の準備がおすすめです。"}}, {"@type": "Question", "name": "喪中のときはどうする？", "acceptedAnswer": {"@type": "Answer", "text": "喪中でも子どもに渡すことはできます。おめでたい表現を避け、ポチ袋に「おこづかい」「文具代」などと書いて、お正月が明けてから渡す方法が一般的とされています。"}}, {"@type": "Question", "name": "上司など目上の人の子どもに渡すときは？", "acceptedAnswer": {"@type": "Answer", "text": "お年玉は本来、目上から目下に渡すものとされます。目上の方のお子さんには「お年賀」や「文具料」と書いて渡すと失礼になりにくいとされています。"}}]}</script>
 </head>
 <body>
+<div class="promo-note">本ページはプロモーション（広告）を含みます</div>
 <header class="hero">
   <div id="coins" aria-hidden="true"></div>
   <div class="wrap">
@@ -206,8 +217,7 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:20px 16px 40px}
         <span class="tag">PR</span>
         <h3>🧧 ポチ袋・新札の準備をネットで</h3>
         <p>ひつじ年のポチ袋や、のし袋をまとめて用意できます。</p>
-        <!-- AFFILIATE:pochibukuro -->
-        <span class="soon">準備中</span>
+        <!-- AFFILIATE:pochibukuro --> <div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングでポチ袋を探す</a></div>
       </div>
     </section>
   </div>
@@ -242,7 +252,8 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:20px 16px 40px}
         <h3>🎓 教育費の貯め方をプロに無料相談</h3>
         <p>学資保険・NISA・預金、どれで貯めるかをFPに相談できます。</p>
         <!-- AFFILIATE:gakushi_hoken -->
-        <span class="soon">準備中</span>
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+40ODJU+503M+60H7M" rel="nofollow">「ママ」のための保険無料相談サービス【ベビープラネット】</a>
+<img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=4BGAV2+40ODJU+503M+60H7M" alt=""></div>
       </div>
     </section>
   </div>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ネット回線 選び方診断｜光回線・ホームルーター・ポケットWi-Fi、自分に合うのはどれ？</title>
+<meta name="description" content="7つの質問に答えるだけで、光回線・ホームルーター・ポケット型Wi-Fi・スマホのテザリングのうち、あなたの暮らしに合うネット回線がわかる無料診断。月額の目安、2年間の総額、スマホとのセット割、申し込む前の確認ポイントつき。登録不要。">
+<meta name="theme-color" content="#6366f1">
+<link rel="canonical" href="https://yope1016.github.io/apps/net-kaisen-shindan/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:title" content="ネット回線 選び方診断｜光・ホームルーター・ポケットWi-Fi、どれが合う？">
+<meta property="og:description" content="7つの質問で、あなたに合うネット回線と月額の目安・2年総額・セット割がわかる。登録不要。">
+<meta property="og:url" content="https://yope1016.github.io/apps/net-kaisen-shindan/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📶</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"ネット回線 選び方診断","url":"https://yope1016.github.io/apps/net-kaisen-shindan/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"光回線とホームルーターの違いは？","acceptedAnswer":{"@type":"Answer","text":"光回線は建物まで引いた光ファイバーを使うため速度と安定性に強い一方、開通工事が必要です。ホームルーターはモバイル回線を使う据え置き型の機器で、工事不要でコンセントに挿すだけで使えますが、時間帯や場所で速度が変わりやすい特徴があります。"}},
+{"@type":"Question","name":"一人暮らしならポケット型Wi-Fiで十分？","acceptedAnswer":{"@type":"Answer","text":"動画やSNSが中心で、外でもパソコンを使う人には向いています。オンラインゲームやビデオ会議が多い人、長く住む予定の人は、光回線の方が満足しやすい傾向があります。"}},
+{"@type":"Question","name":"光回線の開通まではどのくらいかかる？","acceptedAnswer":{"@type":"Answer","text":"申し込みから開通まで2週間〜1か月ほどが目安で、3〜4月の引っ越しシーズンはさらに混み合うことがあります。引っ越しが決まったら早めに申し込むのがおすすめです。"}},
+{"@type":"Question","name":"スマホとのセット割はある？","acceptedAnswer":{"@type":"Answer","text":"多くの携帯会社に、対象の光回線やホームルーターとセットで使うとスマホ代が割り引かれる仕組みがあります。対象の回線と割引額は会社とプランによって違うため、公式サイトで確認してください。"}}
+]}]}
+</script>
+<style>
+:root{
+  --bg:#f4f5fd;--card:#fff;--ink:#141a33;--sub:#5b6383;--line:#dfe2f3;
+  --pri:#5b5bf0;--pri2:#06b6d4;--acc:#f59e0b;--ok:#10b981;--warn:#ef4444;
+  --chip:#eceefe;--shadow:0 14px 34px -16px rgba(40,40,140,.35);
+  --grad:linear-gradient(135deg,#06b6d4 0%,#6366f1 50%,#a855f7 100%);
+  --r:20px;
+}
+:root[data-theme="dark"]{--bg:#0b0d1d;--card:#14172c;--ink:#e9ebfb;--sub:#a3a9c9;--line:#262b4a;--chip:#1d2140;--pri:#8b8cff;--shadow:0 14px 34px -16px rgba(0,0,0,.75)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0d1d;--card:#14172c;--ink:#e9ebfb;--sub:#a3a9c9;--line:#262b4a;--chip:#1d2140;--pri:#8b8cff;--shadow:0 14px 34px -16px rgba(0,0,0,.75)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+button{font-family:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.promo-note{font-size:11px;color:var(--sub);text-align:center;padding:6px 12px;opacity:.85}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:26px 0 100px}
+.waves{position:absolute;right:-30px;top:30px;width:220px;height:220px;opacity:.35}
+.waves i{position:absolute;left:50%;bottom:0;border:6px solid #fff;border-color:#fff transparent transparent transparent;border-radius:50%;transform:translateX(-50%);animation:sig 2.4s ease-in-out infinite}
+.waves i:nth-child(1){width:60px;height:60px;bottom:50px}
+.waves i:nth-child(2){width:120px;height:120px;bottom:20px;animation-delay:.3s}
+.waves i:nth-child(3){width:180px;height:180px;bottom:-10px;animation-delay:.6s}
+.waves b{position:absolute;left:50%;bottom:70px;width:16px;height:16px;border-radius:50%;background:#fff;transform:translateX(-50%)}
+@keyframes sig{0%,100%{opacity:.25}50%{opacity:1}}
+.orb{position:absolute;font-size:26px;opacity:.4;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(8deg)}}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px}
+.hero h1{font-size:clamp(28px,7.6vw,42px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.42em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2;max-width:560px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+main{margin-top:-66px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line)}
+.card h2{font-size:19px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ico{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:0 0 38px;background:var(--chip)}
+/* quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:800;color:var(--sub);margin-bottom:8px}
+.qhead b{color:var(--pri);font-size:14px}
+.prog{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-bottom:18px}
+.prog i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px;transition:width .4s ease}
+.q{display:none}
+.q.on{display:block;animation:slide .35s ease}
+@keyframes slide{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.q h3{font-size:20px;font-weight:900;line-height:1.4;margin-bottom:4px}
+.q .qs{font-size:13px;color:var(--sub);margin-bottom:14px}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.opt{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:16px;padding:12px;cursor:pointer;min-height:64px;transition:.15s;background:var(--card);text-align:left;color:var(--ink);font-size:15px;font-weight:800;line-height:1.3}
+.opt small{display:block;font-weight:500;color:var(--sub);font-size:11px;margin-top:2px}
+.opt .e{font-size:24px;flex:0 0 28px;text-align:center}
+.opt.on{border-color:var(--pri);background:var(--chip);box-shadow:inset 0 0 0 1px var(--pri)}
+.opt:active{transform:scale(.97)}
+.nav{display:flex;gap:10px;margin-top:18px}
+.back{border:1.5px solid var(--line);background:var(--card);color:var(--sub);border-radius:16px;padding:12px 16px;font-weight:800;font-size:15px;cursor:pointer;min-height:54px}
+.go{flex:1;border:none;border-radius:16px;padding:14px;font-size:17px;font-weight:900;color:#fff;background:var(--grad);cursor:pointer;box-shadow:0 14px 30px -12px #6366f1;min-height:54px;letter-spacing:.04em}
+.go:disabled{opacity:.4;box-shadow:none;cursor:default}
+.go:active{transform:scale(.98)}
+/* result */
+#result{display:none}
+#result.show{display:block;animation:pop .5s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.win{border-radius:22px;padding:20px 18px;background:var(--grad);color:#fff;position:relative;overflow:hidden;margin-bottom:14px}
+.win .wl{font-size:12px;font-weight:800;letter-spacing:.14em;opacity:.9}
+.win .we{font-size:54px;line-height:1.1;margin:6px 0 2px}
+.win h3{font-size:clamp(24px,6.6vw,32px);font-weight:900;line-height:1.25}
+.win p{font-size:14px;opacity:.95;margin-top:6px}
+.win .pct{position:absolute;right:16px;top:16px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:14px;padding:6px 10px;text-align:center;font-weight:900;line-height:1.1}
+.win .pct b{display:block;font-size:26px;font-variant-numeric:tabular-nums}
+.win .pct span{font-size:10px;letter-spacing:.08em}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.sum div{background:var(--chip);border-radius:14px;padding:10px 6px;text-align:center}
+.sum b small{display:block;font-size:12px;font-weight:800}
+.sum b{display:block;font-size:20px;white-space:nowrap;font-weight:900;color:var(--pri);font-variant-numeric:tabular-nums;line-height:1.25}
+.sum span{font-size:11px;color:var(--sub);font-weight:700}
+.why{list-style:none;margin:6px 0 4px}
+.why li{padding:8px 0 8px 28px;position:relative;font-size:14px;border-top:1px dashed var(--line)}
+.why li:before{content:"✓";position:absolute;left:4px;top:8px;color:var(--ok);font-weight:900}
+.why li.ng:before{content:"!";color:var(--acc)}
+.rank{margin-top:6px}
+.rk{display:grid;grid-template-columns:32px 1fr 52px;gap:10px;align-items:center;padding:10px 0;border-top:1px dashed var(--line)}
+.rk .e{font-size:24px;text-align:center}
+.rk .n{font-weight:800;font-size:14px;line-height:1.35}
+.rk .n small{display:block;color:var(--sub);font-weight:500;font-size:11px}
+.rk .bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:6px}
+.rk .bar i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px;transition:width .8s ease}
+.rk b{font-size:18px;font-weight:900;color:var(--pri);text-align:right;font-variant-numeric:tabular-nums}
+.tip{background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(6,182,212,.10));border:1.5px solid var(--pri);border-radius:16px;padding:12px 14px;margin:12px 0 4px;font-size:14px}
+.tip b{color:var(--pri)}
+.chk{list-style:none}
+.chk li{display:flex;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:14px;line-height:1.55}
+.chk li span{font-size:20px;flex:0 0 26px}
+.chk li small{display:block;color:var(--sub);font-size:12px}
+.pr{border:1.5px solid var(--acc);border-radius:18px;padding:16px;position:relative;background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(99,102,241,.06));margin-top:16px}
+.pr.hot{box-shadow:0 0 0 3px rgba(245,158,11,.35)}
+.prlab{position:absolute;top:-10px;left:14px;background:var(--acc);color:#fff;font-size:11px;font-weight:900;border-radius:6px;padding:1px 8px;letter-spacing:.1em}
+.match{display:none;position:absolute;top:-10px;right:14px;background:var(--ok);color:#fff;font-size:11px;font-weight:900;border-radius:6px;padding:1px 8px}
+.pr.hot .match{display:inline-block}
+.pr h3{font-size:16px;margin-bottom:6px}
+.pr p{font-size:14px;color:var(--sub)}
+.pr .soon{display:inline-block;margin-top:8px;background:var(--chip);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--sub);font-weight:700}
+.afl{display:flex;flex-direction:column;gap:10px;margin-top:12px;position:relative}
+body .afl a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border-radius:14px;background:var(--pri) !important;background-image:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0)) !important;border:0 !important;color:#fff !important;font-weight:700;font-size:15px;line-height:1.45;text-decoration:none !important;box-shadow:0 8px 20px -10px rgba(0,0,0,.45);transition:transform .15s ease}
+.afl a::after{content:"\203A";font-size:22px;line-height:1;flex:none}
+.afl a:active{transform:scale(.98)}
+.afl img[width="1"]{position:absolute;left:0;bottom:0}
+.afl-note{font-size:11px;color:var(--sub);margin-top:8px}
+.share{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.share a,.share button{flex:1;min-width:140px;text-align:center;text-decoration:none;border-radius:14px;padding:12px;font-weight:800;font-size:14px;border:none;cursor:pointer;min-height:48px}
+.line{background:#06c755;color:#fff}
+.copy{background:var(--chip);color:var(--ink)}
+.redo{background:transparent;color:var(--pri);border:1.5px solid var(--line)!important}
+.cmp{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
+.cmpw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px}
+.cmp th,.cmp td{padding:9px 6px;border-top:1px solid var(--line);text-align:center;vertical-align:middle}
+.cmp th{font-size:12px;color:var(--sub);font-weight:800}
+.cmp td:first-child,.cmp th:first-child{text-align:left;font-weight:800;white-space:nowrap}
+.cmp .g{color:var(--ok);font-weight:900}
+.cmp .m{color:var(--acc);font-weight:900}
+.cmp .b{color:var(--warn);font-weight:900}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#141a33;color:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;transition:.3s;z-index:9;opacity:0}
+.toast.show{transform:translateX(-50%);opacity:1}
+details{border-top:1px solid var(--line);padding:12px 0}
+details summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:"＋";color:var(--pri)}
+details[open] summary:after{content:"－"}
+details p{font-size:14px;color:var(--sub);margin-top:8px}
+.links a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px;font-weight:700;font-size:14px;background:var(--card)}
+.links a span{font-size:24px}
+.src{font-size:12px;color:var(--sub)}
+.src li{margin:4px 0 4px 1.2em;word-break:break-all}
+footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
+.spark{position:fixed;top:-20px;font-size:22px;z-index:8;pointer-events:none;animation:fall 1.8s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:380px){.opts{grid-template-columns:1fr}.sum b{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="promo-note">本ページはプロモーション（広告）を含みます</div>
+<header class="hero">
+  <div class="waves"><i></i><i></i><i></i><b></b></div>
+  <span class="orb" style="left:6%;top:30%">🏠</span><span class="orb" style="left:46%;top:10%;animation-delay:1.5s">💻</span><span class="orb" style="left:70%;top:66%;animation-delay:3s">🎮</span>
+  <div class="wrap">
+    <div class="topbar"><span class="brand">HITORI LAB</span><button class="mode" id="mode" type="button">🌙 ダーク</button></div>
+    <h1><small>光回線・ホームルーター・ポケットWi-Fi</small>ネット回線<br>選び方診断</h1>
+    <p class="lead">7つの質問に答えるだけ。あなたの住まいと使い方に合う回線のタイプと、<b>月額の目安・2年間の総額・スマホのセット割</b>がわかります。</p>
+    <div class="badges"><span class="badge">約1分</span><span class="badge">登録不要</span><span class="badge">引っ越し・新生活に</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" id="quiz">
+    <div class="qhead"><span>質問 <b id="qn">1</b> / 7</span><span id="qhint">ひとつ選んでください</span></div>
+    <div class="prog"><i id="pbar"></i></div>
+
+    <div class="q on" data-q="home">
+      <h3>🏠 住まいはどんな建物？</h3><p class="qs">引っ越し先が決まっていれば、そちらで答えてください。</p>
+      <div class="opts">
+        <button class="opt" data-v="house" type="button"><span class="e">🏡</span><span>戸建て<small>持ち家・賃貸の一軒家</small></span></button>
+        <button class="opt" data-v="mansion" type="button"><span class="e">🏢</span><span>マンション・アパート<small>光回線の設備あり／不明</small></span></button>
+        <button class="opt" data-v="nokoji" type="button"><span class="e">🚫</span><span>工事ができない賃貸<small>大家さんの許可が出ない など</small></span></button>
+        <button class="opt" data-v="share" type="button"><span class="e">🛏️</span><span>寮・シェアハウス<small>マンスリー・社宅も</small></span></button>
+      </div>
+    </div>
+
+    <div class="q" data-q="stay">
+      <h3>📅 そこに住む予定の期間は？</h3><p class="qs">光回線は2年契約のプランが多く、途中で解約すると解約金や工事費の残りがかかることがあります。</p>
+      <div class="opts">
+        <button class="opt" data-v="short" type="button"><span class="e">🧳</span><span>1年未満<small>転勤・仮住まい</small></span></button>
+        <button class="opt" data-v="mid" type="button"><span class="e">🗓️</span><span>1〜2年くらい</span></button>
+        <button class="opt" data-v="long" type="button"><span class="e">🌳</span><span>2年以上<small>しばらく住む</small></span></button>
+        <button class="opt" data-v="mid" type="button"><span class="e">🤔</span><span>まだ分からない</span></button>
+      </div>
+    </div>
+
+    <div class="q" data-q="ppl">
+      <h3>👨‍👩‍👧 家でネットを使う人数は？</h3><p class="qs">同時に使う人が多いほど、回線の太さが大事になります。</p>
+      <div class="opts">
+        <button class="opt" data-v="1" type="button"><span class="e">🙋</span><span>1人</span></button>
+        <button class="opt" data-v="2" type="button"><span class="e">👫</span><span>2人</span></button>
+        <button class="opt" data-v="3" type="button"><span class="e">👨‍👩‍👧</span><span>3〜4人</span></button>
+        <button class="opt" data-v="5" type="button"><span class="e">👨‍👩‍👧‍👦</span><span>5人以上</span></button>
+      </div>
+    </div>
+
+    <div class="q" data-q="use" data-multi="1">
+      <h3>💻 主な使い方は？</h3><p class="qs">当てはまるものを<b>すべて</b>選んでください。</p>
+      <div class="opts">
+        <button class="opt" data-v="video" type="button"><span class="e">📺</span><span>動画・SNS<small>YouTube・配信サービス</small></span></button>
+        <button class="opt" data-v="game" type="button"><span class="e">🎮</span><span>オンラインゲーム<small>対戦・FPS など</small></span></button>
+        <button class="opt" data-v="work" type="button"><span class="e">🧑‍💻</span><span>在宅ワーク<small>ビデオ会議・大きいファイル</small></span></button>
+        <button class="opt" data-v="heavy" type="button"><span class="e">📡</span><span>ライブ配信・大容量DL<small>ゲームの更新・動画の投稿</small></span></button>
+        <button class="opt" data-v="light" type="button"><span class="e">📱</span><span>ほぼスマホだけ<small>調べもの・LINE くらい</small></span></button>
+        <button class="opt" data-v="tv" type="button"><span class="e">🖥️</span><span>テレビで動画<small>4K・大画面で見る</small></span></button>
+      </div>
+    </div>
+
+    <div class="q" data-q="out">
+      <h3>☕ 家の外でもパソコンやタブレットを使う？</h3><p class="qs">カフェ・出張・通学先など。スマホだけなら「ほぼ家だけ」でOK。</p>
+      <div class="opts">
+        <button class="opt" data-v="home" type="button"><span class="e">🏠</span><span>ほぼ家だけ</span></button>
+        <button class="opt" data-v="some" type="button"><span class="e">🚃</span><span>ときどき外でも</span></button>
+        <button class="opt" data-v="often" type="button"><span class="e">✈️</span><span>外で使うことが多い<small>出張・移動が多い</small></span></button>
+      </div>
+    </div>
+
+    <div class="q" data-q="soon">
+      <h3>⏱️ いつから使いたい？</h3><p class="qs">光回線は申し込みから開通まで2週間〜1か月ほど。3〜4月はさらに混み合うことがあります。</p>
+      <div class="opts">
+        <button class="opt" data-v="now" type="button"><span class="e">⚡</span><span>すぐ使いたい<small>1週間以内</small></span></button>
+        <button class="opt" data-v="weeks" type="button"><span class="e">📆</span><span>2〜4週間は待てる</span></button>
+        <button class="opt" data-v="any" type="button"><span class="e">🐢</span><span>急がない<small>1か月以上先の入居</small></span></button>
+      </div>
+    </div>
+
+    <div class="q" data-q="sp">
+      <h3>📱 使っているスマホの会社は？</h3><p class="qs">セット割（スマホ代の割引）が使える回線が変わります。家族が多い会社で答えてください。</p>
+      <div class="opts">
+        <button class="opt" data-v="docomo" type="button"><span class="e">🔴</span><span>ドコモ</span></button>
+        <button class="opt" data-v="ahamo" type="button"><span class="e">🟢</span><span>ahamo</span></button>
+        <button class="opt" data-v="au" type="button"><span class="e">🟠</span><span>au</span></button>
+        <button class="opt" data-v="uq" type="button"><span class="e">🔵</span><span>UQモバイル</span></button>
+        <button class="opt" data-v="sb" type="button"><span class="e">⚪</span><span>ソフトバンク</span></button>
+        <button class="opt" data-v="ym" type="button"><span class="e">🩵</span><span>ワイモバイル</span></button>
+        <button class="opt" data-v="rakuten" type="button"><span class="e">🟣</span><span>楽天モバイル</span></button>
+        <button class="opt" data-v="other" type="button"><span class="e">⚫</span><span>その他の格安SIM<small>povo・LINEMO なども</small></span></button>
+      </div>
+    </div>
+
+    <div class="nav"><button class="back" id="back" type="button" style="visibility:hidden">← 戻る</button><button class="go" id="next" type="button" disabled>次へ</button></div>
+  </section>
+
+  <section id="result">
+    <div class="card">
+      <div class="win">
+        <div class="pct"><b id="wpct">0</b><span>適合度</span></div>
+        <div class="wl">あなたに合うのは</div>
+        <div class="we" id="wemo">📶</div>
+        <h3 id="wname">-</h3>
+        <p id="wcopy"></p>
+      </div>
+      <div class="sum">
+        <div><b id="smo">-</b><span>月額の目安</span></div>
+        <div><b id="s2y">-</b><span>2年間の総額</span></div>
+        <div><b id="sday">-</b><span>使えるまで</span></div>
+      </div>
+      <h2><span class="ico">💡</span>この結果になった理由</h2>
+      <ul class="why" id="why"></ul>
+      <div class="tip" id="settip"></div>
+      <div class="share"><a class="line" id="lineBtn" href="#" target="_blank" rel="noopener">LINEで送る</a><button class="copy" id="copyBtn" type="button">結果をコピー</button><button class="redo" id="redo" type="button">もう一度診断する</button></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">📊</span>4つのタイプの相性</h2>
+      <div class="rank" id="rank"></div>
+      <p class="src" style="margin-top:10px">月額・2年総額は各タイプの一般的な料金帯の中央値で計算した目安です（工事費の実質無料・キャッシュバックなどは含みません）。</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">✅</span>申し込む前の確認リスト</h2>
+      <ul class="chk" id="chk"></ul>
+
+      <div class="pr" id="pr-au">
+        <span class="prlab">PR</span><span class="match">あなたのスマホに合う</span>
+        <h3>🟠 BIGLOBE光プラス by auひかりプラス</h3>
+        <p>au・UQモバイルのセット割（auスマートバリュー／自宅セット割）の対象。戸建て・マンションとも1ギガと10ギガのプランあり。</p>
+        <!-- AFFILIATE:hikari_kaisen -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+5L8K0Q+B4+2Z68LU" rel="nofollow">【公式】BIGLOBE光プラス by auひかりプラス</a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGAV2+5L8K0Q+B4+2Z68LU" alt=""></div>
+        <p class="afl-note">料金・キャンペーン・提供エリアは申し込み前に公式サイトで確認してください。</p>
+      </div>
+
+      <div class="pr" id="pr-ahamo">
+        <span class="prlab">PR</span><span class="match">あなたのスマホに合う</span>
+        <h3>🟢 ahamo光</h3>
+        <p>ahamoを使っている人向けの光回線。1ギガの月額は戸建て4,950円・マンション3,630円という比較記事の記載があります（2026年時点）。</p>
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+5CB1Y2+3SPO+CKJSMQ" rel="nofollow">安定した光回線で快適に使える【ahamo光】</a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGAV2+5CB1Y2+3SPO+CKJSMQ" alt=""></div>
+        <p class="afl-note">申し込み条件・料金は申し込み前に公式サイトで確認してください。</p>
+      </div>
+
+      <div class="pr" id="pr-home">
+        <span class="prlab">PR</span>
+        <h3>📦 工事なしで使えるホームルーター</h3>
+        <p>コンセントに挿すだけ。届いた日から使えて、工事の立ち会いもいりません。</p>
+        <!-- AFFILIATE:home_router -->
+        <span class="soon">ホームルーターのご案内は準備中です</span>
+      </div>
+
+      <div class="pr" id="pr-pocket">
+        <span class="prlab">PR</span>
+        <h3>👜 持ち歩けるポケット型Wi-Fi</h3>
+        <p>家でも外でも1台で。短期間だけ使いたい人はレンタルという選択肢もあります。</p>
+        <!-- AFFILIATE:pocket_wifi -->
+        <span class="soon">ポケット型Wi-Fiのご案内は準備中です</span>
+      </div>
+
+      <div class="pr" id="pr-other">
+        <span class="prlab">PR</span>
+        <h3>🔁 ドコモ・ソフトバンク・楽天のセット割対象の回線</h3>
+        <p>ドコモ光、ソフトバンク光・SoftBank Air、楽天ひかり・Rakuten Turbo など、スマホ会社ごとのセット割の対象回線です。</p>
+        <!-- AFFILIATE:set_wari_hikari -->
+        <span class="soon">各社のご案内は準備中です</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🧭</span>4つのタイプをざっくり比べる</h2>
+    <div class="cmpw"><table class="cmp">
+      <tr><th></th><th>光回線</th><th>ホーム<br>ルーター</th><th>ポケット<br>Wi-Fi</th><th>スマホの<br>テザリング</th></tr>
+      <tr><td>速さ・安定</td><td class="g">◎</td><td class="m">○</td><td class="m">△</td><td class="b">△</td></tr>
+      <tr><td>工事</td><td class="b">必要</td><td class="g">不要</td><td class="g">不要</td><td class="g">不要</td></tr>
+      <tr><td>使えるまで</td><td class="b">2週〜1か月</td><td class="g">数日</td><td class="g">数日</td><td class="g">今すぐ</td></tr>
+      <tr><td>外で使う</td><td class="b">×</td><td class="b">×</td><td class="g">◎</td><td class="g">◎</td></tr>
+      <tr><td>月額の目安</td><td>約3,600〜<br>6,500円</td><td>約4,000〜<br>5,500円</td><td>約3,000〜<br>5,000円</td><td>プラン<br>しだい</td></tr>
+      <tr><td>向く人</td><td>長く住む・<br>ゲーム・在宅</td><td>工事NG・<br>すぐ使う</td><td>一人暮らし・<br>外出が多い</td><td>ほぼスマホ<br>だけの人</td></tr>
+    </table></div>
+    <p class="src" style="margin-top:10px">評価は一般的な傾向です。実際の速度は地域・建物・時間帯・機種によって変わります。</p>
+  </section>
+
+  <section class="card links">
+    <h2><span class="ico">📋</span>引っ越しが決まったら</h2>
+    <a href="../hikkoshi-checklist/"><span>📦</span>引っ越し手続きチェックリスト（転出届・転入届・ネットの申し込みの期限を日付つきで）</a>
+    <a href="../hikkoshi-shoki-hiyou/"><span>🔑</span>引っ越しの初期費用 計算機（契約金＋引っ越し代＋家具家電の総額）</a>
+    <a href="../oosouji-buntan-2026/"><span>🧹</span>大掃除の分担ジェネレーター（退去前の掃除の段取りに）</a>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">❓</span>よくある質問</h2>
+    <details><summary>光回線とホームルーターの違いは？</summary><p>光回線は建物まで引いた光ファイバーを使うため、速度と安定性に強い一方、開通工事が必要です。ホームルーターはスマホと同じモバイル回線を使う据え置き型の機器で、工事不要でコンセントに挿すだけで使えますが、時間帯や場所によって速度が変わりやすい特徴があります。</p></details>
+    <details><summary>一人暮らしならポケット型Wi-Fiで十分？</summary><p>動画やSNSが中心で、外でもパソコンを使う人には向いています。オンラインゲームやビデオ会議が多い人、長く住む予定の人は、光回線の方が満足しやすい傾向があります。</p></details>
+    <details><summary>光回線の開通まではどのくらいかかる？</summary><p>申し込みから開通まで2週間〜1か月ほどが目安で、3〜4月の引っ越しシーズンはさらに混み合うことがあります。引っ越しが決まったら、入居日に合わせて早めに申し込むのがおすすめです。</p></details>
+    <details><summary>賃貸でも光回線の工事はできる？</summary><p>建物に光回線の設備があれば、大がかりな工事なしで使えることが多いです。設備がなく壁に穴をあけるような工事が必要な場合は、大家さんや管理会社の許可が必要です。申し込む前に確認しましょう。</p></details>
+    <details><summary>スマホとのセット割はある？</summary><p>多くの携帯会社に、対象の光回線やホームルーターとセットで使うとスマホ代が割り引かれる仕組みがあります（例：auスマートバリュー、ドコモ光セット割、おうち割 光セット）。対象の回線と割引額は会社とプランによって違うため、公式サイトで確認してください。</p></details>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📚</span>参考にした情報</h2>
+    <ul class="src">
+      <li>GMOとくとくBB「ポケット型WiFiと光回線の違い」（月額相場・工事の有無・向いている人） https://gmobb.jp/media/wifi/mobilerouter/pocketwifi-vs-hikari/</li>
+      <li>Selectra「BIGLOBE光プラス by auひかりプラスの料金・評判」（月額料金・セット割・工事費、2026年9月時点） https://selectra.jp/telecom/fiber/biglobe-plus</li>
+      <li>Selectra「ahamoと光回線」（ahamo光の月額料金・申し込み条件） https://selectra.jp/telecom/fiber/ahamo-mobile</li>
+      <li>NTTドコモ「ドコモ光 料金」 https://www.docomo.ne.jp/internet/hikari/charge/</li>
+    </ul>
+    <p class="src" style="margin-top:8px">料金はすべて税込の目安で、2026年11月時点の公開情報をもとにしています。キャンペーンや料金は変わることがあるため、申し込む前に各社の公式サイトで確認してください。この診断は一般的な傾向にもとづく目安で、特定の回線の速度を保証するものではありません。</p>
+  </section>
+  <footer>© ひとりラボ ・ 回答内容はどこにも送信されません</footer>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var root=document.documentElement;
+function curDark(){var t=root.getAttribute("data-theme");if(t)return t==="dark";return window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches}
+function setModeLabel(){$("mode").textContent=curDark()?"☀️ ライト":"🌙 ダーク"}
+$("mode").onclick=function(){root.setAttribute("data-theme",curDark()?"light":"dark");setModeLabel()};
+setModeLabel();
+
+var qs=[].slice.call(document.querySelectorAll(".q"));
+var A={},idx=0;
+function cur(){return qs[idx]}
+function key(){return cur().getAttribute("data-q")}
+function multi(){return cur().getAttribute("data-multi")==="1"}
+function answered(){var v=A[key()];return multi()?(v&&v.length>0):!!v}
+function render(){
+  qs.forEach(function(q,i){q.classList.toggle("on",i===idx)});
+  $("qn").textContent=idx+1;
+  $("pbar").style.width=((idx)/qs.length*100)+"%";
+  $("qhint").textContent=multi()?"いくつでも選べます":"ひとつ選んでください";
+  $("back").style.visibility=idx>0?"visible":"hidden";
+  $("next").textContent=idx===qs.length-1?"診断する ✨":"次へ";
+  $("next").disabled=!answered();
+  $("next").style.display=(multi()||idx===qs.length-1)?"":"none";
+}
+qs.forEach(function(q){
+  q.addEventListener("click",function(e){
+    var b=e.target.closest(".opt");if(!b)return;
+    var k=q.getAttribute("data-q"),v=b.getAttribute("data-v");
+    if(q.getAttribute("data-multi")==="1"){
+      var arr=A[k]||[];
+      if(v==="light"){arr=arr.indexOf("light")>=0?[]:["light"]}
+      else{arr=arr.filter(function(x){return x!=="light"});var p=arr.indexOf(v);if(p>=0)arr.splice(p,1);else arr.push(v)}
+      A[k]=arr;
+      q.querySelectorAll(".opt").forEach(function(o){o.classList.toggle("on",arr.indexOf(o.getAttribute("data-v"))>=0)});
+      render();
+    }else{
+      A[k]=v;
+      q.querySelectorAll(".opt").forEach(function(o){o.classList.toggle("on",o===b)});
+      render();
+      if(idx<qs.length-1){setTimeout(function(){idx++;render()},220)}
+    }
+  });
+});
+$("back").onclick=function(){if(idx>0){idx--;render()}};
+$("next").onclick=function(){if(!answered())return;if(idx<qs.length-1){idx++;render()}else{diagnose()}};
+render();
+
+var T={
+ hikari:{e:"🌐",n:"光回線",s:"速さと安定性で選ぶなら",lo:{house:5000,other:3600},hi:{house:6500,other:5500},day:"2週〜1か月",init:"工事あり",
+   copy:"建物まで光ファイバーを引く、いちばん速くて安定したタイプ。家族みんなで使っても、ゲームやビデオ会議でも快適に使いやすい回線です。"},
+ home:{e:"📦",n:"ホームルーター",s:"工事なしで家のWi-Fiを",lo:4000,hi:5500,day:"数日",init:"工事なし",
+   copy:"コンセントに挿すだけで使える据え置き型のWi-Fi。工事の立ち会いがいらず、届いた日から使えます。時間帯によって速度が変わりやすい点だけ注意。"},
+ pocket:{e:"👜",n:"ポケット型Wi-Fi",s:"家でも外でも1台で",lo:3000,hi:5000,day:"数日",init:"工事なし",
+   copy:"手のひらサイズのWi-Fiを持ち歩くタイプ。家でも外でも使えて、一人暮らしや短期間の住まいと相性が良い回線です。"},
+ sim:{e:"📱",n:"スマホのテザリング",s:"新しい契約はまだいらないかも",lo:0,hi:3000,day:"今すぐ",init:"契約変更のみ",
+   copy:"スマホの電波をパソコンやタブレットに分ける使い方。ギガが多い（無制限の）プランなら、新しく回線を契約しなくても足りる場合があります。"}
+};
+function scores(){
+  var s={hikari:50,home:42,pocket:32,sim:24},why={hikari:[],home:[],pocket:[],sim:[]};
+  function add(t,v,msg){s[t]+=v;if(msg&&v>0)why[t].push([1,msg]);if(msg&&v<0)why[t].push([0,msg])}
+  var h=A.home,st=A.stay,p=+A.ppl,u=A.use||[],o=A.out,so=A.soon;
+  if(h==="house"){add("hikari",15,"戸建ては光回線を引きやすく、家じゅうで安定して使えます");add("pocket",-5)}
+  if(h==="mansion"){add("hikari",10,"マンションは設備があれば工事が短く済むことが多いです")}
+  if(h==="nokoji"){add("hikari",-35,"工事ができない建物では光回線は選びにくいです");add("home",22,"工事がいらないので、許可が取れない賃貸でも使えます");add("pocket",10)}
+  if(h==="share"){add("hikari",-40,"寮・シェアハウスでは自分で回線を引けないことが多いです");add("home",8);add("pocket",16,"自分専用のWi-Fiを持ち込めます");add("sim",12)}
+  if(st==="short"){add("hikari",-20,"住む期間が短いと、光回線の解約金や工事費の残りがかかることがあります");add("pocket",15,"短期間でも契約しやすく、引っ越し先でもそのまま使えます");add("sim",14);add("home",6,"住所変更の手続きをすれば、引っ越し先でも使えます")}
+  if(st==="mid"){add("home",8,"引っ越しても住所変更だけで使い続けられます");add("hikari",-3)}
+  if(st==="long"){add("hikari",15,"長く住むなら、月額が安定する光回線が結局おトクになりやすいです")}
+  if(p===1){add("pocket",6);add("sim",10)}
+  if(p===2){add("home",5)}
+  if(p>=3){add("hikari",p>=5?24:16,"家族みんなが同時に使っても速度が落ちにくいです");add("pocket",-18,"人数が多いと、持ち歩くタイプは通信量や接続台数が足りなくなりがちです");add("sim",-25);add("home",p>=5?-6:0)}
+  if(u.indexOf("game")>=0){add("hikari",26,"オンラインゲームは回線の安定性（ラグの少なさ）が大事です");add("home",-12,"対戦ゲームは、モバイル回線だと遅延が気になることがあります");add("pocket",-16);add("sim",-16)}
+  if(u.indexOf("work")>=0){add("hikari",16,"ビデオ会議や大きいファイルの送受信も安定しやすいです");add("home",4);add("pocket",-5);add("sim",-8)}
+  if(u.indexOf("heavy")>=0){add("hikari",22,"大容量の通信をしても、速度が落ちにくいです");add("pocket",-16,"大容量の通信が多いと、速度制限にかかることがあります");add("sim",-14);add("home",-4)}
+  if(u.indexOf("video")>=0){add("home",6,"動画やSNSが中心なら、ホームルーターでも十分なことが多いです");add("hikari",4)}
+  if(u.indexOf("tv")>=0){add("hikari",10,"大画面・高画質の動画も止まりにくいです");add("home",4)}
+  if(u.indexOf("light")>=0){add("sim",30,"使い方が軽いなら、スマホのテザリングで足りる可能性があります");add("pocket",8);add("hikari",-12)}
+  if(o==="some"){add("pocket",14,"外でもパソコン・タブレットを使えます");add("sim",10)}
+  if(o==="often"){add("pocket",28,"出張や移動の多い人に向いています");add("sim",16);add("hikari",-6);add("home",-12,"ホームルーターは登録した住所でしか使えないことが多いです")}
+  if(so==="now"){add("hikari",-14,"光回線は開通まで2週間〜1か月ほど待つことがあります");add("home",16,"届いた日から使えます");add("pocket",16);add("sim",12)}
+  if(so==="any"){add("hikari",6,"入居まで時間があるので、光回線の工事日を入居日に合わせやすいです")}
+  Object.keys(s).forEach(function(k){s[k]=Math.max(3,Math.min(97,Math.round(100/(1+Math.exp(-(s[k]-50)/25)))))});
+  return {s:s,why:why};
+}
+function price(t){
+  var x=T[t],lo=x.lo,hi=x.hi;
+  if(typeof lo==="object"){var k=A.home==="house"?"house":"other";lo=lo[k];hi=hi[k]}
+  return [lo,hi];
+}
+function yen(v){return Math.round(v).toLocaleString("ja-JP")}
+function man(v){return (Math.round(v/1000)/10).toLocaleString("ja-JP")+"万円"}
+var SET={
+ docomo:{t:"ドコモをお使いなら、<b>ドコモ光</b>や<b>home 5G</b>（ホームルーター）とのセット割（ドコモ光セット割など）の対象かどうかを確認してみてください。",pr:"pr-other"},
+ ahamo:{t:"ahamoをお使いなら、ahamoユーザー向けの<b>ahamo光</b>が候補になります（申し込み条件・料金は公式サイトで確認を）。",pr:"pr-ahamo"},
+ au:{t:"auをお使いなら、<b>auスマートバリュー</b>の対象の光回線やホームルーターで、スマホ代が最大で月1,100円ほど割り引かれる場合があります（BIGLOBE光プラスなどが対象）。",pr:"pr-au"},
+ uq:{t:"UQモバイルをお使いなら、<b>自宅セット割</b>の対象の光回線やホームルーターで、スマホ代が最大で月1,100円ほど割り引かれる場合があります（BIGLOBE光プラスなどが対象）。",pr:"pr-au"},
+ sb:{t:"ソフトバンクをお使いなら、<b>おうち割 光セット</b>の対象（ソフトバンク光・SoftBank Air など）かどうかを確認してみてください。",pr:"pr-other"},
+ ym:{t:"ワイモバイルをお使いなら、<b>おうち割 光セット(A)</b>の対象（ソフトバンク光・SoftBank Air など）かどうかを確認してみてください。",pr:"pr-other"},
+ rakuten:{t:"楽天モバイルをお使いなら、<b>楽天ひかり</b>や<b>Rakuten Turbo</b>（ホームルーター）のキャンペーンを確認してみてください。",pr:"pr-other"},
+ other:{t:"格安SIMは光回線とのセット割がないことが多いので、<b>回線そのものの月額と工事費・解約金</b>の安さで比べるのがおすすめです。",pr:""}
+};
+var last=null;
+function diagnose(){
+  $("pbar").style.width="100%";
+  var r=scores(),s=r.s;
+  var order=Object.keys(s).sort(function(a,b){return s[b]-s[a]});
+  var top=order[0],x=T[top],pr=price(top),mid=(pr[0]+pr[1])/2;
+  last={top:top,s:s,order:order};
+  $("wemo").textContent=x.e;$("wname").textContent=x.n;$("wcopy").textContent=x.copy;
+  count($("wpct"),s[top],"%");
+  function k(v){return (v/1000).toFixed(1).replace(/\.0$/,"")}
+  $("smo").innerHTML=top==="sim"?"+0〜3<small>千円/月</small>":k(pr[0])+"〜"+k(pr[1])+"<small>千円/月</small>";
+  $("s2y").innerHTML=top==="sim"?"0〜7.2<small>万円</small>":(Math.round(mid*24/1000)/10)+"<small>万円</small>";
+  $("sday").innerHTML=x.day.replace("〜","〜<small>").replace(/$/,x.day.indexOf("〜")>=0?"</small>":"")+(x.day.indexOf("〜")>=0?"":"<small>&nbsp;</small>");
+  var w=r.why[top].filter(function(a){return a[0]===1}).slice(0,4);
+  var ng=r.why[top].filter(function(a){return a[0]===0}).slice(0,1);
+  if(!w.length)w=[[1,x.s+"、バランスの良い選択肢です"]];
+  $("why").innerHTML=w.map(function(a){return "<li>"+a[1]+"</li>"}).join("")+ng.map(function(a){return '<li class="ng">注意：'+a[1]+"</li>"}).join("");
+  var st=SET[A.sp]||SET.other;
+  $("settip").innerHTML="📱 <b>スマホのセット割</b><br>"+st.t;
+  ["pr-au","pr-ahamo","pr-home","pr-pocket","pr-other"].forEach(function(id){$(id).classList.remove("hot")});
+  if(st.pr)$(st.pr).classList.add("hot");
+  // order PR boxes: carrier match first, then by type
+  var box=$("pr-au").parentNode,ids=[];
+  if(st.pr)ids.push(st.pr);
+  if(top==="home")ids.push("pr-home");
+  if(top==="pocket"||top==="sim")ids.push("pr-pocket");
+  ["pr-au","pr-ahamo","pr-home","pr-pocket","pr-other"].forEach(function(id){if(ids.indexOf(id)<0)ids.push(id)});
+  ids.forEach(function(id){box.appendChild($(id))});
+  $("rank").innerHTML=order.map(function(k,i){var p=price(k);return '<div class="rk"><span class="e">'+T[k].e+'</span><div class="n">'+(i+1)+"位　"+T[k].n+"<small>"+(k==="sim"?"今のスマホのプランしだい（無制限プランへの変更で月0〜3,000円ほどの差）":"月額 約"+yen(p[0])+"〜"+yen(p[1])+"円 ・ 2年で約"+man((p[0]+p[1])/2*24)+" ・ "+T[k].init)+'</small><div class="bar"><i data-w="'+s[k]+'"></i></div></div><b>'+s[k]+"%</b></div>"}).join("");
+  setTimeout(function(){document.querySelectorAll("#rank .bar i").forEach(function(i){i.style.width=i.getAttribute("data-w")+"%"})},60);
+  $("chk").innerHTML=checklist(top).map(function(c){return "<li><span>"+c[0]+"</span><div><b>"+c[1]+"</b><small>"+c[2]+"</small></div></li>"}).join("");
+  $("quiz").style.display="none";
+  var res=$("result");res.classList.remove("show");void res.offsetWidth;res.classList.add("show");
+  $("lineBtn").href="https://line.me/R/share?text="+encodeURIComponent(text());
+  window.scrollTo({top:res.getBoundingClientRect().top+window.pageYOffset-12,behavior:"smooth"});
+  sparkle();
+}
+function checklist(t){
+  var c=[];
+  if(t==="hikari"){
+    c.push(["🏢","建物の設備を確認","マンションは「光配線方式」か「VDSL方式」かで速さが変わります。管理会社か、申し込み先のエリア検索で確認を。"]);
+    c.push(["🛠️","工事日と立ち会い","入居日に間に合うよう、引っ越しが決まったらすぐ申し込むのが安心です。工事は1〜3時間ほどのことが多いです。"]);
+    c.push(["💴","工事費の残りと解約金","「工事費実質無料」は分割の残りを毎月割り引く形が多く、途中で解約すると残りを一括で払うことがあります。"]);
+  }
+  if(t==="home"){
+    c.push(["📍","登録住所でしか使えないか","ホームルーターは契約時に登録した住所でだけ使えることが多いです。引っ越すときは住所変更の手続きを。"]);
+    c.push(["📶","エリアと電波","申し込む前に、住所で5Gや4Gの提供エリアを確認。窓ぎわに置くと速くなりやすいです。"]);
+    c.push(["💴","端末代の分割と解約","端末代を分割で払うプランは、途中で解約すると残りの支払いが残ることがあります。"]);
+  }
+  if(t==="pocket"){
+    c.push(["📦","月のデータ量","「無制限」でも混雑時や短期間に大量に使うと速度制限がかかる場合があります。条件を確認しましょう。"]);
+    c.push(["🔋","バッテリーと同時接続台数","外で長く使うならバッテリーの持ち時間も確認。家族で使うなら同時接続台数も。"]);
+    c.push(["🗓️","契約期間（短期ならレンタルも）","数か月だけならレンタルの方が安く済むこともあります。"]);
+  }
+  if(t==="sim"){
+    c.push(["📱","テザリングの条件","プランによってはテザリングに申し込みや追加料金が必要だったり、使えるデータ量に上限があったりします。"]);
+    c.push(["🔋","スマホのバッテリー","テザリング中はスマホの電池の減りが早くなります。長時間なら充電しながら使いましょう。"]);
+    c.push(["📈","足りなくなったら","使い方が増えたら、ホームルーターやポケット型Wi-Fiも検討を。"]);
+  }
+  c.push(["🎁","キャンペーンの受け取り条件","キャッシュバックは申請期限や手続きが決まっていることが多いです。申し込んだらすぐにカレンダーへ。"]);
+  c.push(["🚚","引っ越しの手続きとセットで","ネットの申し込み・旧居の解約は、転出届や電気・ガスと同じ時期にまとめて済ませると忘れません。"]);
+  return c;
+}
+function text(){
+  if(!last)return "";
+  var x=T[last.top];
+  return "【ネット回線 選び方診断】\n私に合うのは「"+x.n+"」（適合度"+last.s[last.top]+"%）\n"+last.order.map(function(k,i){return (i+1)+"位 "+T[k].n+" "+last.s[k]+"%"}).join("\n")+"\nhttps://yope1016.github.io/apps/net-kaisen-shindan/";
+}
+function count(el,to,suf){var t0=null;function f(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/700);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+function sparkle(){if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;var em=["📶","✨","💡","🌐"];for(var i=0;i<14;i++){var d=document.createElement("div");d.className="spark";d.textContent=em[i%em.length];d.style.left=(Math.random()*100)+"vw";d.style.animationDelay=(Math.random()*.5)+"s";document.body.appendChild(d);setTimeout(function(n){return function(){n.remove()}}(d),2600)}}
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},1800)}
+$("copyBtn").onclick=function(){var s=text();if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).then(function(){toast("コピーしました")},function(){fallback(s)})}else fallback(s)};
+function fallback(s){var ta=document.createElement("textarea");ta.value=s;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast("コピーしました")}catch(e){toast("コピーできませんでした")}ta.remove()}
+$("redo").onclick=function(){A={};idx=0;document.querySelectorAll(".opt.on").forEach(function(o){o.classList.remove("on")});$("result").classList.remove("show");$("quiz").style.display="";render();window.scrollTo({top:$("quiz").getBoundingClientRect().top+window.pageYOffset-12,behavior:"smooth"})};
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

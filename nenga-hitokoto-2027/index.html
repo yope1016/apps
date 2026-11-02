@@ -133,6 +133,8 @@ th{white-space:nowrap;width:6em;font-size:12px;color:var(--red)}
 .more{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .more a{display:block;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px;font-weight:700;font-size:14px;transition:transform .15s}
 .more a:active{transform:scale(.98)}
+.xcal{display:block;text-decoration:none;color:var(--ink);background:var(--paper);border:2px dashed var(--line);border-radius:18px;padding:14px 16px;margin:14px 0;transition:transform .15s}
+.xcal:active{transform:scale(.98)}.xcal span{font-size:22px;margin-right:6px}.xcal b{font-size:15px}.xcal small{display:block;color:var(--sub);font-size:12px;margin-top:4px}
 .more a span{display:block;font-size:22px;margin-bottom:4px}
 .more a small{display:block;color:var(--sub);font-weight:500;font-size:12px}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#2a1f1b;color:#fff;padding:11px 18px;border-radius:999px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:9;box-shadow:0 8px 20px rgba(0,0,0,.3)}
@@ -141,6 +143,16 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:10px 16px 40px}
 [hidden]{display:none!important}
 @media (max-width:420px){.gashi{font-size:23px}.pc-sheep{width:50px}.cd .num{font-size:38px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* PR links (A8.net codes inserted as-is) */
+.promo-note{font-size:11px;color:var(--sub,#666);text-align:center;padding:6px 12px 0;opacity:.85}
+.afl{display:flex;flex-direction:column;gap:10px;margin-top:12px;position:relative}
+body .afl a,body .pr .afl a,body .pr .links .afl a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border-radius:14px;background:var(--red,#4f46e5) !important;background-image:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0)) !important;border:0 !important;color:#fff !important;font-weight:700;font-size:15px;line-height:1.45;text-decoration:none !important;box-shadow:0 8px 20px -10px rgba(0,0,0,.45);transition:transform .15s ease,box-shadow .15s ease}
+.afl a::after{content:"\203A";font-size:22px;line-height:1;flex:none}
+.afl a:hover{transform:translateY(-1px);box-shadow:0 12px 24px -10px rgba(0,0,0,.5)}
+.afl a:active{transform:scale(.98)}
+.afl img[width="1"]{position:absolute;left:0;bottom:0}
+.afl-note{font-size:11px;color:var(--sub,#777);margin-top:6px}
 </style>
 
 <!-- SEO/OGP (webfactory 2026-11-01 14:30 公開前チェック) -->
@@ -160,6 +172,7 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:10px 16px 40px}
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "2027年は何年（干支）？", "acceptedAnswer": {"@type": "Answer", "text": "2027年は令和9年、干支は丁未（ひのと・ひつじ）、ひつじ年です。"}}, {"@type": "Question", "name": "上司への年賀状に「賀正」はダメ？", "acceptedAnswer": {"@type": "Answer", "text": "失礼とまでは言えませんが、1〜2文字の賀詞は略式とされます。目上の方には「謹賀新年」や文章の賀詞が無難です。"}}, {"@type": "Question", "name": "喪中はがきはいつまでに出す？", "acceptedAnswer": {"@type": "Answer", "text": "一般に11月から12月上旬、相手が年賀状の準備を始める前に届くように出します。12月に不幸があり間に合わない場合は、年明けに寒中見舞いで報告する方法もあります。"}}, {"@type": "Question", "name": "喪中の相手から年賀状が届いたら？", "acceptedAnswer": {"@type": "Answer", "text": "年賀状は出さず、松の内が明けてから立春の前日までに寒中見舞いを送るのが一般的です。"}}, {"@type": "Question", "name": "入力した内容は保存されますか？", "acceptedAnswer": {"@type": "Answer", "text": "保存も送信もしません。文面の作成はすべてお使いの端末の中で行われます。"}}]}</script>
 </head>
 <body>
+<div class="promo-note">本ページはプロモーション（広告）を含みます</div>
 <header class="hero">
   <div class="hero-in">
     <span class="badge">🎍 令和9年・丁未（ひのとひつじ）</span>
@@ -271,6 +284,7 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:10px 16px 40px}
     </details>
   </section>
 
+  <a class="xcal" id="mochuCal" href="../mochu-hagaki-calendar-2026/" hidden><span>📅</span><b>喪中はがき、いつまでに出す？</b><small>亡くなった日と作り方から、注文・投函の締切を日付で逆算します（無料）</small></a>
   <!-- 収益導線：印刷サービス（ASP提携後にリンクを差し込む） -->
   <section class="pr" id="prBox" hidden>
     <span class="tag">PR</span>
@@ -278,13 +292,16 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:10px 16px 40px}
     <p id="prLead">デザインを選んで文面を貼り付けるだけ。宛名印刷や投函代行に対応したサービスもあります。早割の期間は各サービスでご確認ください。</p>
     <div class="prlist" id="prNenga">
       <!-- AFFILIATE:nenga_print_1 -->
-      <a class="prlink soon" href="#" rel="sponsored noopener" target="_blank"><span>ネットで年賀状印刷 ①<small>準備中</small></span><span class="arw">›</span></a>
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+36B9P6+33J0+15OK2A" rel="nofollow">当日出荷☆喪中・年賀状印刷は年賀状スクウェアで</a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGAV2+36B9P6+33J0+15OK2A" alt=""></div>
       <!-- AFFILIATE:nenga_print_2 -->
-      <a class="prlink soon" href="#" rel="sponsored noopener" target="_blank"><span>ネットで年賀状印刷 ②<small>準備中</small></span><span class="arw">›</span></a>
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+383KII+1IEW+I52SY" rel="nofollow">挨拶状ドットコム 年賀状</a>
+<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGAV2+383KII+1IEW+I52SY" alt=""></div>
     </div>
     <div class="prlist" id="prMochu" hidden>
       <!-- AFFILIATE:mochu_print_1 -->
-      <a class="prlink soon" href="#" rel="sponsored noopener" target="_blank"><span>喪中はがきの印刷サービス<small>準備中</small></span><span class="arw">›</span></a>
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3DGGYI+1IEW+ZWFS2" rel="nofollow">挨拶状ドットコム</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGAV2+3DGGYI+1IEW+ZWFS2" alt=""></div>
     </div>
     <p class="prnote">※このエリアには広告（アフィリエイトリンク）を含みます。料金・納期はリンク先で必ずご確認ください。</p>
   </section>
@@ -328,6 +345,10 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:10px 16px 40px}
     <div class="more">
       <a href="../furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額<small>12/31までに寄附を</small></a>
       <a href="../warikan-keisha/"><span>🍻</span>傾斜割り勘計算<small>忘年会・新年会の幹事に</small></a>
+      <a href="../mochu-hagaki-calendar-2026/"><span>🕊</span>喪中はがき 逆算カレンダー<small>注文・投函の締切がわかる</small></a>
+      <a href="../otoshidama-souba-2027/"><span>🧧</span>お年玉 相場計算機<small>学年別の目安と新札の枚数</small></a>
+      <a href="../oosouji-buntan-2026/"><span>🧹</span>大掃除の分担<small>家族で分けて早く終わる</small></a>
+      <a href="../nencho-navi-2026/"><span>📄</span>年末調整 書き方ナビ<small>令和8年分の申告書に</small></a>
     </div>
   </section>
 </main>
@@ -510,7 +531,7 @@ function render(){
   });
   syncEdit();showCheck($("check"),full());
   $("out").hidden=false;$("prBox").hidden=false;
-  var m=mode==="mochu";$("prNenga").hidden=m;$("prMochu").hidden=!m;
+  var m=mode==="mochu";$("prNenga").hidden=m;$("prMochu").hidden=!m;$("mochuCal").hidden=!m;
   $("prTitle").textContent=m?"喪中はがきの印刷もネットで":(mode==="kanchu"?"寒中見舞いの印刷もネットで":"文面が決まったら、印刷までネットで");
   $("prLead").textContent=m?"文面を貼り付けて、落ち着いたデザインから選べるサービスがあります。急ぎの場合は納期を必ずご確認ください。":"デザインを選んで文面を貼り付けるだけ。宛名印刷や投函代行に対応したサービスもあります。早割の期間は各サービスでご確認ください。";
   $("out").scrollIntoView({behavior:"smooth",block:"start"});
@@ -539,7 +560,7 @@ Array.prototype.forEach.call(document.querySelectorAll(".tabs button"),function(
     $("formNenga").hidden=mode==="mochu";$("formMochu").hidden=mode!=="mochu";
     $("punRow").hidden=mode!=="nenga";
     renderTo();
-    $("out").hidden=true;$("prBox").hidden=true;
+    $("out").hidden=true;$("prBox").hidden=true;$("mochuCal").hidden=true;
   };
 });
 })();

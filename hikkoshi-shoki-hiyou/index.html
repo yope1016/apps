@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>引っ越しの初期費用 計算機｜賃貸の契約金＋引っ越し代＋家具家電の総額がわかる</title>
+<meta name="description" content="家賃と入居日を入れるだけで、敷金・礼金・仲介手数料・日割り家賃・保証会社・火災保険に、引っ越し代と家具家電まで含めた初期費用の総額を計算。下げられる項目と、予算からの家賃の逆算つき。登録不要。">
+<meta name="theme-color" content="#0ea5e9">
+<link rel="canonical" href="https://yope1016.github.io/apps/hikkoshi-shoki-hiyou/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:title" content="引っ越しの初期費用 計算機｜総額と下げられる項目がわかる">
+<meta property="og:description" content="賃貸の契約金＋引っ越し代＋家具家電の総額を、家賃と入居日から計算。予算から家賃の上限も逆算。登録不要。">
+<meta property="og:url" content="https://yope1016.github.io/apps/hikkoshi-shoki-hiyou/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"引っ越しの初期費用 計算機","url":"https://yope1016.github.io/apps/hikkoshi-shoki-hiyou/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"賃貸の初期費用は家賃の何か月分？","acceptedAnswer":{"@type":"Answer","text":"敷金・礼金が各1か月の物件なら、契約金だけで家賃の4.5〜6か月分になることが多いです。引っ越し代と家具・家電を足すと、一人暮らしでも総額は数十万円になります。"}},
+{"@type":"Question","name":"仲介手数料はいくらまで？","acceptedAnswer":{"@type":"Answer","text":"貸借の仲介手数料は借主・貸主の合計で家賃1か月分（＋消費税）が上限で、借主から受け取れるのは原則0.5か月分（＋税）。借主の承諾がある場合に限り1か月分まで受け取れます。"}},
+{"@type":"Question","name":"日割り家賃と前家賃って何？","acceptedAnswer":{"@type":"Answer","text":"入居日から月末までの家賃を日割りで払い、あわせて翌月分を前もって払う形が一般的です。"}},
+{"@type":"Question","name":"引っ越し代が高い時期は？","acceptedAnswer":{"@type":"Answer","text":"3月〜4月の繁忙期は、通常期の1.4〜2倍ほどになる相場データがあります。"}}
+]}]}
+</script>
+<style>
+:root{
+  --bg:#f3f8fc;--card:#fff;--ink:#132033;--sub:#57677d;--line:#dde7f1;
+  --pri:#0284c7;--pri2:#14b8a6;--acc:#f59e0b;--ok:#10b981;--warn:#ef4444;
+  --chip:#e8f3fb;--shadow:0 12px 32px -14px rgba(20,60,110,.30);
+  --grad:linear-gradient(135deg,#14b8a6 0%,#0ea5e9 45%,#6366f1 100%);
+  --r:20px;
+}
+:root[data-theme="dark"]{--bg:#0a1220;--card:#121c2e;--ink:#e8f0fb;--sub:#9fb0c8;--line:#24324a;--chip:#1a2a42;--pri:#38bdf8;--shadow:0 12px 32px -14px rgba(0,0,0,.7)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1220;--card:#121c2e;--ink:#e8f0fb;--sub:#9fb0c8;--line:#24324a;--chip:#1a2a42;--pri:#38bdf8;--shadow:0 12px 32px -14px rgba(0,0,0,.7)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+button{font-family:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:26px 0 96px}
+.road{position:absolute;left:0;right:0;bottom:26px;height:3px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 18px,transparent 18px 34px);animation:road 1.2s linear infinite;opacity:.6}
+@keyframes road{to{background-position:-34px 0}}
+.truck{position:absolute;bottom:22px;font-size:46px;animation:drive 9s linear infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25));transform:scaleX(-1)}
+@keyframes drive{0%{left:-70px}100%{left:110%}}
+.box{position:absolute;font-size:26px;opacity:.35;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(8deg)}}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px}
+.hero h1{font-size:clamp(26px,7.2vw,40px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.44em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+main{margin-top:-62px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line)}
+.card h2{font-size:19px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ico{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:0 0 38px;background:var(--chip)}
+.step{font-size:12px;font-weight:800;color:var(--pri);letter-spacing:.1em;margin:14px 0 6px}
+.step:first-of-type{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 14px;font-size:14px;cursor:pointer;min-height:42px;transition:.15s;font-weight:600}
+.chip.on{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 6px 16px -6px var(--pri)}
+.chip:active{transform:scale(.96)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.opt{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:10px;cursor:pointer;min-height:58px;transition:.15s;background:var(--card);text-align:left;color:var(--ink);font-size:14px;font-weight:700;line-height:1.3}
+.opt small{display:block;font-weight:500;color:var(--sub);font-size:11px}
+.opt .e{font-size:22px}
+.opt.on{border-color:var(--pri);background:var(--chip);box-shadow:inset 0 0 0 1px var(--pri)}
+.daterow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+input[type=date]{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-size:17px;font-weight:700;background:var(--card);color:var(--ink);min-height:48px}
+.left{font-size:14px;color:var(--sub);font-weight:700}
+.left b{font-size:22px;color:var(--pri);font-variant-numeric:tabular-nums}
+.go{width:100%;border:none;border-radius:18px;padding:16px;font-size:18px;font-weight:900;color:#fff;background:var(--grad);cursor:pointer;box-shadow:0 14px 30px -12px #0284c7;min-height:58px;letter-spacing:.04em;margin-top:18px}
+.go:active{transform:scale(.98)}
+#result{display:none}
+#result.show{display:block;animation:pop .45s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.sum div{background:var(--chip);border-radius:14px;padding:10px;text-align:center}
+.sum b{display:block;font-size:24px;font-weight:900;color:var(--pri);font-variant-numeric:tabular-nums;line-height:1.2}
+.sum span{font-size:11px;color:var(--sub);font-weight:700}
+.prog{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:4px 0 6px}
+.prog i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px;transition:width .5s ease}
+.progt{font-size:12px;color:var(--sub);font-weight:700;text-align:right}
+.next{background:linear-gradient(135deg,rgba(14,165,233,.12),rgba(99,102,241,.10));border:1.5px solid var(--pri);border-radius:16px;padding:12px 14px;margin:12px 0 4px;font-size:14px}
+.next b{color:var(--pri)}
+.phase{border-radius:18px;padding:14px;margin-bottom:12px;border:1px solid var(--line);position:relative;overflow:hidden;background:var(--card)}
+.phase:before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c)}
+.phead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;padding-left:6px}
+.pname{font-weight:900;font-size:16px;display:flex;gap:8px;align-items:center}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-size:16px;flex:0 0 34px}
+.pdate{font-size:12px;color:var(--sub);font-weight:800;text-align:right;font-variant-numeric:tabular-nums}
+.task{display:flex;gap:10px;align-items:flex-start;padding:10px 6px;border-top:1px dashed var(--line);cursor:pointer}
+.task input{width:22px;height:22px;accent-color:var(--pri);flex:0 0 22px;margin-top:2px}
+.task .tt{flex:1;font-size:14px;line-height:1.5}
+.task .tt b{font-weight:800}
+.task .tt small{display:block;color:var(--sub);font-size:12px}
+.due{font-size:12px;font-weight:800;color:var(--pri);white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+.due.late{color:var(--warn)}
+.task.done .tt{text-decoration:line-through;opacity:.5}
+.tag{display:inline-block;font-size:10px;font-weight:800;border-radius:6px;padding:1px 6px;margin-right:4px;vertical-align:1px}
+.tag.must{background:#fee2e2;color:#991b1b}
+.tag.web{background:#dbeafe;color:#1e40af}
+.tag.money{background:#fef3c7;color:#92400e}
+.alert{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;border-radius:14px;padding:12px;font-size:13px;margin:10px 0}
+:root[data-theme="dark"] .alert{background:#2a1d10;border-color:#5b3a12;color:#fde0b8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .alert{background:#2a1d10;border-color:#5b3a12;color:#fde0b8}}
+.pr{border:1.5px solid var(--acc);border-radius:18px;padding:16px;position:relative;background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(14,165,233,.06));margin-top:14px}
+.prlab{position:absolute;top:-10px;left:14px;background:var(--acc);color:#fff;font-size:11px;font-weight:900;border-radius:6px;padding:1px 8px;letter-spacing:.1em}
+.pr h3{font-size:16px;margin-bottom:6px}
+.pr p{font-size:14px;color:var(--sub)}
+.pr .soon{display:inline-block;margin-top:8px;background:var(--chip);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--sub);font-weight:700}
+.share{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.share a,.share button{flex:1;min-width:140px;text-align:center;text-decoration:none;border-radius:14px;padding:12px;font-weight:800;font-size:14px;border:none;cursor:pointer;min-height:48px}
+.line{background:#06c755;color:#fff}
+.copy{background:var(--chip);color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#132033;color:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;transition:.3s;z-index:9;opacity:0}
+.toast.show{transform:translateX(-50%);opacity:1}
+details{border-top:1px solid var(--line);padding:12px 0}
+details summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:"＋";color:var(--pri)}
+details[open] summary:after{content:"－"}
+details p{font-size:14px;color:var(--sub);margin-top:8px}
+.links a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px;font-weight:700;font-size:14px;background:var(--card)}
+.links a span{font-size:24px}
+.xin{margin:6px 0 10px;font-size:14px}.xin a{color:var(--pri,#4f46e5);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.src{font-size:12px;color:var(--sub)}
+.src li{margin:4px 0 4px 1.2em;word-break:break-all}
+footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
+.confetti{position:fixed;top:-20px;font-size:22px;z-index:8;pointer-events:none;animation:fall 1.8s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:380px){.grid2{grid-template-columns:1fr}.sum b{font-size:20px}}
+
+/* PR links (A8.net codes inserted as-is) */
+.promo-note{font-size:11px;color:var(--sub,#666);text-align:center;padding:6px 12px 0;opacity:.85}
+.afl{display:flex;flex-direction:column;gap:10px;margin-top:12px;position:relative}
+body .afl a,body .pr .afl a,body .pr .links .afl a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border-radius:14px;background:var(--pri,#4f46e5) !important;background-image:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0)) !important;border:0 !important;color:#fff !important;font-weight:700;font-size:15px;line-height:1.45;text-decoration:none !important;box-shadow:0 8px 20px -10px rgba(0,0,0,.45);transition:transform .15s ease,box-shadow .15s ease}
+.afl a::after{content:"\203A";font-size:22px;line-height:1;flex:none}
+.afl a:hover{transform:translateY(-1px);box-shadow:0 12px 24px -10px rgba(0,0,0,.5)}
+.afl a:active{transform:scale(.98)}
+.afl img[width="1"]{position:absolute;left:0;bottom:0}
+.afl-note{font-size:11px;color:var(--sub,#777);margin-top:6px}
+.numrow{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.num{min-width:0;display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:var(--sub)}
+.num em{font-style:normal;font-size:11px}
+.stepper{display:flex;align-items:stretch;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.stepper button{width:44px;min-height:48px;border:none;background:var(--chip);color:var(--pri);font-size:20px;font-weight:900;cursor:pointer}
+.stepper input{flex:1;min-width:0;width:100%;border:none;background:transparent;color:var(--ink);font-size:18px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.row{margin:10px 0}
+.rl{display:block;font-size:13px;font-weight:800;margin-bottom:6px}
+.row .chip{padding:7px 12px;min-height:40px;font-size:13px}
+.more{margin-top:10px}
+.hint{font-size:13px;color:var(--sub);margin-top:8px}
+.total{text-align:center;padding:10px 0 14px}
+.total .tl{display:block;font-size:13px;color:var(--sub);font-weight:800}
+.total b{font-size:clamp(40px,12vw,58px);font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums;line-height:1.15}
+.total .ty{font-size:20px;font-weight:900;margin-left:4px}
+.bar{display:flex;height:18px;border-radius:99px;overflow:hidden;background:var(--line);margin:4px 0 12px}
+.bar i{display:block;height:100%;transition:width .5s ease}
+.legend{list-style:none}
+.legend li{display:flex;align-items:center;gap:10px;padding:9px 2px;border-top:1px dashed var(--line);font-size:14px}
+.legend .dot{width:12px;height:12px;border-radius:4px;flex:0 0 12px}
+.legend .lk{flex:1;font-weight:700}
+.legend .lk small{display:block;font-weight:500;color:var(--sub);font-size:11px}
+.legend b{font-variant-numeric:tabular-nums;font-weight:900}
+.cut{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 4px;border-top:1px dashed var(--line)}
+.cut b{font-size:14px}
+.cut small{display:block;font-size:12px;color:var(--sub);margin-top:2px}
+.cv{font-weight:900;color:var(--ok);white-space:nowrap;font-variant-numeric:tabular-nums}
+.cutsum{margin-top:12px;background:var(--chip);border-radius:14px;padding:12px;text-align:center;font-weight:800;font-size:14px}
+.cutsum b{font-size:24px;color:var(--ok);font-variant-numeric:tabular-nums}
+.rev{margin-top:12px}
+.revbox{background:var(--grad);color:#fff;border-radius:18px;padding:16px;text-align:center;font-weight:800}
+.revbox b{display:block;font-size:40px;font-weight:900;line-height:1.2;font-variant-numeric:tabular-nums}
+.revbox.warn{background:#fff7ed;color:#7c2d12;border:1px solid #fed7aa;font-weight:700;font-size:14px;text-align:left}
+@media (max-width:380px){.numrow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="promo-note">本ページはプロモーション（広告）を含みます</div>
+<header class="hero">
+  <span class="box" style="left:6%;top:28%">🔑</span><span class="box" style="left:60%;top:12%;animation-delay:1.5s">💴</span><span class="box" style="left:84%;top:44%;animation-delay:3s">📦</span>
+  <div class="road"></div><div class="truck">🚚</div>
+  <div class="wrap">
+    <div class="topbar"><span class="brand">HITORI LAB</span><button class="mode" id="mode" type="button">🌙 ダーク</button></div>
+    <h1><small>賃貸の契約金＋引っ越し代＋家具家電</small>引っ越しの初期費用<br>計算機</h1>
+    <p class="lead">家賃と入居日を入れるだけ。敷金・礼金・仲介手数料・日割り家賃から引っ越し代まで、<b>本当に必要な総額</b>と「下げられる項目」がわかります。</p>
+    <div class="badges"><span class="badge">登録不要</span><span class="badge">日割り家賃を自動計算</span><span class="badge">予算から家賃を逆算</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2><span class="ico">🏠</span>物件の条件</h2>
+    <div class="step">STEP 1　家賃と入居日</div>
+    <div class="numrow">
+      <label class="num"><span>家賃</span><span class="stepper"><button type="button" data-k="rent" data-d="-1000">−</button><input id="rent" type="number" inputmode="numeric" value="70000" step="1000" min="0"><button type="button" data-k="rent" data-d="1000">＋</button></span><em>円/月</em></label>
+      <label class="num"><span>管理費・共益費</span><span class="stepper"><button type="button" data-k="kanri" data-d="-500">−</button><input id="kanri" type="number" inputmode="numeric" value="5000" step="500" min="0"><button type="button" data-k="kanri" data-d="500">＋</button></span><em>円/月</em></label>
+    </div>
+    <div class="daterow" style="margin-top:10px"><label class="left">入居日（家賃の発生日）　<input id="date" type="date"></label></div>
+
+    <div class="step">STEP 2　契約金（物件資料の「敷・礼」を選ぶ）</div>
+    <div class="row"><span class="rl">敷金</span><div class="chips" data-g="shiki"><button class="chip" data-v="0">なし</button><button class="chip" data-v="0.5">0.5か月</button><button class="chip on" data-v="1">1か月</button><button class="chip" data-v="2">2か月</button></div></div>
+    <div class="row"><span class="rl">礼金</span><div class="chips" data-g="rei"><button class="chip" data-v="0">なし</button><button class="chip" data-v="0.5">0.5か月</button><button class="chip on" data-v="1">1か月</button><button class="chip" data-v="2">2か月</button></div></div>
+    <div class="row"><span class="rl">仲介手数料</span><div class="chips" data-g="chukai"><button class="chip" data-v="0">無料</button><button class="chip" data-v="0.5">0.5か月＋税</button><button class="chip on" data-v="1">1か月＋税</button></div></div>
+    <div class="row"><span class="rl">保証会社</span><div class="chips" data-g="hosho"><button class="chip" data-v="0">なし</button><button class="chip on" data-v="0.5">月額の50%</button><button class="chip" data-v="1">月額の100%</button></div></div>
+    <div class="row"><span class="rl">フリーレント</span><div class="chips" data-g="free"><button class="chip on" data-v="0">なし</button><button class="chip" data-v="0.5">半月</button><button class="chip" data-v="1">1か月</button></div></div>
+    <details class="more"><summary>火災保険・鍵交換・その他（目安を入れています）</summary>
+      <div class="numrow" style="margin-top:10px">
+        <label class="num"><span>火災保険（2年）</span><span class="stepper"><button type="button" data-k="kasai" data-d="-1000">−</button><input id="kasai" type="number" inputmode="numeric" value="20000" step="1000" min="0"><button type="button" data-k="kasai" data-d="1000">＋</button></span><em>円</em></label>
+        <label class="num"><span>鍵交換</span><span class="stepper"><button type="button" data-k="kagi" data-d="-1000">−</button><input id="kagi" type="number" inputmode="numeric" value="16500" step="500" min="0"><button type="button" data-k="kagi" data-d="1000">＋</button></span><em>円</em></label>
+        <label class="num"><span>消毒・安心サポートなど</span><span class="stepper"><button type="button" data-k="other" data-d="-1000">−</button><input id="other" type="number" inputmode="numeric" value="0" step="1000" min="0"><button type="button" data-k="other" data-d="1000">＋</button></span><em>円</em></label>
+      </div>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🚚</span>引っ越しと新生活</h2>
+    <div class="step">STEP 3　引っ越しの人数と距離</div>
+    <div class="grid2" data-g="hh">
+      <button class="opt on" data-v="0"><span class="e">🧍</span><span>単身<small>一人暮らし</small></span></button>
+      <button class="opt" data-v="1"><span class="e">👫</span><span>2人<small>カップル・夫婦</small></span></button>
+      <button class="opt" data-v="2"><span class="e">👨‍👩‍👦</span><span>3人家族</span></button>
+      <button class="opt" data-v="3"><span class="e">👨‍👩‍👧‍👦</span><span>4人以上</span></button>
+    </div>
+    <div class="chips" data-g="dist" style="margin-top:10px"><button class="chip on" data-v="0">同じ市区町村</button><button class="chip" data-v="1">同じ都道府県</button><button class="chip" data-v="2">〜200km</button><button class="chip" data-v="3">200km以上</button></div>
+    <div class="chips" data-g="mover" style="margin-top:10px"><button class="chip on" data-v="1">業者に頼む</button><button class="chip" data-v="0">自分で運ぶ（0円で計算）</button></div>
+    <p class="hint" id="seasonHint"></p>
+
+    <div class="step">STEP 4　家具・家電</div>
+    <div class="chips" data-g="furn"><button class="chip" data-v="0">買わない</button><button class="chip on" data-v="1">足りない物だけ</button><button class="chip" data-v="2">ほぼ一式そろえる</button></div>
+    <div class="numrow" style="margin-top:10px"><label class="num"><span>家具・家電の予算</span><span class="stepper"><button type="button" data-k="furnAmt" data-d="-10000">−</button><input id="furnAmt" type="number" inputmode="numeric" value="100000" step="10000" min="0"><button type="button" data-k="furnAmt" data-d="10000">＋</button></span><em>円</em></label></div>
+    <button class="go" id="go" type="button">総額を計算する</button>
+  </section>
+
+  <section id="result">
+    <div class="card">
+      <h2><span class="ico">💴</span>引っ越しの初期費用 総額</h2>
+      <div class="total"><span class="tl">目安の合計</span><b id="tTotal">0</b><span class="ty">円</span></div>
+      <div class="sum">
+        <div><b id="tChintai">0</b><span>賃貸の契約金</span></div>
+        <div><b id="tMove">0</b><span>引っ越し代</span></div>
+        <div><b id="tMonths">0</b><span>家賃の月数分</span></div>
+      </div>
+      <div class="bar" id="bar"></div>
+      <ul class="legend" id="legend"></ul>
+      <p class="hint" id="shikiNote"></p>
+      <div class="share"><a class="line" id="lineBtn" href="#" target="_blank" rel="noopener">LINEで送る</a><button class="copy" id="copyBtn" type="button">内訳をコピー</button></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">✂️</span>下げられるかもしれない項目</h2>
+      <p class="hint">交渉や時期の工夫で下がる可能性がある金額の目安です（必ず下がるわけではありません）。</p>
+      <div id="cuts"></div>
+      <div class="cutsum">ぜんぶ実現すると　<b id="cutTotal">0</b>円 安くなる可能性</div>
+    </div>
+
+    <div class="card" id="prCard">
+      <h2><span class="ico">💡</span>次にやること</h2>
+      <div class="pr">
+        <span class="prlab">PR</span>
+        <h3>🚚 引っ越し代は「見積もり」で決まる</h3>
+        <p>上の引っ越し代は相場の目安です。実際の料金は荷物の量・日時・会社で変わります。日程に余裕があるうちに見積もりを取ると、比べやすくなります。</p>
+        <!-- AFFILIATE:hikkoshi_mitsumori -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+4ZSY8Q+4HN6+TS3OI" rel="nofollow">【ハコブ引っ越しサービス】</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGAV2+4ZSY8Q+4HN6+TS3OI" alt=""></div>
+      </div>
+      <div class="pr">
+        <span class="prlab">PR</span>
+        <h3>🌐 新居のネット回線は早めに申し込む</h3>
+        <p>光回線は開通工事の予約が必要な場合があり、混む時期は数週間待つことも。入居日に合わせて、移転か乗り換えかを比べておきましょう。</p>
+        <p class="xin"><a href="../net-kaisen-shindan/">🧭 光回線・ホームルーター、どれが合う？7問で診断する（無料ツール）→</a></p>
+        <!-- AFFILIATE:hikari_kaisen -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+5L8K0Q+B4+2Z68LU" rel="nofollow">【公式】BIGLOBE光プラス by auひかりプラス</a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGAV2+5L8K0Q+B4+2Z68LU" alt="">
+<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+5CB1Y2+3SPO+CKJSMQ" rel="nofollow">安定した光回線で快適に使える【ahamo光】</a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGAV2+5CB1Y2+3SPO+CKJSMQ" alt=""></div>
+        <!-- AFFILIATE:home_router -->
+      </div>
+      <div class="pr">
+        <span class="prlab">PR</span>
+        <h3>🛋️ 家具・家電はまとめて比べる</h3>
+        <p>冷蔵庫・洗濯機・照明・カーテンは入居日から必要になりがちです。サイズ（冷蔵庫の置き場、洗濯機の防水パン、窓の幅）を測ってから選ぶと失敗しません。</p>
+        <!-- AFFILIATE:kagu_kaden -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングで家具・家電を探す</a></div>
+        <!-- AFFILIATE:kagu_kaden_rental -->
+        <span class="soon">家具・家電レンタルのご案内は準備中です</span>
+      </div>
+      <div class="pr">
+        <span class="prlab">PR</span>
+        <h3>🧯 賃貸の火災保険は自分で選べることも</h3>
+        <p>不動産会社に勧められた保険ではなく、条件を満たす保険を自分で選べる物件もあります。契約前に「自分で加入してもよいか」を確認しましょう。</p>
+        <!-- AFFILIATE:chintai_kasai -->
+        <span class="soon">賃貸向け火災保険のご案内は準備中です</span>
+      </div>
+      <div class="pr">
+        <span class="prlab">PR</span>
+        <h3>♻️ 運ぶ前に、減らす</h3>
+        <p>荷物が減ると引っ越し代も下がりやすくなります。使わない家具・家電は買取や回収も選択肢に。</p>
+        <!-- AFFILIATE:fuyouhin -->
+        <span class="soon">買取・回収サービスのご案内は準備中です</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🎯</span>予算から家賃を逆算</h2>
+    <p class="hint">「初期費用はここまで」と決めている人向け。上の条件（敷金・礼金・引っ越し代など）のまま、家賃いくらまでなら収まるかを計算します。</p>
+    <div class="numrow"><label class="num"><span>初期費用の予算</span><span class="stepper"><button type="button" data-k="budget" data-d="-50000">−</button><input id="budget" type="number" inputmode="numeric" value="500000" step="10000" min="0"><button type="button" data-k="budget" data-d="50000">＋</button></span><em>円</em></label></div>
+    <div class="rev" id="rev"></div>
+  </section>
+
+  <section class="card links">
+    <h2><span class="ico">📋</span>契約が決まったら</h2>
+    <a href="../hikkoshi-checklist/"><span>📦</span>引っ越し手続きチェックリスト（転出届・転入届・免許・ネットの期限を日付つきで）</a>
+    <a href="../furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額シミュレーター（引っ越すならワンストップ特例の変更届も）</a>
+    <a href="../net-kaisen-shindan/"><span>🌐</span>ネット回線 選び方診断（新居の回線を7問で。月額と2年総額の目安つき）</a>
+    <a href="../oosouji-buntan-2026/"><span>🧹</span>大掃除の分担ジェネレーター（退去前の掃除の段取りに）</a>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">❓</span>よくある質問</h2>
+    <details><summary>賃貸の初期費用は家賃の何か月分？</summary><p>敷金・礼金が各1か月の物件なら、契約金だけで家賃の4.5〜6か月分になることが多いです。さらに引っ越し代と家具・家電を足すと、一人暮らしでも総額は数十万円になります。このツールで、自分の条件の総額を確認してください。</p></details>
+    <details><summary>仲介手数料はいくらまで？</summary><p>宅地建物取引業法に基づく国土交通省の告示で、貸借の仲介手数料は、借主・貸主の合計で家賃の1か月分（＋消費税）が上限です。借主から受け取れるのは原則0.5か月分（＋税）で、借主の承諾がある場合に限り1か月分まで受け取れます。</p></details>
+    <details><summary>日割り家賃と前家賃って何？</summary><p>入居日から月末までの家賃を日割りで払い、あわせて翌月分を前もって払う形が一般的です。このツールもこの形で計算しています。月の後半に入居する場合は翌月分の扱いが物件によって違うため、見積書で確認してください。</p></details>
+    <details><summary>敷金は返ってくる？</summary><p>敷金は退去時の原状回復費などを差し引いて返されるのが原則です。ただし、地域や契約によっては返還されない分（敷引き・償却）があります。合計額の中でも「返ってくる可能性があるお金」として分けて表示しています。</p></details>
+    <details><summary>引っ越し代が高い時期は？</summary><p>3月〜4月の繁忙期は、通常期の1.4〜2倍ほどになる相場データがあります。入居日が3〜4月の場合は繁忙期の相場で計算します。日程をずらせるなら、比べてみてください。</p></details>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📚</span>参考にした情報</h2>
+    <ul class="src">
+      <li>引越し侍「引越し料金の相場」（世帯人数・距離・通常期／繁忙期別の相場） https://hikkoshizamurai.jp/prices/</li>
+      <li>三菱UFJ銀行 Money Canvas「賃貸の初期費用の相場」（仲介手数料の上限、保証料・火災保険・鍵交換の目安） https://moneycanvas.bk.mufg.jp/know/column/5gYZe9nwe6vXNSc/</li>
+      <li>ファイナンシャルフィールド（全国大学生活協同組合連合会のデータ：一人暮らしの家具家電一式 平均30万円前後） https://financial-field.com/household/entry-366079</li>
+      <li>CHINTAI「初期費用シミュレーション」 https://www.chintai.net/initial_cost/</li>
+    </ul>
+    <p class="src" style="margin-top:8px">金額はすべて目安です。実際の金額は物件・会社・時期によって異なるため、見積書と契約書で確認してください。（2026年11月時点の情報）</p>
+  </section>
+  <footer>© ひとりラボ ・ 入力内容はどこにも送信されません</footer>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var root=document.documentElement;
+function curDark(){var t=root.getAttribute("data-theme");if(t)return t==="dark";return window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches}
+function setModeLabel(){$("mode").textContent=curDark()?"☀️ ライト":"🌙 ダーク"}
+$("mode").onclick=function(){root.setAttribute("data-theme",curDark()?"light":"dark");setModeLabel()};
+setModeLabel();
+
+/* 引越し侍の相場（円）[世帯][距離][0=通常期,1=繁忙期] */
+var MOVE=[
+ [[55000,78000],[56000,82000],[71000,145000],[86000,159000]],
+ [[91000,125000],[100000,136000],[130000,199000],[150000,249000]],
+ [[102000,142000],[105000,187000],[139000,229000],[154000,286000]],
+ [[120000,155000],[133000,201000],[141000,277000],[169000,339000]]
+];
+var FURN=[[0,100000,300000],[0,150000,450000],[0,200000,550000],[0,250000,650000]];
+var KASAI=[20000,20000,25000,25000];
+var S={shiki:1,rei:1,chukai:1,hosho:0.5,free:0,hh:0,dist:0,mover:1,furn:1};
+var touched={furnAmt:false,kasai:false};
+
+/* default date: 1st of next month */
+(function(){var d=new Date();d=new Date(d.getFullYear(),d.getMonth()+1,1);$("date").value=d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-01"})();
+
+function n(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0}
+function yen(v){return Math.round(v).toLocaleString("ja-JP")}
+function parseDate(){var p=($("date").value||"").split("-");if(p.length<3)return null;return new Date(+p[0],+p[1]-1,+p[2])}
+function busy(d){if(!d)return false;var m=d.getMonth()+1;return m===3||m===4}
+
+document.querySelectorAll("[data-g]").forEach(function(g){
+  g.addEventListener("click",function(e){
+    var b=e.target.closest("[data-v]");if(!b)return;
+    g.querySelectorAll("[data-v]").forEach(function(x){x.classList.remove("on")});b.classList.add("on");
+    S[g.getAttribute("data-g")]=parseFloat(b.getAttribute("data-v"));
+    if(g.getAttribute("data-g")==="hh"||g.getAttribute("data-g")==="furn"){if(!touched.furnAmt)$("furnAmt").value=FURN[S.hh][S.furn];}
+    if(g.getAttribute("data-g")==="hh"&&!touched.kasai)$("kasai").value=KASAI[S.hh];
+    live();
+  });
+});
+document.querySelectorAll(".stepper button").forEach(function(b){
+  b.addEventListener("click",function(){var k=b.getAttribute("data-k");var el=$(k);var v=(parseFloat(el.value)||0)+parseFloat(b.getAttribute("data-d"));el.value=Math.max(0,v);if(k in touched)touched[k]=true;live()});
+});
+["rent","kanri","kasai","kagi","other","furnAmt","budget","date"].forEach(function(id){$(id).addEventListener("input",function(){if(id in touched)touched[id]=true;live()})});
+
+function calc(rent,o){
+  o=o||{};
+  var kanri=n("kanri"),d=parseDate(),dim=30,rem=30;
+  if(d){dim=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();rem=dim-d.getDate()+1}
+  var monthly=rent+kanri;
+  var hiwari=Math.round(monthly*rem/dim);
+  var mae=monthly;
+  var free=Math.min(rent*S.free,hiwari+mae);
+  var yachin=hiwari+mae-free;
+  var shiki=rent*S.shiki, rei=rent*S.rei;
+  var chukai=Math.round(rent*S.chukai*1.1);
+  var hosho=Math.round(monthly*S.hosho);
+  var kasai=n("kasai"),kagi=n("kagi"),other=n("other");
+  var isBusy=busy(d);
+  var move=S.mover?MOVE[S.hh][S.dist][isBusy?1:0]:0;
+  var furn=S.furn?n("furnAmt"):0;
+  var parts=[
+    {k:"家賃（日割り＋翌月分）",v:yachin,c:"#0ea5e9",sub:(d?(d.getMonth()+1)+"月は"+rem+"日分の日割り":"")+(free?"・フリーレント −"+yen(free)+"円":"")},
+    {k:"敷金（返る可能性あり）",v:shiki,c:"#14b8a6"},
+    {k:"礼金",v:rei,c:"#f43f5e"},
+    {k:"仲介手数料",v:chukai,c:"#f59e0b"},
+    {k:"保証会社",v:hosho,c:"#8b5cf6"},
+    {k:"火災保険・鍵交換・その他",v:kasai+kagi+other,c:"#64748b"},
+    {k:"引っ越し代",v:move,c:"#6366f1",sub:S.mover?(isBusy?"繁忙期（3〜4月）の相場":"通常期の相場"):"自分で運ぶ"},
+    {k:"家具・家電",v:furn,c:"#ec4899"}
+  ];
+  var chintai=yachin+shiki+rei+chukai+hosho+kasai+kagi+other;
+  return {parts:parts,chintai:chintai,move:move,furn:furn,total:chintai+move+furn,isBusy:isBusy,d:d,rem:rem,dim:dim,shiki:shiki,rei:rei,chukai:chukai,other:other,kagi:kagi,monthly:monthly};
+}
+
+var shown=false,last=null;
+function count(el,to){
+  var from=parseFloat(el.getAttribute("data-n")||"0");el.setAttribute("data-n",to);
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){el.textContent=yen(to);return}
+  var t0=null;function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/600);var e=1-Math.pow(1-p,3);el.textContent=yen(from+(to-from)*e);if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f);
+}
+
+function render(){
+  var rent=n("rent");var r=calc(rent);last=r;
+  count($("tTotal"),r.total);count($("tChintai"),r.chintai);count($("tMove"),r.move);
+  $("tMonths").textContent=rent?(r.total/rent).toFixed(1):"-";
+  var bar="",lg="";
+  r.parts.forEach(function(p){if(p.v<=0)return;var w=r.total?p.v/r.total*100:0;bar+='<i style="width:'+w.toFixed(2)+'%;background:'+p.c+'" title="'+p.k+'"></i>';
+    lg+='<li><span class="dot" style="background:'+p.c+'"></span><span class="lk">'+p.k+(p.sub?'<small>'+p.sub+'</small>':'')+'</span><b>'+yen(p.v)+'円</b></li>'});
+  $("bar").innerHTML=bar;$("legend").innerHTML=lg;
+  $("shikiNote").textContent=r.shiki>0?"※ 敷金 "+yen(r.shiki)+"円は、退去時に修繕費などを引いて返る可能性があります。実質の負担は約 "+yen(r.total-r.shiki)+"円。":"";
+  /* cuts */
+  var cuts=[];
+  if(r.rei>0)cuts.push(["礼金なしの物件にする・交渉する",r.rei,"礼金は返らないお金。引っ越しが少ない時期や、空室が長い物件は交渉の余地があることも。"]);
+  if(S.chukai>0.5)cuts.push(["仲介手数料を0.5か月分にする",r.chukai-Math.round(rent*0.5*1.1),"借主から受け取れるのは原則0.5か月分（＋税）。1か月分は借主の承諾が前提です。"]);
+  if(S.chukai===0.5)cuts.push(["仲介手数料無料の会社を探す",r.chukai,"貸主側から手数料を受け取る会社や、自社管理物件では無料のことも。"]);
+  if(r.isBusy&&S.mover){var nb=MOVE[S.hh][S.dist][0];cuts.push(["引っ越しを5月以降にずらす",r.move-nb,"3〜4月は繁忙期。相場では通常期との差がこれくらいあります。"])}
+  if(r.other>0)cuts.push(["消毒・サポートなどの付帯サービスを外す",r.other,"任意のオプションなら外せる場合があります。見積書で「任意」か確認を。"]);
+  if(r.kagi>0)cuts.push(["鍵交換費用を確認する",0,"防犯上は交換がおすすめ。ただし費用の負担者は契約によるので、見積書を確認しましょう。"]);
+  if(r.d&&r.d.getDate()<=10&&r.rem>20)cuts.push(["入居日（家賃の発生日）を確認する",0,"月の前半に家賃が始まると日割り分が大きくなります。旧居の家賃との二重払い期間も含めて比べましょう。"]);
+  if(S.furn===2)cuts.push(["家具・家電は「入居日に必須」だけ先に買う",Math.max(0,n("furnAmt")-FURN[S.hh][1]),"冷蔵庫・洗濯機・照明・カーテン以外は、住んでから買い足すと無駄が減ります。"]);
+  var ch="",sum=0;
+  cuts.forEach(function(c){sum+=c[1];ch+='<div class="cut"><div><b>'+c[0]+'</b><small>'+c[2]+'</small></div><span class="cv">'+(c[1]>0?'−'+yen(c[1])+'円':'確認')+'</span></div>'});
+  $("cuts").innerHTML=ch||'<p class="hint">大きく下げられる項目は見当たりません。かなり条件の良い物件です。</p>';
+  $("cutTotal").textContent=yen(sum);
+  $("lineBtn").href="https://line.me/R/share?text="+encodeURIComponent(text());
+}
+
+function reverse(){
+  var b=n("budget");var a=calc(0).total,c=calc(100000).total;var slope=(c-a)/100000;
+  var el=$("rev");
+  if(slope<=0){el.innerHTML="";return}
+  var max=Math.floor((b-a)/slope/1000)*1000;
+  if(max<=0){el.innerHTML='<div class="revbox warn">この予算では、家賃の部分以外（引っ越し代・家具家電・保険など）だけで約'+yen(a)+'円かかります。条件を見直してみてください。</div>';return}
+  el.innerHTML='<div class="revbox"><span>家賃の目安の上限</span><b>'+yen(max)+'</b><span>円/月まで</span></div><p class="hint">管理費 '+yen(n("kanri"))+'円・敷金'+S.shiki+'か月・礼金'+S.rei+'か月などの条件のままで計算。家賃以外の固定費は約'+yen(a)+'円です。</p>';
+}
+
+function text(){
+  var r=last||calc(n("rent"));var s="【引っ越しの初期費用 目安】\n家賃 "+yen(n("rent"))+"円＋管理費 "+yen(n("kanri"))+"円\n";
+  r.parts.forEach(function(p){if(p.v>0)s+="・"+p.k+"："+yen(p.v)+"円\n"});
+  s+="合計：約"+yen(r.total)+"円（家賃の"+(n("rent")?(r.total/n("rent")).toFixed(1):"-")+"か月分）\n";
+  s+="https://yope1016.github.io/apps/hikkoshi-shoki-hiyou/";return s;
+}
+
+function seasonHint(){var d=parseDate();$("seasonHint").textContent=d?(busy(d)?"📅 入居日が3〜4月なので、引っ越し代は繁忙期の相場で計算します。":"📅 入居日が通常期なので、引っ越し代は通常期の相場で計算します。"):""}
+function live(){seasonHint();reverse();if(shown)render()}
+$("go").onclick=function(){shown=true;render();var r=$("result");r.classList.add("show");setTimeout(function(){r.scrollIntoView({behavior:"smooth",block:"start"})},60)};
+$("copyBtn").onclick=function(){var t=text();function ok(){toast("内訳をコピーしました")}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok()})}else{fb(t);ok()}};
+function fb(t){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(e){}a.remove()}
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove("show")},1800)}
+live();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

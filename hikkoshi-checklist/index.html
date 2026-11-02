@@ -131,6 +131,7 @@ details[open] summary:after{content:"－"}
 details p{font-size:14px;color:var(--sub);margin-top:8px}
 .links a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px;font-weight:700;font-size:14px;background:var(--card)}
 .links a span{font-size:24px}
+.xin{margin:6px 0 10px;font-size:14px}.xin a{color:var(--pri,#4f46e5);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .src{font-size:12px;color:var(--sub)}
 .src li{margin:4px 0 4px 1.2em;word-break:break-all}
 footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
@@ -138,9 +139,20 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
 @keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (max-width:380px){.grid2{grid-template-columns:1fr}.sum b{font-size:20px}}
+
+/* PR links (A8.net codes inserted as-is) */
+.promo-note{font-size:11px;color:var(--sub,#666);text-align:center;padding:6px 12px 0;opacity:.85}
+.afl{display:flex;flex-direction:column;gap:10px;margin-top:12px;position:relative}
+body .afl a,body .pr .afl a,body .pr .links .afl a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border-radius:14px;background:var(--pri,#4f46e5) !important;background-image:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0)) !important;border:0 !important;color:#fff !important;font-weight:700;font-size:15px;line-height:1.45;text-decoration:none !important;box-shadow:0 8px 20px -10px rgba(0,0,0,.45);transition:transform .15s ease,box-shadow .15s ease}
+.afl a::after{content:"\203A";font-size:22px;line-height:1;flex:none}
+.afl a:hover{transform:translateY(-1px);box-shadow:0 12px 24px -10px rgba(0,0,0,.5)}
+.afl a:active{transform:scale(.98)}
+.afl img[width="1"]{position:absolute;left:0;bottom:0}
+.afl-note{font-size:11px;color:var(--sub,#777);margin-top:6px}
 </style>
 </head>
 <body>
+<div class="promo-note">本ページはプロモーション（広告）を含みます</div>
 <header class="hero">
   <span class="box" style="left:8%;top:30%">📦</span><span class="box" style="left:62%;top:14%;animation-delay:1.5s">📦</span><span class="box" style="left:84%;top:46%;animation-delay:3s">🔑</span>
   <div class="road"></div><div class="truck">🚚</div>
@@ -220,15 +232,20 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
         <h3>🚚 引っ越し料金は「相見積もり」で比べる</h3>
         <p>同じ荷物・同じ日でも会社によって料金が変わります。日程に余裕があるうちに、複数社の見積もりを比べておくと安心です。</p>
         <!-- AFFILIATE:hikkoshi_mitsumori -->
-        <span class="soon">比較サイトのご案内は準備中です</span>
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+4ZSY8Q+4HN6+TS3OI" rel="nofollow">【ハコブ引っ越しサービス】</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGAV2+4ZSY8Q+4HN6+TS3OI" alt=""></div>
       </div>
       <div class="pr" id="prNet">
         <span class="prlab">PR</span>
         <h3>🌐 ネット回線は工事まで時間がかかることも</h3>
         <p>新居で光回線を使うなら、開通工事の予約が必要な場合があります。引っ越しを機に、乗り換えと移転のどちらが得か比べてみましょう。工事不要のホームルーターという選択肢もあります。</p>
+        <p class="xin"><a href="../net-kaisen-shindan/">🧭 光回線・ホームルーター、どれが合う？7問で診断する（無料ツール）→</a></p>
         <!-- AFFILIATE:hikari_kaisen -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+5L8K0Q+B4+2Z68LU" rel="nofollow">【公式】BIGLOBE光プラス by auひかりプラス</a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGAV2+5L8K0Q+B4+2Z68LU" alt="">
+<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+5CB1Y2+3SPO+CKJSMQ" rel="nofollow">安定した光回線で快適に使える【ahamo光】</a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGAV2+5CB1Y2+3SPO+CKJSMQ" alt=""></div>
         <!-- AFFILIATE:home_router -->
-        <span class="soon">回線の比較は準備中です</span>
       </div>
       <div class="pr" id="prEne">
         <span class="prlab">PR</span>
@@ -236,6 +253,14 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
         <p>引っ越しは電気・ガスの契約先を見直しやすいタイミングです。使用開始の連絡と一緒に、料金プランを比べておきましょう。</p>
         <!-- AFFILIATE:denki_gas -->
         <span class="soon">比較サービスのご案内は準備中です</span>
+      </div>
+            <div class="pr" id="prCard2">
+        <span class="prlab">PR</span>
+        <h3>✉️ 引っ越しのあいさつ状（転居はがき）</h3>
+        <p>新しい住所のお知らせは、引っ越しから1か月以内が目安です。デザインを選んで宛名印刷までネットで頼めます。</p>
+        <!-- AFFILIATE:hikkoshi_hagaki -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3BO656+1IEW+15RZIQ" rel="nofollow">挨拶状ドットコム 引越しはがき</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGAV2+3BO656+1IEW+15RZIQ" alt=""></div>
       </div>
       <div class="pr" id="prJunk">
         <span class="prlab">PR</span>
@@ -258,6 +283,9 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
 
   <section class="card links">
     <h2><span class="ico">🧰</span>ほかの便利ツール</h2>
+    <a href="../hikkoshi-shoki-hiyou/"><span>💴</span>引っ越しの初期費用 計算機（敷金・礼金・引っ越し代・家具家電の総額）</a>
+    <a href="../net-kaisen-shindan/"><span>🌐</span>ネット回線 選び方診断（光回線・ホームルーター・ポケットWi-Fi）</a>
+    <a href="../oosouji-buntan-2026/"><span>🧹</span>大掃除の分担ジェネレーター（退去前の掃除の段取りに）</a>
     <a href="../furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額シミュレーター</a>
     <a href="../warikan-keisha/"><span>🍻</span>傾斜割り勘計算（送別会・歓迎会の幹事に）</a>
   </section>
