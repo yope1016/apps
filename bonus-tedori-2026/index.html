@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>冬のボーナス 手取り計算機 2026｜社会保険料・所得税の内訳と使い道がわかる</title>
+<meta name="description" content="2026年冬のボーナス（賞与）の手取りを計算。令和8年分の「賞与に対する源泉徴収税額の算出率の表」、協会けんぽの令和8年度の都道府県別保険料率、介護保険料率1.62%、新しく加わった子ども・子育て支援金0.23%、雇用保険料率（労働者5/1000）に対応。額面・前月の給与・扶養の人数を入れるだけで、引かれる額の内訳と手取り、使い道の配分まで。登録不要・無料。">
+<meta name="theme-color" content="#4338ca">
+<link rel="canonical" href="https://yope1016.github.io/apps/bonus-tedori-2026/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💴%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://yope1016.github.io/apps/bonus-tedori-2026/">
+<meta property="og:title" content="冬のボーナス 手取り計算機 2026">
+<meta property="og:description" content="額面を入れるだけ。社会保険料・所得税の内訳と手取り、使い道の配分がわかる。令和8年分の税率表・保険料率に対応。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<meta name="twitter:title" content="冬のボーナス 手取り計算機 2026">
+<meta name="twitter:description" content="2026年の新しい「子ども・子育て支援金」にも対応。ボーナスの手取りと引かれる額の内訳がわかる無料ツール。">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"冬のボーナス 手取り計算機 2026","url":"https://yope1016.github.io/apps/bonus-tedori-2026/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"2026年（令和8年分）のボーナス（賞与）の手取りと、社会保険料・所得税の内訳を計算する無料ツール。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"ボーナスの手取りは額面の何割ですか？","acceptedAnswer":{"@type":"Answer","text":"会社員（協会けんぽ・40歳未満・扶養なし）で額面50万円、前月の給与30万円の場合、東京都の場合、社会保険料が約7.3万円、所得税が約1.7万円引かれ、手取りは約40.9万円（約82%）です。40〜64歳は介護保険料が加わり、前月の給与が高い人ほど所得税の率が上がるため、手取りは75〜82%程度になることが多いです。"}},
+{"@type":"Question","name":"ボーナスから住民税は引かれますか？","acceptedAnswer":{"@type":"Answer","text":"引かれません。住民税は前年の所得をもとに毎月の給与から12回に分けて引かれるため、ボーナスからは引かれないのが一般的です。ボーナスから引かれるのは、健康保険料・介護保険料（40〜64歳）・子ども・子育て支援金・厚生年金保険料・雇用保険料・所得税です。"}},
+{"@type":"Question","name":"2026年からボーナスで新しく引かれるものはありますか？","acceptedAnswer":{"@type":"Answer","text":"2026年4月分から「子ども・子育て支援金」が健康保険料とあわせて徴収されています。協会けんぽの支援金率は0.23%で、会社と折半するため、本人負担は標準賞与額の0.115%です（額面50万円で約575円）。賞与にもかかります。"}},
+{"@type":"Question","name":"ボーナスの所得税はどう計算しますか？","acceptedAnswer":{"@type":"Answer","text":"ボーナスから社会保険料を引いた額に、国税庁の「賞与に対する源泉徴収税額の算出率の表」の率をかけて計算します。率は、前月の給与から社会保険料を引いた額と、扶養親族等の数で決まります。前月の給与がない場合や、ボーナスが前月の給与の10倍を超える場合は、月額表を使う別の計算になります。"}},
+{"@type":"Question","name":"入力した内容は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"送信されません。計算はすべてお使いの端末の中で行われ、保存もされません。"}}]}</script>
+<style>
+:root{
+  --bg:#f5f4fb;--card:#ffffff;--ink:#1b1830;--sub:#625d7c;--line:#e2def0;
+  --pri:#4338ca;--pri2:#6366f1;--gold:#f59e0b;--ok:#10b981;--warn:#ef4444;
+  --chip:#eceafb;--shadow:0 12px 32px -14px rgba(40,30,110,.30);
+  --grad:linear-gradient(135deg,#312e81 0%,#4f46e5 45%,#d97706 100%);
+  --r:20px;
+  --c1:#0ea5e9;--c2:#a855f7;--c3:#ec4899;--c4:#f97316;--c5:#64748b;--c6:#10b981;
+}
+:root[data-theme="dark"]{--bg:#0f0d1a;--card:#1a1729;--ink:#ecebf7;--sub:#a6a1c2;--line:#2c2843;--chip:#25213a;--shadow:0 12px 32px -14px rgba(0,0,0,.7)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f0d1a;--card:#1a1729;--ink:#ecebf7;--sub:#a6a1c2;--line:#2c2843;--chip:#25213a;--shadow:0 12px 32px -14px rgba(0,0,0,.7)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+:root[data-theme="dark"] a{color:#a5b4fc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) a{color:#a5b4fc}}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.promo-note{font-size:12px;color:var(--sub);text-align:center;padding:6px 16px;background:var(--card);border-bottom:1px solid var(--line)}
+.hero{background:var(--grad);color:#fff;padding:18px 0 64px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%)}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.brand{font-weight:700;font-size:14px;opacity:.9;letter-spacing:.04em}
+.mode{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer}
+h1{font-size:30px;line-height:1.35;font-weight:800;letter-spacing:.01em}
+h1 small{display:block;font-size:13px;font-weight:600;opacity:.9;margin-bottom:6px}
+.lead{margin-top:12px;font-size:15px;opacity:.95}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.badge{font-size:12px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 10px}
+.coins{position:absolute;right:18px;bottom:14px;display:flex;gap:6px;opacity:.9}
+.coins i{display:block;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#fde68a,#f59e0b);box-shadow:0 2px 0 #b45309;animation:bob 2.8s ease-in-out infinite}
+.coins i:nth-child(2){animation-delay:.3s}.coins i:nth-child(3){animation-delay:.6s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+main{margin-top:-44px;position:relative;z-index:2;padding-bottom:40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:20px 18px;margin-bottom:16px}
+.card h2{font-size:18px;display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.ico{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--chip);font-size:17px;flex:none}
+.q{font-weight:700;font-size:15px;margin:18px 0 8px}
+.q:first-of-type{margin-top:4px}
+.q small{display:block;font-weight:400;font-size:12.5px;color:var(--sub);margin-top:2px}
+.num{display:flex;align-items:center;gap:8px}
+.num input{flex:1;min-width:0;font-size:26px;font-weight:800;text-align:right;padding:10px 12px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);font-variant-numeric:tabular-nums}
+.num input:focus{outline:none;border-color:var(--pri2)}
+.num .u{font-weight:700;color:var(--sub);flex:none}
+.num button{flex:none;width:44px;height:48px;border-radius:12px;border:1px solid var(--line);background:var(--chip);color:var(--ink);font-size:22px;cursor:pointer}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:8px 13px;font-size:14px;cursor:pointer;min-height:40px;transition:transform .12s,background .2s}
+.chip:active{transform:scale(.96)}
+.chip[aria-pressed="true"]{background:var(--pri);color:#fff;border-color:var(--pri)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg.g3{grid-template-columns:repeat(3,1fr)}
+.seg .chip{border-radius:12px;padding:10px 6px;font-size:13.5px;line-height:1.35}
+select{width:100%;font-size:16px;padding:12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+details.more{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
+details.more summary{cursor:pointer;color:var(--pri);font-weight:700;font-size:14px;list-style:none}
+details.more summary::-webkit-details-marker{display:none}
+:root[data-theme="dark"] details.more summary{color:#a5b4fc}
+.hint{font-size:12.5px;color:var(--sub);margin-top:6px}
+.res{background:var(--grad);color:#fff;border-radius:24px;padding:22px 20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.res .lbl{font-size:14px;opacity:.9;font-weight:600}
+.res .amt{font-size:46px;font-weight:900;line-height:1.15;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.res .amt small{font-size:18px;margin-left:4px;font-weight:700}
+.res .sub{font-size:14px;opacity:.95;margin-top:4px}
+.pctbar{height:14px;border-radius:999px;background:rgba(255,255,255,.22);margin-top:14px;overflow:hidden;display:flex}
+.pctbar i{display:block;height:100%;transition:width .5s ease}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.kpi{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:10px 12px}
+.kpi b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:12px;opacity:.92}
+.bd{list-style:none}
+.bd li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.bd li:last-child{border-bottom:none}
+.bd .dot{width:12px;height:12px;border-radius:4px;flex:none}
+.bd .nm{flex:1}
+.bd .nm small{display:block;color:var(--sub);font-size:12px}
+.bd .v{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bd li.tot{font-weight:800}
+.new{display:inline-block;font-size:10.5px;font-weight:800;background:#fde68a;color:#7c2d12;border-radius:6px;padding:1px 6px;margin-left:6px;vertical-align:1px}
+.al{border-radius:14px;padding:12px 14px;font-size:14px;margin-top:10px;display:flex;gap:10px;align-items:flex-start}
+.al .e{font-size:18px;line-height:1.3}
+.al.y{background:rgba(245,158,11,.13);border:1px solid rgba(245,158,11,.35)}
+.al.g{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.35)}
+.al.r{background:rgba(239,68,68,.11);border:1px solid rgba(239,68,68,.35)}
+.al.b{background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.35)}
+.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cmp div{background:var(--chip);border-radius:14px;padding:10px;text-align:center}
+.cmp b{display:block;font-size:17px;font-variant-numeric:tabular-nums}
+.cmp span{font-size:11.5px;color:var(--sub)}
+.alloc{display:flex;height:22px;border-radius:999px;overflow:hidden;margin:12px 0 6px;background:var(--chip)}
+.alloc i{display:block;height:100%;transition:width .35s}
+.slider{margin:12px 0}
+.slider .top{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;font-weight:700}
+.slider .top b{font-variant-numeric:tabular-nums}
+.slider .top small{font-weight:400;color:var(--sub);font-size:12px}
+input[type=range]{width:100%;accent-color:var(--pri);height:32px}
+.pr{position:relative;border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px;margin-top:12px;background:linear-gradient(180deg,rgba(99,102,241,.06),transparent)}
+.prlab{position:absolute;top:10px;right:12px;font-size:11px;font-weight:800;color:var(--sub);border:1px solid var(--line);border-radius:6px;padding:0 6px}
+.pr h3{font-size:15px;margin-bottom:4px;padding-right:36px}
+.pr p{font-size:13.5px;color:var(--sub)}
+.afl{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
+.afl a{display:inline-block;background:var(--pri);color:#fff !important;text-decoration:none;font-weight:700;font-size:14px;border-radius:12px;padding:10px 14px}
+.afl a.s{background:var(--chip);color:var(--ink) !important;border:1px solid var(--line)}
+.share{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.btn{display:block;text-align:center;border:none;border-radius:14px;padding:13px;font-weight:800;font-size:15px;cursor:pointer;text-decoration:none}
+.btn.line{background:#06c755;color:#fff !important}
+.btn.cp{background:var(--chip);color:var(--ink);border:1px solid var(--line)}
+.links{display:grid;gap:10px}
+.lk{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:var(--ink) !important;background:var(--bg)}
+.lk b{display:block;font-size:14.5px}
+.lk span{font-size:12.5px;color:var(--sub)}
+.faq details{border-bottom:1px solid var(--line);padding:12px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:14.5px}
+.faq p{font-size:14px;color:var(--sub);margin-top:6px}
+table.t{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+table.t th,table.t td{border-bottom:1px solid var(--line);padding:7px 4px;text-align:right;font-variant-numeric:tabular-nums}
+table.t th:first-child,table.t td:first-child{text-align:left}
+.foot{font-size:12px;color:var(--sub);text-align:center;padding:16px 16px 36px}
+.foot a{color:var(--sub)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(30px);background:#111827;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:9}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (max-width:380px){h1{font-size:26px}.res .amt{font-size:40px}.seg.g3 .chip{font-size:12.5px}.cmp b{font-size:15px}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</head>
+<body>
+<div class="promo-note">本ページはプロモーション（広告）を含みます</div>
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar"><div class="brand">ひとりラボ ツール</div><button class="mode" id="mode" aria-label="表示モード切り替え">🌙 ダーク</button></div>
+    <h1><small>令和8年分の税率表・保険料率に対応</small><span style="display:inline-block">冬のボーナス、</span><span style="display:inline-block">手取りはいくら？</span></h1>
+    <p class="lead">額面と前月の給与を入れるだけ。<b>引かれる額の内訳</b>と<b>手取り</b>、そして<b>使い道の配分</b>までわかります。</p>
+    <div class="badges"><span class="badge">🔒 入力は端末の中だけ</span><span class="badge">登録不要・無料</span><span class="badge">子ども・子育て支援金に対応</span></div>
+    <div class="coins" aria-hidden="true"><i></i><i></i><i></i></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" id="input">
+    <h2><span class="ico">💴</span>ボーナスと前月の給与</h2>
+
+    <div class="q">① ボーナスの額面（総支給額）<small>明細の「賞与支給額」。寸志・決算賞与も同じ計算です</small></div>
+    <div class="num"><button type="button" id="bm" aria-label="1万円減らす">−</button><input id="b" inputmode="numeric" value="50" aria-label="ボーナス額面（万円）"><span class="u">万円</span><button type="button" id="bp" aria-label="1万円増やす">＋</button></div>
+    <input type="range" id="br" min="1" max="200" step="1" value="50" aria-label="ボーナス額面スライダー">
+    <div class="quick" id="qb"><button class="chip" data-v="20">20万</button><button class="chip" data-v="35">35万</button><button class="chip" data-v="50">50万</button><button class="chip" data-v="70">70万</button><button class="chip" data-v="100">100万</button></div>
+
+    <div class="q">② 前月の給与（額面）<small>ボーナスの前の月の総支給額（通勤手当を除く）。所得税の率がこれで決まります</small></div>
+    <div class="num"><button type="button" id="mm" aria-label="1万円減らす">−</button><input id="m" inputmode="numeric" value="30" aria-label="前月の給与（万円）"><span class="u">万円</span><button type="button" id="mp" aria-label="1万円増やす">＋</button></div>
+    <div class="quick" id="qm"><button class="chip" data-v="20">20万</button><button class="chip" data-v="25">25万</button><button class="chip" data-v="30">30万</button><button class="chip" data-v="40">40万</button><button class="chip" data-v="50">50万</button></div>
+
+    <div class="q">③ 年齢<small>40〜64歳は介護保険料が加わります</small></div>
+    <div class="seg g3" id="age"><button class="chip" aria-pressed="true" data-v="0">〜39歳</button><button class="chip" aria-pressed="false" data-v="1">40〜64歳</button><button class="chip" aria-pressed="false" data-v="2">65歳以上</button></div>
+
+    <div class="q">④ 扶養親族等の数<small>年末調整の「扶養控除等申告書」に書いた人数（配偶者を含む）。わからなければ0人</small></div>
+    <div class="quick" id="dep"><button class="chip" aria-pressed="true" data-v="0">0人</button><button class="chip" aria-pressed="false" data-v="1">1人</button><button class="chip" aria-pressed="false" data-v="2">2人</button><button class="chip" aria-pressed="false" data-v="3">3人</button><button class="chip" aria-pressed="false" data-v="4">4人</button><button class="chip" aria-pressed="false" data-v="5">5人</button><button class="chip" aria-pressed="false" data-v="6">6人</button><button class="chip" aria-pressed="false" data-v="7">7人以上</button></div>
+
+    <div class="q">⑤ 勤め先の都道府県（協会けんぽ）<small>健康保険証の発行元が「全国健康保険協会」なら都道府県を、健保組合なら下の「くわしく」で料率を入れてください</small></div>
+    <select id="pref" aria-label="都道府県"></select>
+
+    <details class="more" id="more">
+      <summary>＋ くわしく（健保組合・副業先・業種・今年度のボーナス累計）</summary>
+      <div class="q">健康保険の種類</div>
+      <div class="seg" id="hk"><button class="chip" aria-pressed="true" data-v="k">協会けんぽ</button><button class="chip" aria-pressed="false" data-v="u">健保組合・共済など</button></div>
+      <div id="ubox" style="display:none">
+        <div class="q">健康保険料率（本人負担分）<small>給与明細や組合のサイトの「被保険者負担」の率。例：4.5%</small></div>
+        <div class="num"><input id="hu" inputmode="decimal" value="4.5" aria-label="健康保険料率（本人負担・%）"><span class="u">%</span></div>
+        <div class="q">介護保険料率（本人負担分・40〜64歳のみ）</div>
+        <div class="num"><input id="ku" inputmode="decimal" value="0.8" aria-label="介護保険料率（本人負担・%）"><span class="u">%</span></div>
+        <p class="hint">子ども・子育て支援金は組合ごとに率が違います。ここでは協会けんぽと同じ0.115%（本人負担）で計算します。</p>
+      </div>
+      <div class="q">業種（雇用保険）</div>
+      <div class="seg g3" id="ind"><button class="chip" aria-pressed="true" data-v="5">一般</button><button class="chip" aria-pressed="false" data-v="6">農林水産・清酒</button><button class="chip" aria-pressed="false" data-v="6b">建設</button></div>
+      <div class="q">扶養控除等申告書を出していますか？<small>副業先（2か所目）のボーナスは「乙欄」で計算され、率が高くなります</small></div>
+      <div class="seg" id="kou"><button class="chip" aria-pressed="true" data-v="k">出している（本業）</button><button class="chip" aria-pressed="false" data-v="o">出していない（副業先）</button></div>
+      <div class="q">今年度（4月〜）すでに受け取ったボーナスの合計<small>健康保険は年度で573万円が上限。夏のボーナスの額を入れると正確になります</small></div>
+      <div class="num"><input id="pv" inputmode="numeric" value="0" aria-label="今年度のボーナス累計（万円）"><span class="u">万円</span></div>
+      <div class="q">前月の社会保険料（明細の合計）<small>空欄なら前月の給与から自動で概算します</small></div>
+      <div class="num"><input id="ms" inputmode="numeric" value="" placeholder="自動" aria-label="前月の社会保険料（円）"><span class="u">円</span></div>
+    </details>
+  </section>
+
+  <section id="result">
+    <div class="res">
+      <div class="lbl">ボーナスの手取り（概算）</div>
+      <div class="amt" id="amt">0<small>円</small></div>
+      <div class="sub" id="rsub"></div>
+      <div class="pctbar" id="pbar" aria-hidden="true"></div>
+      <div class="kpis">
+        <div class="kpi"><b id="k1">-</b><span>引かれる額の合計</span></div>
+        <div class="kpi"><b id="k2">-</b><span>手取り率</span></div>
+        <div class="kpi"><b id="k3">-</b><span>社会保険料</span></div>
+        <div class="kpi"><b id="k4">-</b><span>所得税（算出率）</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h2><span class="ico">🧾</span>引かれる額の内訳</h2>
+      <ul class="bd" id="bd"></ul>
+      <div id="notes"></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">📈</span>額面がこうだったら？</h2>
+      <div class="cmp" id="cmp"></div>
+      <p class="hint">同じ条件で額面だけを変えた手取りです。前月の給与が同じなら、所得税の率は変わりません。</p>
+    </div>
+
+    <div class="card" id="use">
+      <h2><span class="ico">🎯</span>手取りの使い道を決める</h2>
+      <p class="hint" style="margin-top:0">先に「残す分」を決めるのが、ボーナスを使い切らないコツです。プリセットを選ぶか、スライダーで調整してください。</p>
+      <div class="quick" id="preset"><button class="chip" data-v="40,20,10,30">バランス</button><button class="chip" data-v="60,20,5,15">しっかり貯める</button><button class="chip" data-v="20,10,10,60">ごほうび多め</button><button class="chip" data-v="30,30,15,25">増やす重視</button></div>
+      <div class="alloc" id="alloc" aria-hidden="true"></div>
+      <div id="sliders"></div>
+      <p class="hint" id="allocsum"></p>
+      <div id="useTips"></div>
+
+      <div class="pr">
+        <span class="prlab">PR</span>
+        <h3>🎁 ふるさと納税は12月31日まで</h3>
+        <p>2026年分の控除に入れるには、年内の寄附が必要です。ボーナスが出たら、上限額を確かめてから早めに。</p>
+        <!-- AFFILIATE:furusato_site -->
+        <div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738779" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738779" height="1" width="1" border="0">ふるなびで返礼品を探す</a><a class="s" href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" rel="nofollow">ふるさと本舗</a><img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" alt=""></div>
+        <p style="margin-top:8px;font-size:13px">上限額の目安は → <a href="../furusato-jogen-2026/">ふるさと納税 上限額シミュレーター</a></p>
+      </div>
+      <div class="pr" id="slot-nisa" style="display:none">
+        <span class="prlab">PR</span>
+        <h3>📈 「増やす」分はNISAで</h3>
+        <p>つみたて投資枠は年120万円まで。ネット証券なら100円から始められます。元本は保証されません。</p>
+        <!-- AFFILIATE:shoken_nisa -->
+      </div>
+      <div class="pr">
+        <span class="prlab">PR</span>
+        <h3>🛍️ ごほうびは、ポイントもつく買い方で</h3>
+        <p>年末のセール期間に、欲しかったものを。使う額を先に決めておけば、使いすぎも防げます。</p>
+        <!-- AFFILIATE:shopping -->
+        <div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングで探す</a></div>
+      </div>
+
+      <div class="share"><a class="btn line" id="line" href="#" target="_blank" rel="noopener">LINEで送る</a><button class="btn cp" id="copy" type="button">結果をコピー</button></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">🧰</span>年末に役立つ無料ツール</h2>
+      <div class="links">
+        <a class="lk" href="https://yope1016.github.io/apps/furusato-jogen-2026/"><span class="ico">🎁</span><div><b>ふるさと納税 上限額シミュレーター</b><span>ボーナスが出たら寄附の上限を確認</span></div></a>
+        <a class="lk" href="https://yope1016.github.io/apps/nencho-navi-2026/"><span class="ico">📝</span><div><b>年末調整 書き方ナビ 2026</b><span>扶養の人数・保険料控除の書き方</span></div></a>
+        <a class="lk" href="https://yope1016.github.io/apps/otoshidama-souba-2027/"><span class="ico">🧧</span><div><b>お年玉 相場計算機 2027</b><span>ボーナスから年始の出費を先取り</span></div></a>
+        <a class="lk" href="https://yope1016.github.io/apps/kakutei-shindan-2026/"><span class="ico">🧾</span><div><b>確定申告が必要か1分診断</b><span>副業先のボーナスがある人はこちら</span></div></a>
+      </div>
+    </div>
+
+    <div class="card faq">
+      <h2><span class="ico">❓</span>よくある質問</h2>
+      <details><summary>ボーナスから住民税は引かれますか？</summary><p>引かれません。住民税は前年の所得をもとに毎月の給与から引かれるのが一般的です。ボーナスから引かれるのは、健康保険料・介護保険料（40〜64歳）・子ども・子育て支援金・厚生年金保険料・雇用保険料・所得税です。</p></details>
+      <details><summary>2026年から新しく引かれるものは？</summary><p>2026年4月分から「子ども・子育て支援金」が健康保険料とあわせて徴収されています。協会けんぽは0.23%（会社と折半で本人0.115%）。ボーナスにもかかります。</p></details>
+      <details><summary>前月の給与で税率が変わるのはなぜ？</summary><p>ボーナスの所得税は、国税庁の「賞与に対する源泉徴収税額の算出率の表」で、前月の給与（社会保険料を引いた額）と扶養親族等の数から率を決めます。前月に残業が多いと率が上がることがあります。引かれすぎた分は年末調整で戻ります。</p></details>
+      <details><summary>前月の給与がない・ボーナスがとても多い場合は？</summary><p>前月の給与がない場合や、ボーナス（社会保険料控除後）が前月の給与（同）の10倍を超える場合は、月額表を使う別の計算になります。このツールでは注意を表示したうえで算出率で概算します。</p></details>
+      <details><summary>健康保険・厚生年金の上限は？</summary><p>標準賞与額（1,000円未満切り捨て）に料率をかけます。健康保険は年度（4月〜翌3月）の累計573万円、厚生年金は1回150万円が上限です。雇用保険は支給額そのものにかかります。</p></details>
+      <details><summary>入力した内容は送信されますか？</summary><p>送信されません。計算はすべてお使いの端末の中で行われ、保存もされません。</p></details>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">📚</span>計算に使った率（令和8年度）</h2>
+      <table class="t">
+        <tr><th>項目</th><th>全体の率</th><th>本人負担</th></tr>
+        <tr><td>健康保険（協会けんぽ）</td><td>9.21〜10.55%</td><td>半分</td></tr>
+        <tr><td>介護保険（40〜64歳）</td><td>1.62%</td><td>0.81%</td></tr>
+        <tr><td>子ども・子育て支援金</td><td>0.23%</td><td>0.115%</td></tr>
+        <tr><td>厚生年金</td><td>18.3%</td><td>9.15%</td></tr>
+        <tr><td>雇用保険（一般）</td><td>13.5/1000</td><td>5/1000</td></tr>
+      </table>
+      <p class="hint">出典：全国健康保険協会「令和8年度 都道府県別の健康保険料率」、厚生労働省「令和8年度の雇用保険料率」、国税庁「令和8年分 源泉徴収税額表（賞与に対する源泉徴収税額の算出率の表）」。端数処理は本人負担の50銭以下切り捨て・50銭超切り上げで計算しています。実際の額は会社の計算方法（端数・健保組合の料率など）で数十〜数百円ずれることがあります。正確な額は給与明細と勤務先でご確認ください。</p>
+    </div>
+  </section>
+</main>
+<div class="foot">© ひとりラボ ／ <a href="https://yope1016.github.io/apps/">無料Webツール一覧</a><br>このツールは概算です。税務・社会保険の判断は勤務先または専門家にご確認ください。</div>
+<div class="toast" id="toast">コピーしました</div>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var root=document.documentElement,mb=$("mode");
+function setMode(m){root.setAttribute("data-theme",m);mb.textContent=m==="dark"?"☀️ ライト":"🌙 ダーク"}
+var dark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;
+mb.textContent=dark?"☀️ ライト":"🌙 ダーク";
+mb.addEventListener("click",function(){var cur=root.getAttribute("data-theme")||(dark?"dark":"light");setMode(cur==="dark"?"light":"dark")});
+
+/* 協会けんぽ 令和8年度 都道府県別 健康保険料率（%） */
+var PREF=[["北海道",10.28],["青森県",9.85],["岩手県",9.51],["宮城県",10.10],["秋田県",10.01],["山形県",9.75],["福島県",9.50],["茨城県",9.52],["栃木県",9.82],["群馬県",9.68],["埼玉県",9.67],["千葉県",9.73],["東京都",9.85],["神奈川県",9.92],["新潟県",9.21],["富山県",9.59],["石川県",9.70],["福井県",9.71],["山梨県",9.55],["長野県",9.63],["岐阜県",9.80],["静岡県",9.61],["愛知県",9.93],["三重県",9.77],["滋賀県",9.88],["京都府",9.89],["大阪府",10.13],["兵庫県",10.12],["奈良県",9.91],["和歌山県",10.06],["鳥取県",9.86],["島根県",9.94],["岡山県",10.05],["広島県",9.78],["山口県",10.15],["徳島県",10.24],["香川県",10.02],["愛媛県",9.98],["高知県",10.05],["福岡県",10.11],["佐賀県",10.55],["長崎県",10.06],["熊本県",10.08],["大分県",10.08],["宮崎県",9.77],["鹿児島県",10.13],["沖縄県",9.44]];
+var KAIGO=1.62,SHIEN=0.23,KOSEI=18.3;
+var sel=$("pref");
+PREF.forEach(function(p,i){var o=document.createElement("option");o.value=i;o.textContent=p[0]+"（"+p[1].toFixed(2)+"%）";if(p[0]==="東京都")o.selected=true;sel.appendChild(o)});
+
+/* 令和8年分 賞与に対する源泉徴収税額の算出率の表（甲欄）：各率の上限（千円・未満）。行＝税率、列＝扶養0〜7人 */
+var RATES=[0,2.042,4.084,6.126,8.168,10.21,12.252,14.294,16.336,18.378,20.42,22.462,24.504,26.546,28.588,30.63,32.672,35.735,38.798,41.861,45.945];
+var UP=[
+[82,107,143,181,218,251,284,317],
+[94,250,276,300,300,304,343,383],
+[260,289,321,354,387,412,438,463],
+[309,346,377,405,431,457,483,508],
+[342,373,400,424,452,479,505,529],
+[372,401,426,452,477,503,527,552],
+[402,430,457,484,509,531,553,578],
+[433,463,492,517,540,564,589,614],
+[520,520,525,550,577,604,630,657],
+[605,621,636,651,666,681,697,708],
+[684,705,728,751,774,798,821,845],
+[715,739,764,788,813,838,862,887],
+[752,778,804,830,856,881,907,933],
+[795,821,848,876,903,930,957,985],
+[854,882,910,938,966,994,1022,1051],
+[922,952,983,1013,1044,1074,1104,1135],
+[1318,1342,1367,1391,1416,1440,1464,1489],
+[1521,1526,1526,1538,1555,1555,1555,1583],
+[2621,2645,2669,2693,2716,2740,2764,2788],
+[3495,3527,3559,3590,3622,3654,3685,3717]
+];
+function kouRate(netK,dep){for(var i=0;i<UP.length;i++){if(netK<UP[i][dep])return RATES[i]}return RATES[RATES.length-1]}
+function otsuRate(netK){if(netK<224)return 10.21;if(netK<295)return 20.42;if(netK<527)return 30.63;if(netK<1118)return 38.798;return 45.945}
+
+/* 本人負担の端数：50銭以下切り捨て、50銭超切り上げ */
+function rh(x){var f=Math.floor(x);return (x-f)>0.5?f+1:f}
+function yen(n){return Math.round(n).toLocaleString("ja-JP")+"円"}
+function man(n){var v=n/10000;return (Math.abs(v)>=100?Math.round(v):Math.round(v*10)/10).toLocaleString("ja-JP")+"万円"}
+function num(id,def){var v=parseFloat(String($(id).value).replace(/[^\d.]/g,""));return isNaN(v)?def:v}
+
+var st={age:"0",dep:0,hk:"k",ind:"5",kou:"k"};
+function seg(id,key,cb){var box=$(id);box.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;Array.prototype.forEach.call(box.querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});st[key]=key==="dep"?parseInt(b.dataset.v,10):b.dataset.v;if(cb)cb();calc()})}
+seg("age","age");seg("dep","dep");seg("hk","hk",function(){$("ubox").style.display=st.hk==="u"?"block":"none"});seg("ind","ind");seg("kou","kou");
+
+function linkNum(inp,rng,minus,plus,quick,step,min,max){
+  var i=$(inp),r=rng?$(rng):null;
+  function set(v){v=Math.max(min,Math.min(max,v));i.value=v;if(r)r.value=Math.min(r.max,Math.max(r.min,v));calc()}
+  i.addEventListener("input",function(){if(r){var v=num(inp,0);r.value=Math.min(r.max,Math.max(r.min,v))}calc()});
+  if(r)r.addEventListener("input",function(){i.value=r.value;calc()});
+  $(minus).addEventListener("click",function(){set(num(inp,0)-step)});
+  $(plus).addEventListener("click",function(){set(num(inp,0)+step)});
+  $(quick).addEventListener("click",function(e){var b=e.target.closest("button");if(b)set(parseFloat(b.dataset.v))});
+}
+linkNum("b","br","bm","bp","qb",1,0,2000);
+linkNum("m",null,"mm","mp","qm",1,0,500);
+["pref","hu","ku","pv","ms"].forEach(function(id){$(id).addEventListener("input",calc);$(id).addEventListener("change",calc)});
+
+function compute(bonus,o){
+  var hRate,kRate;
+  if(o.hk==="u"){hRate=num("hu",4.5);kRate=num("ku",0.8)}else{hRate=PREF[o.pref][1]/2;kRate=KAIGO/2}
+  var sRate=SHIEN/2;
+  var stdB=Math.floor(bonus/1000)*1000;
+  var hStd=Math.max(0,Math.min(stdB,5730000-o.prev));
+  var pStd=Math.min(stdB,1500000);
+  var care=o.age==="1";
+  var health=rh(hStd*hRate/100);
+  var kaigo=care?rh(hStd*kRate/100):0;
+  var shien=rh(hStd*sRate/100);
+  var nenkin=rh(pStd*(KOSEI/2)/100);
+  var kr=o.ind==="5"?5:6;
+  var koyo=rh(bonus*kr/1000);
+  var social=health+kaigo+shien+nenkin+koyo;
+  var base=Math.max(0,bonus-social);
+  var netK=Math.max(0,o.month-o.msoc)/1000;
+  var rate=o.kou==="k"?kouRate(netK,o.dep):otsuRate(netK);
+  var tax=Math.floor(base*rate/100);
+  return {bonus:bonus,stdB:stdB,hStd:hStd,pStd:pStd,health:health,kaigo:kaigo,shien:shien,nenkin:nenkin,koyo:koyo,social:social,base:base,rate:rate,tax:tax,take:bonus-social-tax,netK:netK,hRate:hRate,kRate:kRate,care:care,kr:kr}
+}
+function monthSocial(month,o){
+  /* 前月の社会保険料の概算（標準報酬月額は近似として給与額をそのまま使う） */
+  var hRate=o.hk==="u"?num("hu",4.5):PREF[o.pref][1]/2;
+  var kRate=o.hk==="u"?num("ku",0.8):KAIGO/2;
+  var pm=Math.min(Math.max(month,88000),650000);
+  var hm=Math.min(Math.max(month,58000),1390000);
+  return Math.round(hm*(hRate+(o.age==="1"?kRate:0)+SHIEN/2)/100+pm*(KOSEI/2)/100+month*(o.ind==="5"?5:6)/1000);
+}
+
+var last=null;
+var COLORS={health:"#0ea5e9",kaigo:"#a855f7",shien:"#ec4899",nenkin:"#f97316",koyo:"#64748b",tax:"#ef4444",take:"#10b981"};
+function calc(){
+  var bonus=Math.max(0,Math.round(num("b",0)*10000));
+  var month=Math.max(0,Math.round(num("m",0)*10000));
+  var o={pref:parseInt(sel.value,10)||12,age:st.age,dep:st.dep,hk:st.hk,ind:st.ind,kou:st.kou,prev:Math.max(0,Math.round(num("pv",0)*10000)),month:month};
+  var msIn=String($("ms").value).replace(/[^\d]/g,"");
+  o.msoc=msIn?parseInt(msIn,10):monthSocial(month,o);
+  var r=compute(bonus,o);last={r:r,o:o};
+  $("amt").innerHTML=Math.round(r.take).toLocaleString("ja-JP")+"<small>円</small>";
+  var pct=bonus>0?r.take/bonus*100:0;
+  $("rsub").textContent="額面 "+yen(bonus)+" → 手取り 約"+man(r.take)+"（"+pct.toFixed(1)+"%）";
+  $("k1").textContent=yen(r.social+r.tax);
+  $("k2").textContent=pct.toFixed(1)+"%";
+  $("k3").textContent=yen(r.social);
+  $("k4").textContent=yen(r.tax)+"（"+r.rate+"%）";
+  var pb="";
+  if(bonus>0){[["take",r.take],["health",r.health+r.kaigo+r.shien],["nenkin",r.nenkin],["koyo",r.koyo],["tax",r.tax]].forEach(function(x){pb+='<i style="width:'+(x[1]/bonus*100).toFixed(2)+'%;background:'+(x[0]==="take"?"#fde68a":"rgba(255,255,255,"+(x[0]==="tax"?".55":x[0]==="nenkin"?".4":".28")+")")+'"></i>'})}
+  $("pbar").innerHTML=pb;
+
+  var li=function(c,nm,sub,v,cls){return '<li'+(cls?' class="'+cls+'"':'')+'><span class="dot" style="background:'+c+'"></span><span class="nm">'+nm+(sub?'<small>'+sub+'</small>':'')+'</span><span class="v">'+v+'</span></li>'};
+  var h="";
+  h+=li(COLORS.health,"健康保険料",(o.hk==="u"?"本人負担 "+r.hRate+"%":PREF[o.pref][0]+" "+PREF[o.pref][1].toFixed(2)+"%の半分")+" × 標準賞与額 "+yen(r.hStd),"−"+yen(r.health));
+  if(r.care)h+=li(COLORS.kaigo,"介護保険料",r.kRate+"%（40〜64歳）","−"+yen(r.kaigo));
+  h+=li(COLORS.shien,'子ども・子育て支援金<span class="new">2026年〜</span>',"0.115%（0.23%÷2）","−"+yen(r.shien));
+  h+=li(COLORS.nenkin,"厚生年金保険料","9.15% × "+yen(r.pStd)+(r.stdB>1500000?"（1回150万円が上限）":""),"−"+yen(r.nenkin));
+  h+=li(COLORS.koyo,"雇用保険料",r.kr+"/1000 × 支給額","−"+yen(r.koyo));
+  h+=li(COLORS.tax,"所得税（復興特別所得税を含む）",(o.kou==="k"?"甲欄・扶養"+o.dep+(o.dep===7?"人以上":"人"):"乙欄")+"・前月の社保控除後 "+man(o.month-o.msoc)+" → "+r.rate+"% × "+yen(r.base),"−"+yen(r.tax));
+  h+=li(COLORS.take,"手取り","","＝"+yen(r.take),"tot");
+  $("bd").innerHTML=h;
+
+  var n="";
+  var al=function(c,e,t){return '<div class="al '+c+'"><span class="e">'+e+'</span><div>'+t+'</div></div>'};
+  if(month===0||(r.base>(o.month-o.msoc)*10&&o.month>0))n+=al("r","⚠️","<b>前月の給与がない、またはボーナスが前月の給与の10倍を超えています。</b>この場合の所得税は月額表を使う別の計算になり、実際の額はこの表示と違うことがあります（ここでは算出率で概算）。");
+  if(o.hk==="k"&&r.hStd<r.stdB)n+=al("y","📌","健康保険は年度の累計573万円が上限のため、"+yen(r.stdB-r.hStd)+"分には健康保険料がかかりません。");
+  if(o.kou==="o")n+=al("y","🧾","副業先のボーナスは乙欄で率が高めです。本業と合わせた年収によっては、<a href=\"https://yope1016.github.io/apps/kakutei-shindan-2026/\">確定申告</a>で戻ることがあります。");
+  n+=al("b","💡","住民税はボーナスからは引かれません。所得税が引かれすぎていても、<b>年末調整</b>で精算されます（生命保険料控除などの書き方は<a href=\"https://yope1016.github.io/apps/nencho-navi-2026/\">年末調整 書き方ナビ</a>で）。");
+  if(!msIn)n+=al("b","🔎","前月の社会保険料は概算（約"+yen(o.msoc)+"）で計算しています。明細の金額を「くわしく」に入れると、所得税の率がより正確になります。");
+  $("notes").innerHTML=n;
+
+  var cm="";
+  [-100000,100000,200000].forEach(function(d){var b2=Math.max(0,bonus+d);var r2=compute(b2,o);cm+='<div><span>額面 '+man(b2)+'</span><b>'+man(r2.take)+'</b><span>'+(d>0?"+":"−")+man(Math.abs(r2.take-r.take))+'</span></div>'});
+  $("cmp").innerHTML=cm;
+  drawAlloc();
+}
+
+/* 使い道の配分 */
+var ALLOC=[{k:"save",n:"🏦 貯める（生活防衛費・予定の出費）",c:"#0ea5e9",v:40},{k:"grow",n:"📈 増やす（NISAなど）",c:"#6366f1",v:20},{k:"furu",n:"🎁 ふるさと納税",c:"#f59e0b",v:10},{k:"fun",n:"🛍️ ごほうび・年末年始",c:"#ec4899",v:30}];
+function buildSliders(){
+  var h="";
+  ALLOC.forEach(function(a,i){h+='<div class="slider"><div class="top"><span>'+a.n+'</span><b id="av'+i+'">-</b></div><input type="range" min="0" max="100" step="5" value="'+a.v+'" id="as'+i+'" aria-label="'+a.n+'の割合"></div>'});
+  $("sliders").innerHTML=h;
+  ALLOC.forEach(function(a,i){$("as"+i).addEventListener("input",function(){a.v=parseInt(this.value,10);drawAlloc()})});
+}
+function drawAlloc(){
+  if(!last)return;var take=last.r.take;var tot=ALLOC.reduce(function(s,a){return s+a.v},0)||1;
+  var bar="";
+  ALLOC.forEach(function(a,i){var amt=Math.floor(take*a.v/tot/1000)*1000;$("av"+i).innerHTML=man(amt)+' <small>（'+Math.round(a.v/tot*100)+'%）</small>';bar+='<i style="width:'+(a.v/tot*100).toFixed(2)+'%;background:'+a.c+'"></i>'});
+  $("alloc").innerHTML=bar;
+  $("allocsum").textContent="割合は合計が100%になるように自動で換算しています（手取り "+yen(take)+"、1,000円単位で切り捨て）。";
+  var furuAmt=take*ALLOC[2].v/tot, growAmt=take*ALLOC[1].v/tot;
+  var t="";
+  var al=function(c,e,x){return '<div class="al '+c+'"><span class="e">'+e+'</span><div>'+x+'</div></div>'};
+  if(ALLOC[2].v>0)t+=al("y","🎁","ふるさと納税に約"+man(furuAmt)+"。<b>上限額を超えた分は自己負担</b>になるので、<a href=\"https://yope1016.github.io/apps/furusato-jogen-2026/\">上限額シミュレーター</a>で確認してから寄附しましょう。2026年分は12月31日まで。");
+  if(ALLOC[1].v>0)t+=al("g","📈","増やす分 約"+man(growAmt)+"。NISAのつみたて投資枠なら月"+man(Math.floor(growAmt/12/1000)*1000)+"ずつ1年かけて積み立てる方法もあります。投資は元本保証がないため、生活防衛費（生活費の3〜6か月分）を先に確保してから。");
+  t+=al("b","🧧","お年玉・帰省・年始の出費も、ボーナスから先に分けておくと安心です（<a href=\"https://yope1016.github.io/apps/otoshidama-souba-2027/\">お年玉の相場</a>）。");
+  $("useTips").innerHTML=t;
+  var r=last.r;
+  var txt="【冬のボーナス 手取り計算 2026】\n額面 "+yen(r.bonus)+"\n社会保険料 −"+yen(r.social)+"\n所得税 −"+yen(r.tax)+"（"+r.rate+"%）\n手取り "+yen(r.take)+"（"+(r.bonus?(r.take/r.bonus*100).toFixed(1):0)+"%）\n使い道："+ALLOC.map(function(a){return a.n.replace(/（.*）/,"")+" "+man(Math.floor(take*a.v/tot/1000)*1000)}).join("／")+"\nhttps://yope1016.github.io/apps/bonus-tedori-2026/";
+  $("line").href="https://line.me/R/share?text="+encodeURIComponent(txt);
+  $("copy").dataset.t=txt;
+}
+$("preset").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var v=b.dataset.v.split(",");ALLOC.forEach(function(a,i){a.v=parseInt(v[i],10);$("as"+i).value=a.v});drawAlloc()});
+$("copy").addEventListener("click",function(){var t=this.dataset.t||"";var done=function(){var ts=$("toast");ts.classList.add("on");setTimeout(function(){ts.classList.remove("on")},1600)};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fallback(t);done()})}else{fallback(t);done()}});
+function fallback(t){var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(ta)}
+
+buildSliders();calc();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
