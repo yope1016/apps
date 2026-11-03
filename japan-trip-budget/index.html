@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Japan Trip Cost Calculator 2026 – Daily Budget by City + Tax-Free Refund Checker</title>
+<meta name="description" content="Estimate what your Japan trip will really cost: lodging, food, transport and local taxes by city, travel style and season. Includes a checker for Japan's new tax-free refund system (from Nov 1, 2026).">
+<meta name="theme-color" content="#0f172a">
+<style>
+:root{
+  --bg:#f5f3ef;--bg2:#ffffff;--ink:#1c1917;--muted:#6b6560;--line:#e7e2da;
+  --card:#ffffff;--card2:#faf8f5;--accent:#d9363e;--accent2:#f2994a;--accent-ink:#ffffff;
+  --ok:#15803d;--okbg:#e8f6ed;--warn:#b45309;--warnbg:#fff4e0;--bad:#b91c1c;--badbg:#fdeaea;
+  --c1:#d9363e;--c2:#f2994a;--c3:#2a9d8f;--c4:#3d6fd8;--c5:#8b5cf6;--c6:#94a3b8;--c7:#e0a800;
+  --shadow:0 1px 2px rgba(28,25,23,.06),0 8px 24px rgba(28,25,23,.07);
+  --radius:18px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1115;--bg2:#161a20;--ink:#f1efe9;--muted:#a49e95;--line:#2a2f37;
+  --card:#171b22;--card2:#1d222a;--accent:#ff5a5f;--accent2:#ffad5c;--accent-ink:#1a0d0d;
+  --ok:#4ade80;--okbg:#10291a;--warn:#fbbf24;--warnbg:#2b2210;--bad:#f87171;--badbg:#2c1515;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#0f1115;--bg2:#161a20;--ink:#f1efe9;--muted:#a49e95;--line:#2a2f37;
+  --card:#171b22;--card2:#1d222a;--accent:#ff5a5f;--accent2:#ffad5c;--accent-ink:#1a0d0d;
+  --ok:#4ade80;--okbg:#10291a;--warn:#fbbf24;--warnbg:#2b2210;--bad:#f87171;--badbg:#2c1515;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent)}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+header.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#1e1b4b 0%,#7f1d1d 55%,#d9363e 100%);color:#fff;padding:44px 0 72px}
+header.hero:before{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ff8a80,#d9363e 60%,transparent 61%);opacity:.55}
+header.hero:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:60px;background:linear-gradient(to bottom,transparent,var(--bg))}
+.badge{display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:4px 12px;border-radius:999px;font-size:13px;backdrop-filter:blur(4px)}
+h1{font-size:clamp(28px,6vw,46px);line-height:1.1;margin:14px 0 10px;letter-spacing:-.02em;position:relative}
+.hero p{max-width:620px;margin:0;opacity:.92;font-size:17px;position:relative}
+.tabs{display:flex;gap:8px;margin:-40px 0 18px;position:relative;z-index:2;flex-wrap:wrap}
+.tab{flex:1 1 200px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:14px 16px;font:600 15px/1.2 inherit;cursor:pointer;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;min-height:56px;text-align:left}
+.tab small{display:block;font-weight:400;color:var(--muted);font-size:12.5px;margin-top:3px}
+.tab[aria-selected="true"]{border-color:var(--accent);outline:2px solid var(--accent);outline-offset:-2px}
+.tab .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;flex:0 0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:16px}
+.card h2{font-size:19px;margin:0 0 4px;letter-spacing:-.01em}
+.card .sub{color:var(--muted);font-size:14px;margin:0 0 14px}
+.grid{display:grid;gap:14px}
+@media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.layout{grid-template-columns:1.1fr .9fr;align-items:start}.sticky{position:sticky;top:12px}}
+label.f{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px;color:var(--muted)}
+input[type=number],select,input[type=text]{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:11px 12px;min-height:46px}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.seg{display:flex;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:4px;gap:4px}
+.seg button{flex:1;border:0;background:transparent;color:var(--ink);font:600 14px/1.2 inherit;padding:10px 6px;border-radius:10px;cursor:pointer;min-height:44px}
+.seg button small{display:block;font-weight:400;font-size:11.5px;color:var(--muted);margin-top:2px}
+.seg button[aria-pressed="true"]{background:var(--card);box-shadow:var(--shadow);color:var(--accent)}
+.stepper{display:flex;align-items:center;gap:8px}
+.stepper button{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--card2);color:var(--ink);font-size:20px;cursor:pointer;flex:0 0 auto}
+.stepper output{min-width:42px;text-align:center;font-weight:700;font-size:18px}
+.city{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:10px 0;border-top:1px dashed var(--line)}
+.city:first-child{border-top:0}
+.city select{min-width:0}
+.xbtn{width:40px;height:40px;border:0;background:transparent;color:var(--muted);font-size:20px;cursor:pointer;border-radius:10px}
+.xbtn:hover{background:var(--card2)}
+.addbtn{border:1px dashed var(--accent);background:transparent;color:var(--accent);font:600 15px inherit;border-radius:12px;padding:11px 14px;cursor:pointer;width:100%;min-height:46px;margin-top:8px}
+.leg{display:grid;grid-template-columns:1fr 110px 40px;gap:8px;align-items:center;margin-top:8px}
+.leg input{text-align:right}
+.total{background:linear-gradient(140deg,#1e1b4b,#7f1d1d 70%,#b4232b);color:#fff;border:0}
+.total .lbl{font-size:13px;opacity:.85;text-transform:uppercase;letter-spacing:.08em}
+.big{font-size:clamp(34px,8vw,48px);font-weight:800;letter-spacing:-.02em;line-height:1.05;margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.yen{opacity:.85;font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.kpi{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:10px 12px}
+.kpi b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.kpi span{font-size:12.5px;opacity:.85}
+.bar{display:flex;height:14px;border-radius:999px;overflow:hidden;background:var(--card2);margin:4px 0 14px}
+.bar i{display:block;height:100%;transition:width .4s ease}
+.rows{display:grid;gap:6px}
+.row{display:grid;grid-template-columns:14px 1fr auto;gap:10px;align-items:center;font-size:15px}
+.row .dot{width:12px;height:12px;border-radius:4px}
+.row .v{font-variant-numeric:tabular-nums;font-weight:600;text-align:right}
+.row .v small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:600;font-size:12.5px}
+.tblwrap{overflow-x:auto}
+.note{font-size:13px;color:var(--muted)}
+.pill{display:inline-block;font-size:12px;padding:2px 9px;border-radius:999px;background:var(--card2);border:1px solid var(--line);color:var(--muted)}
+.tip{display:flex;gap:10px;background:var(--warnbg);color:var(--ink);border-radius:14px;padding:12px 14px;font-size:14px;margin-top:12px}
+.tip.ok{background:var(--okbg)}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.btn{border:0;border-radius:12px;padding:12px 16px;font:600 15px inherit;cursor:pointer;min-height:46px;display:inline-flex;align-items:center;gap:8px}
+.btn.pri{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+.btn.sec{background:var(--card2);color:var(--ink);border:1px solid var(--line)}
+.total .btn.sec{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.25)}
+.q{padding:14px 0;border-top:1px solid var(--line)}
+.q:first-of-type{border-top:0}
+.q p{margin:0 0 8px;font-weight:600}
+.q .seg button{font-weight:600}
+.verdict{border-radius:16px;padding:18px;margin-top:6px}
+.verdict.ok{background:var(--okbg)}.verdict.warn{background:var(--warnbg)}.verdict.bad{background:var(--badbg)}
+.verdict h3{margin:0 0 6px;font-size:19px}
+.verdict.ok h3{color:var(--ok)}.verdict.warn h3{color:var(--warn)}.verdict.bad h3{color:var(--bad)}
+.verdict ul{margin:8px 0 0;padding-left:20px}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 14px 46px}
+ol.steps li:before{content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+ol.steps b{display:block}
+.pro{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--card) 0%,var(--card2) 100%)}
+.pro .price{font-size:30px;font-weight:800}
+.pro ul{padding-left:0;list-style:none;margin:12px 0 0;display:grid;gap:8px}
+@media(min-width:640px){.pro ul{grid-template-columns:1fr 1fr}}
+.pro li{display:flex;gap:8px;align-items:flex-start;font-size:15px}
+.pro li:before{content:"✓";color:var(--accent);font-weight:800}
+.soon{display:inline-block;margin-top:14px;padding:12px 16px;border-radius:12px;border:1px dashed var(--line);color:var(--muted);font-weight:600}
+.hidden{display:none!important}
+details{border-top:1px solid var(--line);padding:12px 0}
+details summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:10px}
+details summary:after{content:"+";color:var(--accent);font-size:20px;line-height:1}
+details[open] summary:after{content:"–"}
+details p{margin:8px 0 0;color:var(--muted);font-size:14.5px}
+#mini{position:fixed;left:12px;right:12px;bottom:12px;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:10px;background:linear-gradient(135deg,#1e1b4b,#b4232b);color:#fff;border:0;border-radius:16px;padding:12px 16px;box-shadow:0 10px 30px rgba(0,0,0,.3);font:600 15px inherit;cursor:pointer;transition:transform .25s ease}
+#mini b{font-size:20px;font-variant-numeric:tabular-nums}#mini.off{transform:translateY(140%)}
+@media(min-width:760px){#mini{display:none}}
+footer{padding:26px 0 96px;color:var(--muted);font-size:13px}
+.themebtn{position:absolute;right:16px;top:16px;z-index:3;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;border-radius:12px;width:44px;height:44px;cursor:pointer;font-size:18px}
+.fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{#mini,.tabs,.themebtn,.btns,.pro,footer,.addbtn,.xbtn,#panel-tax{display:none!important}header.hero{padding:16px 0;background:#7f1d1d}.card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <button class="themebtn" id="themeBtn" aria-label="Switch light or dark mode">◐</button>
+  <div class="wrap">
+    <span class="badge">🗾 Updated Nov 2026 · free · works offline</span>
+    <h1>How much will your Japan trip cost?</h1>
+    <p>Pick your cities, nights, travel style and season. Get a realistic daily budget — plus a quick check for Japan's new tax-free refund rules that started on November 1, 2026.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-budget" aria-selected="true" aria-controls="panel-budget"><span class="ic">¥</span><span>Trip budget<small>Cities, nights, style, season</small></span></button>
+    <button class="tab" role="tab" id="tab-tax" aria-selected="false" aria-controls="panel-tax"><span class="ic">%</span><span>Tax-free refund check<small>New rules from Nov 1, 2026</small></span></button>
+  </div>
+
+  <!-- ================= BUDGET ================= -->
+  <section id="panel-budget" role="tabpanel" aria-labelledby="tab-budget" class="fade">
+    <div class="grid layout">
+      <div>
+        <div class="card">
+          <h2>1. Who's going?</h2>
+          <p class="sub">Mid-range and comfort stays assume two people share a room.</p>
+          <div class="grid g2">
+            <div>
+              <label class="f">Travelers</label>
+              <div class="stepper"><button type="button" data-step="pax" data-d="-1" aria-label="Fewer travelers">−</button><output id="paxOut">2</output><button type="button" data-step="pax" data-d="1" aria-label="More travelers">+</button></div>
+            </div>
+            <div>
+              <label class="f" for="currency">Show prices in</label>
+              <select id="currency">
+                <option value="USD">US dollar (USD)</option>
+                <option value="EUR">Euro (EUR)</option>
+                <option value="GBP">British pound (GBP)</option>
+                <option value="AUD">Australian dollar (AUD)</option>
+                <option value="CAD">Canadian dollar (CAD)</option>
+                <option value="MXN">Mexican peso (MXN)</option>
+                <option value="JPY">Japanese yen only</option>
+              </select>
+            </div>
+          </div>
+          <div id="rateBox" style="margin-top:12px">
+            <label class="f" for="rate">Exchange rate: ¥ per <span id="rateCur">USD</span></label>
+            <input type="number" id="rate" inputmode="decimal" min="0.01" step="0.01">
+            <p class="note" style="margin:6px 0 0">Default rates are rough late‑October 2026 values. Type in today's rate from your bank or card for a closer number. This page never goes online to fetch rates.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>2. Travel style</h2>
+          <p class="sub">Where you sleep matters most. Food and transport scale with it.</p>
+          <div class="seg" id="styleSeg">
+            <button type="button" data-v="budget" aria-pressed="false">Budget<small>Hostels, konbini</small></button>
+            <button type="button" data-v="mid" aria-pressed="true">Mid-range<small>Business hotels</small></button>
+            <button type="button" data-v="comfort" aria-pressed="false">Comfort<small>4★, ryokan</small></button>
+          </div>
+          <label class="f" style="margin-top:14px" for="season">When are you going?</label>
+          <select id="season">
+            <option value="low">Quiet season — mid Jan to Feb, June, early Dec</option>
+            <option value="reg" selected>Regular — most other weeks</option>
+            <option value="peak">Peak — cherry blossoms, Golden Week, autumn leaves, New Year</option>
+          </select>
+          <p class="note" style="margin:6px 0 0">Hotel prices in peak weeks can easily double. In Kyoto, autumn‑leaf weekends are often the most expensive time of the year.</p>
+        </div>
+
+        <div class="card">
+          <h2>3. Where are you staying?</h2>
+          <p class="sub">Add each base city and the number of nights there.</p>
+          <div id="cities"></div>
+          <button type="button" class="addbtn" id="addCity">+ Add a city</button>
+        </div>
+
+        <div class="card">
+          <h2>4. Getting between cities</h2>
+          <p class="sub">Typical one-way adult fares in yen, reserved seat. Edit any number to match your booking.</p>
+          <div id="legs"></div>
+          <select id="legPick" style="margin-top:10px" aria-label="Add a journey">
+            <option value="">+ Add a journey…</option>
+          </select>
+          <div class="tip" id="passTip" style="display:none"></div>
+          <div style="margin-top:12px">
+            <label class="f" for="shop">Shopping budget per person (¥, optional)</label>
+            <input type="number" id="shop" min="0" step="1000" value="0" inputmode="numeric">
+          </div>
+        </div>
+      </div>
+
+      <div class="sticky">
+        <div class="card total" id="totalCard">
+          <div class="lbl">Estimated total · <span id="tNights">0</span> nights</div>
+          <div class="big" id="tMain">—</div>
+          <div class="yen" id="tYen"></div>
+          <div class="kpis">
+            <div class="kpi"><b id="kPer">—</b><span>per person</span></div>
+            <div class="kpi"><b id="kDay">—</b><span>per person, per day</span></div>
+          </div>
+          <div class="btns">
+            <button type="button" class="btn sec" id="copyBtn">📋 Copy summary</button>
+            <button type="button" class="btn sec" id="printBtn">🖨 Print</button>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Where the money goes</h2>
+          <div class="bar" id="bar"></div>
+          <div class="rows" id="rows"></div>
+          <p class="note" style="margin-top:12px">Flights to Japan are not included. Japan's departure tax (¥3,000 per person since July 2026) is normally already in your airfare.</p>
+        </div>
+        <div class="card">
+          <h2>By city</h2>
+          <div class="tblwrap"><table id="cityTbl"></table></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>How this estimate works</h2>
+      <details><summary>What the numbers are based on</summary><p>Daily food, transport and activity ranges, plus hotel prices by city and season, are based on 2026 price checks published by travel-cost guides (see sources below) and adjusted by city. Kyoto's lodging tax uses the city's official rates from March 2026. These are planning estimates, not quotes — actual prices change by date, hotel and how early you book.</p></details>
+      <details><summary>Why is Kyoto lodging tax so high on luxury stays?</summary><p>Since March 1, 2026, Kyoto charges ¥200 to ¥10,000 per person, per night, depending on the room price: under ¥6,000 → ¥200; ¥6,000–19,999 → ¥400; ¥20,000–49,999 → ¥1,000; ¥50,000–99,999 → ¥4,000; ¥100,000 and up → ¥10,000. Tokyo, Osaka and several other places charge smaller amounts, which this calculator approximates.</p></details>
+      <details><summary>Is a nationwide rail pass worth it?</summary><p>Add up the train journeys you plan to take. If they cost more than the pass for the same number of days, the pass may pay off. Many short trips (for example only Tokyo, Kyoto and Osaka) often cost less as single tickets. Always compare with the official pass price before buying.</p></details>
+      <details><summary>Does this page save my data?</summary><p>Your inputs are saved only in this browser on this device so you can come back later. Nothing is sent anywhere, and there is no sign-up.</p></details>
+    </div>
+  </section>
+
+  <!-- ================= TAX FREE ================= -->
+  <section id="panel-tax" role="tabpanel" aria-labelledby="tab-tax" class="hidden">
+    <div class="grid layout">
+      <div class="card">
+        <h2>Will I get my tax back?</h2>
+        <p class="sub">From November 1, 2026, Japan switched to a <b>refund system</b>: you pay the full price including tax at the shop, then get the tax back after customs confirms you're taking the goods out of Japan.</p>
+
+        <div class="q"><p>Are you visiting Japan as a short-term visitor (tourist) with your passport?</p>
+          <div class="seg" data-q="visitor"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="no" aria-pressed="false">No / I live in Japan</button></div></div>
+
+        <div class="q"><p>How much did you spend at one store on one day, <u>before tax</u>?</p>
+          <input type="number" id="spend" min="0" step="100" inputmode="numeric" placeholder="e.g. 12000">
+          <div class="seg" style="margin-top:8px" data-q="taxin"><button type="button" data-v="ex" aria-pressed="true">Price before tax</button><button type="button" data-v="in" aria-pressed="false">Price with tax (I'll convert)</button></div>
+          <p class="note" style="margin:6px 0 0">Receipts from the same store on the same day count together.</p></div>
+
+        <div class="q"><p>What did you buy?</p>
+          <div class="seg" data-q="kind"><button type="button" data-v="gen" aria-pressed="false">Clothes, electronics, etc.</button><button type="button" data-v="cons" aria-pressed="false">Food, drinks, cosmetics</button><button type="button" data-v="mix" aria-pressed="false">Both</button></div></div>
+
+        <div class="q"><p>Will you use or eat any of it while still in Japan?</p>
+          <div class="seg" data-q="used"><button type="button" data-v="no" aria-pressed="false">No</button><button type="button" data-v="yes" aria-pressed="false">Yes, some</button></div></div>
+
+        <div class="q"><p>Will you leave Japan within 90 days of the purchase?</p>
+          <div class="seg" data-q="days"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="no" aria-pressed="false">No / not sure</button></div></div>
+
+        <div class="q"><p>Can you keep <u>every</u> item from that receipt with you until the airport check (before checking bags)?</p>
+          <div class="seg" data-q="carry"><button type="button" data-v="yes" aria-pressed="false">Yes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+
+        <div class="q"><p>Is any of it gold or platinum bullion?</p>
+          <div class="seg" data-q="gold"><button type="button" data-v="no" aria-pressed="false">No</button><button type="button" data-v="yes" aria-pressed="false">Yes</button></div></div>
+      </div>
+
+      <div class="sticky">
+        <div id="verdict" class="verdict warn"><h3>Answer the questions</h3><p style="margin:0">Your result will appear here.</p></div>
+        <div class="card" style="margin-top:16px">
+          <h2>At the airport: the new steps</h2>
+          <ol class="steps" style="margin-top:12px">
+            <li><b>Keep your goods and receipts with you</b>Don't check in that luggage yet. If even one item from a receipt is missing, the whole receipt loses the refund.</li>
+            <li><b>Scan your passport at a tax-free kiosk</b>Look for the tax-free procedure terminals before security. At major airports you can also do this online via Visit Japan Web in marked areas.</li>
+            <li><b>Green = done, red = inspection</b>A red result means you show your goods at the customs inspection area. Finish this before boarding.</li>
+            <li><b>Get your refund from the shop</b>The store (or a refund company it uses) pays you back after customs confirms the export. Ask at the till how and when they refund — it varies by shop.</li>
+          </ol>
+          <p class="note" style="margin:0">Japan's standard consumption tax is 10% (8% on most food and drinks). The amount you actually receive may be lower if the shop or its refund operator charges a handling fee. This is a guide, not legal or tax advice — check the official Japan Tourism Agency page and ask the shop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRO ================= -->
+  <section class="card pro" aria-labelledby="proTitle">
+    <span class="pill">Coming soon</span>
+    <h2 id="proTitle" style="margin-top:10px;font-size:22px">Japan Trip Planner Pro</h2>
+    <p class="sub" style="margin-bottom:0">Everything above, plus the tools you'll want once your flights are booked. One file you download and keep — it works offline on your phone in Japan.</p>
+    <div class="price" style="margin-top:10px">$9 <span class="note" style="font-size:14px;font-weight:400">one-time · no subscription</span></div>
+    <ul>
+      <li>Day-by-day itinerary with a budget for each day</li>
+      <li>Track what you actually spend vs. your plan</li>
+      <li>Split costs with your travel partners</li>
+      <li>Rail fare vs. pass comparison for your exact route</li>
+      <li>Season-aware packing list and etiquette checklist</li>
+      <li>Printable PDF trip sheet</li>
+    </ul>
+    <span class="soon">Pro version coming soon</span>
+  </section>
+
+  <section class="card">
+    <h2>Looking for places beyond Tokyo and Kyoto?</h2>
+    <p class="sub" style="margin:0">Our sister guide <a href="https://yope1016.github.io/apps/japon-oculto/">Japón Oculto</a> covers lesser-known towns, hot springs and festivals across Japan (in Spanish).</p>
+  </section>
+
+  <section class="card">
+    <h2>Sources</h2>
+    <ul class="note" style="padding-left:18px;margin:0">
+      <li><a href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00028.html">Japan Tourism Agency — Refund method for tax-free shopping (from Nov 1, 2026)</a></li>
+      <li><a href="https://www.japan.travel/en/ca/news/japans-international-tourist-tax-is-increasing/">JNTO — International tourist tax rises to ¥3,000 (July 1, 2026)</a></li>
+      <li><a href="https://timeout.com/osaka/news/kyotos-highest-hotel-tax-hike-takes-effect-all-you-need-to-know-030226">Time Out — Kyoto accommodation tax rates from March 2026</a></li>
+      <li><a href="https://selfguidejapan.com/blog/japan-daily-budget-2026">Self Guide Japan — Japan daily budget 2026</a></li>
+      <li><a href="https://thejapanode.com/guides/japan-hotel-prices-2026">The Japan Ode — Japan hotel prices 2026 (seasonal price checks)</a></li>
+    </ul>
+  </section>
+</main>
+
+<button type="button" id="mini" aria-label="Jump to total"><span>Trip total · per day <span id="miniDay"></span></span><b id="miniTot">—</b></button>
+<footer class="wrap">
+  <p>Made by Hitori Lab. Estimates only — prices change and this page cannot guarantee any amount. Not affiliated with any rail company, airline or government agency.</p>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var $=function(s){return document.querySelector(s)};
+var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+
+/* ---------- data (JPY) ---------- */
+var CITIES={
+  tokyo:{n:"Tokyo",lodge:[4500,16000,40000],f:1.1,t:"tokyo"},
+  kyoto:{n:"Kyoto",lodge:[4000,14000,36000],f:1.05,t:"kyoto",peak:2.0},
+  osaka:{n:"Osaka",lodge:[3800,11000,28000],f:1.0,t:"osaka"},
+  nara:{n:"Nara",lodge:[3800,10000,26000],f:0.95,t:"other"},
+  hakone:{n:"Hakone / onsen town",lodge:[6000,26000,60000],f:1.0,t:"onsen"},
+  hiroshima:{n:"Hiroshima",lodge:[3500,10000,24000],f:0.95,t:"other"},
+  kanazawa:{n:"Kanazawa",lodge:[3500,10000,25000],f:0.95,t:"other"},
+  sapporo:{n:"Sapporo / Hokkaido",lodge:[3500,10000,26000],f:0.95,t:"other"},
+  fukuoka:{n:"Fukuoka",lodge:[3500,10000,24000],f:0.95,t:"other"},
+  okinawa:{n:"Okinawa",lodge:[4000,13000,32000],f:1.0,t:"other"},
+  rural:{n:"Countryside / small town",lodge:[4000,11000,24000],f:0.9,t:"other"}
+};
+var STYLE={budget:0,mid:1,comfort:2};
+var DAILY={food:[2800,5500,12000],local:[700,1300,3500],act:[1000,2500,6000],misc:[600,1500,3000]};
+var SEASON={low:0.85,reg:1,peak:1.6};
+var LEGS=[
+  ["Airport ↔ Tokyo (train or bus)",2000,0],
+  ["Airport ↔ Osaka / Kyoto (train or bus)",2200,0],
+  ["Tokyo → Kyoto (bullet train)",14200,1],
+  ["Tokyo → Osaka (bullet train)",14720,1],
+  ["Kyoto → Osaka (local train)",600,1],
+  ["Kyoto → Nara (local train)",760,1],
+  ["Tokyo → Hakone (limited express)",2500,0],
+  ["Osaka → Hiroshima (bullet train)",10600,1],
+  ["Tokyo → Hiroshima (bullet train)",19800,1],
+  ["Tokyo → Kanazawa (bullet train)",14700,1],
+  ["Hiroshima ↔ Miyajima (train + ferry, round trip)",1000,0],
+  ["Domestic flight (e.g. to Sapporo, Fukuoka, Okinawa)",15000,0],
+  ["Day trip by train (round trip)",3000,1]
+];
+var RATES={USD:157,EUR:182,GBP:209,AUD:103,CAD:113,MXN:8.5,JPY:1};
+var SYM={USD:"$",EUR:"€",GBP:"£",AUD:"A$",CAD:"C$",MXN:"MX$",JPY:"¥"};
+
+/* ---------- state ---------- */
+var S={pax:2,style:"mid",season:"reg",cur:"USD",rate:157,shop:0,
+  cities:[{c:"tokyo",n:4},{c:"kyoto",n:3},{c:"osaka",n:2}],
+  legs:[[0,2000],[2,14200],[4,600],[1,2200]], tax:{taxin:"ex"}, spend:""};
+try{var saved=JSON.parse(localStorage.getItem("jtb_v1")||"null");if(saved&&saved.cities){for(var k in saved)S[k]=saved[k];}}catch(e){}
+function save(){try{localStorage.setItem("jtb_v1",JSON.stringify(S))}catch(e){}}
+
+/* ---------- helpers ---------- */
+function yen(v){return "¥"+Math.round(v).toLocaleString("en-US")}
+function money(v){
+  if(S.cur==="JPY")return yen(v);
+  var x=v/(S.rate||1);
+  var d=(Math.abs(x)<100&&S.cur!=="MXN")?0:0;
+  return SYM[S.cur]+Math.round(x).toLocaleString("en-US",{maximumFractionDigits:d});
+}
+function lodgeTaxPP(cityKey,ppNight){
+  var t=CITIES[cityKey].t;
+  if(t==="kyoto"){if(ppNight<6000)return 200;if(ppNight<20000)return 400;if(ppNight<50000)return 1000;if(ppNight<100000)return 4000;return 10000;}
+  if(t==="tokyo"){if(ppNight<10000)return 0;if(ppNight<15000)return 100;return 200;}
+  if(t==="osaka"){if(ppNight<5000)return 0;if(ppNight<15000)return 200;if(ppNight<20000)return 400;return 500;}
+  if(t==="onsen"){return 150+(ppNight>=6000?200:0);}
+  return ppNight>=6000?200:0;
+}
+
+/* ---------- calc ---------- */
+function calc(){
+  var si=STYLE[S.style],pax=Math.max(1,S.pax),rooms=si===0?pax:Math.ceil(pax/2);
+  var out={lodge:0,ltax:0,food:0,local:0,act:0,misc:0,legs:0,shop:0,nights:0,byCity:[]};
+  S.cities.forEach(function(c){
+    var C=CITIES[c.c];if(!C)return;var n=Math.max(0,+c.n||0);
+    var sm=S.season==="peak"?(C.peak||SEASON.peak):SEASON[S.season];
+    var unit=C.lodge[si]*sm; // per person (budget) or per room
+    var lodge=(si===0?unit*pax:unit*rooms)*n;
+    var ppNight=si===0?unit:unit*rooms/pax;
+    var ltax=lodgeTaxPP(c.c,ppNight)*pax*n;
+    var food=DAILY.food[si]*C.f*pax*n, local=DAILY.local[si]*pax*n, act=DAILY.act[si]*pax*n, misc=DAILY.misc[si]*pax*n;
+    out.lodge+=lodge;out.ltax+=ltax;out.food+=food;out.local+=local;out.act+=act;out.misc+=misc;out.nights+=n;
+    out.byCity.push({name:C.n,n:n,lodge:lodge+ltax,daily:food+local+act+misc});
+  });
+  S.legs.forEach(function(l){out.legs+=(+l[1]||0)*pax});
+  out.shop=(+S.shop||0)*pax;
+  out.total=out.lodge+out.ltax+out.food+out.local+out.act+out.misc+out.legs+out.shop;
+  out.pax=pax;
+  return out;
+}
+
+/* ---------- render ---------- */
+var CATS=[["lodge","Accommodation","var(--c1)"],["food","Food & drinks","var(--c2)"],["legs","Trains between cities","var(--c4)"],["local","Local transport","var(--c3)"],["act","Sights & activities","var(--c5)"],["misc","SIM, lockers, small extras","var(--c6)"],["ltax","Local lodging taxes","var(--c7)"],["shop","Shopping","#e11d74"]];
+function render(){
+  var r=calc();
+  $("#paxOut").textContent=S.pax;
+  $("#tNights").textContent=r.nights;
+  $("#tMain").textContent=money(r.total);
+  $("#tYen").textContent=S.cur==="JPY"?"":yen(r.total)+" at ¥"+S.rate+" per "+S.cur;
+  var per=r.total/r.pax, days=Math.max(1,r.nights);
+  $("#kPer").textContent=money(per);
+  $("#kDay").textContent=money(per/days);
+  $("#miniTot").textContent=money(r.total);$("#miniDay").textContent=money(per/days);
+  var bar="",rows="";
+  CATS.forEach(function(c){var v=r[c[0]];if(!v)return;var w=r.total?v/r.total*100:0;
+    bar+='<i style="width:'+w.toFixed(2)+'%;background:'+c[2]+'" title="'+c[1]+'"></i>';
+    rows+='<div class="row"><span class="dot" style="background:'+c[2]+'"></span><span>'+c[1]+' <span class="note">'+Math.round(w)+'%</span></span><span class="v">'+money(v)+(S.cur==="JPY"?"":'<small>'+yen(v)+'</small>')+'</span></div>';});
+  $("#bar").innerHTML=bar;$("#rows").innerHTML=rows||'<p class="note">Add at least one city.</p>';
+  var t='<tr><th>City</th><th>Nights</th><th>Stay</th><th>Daily costs</th></tr>';
+  r.byCity.forEach(function(c){t+='<tr><td>'+c.name+'</td><td>'+c.n+'</td><td>'+money(c.lodge)+'</td><td>'+money(c.daily)+'</td></tr>'});
+  $("#cityTbl").innerHTML=t;
+  // pass tip
+  var rail=0;S.legs.forEach(function(l){if(LEGS[l[0]]&&LEGS[l[0]][2])rail+=(+l[1]||0)});
+  var tip=$("#passTip");
+  if(rail>0){tip.style.display="flex";
+    var pass=50000;
+    if(rail>=pass){tip.className="tip ok";tip.innerHTML="🚄 <span>Your train journeys add up to <b>"+yen(rail)+"</b> per person — more than a 7‑day nationwide rail pass (¥50,000 on the official site, ¥53,000 from overseas agents). A pass could pay off if those trips fit in 7 days. Check the official price first.</span>";}
+    else{tip.className="tip";tip.innerHTML="🚄 <span>Your train journeys add up to <b>"+yen(rail)+"</b> per person — less than a 7‑day nationwide rail pass (¥50,000 on the official site, ¥53,000 from overseas agents). Single tickets or a regional pass are likely cheaper.</span>";}
+  }else tip.style.display="none";
+  save();
+}
+
+function cityOpts(sel){var h="";for(var k in CITIES)h+='<option value="'+k+'"'+(k===sel?" selected":"")+'>'+CITIES[k].n+'</option>';return h}
+function drawCities(){
+  var h="";S.cities.forEach(function(c,i){
+    h+='<div class="city"><select data-ci="'+i+'" aria-label="City">'+cityOpts(c.c)+'</select>'+
+      '<div class="stepper"><button type="button" data-cn="'+i+'" data-d="-1" aria-label="Fewer nights">−</button><output>'+c.n+'</output><button type="button" data-cn="'+i+'" data-d="1" aria-label="More nights">+</button></div>'+
+      '<button type="button" class="xbtn" data-cx="'+i+'" aria-label="Remove city">×</button></div>';});
+  $("#cities").innerHTML=h||'<p class="note">No cities yet.</p>';
+}
+function drawLegs(){
+  var h="";S.legs.forEach(function(l,i){var L=LEGS[l[0]];if(!L)return;
+    h+='<div class="leg"><span style="font-size:14.5px">'+L[0]+'</span><input type="number" min="0" step="10" inputmode="numeric" data-li="'+i+'" value="'+l[1]+'" aria-label="Fare in yen"><button type="button" class="xbtn" data-lx="'+i+'" aria-label="Remove journey">×</button></div>';});
+  $("#legs").innerHTML=h||'<p class="note" style="margin:0">No journeys added.</p>';
+  var o='<option value="">+ Add a journey…</option>';LEGS.forEach(function(L,i){o+='<option value="'+i+'">'+L[0]+' (~'+yen(L[1])+')</option>'});
+  $("#legPick").innerHTML=o;
+}
+
+/* ---------- events ---------- */
+document.addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  if(b.dataset.step==="pax"){S.pax=Math.min(12,Math.max(1,S.pax+ +b.dataset.d));render();}
+  else if(b.dataset.cn!==undefined){var c=S.cities[+b.dataset.cn];c.n=Math.min(60,Math.max(1,c.n+ +b.dataset.d));drawCities();render();}
+  else if(b.dataset.cx!==undefined){S.cities.splice(+b.dataset.cx,1);drawCities();render();}
+  else if(b.dataset.lx!==undefined){S.legs.splice(+b.dataset.lx,1);drawLegs();render();}
+});
+$("#addCity").addEventListener("click",function(){S.cities.push({c:"hiroshima",n:2});drawCities();render();});
+$("#cities").addEventListener("change",function(e){if(e.target.dataset.ci!==undefined){S.cities[+e.target.dataset.ci].c=e.target.value;render();}});
+$("#legs").addEventListener("input",function(e){if(e.target.dataset.li!==undefined){S.legs[+e.target.dataset.li][1]=Math.max(0,+e.target.value||0);render();}});
+$("#legPick").addEventListener("change",function(e){var i=e.target.value;if(i!==""){S.legs.push([+i,LEGS[+i][1]]);drawLegs();render();}});
+$$("#styleSeg button").forEach(function(b){b.addEventListener("click",function(){S.style=b.dataset.v;$$("#styleSeg button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});render();});});
+$("#season").addEventListener("change",function(e){S.season=e.target.value;render();});
+$("#currency").addEventListener("change",function(e){S.cur=e.target.value;S.rate=RATES[S.cur];syncCur();render();});
+$("#rate").addEventListener("input",function(e){var v=+e.target.value;if(v>0){S.rate=v;render();}});
+$("#shop").addEventListener("input",function(e){S.shop=Math.max(0,+e.target.value||0);render();});
+function syncCur(){$("#currency").value=S.cur;$("#rate").value=S.rate;$("#rateCur").textContent=S.cur;$("#rateBox").style.display=S.cur==="JPY"?"none":"";}
+
+$("#copyBtn").addEventListener("click",function(){
+  var r=calc(),lines=["My Japan trip estimate ("+r.nights+" nights, "+r.pax+" traveler"+(r.pax>1?"s":"")+", "+S.style+", "+S.season+" season)"];
+  S.cities.forEach(function(c){lines.push("• "+CITIES[c.c].n+": "+c.n+" nights")});
+  lines.push("Total: "+money(r.total)+(S.cur==="JPY"?"":" ("+yen(r.total)+")"));
+  lines.push("Per person per day: "+money(r.total/r.pax/Math.max(1,r.nights)));
+  lines.push("Estimated with "+location.href.split("#")[0]);
+  var txt=lines.join("\n"),btn=this;
+  function done(){btn.textContent="✓ Copied";setTimeout(function(){btn.textContent="📋 Copy summary"},1600)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallback(txt);done()})}else{fallback(txt);done()}
+});
+function fallback(t){var a=document.createElement("textarea");a.value=t;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(a)}
+$("#printBtn").addEventListener("click",function(){window.print()});
+
+/* tabs */
+function showTab(id){["budget","tax"].forEach(function(t){var on=t===id;$("#tab-"+t).setAttribute("aria-selected",on);var p=$("#panel-"+t);p.classList.toggle("hidden",!on);if(on){p.classList.remove("fade");void p.offsetWidth;p.classList.add("fade");}});$("#mini").classList.toggle("off",id!=="budget");}
+$("#tab-budget").addEventListener("click",function(){showTab("budget");history.replaceState(null,"","#budget")});
+$("#tab-tax").addEventListener("click",function(){showTab("tax");history.replaceState(null,"","#tax-free")});
+if(location.hash==="#tax-free")showTab("tax");
+
+$("#mini").addEventListener("click",function(){$("#totalCard").scrollIntoView({behavior:"smooth",block:"start"})});
+if("IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(e){$("#mini").classList.toggle("off",e.isIntersecting||$("#panel-budget").classList.contains("hidden"))})}).observe($("#totalCard"));}
+/* theme */
+$("#themeBtn").addEventListener("click",function(){var r=document.documentElement,cur=r.getAttribute("data-theme");
+  var dark=cur?cur==="dark":matchMedia("(prefers-color-scheme: dark)").matches;r.setAttribute("data-theme",dark?"light":"dark");});
+
+/* ---------- tax-free checker ---------- */
+var T=S.tax||{};
+$$(".seg[data-q]").forEach(function(g){var q=g.dataset.q;
+  $$(".seg[data-q='"+q+"'] button").forEach(function(b){
+    if(T[q]===b.dataset.v)b.setAttribute("aria-pressed","true");else if(T[q])b.setAttribute("aria-pressed","false");
+    b.addEventListener("click",function(){T[q]=b.dataset.v;$$(".seg[data-q='"+q+"'] button").forEach(function(x){x.setAttribute("aria-pressed",x===b)});S.tax=T;checkTax();save();});
+  });});
+$("#spend").value=S.spend||"";
+$("#spend").addEventListener("input",function(e){S.spend=e.target.value;checkTax();save();});
+function checkTax(){
+  var v=$("#verdict"),amt=+$("#spend").value||0;
+  var ex=T.taxin==="in"?amt/(T.kind==="cons"?1.08:1.1):amt;
+  var need=["visitor","kind","used","days","carry","gold"].filter(function(q){return !T[q]});
+  var bad=[];
+  if(T.visitor==="no")bad.push("Tax-free shopping is for foreign visitors on a short-term stay. Residents of Japan are not eligible.");
+  if(amt&&ex<5000)bad.push("You need at least ¥5,000 before tax at one store on one day. You're at "+yen(ex)+" — about "+yen(5000-ex)+" short.");
+  if(T.used==="yes")bad.push("Food, drinks or cosmetics used in Japan are not eligible. If you've used some, don't do the procedure for them — tell the customs officer at the counter.");
+  if(T.days==="no")bad.push("You must complete the procedure within 90 days of purchase.");
+  if(T.carry==="no")bad.push("Customs checks each receipt as a whole. If any item from a receipt isn't with you, none of that receipt is eligible.");
+  if(T.gold==="yes")bad.push("Gold and platinum bullion are excluded.");
+  if(bad.length){v.className="verdict bad fade";v.innerHTML="<h3>Probably no refund</h3><ul>"+bad.map(function(x){return "<li>"+x+"</li>"}).join("")+"</ul>";return;}
+  if(need.length||!amt){v.className="verdict warn";v.innerHTML="<h3>Keep going</h3><p style='margin:0'>"+(need.length?need.length+" question"+(need.length>1?"s":"")+" left.":"Enter how much you spent.")+"</p>";return;}
+  var rate=T.kind==="cons"?0.08:0.10, rateTxt=T.kind==="cons"?"8%":(T.kind==="mix"?"8–10%":"10%");
+  var refund=ex*rate;
+  v.className="verdict ok fade";
+  v.innerHTML="<h3>Looks eligible ✓</h3><p style='margin:0'>Tax on "+yen(ex)+" at "+rateTxt+" is about <b style='font-size:22px'>"+yen(refund)+"</b>"+(S.cur!=="JPY"?" ("+money(refund)+")":"")+".</p><ul><li>Pay the full price at the shop and keep the receipt.</li><li>Keep these goods with you until the tax-free kiosk at the airport or port.</li><li>The shop or its refund partner pays you after customs confirms — ask how (card, cash, app).</li></ul><p class='note' style='margin:8px 0 0'>A handling fee may reduce what you receive.</p>";
+}
+
+/* init */
+syncCur();
+$$("#styleSeg button").forEach(function(x){x.setAttribute("aria-pressed",x.dataset.v===S.style)});
+$("#season").value=S.season;$("#shop").value=S.shop;
+drawCities();drawLegs();render();checkTax();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

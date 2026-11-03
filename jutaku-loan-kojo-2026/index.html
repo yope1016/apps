@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>住宅ローン控除 いくら戻る？計算機 2026｜13年間の合計と1年目の還付</title>
+<meta name="description" content="2026年（令和8年）入居の住宅ローン控除で戻る税金の目安を計算。改正後の借入限度額（子育て世帯の上乗せ・中古住宅の13年化）に対応し、13年間の合計、1年目の還付額、控除を使い切れるかがわかります。1年目の確定申告チェックリストつき。登録不要・無料。">
+<meta name="theme-color" content="#1d4ed8">
+<link rel="canonical" href="https://yope1016.github.io/apps/jutaku-loan-kojo-2026/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏠%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://yope1016.github.io/apps/jutaku-loan-kojo-2026/">
+<meta property="og:title" content="住宅ローン控除 いくら戻る？計算機 2026｜13年間の合計と1年目の還付">
+<meta property="og:description" content="年収・借入額・家の種類を選ぶだけ。13年間の合計、1年目の還付、控除を使い切れるかがわかります。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<meta name="twitter:title" content="住宅ローン控除 いくら戻る？計算機 2026">
+<meta name="twitter:description" content="2026年入居対応。13年間の合計・1年目の還付・使い切れない分・確定申告チェックリスト。">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"住宅ローン控除 いくら戻る？計算機 2026","url":"https://yope1016.github.io/apps/jutaku-loan-kojo-2026/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"2026年入居の住宅ローン控除で戻る税金の目安を計算する無料ツール。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"会社員でも住宅ローン控除の確定申告が必要ですか？","acceptedAnswer":{"@type":"Answer","text":"1年目（入居した年の分）だけは確定申告が必要です。2年目以降は年末調整で控除を受けられます。"}},
+{"@type":"Question","name":"2026年に入居したら、いつ申告しますか？","acceptedAnswer":{"@type":"Answer","text":"2026年分の確定申告として、2027年2月16日〜3月15日に申告します。還付だけの申告なら2027年1月から提出できます。"}},
+{"@type":"Question","name":"所得税から控除しきれない分はどうなりますか？","acceptedAnswer":{"@type":"Answer","text":"翌年度の住民税から控除されます。上限は所得税の課税総所得金額等の5%（最高9万7,500円）で、超えた分は戻りません。"}},
+{"@type":"Question","name":"ふるさと納税と住宅ローン控除は一緒に使えますか？","acceptedAnswer":{"@type":"Answer","text":"使えます。ただし1年目は確定申告をするため、ワンストップ特例は使えず、寄附もすべて確定申告に含めます。"}},
+{"@type":"Question","name":"入力した内容は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"送信されません。計算はすべてお使いの端末の中で行われ、保存もされません。"}}]}</script>
+<style>
+:root{
+  --bg:#f3f6fb;--bg2:#eaf0fa;--card:#ffffff;--ink:#15211f;--sub:#56706b;--line:#dbe3f0;
+  --pri:#1d4ed8;--pri2:#3b82f6;--acc:#f59e0b;--ok:#10b981;--warn:#ef4444;--vio:#7c3aed;
+  --chip:#e8effc;--chipOn:#1d4ed8;--shadow:0 10px 30px -12px rgba(20,60,55,.28);
+  --grad:linear-gradient(135deg,#1e3a8a 0%,#2563eb 45%,#06b6d4 100%);
+  --grad2:linear-gradient(135deg,#7c3aed 0%,#a855f7 55%,#ec4899 100%);
+  --r:20px;
+}
+:root[data-theme="dark"]{
+  --bg:#0b1312;--bg2:#121d1b;--card:#16211f;--ink:#e9f5f2;--sub:#9db8b2;--line:#25352f;
+  --chip:#1c2e2a;--shadow:0 10px 30px -12px rgba(0,0,0,.65);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1312;--bg2:#121d1b;--card:#16211f;--ink:#e9f5f2;--sub:#9db8b2;--line:#25352f;
+    --chip:#1c2e2a;--shadow:0 10px 30px -12px rgba(0,0,0,.65);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+:root[data-theme="dark"] a{color:#93c5fd}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.promo-note{font-size:11px;color:var(--sub);text-align:center;padding:6px 12px 0;opacity:.85}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:26px 0 86px}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;opacity:.22}
+.hero:before{width:300px;height:300px;background:#fff;top:-140px;right:-90px}
+.hero:after{width:220px;height:220px;background:#93c5fd;bottom:-100px;left:-70px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px;font-family:inherit}
+.hero h1{font-size:clamp(26px,7vw,40px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.42em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.hero .lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2;max-width:560px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+.pill{position:absolute;right:14px;bottom:22px;z-index:1;width:110px;height:46px;border-radius:23px;overflow:hidden;display:flex;transform:rotate(-28deg);box-shadow:0 10px 30px rgba(0,0,0,.25);animation:float 5s ease-in-out infinite}
+.pill i{flex:1}.pill i:first-child{background:#fff}.pill i:last-child{background:#fbbf24}
+@keyframes float{50%{transform:rotate(-20deg) translateY(-10px)}}
+@media(max-width:480px){.pill{width:72px;height:30px;right:8px;bottom:14px}}
+main{margin-top:-62px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line)}
+.card h2{font-size:19px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ico{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:0 0 38px;background:var(--chip)}
+.q{margin:18px 0 6px;font-weight:800;font-size:15px}
+.q:first-of-type{margin-top:4px}
+.q small{display:block;font-weight:500;color:var(--sub);font-size:12px;line-height:1.55}
+.num{display:flex;align-items:center;gap:8px;margin-top:6px}
+.num button{width:48px;height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--chip);color:var(--ink);font-size:22px;font-weight:800;cursor:pointer;flex:0 0 48px;font-family:inherit}
+.num input{flex:1;min-width:0;height:50px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:21px;font-weight:800;text-align:right;padding:0 12px;font-family:inherit}
+.num .u{font-weight:800;color:var(--sub);min-width:2.2em}
+input:focus,button:focus-visible{outline:3px solid rgba(29,78,216,.35);outline-offset:1px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--pri) var(--p,30%),var(--line) var(--p,30%));margin:14px 0 4px;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:4px solid var(--pri);box-shadow:0 4px 10px rgba(0,0,0,.25)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--pri)}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{border:1.5px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:9px 14px;font-size:14px;font-weight:700;cursor:pointer;min-height:44px;transition:all .2s;font-family:inherit}
+.chip[aria-pressed="true"],.chip.on{background:var(--chipOn);border-color:var(--chipOn);color:#fff;box-shadow:0 6px 16px -6px rgba(29,78,216,.7)}
+.hint{font-size:12px;color:var(--sub);margin-top:6px;line-height:1.6}
+.seg{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.seg .chip{flex:1;min-width:120px}
+details.more{margin-top:16px;border:1.5px dashed var(--line);border-radius:16px;padding:4px 14px}
+details.more summary{cursor:pointer;font-weight:800;padding:10px 0;list-style:none;font-size:14px;color:var(--pri)}
+details.more summary::-webkit-details-marker{display:none}
+:root[data-theme="dark"] details.more summary{color:#93c5fd}
+/* result */
+.res{background:var(--grad);color:#fff;border-radius:var(--r);padding:22px 18px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.res.self{background:var(--grad2)}
+.res.none{background:linear-gradient(135deg,#475569,#334155)}
+.res:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.12);right:-50px;top:-70px}
+.res .lbl{font-size:13px;font-weight:700;opacity:.92;position:relative;z-index:1}
+.res .amt{font-size:clamp(40px,12vw,58px);font-weight:900;line-height:1.1;letter-spacing:-.01em;position:relative;z-index:1}
+.res .amt small{font-size:.38em;margin-left:4px}
+.res .sub{font-size:13px;opacity:.95;margin-top:6px;position:relative;z-index:1}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;position:relative;z-index:1}
+.kpi{background:rgba(255,255,255,.16);border-radius:14px;padding:10px 12px}
+.kpi b{display:block;font-size:20px;font-weight:900}
+.kpi span{font-size:11px;opacity:.92;line-height:1.5;display:block}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+@media(max-width:420px){.vs{grid-template-columns:1fr}}
+.opt{border:2px solid var(--line);border-radius:18px;padding:14px;background:var(--bg2);position:relative;transition:all .3s}
+.opt.win{border-color:var(--pri);box-shadow:0 10px 24px -14px rgba(29,78,216,.9)}
+.opt.win.s{border-color:var(--vio);box-shadow:0 10px 24px -14px rgba(124,58,237,.9)}
+.opt .crown{position:absolute;top:-12px;right:12px;background:var(--pri);color:#fff;font-size:11px;font-weight:900;border-radius:999px;padding:3px 10px;display:none}
+.opt.s .crown{background:var(--vio)}
+.opt.win .crown{display:block}
+.opt h3{font-size:14px;font-weight:900}
+.opt .big{font-size:28px;font-weight:900;line-height:1.25;margin-top:4px}
+.opt .big small{font-size:13px;margin-left:2px}
+.opt .d{font-size:12px;color:var(--sub);margin-top:4px;line-height:1.6}
+.bar{height:10px;border-radius:5px;background:var(--line);margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--grad);border-radius:5px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.opt.s .bar i{background:var(--grad2)}
+.row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.row:last-child{border-bottom:none}
+.row .k{color:var(--sub);flex:1 1 auto;min-width:0}.row .v{font-weight:800;text-align:right;margin-left:auto}
+.alert{border-radius:16px;padding:14px;margin-top:12px;font-size:14px;display:flex;gap:10px;line-height:1.65}
+.alert.y{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4)}
+.alert.b{background:rgba(29,78,216,.08);border:1px solid rgba(29,78,216,.3)}
+.alert.g{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.4)}
+.alert .e{font-size:20px;line-height:1.3}
+.gauge{margin-top:14px;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.gauge .t{font-size:13px;font-weight:800;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.gbar{position:relative;height:14px;border-radius:7px;background:var(--line);margin:10px 0 6px}
+.gbar i{display:block;height:100%;border-radius:7px;background:var(--grad);transition:width .5s}
+.gbar em{position:absolute;top:-5px;width:3px;height:24px;background:var(--warn);border-radius:2px}
+.gauge .s{font-size:12px;color:var(--sub)}
+.fam{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media(max-width:420px){.fam{grid-template-columns:1fr}}
+.who{border:1.5px solid var(--line);border-radius:16px;padding:12px;background:var(--bg2)}
+.who.win{border-color:var(--ok);background:rgba(16,185,129,.08)}
+.who b{font-size:22px;font-weight:900;display:block}
+.who span{font-size:12px;color:var(--sub)}
+/* checker */
+.search{width:100%;height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:16px;padding:0 14px;font-family:inherit;margin-top:4px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tabs .chip{padding:6px 12px;min-height:38px;font-size:13px}
+.items{display:grid;gap:8px}
+.it{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--bg2);animation:fade .3s ease}
+.it .m{flex:0 0 30px;height:30px;border-radius:10px;display:grid;place-items:center;font-weight:900;color:#fff;font-size:15px}
+.m.o{background:var(--ok)}.m.x{background:var(--warn)}.m.t{background:var(--acc)}
+.it b{font-size:14px;display:block;line-height:1.5}.it span{font-size:12px;color:var(--sub);line-height:1.55;display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}}
+.steps{counter-reset:s;display:grid;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step:before{counter-increment:s;content:counter(s);flex:0 0 32px;height:32px;border-radius:50%;background:var(--grad);color:#fff;font-weight:900;display:grid;place-items:center}
+.step b{display:block;font-size:14px}.step span{font-size:13px;color:var(--sub)}
+.pr{border:1.5px solid var(--line);border-radius:18px;padding:16px;margin-top:12px;background:var(--bg2);position:relative}
+.pr .prl{position:absolute;top:10px;right:12px;font-size:10px;font-weight:900;border:1px solid var(--sub);color:var(--sub);border-radius:6px;padding:0 6px;letter-spacing:.08em}
+.pr h3{font-size:15px;font-weight:900;margin-bottom:4px;padding-right:36px}
+.pr p{font-size:13px;color:var(--sub)}
+.soon{display:inline-block;margin-top:8px;font-size:12px;font-weight:800;color:var(--sub);background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:6px 10px}
+.afl{display:flex;flex-direction:column;gap:10px;margin-top:12px;position:relative}
+body .afl a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border-radius:14px;background:var(--pri)!important;background-image:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0))!important;color:#fff!important;font-weight:700;font-size:15px;line-height:1.45;text-decoration:none;transition:transform .15s}
+.afl a::after{content:"\203A";font-size:22px;line-height:1;flex:none}
+.afl a:active{transform:scale(.98)}
+.afl img[width="1"]{position:absolute;left:0;bottom:0}
+.afl-note{font-size:11px;color:var(--sub);margin-top:6px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.acts .chip{flex:1;text-align:center}
+.links{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:480px){.links{grid-template-columns:1fr}}
+.lk{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink)!important;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:12px;min-height:60px;transition:transform .2s}
+.lk:hover{transform:translateY(-2px)}
+.lk .ico{width:34px;height:34px;flex-basis:34px;font-size:18px}
+.lk b{font-size:14px;display:block;line-height:1.45}.lk span{font-size:12px;color:var(--sub)}
+.faq details{border-bottom:1px solid var(--line);padding:12px 0}
+.faq summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;gap:8px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:before{content:"Q";color:var(--pri);font-weight:900}
+.faq p{font-size:14px;color:var(--sub);margin-top:8px}
+.src{font-size:12px;color:var(--sub);line-height:1.7}
+.src a{word-break:break-all}
+footer{text-align:center;color:var(--sub);font-size:12px;padding:10px 16px 40px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(140px);background:#111827;color:#fff;padding:12px 18px;border-radius:14px;font-weight:700;font-size:14px;transition:transform .3s;z-index:20}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.pulse{animation:pulse .5s ease}
+@keyframes pulse{40%{transform:scale(1.015)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.hero,.pr,.links,.faq,.acts,.mode{display:none!important}main{margin-top:0}}
+
+.house{position:absolute;right:16px;bottom:18px;z-index:1;width:96px;height:84px;animation:float 5s ease-in-out infinite}
+.house .roof{width:0;height:0;border-left:48px solid transparent;border-right:48px solid transparent;border-bottom:38px solid #fbbf24;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+.house .body{width:76px;height:46px;margin:0 auto;background:#fff;border-radius:0 0 10px 10px;position:relative;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.house .body:before{content:"";position:absolute;left:30px;bottom:0;width:16px;height:26px;background:#1d4ed8;border-radius:4px 4px 0 0}
+.house .body:after{content:"";position:absolute;left:8px;top:9px;width:14px;height:12px;background:#93c5fd;border-radius:3px;box-shadow:46px 0 0 #93c5fd}
+@keyframes float{50%{transform:translateY(-8px)}}
+@media(max-width:480px){.house{transform:scale(.68);right:2px;bottom:6px;transform-origin:right bottom;animation:none}}
+.seg.g4 .chip{min-width:44%}
+.yrs{display:grid;gap:6px;margin-top:12px}
+.yr{display:grid;grid-template-columns:62px 1fr 74px;gap:8px;align-items:center;font-size:12px}
+.yr .y{color:var(--sub);font-weight:700}
+.yr .tr{height:16px;border-radius:8px;background:var(--line);overflow:hidden;display:flex}
+.yr .tr i{display:block;height:100%;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.yr .tr i.a{background:#2563eb}.yr .tr i.b{background:#06b6d4}.yr .tr i.c{background:repeating-linear-gradient(45deg,#f87171 0 4px,#fecaca 4px 8px)}
+.yr .v{text-align:right;font-weight:800}
+.lg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--sub);margin-top:8px}
+.lg span:before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;background:var(--c)}
+.chk{display:grid;gap:8px;margin-top:8px}
+.chk label{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:var(--bg2);cursor:pointer;min-height:48px}
+.chk input{width:22px;height:22px;flex:0 0 22px;margin-top:2px;accent-color:#1d4ed8}
+.chk b{font-size:14px;display:block;line-height:1.5}.chk span{font-size:12px;color:var(--sub);display:block;line-height:1.55}
+.chk label.done{opacity:.6}.chk label.done b{text-decoration:line-through}
+.prog{height:10px;border-radius:5px;background:var(--line);overflow:hidden;margin-top:10px}.prog i{display:block;height:100%;background:var(--grad);width:0;transition:width .4s}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:right}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl tr.on td{background:rgba(37,99,235,.10);font-weight:800}
+.tblw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+</style>
+</head>
+<body>
+<div class="promo-note">本ページはプロモーション（広告）を含みます</div>
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar"><div class="brand">ひとりラボ ツール</div><button class="mode" id="mode" aria-label="表示モード切り替え">🌙 ダーク</button></div>
+    <h1><small>2026年（令和8年）入居・改正後の限度額に対応</small><span style="display:inline-block">住宅ローン控除、</span><span style="display:inline-block">いくら戻る？</span></h1>
+    <p class="lead">年収と借入額、家の種類を選ぶだけ。<b>13年間で戻る税金の合計</b>と<b>1年目の還付額</b>、<b>控除を使い切れるか</b>がその場でわかります。</p>
+    <div class="badges"><span class="badge">🔒 入力は端末の中だけ</span><span class="badge">登録不要・無料</span><span class="badge">1年目の確定申告チェックリストつき</span></div>
+    <div class="house" aria-hidden="true"><div class="roof"></div><div class="body"></div></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" id="input">
+    <h2><span class="ico">🏠</span>家とローンを選ぶ</h2>
+
+    <div class="q">① 住宅の種類</div>
+    <div class="seg" id="kind"><button class="chip" aria-pressed="true" data-v="new">🏗️ 新築・買取再販</button><button class="chip" aria-pressed="false" data-v="old">🏘️ 中古（既存住宅）</button></div>
+
+    <div class="q">② 省エネ性能<small>わからないときは、建築会社・不動産会社に「住宅ローン控除の区分はどれですか？」と聞けばすぐわかります</small></div>
+    <div class="seg g4" id="perf"><button class="chip" aria-pressed="false" data-v="L">🌿 長期優良・低炭素</button><button class="chip" aria-pressed="true" data-v="Z">☀️ ZEH水準</button><button class="chip" aria-pressed="false" data-v="S">🔆 省エネ基準適合</button><button class="chip" aria-pressed="false" data-v="O">🏚️ その他・不明</button></div>
+
+    <div class="q">③ 子育て世帯・若者夫婦世帯ですか？<small>2026年12月31日時点で19歳未満の子がいる、または夫婦のどちらかが40歳未満なら「はい」。借入限度額が上乗せされます</small></div>
+    <div class="seg" id="kosodate"><button class="chip" aria-pressed="true" data-v="1">はい</button><button class="chip" aria-pressed="false" data-v="0">いいえ</button></div>
+
+    <div class="q">④ 借入額（あなた名義の分）<small>ペアローンなら自分の分だけ。2人分を見たいときは、それぞれ計算してください</small></div>
+    <div class="num"><button type="button" id="lm" aria-label="100万円減らす">−</button><input id="loan" inputmode="numeric" value="4000" aria-label="借入額（万円）"><span class="u">万円</span><button type="button" id="lp" aria-label="100万円増やす">＋</button></div>
+    <div class="quick" id="ql"><button class="chip" data-v="2000">2000万</button><button class="chip" data-v="3000">3000万</button><button class="chip" data-v="4000">4000万</button><button class="chip" data-v="5000">5000万</button><button class="chip" data-v="6000">6000万</button></div>
+
+    <div class="q">⑤ あなたの年収（給与・税込み）<small>源泉徴収票の「支払金額」。だいたいでOKです</small></div>
+    <div class="num"><button type="button" id="sm" aria-label="10万円減らす">−</button><input id="sal" inputmode="numeric" value="550" aria-label="年収（万円）"><span class="u">万円</span><button type="button" id="sp" aria-label="10万円増やす">＋</button></div>
+    <input type="range" id="salr" min="200" max="2000" step="10" value="550" aria-label="年収スライダー">
+    <div class="quick" id="qs"><button class="chip" data-v="350">350万</button><button class="chip" data-v="450">450万</button><button class="chip" data-v="550">550万</button><button class="chip" data-v="700">700万</button><button class="chip" data-v="900">900万</button><button class="chip" data-v="1200">1200万</button></div>
+
+    <details class="more" id="more">
+      <summary>＋ 金利・返済期間・入居月・床面積も入れる</summary>
+      <div class="q">⑥ 金利（年）</div>
+      <div class="num"><input id="rate" inputmode="decimal" value="0.9" aria-label="金利（％）"><span class="u">％</span></div>
+      <div class="quick" id="qr"><button class="chip" data-v="0.6">0.6%</button><button class="chip" data-v="0.9">0.9%</button><button class="chip" data-v="1.3">1.3%</button><button class="chip" data-v="1.9">1.9%（固定）</button></div>
+      <div class="q">⑦ 返済期間</div>
+      <div class="num"><input id="term" inputmode="numeric" value="35" aria-label="返済期間（年）"><span class="u">年</span></div>
+      <div class="q">⑧ 入居した月（2026年）<small>年末の残高で計算するので、入居が遅いほど1年目の残高は多めに残ります</small></div>
+      <div class="num"><input id="mon" inputmode="numeric" value="3" aria-label="入居月"><span class="u">月</span></div>
+      <div class="q">⑨ 床面積（登記簿の面積）</div>
+      <div class="seg" id="area"><button class="chip" aria-pressed="true" data-v="50">50㎡以上</button><button class="chip" aria-pressed="false" data-v="40">40㎡以上50㎡未満</button><button class="chip" aria-pressed="false" data-v="0">40㎡未満</button></div>
+      <div class="q">⑩ 社会保険料・iDeCoなど（年額・任意）<small>空欄なら年収の約15%で推定。生命保険料控除・扶養などがある人は足すと精度が上がります</small></div>
+      <div class="num"><input id="sh" inputmode="numeric" placeholder="自動" aria-label="社会保険料など（万円）"><span class="u">万円</span></div>
+    </details>
+  </section>
+
+  <section id="result">
+    <div class="res" id="res">
+      <div class="lbl" id="rlbl">控除期間の合計で戻る・安くなる税金の目安</div>
+      <div class="amt" id="amt">0<small>円</small></div>
+      <div class="sub" id="rsub"></div>
+      <div class="kpis">
+        <div class="kpi"><b id="k1">0円</b><span>1年目（2026年分）※確定申告で戻る</span></div>
+        <div class="kpi"><b id="k2">0円</b><span>1年あたりの平均</span></div>
+        <div class="kpi"><b id="k3">-</b><span>借入限度額（この額までの残高が対象）</span></div>
+        <div class="kpi"><b id="k4">-</b><span>控除期間（控除率0.7%）</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h2><span class="ico">📊</span>1年ごとの控除額</h2>
+      <p class="hint" style="margin-top:0">年収が今と同じとした場合。所得税から引ききれない分は住民税から引かれます（上限 年9万7,500円）。</p>
+      <div class="lg"><span style="--c:#2563eb">所得税から</span><span style="--c:#06b6d4">住民税から</span><span style="--c:#f87171">使い切れない分</span></div>
+      <div class="yrs" id="yrs"></div>
+      <div id="tips"></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">💸</span>利息と控除、どっちが大きい？</h2>
+      <div class="vs">
+        <div class="opt" id="o1"><span class="crown">👑 大きい</span><h3>🏦 2年目の利息（2027年の1年分）</h3><div class="big" id="o1v">0<small>円</small></div><div class="d" id="o1d"></div></div>
+        <div class="opt s" id="o2"><span class="crown">👑 大きい</span><h3>🎁 2年目の控除（満額の年）</h3><div class="big" id="o2v">0<small>円</small></div><div class="d" id="o2d"></div></div>
+      </div>
+      <div id="tips2"></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">🧮</span>計算の内訳</h2>
+      <div id="rows"></div>
+      <div class="acts"><button class="chip" id="copy">📋 結果をコピー</button><button class="chip" id="line">💬 LINEで送る</button></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">🎯</span>次にやること</h2>
+      <div id="next"></div>
+      <div id="pr"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">✅</span>1年目の確定申告 チェックリスト</h2>
+    <p class="hint" style="margin-top:0">会社員でも、<b>1年目だけは確定申告</b>が必要です（2年目からは年末調整でOK）。タップで消し込めます（保存はされません）。</p>
+    <div class="prog"><i id="pg"></i></div>
+    <div class="chk" id="chk"></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📋</span>借入限度額の早見表（2026年入居）</h2>
+    <div class="tblw"><table class="tbl" id="tbl"></table></div>
+    <p class="hint">（ ）内は子育て世帯・若者夫婦世帯。控除率はすべて0.7%。「その他」の新築は原則対象外（2023年末までに建築確認を受けたものなどは、2,000万円・10年）。40㎡以上50㎡未満の住宅は合計所得1,000万円以下が条件で、子育て世帯の上乗せは使えません。</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🧰</span>あわせて使える無料ツール</h2>
+    <div class="links">
+      <a class="lk" href="https://yope1016.github.io/apps/furusato-jogen-2026/"><span class="ico">🎁</span><div><b>ふるさと納税 上限額シミュレーター</b><span>1年目は確定申告に寄附も含めます</span></div></a>
+      <a class="lk" href="https://yope1016.github.io/apps/kakutei-shindan-2026/"><span class="ico">🧾</span><div><b>確定申告が必要か1分診断</b><span>副業・医療費などもまとめて判定</span></div></a>
+      <a class="lk" href="https://yope1016.github.io/apps/hikkoshi-checklist/"><span class="ico">📦</span><div><b>引っ越し手続きチェックリスト</b><span>住民票・郵便・電気ガスを期限つきで</span></div></a>
+      <a class="lk" href="https://yope1016.github.io/apps/net-kaisen-shindan/"><span class="ico">📶</span><div><b>ネット回線 選び方診断</b><span>新居の回線を7問で</span></div></a>
+    </div>
+  </section>
+
+  <section class="card faq">
+    <h2><span class="ico">💬</span>よくある質問</h2>
+    <details><summary>会社員でも確定申告が必要？</summary><p>1年目（入居した年の分）だけは、会社員でも確定申告が必要です。2年目以降は、税務署から届く申告書を勤務先に出せば年末調整で控除されます。</p></details>
+    <details><summary>いつ申告すればいい？</summary><p>2026年に入居した人は、2026年分の確定申告として、2027年2月16日〜3月15日に申告します。還付を受けるだけの申告なら、2027年1月から出せます。申告を忘れても5年以内ならさかのぼって申告できます。</p></details>
+    <details><summary>控除しきれない分はどうなる？</summary><p>所得税から引ききれない分は、翌年度の住民税から引かれます。ただし上限は「所得税の課税総所得金額等の5%（最高9万7,500円）」で、それを超えた分は戻りません。このツールでは「使い切れない分」として赤い斜線で表示しています。</p></details>
+    <details><summary>ペアローン・連帯債務の場合は？</summary><p>それぞれが自分の借入（連帯債務なら負担割合の分）について控除を受けます。2人とも年末時点で住んでいることが必要です。ここでは1人分ずつ計算してください。</p></details>
+    <details><summary>ふるさと納税と一緒にできる？</summary><p>できます。ただし1年目は確定申告をするため、ワンストップ特例は使えなくなります。その年の寄附もすべて確定申告に含めてください。住宅ローン控除で所得税がゼロに近い人は、ふるさと納税の上限が少し下がることがあります。</p></details>
+    <details><summary>入力した内容は送信される？</summary><p>送信されません。計算はすべてお使いの端末の中で行われ、保存もされません。</p></details>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📚</span>計算方法と出典</h2>
+    <p class="src">各年の控除額＝ min（年末のローン残高, 借入限度額）× 0.7%。年末残高は元利均等返済（入居月の翌月から返済）で計算し、住宅の取得価格による上限は考慮していません。控除はまず所得税額（復興特別所得税の前）から引き、引ききれない分を住民税から引きます（所得税の課税総所得金額等の5%、上限9万7,500円）。所得税の減少額には復興特別所得税（2.1%）分を含みます。給与所得控除・基礎控除は令和8年分の改正後の額、社会保険料は未入力なら年収の約15%で推定し、配偶者・扶養などの控除は考慮していないため、実際の額とは異なります。借入限度額は令和8年度税制改正（2026年1月〜2030年12月入居）にもとづく2026年入居の値です。最終的な判断は、国税庁の案内や税務署・税理士、金融機関にご確認ください。<br>
+    出典：<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1211-1.htm" rel="noopener">国税庁 No.1211-1 住宅の新築等をし、令和4年以降に居住の用に供した場合（住宅借入金等特別控除）</a>／<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1212.htm" rel="noopener">国税庁 No.1212 給与所得者が住宅借入金等特別控除を受ける手続</a>／<a href="https://sawada-cpta.com/blog/home-loan-deduction/" rel="noopener">澤田匡央税理士事務所「令和8年度税制改正 住宅ローン控除の拡充・延長ポイント」</a></p>
+  </section>
+</main>
+<footer>© ひとりラボ ツール ／ 入力した内容は送信・保存されません</footer>
+<div class="toast" id="toast"></div>
+
+<template id="aff-furusato_site">
+<a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738779" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738779" height="1" width="1" border="0">ふるなび</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" rel="nofollow">ふるさと本舗</a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" alt="">
+</template>
+<template id="aff-hikari">
+<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+5L8K0Q+B4+2Z68LU" rel="nofollow">【公式】BIGLOBE光プラス by auひかりプラス</a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGAV2+5L8K0Q+B4+2Z68LU" alt="">
+<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+5CB1Y2+3SPO+CKJSMQ" rel="nofollow">安定した光回線で快適に使える【ahamo光】</a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGAV2+5CB1Y2+3SPO+CKJSMQ" alt="">
+</template>
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var root=document.documentElement,mb=$("mode");
+function setMode(m){root.setAttribute("data-theme",m);mb.textContent=m==="dark"?"☀️ ライト":"🌙 ダーク"}
+setMode(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+mb.onclick=function(){setMode(root.getAttribute("data-theme")==="dark"?"light":"dark")};
+
+/* ---- 借入限度額（2026年入居）[一般, 子育て・若者夫婦, 年数] ---- */
+var LIM={
+  new:{L:[45e6,50e6,13],Z:[35e6,45e6,13],S:[20e6,30e6,13],O:[0,0,0]},
+  old:{L:[35e6,45e6,13],Z:[35e6,45e6,13],S:[20e6,30e6,13],O:[20e6,20e6,10]}
+};
+var PN={L:"長期優良・低炭素",Z:"ZEH水準",S:"省エネ基準適合",O:"その他"};
+
+/* ---- tax model (令和8年分) ---- */
+function kyuyoKojo(s){ if(s<=2200000) return Math.min(s,740000); if(s<=3600000) return s*0.3+80000; if(s<=6600000) return s*0.2+440000; if(s<=8500000) return s*0.1+1100000; return 1950000; }
+function kisoIT(g){ if(g<=4890000) return 1040000; if(g<=6550000) return 670000; if(g<=23500000) return 620000; if(g<=24000000) return 480000; if(g<=24500000) return 320000; if(g<=25000000) return 160000; return 0; }
+function kisoJT(g){ if(g<=24000000) return 430000; if(g<=24500000) return 290000; if(g<=25000000) return 150000; return 0; }
+function itaxBase(t){ t=Math.max(0,Math.floor(t/1000)*1000); var b=[[1950000,.05,0],[3300000,.10,97500],[6950000,.20,427500],[9000000,.23,636000],[18000000,.33,1536000],[40000000,.40,2796000],[Infinity,.45,4796000]];
+  for(var i=0;i<b.length;i++){ if(t<=b[i][0]) return Math.max(0,Math.floor(t*b[i][1]-b[i][2])); } return 0; }
+function shaho(s){ return s<=9000000? s*0.15 : 1350000+(s-9000000)*0.06; }
+function person(salary,shOverride){
+  var g=Math.max(0,salary-kyuyoKojo(salary)); g=Math.floor(g/1000)*1000;
+  var sh=shOverride==null?shaho(salary):shOverride;
+  var tIT=Math.max(0,g-sh-kisoIT(g)), tJT=Math.max(0,g-sh-kisoJT(g));
+  var base=itaxBase(tIT);
+  var jtCap=Math.min(97500,Math.floor(tIT*0.05),Math.floor(tJT*0.1));
+  return {salary:salary,g:g,tIT:tIT,tJT:tJT,sh:sh,base:base,jtCap:Math.max(0,jtCap)};
+}
+function balances(L,ratePct,termY,mon,years){
+  var r=ratePct/100/12,n=termY*12,P=r>0?L*r/(1-Math.pow(1+r,-n)):L/n,out=[],bal=L,k=0,first=12-mon,intY1=0;
+  for(var y=0;y<years;y++){
+    var pays=y===0?first:12;
+    for(var j=0;j<pays&&k<n;j++){var it=bal*r; if(y===0)intY1+=it; bal=Math.max(0,bal-(P-it)); k++;}
+    out.push(bal);
+  }
+  return {bal:out,P:P,intY1:intY1,intY2:(function(){var b=out[0],s=0;for(var j=0;j<12;j++){var it=b*r;s+=it;b=Math.max(0,b-(P-it));}return s})()};
+}
+function credit(p,c){
+  var it=Math.min(c,p.base), rest=c-it, jt=Math.min(rest,p.jtCap);
+  return {c:c,it:Math.floor(it*1.021),itRaw:it,jt:Math.floor(jt),lost:Math.floor(rest-jt)};
+}
+function simulate(o){
+  var p=person(o.sal,o.sh), lim=LIM[o.kind][o.perf], ko=o.kos&&o.area>=50;
+  var limit=ko?lim[1]:lim[0], years=lim[2], reasons=[];
+  if(years===0) reasons.push("省エネ基準を満たさない新築住宅は、2026年入居では原則対象外です（2023年末までに建築確認を受けたものなどを除く）。");
+  if(o.area===0) reasons.push("床面積が40㎡未満の住宅は対象外です。");
+  if(p.g>20000000) reasons.push("合計所得金額が2,000万円を超えると対象外です。");
+  if(o.area===40&&p.g>10000000) reasons.push("40㎡以上50㎡未満の住宅は、合計所得金額が1,000万円以下の年だけ対象です。");
+  var ok=reasons.length===0, b=balances(o.loan,o.rate,o.term,o.mon,Math.max(years,1)), rows=[], tot={it:0,jt:0,lost:0,c:0};
+  if(ok) for(var y=0;y<years;y++){ var c=Math.floor(Math.min(b.bal[y],limit)*0.007/100)*100; var x=credit(p,c); x.bal=b.bal[y]; rows.push(x); tot.it+=x.it; tot.jt+=x.jt; tot.lost+=x.lost; tot.c+=c; }
+  return {p:p,limit:limit,years:years,ok:ok,reasons:reasons,rows:rows,tot:tot,b:b,koApplied:ko,koBlocked:o.kos&&o.area===40};
+}
+window.__jl={person:person,simulate:simulate,balances:balances,itaxBase:itaxBase};
+
+/* ---- ui ---- */
+function num(v){v=String(v==null?"":v).replace(/[０-９．]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-65248)}).replace(/[^0-9.]/g,"");var n=parseFloat(v);return isNaN(n)?null:n;}
+function yen(n){return Math.round(n).toLocaleString("ja-JP")+"円";}
+function man(n){var v=Math.round(n/1000)/10;return v.toLocaleString("ja-JP")+"万円";}
+var st={kind:"new",perf:"Z",kos:true,area:50},shown=0,anim=null,text="";
+function countTo(to){
+  if(anim)cancelAnimationFrame(anim);var from=shown,t0=null,dur=550;
+  function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur);p=1-Math.pow(1-p,3);var v=Math.round(from+(to-from)*p);
+    $("amt").innerHTML=v.toLocaleString("ja-JP")+"<small>円</small>";if(p<1)anim=requestAnimationFrame(f);else shown=to;}
+  anim=requestAnimationFrame(f);
+}
+function paint(el){var r=(el.value-el.min)/(el.max-el.min)*100;el.style.setProperty("--p",r+"%");}
+function val(id,def,min,max){var v=num($(id).value);if(v==null)return def;return Math.min(Math.max(v,min),max);}
+function aff(k){var t=document.getElementById("aff-"+k);return t?'<div class="afl">'+t.innerHTML+'</div><p class="afl-note">※広告（PR）です。料金・条件はリンク先でご確認ください。</p>':'<span class="soon">リンク準備中</span>'}
+function al(c,e,h){return '<div class="alert '+c+'"><span class="e">'+e+'</span><div>'+h+'</div></div>'}
+
+function drawTable(){
+  var h='<tr><th>性能</th><th>新築・買取再販</th><th>中古</th><th>期間</th></tr>';
+  ["L","Z","S","O"].forEach(function(k){
+    var a=LIM.new[k],b=LIM.old[k];
+    var f=function(x){return x[0]===0?"対象外":(x[0]/1e4).toLocaleString()+"万"+(x[1]!==x[0]?"（"+(x[1]/1e4).toLocaleString()+"万）":"")};
+    h+='<tr class="'+(st.perf===k?"on":"")+'"><td>'+PN[k]+'</td><td>'+f(a)+'</td><td>'+f(b)+'</td><td>'+(k==="O"?"中古10年":"13年")+'</td></tr>';
+  });
+  $("tbl").innerHTML=h;
+}
+
+function render(){
+  var sal=val("sal",0,0,10000)*10000, loan=val("loan",0,0,30000)*10000, rate=val("rate",0.9,0,10), term=Math.round(val("term",35,10,50)), mon=Math.round(val("mon",3,1,12));
+  var shv=num($("sh").value), sh=shv==null?null:Math.min(shv,3000)*10000;
+  paint($("salr"));
+  var R=simulate({sal:sal,sh:sh,loan:loan,rate:rate,term:term,mon:mon,kind:st.kind,perf:st.perf,kos:st.kos,area:st.area});
+  var total=R.tot.it+R.tot.jt, y1=R.rows[0]||{it:0,jt:0,c:0,lost:0};
+  var res=$("res"); res.className="res"+(R.ok?"":" none");
+  $("rlbl").textContent=R.ok?(R.years+"年間の合計で戻る・安くなる税金の目安"):"この条件では住宅ローン控除の対象外です";
+  countTo(R.ok?total:0);
+  $("k1").textContent=yen(y1.it+y1.jt);
+  $("k2").textContent=R.ok?yen(total/R.years):"0円";
+  $("k3").textContent=R.ok?man(R.limit):"対象外";
+  $("k4").textContent=R.ok?R.years+"年":"-";
+  $("rsub").textContent=R.ok?("控除の総額 "+yen(R.tot.c)+" のうち、所得税から "+yen(R.tot.it)+"、住民税から "+yen(R.tot.jt)+(R.tot.lost>0?"。使い切れない分が約"+yen(R.tot.lost)+"あります。":"。控除をほぼ使い切れる見込みです。")):R.reasons.join(" ");
+
+  // year bars
+  var mx=1; R.rows.forEach(function(x){mx=Math.max(mx,x.itRaw+x.jt+x.lost)});
+  $("yrs").innerHTML=R.ok?R.rows.map(function(x,i){
+    var a=x.itRaw/mx*100,b=x.jt/mx*100,c=x.lost/mx*100;
+    return '<div class="yr"><span class="y">'+(2026+i)+'年</span><span class="tr"><i class="a" style="width:'+a+'%"></i><i class="b" style="width:'+b+'%"></i><i class="c" style="width:'+c+'%"></i></span><span class="v">'+man(x.it+x.jt)+'</span></div>'}).join(""):'<p class="hint">対象外のため、控除はありません。</p>';
+
+  var tips="";
+  if(R.ok&&R.tot.lost>0) tips+=al("y","⚠️","<b>控除を約"+yen(R.tot.lost)+"使い切れない見込み</b>です。所得税（年 約"+yen(R.p.base)+"）＋住民税の上限（年 "+yen(R.p.jtCap)+"）より控除額が大きいためです。共働きなら<b>ペアローン・連帯債務</b>で2人に分けると使い切れることがあります（借入前の検討事項です）。");
+  if(R.ok&&loan>R.limit) tips+=al("b","ℹ️","借入額が限度額（"+man(R.limit)+"）を超えているため、残高が限度額を下回るまでは控除額が年 "+yen(R.limit*0.007)+" で頭打ちになります。");
+  if(R.koBlocked) tips+=al("y","⚠️","40㎡以上50㎡未満の住宅は、子育て世帯・若者夫婦世帯の上乗せを使えないため、一般の限度額で計算しています。");
+  if(R.ok&&st.kos&&R.koApplied&&LIM[st.kind][st.perf][1]>LIM[st.kind][st.perf][0]) tips+=al("g","🎉","子育て世帯・若者夫婦世帯の上乗せで、限度額が<b>"+man(LIM[st.kind][st.perf][1]-LIM[st.kind][st.perf][0])+"</b>増えています。");
+  if(st.perf==="O"&&st.kind==="new") tips+=al("b","💡","「その他・不明」を選んでいます。最近の新築はほとんどが省エネ基準適合以上なので、まず建築会社に区分を確認しましょう。省エネ基準適合なら限度額2,000万円（子育て世帯3,000万円）・13年です。");
+  $("tips").innerHTML=tips;
+
+  // interest vs credit
+  var y2=R.rows[1]||{c:0}, i2=R.b.intY2;
+  $("o1v").innerHTML=Math.round(i2).toLocaleString("ja-JP")+"<small>円</small>";
+  $("o1d").textContent="2年目（2027年）の1年分の利息。金利 "+rate+"%・"+term+"年・元利均等";
+  $("o2v").innerHTML=y2.c.toLocaleString("ja-JP")+"<small>円</small>";
+  $("o2d").textContent="2027年末の残高 "+man(y2.bal||0)+" × 0.7%"+(R.ok?"（使い切れない分を含む）":"");
+  var w=y2.c>i2?2:1; $("o1").classList.toggle("win",w===1&&R.ok); $("o2").classList.toggle("win",w===2&&R.ok);
+  var t2="";
+  if(R.ok&&rate<0.7&&loan<=R.limit) t2+=al("g","💡","金利が0.7%より低く、借入額も限度額以内なので、<b>控除額が利息を上回る</b>見込みです（いわゆる「逆ざや」）。控除期間中の繰上げ返済は、残高が減って控除も減るため、急がなくてよい場合があります。");
+  else if(R.ok) t2+=al("b","ℹ️","利息の方が大きい場合は、控除期間中でも繰上げ返済で利息を減らす方が得になることがあります。金額は金融機関の返済シミュレーションで確認しましょう。");
+  $("tips2").innerHTML=t2;
+
+  // rows
+  var rows=[["年収（給与）",man(sal)],["給与所得（合計所得金額）",yen(R.p.g)],["社会保険料など"+(sh==null?"（推定）":""),yen(R.p.sh)],["課税所得（所得税）",yen(R.p.tIT)],["所得税額（控除前・復興税を除く）",yen(R.p.base)],["住民税から引ける上限（年）",yen(R.p.jtCap)],["住宅",(st.kind==="new"?"新築・買取再販":"中古")+"／"+PN[st.perf]],["借入額",man(loan)],["毎月の返済額（目安）",yen(R.b.P)],["2026年末の残高",man(R.b.bal[0]||0)],["1年目の控除額",yen(y1.c)]];
+  $("rows").innerHTML=rows.map(function(r){return '<div class="row"><span class="k">'+r[0]+'</span><span class="v">'+r[1]+'</span></div>'}).join("");
+
+  // next
+  var nx="";
+  if(R.ok) nx+=al("g","✅","<b>2027年1月〜3月15日に確定申告</b>をすると、1年目の所得税 約"+yen(y1.it)+"が振り込まれ、2027年度の住民税が約"+yen(y1.jt)+"安くなります。下のチェックリストで書類を準備しましょう。");
+  else nx+=al("b","📌","対象外の理由を確認し、建築会社・不動産会社や税務署に相談してください。中古住宅のリフォームなど、ほかの減税（住宅特定改修特別税額控除など）が使える場合があります。");
+  nx+=al("y","🎁","<b>ふるさと納税をしている人へ</b>：1年目は確定申告をするので、ワンストップ特例は使えなくなります。2026年の寄附もすべて申告に含めましょう。所得税がゼロに近い人は上限が少し下がることがあるので、<a href=\"https://yope1016.github.io/apps/furusato-jogen-2026/\">上限額シミュレーター</a>で確認を。");
+  $("next").innerHTML=nx;
+  var pr="";
+  pr+='<div class="pr"><span class="prl">PR</span><h3>2026年分の寄附は12月31日まで：ふるさと納税</h3><p>住宅ローン控除の確定申告と一緒に申告できます。上限額を確認してから選びましょう。</p><!-- AFFILIATE:furusato_site -->'+aff("furusato_site")+'</div>';
+  pr+='<div class="pr"><span class="prl">PR</span><h3>新居のネット回線、決まっていますか？</h3><p>工事が必要な光回線は、入居の1か月前までの申込みが安心です。迷ったら<a href="https://yope1016.github.io/apps/net-kaisen-shindan/">回線診断</a>で。</p><!-- AFFILIATE:hikari -->'+aff("hikari")+'</div>';
+  pr+='<div class="pr"><span class="prl">PR</span><h3>火災保険・地震保険の見直し</h3><p>ローンを組むときに入った火災保険は、補償内容と保険料を比べると下げられることがあります。</p><!-- AFFILIATE:kasai_hoken -->'+aff("kasai_hoken")+'</div>';
+  if(R.ok&&rate>=1) pr+='<div class="pr"><span class="prl">PR</span><h3>金利'+rate+'%なら、借り換えの試算も</h3><p>借り換えでも、条件を満たせば住宅ローン控除は続けて受けられます（控除期間は最初の入居年から数えます）。</p><!-- AFFILIATE:loan_karikae -->'+aff("loan_karikae")+'</div>';
+  $("pr").innerHTML=pr;
+
+  text="【住宅ローン控除 計算 2026年入居】\n"+(R.ok?((st.kind==="new"?"新築":"中古")+"・"+PN[st.perf]+"・借入"+man(loan)+"で、"+R.years+"年間の合計 約"+man(total)+"（1年目 約"+yen(y1.it+y1.jt)+"）"+(R.tot.lost>0?"\n使い切れない分 約"+man(R.tot.lost):"")):"この条件では対象外")+"\nhttps://yope1016.github.io/apps/jutaku-loan-kojo-2026/";
+  drawTable();
+  res.classList.remove("pulse"); void res.offsetWidth; res.classList.add("pulse");
+}
+
+function seg(id,key,conv){
+  Array.prototype.forEach.call(document.querySelectorAll("#"+id+" .chip"),function(b){b.onclick=function(){st[key]=conv?conv(b.dataset.v):b.dataset.v;Array.prototype.forEach.call(document.querySelectorAll("#"+id+" .chip"),function(x){x.setAttribute("aria-pressed",String(x===b))});render()}});
+}
+seg("kind","kind"); seg("perf","perf"); seg("kosodate","kos",function(v){return v==="1"}); seg("area","area",function(v){return +v});
+function sync(from){ if(from==="r") $("sal").value=$("salr").value; else { var v=num($("sal").value); if(v!=null) $("salr").value=Math.min(2000,Math.max(200,v)); } render(); }
+$("sal").addEventListener("input",function(){sync("t")}); $("salr").addEventListener("input",function(){sync("r")});
+$("sm").onclick=function(){$("sal").value=Math.max(0,(num($("sal").value)||0)-10);sync("t")};
+$("sp").onclick=function(){$("sal").value=Math.min(10000,(num($("sal").value)||0)+10);sync("t")};
+$("lm").onclick=function(){$("loan").value=Math.max(0,(num($("loan").value)||0)-100);render()};
+$("lp").onclick=function(){$("loan").value=Math.min(30000,(num($("loan").value)||0)+100);render()};
+["loan","rate","term","mon","sh"].forEach(function(id){$(id).addEventListener("input",render)});
+function quick(id,target,fn){Array.prototype.forEach.call(document.querySelectorAll("#"+id+" .chip"),function(b){b.onclick=function(){$(target).value=b.dataset.v;fn()}})}
+quick("qs","sal",function(){sync("t")}); quick("ql","loan",render); quick("qr","rate",render);
+$("copy").onclick=function(){if(navigator.clipboard)navigator.clipboard.writeText(text).then(function(){toast("コピーしました")},function(){toast("コピーできませんでした")});else toast("コピーできませんでした")};
+$("line").onclick=function(){location.href="https://line.me/R/share?text="+encodeURIComponent(text)};
+function toast(t){var x=$("toast");x.textContent=t;x.classList.add("on");setTimeout(function(){x.classList.remove("on")},1800)}
+
+/* ---- checklist ---- */
+var CH=[
+ ["金融機関に「住宅ローン控除の適用申請書」を出したか確認","2023年以降の入居で、金融機関が対応していれば、年末残高証明書の提出が不要になります（金融機関から案内が届きます）"],
+ ["住宅取得資金に係る借入金の年末残高等証明書","適用申請書を出していない場合に必要。例年10月〜1月に金融機関から郵送されます"],
+ ["売買契約書・工事請負契約書の写し","取得価格・契約日の確認用。土地も買った人は土地の契約書も"],
+ ["登記事項証明書（家屋・土地）","不動産番号を申告書に書けば添付を省略できます"],
+ ["住宅の性能を示す書類","長期優良住宅の認定通知書、低炭素建築物の認定通知書、住宅省エネルギー性能証明書、建設住宅性能評価書など（区分に合うもの）"],
+ ["源泉徴収票（2026年分）","勤務先から12月〜1月に受け取ります"],
+ ["マイナンバーカード（e-Taxならスマホで提出可）","確定申告書等作成コーナーで「住宅借入金等特別控除額の計算明細書」も一緒に作れます"],
+ ["もらった補助金の額のメモ","国や自治体の住宅の補助金は、取得価格から差し引いて計算します"],
+ ["2年目以降：税務署から届く申告書を保管","「給与所得者の住宅借入金等特別控除申告書」（残り年数分）が届きます。毎年の年末調整で勤務先に出すので捨てないこと"]
+];
+var done={};
+function drawChk(){
+  $("chk").innerHTML=CH.map(function(c,i){return '<label class="'+(done[i]?"done":"")+'"><input type="checkbox" data-i="'+i+'"'+(done[i]?" checked":"")+'><div><b>'+c[0]+'</b><span>'+c[1]+'</span></div></label>'}).join("");
+  var n=0;for(var k in done)if(done[k])n++; $("pg").style.width=(n/CH.length*100)+"%";
+  Array.prototype.forEach.call(document.querySelectorAll("#chk input"),function(x){x.onchange=function(){done[x.dataset.i]=x.checked;drawChk()}});
+}
+drawChk();
+render();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

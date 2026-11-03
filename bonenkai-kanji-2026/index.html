@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>忘年会 幹事の段取り表 2026｜開催日から逆算するやることリスト＋会費計算＋案内文</title>
+<meta name="description" content="忘年会の開催日を入れるだけで、日程調整・お店の予約・案内・出欠締切・景品・精算までの「いつまでに何をするか」を逆算。会費の計算と、そのまま送れる案内文つき。登録不要。">
+<meta name="theme-color" content="#e11d48">
+<link rel="canonical" href="https://yope1016.github.io/apps/bonenkai-kanji-2026/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:title" content="忘年会 幹事の段取り表 2026｜開催日から逆算">
+<meta property="og:description" content="予約・案内・出欠締切・景品・精算の期限を、開催日から自動で逆算。会費計算と案内文メーカーつき。登録不要。">
+<meta property="og:url" content="https://yope1016.github.io/apps/bonenkai-kanji-2026/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍻</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"忘年会 幹事の段取り表 2026","url":"https://yope1016.github.io/apps/bonenkai-kanji-2026/","applicationCategory":"LifestyleApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"忘年会のお店はいつまでに予約する？","acceptedAnswer":{"@type":"Answer","text":"開催日の3〜4週間前が目安です。12月中旬〜下旬の金曜日や、20人を超える貸切・個室は埋まりやすいので、1か月以上前に押さえると安心です。"}},
+{"@type":"Question","name":"出欠の締切はいつにする？","acceptedAnswer":{"@type":"Answer","text":"開催日の1週間前が一般的です。お店への最終人数の連絡（多くは2〜3日前まで）に間に合うよう、少し余裕を持たせます。"}},
+{"@type":"Question","name":"会費はいくらが相場？","acceptedAnswer":{"@type":"Answer","text":"飲み放題つきのコースで1人4,000〜6,000円程度に、景品代などを足して決めることが多いです。端数は500円単位で切り上げると集金が楽になります。"}},
+{"@type":"Question","name":"役職で会費に差をつけたいときは？","acceptedAnswer":{"@type":"Answer","text":"傾斜をつける場合は、役職や年次ごとの比率を決めて割り振ります。傾斜割り勘の計算ツールを使うと、合計額に合わせて自動で配分できます。"}}
+]}]}
+</script>
+<style>
+:root{
+  --bg:#fbf5f3;--card:#fff;--ink:#231a20;--sub:#6b5a63;--line:#efdfe0;
+  --pri:#e11d48;--pri2:#f59e0b;--acc:#f59e0b;--ok:#10b981;--warn:#ef4444;--gold:#d97706;
+  --chip:#fdeef1;--shadow:0 12px 32px -14px rgba(120,20,50,.30);
+  --grad:linear-gradient(135deg,#f59e0b 0%,#e11d48 48%,#7c3aed 100%);
+  --r:20px;
+}
+:root[data-theme="dark"]{--bg:#140c12;--card:#1f1520;--ink:#f6eaf0;--sub:#c2a9b6;--line:#38283a;--chip:#2c1b2a;--pri:#fb7185;--shadow:0 12px 32px -14px rgba(0,0,0,.7)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#140c12;--card:#1f1520;--ink:#f6eaf0;--sub:#c2a9b6;--line:#38283a;--chip:#2c1b2a;--pri:#fb7185;--shadow:0 12px 32px -14px rgba(0,0,0,.7)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+button{font-family:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.promo-note{font-size:11px;color:var(--sub);text-align:center;padding:6px 12px 0;opacity:.85}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:26px 0 96px}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.28),transparent 40%),radial-gradient(circle at 10% 90%,rgba(255,255,255,.18),transparent 45%)}
+.fl{position:absolute;font-size:28px;opacity:.5;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.2))}
+@keyframes float{50%{transform:translateY(-14px) rotate(10deg)}}
+.spark{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;opacity:0;animation:tw 2.6s ease-in-out infinite}
+@keyframes tw{50%{opacity:.9;transform:scale(1.6)}}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px}
+.hero h1{font-size:clamp(26px,7.2vw,40px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.44em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+main{margin-top:-62px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line)}
+.card h2{font-size:19px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ico{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:0 0 38px;background:var(--chip)}
+.rl{display:block;font-size:13px;font-weight:800;margin:14px 0 6px;color:var(--pri);letter-spacing:.06em}
+.rl:first-of-type{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 14px;font-size:14px;cursor:pointer;min-height:42px;transition:.15s;font-weight:600}
+.chip.on{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 6px 16px -6px var(--pri)}
+.chip:active{transform:scale(.96)}
+input[type=date],input[type=text],input[type=time]{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-size:16px;font-weight:700;background:var(--card);color:var(--ink);min-height:48px;width:100%;font-family:inherit}
+.daterow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.numrow{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.num{min-width:0;display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:var(--sub)}
+.num em{font-style:normal;font-size:11px}
+.stepper{display:flex;align-items:stretch;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.stepper button{width:44px;min-height:48px;border:none;background:var(--chip);color:var(--pri);font-size:20px;font-weight:900;cursor:pointer}
+.stepper input{flex:1;min-width:0;width:100%;border:none;background:transparent;color:var(--ink);font-size:18px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.hint{font-size:13px;color:var(--sub);margin-top:8px}
+.count{display:flex;align-items:center;gap:14px;background:var(--grad);color:#fff;border-radius:18px;padding:16px 18px;margin-bottom:14px;position:relative;overflow:hidden}
+.count .big{font-size:clamp(44px,13vw,60px);font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+.count .big small{font-size:18px;margin-left:2px}
+.count .ct{font-size:14px;font-weight:700;line-height:1.5}
+.count .ct b{display:block;font-size:17px}
+.alert{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;border-radius:14px;padding:12px;font-size:13px;margin:10px 0}
+:root[data-theme="dark"] .alert{background:#2a1d10;border-color:#5b3a12;color:#fde0b8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .alert{background:#2a1d10;border-color:#5b3a12;color:#fde0b8}}
+.prog{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:4px 0 6px}
+.prog i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px;transition:width .5s ease}
+.progt{font-size:12px;color:var(--sub);font-weight:700;text-align:right}
+.tl{list-style:none;position:relative;margin-top:8px}
+.tl:before{content:"";position:absolute;left:19px;top:6px;bottom:6px;width:3px;border-radius:3px;background:var(--line)}
+.tl li{position:relative;display:flex;gap:12px;padding:10px 0;animation:pop .4s ease both}
+.tl .dot{flex:0 0 41px;height:41px;border-radius:50%;display:grid;place-items:center;font-size:19px;background:var(--card);border:3px solid var(--line);z-index:1;cursor:pointer;transition:.2s}
+.tl li.done .dot{background:var(--ok);border-color:var(--ok)}
+.tl li.now .dot{border-color:var(--pri);box-shadow:0 0 0 6px rgba(225,29,72,.15);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(225,29,72,.05)}}
+.tl .bd{flex:1;min-width:0;background:var(--chip);border-radius:14px;padding:10px 12px}
+.tl li.done .bd{opacity:.6}
+.tl li.done .bd b{text-decoration:line-through}
+.tl .dt{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;font-weight:800;color:var(--sub)}
+.tl .dt .d{color:var(--ink);font-size:14px;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:11px;font-weight:900;border-radius:6px;padding:1px 7px}
+.tag.late{background:#fee2e2;color:#991b1b}
+.tag.today{background:var(--pri);color:#fff}
+.tag.soon{background:#fef3c7;color:#92400e}
+.tag.ok{background:#d1fae5;color:#065f46}
+.tl b{display:block;font-size:15px;margin-top:2px}
+.tl small{display:block;font-size:12.5px;color:var(--sub);margin-top:2px}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.total{text-align:center;padding:6px 0 12px}
+.total .tlb{display:block;font-size:13px;color:var(--sub);font-weight:800}
+.total b{font-size:clamp(44px,13vw,60px);font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums;line-height:1.15}
+.total .ty{font-size:20px;font-weight:900;margin-left:4px}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.sum div{background:var(--chip);border-radius:14px;padding:10px 6px;text-align:center}
+.sum b{display:block;font-size:19px;font-weight:900;color:var(--pri);font-variant-numeric:tabular-nums;line-height:1.25}
+.sum span{font-size:11px;color:var(--sub);font-weight:700}
+.next{background:linear-gradient(135deg,rgba(225,29,72,.10),rgba(124,58,237,.08));border:1.5px solid var(--pri);border-radius:16px;padding:12px 14px;margin:12px 0 4px;font-size:14px}
+.next a{font-weight:800}
+.pr{border:1.5px solid var(--acc);border-radius:18px;padding:16px;position:relative;background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(225,29,72,.05));margin-top:16px}
+.prlab{position:absolute;top:-10px;left:14px;background:var(--acc);color:#fff;font-size:11px;font-weight:900;border-radius:6px;padding:1px 8px;letter-spacing:.1em}
+.pr h3{font-size:16px;margin-bottom:6px}
+.pr p{font-size:14px;color:var(--sub)}
+.pr .soon{display:inline-block;margin-top:8px;background:var(--chip);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--sub);font-weight:700}
+.afl{display:flex;flex-direction:column;gap:10px;margin-top:12px;position:relative}
+body .afl a,body .pr .afl a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border-radius:14px;background:var(--pri) !important;background-image:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0)) !important;border:0 !important;color:#fff !important;font-weight:700;font-size:15px;line-height:1.45;text-decoration:none !important;box-shadow:0 8px 20px -10px rgba(0,0,0,.45);transition:transform .15s ease}
+.afl a::after{content:"\203A";font-size:22px;line-height:1;flex:none}
+.afl a:active{transform:scale(.98)}
+.afl img[width="1"]{position:absolute;left:0;bottom:0}
+textarea{width:100%;min-height:230px;border:1.5px solid var(--line);border-radius:14px;padding:12px;font-size:14.5px;line-height:1.75;background:var(--chip);color:var(--ink);font-family:inherit;resize:vertical}
+.share{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.share a,.share button{flex:1;min-width:140px;text-align:center;text-decoration:none;border-radius:14px;padding:12px;font-weight:800;font-size:14px;border:none;cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:center}
+.line{background:#06c755;color:#fff}
+.copy{background:var(--chip);color:var(--ink);border:1.5px solid var(--line)!important}
+.ck{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ck li{display:flex;gap:8px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:10px;font-size:13.5px;font-weight:700;cursor:pointer;min-height:48px;transition:.15s;user-select:none}
+.ck li:before{content:"";flex:0 0 20px;height:20px;border-radius:6px;border:2px solid var(--line)}
+.ck li.on{background:var(--chip);border-color:var(--ok)}
+.ck li.on:before{background:var(--ok);border-color:var(--ok);box-shadow:inset 0 0 0 3px var(--card)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#231a20;color:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;transition:.3s;z-index:9;opacity:0}
+.toast.show{transform:translateX(-50%);opacity:1}
+details{border-top:1px solid var(--line);padding:12px 0}
+details summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:"＋";color:var(--pri)}
+details[open] summary:after{content:"－"}
+details p{font-size:14px;color:var(--sub);margin-top:8px}
+.links a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px;font-weight:700;font-size:14px;background:var(--card)}
+.links a span{font-size:24px}
+.src{font-size:12px;color:var(--sub)}
+.src li{margin:4px 0 4px 1.2em;word-break:break-all}
+footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
+.confetti{position:fixed;top:-20px;font-size:22px;z-index:8;pointer-events:none;animation:fall 1.8s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:380px){.numrow,.daterow,.ck{grid-template-columns:1fr}.sum b{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="promo-note">本ページはプロモーション（広告）を含みます</div>
+<header class="hero">
+  <span class="fl" style="left:8%;top:62%">🍻</span>
+  <span class="fl" style="right:10%;top:56%;animation-delay:-2s">🎉</span>
+  <span class="fl" style="left:44%;top:72%;animation-delay:-4s;font-size:22px">🎁</span>
+  <span class="fl" style="right:30%;top:20%;animation-delay:-1s;font-size:20px">✨</span>
+  <span class="spark" style="left:22%;top:30%"></span><span class="spark" style="left:70%;top:42%;animation-delay:-.8s"></span><span class="spark" style="left:52%;top:18%;animation-delay:-1.6s"></span>
+  <div class="wrap">
+    <div class="topbar"><span class="brand">ひとりラボ</span><button class="mode" id="mode" type="button">🌙 表示切替</button></div>
+    <h1><small>忘年会・新年会の幹事さんへ</small>幹事の段取り表 2026</h1>
+    <p class="lead">開催日を入れるだけで「いつまでに何をするか」を逆算。会費の計算と、そのまま送れる案内文までまとめて作れます。</p>
+    <div class="badges"><span class="badge">⏱ 30秒</span><span class="badge">📅 期限を自動で逆算</span><span class="badge">💴 会費計算</span><span class="badge">✉️ 案内文</span><span class="badge">🔒 登録不要</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2><span class="ico">📅</span>会の条件</h2>
+    <span class="rl">開催日と時間</span>
+    <div class="daterow">
+      <input id="date" type="date" aria-label="開催日">
+      <input id="time" type="time" value="19:00" aria-label="開始時間">
+    </div>
+    <span class="rl">どんな会？</span>
+    <div class="chips" data-g="kind">
+      <button class="chip on" data-v="bonen" type="button">🍻 忘年会</button>
+      <button class="chip" data-v="shinnen" type="button">🎍 新年会</button>
+      <button class="chip" data-v="sobetsu" type="button">💐 送別会・歓迎会</button>
+    </div>
+    <span class="rl">参加人数（見込み）</span>
+    <div class="numrow">
+      <label class="num"><span>人数</span><span class="stepper"><button type="button" data-k="ppl" data-d="-1">−</button><input id="ppl" type="number" inputmode="numeric" value="15" min="2" max="300"><button type="button" data-k="ppl" data-d="1">＋</button></span><em>人</em></label>
+      <label class="num"><span>コース＋飲み放題（1人）</span><span class="stepper"><button type="button" data-k="course" data-d="-500">−</button><input id="course" type="number" inputmode="numeric" value="5000" step="500" min="0"><button type="button" data-k="course" data-d="500">＋</button></span><em>円（税込の目安）</em></label>
+    </div>
+    <span class="rl">お楽しみ（景品・ビンゴ）</span>
+    <div class="chips" data-g="game">
+      <button class="chip" data-v="0" type="button">なし</button>
+      <button class="chip on" data-v="1" type="button">🎯 ビンゴ・景品あり</button>
+    </div>
+    <span class="rl">二次会</span>
+    <div class="chips" data-g="niji">
+      <button class="chip on" data-v="0" type="button">予定なし</button>
+      <button class="chip" data-v="1" type="button">🎤 予定あり</button>
+    </div>
+    <p class="hint">入力した内容は、この端末の中だけで計算します（どこにも送信されません）。</p>
+  </section>
+
+  <section class="card" id="plan">
+    <h2><span class="ico">🗓️</span>段取り表（開催日から逆算）</h2>
+    <div class="count" id="count"></div>
+    <div id="warn"></div>
+    <div class="prog"><i id="progbar"></i></div>
+    <div class="progt" id="progt"></div>
+    <ul class="tl" id="tl"></ul>
+    <p class="hint">○をタップすると「済み」にできます。期限はあくまで目安です。お店の規定（キャンセル料・人数確定の期限）を必ず確認してください。</p>
+
+    <div class="pr">
+      <span class="prlab">PR</span>
+      <h3>🍽️ お店は「早い者勝ち」</h3>
+      <p>12月の金曜・土曜や、20人以上の個室・貸切は早く埋まります。候補日を2〜3つ決めたら、空席と<b>キャンセル料の発生日</b>を見比べて押さえておきましょう。</p>
+      <!-- AFFILIATE:inshoku_yoyaku -->
+      <span class="soon">飲食店のネット予約のご案内は準備中です</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">💴</span>会費を決める</h2>
+    <div class="numrow">
+      <label class="num"><span>景品の予算（合計）</span><span class="stepper"><button type="button" data-k="prize" data-d="-5000">−</button><input id="prize" type="number" inputmode="numeric" value="20000" step="1000" min="0"><button type="button" data-k="prize" data-d="5000">＋</button></span><em>円（会社の補助があれば差し引いて入力）</em></label>
+      <label class="num"><span>会社・上司からの補助</span><span class="stepper"><button type="button" data-k="sub" data-d="-5000">−</button><input id="sub" type="number" inputmode="numeric" value="0" step="1000" min="0"><button type="button" data-k="sub" data-d="5000">＋</button></span><em>円（なければ0）</em></label>
+    </div>
+    <span class="rl">端数の丸め方</span>
+    <div class="chips" data-g="round">
+      <button class="chip" data-v="100" type="button">100円単位</button>
+      <button class="chip on" data-v="500" type="button">500円単位</button>
+      <button class="chip" data-v="1000" type="button">1,000円単位</button>
+    </div>
+    <div class="total"><span class="tlb">おすすめの会費（1人あたり）</span><b id="fee">0</b><span class="ty">円</span></div>
+    <div class="sum">
+      <div><b id="sTotal">0</b><span>必要な総額</span></div>
+      <div><b id="sCollect">0</b><span>集まる会費</span></div>
+      <div><b id="sBuffer">0</b><span>予備費（余り）</span></div>
+    </div>
+    <p class="hint" id="feeNote"></p>
+    <div class="next">👔 役職や年次で会費に差をつけたいなら → <a href="../warikan-keisha/">傾斜割り勘計算（幹事用）で配分する</a></div>
+
+    <div class="pr" id="prizePr">
+      <span class="prlab">PR</span>
+      <h3>🎁 景品は「1位だけ豪華、残りは数で」</h3>
+      <p>目安は1位に予算の3〜4割、参加者の3〜5人に1つは当たる数にすると盛り上がります。ネット注文なら、届く日（開催の数日前）から逆算して早めに。</p>
+      <!-- AFFILIATE:keihin -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングでビンゴの景品を探す</a></div>
+      <!-- AFFILIATE:keihin_set -->
+      <span class="soon">景品セット（目録・パネル）のご案内は準備中です</span>
+    </div>
+    <div id="prizePlan"></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">✉️</span>案内文メーカー</h2>
+    <span class="rl">お店の名前・場所（あとで書き換えてもOK）</span>
+    <input id="place" type="text" placeholder="例：〇〇駅前 △△（個室）" maxlength="60">
+    <span class="rl">送る相手</span>
+    <div class="chips" data-g="tone">
+      <button class="chip on" data-v="biz" type="button">💼 職場向け（ていねい）</button>
+      <button class="chip" data-v="casual" type="button">😊 友人・サークル向け</button>
+    </div>
+    <span class="rl">できあがり（編集できます）</span>
+    <textarea id="msg" aria-label="案内文"></textarea>
+    <div class="share">
+      <a class="line" id="lineBtn" href="#" target="_blank" rel="noopener">LINEで送る</a>
+      <button class="copy" id="copyBtn" type="button">📋 コピー</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🎒</span>当日の持ち物チェック</h2>
+    <ul class="ck" id="ck"></ul>
+    <p class="hint">タップでチェック。おつりは会費の単位に合わせて多めに用意すると受付がスムーズです。</p>
+  </section>
+
+  <section class="card links">
+    <h2><span class="ico">🧰</span>年末年始のほかの無料ツール</h2>
+    <a href="../warikan-keisha/"><span>🧮</span>傾斜割り勘計算（幹事用）：役職ごとの比率で会費を配分</a>
+    <a href="../nenga-hitokoto-2027/"><span>🎍</span>年賀状ひとことジェネレーター 2027：上司・取引先向けの一言も</a>
+    <a href="../otoshidama-souba-2027/"><span>🧧</span>お年玉 相場計算機 2027：年齢別の目安と総額</a>
+    <a href="../oosouji-buntan-2026/"><span>🧹</span>大掃除の分担ジェネレーター 2026：家族で公平に分ける</a>
+    <a href="../furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額シミュレーター：12/31の締切前に</a>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">❓</span>よくある質問</h2>
+    <details><summary>忘年会のお店はいつまでに予約する？</summary><p>開催日の3〜4週間前が目安です。12月中旬〜下旬の金曜日や、20人を超える貸切・個室は埋まりやすいので、1か月以上前に押さえると安心です。予約のときは、キャンセル料がいつから発生するかも確認しておきましょう。</p></details>
+    <details><summary>出欠の締切はいつにする？</summary><p>開催日の1週間前が一般的です。お店への最終人数の連絡（多くは2〜3日前まで）に間に合うよう、少し余裕を持たせます。このツールの段取り表もこの考え方で日付を出しています。</p></details>
+    <details><summary>会費はいくらが相場？</summary><p>飲み放題つきのコースで1人4,000〜6,000円程度に、景品代などを足して決めることが多いです。端数は500円単位で切り上げ、余りは予備費（当日の追加注文・人数の増減）に回すと安心です。余ったら二次会や次回に回す、と先に伝えておくと透明です。</p></details>
+    <details><summary>役職で会費に差をつけたいときは？</summary><p>役職や年次ごとの比率を決めて割り振ります。<a href="../warikan-keisha/">傾斜割り勘計算</a>を使うと、合計額に合わせて自動で配分できます。</p></details>
+    <details><summary>そもそも今年は開く会社が多い？</summary><p>東京商工リサーチの調査（2025年12月、6,196社）では、2025年度の忘・新年会の実施率は57.2%でした。開かない理由では「費用の削減」が増えています。参加しやすい会費設定と、早めの案内がポイントです。</p></details>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📚</span>参考にした情報</h2>
+    <ul class="src">
+      <li>東京商工リサーチ「2025年 第2回 忘・新年会に関するアンケート」（実施率57.2%など） https://www.tsr-net.co.jp/data/detail/1202200_1527.html</li>
+    </ul>
+    <p class="src" style="margin-top:8px">段取りの期限・会費・景品の配分は一般的な目安です。お店の予約条件、キャンセル規定、会社のルールを優先してください。（2026年11月時点の情報）</p>
+  </section>
+  <footer>© ひとりラボ ・ 入力内容はどこにも送信されません</footer>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+var S={kind:"bonen",game:"1",niji:"0",round:"500",tone:"biz"};
+var KIND={bonen:"忘年会",shinnen:"新年会",sobetsu:"送別会"};
+var WD=["日","月","火","水","木","金","土"];
+var done={};
+
+// theme
+var root=document.documentElement;
+$("mode").onclick=function(){
+  var dark=root.getAttribute("data-theme")==="dark"||(!root.getAttribute("data-theme")&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches);
+  root.setAttribute("data-theme",dark?"light":"dark");
+};
+
+function pad(n){return (n<10?"0":"")+n}
+function iso(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
+function today(){var t=new Date();return new Date(t.getFullYear(),t.getMonth(),t.getDate())}
+function parse(v){var p=(v||"").split("-");if(p.length!==3)return null;var d=new Date(+p[0],+p[1]-1,+p[2]);return isNaN(d)?null:d}
+function add(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x}
+function md(d){return (d.getMonth()+1)+"/"+d.getDate()+"（"+WD[d.getDay()]+"）"}
+function mdj(d){return (d.getMonth()+1)+"月"+d.getDate()+"日（"+WD[d.getDay()]+"）"}
+function diff(a,b){return Math.round((a-b)/864e5)}
+function yen(n){return Math.round(n).toLocaleString("ja-JP")}
+function n(id){var v=parseFloat($(id).value);return isNaN(v)?0:v}
+
+// default date: next Friday in mid-December (or 2 weeks later if passed)
+(function(){
+  var t=today();var y=t.getMonth()===0?t.getFullYear()-1:t.getFullYear();
+  var d=new Date(y,11,18);
+  while(d.getDay()!==5)d=add(d,1);
+  if(d<add(t,7)){d=add(t,21);while(d.getDay()!==5)d=add(d,1)}
+  $("date").value=iso(d);
+})();
+
+// chips
+Array.prototype.forEach.call(document.querySelectorAll(".chips"),function(g){
+  g.addEventListener("click",function(e){
+    var b=e.target.closest(".chip");if(!b)return;
+    Array.prototype.forEach.call(g.querySelectorAll(".chip"),function(c){c.classList.remove("on")});
+    b.classList.add("on");S[g.getAttribute("data-g")]=b.getAttribute("data-v");all();
+  });
+});
+// steppers
+Array.prototype.forEach.call(document.querySelectorAll(".stepper button"),function(b){
+  b.addEventListener("click",function(){
+    var i=$(b.getAttribute("data-k"));var v=(parseFloat(i.value)||0)+parseFloat(b.getAttribute("data-d"));
+    var mn=parseFloat(i.min);if(!isNaN(mn)&&v<mn)v=mn;var mx=parseFloat(i.max);if(!isNaN(mx)&&v>mx)v=mx;
+    i.value=v;all();
+  });
+});
+["date","time","ppl","course","prize","sub","place"].forEach(function(id){$(id).addEventListener("input",all)});
+
+function steps(ev){
+  var big=n("ppl")>=20, peak=(ev.getMonth()===11&&ev.getDate()>=10&&ev.getDate()<=28)||(ev.getMonth()===0&&ev.getDate()<=20);
+  var fri=ev.getDay()===5||ev.getDay()===6;
+  var resv=(big||(peak&&fri))?30:21;
+  var L=[
+    {k:"date",o:-42,e:"🗳️",t:"候補日を決めて、参加者に打診",s:"候補は2〜3日。上司・主賓の都合を先に押さえると決まりやすい。日程調整はアンケートやLINEの投票機能で。"},
+    {k:"fix",o:-35,e:"📌",t:"開催日を確定・ざっくり人数を把握",s:"確定したらすぐ「日程だけ先に」連絡。予算感（会費の目安）もこの時点で共有。"},
+    {k:"resv",o:-resv,e:"🍽️",t:"お店を予約する",s:(big?"20人以上は個室・貸切の空きが少ないため早めに。":"")+(peak&&fri?"12月中旬〜下旬の金・土は特に混みます。":"")+"コース・飲み放題の時間・キャンセル料の発生日・人数確定の期限を確認。"},
+    {k:"info",o:-resv+3,e:"✉️",t:"案内を送る（場所・会費・出欠締切）",s:"下の「案内文メーカー」でそのまま作れます。集金方法（当日現金／事前振込・送金アプリ）も書いておくと楽。"}
+  ];
+  if(S.game==="1"){
+    L.push({k:"prize1",o:-21,e:"🎯",t:"景品の予算と数を決める",s:"会社の補助の有無を確認。1位に予算の3〜4割、当たりは参加者の3〜5人に1つが目安。"});
+    L.push({k:"prize2",o:-10,e:"🛒",t:"景品を注文・購入する",s:"ネット注文は届く日を確認して開催の数日前に受け取れるように。ビンゴカード・司会の台本も用意。"});
+  }
+  L.push({k:"rsvp",o:-7,e:"✅",t:"出欠を締め切る・人数を確定",s:"未回答の人に個別で一声。食物アレルギーや苦手なものもここで聞いておく。"});
+  if(S.niji==="1")L.push({k:"niji",o:-5,e:"🎤",t:"二次会のお店の目星をつける",s:"一次会の近くで、人数の変動に強いお店（カラオケ・バー）を。予約できるなら仮押さえ。"});
+  L.push({k:"final",o:-3,e:"📞",t:"お店に最終人数・アレルギーを連絡",s:"多くのお店は2〜3日前が人数確定の期限。席の配置（主賓・上座）もこのとき相談。"});
+  L.push({k:"remind",o:-1,e:"🔔",t:"前日リマインドを送る",s:"集合時間・場所の地図・会費（おつりの出ない額だと助かる旨）・幹事の連絡先。"});
+  L.push({k:"day",o:0,e:"🥂",t:KIND[S.kind]+" 当日",s:"受付で集金→乾杯の挨拶の依頼→ゲーム→締めの挨拶→お会計。持ち物は下のチェックリストで。"});
+  L.push({k:"after",o:1,e:"🙏",t:"精算・お礼のメッセージ",s:"会費の収支を一言で報告（余りの使い道も）。お店や挨拶をしてくれた人へのお礼も忘れずに。"});
+  return L;
+}
+
+function plan(){
+  var ev=parse($("date").value);var t=today();
+  if(!ev){$("tl").innerHTML="";$("count").innerHTML="<div class='ct'><b>開催日を入れてください</b></div>";return}
+  var left=diff(ev,t);
+  var L=steps(ev);
+  var h="",cnt=0,late=0,nowSet=false,fin=0;
+  L.forEach(function(s,i){
+    var d=add(ev,s.o);var dd=diff(d,t);
+    var isDone=!!done[s.k];if(isDone)fin++;
+    var tag="",cls="";
+    if(isDone){tag='<span class="tag ok">済み</span>';cls="done"}
+    else if(dd<0&&left>=0){tag='<span class="tag late">期限超過・今すぐ</span>';late++;if(!nowSet){cls="now";nowSet=true}}
+    else if(dd<0){tag='<span class="tag ok">終了</span>'}
+    else if(dd===0){tag='<span class="tag today">今日</span>';if(!nowSet){cls="now";nowSet=true}}
+    else if(dd<=7){tag='<span class="tag soon">あと'+dd+'日</span>';if(!nowSet){cls="now";nowSet=true}}
+    else{tag='<span class="tag" style="background:var(--card);color:var(--sub)">あと'+dd+'日</span>';if(!nowSet){cls="now";nowSet=true}}
+    h+='<li class="'+cls+'" style="animation-delay:'+(i*0.04)+'s"><button type="button" class="dot" data-k="'+s.k+'" aria-label="済みにする">'+(isDone?"✔️":s.e)+'</button><div class="bd"><div class="dt"><span class="d">'+md(d)+'まで</span>'+tag+'</div><b>'+s.t+'</b><small>'+s.s+'</small></div></li>';
+  });
+  $("tl").innerHTML=h;
+  var pct=Math.round(fin/L.length*100);
+  $("progbar").style.width=pct+"%";$("progt").textContent="進み具合 "+fin+"/"+L.length+"（"+pct+"%）";
+  var c;
+  if(left>0)c='<div class="big">'+left+'<small>日</small></div><div class="ct"><b>'+KIND[S.kind]+'まで</b>'+mdj(ev)+' '+($("time").value||"")+' 開始</div>';
+  else if(left===0)c='<div class="big">🥂</div><div class="ct"><b>今日が本番！</b>受付・集金・挨拶の順番を確認しましょう</div>';
+  else c='<div class="big">🙏</div><div class="ct"><b>おつかれさまでした</b>精算とお礼のメッセージを忘れずに</div>';
+  $("count").innerHTML=c;
+  $("warn").innerHTML=late>0?'<div class="alert">⚠️ 目安の期限を過ぎている項目が'+late+'件あります。特に<b>お店の予約</b>は、空席があるうちに今日中に動くのがおすすめです。</div>':"";
+  Array.prototype.forEach.call($("tl").querySelectorAll(".dot"),function(b){
+    b.onclick=function(){var k=b.getAttribute("data-k");done[k]=!done[k];if(done[k])burst();plan()};
+  });
+}
+
+function money(){
+  var p=Math.max(1,n("ppl")),course=n("course"),prize=S.game==="1"?n("prize"):0,sub=n("sub"),r=+S.round;
+  var need=course*p+prize-sub;
+  var raw=Math.max(0,need/p);
+  var fee=Math.ceil(raw/r)*r;
+  var coll=fee*p;
+  $("fee").textContent=yen(fee);
+  $("sTotal").textContent=yen(Math.max(0,need));
+  $("sCollect").textContent=yen(coll);
+  $("sBuffer").textContent=yen(coll-Math.max(0,need));
+  var note="計算：コース "+yen(course)+"円×"+p+"人"+(prize?"＋景品 "+yen(prize)+"円":"")+(sub?"−補助 "+yen(sub)+"円":"")+"。1人あたり "+yen(raw)+"円を"+yen(r)+"円単位で切り上げ。";
+  if(coll-need>p*300)note+=" 余りが多めです。丸めの単位を小さくするか、余りは二次会・次回に回すと案内しておきましょう。";
+  $("feeNote").textContent=note;
+  $("prizePr").style.display=S.game==="1"?"":"none";
+  if(S.game==="1"&&prize>0){
+    var k=Math.max(3,Math.round(p/4));
+    var first=Math.round(prize*0.35/100)*100;
+    var second=Math.round(prize*0.2/100)*100;
+    var restN=Math.max(1,k-2),rest=Math.max(0,prize-first-second),each=Math.floor(rest/restN/100)*100;
+    $("prizePlan").innerHTML='<div class="sum" style="margin-top:14px"><div><b>'+yen(first)+'</b><span>🥇 1位</span></div><div><b>'+yen(second)+'</b><span>🥈 2位</span></div><div><b>'+yen(each)+'×'+restN+'</b><span>🎁 そのほか</span></div></div><p class="hint">景品の数の目安：'+k+'個（'+p+'人で4人に1つ）。</p>';
+  }else $("prizePlan").innerHTML="";
+  return fee;
+}
+
+function message(fee){
+  var ev=parse($("date").value);if(!ev)return"";
+  var name=KIND[S.kind],tm=$("time").value||"19:00",pl=$("place").value.trim()||"（お店の名前・住所）";
+  var rsvp=md(add(ev,-7));var dl=mdj(ev);
+  var m;
+  if(S.tone==="biz"){
+    m="【"+name+"のご案内】\n\nお疲れさまです。今年も"+name+"を下記のとおり開催します。\nお忙しい時期とは存じますが、ぜひご参加ください。\n\n■日時："+dl+" "+tm+"〜\n■場所："+pl+"\n■会費："+yen(fee)+"円（当日受付にて集金します）\n"+(S.game==="1"?"■お楽しみ：ビンゴ大会（景品あり）\n":"")+(S.niji==="1"?"■二次会：あり（自由参加）\n":"")+"\n【出欠のご回答】"+rsvp+"までに、このメッセージへの返信でお知らせください。\n食物アレルギーや苦手な食べ物がある方は、あわせてお知らせください。\n\nご不明な点は幹事までお気軽にどうぞ。";
+  }else{
+    m="🍻 "+name+"やります！\n\n📅 "+dl+" "+tm+"〜\n📍 "+pl+"\n💴 会費 "+yen(fee)+"円（当日集めます）\n"+(S.game==="1"?"🎯 ビンゴあり！景品もあるよ\n":"")+(S.niji==="1"?"🎤 二次会もあるかも\n":"")+"\n参加できるかどうか、"+rsvp+"までに返信ください🙏\n苦手な食べ物があれば一緒に教えてね！";
+  }
+  return m;
+}
+
+var lastAuto="";
+function all(){
+  plan();var fee=money();
+  var m=message(fee);
+  if($("msg").value===""||$("msg").value===lastAuto){$("msg").value=m}
+  lastAuto=m;
+  $("lineBtn").href="https://line.me/R/share?text="+encodeURIComponent($("msg").value);
+}
+$("msg").addEventListener("input",function(){$("lineBtn").href="https://line.me/R/share?text="+encodeURIComponent($("msg").value)});
+$("copyBtn").onclick=function(){
+  var v=$("msg").value;
+  function ok(){toast("案内文をコピーしました")}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(ok,function(){fallback(v);ok()})}else{fallback(v);ok()}
+};
+function fallback(v){var t=$("msg");t.focus();t.select();try{document.execCommand("copy")}catch(e){}}
+function toast(s){var t=$("toast");t.textContent=s;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},1800)}
+function burst(){
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var em=["🎉","✨","🍻","🎊"];
+  for(var i=0;i<10;i++){(function(i){var s=document.createElement("span");s.className="confetti";s.textContent=em[i%4];s.style.left=(Math.random()*95)+"vw";s.style.animationDelay=(Math.random()*.3)+"s";document.body.appendChild(s);setTimeout(function(){s.remove()},2300)})(i)}
+}
+
+// checklist
+var CK=["予約確認の画面・電話番号","参加者名簿（出欠）","おつり（千円札・500円玉）","集金袋・封筒","領収書の宛名メモ","乾杯・締めの挨拶の依頼","ビンゴカード・景品","二次会の候補メモ","モバイルバッテリー","お店の地図（共有用）"];
+$("ck").innerHTML=CK.map(function(c){return "<li>"+c+"</li>"}).join("");
+$("ck").addEventListener("click",function(e){var li=e.target.closest("li");if(li)li.classList.toggle("on")});
+
+all();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

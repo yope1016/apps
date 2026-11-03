@@ -285,6 +285,7 @@ body .afl a,body .pr .afl a,body .pr .links .afl a{display:flex;align-items:cent
   </section>
 
   <a class="xcal" id="mochuCal" href="../mochu-hagaki-calendar-2026/" hidden><span>📅</span><b>喪中はがき、いつまでに出す？</b><small>亡くなった日と作り方から、注文・投函の締切を日付で逆算します（無料）</small></a>
+  <a class="xcal" id="kanchuCal" href="../kanchu-nengajimai-2027/" hidden><span>❄️</span><b>場面別の寒中見舞い・年賀状じまいの文例</b><small>「喪中と知らずに年賀状を出した」「返事が遅れた」など6つの場面×相手3種で文面が完成。年賀状じまいの伝え方も（無料）</small></a>
   <!-- 収益導線：印刷サービス（ASP提携後にリンクを差し込む） -->
   <section class="pr" id="prBox" hidden>
     <span class="tag">PR</span>
@@ -346,6 +347,7 @@ body .afl a,body .pr .afl a,body .pr .links .afl a{display:flex;align-items:cent
       <a href="../furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額<small>12/31までに寄附を</small></a>
       <a href="../warikan-keisha/"><span>🍻</span>傾斜割り勘計算<small>忘年会・新年会の幹事に</small></a>
       <a href="../mochu-hagaki-calendar-2026/"><span>🕊</span>喪中はがき 逆算カレンダー<small>注文・投函の締切がわかる</small></a>
+      <a href="../kanchu-nengajimai-2027/"><span>❄️</span>寒中見舞い・年賀状じまい<small>場面×相手で文例が完成</small></a>
       <a href="../otoshidama-souba-2027/"><span>🧧</span>お年玉 相場計算機<small>学年別の目安と新札の枚数</small></a>
       <a href="../oosouji-buntan-2026/"><span>🧹</span>大掃除の分担<small>家族で分けて早く終わる</small></a>
       <a href="../nencho-navi-2026/"><span>📄</span>年末調整 書き方ナビ<small>令和8年分の申告書に</small></a>
@@ -531,7 +533,7 @@ function render(){
   });
   syncEdit();showCheck($("check"),full());
   $("out").hidden=false;$("prBox").hidden=false;
-  var m=mode==="mochu";$("prNenga").hidden=m;$("prMochu").hidden=!m;$("mochuCal").hidden=!m;
+  var m=mode==="mochu";$("prNenga").hidden=m;$("prMochu").hidden=!m;$("mochuCal").hidden=!m;$("kanchuCal").hidden=mode!=="kanchu";
   $("prTitle").textContent=m?"喪中はがきの印刷もネットで":(mode==="kanchu"?"寒中見舞いの印刷もネットで":"文面が決まったら、印刷までネットで");
   $("prLead").textContent=m?"文面を貼り付けて、落ち着いたデザインから選べるサービスがあります。急ぎの場合は納期を必ずご確認ください。":"デザインを選んで文面を貼り付けるだけ。宛名印刷や投函代行に対応したサービスもあります。早割の期間は各サービスでご確認ください。";
   $("out").scrollIntoView({behavior:"smooth",block:"start"});
@@ -560,7 +562,7 @@ Array.prototype.forEach.call(document.querySelectorAll(".tabs button"),function(
     $("formNenga").hidden=mode==="mochu";$("formMochu").hidden=mode!=="mochu";
     $("punRow").hidden=mode!=="nenga";
     renderTo();
-    $("out").hidden=true;$("prBox").hidden=true;$("mochuCal").hidden=true;
+    $("out").hidden=true;$("prBox").hidden=true;$("mochuCal").hidden=true;$("kanchuCal").hidden=true;
   };
 });
 })();

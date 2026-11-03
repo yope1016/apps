@@ -158,6 +158,8 @@ input:focus{outline:2px solid var(--pri2);outline-offset:1px}
 .rv b{display:block;font-size:15.5px;margin-bottom:2px}
 .rv p{font-size:13.5px;color:var(--sub)}
 .rv .when{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:var(--pri);border-radius:999px;padding:1px 10px;margin-bottom:6px}
+.xcal{display:block;text-decoration:none;color:var(--ink);background:var(--soft);border:2px dashed var(--line);border-radius:18px;padding:14px 16px;margin:14px 0 0;transition:transform .15s}
+.xcal:active{transform:scale(.98)}.xcal span{font-size:22px;margin-right:6px}.xcal b{font-size:15px}.xcal small{display:block;color:var(--sub);font-size:12px;margin-top:4px;line-height:1.6}
 .links a{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line);text-decoration:none;color:var(--ink);font-weight:700;font-size:14.5px;line-height:1.5}
 .links a:last-child{border-bottom:0}
 .links a span{font-size:22px;flex:0 0 30px;text-align:center}
@@ -264,6 +266,7 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:18px 0 8px}
     <div class="card">
       <h2><span class="ico">🗓️</span>逆算スケジュール</h2>
       <ul class="tl" id="tl"></ul>
+      <a class="xcal" id="kanCal" href="../kanchu-nengajimai-2027/" hidden><span>❄️</span><b>寒中見舞いの文面を、相手別に作る</b><small>喪中の返礼・年賀状をもらった相手など、場面と相手を選ぶだけで文例が完成します（無料）</small></a>
       <p class="src" style="margin-top:12px">日付は一般的な目安です。印刷サービスの締切・出荷日は会社とプランで違うため、注文前に確認してください。</p>
     </div>
 
@@ -348,11 +351,13 @@ footer{text-align:center;font-size:12px;color:var(--sub);padding:18px 0 8px}
       <div><span class="when">うっかり</span><b>喪中と知らずに年賀状を出してしまったら</b><p>寒中見舞いで「ご服喪中とは存じ上げず、年始のご挨拶を申し上げてしまい失礼いたしました」とお詫びを添えれば大丈夫です。</p></div>
     </div>
     <div class="btns"><button class="btn sub" id="rvCopy" type="button" style="grid-column:1/-1">寒中見舞い（返事）の文例をコピー</button></div>
+    <a class="xcal" href="../kanchu-nengajimai-2027/"><span>✍️</span><b>場面・相手に合わせた寒中見舞いを作る</b><small>「喪中と知らずに年賀状を出した」「返事が遅れた」など6つの場面×目上・友人・仕事の相手で文例を作れます</small></a>
   </section>
   </div>
 
   <section class="card links">
     <h2><span class="ico">🎍</span>年末年始の準備に</h2>
+    <a href="../kanchu-nengajimai-2027/"><span>❄️</span>寒中見舞い・年賀状じまい 文例メーカー 2027（場面×相手で文面が完成）</a>
     <a href="../nenga-hitokoto-2027/"><span>🐑</span>年賀状ひとことジェネレーター 2027（喪中はがき・寒中見舞いの文例タブあり）</a>
     <a href="../otoshidama-souba-2027/"><span>🧧</span>お年玉 相場計算機 2027（学年別の目安と新札の枚数）</a>
     <a href="../oosouji-buntan-2026/"><span>🧹</span>大掃除の分担ジェネレーター 2026</a>
@@ -464,7 +469,7 @@ $("go").onclick=function(){
   else if(kan){cls="kanchu";h="寒中見舞いで伝えましょう";p="喪中はがきが年賀状の準備に間に合わない時期です。年賀状は出さず、"+fmt(K.kanS)+"〜"+fmt(K.kanE)+"ごろに寒中見舞いで、年始の挨拶を控えたことを伝えます。"+(today<=K.gantan?"今すぐ出すなら喪中はがきも可（相手が投函済みのこともあります）。":"")}
   else if(j.lv==="maybe-no"){cls="mochu";h="喪中はがきは「出しても出さなくても」OK";p="別居であまり会わなかった"+(S.rel==="grand"?"祖父母":S.rel==="grandchild"?"孫":"義理の兄弟姉妹")+"は、喪中にしない人もいます。出す場合は下の締切が目安です。家族・親族で足並みをそろえると安心です。"}
   else {cls="mochu";h="喪中はがきを出しましょう";p=(j.lv==="maybe-yes"?"同居していた・親しかった方なので、喪中にする人が多いケースです。":"ほとんどの人が喪中にする続柄です。")+"相手が年賀状の準備を始める前、"+fmt(K.ideal)+"までの投函が理想です。"}
-  v.className="verdict "+cls;$("vh").textContent=h;$("vp").textContent=p;
+  v.className="verdict "+cls;$("vh").textContent=h;$("vp").textContent=p;$("kanCal").hidden=cls!=="kanchu";
   // timeline
   var tl=buildTL(j,cls);
   // countdown target

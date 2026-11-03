@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>医療費控除 いくら戻る？計算機 2026｜セルフメディケーション税制と比較</title>
+<meta name="description" content="令和8年分（2026年分）の医療費控除で戻る税金の目安を計算。セルフメディケーション税制とどちらが得か、家族のだれが申告すると得か、あといくらで10万円を超えるかがわかります。登録不要・無料・入力は送信されません。">
+<meta name="theme-color" content="#0f766e">
+<link rel="canonical" href="https://yope1016.github.io/apps/iryohi-kojo-2026/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💊%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://yope1016.github.io/apps/iryohi-kojo-2026/">
+<meta property="og:title" content="医療費控除 いくら戻る？計算機 2026｜セルフメディケーション税制と比較">
+<meta property="og:description" content="年収と医療費を入れるだけ。戻る税金の目安、セルフメディケーションとの比較、家族のだれが申告すると得かがわかります。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<meta name="twitter:title" content="医療費控除 いくら戻る？計算機 2026">
+<meta name="twitter:description" content="戻る税金の目安・セルフメディケーションとの比較・家族のだれが申告すると得か。">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"医療費控除 いくら戻る？計算機 2026","url":"https://yope1016.github.io/apps/iryohi-kojo-2026/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"令和8年分の医療費控除とセルフメディケーション税制の還付額の目安を比較する無料ツール。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"医療費が10万円を超えないと医療費控除は受けられませんか？","acceptedAnswer":{"@type":"Answer","text":"総所得金額等が200万円未満の人は、10万円ではなく総所得金額等の5%を超えた分が控除の対象です。給与だけなら年収がおよそ300万円未満の人が当てはまります。"}},
+{"@type":"Question","name":"医療費控除とセルフメディケーション税制は両方使えますか？","acceptedAnswer":{"@type":"Answer","text":"どちらか一方だけを選びます。このツールでは両方を計算し、戻る額が大きい方を表示します。"}},
+{"@type":"Question","name":"家族の医療費をまとめて申告できますか？","acceptedAnswer":{"@type":"Answer","text":"生計を一にする配偶者や親族のために支払った医療費は、支払った1人がまとめて申告できます。一般に税率の高い人が申告すると戻る額が大きくなりますが、所得が低い人は足切りが10万円より小さくなるため、逆に得になる場合があります。"}},
+{"@type":"Question","name":"去年の分を申告し忘れました。","acceptedAnswer":{"@type":"Answer","text":"還付申告は、その年の翌年1月1日から5年間できます。2026年分なら2031年12月31日まで申告できます。"}},
+{"@type":"Question","name":"入力した内容はどこかに送信されますか？","acceptedAnswer":{"@type":"Answer","text":"送信されません。計算はすべてお使いの端末の中で行われ、保存もされません。"}}]}</script>
+<style>
+:root{
+  --bg:#f3f7f6;--bg2:#eaf3f1;--card:#ffffff;--ink:#15211f;--sub:#56706b;--line:#dbe7e4;
+  --pri:#0f766e;--pri2:#14b8a6;--acc:#f59e0b;--ok:#10b981;--warn:#ef4444;--vio:#7c3aed;
+  --chip:#e6f4f1;--chipOn:#0f766e;--shadow:0 10px 30px -12px rgba(20,60,55,.28);
+  --grad:linear-gradient(135deg,#0f766e 0%,#0d9488 45%,#6366f1 100%);
+  --grad2:linear-gradient(135deg,#7c3aed 0%,#a855f7 55%,#ec4899 100%);
+  --r:20px;
+}
+:root[data-theme="dark"]{
+  --bg:#0b1312;--bg2:#121d1b;--card:#16211f;--ink:#e9f5f2;--sub:#9db8b2;--line:#25352f;
+  --chip:#1c2e2a;--shadow:0 10px 30px -12px rgba(0,0,0,.65);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1312;--bg2:#121d1b;--card:#16211f;--ink:#e9f5f2;--sub:#9db8b2;--line:#25352f;
+    --chip:#1c2e2a;--shadow:0 10px 30px -12px rgba(0,0,0,.65);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+:root[data-theme="dark"] a{color:#5eead4}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.promo-note{font-size:11px;color:var(--sub);text-align:center;padding:6px 12px 0;opacity:.85}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:26px 0 86px}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;opacity:.22}
+.hero:before{width:300px;height:300px;background:#fff;top:-140px;right:-90px}
+.hero:after{width:220px;height:220px;background:#5eead4;bottom:-100px;left:-70px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px;font-family:inherit}
+.hero h1{font-size:clamp(26px,7vw,40px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.42em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.hero .lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2;max-width:560px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+.pill{position:absolute;right:14px;bottom:22px;z-index:1;width:110px;height:46px;border-radius:23px;overflow:hidden;display:flex;transform:rotate(-28deg);box-shadow:0 10px 30px rgba(0,0,0,.25);animation:float 5s ease-in-out infinite}
+.pill i{flex:1}.pill i:first-child{background:#fff}.pill i:last-child{background:#fbbf24}
+@keyframes float{50%{transform:rotate(-20deg) translateY(-10px)}}
+@media(max-width:480px){.pill{width:72px;height:30px;right:8px;bottom:14px}}
+main{margin-top:-62px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line)}
+.card h2{font-size:19px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ico{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:0 0 38px;background:var(--chip)}
+.q{margin:18px 0 6px;font-weight:800;font-size:15px}
+.q:first-of-type{margin-top:4px}
+.q small{display:block;font-weight:500;color:var(--sub);font-size:12px;line-height:1.55}
+.num{display:flex;align-items:center;gap:8px;margin-top:6px}
+.num button{width:48px;height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--chip);color:var(--ink);font-size:22px;font-weight:800;cursor:pointer;flex:0 0 48px;font-family:inherit}
+.num input{flex:1;min-width:0;height:50px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:21px;font-weight:800;text-align:right;padding:0 12px;font-family:inherit}
+.num .u{font-weight:800;color:var(--sub);min-width:2.2em}
+input:focus,button:focus-visible{outline:3px solid rgba(15,118,110,.35);outline-offset:1px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--pri) var(--p,30%),var(--line) var(--p,30%));margin:14px 0 4px;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:4px solid var(--pri);box-shadow:0 4px 10px rgba(0,0,0,.25)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--pri)}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{border:1.5px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:9px 14px;font-size:14px;font-weight:700;cursor:pointer;min-height:44px;transition:all .2s;font-family:inherit}
+.chip[aria-pressed="true"],.chip.on{background:var(--chipOn);border-color:var(--chipOn);color:#fff;box-shadow:0 6px 16px -6px rgba(15,118,110,.7)}
+.hint{font-size:12px;color:var(--sub);margin-top:6px;line-height:1.6}
+.seg{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.seg .chip{flex:1;min-width:120px}
+details.more{margin-top:16px;border:1.5px dashed var(--line);border-radius:16px;padding:4px 14px}
+details.more summary{cursor:pointer;font-weight:800;padding:10px 0;list-style:none;font-size:14px;color:var(--pri)}
+details.more summary::-webkit-details-marker{display:none}
+:root[data-theme="dark"] details.more summary{color:#5eead4}
+/* result */
+.res{background:var(--grad);color:#fff;border-radius:var(--r);padding:22px 18px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.res.self{background:var(--grad2)}
+.res.none{background:linear-gradient(135deg,#475569,#334155)}
+.res:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.12);right:-50px;top:-70px}
+.res .lbl{font-size:13px;font-weight:700;opacity:.92;position:relative;z-index:1}
+.res .amt{font-size:clamp(40px,12vw,58px);font-weight:900;line-height:1.1;letter-spacing:-.01em;position:relative;z-index:1}
+.res .amt small{font-size:.38em;margin-left:4px}
+.res .sub{font-size:13px;opacity:.95;margin-top:6px;position:relative;z-index:1}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;position:relative;z-index:1}
+.kpi{background:rgba(255,255,255,.16);border-radius:14px;padding:10px 12px}
+.kpi b{display:block;font-size:20px;font-weight:900}
+.kpi span{font-size:11px;opacity:.92;line-height:1.5;display:block}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+@media(max-width:420px){.vs{grid-template-columns:1fr}}
+.opt{border:2px solid var(--line);border-radius:18px;padding:14px;background:var(--bg2);position:relative;transition:all .3s}
+.opt.win{border-color:var(--pri);box-shadow:0 10px 24px -14px rgba(15,118,110,.9)}
+.opt.win.s{border-color:var(--vio);box-shadow:0 10px 24px -14px rgba(124,58,237,.9)}
+.opt .crown{position:absolute;top:-12px;right:12px;background:var(--pri);color:#fff;font-size:11px;font-weight:900;border-radius:999px;padding:3px 10px;display:none}
+.opt.s .crown{background:var(--vio)}
+.opt.win .crown{display:block}
+.opt h3{font-size:14px;font-weight:900}
+.opt .big{font-size:28px;font-weight:900;line-height:1.25;margin-top:4px}
+.opt .big small{font-size:13px;margin-left:2px}
+.opt .d{font-size:12px;color:var(--sub);margin-top:4px;line-height:1.6}
+.bar{height:10px;border-radius:5px;background:var(--line);margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--grad);border-radius:5px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.opt.s .bar i{background:var(--grad2)}
+.row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.row:last-child{border-bottom:none}
+.row .k{color:var(--sub);flex:1 1 auto;min-width:0}.row .v{font-weight:800;text-align:right;margin-left:auto}
+.alert{border-radius:16px;padding:14px;margin-top:12px;font-size:14px;display:flex;gap:10px;line-height:1.65}
+.alert.y{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4)}
+.alert.b{background:rgba(15,118,110,.08);border:1px solid rgba(15,118,110,.3)}
+.alert.g{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.4)}
+.alert .e{font-size:20px;line-height:1.3}
+.gauge{margin-top:14px;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.gauge .t{font-size:13px;font-weight:800;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.gbar{position:relative;height:14px;border-radius:7px;background:var(--line);margin:10px 0 6px}
+.gbar i{display:block;height:100%;border-radius:7px;background:var(--grad);transition:width .5s}
+.gbar em{position:absolute;top:-5px;width:3px;height:24px;background:var(--warn);border-radius:2px}
+.gauge .s{font-size:12px;color:var(--sub)}
+.fam{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media(max-width:420px){.fam{grid-template-columns:1fr}}
+.who{border:1.5px solid var(--line);border-radius:16px;padding:12px;background:var(--bg2)}
+.who.win{border-color:var(--ok);background:rgba(16,185,129,.08)}
+.who b{font-size:22px;font-weight:900;display:block}
+.who span{font-size:12px;color:var(--sub)}
+/* checker */
+.search{width:100%;height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:16px;padding:0 14px;font-family:inherit;margin-top:4px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tabs .chip{padding:6px 12px;min-height:38px;font-size:13px}
+.items{display:grid;gap:8px}
+.it{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--bg2);animation:fade .3s ease}
+.it .m{flex:0 0 30px;height:30px;border-radius:10px;display:grid;place-items:center;font-weight:900;color:#fff;font-size:15px}
+.m.o{background:var(--ok)}.m.x{background:var(--warn)}.m.t{background:var(--acc)}
+.it b{font-size:14px;display:block;line-height:1.5}.it span{font-size:12px;color:var(--sub);line-height:1.55;display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}}
+.steps{counter-reset:s;display:grid;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step:before{counter-increment:s;content:counter(s);flex:0 0 32px;height:32px;border-radius:50%;background:var(--grad);color:#fff;font-weight:900;display:grid;place-items:center}
+.step b{display:block;font-size:14px}.step span{font-size:13px;color:var(--sub)}
+.pr{border:1.5px solid var(--line);border-radius:18px;padding:16px;margin-top:12px;background:var(--bg2);position:relative}
+.pr .prl{position:absolute;top:10px;right:12px;font-size:10px;font-weight:900;border:1px solid var(--sub);color:var(--sub);border-radius:6px;padding:0 6px;letter-spacing:.08em}
+.pr h3{font-size:15px;font-weight:900;margin-bottom:4px;padding-right:36px}
+.pr p{font-size:13px;color:var(--sub)}
+.soon{display:inline-block;margin-top:8px;font-size:12px;font-weight:800;color:var(--sub);background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:6px 10px}
+.afl{display:flex;flex-direction:column;gap:10px;margin-top:12px;position:relative}
+body .afl a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border-radius:14px;background:var(--pri)!important;background-image:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0))!important;color:#fff!important;font-weight:700;font-size:15px;line-height:1.45;text-decoration:none;transition:transform .15s}
+.afl a::after{content:"\203A";font-size:22px;line-height:1;flex:none}
+.afl a:active{transform:scale(.98)}
+.afl img[width="1"]{position:absolute;left:0;bottom:0}
+.afl-note{font-size:11px;color:var(--sub);margin-top:6px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.acts .chip{flex:1;text-align:center}
+.links{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:480px){.links{grid-template-columns:1fr}}
+.lk{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink)!important;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:12px;min-height:60px;transition:transform .2s}
+.lk:hover{transform:translateY(-2px)}
+.lk .ico{width:34px;height:34px;flex-basis:34px;font-size:18px}
+.lk b{font-size:14px;display:block;line-height:1.45}.lk span{font-size:12px;color:var(--sub)}
+.faq details{border-bottom:1px solid var(--line);padding:12px 0}
+.faq summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;gap:8px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:before{content:"Q";color:var(--pri);font-weight:900}
+.faq p{font-size:14px;color:var(--sub);margin-top:8px}
+.src{font-size:12px;color:var(--sub);line-height:1.7}
+.src a{word-break:break-all}
+footer{text-align:center;color:var(--sub);font-size:12px;padding:10px 16px 40px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(140px);background:#111827;color:#fff;padding:12px 18px;border-radius:14px;font-weight:700;font-size:14px;transition:transform .3s;z-index:20}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.pulse{animation:pulse .5s ease}
+@keyframes pulse{40%{transform:scale(1.015)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.hero,.pr,.links,.faq,.acts,.mode{display:none!important}main{margin-top:0}}
+</style>
+</head>
+<body>
+<div class="promo-note">本ページはプロモーション（広告）を含みます</div>
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar"><div class="brand">ひとりラボ ツール</div><button class="mode" id="mode" aria-label="表示モード切り替え">🌙 ダーク</button></div>
+    <h1><small>令和8年分（2026年分）対応</small><span style="display:inline-block">医療費控除、</span><span style="display:inline-block">いくら戻る？</span></h1>
+    <p class="lead">年収と医療費を入れるだけ。戻る税金の目安と、<b>セルフメディケーション税制とどちらが得か</b>、<b>家族のだれが申告すると得か</b>がその場でわかります。</p>
+    <div class="badges"><span class="badge">🔒 入力は端末の中だけ</span><span class="badge">登録不要・無料</span><span class="badge">10万円未満でも戻る人を判定</span></div>
+    <div class="pill" aria-hidden="true"><i></i><i></i></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" id="input">
+    <h2><span class="ico">✍️</span>3つ入れるだけ</h2>
+
+    <div class="q">① 申告する人の年収（給与・税込み）<small>源泉徴収票の「支払金額」。だいたいでOKです</small></div>
+    <div class="num"><button type="button" id="sm" aria-label="10万円減らす">−</button><input id="sal" inputmode="numeric" value="450" aria-label="年収（万円）"><span class="u">万円</span><button type="button" id="sp" aria-label="10万円増やす">＋</button></div>
+    <input type="range" id="salr" min="100" max="2000" step="10" value="450" aria-label="年収スライダー">
+    <div class="quick" id="qs"><button class="chip" data-v="200">200万</button><button class="chip" data-v="300">300万</button><button class="chip" data-v="450">450万</button><button class="chip" data-v="600">600万</button><button class="chip" data-v="800">800万</button><button class="chip" data-v="1000">1000万</button></div>
+
+    <div class="q">② 1年間に払った医療費（家族の分も合計）<small>病院・歯医者・薬局の窓口負担、治療のための市販薬、通院の電車・バス代など。マイナポータルの「医療費通知」でも確認できます</small></div>
+    <div class="num"><input id="med" inputmode="numeric" value="12" aria-label="医療費（万円）"><span class="u">万円</span></div>
+    <div class="quick" id="qm"><button class="chip" data-v="5">5万</button><button class="chip" data-v="10">10万</button><button class="chip" data-v="15">15万</button><button class="chip" data-v="30">30万</button><button class="chip" data-v="60">60万（出産・入院）</button></div>
+
+    <div class="q">③ そのうち、保険などで戻ってきたお金<small>医療保険の入院給付金、高額療養費、出産育児一時金など。なければ0</small></div>
+    <div class="num"><input id="ins" inputmode="numeric" value="0" aria-label="補填された額（万円）"><span class="u">万円</span></div>
+
+    <details class="more" id="more">
+      <summary>＋ セルフメディケーション税制・家族の比較も見る</summary>
+      <div class="q">④ 対象の市販薬（パッケージに<b>セルフメディケーション税控除対象</b>のマーク）を買った額<small>かぜ薬・胃腸薬・湿布・目薬などの一部。上の②にも含めてOK（治療目的なら医療費になります）</small></div>
+      <div class="num"><input id="otc" inputmode="numeric" value="2" aria-label="対象医薬品（万円）"><span class="u">万円</span></div>
+      <div class="q">⑤ その年に健康診断などを受けましたか？<small>会社の健診、特定健診（メタボ健診）、予防接種、市区町村のがん検診など。セルフメディケーション税制を使う条件です</small></div>
+      <div class="seg" id="kenshin"><button class="chip" aria-pressed="true" data-v="1">受けた</button><button class="chip" aria-pressed="false" data-v="0">受けていない</button></div>
+      <div class="q">⑥ 配偶者など、もう1人の年収（比較用・任意）<small>家族の医療費は、生計を一にしていれば1人がまとめて申告できます。どちらが申告すると得かを比べます</small></div>
+      <div class="num"><input id="sal2" inputmode="numeric" placeholder="例 120" aria-label="もう1人の年収（万円）"><span class="u">万円</span></div>
+      <div class="q">⑦ 社会保険料（年額・任意）<small>空欄なら年収の約15%で推定。iDeCoや生命保険料控除などがある人は、その分も足すと精度が上がります</small></div>
+      <div class="num"><input id="sh" inputmode="numeric" placeholder="自動" aria-label="社会保険料など（万円）"><span class="u">万円</span></div>
+    </details>
+  </section>
+
+  <section id="result">
+    <div class="res" id="res">
+      <div class="lbl" id="rlbl">戻ってくる・安くなる税金の目安（所得税＋住民税）</div>
+      <div class="amt" id="amt">0<small>円</small></div>
+      <div class="sub" id="rsub"></div>
+      <div class="kpis">
+        <div class="kpi"><b id="k1">0円</b><span>所得税の還付（確定申告で戻る）</span></div>
+        <div class="kpi"><b id="k2">0円</b><span>住民税の減額（2027年6月〜の住民税が安くなる）</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h2><span class="ico">⚖️</span>医療費控除 vs セルフメディケーション</h2>
+      <p class="hint" style="margin-top:0">どちらか一方しか使えません。戻る額が大きい方に👑がつきます。</p>
+      <div class="vs">
+        <div class="opt" id="o1"><span class="crown">👑 こちらが得</span><h3>🏥 医療費控除</h3><div class="big" id="o1v">0<small>円</small></div><div class="d" id="o1d"></div><div class="bar"><i id="o1b"></i></div></div>
+        <div class="opt s" id="o2"><span class="crown">👑 こちらが得</span><h3>💊 セルフメディケーション税制</h3><div class="big" id="o2v">0<small>円</small></div><div class="d" id="o2d"></div><div class="bar"><i id="o2b"></i></div></div>
+      </div>
+      <div class="gauge">
+        <div class="t"><span>足切りライン（ここを超えた分が控除）</span><span id="gline"></span></div>
+        <div class="gbar"><i id="gb"></i><em id="gm"></em></div>
+        <div class="s" id="gs"></div>
+      </div>
+      <div id="tips"></div>
+    </div>
+
+    <div class="card" id="famcard" hidden>
+      <h2><span class="ico">👨‍👩‍👧</span>家族のだれが申告すると得？</h2>
+      <div class="fam"><div class="who" id="w1"></div><div class="who" id="w2"></div></div>
+      <p class="hint" id="famnote"></p>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">🧮</span>計算の内訳</h2>
+      <div id="rows"></div>
+      <div class="acts"><button class="chip" id="copy">📋 結果をコピー</button><button class="chip" id="line">💬 LINEで送る</button></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="ico">🎯</span>次にやること</h2>
+      <div id="next"></div>
+      <div id="pr"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🔍</span>これって医療費になる？チェッカー</h2>
+    <input class="search" id="q" type="search" placeholder="例：タクシー、歯の矯正、マッサージ、コンタクト" aria-label="キーワードで探す">
+    <div class="tabs" id="tabs"><button class="chip on" data-c="all">すべて</button><button class="chip" data-c="o">⭕ なる</button><button class="chip" data-c="t">🔺 条件つき</button><button class="chip" data-c="x">❌ ならない</button></div>
+    <div class="items" id="items"></div>
+    <p class="hint">判定は国税庁の説明にもとづく一般的な目安です。迷うものは、領収書を残しておき、税務署の電話相談などで確認してください。</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🗓️</span>申告の流れ（2026年分）</h2>
+    <div class="steps">
+      <div class="step"><div><b>〜2026年12月31日：領収書・レシートを集める</b><span>その年に<b>支払った</b>分が対象（12月の受診でも、支払いが1月なら翌年分）。</span></div></div>
+      <div class="step"><div><b>2027年1月〜：マイナポータルの医療費通知を確認</b><span>e-Taxで連携すると、健康保険の医療費が自動で入ります。医療費通知にない分（市販薬・交通費など）だけ手入力。</span></div></div>
+      <div class="step"><div><b>2027年1月から提出OK（還付申告）</b><span>還付だけの申告は、通常の申告期間（2027年2月16日〜3月15日）より前でも出せます。早く出すほど早く戻ります。</span></div></div>
+      <div class="step"><div><b>忘れても5年間はさかのぼれる</b><span>2026年分は2031年12月31日まで。去年・おととしの分も確認してみましょう。</span></div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🧰</span>あわせて使える無料ツール</h2>
+    <div class="links">
+      <a class="lk" href="https://yope1016.github.io/apps/kakutei-shindan-2026/"><span class="ico">🧾</span><div><b>確定申告が必要か1分診断</b><span>副業・住宅ローンなどもまとめて判定</span></div></a>
+      <a class="lk" href="https://yope1016.github.io/apps/furusato-jogen-2026/"><span class="ico">🎁</span><div><b>ふるさと納税 上限額シミュレーター</b><span>医療費控除をする年は上限が少し下がります</span></div></a>
+      <a class="lk" href="https://yope1016.github.io/apps/nencho-navi-2026/"><span class="ico">📄</span><div><b>年末調整 書き方ナビ 2026</b><span>医療費控除は年末調整ではできません</span></div></a>
+      <a class="lk" href="https://yope1016.github.io/apps/"><span class="ico">✨</span><div><b>ひとりラボ ツール一覧</b><span>年末年始・お金・暮らしの無料ツール</span></div></a>
+    </div>
+  </section>
+
+  <section class="card faq">
+    <h2><span class="ico">💬</span>よくある質問</h2>
+    <details><summary>10万円を超えないと受けられない？</summary><p>総所得金額等が200万円未満の人は、10万円ではなく「総所得金額等の5%」を超えた分が対象です。給与だけなら、年収がおよそ300万円未満の人が当てはまります（このツールは自動で判定します）。</p></details>
+    <details><summary>セルフメディケーション税制と両方使える？</summary><p>どちらか一方だけです。セルフメディケーション税制は、対象の市販薬の購入額から1万2,000円を引いた額（上限8万8,000円）が控除になります。健康診断などを受けていることが条件です。</p></details>
+    <details><summary>家族の医療費もまとめていい？</summary><p>生計を一にする配偶者・子・親などのために<b>自分が払った</b>医療費は、まとめて申告できます。共働きの場合は、税率の高い人が申告すると戻る額が大きくなりやすいですが、所得が低い人は足切りが小さくなるため逆転することもあります。</p></details>
+    <details><summary>年末調整で医療費控除はできる？</summary><p>できません。会社員でも、医療費控除は確定申告（還付申告）で行います。</p></details>
+    <details><summary>2027年からセルフメディケーション税制は変わる？</summary><p>令和8年度の税制改正で、対象の医薬品を広げ、期限を延長・一部恒久化する見直しが決まっています（令和9年分から）。2026年分は現行のルール（1万2,000円超・上限8万8,000円）で計算しています。</p></details>
+    <details><summary>入力した内容は送信される？</summary><p>送信されません。計算はすべてお使いの端末の中で行われ、保存もされません。</p></details>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📚</span>計算方法と出典</h2>
+    <p class="src">医療費控除＝（支払った医療費 − 保険などで補填された額）− 10万円（総所得金額等が200万円未満の人はその5%）、上限200万円。セルフメディケーション税制＝対象医薬品の購入額 − 1万2,000円、上限8万8,000円。戻る税金＝控除額 × 所得税率（復興特別所得税2.1%を含む）＋ 控除額 × 住民税10%の目安。給与所得控除（最低74万円）と所得税の基礎控除（令和8年分）は改正後の額で計算し、社会保険料は未入力なら年収の約15%で推定しています。配偶者・扶養・住宅ローン控除などは考慮していないため、実際の額とは異なります。最終的な判断は、国税庁の案内や税務署・税理士にご確認ください。<br>
+    出典：<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm" rel="noopener">国税庁 No.1120 医療費を支払ったとき（医療費控除）</a>／<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1129.htm" rel="noopener">国税庁 No.1129 セルフメディケーション税制</a>／<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1122.htm" rel="noopener">国税庁 No.1122 医療費控除の対象となる医療費</a>／<a href="https://www.mhlw.go.jp/stf/newpage_67884.html" rel="noopener">厚生労働省 令和8年度厚生労働省関係税制改正について</a></p>
+  </section>
+</main>
+<footer>© ひとりラボ ツール ／ 入力した内容は送信・保存されません</footer>
+<div class="toast" id="toast"></div>
+
+<template id="aff-kakutei_soft">
+<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3U4LWA+35XE+601S2" rel="nofollow">やよいの白色申告オンライン</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGAV2+3U4LWA+35XE+601S2" alt="">
+<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+34IYVU+3SPO+C8KZDE" rel="nofollow">マネーフォワード クラウド</a>
+<img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BGAV2+34IYVU+3SPO+C8KZDE" alt="">
+</template>
+<template id="aff-furusato_site">
+<a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738779" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738779" height="1" width="1" border="0">ふるなび</a>
+<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" rel="nofollow">ふるさと本舗</a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" alt="">
+</template>
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var root=document.documentElement,mb=$("mode");
+function setMode(m){root.setAttribute("data-theme",m);mb.textContent=m==="dark"?"☀️ ライト":"🌙 ダーク"}
+setMode(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+mb.onclick=function(){setMode(root.getAttribute("data-theme")==="dark"?"light":"dark")};
+
+/* ---- tax model (令和8年分) ---- */
+function kyuyoKojo(s){ if(s<=2200000) return Math.min(s,740000); if(s<=3600000) return s*0.3+80000; if(s<=6600000) return s*0.2+440000; if(s<=8500000) return s*0.1+1100000; return 1950000; }
+function kisoIT(g){ if(g<=4890000) return 1040000; if(g<=6550000) return 670000; if(g<=23500000) return 620000; if(g<=24000000) return 480000; if(g<=24500000) return 320000; if(g<=25000000) return 160000; return 0; }
+function kisoJT(g){ if(g<=24000000) return 430000; if(g<=24500000) return 290000; if(g<=25000000) return 150000; return 0; }
+function itax(t){ t=Math.max(0,Math.floor(t/1000)*1000); var b=[[1950000,.05,0],[3300000,.10,97500],[6950000,.20,427500],[9000000,.23,636000],[18000000,.33,1536000],[40000000,.40,2796000],[Infinity,.45,4796000]];
+  for(var i=0;i<b.length;i++){ if(t<=b[i][0]) return Math.max(0,(t*b[i][1]-b[i][2]))*1.021; } return 0; }
+function shaho(s){ return s<=9000000? s*0.15 : 1350000+(s-9000000)*0.06; }
+function person(salary,shOverride){
+  var g=Math.max(0,salary-kyuyoKojo(salary)); g=Math.floor(g/1000)*1000;
+  var sh=shOverride==null?shaho(salary):shOverride;
+  var tIT=Math.max(0,g-sh-kisoIT(g)), tJT=Math.max(0,g-sh-kisoJT(g));
+  return {salary:salary,g:g,tIT:tIT,tJT:tJT,sh:sh};
+}
+function save(p,ded){
+  var it=itax(p.tIT)-itax(p.tIT-ded);
+  var jt=(p.g<=450000)?0:Math.min(ded,p.tJT)*0.10;
+  return {it:Math.floor(it),jt:Math.floor(jt),total:Math.floor(it)+Math.floor(jt)};
+}
+function evaluate(p,med,ins,otc,ken){
+  var cut=Math.min(100000,Math.floor(p.g*0.05));
+  var d1=Math.min(2000000,Math.max(0,med-ins-cut));
+  var d2=ken?Math.min(88000,Math.max(0,otc-12000)):0;
+  return {cut:cut,d1:d1,d2:d2,s1:save(p,d1),s2:save(p,d2)};
+}
+window.__iryo={person:person,evaluate:evaluate,itax:itax};
+
+/* ---- ui ---- */
+function num(v){v=String(v==null?"":v).replace(/[０-９．]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-65248)}).replace(/[^0-9.]/g,"");var n=parseFloat(v);return isNaN(n)?null:n;}
+function yen(n){return Math.round(n).toLocaleString("ja-JP")+"円";}
+function man(n){var v=Math.round(n/1000)/10;return v.toLocaleString("ja-JP")+"万円";}
+var st={ken:true},shown=0,anim=null,text="";
+function countTo(to){
+  if(anim)cancelAnimationFrame(anim);var from=shown,t0=null,dur=500;
+  function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur);p=1-Math.pow(1-p,3);var v=Math.round(from+(to-from)*p);
+    $("amt").innerHTML=v.toLocaleString("ja-JP")+"<small>円</small>";if(p<1)anim=requestAnimationFrame(f);else shown=to;}
+  anim=requestAnimationFrame(f);
+}
+function paint(el){var r=(el.value-el.min)/(el.max-el.min)*100;el.style.setProperty("--p",r+"%");}
+function val(id,max){var v=num($(id).value);if(v==null)return 0;return Math.min(Math.max(v,0),max);}
+function aff(k){var t=document.getElementById("aff-"+k);return t?'<div class="afl">'+t.innerHTML+'</div><p class="afl-note">※広告（PR）です。料金・条件はリンク先でご確認ください。</p>':'<span class="soon">リンク準備中</span>'}
+function al(c,e,h){return '<div class="alert '+c+'"><span class="e">'+e+'</span><div>'+h+'</div></div>'}
+
+function render(){
+  var sal=val("sal",10000)*10000, med=val("med",5000)*10000, ins=val("ins",5000)*10000, otc=val("otc",500)*10000;
+  var shv=num($("sh").value); var sh=shv==null?null:Math.min(shv,3000)*10000;
+  paint($("salr"));
+  var p=person(sal,sh), e=evaluate(p,med,ins,otc,st.ken);
+  var win=e.s1.total>=e.s2.total?1:2; if(e.s1.total===0&&e.s2.total===0)win=0;
+  var best=win===2?e.s2:e.s1, bd=win===2?e.d2:e.d1;
+  var R=$("res"); R.className="res"+(win===2?" self":win===0?" none":"");
+  $("rlbl").textContent=win===2?"セルフメディケーション税制で戻る・安くなる税金の目安":"医療費控除で戻る・安くなる税金の目安（所得税＋住民税）";
+  countTo(best.total);
+  $("k1").textContent=yen(best.it); $("k2").textContent=yen(best.jt);
+  var sub;
+  if(win===0){
+    if(p.tIT<=0&&p.tJT<=0) sub="所得税・住民税がかかっていない（またはほぼない）ため、控除しても戻る税金はない見込みです。";
+    else sub="今の金額では足切りライン（"+yen(e.cut)+"）を超えていません。下の「あといくら」を確認してください。";
+  } else sub="控除額 "+yen(bd)+" × 税率で計算。所得税は確定申告で振り込まれ、住民税は翌年度の税額が下がります。";
+  $("rsub").textContent=sub;
+
+  var mx=Math.max(e.s1.total,e.s2.total,1);
+  $("o1v").innerHTML=e.s1.total.toLocaleString("ja-JP")+"<small>円</small>";
+  $("o2v").innerHTML=e.s2.total.toLocaleString("ja-JP")+"<small>円</small>";
+  $("o1d").textContent="控除額 "+yen(e.d1)+"（"+man(Math.max(0,med-ins))+" − 足切り "+man(e.cut)+"）";
+  $("o2d").textContent=st.ken?("控除額 "+yen(e.d2)+"（対象の市販薬 "+man(otc)+" − 1.2万円、上限8.8万円）"):"健康診断などを受けていないため使えません";
+  $("o1b").style.width=(e.s1.total/mx*100)+"%"; $("o2b").style.width=(e.s2.total/mx*100)+"%";
+  $("o1").classList.toggle("win",win===1); $("o2").classList.toggle("win",win===2);
+
+  var net=Math.max(0,med-ins), scale=Math.max(e.cut*1.6,net*1.15,50000);
+  $("gline").textContent=yen(e.cut)+(e.cut<100000?"（所得の5%）":"");
+  $("gb").style.width=Math.min(100,net/scale*100)+"%"; $("gm").style.left=Math.min(99,e.cut/scale*100)+"%";
+  $("gs").textContent=net>e.cut?("足切りを "+yen(net-e.cut)+" 超えています。"):("あと "+yen(e.cut-net+1)+" 以上で医療費控除の対象になります。");
+
+  var tips="";
+  if(e.cut<100000) tips+=al("g","🎉","<b>あなたの足切りは10万円ではなく "+yen(e.cut)+"</b>。総所得金額等が200万円未満なので、所得の5%を超えた分から控除できます。");
+  if(win===2){var need=e.d2+e.cut+ins-med; if(need>0) tips+=al("b","💡","医療費があと<b>"+yen(need+1)+"</b>増えると、医療費控除の方が得になります。12月中に支払う予定の治療費（歯医者など）があれば、合計に入れて再計算してみてください。");}
+  if(win===1&&st.ken&&otc>12000) tips+=al("b","ℹ️","対象の市販薬の分は、医療費控除の②に含めて計算すればOK（治療目的の購入なら医療費になります）。");
+  if(!st.ken&&otc>12000) tips+=al("y","⚠️","セルフメディケーション税制は、その年に健康診断・予防接種などを受けていることが条件です。会社の健診も対象です。");
+  if(ins>med) tips+=al("y","⚠️","補填された額は、その給付の対象になった医療費の額までしか差し引きません。出産育児一時金などで医療費を上回った分は、ほかの医療費から引かなくてOKです（厳密な計算は国税庁の説明を確認）。");
+  $("tips").innerHTML=tips;
+
+  // family
+  var s2=num($("sal2").value), fc=$("famcard");
+  var famHtml="";
+  if(s2!=null&&s2>0){
+    fc.hidden=false;
+    var q=person(Math.min(s2,10000)*10000,null), f=evaluate(q,med,ins,otc,st.ken);
+    var a=Math.max(e.s1.total,e.s2.total), b=Math.max(f.s1.total,f.s2.total);
+    $("w1").className="who"+(a>=b&&a>0?" win":""); $("w2").className="who"+(b>a?" win":"");
+    $("w1").innerHTML="<span>あなた（年収 "+man(sal)+"）が申告</span><b>"+yen(a)+"</b><span>足切り "+yen(e.cut)+"</span>";
+    $("w2").innerHTML="<span>もう1人（年収 "+man(q.salary)+"）が申告</span><b>"+yen(b)+"</b><span>足切り "+yen(f.cut)+"</span>";
+    $("famnote").textContent=a===b?"どちらが申告しても同じくらいです。":(a>b?"あなたが申告する方が約"+yen(a-b)+"多く戻る見込みです。":"もう1人が申告する方が約"+yen(b-a)+"多く戻る見込みです（足切りが小さい・税率の関係）。")+" 医療費は、実際にお金を払った人が申告します。";
+    famHtml="\n家族で比較：あなた "+yen(a)+"／もう1人 "+yen(b);
+  } else fc.hidden=true;
+
+  // rows
+  var rows=[["年収（給与）",man(sal)],["給与所得（総所得金額等）",yen(p.g)],["社会保険料など"+(sh==null?"（推定）":""),yen(p.sh)],["課税所得（所得税）",yen(p.tIT)],["足切りライン",yen(e.cut)],["医療費 − 補填",yen(net)],["医療費控除の額",yen(e.d1)],["セルフメディケーションの控除額",yen(e.d2)],["所得税の還付（復興税込み）",yen(best.it)],["住民税の減額",yen(best.jt)]];
+  $("rows").innerHTML=rows.map(function(r){return '<div class="row"><span class="k">'+r[0]+'</span><span class="v">'+r[1]+'</span></div>'}).join("");
+
+  // next
+  var nx="";
+  if(win===0) nx+=al("b","📌","今年は申告しても戻らない見込みです。ただし<b>領収書は捨てずに</b>12月末まで集めておきましょう。年末に治療が増えると対象になることがあります。");
+  else nx+=al("g","✅","<b>"+(win===1?"医療費控除の明細書":"セルフメディケーション税制の明細書")+"</b>を作って、2027年1月以降に確定申告（還付申告）をしましょう。スマホとマイナンバーカードがあれば e-Tax で提出できます。");
+  nx+=al("y","🎁","<b>ふるさと納税をしている人へ</b>：確定申告をするとワンストップ特例は使えなくなるので、寄附もすべて申告に含めます。医療費控除をすると上限額が少し下がるので、<a href=\"https://yope1016.github.io/apps/furusato-jogen-2026/\">上限額シミュレーター</a>で確認を。");
+  $("next").innerHTML=nx;
+  var pr="";
+  if(win!==0) pr+='<div class="pr"><span class="prl">PR</span><h3>副業や事業の申告もあるなら、確定申告ソフト</h3><p>医療費控除だけなら国税庁の「確定申告書等作成コーナー」で無料で作れます。副業・個人事業の収入もある人は、帳簿から申告書まで作れるソフトが便利です。</p><!-- AFFILIATE:kakutei_soft -->'+aff("kakutei_soft")+'</div>';
+  pr+='<div class="pr"><span class="prl">PR</span><h3>2026年分の寄附は12月31日まで：ふるさと納税</h3><p>医療費控除で申告する年も、ふるさと納税はいっしょに申告できます。上限を確認してから選びましょう。</p><!-- AFFILIATE:furusato_site -->'+aff("furusato_site")+'</div>';
+  if(med>=300000||ins>0) pr+='<div class="pr"><span class="prl">PR</span><h3>入院・出産があった年は、保障の見直しも</h3><p>医療保険が足りていたかを、無料で相談できるサービスがあります。</p><!-- AFFILIATE:hoken_soudan --><span class="soon">リンク準備中</span></div>';
+  $("pr").innerHTML=pr;
+
+  text="【医療費控除 計算 2026】\n"+(win===0?"今の金額では戻らない見込み（足切り "+yen(e.cut)+"）":(win===1?"医療費控除":"セルフメディケーション税制")+"で約"+yen(best.total)+"戻る見込み（所得税 "+yen(best.it)+"＋住民税 "+yen(best.jt)+"）")+famHtml+"\nhttps://yope1016.github.io/apps/iryohi-kojo-2026/";
+  var r=$("res"); r.classList.remove("pulse"); void r.offsetWidth; r.classList.add("pulse");
+}
+
+function sync(from){ if(from==="r") $("sal").value=$("salr").value; else { var v=num($("sal").value); if(v!=null) $("salr").value=Math.min(2000,Math.max(100,v)); } render(); }
+$("sal").addEventListener("input",function(){sync("t")}); $("salr").addEventListener("input",function(){sync("r")});
+$("sm").onclick=function(){$("sal").value=Math.max(0,(num($("sal").value)||0)-10);sync("t")};
+$("sp").onclick=function(){$("sal").value=Math.min(10000,(num($("sal").value)||0)+10);sync("t")};
+["med","ins","otc","sal2","sh"].forEach(function(id){$(id).addEventListener("input",render)});
+Array.prototype.forEach.call(document.querySelectorAll("#qs .chip"),function(b){b.onclick=function(){$("sal").value=b.dataset.v;sync("t")}});
+Array.prototype.forEach.call(document.querySelectorAll("#qm .chip"),function(b){b.onclick=function(){$("med").value=b.dataset.v;render()}});
+Array.prototype.forEach.call(document.querySelectorAll("#kenshin .chip"),function(b){b.onclick=function(){st.ken=b.dataset.v==="1";Array.prototype.forEach.call(document.querySelectorAll("#kenshin .chip"),function(x){x.setAttribute("aria-pressed",String(x===b))});render()}});
+$("copy").onclick=function(){if(navigator.clipboard)navigator.clipboard.writeText(text).then(function(){toast("コピーしました")},function(){toast("コピーできませんでした")});else toast("コピーできませんでした")};
+$("line").onclick=function(){location.href="https://line.me/R/share?text="+encodeURIComponent(text)};
+function toast(t){var x=$("toast");x.textContent=t;x.classList.add("on");setTimeout(function(){x.classList.remove("on")},1800)}
+
+/* ---- checker ---- */
+var ITEMS=[
+["o","病院・診療所の診察代、治療費","健康保険の自己負担分。入院の部屋代・食事代も含む（個室を自分の希望で選んだ差額ベッド代は対象外）"],
+["o","歯の治療（虫歯・入れ歯・インプラント）","保険外の自費診療でも、一般的な治療なら対象"],
+["t","歯の矯正","子どもの成長を妨げないための矯正などは対象。大人の見た目をよくするための矯正は対象外"],
+["o","治療のための市販薬","かぜ薬・胃腸薬・湿布など。予防や健康増進のための購入（ビタミン剤など）は対象外"],
+["o","通院の電車・バス代","本人の通院、付き添いが必要な子どもの付き添い分も対象。記録（日付・区間・金額）を残す"],
+["t","タクシー代","歩けない・急を要するなど、電車やバスが使えないときは対象。単に便利だからは対象外"],
+["x","自家用車のガソリン代・駐車場代","通院のためでも対象外"],
+["o","出産費用・妊婦健診","妊婦健診・分娩費、入院中の食事も対象。出産育児一時金は差し引く"],
+["o","不妊治療・人工授精","治療として行うものは対象"],
+["t","あん摩マッサージ指圧・はり・きゅう・整骨院","国家資格を持つ人による治療目的の施術は対象。疲れを癒やすための施術は対象外"],
+["x","健康診断・人間ドック","原則対象外。ただし重い病気が見つかり、そのまま治療を受けた場合は対象"],
+["t","予防接種","医療費控除の対象外。ただしセルフメディケーション税制の「健康診断など」の条件には使える"],
+["x","メガネ・コンタクトレンズ（視力矯正）","一般的な近視などは対象外。白内障の手術後など、治療に必要なものは対象になる場合あり"],
+["t","介護保険サービス","訪問看護や、施設サービスの自己負担の一部などは対象。サービスの種類で変わる"],
+["x","美容整形・ホワイトニング","容姿を美しくするためのものは対象外"],
+["o","医師が必要と認めた松葉づえ・補聴器など","治療に必要で一般的なものは対象。補聴器は医師の証明などの条件あり"],
+["x","サプリメント・健康食品・ビタミン剤","病気の治療ではないため対象外"],
+["t","PCR検査・抗原検査","医師が必要と判断した検査は対象。自分の都合で受けた検査は、陽性で治療につながった場合のみ"],
+["o","入院時の食事代・部屋代（通常の病室）","病院に払う食事代は対象。テレビカードや日用品の購入は対象外"],
+["x","医師・看護師への謝礼","対象外"]
+];
+var cat="all";
+function drawItems(){
+  var kw=($("q").value||"").trim();
+  var h=ITEMS.filter(function(x){return (cat==="all"||x[0]===cat)&&(!kw||(x[1]+x[2]).indexOf(kw)>=0)}).map(function(x){
+    return '<div class="it"><span class="m '+x[0]+'">'+(x[0]==="o"?"○":x[0]==="x"?"×":"△")+'</span><div><b>'+x[1]+'</b><span>'+x[2]+'</span></div></div>';}).join("");
+  $("items").innerHTML=h||'<p class="hint">見つかりませんでした。別の言葉で探してみてください。</p>';
+}
+$("q").addEventListener("input",drawItems);
+Array.prototype.forEach.call(document.querySelectorAll("#tabs .chip"),function(b){b.onclick=function(){cat=b.dataset.c;Array.prototype.forEach.call(document.querySelectorAll("#tabs .chip"),function(x){x.classList.toggle("on",x===b)});drawItems()}});
+drawItems();
+render();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

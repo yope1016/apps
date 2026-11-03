@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>年末年始 何連休？有給シミュレーター 2026-2027｜帰省の切符 発売日カレンダーつき</title>
+<meta name="description" content="2026〜2027年の年末年始は何連休？会社の休みを選んで、有給を入れる日をタップするだけで最長の連休を計算。有給0〜6日のおすすめプラン、新幹線・JRの指定席の発売日（1か月前の10時）と予約リマインダーつき。登録不要。">
+<meta name="theme-color" content="#1e3a8a">
+<link rel="canonical" href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:title" content="年末年始 何連休？有給シミュレーター 2026-2027">
+<meta property="og:description" content="有給をどこに入れると最長何連休？カレンダーをタップするだけ。帰省の新幹線の発売日も自動で計算。">
+<meta property="og:url" content="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎍</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"年末年始 何連休？有給シミュレーター 2026-2027","url":"https://yope1016.github.io/apps/nenmatsu-renkyu-2026/","applicationCategory":"LifestyleApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"2026〜2027年の年末年始は何連休？","acceptedAnswer":{"@type":"Answer","text":"官公庁と同じ12月29日（火）〜1月3日（日）が休みの場合は6連休です。12月28日（月）に有給を1日使うと12月26日（土）〜1月3日（日）の9連休、さらに1月4日（月）〜8日（金）も休むと成人の日（1月11日）までの17連休になります。"}},
+{"@type":"Question","name":"年末年始の新幹線の指定席はいつから買える？","acceptedAnswer":{"@type":"Answer","text":"JRの指定席は原則として乗車日の1か月前の同じ日の10時に発売されます。えきねっとの事前受付は、その1週間前の14時から申し込めます。前月に同じ日がない場合（12月31日乗車など）は、乗車月の1日が発売日です。"}},
+{"@type":"Question","name":"年末年始ののぞみは自由席がある？","acceptedAnswer":{"@type":"Answer","text":"JR東海・JR西日本の発表では、2026年12月25日（金）〜2027年1月5日（火）は東海道・山陽新幹線の「のぞみ」が全席指定席になります。自由席がないため、指定席の予約が必要です。"}}
+]}]}
+</script>
+<style>
+:root{
+  --bg:#f4f5fb;--card:#fff;--ink:#141a33;--sub:#5b6382;--line:#e2e5f1;
+  --pri:#1d4ed8;--red:#dc2626;--gold:#d97706;--ok:#059669;--yk:#f59e0b;
+  --chip:#eef1fb;--shadow:0 14px 34px -16px rgba(20,30,90,.35);
+  --grad:linear-gradient(135deg,#0f1f5c 0%,#1d4ed8 45%,#b91c1c 82%,#f59e0b 120%);
+  --r:20px;
+  --c-work:#ffffff;--c-off:#dbe5ff;--c-hol:#ffe1e1;--c-yk:#fde68a;--c-co:#c7f0dd;
+}
+:root[data-theme="dark"]{--bg:#0b0f1f;--card:#151b33;--ink:#eef1ff;--sub:#a9b1d6;--line:#28305a;--chip:#1d2547;--pri:#7aa2ff;--shadow:0 14px 34px -16px rgba(0,0,0,.75);
+  --c-work:#151b33;--c-off:#22305f;--c-hol:#4a1f2a;--c-yk:#5a4310;--c-co:#14463a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0f1f;--card:#151b33;--ink:#eef1ff;--sub:#a9b1d6;--line:#28305a;--chip:#1d2547;--pri:#7aa2ff;--shadow:0 14px 34px -16px rgba(0,0,0,.75);
+  --c-work:#151b33;--c-off:#22305f;--c-hol:#4a1f2a;--c-yk:#5a4310;--c-co:#14463a}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+button{font-family:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.promo-note{font-size:11px;color:rgba(255,255,255,.85);text-align:right;position:relative;z-index:2}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:22px 0 100px}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(255,255,255,.25),transparent 40%),radial-gradient(circle at 10% 95%,rgba(255,215,120,.22),transparent 45%)}
+.fl{position:absolute;font-size:28px;opacity:.55;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+@keyframes float{50%{transform:translateY(-14px) rotate(8deg)}}
+.snow{position:absolute;top:-10px;width:5px;height:5px;border-radius:50%;background:#fff;opacity:.7;animation:sn linear infinite}
+@keyframes sn{to{transform:translateY(340px) translateX(30px);opacity:0}}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px}
+.hero h1{font-size:clamp(26px,7.2vw,40px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.44em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+main{margin-top:-66px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line)}
+.card h2{font-size:19px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ico{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:0 0 38px;background:var(--chip)}
+.rl{display:block;font-size:13px;font-weight:800;margin:14px 0 6px;color:var(--pri);letter-spacing:.06em}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 14px;font-size:14px;cursor:pointer;min-height:42px;transition:.15s;font-weight:600}
+.chip.on{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 6px 16px -6px var(--pri)}
+:root[data-theme="dark"] .chip.on{color:#0b0f1f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip.on{color:#0b0f1f}}
+.chip:active{transform:scale(.96)}
+input[type=date]{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-size:16px;font-weight:700;background:var(--card);color:var(--ink);min-height:48px;width:100%;font-family:inherit}
+.daterow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.daterow label{font-size:13px;font-weight:700;color:var(--sub);display:flex;flex-direction:column;gap:4px;min-width:0}
+.hint{font-size:13px;color:var(--sub);margin-top:8px}
+/* result */
+.res{background:var(--grad);color:#fff;border-radius:20px;padding:18px;position:relative;overflow:hidden;margin-bottom:14px}
+.res:after{content:"🎍";position:absolute;right:-6px;bottom:-14px;font-size:84px;opacity:.18}
+.res .lab{font-size:13px;font-weight:800;opacity:.9;letter-spacing:.08em}
+.res .big{font-size:clamp(56px,17vw,84px);font-weight:900;line-height:1;font-variant-numeric:tabular-nums;margin:4px 0}
+.res .big small{font-size:22px;margin-left:4px}
+.res .rng{font-size:15px;font-weight:800}
+.res .sub{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.res .sub span{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 11px;font-size:12.5px;font-weight:700}
+.pop{animation:pop .45s ease}
+@keyframes pop{40%{transform:scale(1.12)}}
+/* calendar */
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--sub);font-weight:700;margin:6px 0 10px}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:4px;border:1px solid var(--line)}
+.mon{font-size:14px;font-weight:900;margin:12px 0 6px;color:var(--ink)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.dow{text-align:center;font-size:11px;font-weight:800;color:var(--sub)}
+.dow.su{color:var(--red)}.dow.sa{color:var(--pri)}
+.d{position:relative;aspect-ratio:1/1;min-height:42px;border-radius:12px;border:1.5px solid var(--line);background:var(--c-work);color:var(--ink);font-weight:800;font-size:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:transform .12s,background .2s;font-variant-numeric:tabular-nums;padding:0}
+.d:active{transform:scale(.92)}
+.d em{font-style:normal;font-size:9px;font-weight:700;line-height:1.1;color:var(--sub);max-width:100%;overflow:hidden;white-space:nowrap}
+.d.off{background:var(--c-off)}
+.d.hol{background:var(--c-hol);color:var(--red)}
+.d.co{background:var(--c-co)}
+.d.yk{background:var(--c-yk);border-color:var(--yk)}
+.d.yk:before{content:"有";position:absolute;top:2px;right:4px;font-size:9px;color:var(--gold);font-weight:900}
+.d.best{box-shadow:0 0 0 2.5px var(--red) inset}
+.d.blank{visibility:hidden}
+.d.lock{cursor:default}
+.plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:8px;margin-top:6px}
+.plan{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:10px 12px;text-align:left;cursor:pointer;min-height:64px;transition:.15s}
+.plan b{display:block;font-size:20px;font-weight:900;color:var(--pri);font-variant-numeric:tabular-nums;line-height:1.2}
+.plan span{font-size:12px;color:var(--sub);font-weight:700}
+.plan.on{border-color:var(--pri);box-shadow:0 6px 16px -8px var(--pri);background:var(--chip)}
+.plan:active{transform:scale(.97)}
+.row2{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{flex:1;min-width:140px;text-align:center;text-decoration:none;border-radius:14px;padding:12px;font-weight:800;font-size:14px;border:none;cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn.pri{background:var(--pri);color:#fff}
+:root[data-theme="dark"] .btn.pri{color:#0b0f1f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.pri{color:#0b0f1f}}
+.btn.sec{background:var(--chip);color:var(--ink);border:1.5px solid var(--line)}
+.btn.line{background:#06c755;color:#fff}
+.btn.x{background:#111;color:#fff}
+/* ticket timeline */
+.tl{list-style:none;margin-top:12px;position:relative}
+.tl:before{content:"";position:absolute;left:15px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{position:relative;padding:0 0 14px 42px}
+.tl li i{position:absolute;left:4px;top:2px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:13px;background:var(--chip);border:2px solid var(--line);font-style:normal}
+.tl li.now i{background:var(--red);border-color:var(--red);color:#fff}
+.tl li.soon i{background:var(--yk);border-color:var(--yk)}
+.tl li.done{opacity:.55}
+.tl b{font-size:15px}
+.tl .when{display:block;font-size:13px;color:var(--sub);font-weight:700}
+.tag{display:inline-block;font-size:11px;font-weight:900;border-radius:6px;padding:1px 7px;margin-left:6px;vertical-align:1px}
+.tag.r{background:var(--red);color:#fff}.tag.y{background:var(--yk);color:#3b2a00}.tag.g{background:var(--line);color:var(--sub)}
+.alert{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;border-radius:14px;padding:12px;font-size:13px;margin:10px 0}
+:root[data-theme="dark"] .alert{background:#2a1d10;border-color:#5b3a12;color:#fde0b8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .alert{background:#2a1d10;border-color:#5b3a12;color:#fde0b8}}
+.todo{list-style:none;display:grid;gap:8px}
+.todo li{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;font-size:14px}
+.todo li .dt{flex:0 0 64px;text-align:center;background:var(--chip);border-radius:10px;padding:4px 0;font-weight:900;font-size:13px;color:var(--pri);line-height:1.3}
+.todo li .dt small{display:block;font-size:10px;color:var(--sub)}
+.todo li a{font-weight:800}
+/* PR */
+.pr{border:1.5px solid var(--gold);border-radius:18px;padding:16px;position:relative;background:linear-gradient(135deg,rgba(245,158,11,.09),rgba(29,78,216,.05));margin-top:16px}
+.prlab{position:absolute;top:-10px;left:14px;background:var(--gold);color:#fff;font-size:11px;font-weight:900;border-radius:6px;padding:1px 8px;letter-spacing:.1em}
+.pr h3{font-size:16px;margin-bottom:6px}
+.pr p{font-size:14px;color:var(--sub)}
+.pr .soon{display:inline-block;margin-top:8px;background:var(--chip);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--sub);font-weight:700}
+.afl{display:flex;flex-direction:column;gap:10px;margin-top:12px;position:relative}
+body .afl a,body .pr .afl a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:12px 16px;border-radius:14px;background:#1d4ed8 !important;background-image:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,0)) !important;border:0 !important;color:#fff !important;font-weight:700;font-size:15px;line-height:1.45;text-decoration:none !important;box-shadow:0 8px 20px -10px rgba(0,0,0,.45);transition:transform .15s ease}
+.afl a::after{content:"\203A";font-size:22px;line-height:1;flex:none}
+.afl a:active{transform:scale(.98)}
+.afl img[width="1"]{position:absolute;left:0;bottom:0}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#141a33;color:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;transition:.3s;z-index:9;opacity:0}
+.toast.show{transform:translateX(-50%);opacity:1}
+details{border-top:1px solid var(--line);padding:12px 0}
+details summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+details summary::-webkit-details-marker{display:none}
+details summary:after{content:"＋";color:var(--pri)}
+details[open] summary:after{content:"－"}
+details p{font-size:14px;color:var(--sub);margin-top:8px}
+.links a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:8px;font-weight:700;font-size:14px;background:var(--card)}
+.links a span{font-size:24px}
+.src{font-size:12px;color:var(--sub)}
+.src li{margin:4px 0 4px 1.2em;word-break:break-all}
+footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:380px){.daterow{grid-template-columns:1fr}.d{font-size:13px;min-height:38px;border-radius:9px}.d em{font-size:8px}.cal{gap:3px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="fl" style="left:8%;top:58%">🎍</span>
+  <span class="fl" style="right:9%;top:30%;animation-delay:1.2s">🚄</span>
+  <span class="fl" style="right:28%;top:70%;animation-delay:2.4s">🧳</span>
+  <div id="snowbox"></div>
+  <div class="wrap">
+    <div class="topbar"><span class="brand">ひとりラボ</span><button class="mode" id="modeBtn" type="button">🌙 表示切替</button></div>
+    <h1><small>2026 → 2027 年末年始</small>今年は何連休？<br>有給シミュレーター</h1>
+    <p class="lead">会社の休みを選んで、有給を入れたい日をタップ。最長の連休と、帰省の切符の発売日がすぐ分かります。</p>
+    <div class="badges"><span class="badge">登録不要</span><span class="badge">有給0〜6日のおすすめ</span><span class="badge">新幹線の発売日</span></div>
+    <p class="promo-note">※ページ内に広告（PR）を含みます</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2><span class="ico">🏢</span>あなたの会社の休み</h2>
+    <span class="rl">年末年始の休み（会社のカレンダー）</span>
+    <div class="chips" data-g="pat">
+      <button class="chip on" data-v="gov" type="button">12/29〜1/3（官公庁と同じ）</button>
+      <button class="chip" data-v="d30" type="button">12/30〜1/3</button>
+      <button class="chip" data-v="d28" type="button">12/28〜1/4</button>
+      <button class="chip" data-v="d31" type="button">12/31〜1/3（短め）</button>
+      <button class="chip" data-v="custom" type="button">自分で入力</button>
+    </div>
+    <div class="daterow" id="customRow" style="display:none;margin-top:10px">
+      <label>休みの初日<input type="date" id="cs" value="2026-12-29" min="2026-12-14" max="2027-01-17"></label>
+      <label>休みの最終日<input type="date" id="ce" value="2027-01-03" min="2026-12-14" max="2027-01-17"></label>
+    </div>
+    <span class="rl">土日</span>
+    <div class="chips" data-g="wk">
+      <button class="chip on" data-v="2" type="button">土日休み</button>
+      <button class="chip" data-v="1" type="button">日曜だけ休み</button>
+      <button class="chip" data-v="0" type="button">シフト制（会社の休みのみ）</button>
+    </div>
+    <span class="rl">祝日（1/1 元日・1/11 成人の日）</span>
+    <div class="chips" data-g="hol">
+      <button class="chip on" data-v="1" type="button">祝日は休み</button>
+      <button class="chip" data-v="0" type="button">祝日も出勤</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📅</span>有給を入れる日をタップ</h2>
+    <div class="res" id="res" aria-live="polite"></div>
+    <span class="rl">おすすめプラン（タップで反映）</span>
+    <div class="plans" id="plans"></div>
+    <div class="legend">
+      <span><i style="background:var(--c-off)"></i>土日</span>
+      <span><i style="background:var(--c-hol)"></i>祝日</span>
+      <span><i style="background:var(--c-co)"></i>会社の休み</span>
+      <span><i style="background:var(--c-yk)"></i>有給</span>
+      <span><i style="box-shadow:0 0 0 2px var(--red) inset"></i>最長の連休</span>
+    </div>
+    <div id="calbox"></div>
+    <p class="hint">出勤日をタップすると「有給」、もう一度タップで元に戻ります。期間は2026年12月14日〜2027年1月17日。</p>
+    <div class="row2">
+      <button class="btn sec" id="clearBtn" type="button">↺ 有給をリセット</button>
+      <button class="btn sec" id="copyBtn" type="button">📋 結果をコピー</button>
+    </div>
+    <div class="row2">
+      <a class="btn x" id="xBtn" href="#" target="_blank" rel="noopener">𝕏 でシェア</a>
+      <a class="btn line" id="lineBtn" href="#" target="_blank" rel="noopener">LINEで送る</a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🚄</span>帰省・旅行の切符はいつ買える？</h2>
+    <p class="hint" style="margin-top:0">連休の初日と最終日を自動で入れています。出発日・戻る日を変えてもOK。</p>
+    <div class="daterow" style="margin-top:10px">
+      <label>出発日（行き）<input type="date" id="go" min="2026-12-01" max="2027-01-31"></label>
+      <label>戻る日（帰り）<input type="date" id="back" min="2026-12-01" max="2027-01-31"></label>
+    </div>
+    <ul class="tl" id="tl"></ul>
+    <div class="alert" id="nozomi"></div>
+    <div class="row2">
+      <button class="btn pri" id="icsBtn" type="button">🔔 発売日をカレンダーに登録（.ics）</button>
+    </div>
+    <p class="hint">ファイルはこの端末の中で作ります（どこにも送信しません）。iPhoneはファイルを開く→「追加」、Androidはカレンダーアプリで開いてください。</p>
+
+    <div class="pr">
+      <span class="prlab">PR</span>
+      <h3>🏨 宿と高速バスも「1か月前」が勝負</h3>
+      <p>年末年始の宿は早く埋まり、高速バスも多くは1か月前ごろから発売です。新幹線が取れなかったときの代わりの手段も、早めに見比べておくと安心です。</p>
+      <!-- AFFILIATE:travel_yado -->
+      <!-- AFFILIATE:kousoku_bus -->
+      <!-- AFFILIATE:rental_car -->
+      <span class="soon">宿・高速バス・レンタカーのご案内は準備中です</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">✅</span>休みに入る前にやること</h2>
+    <ul class="todo" id="todo"></ul>
+    <div class="pr">
+      <span class="prlab">PR</span>
+      <h3>🎁 帰省の手土産・お年賀は早めに</h3>
+      <p>年末は配送が混みます。実家や親戚への手土産・お年賀をネットで頼むなら、届け先と到着日を12月中旬までに決めておくと安心です。</p>
+      <!-- AFFILIATE:omiyage -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングで手土産・お年賀を探す</a></div>
+    </div>
+    <div class="pr">
+      <span class="prlab">PR</span>
+      <h3>🗓️ ふるさと納税は12/31まで</h3>
+      <p>2026年分の控除に入れるには、12月31日までの寄附が必要です。休みに入ると後回しにしがちなので、上限額を確かめて早めに。</p>
+      <!-- AFFILIATE:furusato_site -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738779" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738779" height="1" width="1" border="0">ふるなびで返礼品を探す</a></div>
+      <p style="margin-top:8px;font-size:13px">上限額の目安は → <a href="../furusato-jogen-2026/">ふるさと納税 上限額シミュレーター</a></p>
+    </div>
+  </section>
+
+  <section class="card links">
+    <h2><span class="ico">🧰</span>年末年始のほかの無料ツール</h2>
+    <a href="../furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額シミュレーター 2026：12/31の締切前に</a>
+    <a href="../nenga-hitokoto-2027/"><span>🎍</span>年賀状ひとことジェネレーター 2027：元日に届けるなら12/25までに投函</a>
+    <a href="../otoshidama-souba-2027/"><span>🧧</span>お年玉 相場計算機 2027：年齢別の目安と総額、新札の準備</a>
+    <a href="../oosouji-buntan-2026/"><span>🧹</span>大掃除の分担ジェネレーター 2026：休みの前半で片づける</a>
+    <a href="../warikan-keisha/"><span>🧮</span>傾斜割り勘計算（幹事用）：忘年会・新年会の会費に</a>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">❓</span>よくある質問</h2>
+    <details><summary>2026〜2027年の年末年始は何連休？</summary><p>官公庁と同じ12月29日（火）〜1月3日（日）が休みなら<b>6連休</b>です。12月28日（月）に有給を1日足すと、12月26日（土）〜1月3日（日）の<b>9連休</b>。さらに1月4日（月）〜8日（金）の5日も休むと、成人の日（1月11日）までの<b>17連休</b>になります。会社の休みは就業規則で決まるので、自社のカレンダーで確認してください。</p></details>
+    <details><summary>新幹線の指定席はいつから買える？</summary><p>JRの指定席は原則として<b>乗車日の1か月前の同じ日の10時</b>に発売されます。えきねっとの事前受付は、その<b>1週間前の14時</b>から申し込めます（発売日の10時に順番に手配され、取れないこともあります）。前月に同じ日がない場合（12月31日乗車＝11月31日はない）は、乗車月の1日（12月1日）が発売日です。会社や予約サービスによって細かい違いがあるので、各社の案内も確認してください。</p></details>
+    <details><summary>のぞみに自由席はある？</summary><p>JR東海・JR西日本の発表では、2026年12月25日（金）〜2027年1月5日（火）は東海道・山陽新幹線の「のぞみ」が<b>全席指定席</b>です。自由席がないので、乗る日の指定席を早めに確保しましょう。</p></details>
+    <details><summary>銀行は何日まで開いている？</summary><p>銀行の窓口は一般に<b>12月30日まで</b>で、12月31日〜1月3日は休みです。お年玉の新札は窓口や両替機で、混む前の平日に用意すると安心です（取り扱いは銀行・支店によって違います）。</p></details>
+    <details><summary>有給はいつまでに申請する？</summary><p>会社のルールによりますが、年末年始は希望が重なりやすいので、11月中に上司に相談しておくのがおすすめです。このツールの「結果をコピー」で、休みたい日をそのまま貼り付けられます。</p></details>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📚</span>参考にした情報</h2>
+    <ul class="src">
+      <li>えきねっと よくあるご質問（指定席は乗車日の1か月前の10時発売、事前受付は1週間前の14時から） https://secure.okbiz.jp/eki-net/category/show/390?site_domain=default</li>
+      <li>鉄道チャンネル「2026年度の新幹線『のぞみ』全席指定期間は？」（JR東海・JR西日本の発表：2026年12月25日〜2027年1月5日） https://tetsudo-ch.com/13020406.html</li>
+      <li>年末年始の休みの曜日配置と官公庁の休み（12/29〜1/3）、銀行窓口は12/30まで https://curythm.com/blog/nenmatsu-nenshi-yasumi-2026-2027/</li>
+    </ul>
+    <p class="src" style="margin-top:8px">休みの日数は入力した条件での計算です。実際の休み・発売日・運行は、会社の規則や各社の最新の案内を優先してください。（2026年11月時点の情報）</p>
+  </section>
+  <footer>© ひとりラボ ・ 入力内容はどこにも送信されません</footer>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var URL_APP="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/";
+var WD=["日","月","火","水","木","金","土"];
+var START=new Date(2026,11,14), END=new Date(2027,0,17);
+var HOL={"2027-01-01":"元日","2027-01-11":"成人の日"};
+var PAT={gov:["2026-12-29","2027-01-03"],d30:["2026-12-30","2027-01-03"],d28:["2026-12-28","2027-01-04"],d31:["2026-12-31","2027-01-03"]};
+var S={pat:"gov",wk:"2",hol:"1",yk:{},plan:-1,goTouched:false};
+
+function key(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
+function parse(s){var a=s.split("-");return new Date(+a[0],+a[1]-1,+a[2])}
+function add(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x}
+function md(d){return (d.getMonth()+1)+"/"+d.getDate()+"（"+WD[d.getDay()]+"）"}
+function ymd(d){return d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日（"+WD[d.getDay()]+"）"}
+function toast(t){var e=$("toast");e.textContent=t;e.classList.add("show");setTimeout(function(){e.classList.remove("show")},1800)}
+
+var days=[];
+for(var d=new Date(START);d<=END;d=add(d,1))days.push(new Date(d));
+
+function coRange(){
+  if(S.pat==="custom"){var a=$("cs").value,b=$("ce").value;if(!a||!b)return null;if(a>b){var t=a;a=b;b=t}return [a,b]}
+  return PAT[S.pat];
+}
+function baseType(d){
+  var k=key(d),r=coRange();
+  if(S.hol==="1"&&HOL[k])return "hol";
+  if(r&&k>=r[0]&&k<=r[1])return "co";
+  var w=d.getDay();
+  if(S.wk==="2"&&(w===0||w===6))return "off";
+  if(S.wk==="1"&&w===0)return "off";
+  return "work";
+}
+function isOff(d){var t=baseType(d);return t!=="work"||!!S.yk[key(d)]}
+function longest(offFn){
+  var best={len:0,s:-1,e:-1},cur=0,cs=0;
+  for(var i=0;i<days.length;i++){
+    if(offFn(i)){if(cur===0)cs=i;cur++;if(cur>best.len||(cur===best.len&&false)){best={len:cur,s:cs,e:i}}}
+    else cur=0;
+  }
+  return best;
+}
+// best window with <=k workdays (sliding window). prefer windows that include 1/1
+function bestPlan(k){
+  var types=days.map(baseType),n=days.length,best=null,l=0,w=0;
+  var ny=days.findIndex(function(x){return key(x)==="2027-01-01"});
+  for(var r=0;r<n;r++){
+    if(types[r]==="work")w++;
+    while(w>k){if(types[l]==="work")w--;l++}
+    // extend: window must be bounded so that used workdays are exactly inside
+    var len=r-l+1,inc=(l<=ny&&r>=ny)?1:0;
+    if(!best||len>best.len||(len===best.len&&inc>best.inc)){best={len:len,s:l,e:r,inc:inc}}
+  }
+  // trim leading/trailing workdays (they shouldn't exist when maximal, but keep tidy)
+  var used=[];for(var i=best.s;i<=best.e;i++)if(types[i]==="work")used.push(key(days[i]));
+  return {len:best.len,s:best.s,e:best.e,used:used};
+}
+
+function renderPlans(){
+  var html="",seen={};
+  for(var k=0;k<=6;k++){
+    var p=bestPlan(k);
+    if(p.used.length<k&&k>0)continue;
+    var sig=p.len+"-"+p.used.length;if(seen[sig])continue;seen[sig]=1;
+    html+='<button class="plan'+(S.plan===k?" on":"")+'" type="button" data-k="'+k+'"><span>有給 '+p.used.length+'日</span><b>'+p.len+'連休</b><span>'+md(days[p.s]).replace(/（.）/,"")+"〜"+md(days[p.e]).replace(/（.）/,"")+'</span></button>';
+  }
+  $("plans").innerHTML=html;
+}
+
+function renderCal(best){
+  var html="",months=[[2026,11],[2027,0]];
+  months.forEach(function(m){
+    html+='<div class="mon">'+m[0]+'年 '+(m[1]+1)+'月</div><div class="cal">';
+    ["日","月","火","水","木","金","土"].forEach(function(w,i){html+='<div class="dow'+(i===0?" su":i===6?" sa":"")+'">'+w+'</div>'});
+    var inMonth=days.filter(function(d){return d.getFullYear()===m[0]&&d.getMonth()===m[1]});
+    for(var b=0;b<inMonth[0].getDay();b++)html+='<div class="d blank"></div>';
+    inMonth.forEach(function(d){
+      var k=key(d),t=baseType(d),cls="d",lab="";
+      if(t==="hol"){cls+=" hol lock";lab=HOL[k]}
+      else if(t==="co"){cls+=" co lock";lab="休み"}
+      else if(t==="off"){cls+=" off lock"}
+      else if(S.yk[k]){cls+=" yk";lab="有給"}
+      var idx=days.indexOf(d);
+      if(best.len>0&&idx>=best.s&&idx<=best.e)cls+=" best";
+      if(d.getDay()===0&&t!=="co")cls=cls.replace(" off"," off");
+      html+='<button type="button" class="'+cls+'" data-k="'+k+'" aria-label="'+ymd(d)+(lab?" "+lab:"")+'">'+d.getDate()+(lab?"<em>"+lab+"</em>":"<em>&nbsp;</em>")+'</button>';
+    });
+    html+='</div>';
+  });
+  $("calbox").innerHTML=html;
+}
+
+var lastLen=-1,curBest=null;
+function render(){
+  // drop yk on non-work days
+  Object.keys(S.yk).forEach(function(k){if(baseType(parse(k))!=="work")delete S.yk[k]});
+  var best=longest(function(i){return isOff(days[i])});curBest=best;
+  var nYk=Object.keys(S.yk).length;
+  var ykIn=0;for(var i=best.s;i>=0&&i<=best.e;i++)if(S.yk[key(days[i])])ykIn++;
+  var r=$("res");
+  if(best.len===0){r.innerHTML='<div class="lab">最長の連休</div><div class="big">0<small>日</small></div><div class="rng">休みの日がありません</div>'}
+  else{
+    var eff=ykIn?(best.len/ykIn).toFixed(1):"—";
+    r.innerHTML='<div class="lab">あなたの年末年始は</div><div class="big" id="bigN">'+best.len+'<small>連休</small></div><div class="rng">'+ymd(days[best.s])+' 〜 '+ymd(days[best.e])+'</div><div class="sub"><span>有給 '+nYk+'日'+(nYk!==ykIn?'（連休内 '+ykIn+'日）':'')+'</span><span>有給1日あたり '+eff+'日休める</span><span>仕事始め '+md(nextWork(best.e))+'</span></div>';
+    if(lastLen!==-1&&lastLen!==best.len){var b=$("bigN");b.classList.remove("pop");void b.offsetWidth;b.classList.add("pop")}
+  }
+  lastLen=best.len;
+  renderCal(best);renderPlans();share(best,nYk);
+  if(!S.goTouched&&best.len>0){$("go").value=key(days[best.s]);$("back").value=key(days[best.e]);}
+  renderTickets();renderTodo(best);
+}
+function nextWork(i){var d=add(days[i],1);for(var n=0;n<40;n++){var k=key(d);var inRange=d<=END;var t=inRange?baseType(d):((S.wk==="2"&&(d.getDay()%6===0))||(S.wk==="1"&&d.getDay()===0)?"off":"work");if(t==="work"&&!S.yk[k])return d;d=add(d,1)}return d}
+
+function resultText(){
+  var b=curBest;if(!b||b.len===0)return "";
+  var yk=Object.keys(S.yk).sort().map(function(k){return md(parse(k))});
+  return "年末年始は"+b.len+"連休（"+md(days[b.s])+"〜"+md(days[b.e])+"）"+(yk.length?"\n有給："+yk.join("・"):"\n有給なし");
+}
+function share(b,n){
+  var t=b.len>0?("2026→2027の年末年始、有給"+n+"日で"+b.len+"連休になりました🎍"):"年末年始の連休を計算";
+  $("xBtn").href="https://twitter.com/intent/tweet?text="+encodeURIComponent(t+"\n#年末年始 #何連休\n")+"&url="+encodeURIComponent(URL_APP);
+  $("lineBtn").href="https://line.me/R/msg/text/?"+encodeURIComponent(resultText()+"\n"+URL_APP);
+}
+
+/* ---- tickets ---- */
+function jrSale(ride){ // 1 month before same day; if not exist -> 1st of ride month
+  var y=ride.getFullYear(),m=ride.getMonth()-1;if(m<0){m=11;y--}
+  var last=new Date(y,m+1,0).getDate();
+  if(ride.getDate()>last)return new Date(ride.getFullYear(),ride.getMonth(),1);
+  return new Date(y,m,ride.getDate());
+}
+var TODAY=(function(){var t=new Date();return new Date(t.getFullYear(),t.getMonth(),t.getDate())})();
+var events=[];
+function renderTickets(){
+  var g=$("go").value,b=$("back").value,html="";events=[];
+  if(!g){$("tl").innerHTML="";$("nozomi").innerHTML="";return}
+  var list=[];
+  [["行き",g],["帰り",b]].forEach(function(x){
+    if(!x[1])return;var ride=parse(x[1]),sale=jrSale(ride),pre=add(sale,-7);
+    list.push({d:pre,t:"14:00",title:x[0]+"（"+md(ride)+"乗車）えきねっと事前受付スタート",note:"発売日の1週間前から申し込み可（JR東日本のえきねっと）"});
+    list.push({d:sale,t:"10:00",title:x[0]+"（"+md(ride)+"乗車）指定席の発売日",note:"みどりの窓口・各社のネット予約で一斉発売",main:1});
+  });
+  list.sort(function(a,c){return a.d-c.d||(a.t<c.t?-1:1)});
+  list.forEach(function(e){
+    var diff=Math.round((e.d-TODAY)/864e5),cls="",tag="";
+    if(diff<0){cls="done";tag='<span class="tag g">発売中</span>'}
+    else if(diff===0){cls="now";tag='<span class="tag r">今日</span>'}
+    else if(diff<=7){cls="soon";tag='<span class="tag y">あと'+diff+'日</span>'}
+    else tag='<span class="tag g">あと'+diff+'日</span>';
+    html+='<li class="'+cls+'"><i>'+(e.main?"🎫":"📝")+'</i><b>'+e.title+'</b>'+tag+'<span class="when">'+ymd(e.d)+' '+e.t+'〜 ・ '+e.note+'</span></li>';
+    events.push(e);
+  });
+  $("tl").innerHTML=html;
+  var gd=parse(g),bd=b?parse(b):gd,ns=parse("2026-12-25"),ne=parse("2027-01-05");
+  var hit=(gd>=ns&&gd<=ne)||(bd>=ns&&bd<=ne);
+  $("nozomi").innerHTML=hit?"⚠️ <b>この日は「のぞみ」が全席指定</b>（2026/12/25〜2027/1/5、JR東海・JR西日本の発表）。自由席がないので、東海道・山陽新幹線を使うなら発売日に指定席を確保しましょう。飛行機は多くがすでに発売中です。":"ℹ️ 年末年始（2026/12/25〜2027/1/5）は「のぞみ」が全席指定です。飛行機は多くがすでに発売中、高速バスは会社ごとに発売日が違うので各社の案内を確認してください。";
+}
+function pad(n){return ("0"+n).slice(-2)}
+function icsDate(d,t){return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+"T"+t.replace(":","")+"00"}
+function makeIcs(){
+  if(!events.length){toast("出発日を入れてください");return}
+  var now=new Date(),st=now.getUTCFullYear()+pad(now.getUTCMonth()+1)+pad(now.getUTCDate())+"T"+pad(now.getUTCHours())+pad(now.getUTCMinutes())+"00Z";
+  var L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//hitorilab//nenmatsu-renkyu//JA","CALSCALE:GREGORIAN"];
+  events.forEach(function(e,i){
+    var s=icsDate(e.d,e.t),en=icsDate(e.d,e.t==="10:00"?"10:30":"14:30");
+    L.push("BEGIN:VEVENT","UID:renkyu-"+i+"-"+s+"@hitorilab","DTSTAMP:"+st,"DTSTART;TZID=Asia/Tokyo:"+s,"DTEND;TZID=Asia/Tokyo:"+en,"SUMMARY:"+e.title,"DESCRIPTION:"+e.note+"（目安。各社の案内を確認）","BEGIN:VALARM","TRIGGER:-PT30M","ACTION:DISPLAY","DESCRIPTION:"+e.title,"END:VALARM","END:VEVENT");
+  });
+  L.push("END:VCALENDAR");
+  var blob=new Blob([L.join("\r\n")],{type:"text/calendar"}),a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);a.download="kippu-hatsubai.ics";document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500);toast("カレンダー用ファイルを作りました");
+}
+
+/* ---- todo ---- */
+function renderTodo(best){
+  var startD=best.len>0?days[best.s]:parse("2026-12-29");
+  var items=[
+    {d:parse("2026-11-30"),t:'<b>有給の相談・申請</b>：年末年始は希望が重なるので11月中に',x:""},
+    {d:add(startD,-7),t:'<b>大掃除の分担を決める</b>：休みの前半で終わらせる → <a href="../oosouji-buntan-2026/">分担ジェネレーター</a>',x:""},
+    {d:parse("2026-12-25"),t:'<b>年賀状の投函</b>：元日に届けるなら12/25までが目安 → <a href="../nenga-hitokoto-2027/">ひとことジェネレーター</a>',x:""},
+    {d:parse("2026-12-30"),t:'<b>お年玉の新札・現金</b>：銀行の窓口は12/30まで → <a href="../otoshidama-souba-2027/">お年玉 相場計算機</a>',x:""},
+    {d:parse("2026-12-31"),t:'<b>ふるさと納税の締切</b>：2026年分は12/31の寄附まで → <a href="../furusato-jogen-2026/">上限額シミュレーター</a>',x:""}
+  ];
+  items.sort(function(a,b){return a.d-b.d});
+  $("todo").innerHTML=items.map(function(it){var diff=Math.round((it.d-TODAY)/864e5);return '<li><span class="dt">'+(it.d.getMonth()+1)+"/"+it.d.getDate()+'<small>'+(diff>0?"あと"+diff+"日":diff===0?"今日":"過ぎました")+'</small></span><span>'+it.t+'</span></li>'}).join("");
+}
+
+/* ---- events ---- */
+document.querySelectorAll(".chips").forEach(function(g){
+  g.addEventListener("click",function(e){
+    var b=e.target.closest(".chip");if(!b)return;
+    g.querySelectorAll(".chip").forEach(function(c){c.classList.remove("on")});b.classList.add("on");
+    S[g.dataset.g]=b.dataset.v;S.plan=-1;
+    if(g.dataset.g==="pat")$("customRow").style.display=b.dataset.v==="custom"?"grid":"none";
+    render();
+  });
+});
+$("cs").addEventListener("change",render);$("ce").addEventListener("change",render);
+$("calbox").addEventListener("click",function(e){
+  var b=e.target.closest(".d");if(!b||b.classList.contains("lock")||b.classList.contains("blank"))return;
+  var k=b.dataset.k;if(S.yk[k])delete S.yk[k];else S.yk[k]=1;S.plan=-1;render();
+});
+$("plans").addEventListener("click",function(e){
+  var b=e.target.closest(".plan");if(!b)return;var k=+b.dataset.k,p=bestPlan(k);
+  S.yk={};p.used.forEach(function(x){S.yk[x]=1});S.plan=k;S.goTouched=false;render();toast("有給"+p.used.length+"日で"+p.len+"連休のプランを反映しました");
+});
+$("clearBtn").addEventListener("click",function(){S.yk={};S.plan=-1;render();toast("有給をリセットしました")});
+$("copyBtn").addEventListener("click",function(){
+  var t=resultText()+"\n"+URL_APP;
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast("コピーしました")},fallback)}else fallback();
+  function fallback(){var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast("コピーしました")}catch(x){}ta.remove()}
+});
+$("go").addEventListener("change",function(){S.goTouched=true;renderTickets()});
+$("back").addEventListener("change",function(){S.goTouched=true;renderTickets()});
+$("icsBtn").addEventListener("click",makeIcs);
+$("modeBtn").addEventListener("click",function(){
+  var r=document.documentElement,cur=r.getAttribute("data-theme");
+  var dark=cur?cur==="dark":window.matchMedia("(prefers-color-scheme:dark)").matches;
+  r.setAttribute("data-theme",dark?"light":"dark");
+});
+// snow
+var sb=$("snowbox");for(var i=0;i<16;i++){var s=document.createElement("span");s.className="snow";s.style.left=(Math.random()*100)+"%";s.style.animationDuration=(5+Math.random()*6)+"s";s.style.animationDelay=(-Math.random()*8)+"s";s.style.opacity=(.3+Math.random()*.6).toFixed(2);sb.appendChild(s)}
+render();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
