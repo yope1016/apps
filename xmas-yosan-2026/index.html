@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>クリスマス予算プランナー 2026｜プレゼント相場と総額を1分で計算</title>
+<meta name="description" content="2026年のクリスマス、プレゼント・ケーキ・ごちそうで全部でいくら？贈る相手を選ぶだけで総額を計算し、使える予算との差と1人あたりの目安、予算に合うプレゼントのジャンル、注文の締切の目安まで表示。子どものプレゼント平均は8,378円（バンダイ調査2025）。登録不要。">
+<meta name="theme-color" content="#14532d">
+<link rel="canonical" href="https://yope1016.github.io/apps/xmas-yosan-2026/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:title" content="クリスマス予算プランナー 2026｜全部でいくら？">
+<meta property="og:description" content="贈る相手を選ぶだけで、プレゼント・ケーキ・ごちそうの総額と、予算に合うプレゼントのジャンルがわかる。">
+<meta property="og:url" content="https://yope1016.github.io/apps/xmas-yosan-2026/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"クリスマス予算プランナー 2026","url":"https://yope1016.github.io/apps/xmas-yosan-2026/","applicationCategory":"LifestyleApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"子どものクリスマスプレゼントの相場はいくら？","acceptedAnswer":{"@type":"Answer","text":"バンダイが3〜12歳の子どもを持つ親600人に聞いた2025年の調査では、クリスマスプレゼントの予算の平均は8,378円（前年より240円増）で、最も多かった価格帯は5,000円〜6,000円未満でした。"}},
+{"@type":"Question","name":"恋人へのクリスマスプレゼントの予算はいくらくらい？","acceptedAnswer":{"@type":"Answer","text":"交際中の男女300人への調査（2024年12月、プラスマッチ）では、男性は5,000円〜1万円の価格帯が最も多い結果でした。金額よりも、相手の好みに合うかと、渡し方のほうが満足度を左右しやすいので、無理のない範囲で決めましょう。"}},
+{"@type":"Question","name":"クリスマスプレゼントは通販でいつまでに注文すればいい？","acceptedAnswer":{"@type":"Answer","text":"12月下旬は配送が混み合うため、12月24日に受け取りたいなら、遅くとも12月中旬までの注文が安心です。名入れや受注生産の品はさらに日数がかかります。実際の締切はお店と地域によって違うので、各ショップの案内を確認してください。"}}
+]}]}
+</script>
+<style>
+:root{
+  --bg:#f5f6f2;--card:#fff;--ink:#16211a;--sub:#5a6a60;--line:#e1e7e0;
+  --pri:#15803d;--red:#c81e1e;--gold:#c58a0a;--chip:#edf4ee;
+  --shadow:0 14px 34px -16px rgba(10,60,30,.35);
+  --grad:linear-gradient(135deg,#0b3d24 0%,#15803d 45%,#b91c1c 85%,#e8b03a 125%);
+  --r:20px;
+}
+:root[data-theme="dark"]{--bg:#0a120d;--card:#121d16;--ink:#ecf5ee;--sub:#a3b8aa;--line:#25362b;--chip:#1a2a20;--pri:#5ad48a;--red:#ff7a7a;--gold:#f2c14e;--shadow:0 14px 34px -16px rgba(0,0,0,.75)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a120d;--card:#121d16;--ink:#ecf5ee;--sub:#a3b8aa;--line:#25362b;--chip:#1a2a20;--pri:#5ad48a;--red:#ff7a7a;--gold:#f2c14e;--shadow:0 14px 34px -16px rgba(0,0,0,.75)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+button{font-family:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.promo-note{font-size:11px;color:rgba(255,255,255,.85);text-align:right;position:relative;z-index:2}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:22px 0 100px}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(255,255,255,.25),transparent 40%),radial-gradient(circle at 10% 95%,rgba(255,215,120,.22),transparent 45%)}
+.fl{position:absolute;font-size:28px;opacity:.6;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+@keyframes float{50%{transform:translateY(-14px) rotate(8deg)}}
+.snow{position:absolute;top:-10px;width:5px;height:5px;border-radius:50%;background:#fff;opacity:.75;animation:sn linear infinite}
+@keyframes sn{to{transform:translateY(340px) translateX(30px);opacity:0}}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px}
+.hero h1{font-size:clamp(26px,7.2vw,40px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.44em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+main{margin-top:-66px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line)}
+.card h2{font-size:19px;font-weight:800;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ico{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex:0 0 38px;background:var(--chip)}
+.rl{display:block;font-size:13px;font-weight:800;margin:16px 0 6px;color:var(--pri);letter-spacing:.06em}
+.hint{font-size:13px;color:var(--sub);margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 14px;font-size:14px;cursor:pointer;min-height:42px;transition:.15s;font-weight:600}
+.chip.on{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 6px 16px -6px var(--pri)}
+:root[data-theme="dark"] .chip.on{color:#0a120d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip.on{color:#0a120d}}
+.chip:active{transform:scale(.96)}
+/* people rows */
+.who{display:flex;flex-direction:column;gap:10px}
+.prow{border:1.5px solid var(--line);border-radius:16px;padding:12px;transition:.2s}
+.prow.act{border-color:var(--pri);background:linear-gradient(135deg,rgba(21,128,61,.07),rgba(200,30,30,.04))}
+.ptop{display:flex;align-items:center;gap:10px}
+.pemo{font-size:24px;width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--chip);flex:0 0 40px}
+.pname{flex:1;min-width:0}
+.pname b{display:block;font-size:15px}
+.pnote{font-size:12px;color:var(--sub);margin:6px 0 0 50px;line-height:1.5}
+.pname b{word-break:keep-all;overflow-wrap:anywhere}
+.step{display:flex;align-items:center;gap:4px;flex:0 0 auto}
+.step button{width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;font-weight:800;cursor:pointer}
+.step button:active{transform:scale(.92)}
+.step output{min-width:28px;text-align:center;font-weight:900;font-size:18px;font-variant-numeric:tabular-nums}
+.pdet{display:none;margin-top:10px}
+.prow.act .pdet{display:block}
+.lv{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.lv button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:8px 4px;font-size:12px;font-weight:700;cursor:pointer;min-height:48px;line-height:1.3}
+.lv button b{display:block;font-size:14px;font-variant-numeric:tabular-nums}
+.lv button.on{border-color:var(--red);background:rgba(200,30,30,.08);color:var(--red)}
+.amt{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13px;color:var(--sub);font-weight:700}
+.amt input{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:12px;padding:8px 10px;font-size:16px;font-weight:800;background:var(--card);color:var(--ink);font-family:inherit;min-height:44px;font-variant-numeric:tabular-nums}
+.idea{margin-top:8px;font-size:13px;background:var(--chip);border-radius:12px;padding:8px 10px}
+.idea b{color:var(--pri)}
+/* extras */
+.ex{display:grid;grid-template-columns:1fr;gap:10px}
+.exr{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:14px;padding:10px 12px}
+.exr label{flex:1;display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;cursor:pointer;min-width:0}
+.exr input[type=checkbox]{width:22px;height:22px;accent-color:var(--pri);flex:0 0 22px}
+.exr input[type=number]{width:108px;border:1.5px solid var(--line);border-radius:10px;padding:6px 8px;font-size:16px;font-weight:800;background:var(--card);color:var(--ink);font-family:inherit;text-align:right;min-height:40px}
+.exr small{display:block;font-size:11.5px;color:var(--sub);font-weight:600}
+.budget{display:flex;align-items:center;gap:8px;margin-top:6px}
+.budget input{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;font-size:20px;font-weight:900;background:var(--card);color:var(--ink);font-family:inherit;min-height:52px;font-variant-numeric:tabular-nums}
+/* result */
+.res{background:var(--grad);color:#fff;border-radius:20px;padding:18px;position:relative;overflow:hidden;margin-bottom:14px}
+.res:after{content:"🎄";position:absolute;right:-6px;bottom:-14px;font-size:84px;opacity:.18}
+.res .lab{font-size:13px;font-weight:800;opacity:.9;letter-spacing:.08em}
+.res .big{font-size:clamp(46px,14vw,72px);font-weight:900;line-height:1.05;font-variant-numeric:tabular-nums;margin:4px 0}
+.res .big small{font-size:20px;margin-left:4px}
+.res .sub{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;position:relative;z-index:1}
+.res .sub span{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 11px;font-size:12.5px;font-weight:700}
+.res .verdict{margin-top:10px;font-weight:800;font-size:15px;position:relative;z-index:1}
+.pop{animation:pop .45s ease}
+@keyframes pop{40%{transform:scale(1.08)}}
+.bar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--chip);margin:10px 0 8px}
+.bar i{display:block;height:100%;transition:width .4s}
+.lg{display:grid;grid-template-columns:1fr;gap:6px}
+.lg div{display:flex;align-items:center;gap:8px;font-size:14px}
+.lg div i{width:12px;height:12px;border-radius:4px;flex:0 0 12px}
+.lg div span{flex:1;min-width:0}
+.lg div b{font-variant-numeric:tabular-nums}
+.meter{margin-top:12px}
+.meter .track{height:12px;border-radius:999px;background:var(--chip);overflow:hidden}
+.meter .fill{height:100%;border-radius:999px;transition:width .4s;background:var(--pri)}
+.meter .fill.over{background:var(--red)}
+.meter p{font-size:13px;color:var(--sub);margin-top:6px;font-weight:700}
+.row2{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{flex:1;min-width:140px;text-align:center;text-decoration:none;border-radius:14px;padding:12px;font-weight:800;font-size:14px;border:none;cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn.pri{background:var(--pri);color:#fff}
+:root[data-theme="dark"] .btn.pri{color:#0a120d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn.pri{color:#0a120d}}
+.btn.x{background:#111;color:#fff}
+.btn.line{background:#06c755;color:#fff}
+/* timeline */
+.cd{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.cd b{font-size:40px;font-weight:900;color:var(--red);font-variant-numeric:tabular-nums;line-height:1}
+.tl{list-style:none;border-left:3px solid var(--line);margin-left:8px;padding-left:16px}
+.tl li{position:relative;padding:6px 0 10px}
+.tl li:before{content:"";position:absolute;left:-23px;top:12px;width:11px;height:11px;border-radius:50%;background:var(--pri);box-shadow:0 0 0 3px var(--card)}
+.tl li.past{opacity:.5}
+.tl li.past:before{background:var(--sub)}
+.tl li.next:before{background:var(--red);box-shadow:0 0 0 4px rgba(200,30,30,.25)}
+.tl .dt{font-size:13px;font-weight:900;color:var(--pri)}
+.tl li.next .dt{color:var(--red)}
+.tl .tx{font-size:14px}
+.tl .tx a{font-weight:700}
+/* PR */
+.pr{border:1.5px solid var(--gold);border-radius:18px;padding:16px;position:relative;background:linear-gradient(135deg,rgba(197,138,10,.09),rgba(21,128,61,.05));margin-top:16px}
+.prlab{position:absolute;top:-10px;left:14px;background:var(--gold);color:#fff;font-size:11px;font-weight:900;border-radius:6px;padding:1px 8px;letter-spacing:.1em}
+.pr h3{font-size:16px;margin-bottom:6px}
+.pr p{font-size:14px;color:var(--sub)}
+.pr .soon{display:inline-block;margin-top:8px;background:var(--chip);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--sub);font-weight:700}
+.afl{margin-top:10px}
+.afl a{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:15px;padding:10px 14px;border-radius:12px;background:var(--card);border:1.5px solid var(--line);text-decoration:none;min-height:44px}
+.afl a:after{content:"→"}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#16211a;color:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;transition:.3s;z-index:9;opacity:0}
+.toast.show{transform:translateX(-50%);opacity:1}
+.faq details{border-top:1px solid var(--line);padding:12px 0}
+.faq summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"＋";color:var(--pri)}
+.faq details[open] summary:after{content:"－"}
+.faq details p{margin-top:8px;font-size:14px;color:var(--sub)}
+.src{font-size:12.5px;color:var(--sub);list-style:none;display:flex;flex-direction:column;gap:6px;word-break:break-all}
+footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
+@media (min-width:620px){.ex{grid-template-columns:1fr 1fr}.lg{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div id="snowbox"></div>
+  <span class="fl" style="left:6%;top:58%">🎁</span>
+  <span class="fl" style="right:9%;top:30%;animation-delay:-2s">⭐</span>
+  <span class="fl" style="right:22%;top:66%;animation-delay:-4s">🔔</span>
+  <div class="wrap">
+    <div class="topbar"><span class="brand">ひとりラボ</span><button class="mode" id="mode" type="button">🌙 ダーク</button></div>
+    <p class="promo-note">※ページ内に広告（PR）を含みます</p>
+    <h1><small>CHRISTMAS BUDGET 2026</small>クリスマス、<br>全部でいくら？</h1>
+    <p class="lead">贈る相手を選ぶだけ。プレゼント・ケーキ・ごちそうの総額と、予算に合うプレゼントのジャンル、注文の締切の目安まで1画面で。</p>
+    <div class="badges"><span class="badge">登録不要</span><span class="badge">入力はどこにも送信されません</span><span class="badge">子どもの平均 8,378円（2025調査）</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2><span class="ico">🎁</span>だれに贈る？</h2>
+    <p class="hint" style="margin-top:0">＋で人数を入れると、金額の目安（控えめ／ふつう／奮発）を選べます。金額は自由に書き換えられます。</p>
+    <div class="who" id="who"></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🍰</span>プレゼント以外</h2>
+    <div class="ex" id="ex"></div>
+    <span class="rl">使える予算（わかれば）</span>
+    <div class="budget"><input type="number" id="budget" inputmode="numeric" min="0" step="1000" placeholder="例：30000"><span style="font-weight:800">円</span></div>
+    <p class="hint">冬のボーナスの手取りがまだなら → <a href="../bonus-tedori-2026/">冬のボーナス 手取り計算機</a></p>
+  </section>
+
+  <section class="card" id="resultCard">
+    <h2><span class="ico">🧮</span>あなたのクリスマス予算</h2>
+    <div class="res" id="res"></div>
+    <div class="bar" id="bar"></div>
+    <div class="lg" id="lg"></div>
+    <div class="meter" id="meter"></div>
+    <div class="row2">
+      <button class="btn pri" id="copy" type="button">📋 結果をコピー</button>
+      <a class="btn x" id="xs" href="#" target="_blank" rel="noopener">𝕏 でシェア</a>
+      <a class="btn line" id="ls" href="#" target="_blank" rel="noopener">LINE で送る</a>
+    </div>
+    <div class="pr">
+      <span class="prlab">PR</span>
+      <h3>🛍️ 予算が決まったら、ネットで比べて早めに</h3>
+      <p>金額の上限を決めてから探すと、迷う時間が減ります。ポイント還元のあるショップなら、実質の出費も抑えられます。</p>
+      <!-- AFFILIATE:gift_shop -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングでプレゼントを探す</a></div>
+      <!-- AFFILIATE:toy -->
+      <!-- AFFILIATE:jewelry -->
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">⏰</span>12/24まで、あと何日？</h2>
+    <div class="cd"><b id="cdN">--</b><span style="font-weight:800">日</span><span class="hint" id="cdT" style="margin:0"></span></div>
+    <ul class="tl" id="tl"></ul>
+    <p class="hint">日付は一般的な目安です。実際の締切は、お店・配送会社・地域によって違うので、各ショップの案内を確認してください。</p>
+    <div class="pr">
+      <span class="prlab">PR</span>
+      <h3>🎂 ケーキとディナーは「予約」が先</h3>
+      <p>クリスマスケーキの予約は、多くのお店で12月上旬〜中旬に締め切られます。外食するなら、24日・25日の席は早めに押さえておきましょう。</p>
+      <!-- AFFILIATE:xmas_cake -->
+      <!-- AFFILIATE:inshoku_yoyaku -->
+      <span class="soon">ケーキ・お店の予約のご案内は準備中です</span>
+    </div>
+    <div class="pr">
+      <span class="prlab">PR</span>
+      <h3>🗓️ 自分へのご褒美は、ふるさと納税で</h3>
+      <p>2026年分のふるさと納税は12月31日まで。ごちそうの食材やスイーツを返礼品で選べば、年末の出費を実質2,000円の負担に置き換えられます（上限額の範囲内）。</p>
+      <!-- AFFILIATE:furusato_site -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738779" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738779" height="1" width="1" border="0">ふるなびで返礼品を探す</a></div>
+      <p style="margin-top:8px;font-size:13px">上限額の目安は → <a href="../furusato-jogen-2026/">ふるさと納税 上限額シミュレーター</a></p>
+    </div>
+  </section>
+
+  <section class="card faq">
+    <h2><span class="ico">❓</span>よくある質問</h2>
+    <details><summary>子どものクリスマスプレゼントの相場は？</summary><p>バンダイが3〜12歳の子どもを持つ親600人に聞いた2025年の調査では、予算の平均は<b>8,378円</b>（前年より240円増、2年連続の増加）。いちばん多い価格帯は<b>5,000円〜6,000円未満</b>でした。このツールの「ふつう」はこの平均に合わせています。</p></details>
+    <details><summary>恋人へのプレゼントはいくらが普通？</summary><p>交際中の男女300人への調査（2024年12月）では、男性は<b>5,000円〜1万円</b>の価格帯が最多でした。付き合いの長さや年齢で幅が大きいので、このツールでは5,000円／1万円／3万円の3段階を目安にしています。金額より「相手の好みに合うか」が大切です。</p></details>
+    <details><summary>通販はいつまでに注文すればいい？</summary><p>12月下旬は配送が混み合います。24日に受け取りたいなら、遅くとも<b>12月中旬</b>までの注文が安心です。名入れ・受注生産の品は1〜2週間以上かかることがあります。実際の締切は各ショップの案内を確認してください。</p></details>
+    <details><summary>クリスマスの出費を抑えるコツは？</summary><p>①先に総額の上限を決める ②相手ごとの金額を決めてから探す ③ポイント還元やセールの日を使う ④ケーキや食材は早期予約の割引を使う、の4つが効きます。年末はお年玉や帰省の出費も続くので、<a href="../otoshidama-souba-2027/">お年玉の総額</a>も一緒に見ておくと安心です。</p></details>
+    <details><summary>入力した内容は保存・送信される？</summary><p>いいえ。計算はすべてお使いの端末の中で行い、入力内容はどこにも送信しません。ページを閉じると消えます。</p></details>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📚</span>参考にした情報</h2>
+    <ul class="src">
+      <li>バンダイ「クリスマスに関する調査」2025年（2025年10月24日〜27日、3〜12歳の子どもを持つ親600人。プレゼント予算の平均8,378円、最多は5,000〜6,000円未満）リセマム掲載 https://resemom.jp/article/2025/11/28/84134.html</li>
+      <li>株式会社ショーケース『プラスマッチ』恋人へのクリスマスプレゼントの予算調査（2024年12月10日〜12日、交際中の男女300人）DIME掲載 https://dime.jp/genre/1903043/</li>
+    </ul>
+    <p class="src" style="margin-top:8px">子ども以外の金額の目安（控えめ／ふつう／奮発）とケーキ・ごちそうの初期値は、このツールが設定した参考値で、調査の平均ではありません。ご自分の金額に書き換えてお使いください。（2026年11月時点の情報）</p>
+  </section>
+<style id="hl-hub-css">
+.hl-hub{--hl-bg:#ffffff;--hl-fg:#1d2433;--hl-sub:#5b6478;--hl-line:rgba(30,40,70,.10);--hl-tile:#f5f7fc;--hl-acc:#5b5bf0;--hl-acc2:#18b6a4;
+margin:28px auto 8px;max-width:760px;padding:22px 18px 18px;border-radius:22px;background:var(--hl-bg);color:var(--hl-fg);
+border:1px solid var(--hl-line);box-shadow:0 10px 30px rgba(40,50,90,.08);font-size:15px;line-height:1.55;box-sizing:border-box}
+@media (prefers-color-scheme:dark){.hl-hub{--hl-bg:#171b26;--hl-fg:#eef1f8;--hl-sub:#a3abc0;--hl-line:rgba(255,255,255,.10);--hl-tile:#202636;--hl-acc:#8c8cff;--hl-acc2:#3fd6c3;box-shadow:none}}
+.hl-hub *{box-sizing:border-box}
+.hl-hub h2{margin:0 0 4px;font-size:18px;display:flex;align-items:center;gap:8px}
+.hl-hub .hl-lead{margin:0 0 14px;color:var(--hl-sub);font-size:13px}
+.hl-hub .hl-pick{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:620px){.hl-hub .hl-pick{grid-template-columns:repeat(3,1fr)}}
+.hl-hub a.hl-c{display:flex;gap:10px;align-items:center;padding:13px 14px;border-radius:16px;text-decoration:none;color:var(--hl-fg);
+background:var(--hl-tile);background:linear-gradient(135deg,color-mix(in srgb,var(--hl-acc) 14%,var(--hl-tile)),color-mix(in srgb,var(--hl-acc2) 10%,var(--hl-tile)));
+border:1px solid var(--hl-line);min-height:56px;transition:transform .15s ease,box-shadow .15s ease}
+.hl-hub a.hl-c:hover,.hl-hub a.hl-c:focus-visible{transform:translateY(-2px);box-shadow:0 8px 18px rgba(60,60,160,.15)}
+.hl-hub .hl-i{font-size:22px;line-height:1;flex:none;width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:var(--hl-bg)}
+.hl-hub .hl-t b{display:block;font-size:14px}
+.hl-hub .hl-t span{display:block;font-size:12px;color:var(--hl-sub)}
+.hl-hub details{margin-top:14px;border-top:1px solid var(--hl-line);padding-top:12px}
+.hl-hub summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--hl-acc);padding:6px 0;list-style:none}
+.hl-hub summary::-webkit-details-marker{display:none}
+.hl-hub summary::after{content:none!important;display:none!important}
+.hl-hub summary{background:none!important;border:0!important;margin:0!important}
+.hl-hub summary::before{content:"＋ ";}
+.hl-hub details[open] summary::before{content:"－ ";}
+.hl-hub h3{margin:12px 0 6px;font-size:13px;color:var(--hl-sub);font-weight:700}
+.hl-hub ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:6px}
+@media (min-width:620px){.hl-hub ul{grid-template-columns:1fr 1fr}}
+.hl-hub li a,.hl-hub li a:visited{display:flex;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--hl-tile);color:var(--hl-fg);text-decoration:none;font-size:14px;min-height:44px}
+.hl-hub li a:hover{outline:2px solid color-mix(in srgb,var(--hl-acc) 40%,transparent)}
+.hl-hub li.hl-me a{opacity:.55;pointer-events:none}
+.hl-hub li.hl-me a::after{content:"（このページ）";font-size:12px;color:var(--hl-sub)}
+.hl-hub .hl-all{display:inline-block;margin-top:14px;font-size:13px;color:var(--hl-acc);text-decoration:none;font-weight:700}
+</style>
+<!-- HITORILAB:HUB v1 （全アプリ共通の内部リンク。2026-11-03） -->
+<section class="hl-hub" aria-label="ほかの無料ツール">
+<h2><span>🧰</span>次にやることも、無料ツールで</h2><p class="hl-lead">登録なし・入力内容はどこにも送信されません。</p>
+<div class="hl-pick"><a class="hl-c" href="https://yope1016.github.io/apps/bonus-tedori-2026/"><span class="hl-i">💴</span><span class="hl-t"><b>冬のボーナス 手取り計算機</b><span>使えるお金を先に確認</span></span></a><a class="hl-c" href="https://yope1016.github.io/apps/otoshidama-souba-2027/"><span class="hl-i">🧧</span><span class="hl-t"><b>お年玉 相場計算機</b><span>年末年始の出費をまとめて</span></span></a><a class="hl-c" href="https://yope1016.github.io/apps/furusato-jogen-2026/"><span class="hl-i">🎁</span><span class="hl-t"><b>ふるさと納税 上限額シミュレーター</b><span>12/31の締切前に</span></span></a></div>
+<details><summary>ひとりラボの無料ツールをすべて見る（20本）</summary>
+<h3>お金・税金（年末調整〜確定申告）</h3><ul>
+<li><a href="https://yope1016.github.io/apps/furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額シミュレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/nencho-navi-2026/"><span>📝</span>年末調整 書き方ナビ</a></li>
+<li><a href="https://yope1016.github.io/apps/gensen-choshu-checker-2026/"><span>🧾</span>源泉徴収票の見方とチェッカー</a></li>
+<li><a href="https://yope1016.github.io/apps/kakutei-shindan-2026/"><span>🩺</span>確定申告が必要か1分診断</a></li>
+<li><a href="https://yope1016.github.io/apps/iryohi-kojo-2026/"><span>💊</span>医療費控除 いくら戻る？</a></li>
+<li><a href="https://yope1016.github.io/apps/jutaku-loan-kojo-2026/"><span>🏠</span>住宅ローン控除 いくら戻る？</a></li>
+<li><a href="https://yope1016.github.io/apps/fuyou-kabe-2026/"><span>🧱</span>扶養の壁チェッカー</a></li>
+<li><a href="https://yope1016.github.io/apps/bonus-tedori-2026/"><span>💴</span>冬のボーナス 手取り計算機</a></li>
+</ul>
+<h3>年末年始の行事</h3><ul>
+<li><a href="https://yope1016.github.io/apps/bonenkai-kanji-2026/"><span>🍻</span>忘年会 幹事の段取り表</a></li>
+<li><a href="https://yope1016.github.io/apps/warikan-keisha/"><span>🧮</span>傾斜割り勘計算</a></li>
+<li class="hl-me"><a href="https://yope1016.github.io/apps/xmas-yosan-2026/"><span>🎄</span>クリスマス予算プランナー</a></li>
+<li><a href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/"><span>📅</span>年末年始 何連休？</a></li>
+<li><a href="https://yope1016.github.io/apps/oosouji-buntan-2026/"><span>🧹</span>大掃除の分担ジェネレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/otoshidama-souba-2027/"><span>🧧</span>お年玉 相場計算機</a></li>
+<li><a href="https://yope1016.github.io/apps/nenga-hitokoto-2027/"><span>✍️</span>年賀状ひとことジェネレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/mochu-hagaki-calendar-2026/"><span>🕯️</span>喪中はがき 逆算カレンダー</a></li>
+<li><a href="https://yope1016.github.io/apps/kanchu-nengajimai-2027/"><span>✉️</span>寒中見舞い・年賀状じまい 文例</a></li>
+</ul>
+<h3>引っ越し・新生活</h3><ul>
+<li><a href="https://yope1016.github.io/apps/hikkoshi-checklist/"><span>✅</span>引っ越し手続きチェックリスト</a></li>
+<li><a href="https://yope1016.github.io/apps/hikkoshi-shoki-hiyou/"><span>📦</span>引っ越しの初期費用 計算機</a></li>
+<li><a href="https://yope1016.github.io/apps/net-kaisen-shindan/"><span>📶</span>ネット回線 選び方診断</a></li>
+</ul>
+</details><a class="hl-all" href="https://yope1016.github.io/apps/">ツール一覧のトップへ →</a></section>
+</main>
+<div class="toast" id="toast"></div>
+<footer>© ひとりラボ ・ 入力内容はどこにも送信されません</footer>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var URL_APP="https://yope1016.github.io/apps/xmas-yosan-2026/";
+var COL=["#15803d","#c81e1e","#c58a0a","#2563eb","#7c3aed","#0e9488","#db2777","#64748b","#ea580c","#4d7c0f","#0369a1"];
+// lv: [控えめ, ふつう, 奮発]
+var P=[
+ {id:"kid_s",emo:"🧸",name:"子ども（未就学）",note:"平均は8,378円（バンダイ2025）",lv:[5000,8400,15000],n:0,
+  idea:[[4000,"絵本・ぬいぐるみ・お絵かきセット"],[9000,"知育玩具・ブロック・ままごとセット"],[99999999,"大型のおもちゃ・キッズ用自転車・三輪車"]]},
+ {id:"kid_e",emo:"🎮",name:"子ども（小学生）",note:"いちばん多い価格帯は5,000〜6,000円",lv:[5000,8400,15000],n:0,
+  idea:[[4000,"カードゲーム・図鑑・文房具セット"],[9000,"ボードゲーム・プラモデル・科学キット"],[99999999,"ゲームソフト・自転車・ゲーム機のアクセサリー"]]},
+ {id:"teen",emo:"🎧",name:"子ども（中高生）",note:"現金・ギフトカードを選ぶ家庭も多い",lv:[5000,10000,20000],n:0,
+  idea:[[6000,"ギフトカード・コスメ・推しグッズ"],[12000,"ワイヤレスイヤホン・バッグ・スニーカー"],[99999999,"スマートウォッチ・腕時計・ゲーム機"]]},
+ {id:"lover",emo:"💝",name:"恋人",note:"男性は5,000〜1万円が最多（2024調査）",lv:[5000,10000,30000],n:0,
+  idea:[[6000,"ハンドクリーム・マグカップ・名入れ小物"],[15000,"マフラー・手袋・財布・コスメのセット"],[99999999,"アクセサリー・腕時計・旅行や食事の体験"]]},
+ {id:"spouse",emo:"💑",name:"夫・妻",note:"家族で使うものを贈る人も",lv:[5000,10000,20000],n:0,
+  idea:[[6000,"ちょっといいお菓子・入浴剤・花"],[12000,"部屋着・ストール・ちょっと高い家電小物"],[99999999,"家電・バッグ・2人でのディナーや旅行"]]},
+ {id:"parent",emo:"👵",name:"両親・祖父母",note:"帰省の手土産と兼ねても",lv:[3000,5000,10000],n:0,
+  idea:[[4000,"お菓子・お茶・花"],[8000,"ひざ掛け・グルメのギフト"],[99999999,"マッサージ器・カタログギフト・写真入りの品"]]},
+ {id:"friend",emo:"🎀",name:"友人",note:"気をつかわせない金額が人気",lv:[1000,3000,5000],n:0,
+  idea:[[2000,"お菓子・コスメのミニサイズ"],[4000,"入浴剤セット・雑貨・ハンドクリーム"],[99999999,"名入れ小物・ちょっといいスイーツ"]]},
+ {id:"swap",emo:"🎲",name:"職場・プレゼント交換",note:"交換会は上限が決まっていることが多い",lv:[500,1000,3000],n:0,
+  idea:[[800,"お菓子・使い捨てカイロ・ご当地の小物"],[2000,"ハンドクリーム・おもしろ雑貨"],[99999999,"ドリップコーヒーのセット・ブランケット"]]},
+ {id:"me",emo:"✨",name:"自分へのご褒美",note:"ふるさと納税の返礼品で選ぶのも手",lv:[3000,10000,30000],n:0,
+  idea:[[5000,"スイーツ・本・入浴剤"],[15000,"服・コスメ・趣味の道具"],[99999999,"家電・アクセサリー・旅行"]]}
+];
+var EX=[
+ {id:"cake",emo:"🎂",name:"クリスマスケーキ",sub:"ホールの4〜5号の目安",v:4500,on:true},
+ {id:"food",emo:"🍗",name:"家のごちそう",sub:"チキン・オードブルなど",v:6000,on:true},
+ {id:"dine",emo:"🍽️",name:"外食（ディナー）",sub:"2人分の目安",v:16000,on:false},
+ {id:"deco",emo:"🎄",name:"飾り・ツリー",sub:"",v:2000,on:false},
+ {id:"wrap",emo:"📦",name:"ラッピング・送料",sub:"1人500円×人数で自動",v:0,on:false,auto:true}
+];
+var S={lv:{},amt:{},budget:0};
+P.forEach(function(p){S.lv[p.id]=1;S.amt[p.id]=p.lv[1]});
+function yen(n){return Math.round(n).toLocaleString("ja-JP")}
+function toast(t){var e=$("toast");e.textContent=t;e.classList.add("show");setTimeout(function(){e.classList.remove("show")},1800)}
+function ideaOf(p,a){for(var i=0;i<p.idea.length;i++)if(a<=p.idea[i][0])return p.idea[i][1];return p.idea[p.idea.length-1][1]}
+
+function buildWho(){
+  var h="";
+  P.forEach(function(p){
+    h+='<div class="prow" id="r_'+p.id+'"><div class="ptop"><span class="pemo">'+p.emo+'</span><span class="pname"><b>'+p.name+'</b></span>'+
+      '<span class="step"><button type="button" data-m="'+p.id+'" aria-label="'+p.name+'を減らす">−</button><output id="n_'+p.id+'">0</output><button type="button" data-p="'+p.id+'" aria-label="'+p.name+'を増やす">＋</button></span></div><p class="pnote">'+p.note+'</p>'+
+      '<div class="pdet"><div class="lv">'+["控えめ","ふつう","奮発"].map(function(l,i){return '<button type="button" data-lv="'+p.id+':'+i+'"'+(i===1?' class="on"':'')+'>'+l+'<b>'+yen(p.lv[i])+'円</b></button>'}).join("")+'</div>'+
+      '<div class="amt">1人あたり<input type="number" inputmode="numeric" min="0" step="500" id="a_'+p.id+'" value="'+p.lv[1]+'" aria-label="'+p.name+'の1人あたりの金額">円</div>'+
+      '<div class="idea" id="i_'+p.id+'"></div></div></div>';
+  });
+  $("who").innerHTML=h;
+  $("who").addEventListener("click",function(e){
+    var b=e.target.closest("button");if(!b)return;
+    var id;
+    if((id=b.getAttribute("data-p"))){var p=find(id);if(p.n<20)p.n++;render();}
+    else if((id=b.getAttribute("data-m"))){var q=find(id);if(q.n>0)q.n--;render();}
+    else if(b.getAttribute("data-lv")){var a=b.getAttribute("data-lv").split(":"),pp=find(a[0]);S.lv[pp.id]=+a[1];S.amt[pp.id]=pp.lv[+a[1]];$("a_"+pp.id).value=S.amt[pp.id];render();}
+  });
+  $("who").addEventListener("input",function(e){
+    if(e.target.id&&e.target.id.indexOf("a_")===0){var id=e.target.id.slice(2);S.amt[id]=Math.max(0,+e.target.value||0);S.lv[id]=find(id).lv.indexOf(S.amt[id]);render();}
+  });
+}
+function find(id){for(var i=0;i<P.length;i++)if(P[i].id===id)return P[i]}
+function buildEx(){
+  var h="";
+  EX.forEach(function(x){
+    h+='<div class="exr"><label><input type="checkbox" id="c_'+x.id+'"'+(x.on?" checked":"")+'><span>'+x.emo+' '+x.name+(x.sub?'<small>'+x.sub+'</small>':'')+'</span></label>'+
+      (x.auto?'<b id="v_wrap" style="font-variant-numeric:tabular-nums">0円</b>':'<input type="number" inputmode="numeric" min="0" step="500" id="v_'+x.id+'" value="'+x.v+'" aria-label="'+x.name+'の金額">')+'</div>';
+  });
+  $("ex").innerHTML=h;
+  $("ex").addEventListener("input",function(e){
+    var t=e.target;if(!t.id)return;var id=t.id.slice(2),x;
+    for(var i=0;i<EX.length;i++)if(EX[i].id===id)x=EX[i];
+    if(!x)return;
+    if(t.type==="checkbox")x.on=t.checked;else x.v=Math.max(0,+t.value||0);
+    render();
+  });
+}
+
+var last=-1;
+function calc(){
+  var items=[],people=0,gift=0;
+  P.forEach(function(p){if(p.n>0){var s=p.n*S.amt[p.id];people+=p.n;gift+=s;items.push({name:p.name+(p.n>1?" ×"+p.n:""),v:s})}});
+  EX.forEach(function(x){if(!x.on)return;var v=x.auto?people*500:x.v;if(v>0)items.push({name:x.name,v:v})});
+  var total=items.reduce(function(a,b){return a+b.v},0);
+  return {items:items,total:total,people:people,gift:gift};
+}
+function render(){
+  P.forEach(function(p){
+    $("n_"+p.id).textContent=p.n;
+    $("r_"+p.id).classList.toggle("act",p.n>0);
+    var bs=$("r_"+p.id).querySelectorAll(".lv button");
+    for(var i=0;i<bs.length;i++)bs[i].classList.toggle("on",S.lv[p.id]===i);
+    $("i_"+p.id).innerHTML='💡 '+yen(S.amt[p.id])+'円なら：<b>'+ideaOf(p,S.amt[p.id])+'</b>';
+  });
+  var c=calc();
+  var wr=$("v_wrap");if(wr)wr.textContent=yen(c.people*500)+"円";
+  var r=$("res"),B=S.budget;
+  var avg=c.people?Math.round(c.gift/c.people):0;
+  var html='<div class="lab">クリスマスの総額</div><div class="big" id="bigN">'+yen(c.total)+'<small>円</small></div>'+
+    '<div class="sub"><span>プレゼント '+c.people+'人分 '+yen(c.gift)+'円</span><span>1人あたり 平均 '+yen(avg)+'円</span><span>その他 '+yen(c.total-c.gift)+'円</span></div>';
+  if(B>0){
+    var d=B-c.total;
+    html+='<div class="verdict">'+(d>=0?'✅ 予算内です（あと '+yen(d)+'円 使えます）':'⚠️ 予算を '+yen(-d)+'円 オーバーしています')+'</div>';
+  }else if(c.people===0){html+='<div class="verdict">👆 まず「だれに贈る？」で人数を入れてください</div>'}
+  r.innerHTML=html;
+  if(last!==-1&&last!==c.total){var b=$("bigN");b.classList.remove("pop");void b.offsetWidth;b.classList.add("pop")}
+  last=c.total;
+  // bar & legend
+  var bh="",lh="";
+  c.items.forEach(function(it,i){var w=c.total?it.v/c.total*100:0,col=COL[i%COL.length];bh+='<i style="width:'+w.toFixed(2)+'%;background:'+col+'" title="'+it.name+'"></i>';lh+='<div><i style="background:'+col+'"></i><span>'+it.name+'</span><b>'+yen(it.v)+'円</b></div>'});
+  $("bar").innerHTML=bh;$("bar").style.display=c.items.length?"flex":"none";$("lg").innerHTML=lh;
+  // meter
+  if(B>0){
+    var pct=Math.min(100,c.total/B*100),ov=c.total>B;
+    var tip=ov?'削るなら：'+cutTip(c,c.total-B):'予算の '+Math.round(c.total/B*100)+'% を使う計画です';
+    $("meter").innerHTML='<div class="track"><div class="fill'+(ov?" over":"")+'" style="width:'+pct.toFixed(1)+'%"></div></div><p>'+tip+'</p>';
+  }else $("meter").innerHTML="";
+  share(c);
+}
+function cutTip(c,over){
+  // suggest dropping biggest item's level
+  var best=null;
+  P.forEach(function(p){if(p.n>0&&S.lv[p.id]>0){var save=p.n*(S.amt[p.id]-p.lv[S.lv[p.id]-1]);if(save>0&&(!best||save>best.s))best={p:p,s:save}}});
+  if(best)return '「'+best.p.name+'」を1段階下げると '+yen(best.s)+'円 減ります'+(best.s>=over?'（これで予算内）':'');
+  return '外食を家のごちそうにする、ケーキを小さいサイズにするなどで調整できます';
+}
+function text(c){
+  var t="🎄クリスマス予算 "+yen(c.total)+"円\n";
+  c.items.forEach(function(it){t+="・"+it.name+" "+yen(it.v)+"円\n"});
+  if(S.budget>0){var d=S.budget-c.total;t+=(d>=0?"予算内（残り"+yen(d)+"円）":"予算オーバー（"+yen(-d)+"円）")+"\n"}
+  return t;
+}
+function share(c){
+  var t=c.people?"今年のクリスマス、全部で "+yen(c.total)+"円 になりそう🎄（プレゼント"+c.people+"人分＋ケーキ・ごちそう）\nあなたはいくら？":"クリスマス、全部でいくら？プレゼント・ケーキ・ごちそうの総額を1分で計算🎄";
+  $("xs").href="https://twitter.com/intent/tweet?text="+encodeURIComponent(t)+"&url="+encodeURIComponent(URL_APP);
+  $("ls").href="https://line.me/R/msg/text/?"+encodeURIComponent(text(c)+URL_APP);
+}
+$("copy").addEventListener("click",function(){
+  var t=text(calc())+URL_APP;
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast("コピーしました")},fallback)}else fallback();
+  function fallback(){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("コピーしました")}catch(e){toast("コピーできませんでした")}a.remove()}
+});
+$("budget").addEventListener("input",function(e){S.budget=Math.max(0,+e.target.value||0);render()});
+
+// timeline
+function buildTL(){
+  var now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var Y=2026,xmas=new Date(Y,11,24);
+  var diff=Math.round((xmas-today)/86400000);
+  $("cdN").textContent=diff>=0?diff:0;
+  $("cdT").textContent=diff>0?"（2026年12月24日 木曜日）":diff===0?"今日はクリスマス・イブ！":"今年のクリスマスは終わりました";
+  var WD=["日","月","火","水","木","金","土"];
+  var L=[
+    [(today<new Date(Y,11,4)?today:new Date(Y,11,3)),"総額の上限を決めて、贈る相手と金額を決める（このページ）"],
+    [new Date(Y,11,4),"冬のボーナスの手取りを確認 → <a href=\"../bonus-tedori-2026/\">手取り計算機</a>"],
+    [new Date(Y,11,10),"名入れ・受注生産のプレゼントは、このあたりまでに注文"],
+    [new Date(Y,11,15),"クリスマスケーキの予約（多くのお店は12月上旬〜中旬に締切）"],
+    [new Date(Y,11,18),"通販のプレゼントは、遅くともこのころまでに注文"],
+    [new Date(Y,11,23),"ラッピング・カード・電池（おもちゃ用）の準備"],
+    [new Date(Y,11,24),"クリスマス・イブ 🎄"],
+    [new Date(Y,11,31),"ふるさと納税の締切 → <a href=\"../furusato-jogen-2026/\">上限額シミュレーター</a>"]
+  ];
+  var nextSet=false,h="";
+  L.forEach(function(x){
+    var cls=x[0]<today?"past":(!nextSet?(nextSet=true,"next"):"");
+    h+='<li class="'+cls+'"><div class="dt">'+(x[0].getMonth()+1)+'/'+x[0].getDate()+'（'+WD[x[0].getDay()]+'）'+(cls==="next"?' ← 次はこれ':'')+'</div><div class="tx">'+x[1]+'</div></li>';
+  });
+  $("tl").innerHTML=h;
+}
+
+// theme
+var root=document.documentElement;
+function isDark(){var t=root.getAttribute("data-theme");if(t)return t==="dark";return window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches}
+function setModeLabel(){$("mode").textContent=isDark()?"☀️ ライト":"🌙 ダーク"}
+$("mode").addEventListener("click",function(){root.setAttribute("data-theme",isDark()?"light":"dark");setModeLabel()});
+setModeLabel();
+// snow
+(function(){var box=$("snowbox"),h="";for(var i=0;i<26;i++){h+='<span class="snow" style="left:'+(Math.random()*100).toFixed(1)+'%;animation-duration:'+(5+Math.random()*6).toFixed(1)+'s;animation-delay:-'+(Math.random()*8).toFixed(1)+'s;width:'+(3+Math.random()*4).toFixed(0)+'px;height:'+(3+Math.random()*4).toFixed(0)+'px"></span>'}box.innerHTML=h})();
+
+buildWho();buildEx();buildTL();
+// sensible starting example: 1 child (elementary) so the result isn't empty
+find("kid_e").n=1;
+render();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

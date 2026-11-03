@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>暖房の電気代 くらべる計算機 2026-2027冬｜エアコン・こたつ・ストーブ・灯油・ガスの1時間・1か月</title>
+<meta name="description" content="エアコン・こたつ・電気ストーブ・セラミックヒーター・オイルヒーター・ホットカーペット・電気毛布・灯油ファンヒーター・ガスファンヒーターの暖房費を1時間・1日・1か月で比較。使い方を選ぶと12月〜3月の冬の暖房費の合計と、電気代補助（12月1円・1〜2月4.5円/kWh）の値引き目安、安くする組み合わせを表示。登録不要。">
+<meta name="theme-color" content="#0f3b6e">
+<link rel="canonical" href="https://yope1016.github.io/apps/danbou-denkidai-2026/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:title" content="暖房の電気代 くらべる計算機 2026-2027冬">
+<meta property="og:description" content="エアコン・こたつ・ストーブ・灯油・ガスの暖房費を1時間・1か月で比較。冬の合計と補助の値引き目安、安くする組み合わせまで1画面で。">
+<meta property="og:url" content="https://yope1016.github.io/apps/danbou-denkidai-2026/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"暖房の電気代 くらべる計算機 2026-2027冬","url":"https://yope1016.github.io/apps/danbou-denkidai-2026/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"暖房器具で電気代がいちばん安いのはどれ？","acceptedAnswer":{"@type":"Answer","text":"部屋全体を暖める器具では、省エネ性能の高いエアコンが1時間あたり約10〜20円と安くなりやすい器具です（6畳・安定運転時の目安）。体のまわりだけを暖めるなら、電気毛布（約1円/時）やこたつ（約3円/時）がさらに安くなります。電気ストーブやセラミックヒーターは約25〜37円/時と高めです。"}},
+{"@type":"Question","name":"2026年冬の電気代の補助はいつから・いくら？","acceptedAnswer":{"@type":"Answer","text":"2026年10月29日に首相が、電気・ガス料金の支援を2026年12月使用分から2027年2月使用分まで行うと表明したと報じられています。報道によると電気（低圧）の値引きは12月使用分が1kWhあたり1円、2027年1月・2月使用分が1kWhあたり4.5円です。都市ガスの単価や正式な決定内容は、資源エネルギー庁の発表で確認してください。"}},
+{"@type":"Question","name":"電気代の1kWhあたりの単価は何円で計算する？","acceptedAnswer":{"@type":"Answer","text":"家電の電気代の表示には、全国家庭電気製品公正取引協議会の目安単価（1kWhあたり31円、税込）がよく使われます。実際の単価は電力会社・プラン・使用量・燃料費調整額・再エネ賦課金で変わるため、検針票の請求額÷使用量で自分の単価を入れるとより正確です。"}}
+]}]}
+</script>
+<style>
+:root{
+  --bg:#f2f5fa;--card:#fff;--ink:#14202e;--sub:#5a6b80;--line:#e1e8f2;--chip:#eef3fa;
+  --pri:#1d6fd8;--hot:#ea580c;--gold:#b7791f;--ok:#15803d;--warn:#c2410c;
+  --shadow:0 14px 34px -16px rgba(15,50,110,.35);
+  --grad:linear-gradient(135deg,#0b2545 0%,#13467f 40%,#2f7fd6 72%,#f59e0b 125%);
+  --r:20px;
+}
+:root[data-theme="dark"]{--bg:#0b1119;--card:#131c28;--ink:#eaf1fa;--sub:#a6b6c9;--line:#243246;--chip:#1b2636;--pri:#6aa8ff;--hot:#fb923c;--gold:#f2c14e;--ok:#4ade80;--warn:#fb923c;--shadow:0 14px 34px -16px rgba(0,0,0,.75)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1119;--card:#131c28;--ink:#eaf1fa;--sub:#a6b6c9;--line:#243246;--chip:#1b2636;--pri:#6aa8ff;--hot:#fb923c;--gold:#f2c14e;--ok:#4ade80;--warn:#fb923c;--shadow:0 14px 34px -16px rgba(0,0,0,.75)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+button,input,select{font-family:inherit;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:22px 0 104px}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 10%,rgba(255,255,255,.22),transparent 40%),radial-gradient(circle at 10% 100%,rgba(255,170,60,.28),transparent 45%)}
+.fl{position:absolute;font-size:26px;opacity:.6;animation:float 7s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+@keyframes float{50%{transform:translateY(-14px) rotate(10deg)}}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px}
+.promo-note{font-size:11px;color:rgba(255,255,255,.85);text-align:right;position:relative;z-index:2}
+.hero h1{font-size:clamp(25px,7vw,40px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.42em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+main{margin-top:-72px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(12px)}}
+.card h2{font-size:19px;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.ico{width:38px;height:38px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:20px;background:var(--chip)}
+.hint{font-size:13px;color:var(--sub);margin-top:8px}
+.rl{display:block;font-size:13px;font-weight:800;color:var(--sub);margin:14px 0 6px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 14px;font-weight:800;font-size:14px;cursor:pointer;min-height:44px;transition:.2s}
+.seg button[aria-pressed="true"]{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 6px 14px -6px var(--pri)}
+input[type=number],select{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);min-height:48px}
+input:focus,select:focus{outline:2px solid var(--pri);outline-offset:1px}
+.g3{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (min-width:620px){.g3{grid-template-columns:repeat(3,1fr)}}
+/* ranking */
+.rank{display:flex;flex-direction:column;gap:8px}
+.rk{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center}
+.rk .em{font-size:20px;text-align:center}
+.rk .nm{font-size:14px;font-weight:800;line-height:1.3}
+.rk .nm small{display:block;font-size:11px;color:var(--sub);font-weight:700}
+.rk .bar{height:8px;border-radius:99px;background:var(--chip);margin-top:4px;overflow:hidden}
+.rk .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#2f7fd6,#f59e0b,#ea580c);transform-origin:left;animation:grow .8s ease both}
+@keyframes grow{from{transform:scaleX(0)}}
+.rk .v{font-size:18px;font-weight:900;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.rk .v small{font-size:11px;color:var(--sub);font-weight:700;display:block}
+.tag{display:inline-block;font-size:10px;font-weight:900;border-radius:6px;padding:0 6px;margin-left:4px;vertical-align:2px}
+.tag.room{background:color-mix(in srgb,var(--pri) 15%,transparent);color:var(--pri)}
+.tag.body{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}
+/* devices */
+.dev{border:1.5px solid var(--line);border-radius:16px;padding:12px;margin-top:10px;transition:.2s;background:var(--card)}
+.dev.on{border-color:var(--pri);background:color-mix(in srgb,var(--pri) 5%,var(--card))}
+.dev .hd{display:flex;align-items:center;gap:10px;cursor:pointer;min-height:44px}
+.dev .hd .em{font-size:24px}
+.dev .hd .t{flex:1;font-weight:800;font-size:15px;line-height:1.35}
+.dev .hd .t small{display:block;font-size:12px;color:var(--sub);font-weight:700}
+.sw{width:50px;height:30px;border-radius:99px;background:var(--line);position:relative;flex:none;transition:.2s;border:0;cursor:pointer}
+.sw:after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:.2s}
+.sw[aria-checked="true"]{background:var(--pri)}
+.sw[aria-checked="true"]:after{left:23px}
+.dev .bd{display:none;margin-top:10px}
+.dev.on .bd{display:block}
+.hrs{display:flex;align-items:center;gap:10px}
+.hrs input[type=range]{flex:1;accent-color:var(--pri);height:36px}
+.hrs output{font-weight:900;font-size:18px;min-width:72px;text-align:right;font-variant-numeric:tabular-nums}
+.dev .mini{font-size:13px;color:var(--sub);margin-top:4px}
+.dev .mini b{color:var(--ink)}
+.preset{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+/* result */
+.res{border-radius:20px;padding:20px;color:#fff;background:linear-gradient(135deg,#0b2545,#1d5fae 60%,#e07a14 130%);position:relative;overflow:hidden}
+.res:after{content:"❄️";position:absolute;right:12px;top:6px;font-size:54px;opacity:.18}
+.res .l{font-size:13px;font-weight:800;opacity:.9}
+.res .big{font-size:clamp(38px,11vw,54px);font-weight:900;line-height:1.1;font-variant-numeric:tabular-nums;margin:4px 0}
+.res .big span{font-size:18px;margin-left:4px}
+.res .s{font-size:14px;opacity:.95}
+.kpi{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.kpi div{background:rgba(255,255,255,.14);border-radius:14px;padding:10px 12px}
+.kpi b{display:block;font-size:22px;font-weight:900;font-variant-numeric:tabular-nums}
+.kpi small{font-size:12px;opacity:.9}
+.months{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px;align-items:end}
+.mo{text-align:center;font-size:12px;font-weight:800;color:var(--sub)}
+.mo .col{height:120px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.mo .col i{display:block;width:70%;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,#f59e0b,#2f7fd6);animation:rise .8s ease both;transform-origin:bottom;position:relative}
+.mo .col i.sub{background:repeating-linear-gradient(45deg,rgba(21,128,61,.55) 0 6px,rgba(21,128,61,.25) 6px 12px);border-radius:4px;margin-top:2px}
+@keyframes rise{from{transform:scaleY(0)}}
+.mo b{display:block;font-size:14px;color:var(--ink);font-variant-numeric:tabular-nums}
+.mo em{font-style:normal;color:var(--ok);font-size:11px;display:block}
+.tbl{width:100%;border-collapse:separate;border-spacing:0 6px;font-size:14px;margin-top:8px}
+.tbl td{padding:9px 10px;background:var(--chip)}
+.tbl td:first-child{border-radius:12px 0 0 12px;font-weight:700}
+.tbl td:last-child{border-radius:0 12px 12px 0;text-align:right;font-weight:900;white-space:nowrap;font-variant-numeric:tabular-nums}
+/* tips */
+.tip{display:flex;gap:12px;padding:12px;border-radius:16px;background:var(--chip);margin-top:10px;align-items:flex-start}
+.tip .em{font-size:24px;line-height:1.2}
+.tip b{display:block;font-size:15px}
+.tip p{font-size:13px;color:var(--sub)}
+.tip .save{margin-left:auto;font-weight:900;color:var(--ok);white-space:nowrap;font-size:15px;text-align:right}
+.tip .save small{display:block;font-size:11px;color:var(--sub);font-weight:700}
+.empty{padding:16px;border-radius:14px;background:var(--chip);color:var(--sub);font-size:14px;text-align:center}
+/* buttons */
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:14px;min-height:48px;font-weight:800;font-size:15px;text-decoration:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.x{background:#111;color:#fff;border-color:#111}
+.btn.line{background:#06c755;color:#fff;border-color:#06c755}
+.btn.cp{grid-column:1/-1;background:var(--pri);color:#fff;border-color:var(--pri)}
+/* PR */
+.pr{border:1.5px solid var(--gold);border-radius:18px;padding:16px;position:relative;background:linear-gradient(135deg,rgba(183,121,31,.09),rgba(29,111,216,.05));margin-top:18px}
+.prlab{position:absolute;top:-10px;left:14px;background:var(--gold);color:#fff;font-size:11px;font-weight:900;border-radius:6px;padding:1px 8px;letter-spacing:.1em}
+.pr h3{font-size:16px;margin-bottom:6px}
+.pr p{font-size:14px;color:var(--sub)}
+.afl{margin-top:10px}
+.afl a{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:15px;padding:10px 14px;border-radius:12px;background:var(--card);border:1.5px solid var(--line);text-decoration:none;min-height:44px;line-height:1.4}
+.afl a:after{content:"→"}
+.afl img{position:absolute;width:1px;height:1px}
+.slot{display:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#14202e;color:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;transition:.3s;z-index:9;opacity:0}
+.toast.show{transform:translateX(-50%);opacity:1}
+.faq details{border-top:1px solid var(--line);padding:12px 0}
+.faq summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"＋";color:var(--pri)}
+.faq details[open] summary:after{content:"－"}
+.faq p{font-size:14px;color:var(--sub);margin-top:8px}
+.src{font-size:12px;color:var(--sub);line-height:1.6}
+.src li{margin-left:18px;margin-top:4px;word-break:break-all}
+footer{text-align:center;font-size:12px;color:var(--sub);padding:20px 16px 36px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="fl" style="left:8%;top:62%">❄️</span>
+  <span class="fl" style="right:12%;top:30%;animation-delay:-2s">🔥</span>
+  <span class="fl" style="right:30%;top:70%;animation-delay:-4s">🧦</span>
+  <div class="wrap">
+    <div class="topbar"><span class="brand">ひとりラボ</span><button class="mode" id="mode" type="button">🌙 ダーク</button></div>
+    <p class="promo-note">※ページ内に広告（PR）を含みます</p>
+    <h1><small>2026-2027 冬の暖房費</small>暖房の電気代<br>くらべる計算機</h1>
+    <p class="lead">エアコン・こたつ・ストーブ・灯油・ガス。いつもの使い方を選ぶだけで、<b>この冬（12〜3月）の暖房費の合計</b>と、補助の値引き、安くする組み合わせがわかります。</p>
+    <div class="badges"><span class="badge">⚡ 補助 12月1円・1〜2月4.5円/kWh 反映</span><span class="badge">🔒 登録なし・送信なし</span><span class="badge">📱 スマホで30秒</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" style="animation-delay:.05s">
+    <h2><span class="ico">🏅</span>1時間あたり いちばん安い暖房は？</h2>
+    <p class="hint" style="margin:-4px 0 12px">下の単価で計算した、1時間使ったときの費用の目安です。<span class="tag room">部屋</span>は部屋全体、<span class="tag body">からだ</span>は体のまわりを暖める器具。</p>
+    <div class="rank" id="rank"></div>
+  </section>
+
+  <section class="card" style="animation-delay:.1s">
+    <h2><span class="ico">🏠</span>うちの暖房の使い方</h2>
+    <span class="rl">よくある使い方から選ぶ（あとで変えられます）</span>
+    <div class="preset seg" id="presets">
+      <button type="button" data-p="home">💻 在宅ワーク</button>
+      <button type="button" data-p="night">🌙 夜だけ</button>
+      <button type="button" data-p="family">👨‍👩‍👧 家族で</button>
+      <button type="button" data-p="stove">🔥 ストーブ派</button>
+    </div>
+    <div id="devs"></div>
+    <p class="hint">1日に使う時間を選んでください。エアコンやヒーターは「つけている時間」、こたつ・電気毛布は「入っている時間」です。</p>
+  </section>
+
+  <section class="card" style="animation-delay:.15s" id="resultCard">
+    <h2><span class="ico">🧾</span>この冬の暖房費（12月〜3月）</h2>
+    <div class="res">
+      <div class="l">暖房費の合計（補助の値引き後）</div>
+      <div class="big"><span id="total" style="font-size:inherit;margin:0">0</span><span>円</span></div>
+      <div class="s" id="totalSub">—</div>
+      <div class="kpi">
+        <div><small>1か月あたり（12〜2月）</small><b id="perMonth">0円</b></div>
+        <div><small>1日あたり</small><b id="perDay">0円</b></div>
+        <div><small>補助による値引き</small><b id="subsidy">0円</b></div>
+        <div><small>暖房の電気使用量</small><b id="kwh">0kWh</b></div>
+      </div>
+    </div>
+    <div class="months" id="months"></div>
+    <p class="hint">緑のしま模様＝補助で安くなる分。3月は使う時間を半分と仮定しています。</p>
+    <table class="tbl" id="byDev"></table>
+    <span class="rl">補助の値引き</span>
+    <div class="seg" id="subSeg">
+      <button type="button" data-s="1" aria-pressed="true">反映する</button>
+      <button type="button" data-s="0" aria-pressed="false">反映しない</button>
+    </div>
+    <p class="hint">補助は「12月使用分〜2027年2月使用分」で、電気は12月1円・1月と2月4.5円/kWh（2026年10月29日の首相表明の報道）。ガスの値引き単価は未発表のため、ここでは0円で計算しています。実際の値引きは暖房以外の電気にもかかります。</p>
+    <div class="row2" style="margin-top:14px">
+      <a class="btn x" id="xs" href="#" target="_blank" rel="noopener">𝕏 でシェア</a>
+      <a class="btn line" id="ls" href="#" target="_blank" rel="noopener">LINE で送る</a>
+      <button class="btn cp" type="button" id="cp">📋 結果をコピー</button>
+    </div>
+  </section>
+
+  <section class="card" style="animation-delay:.2s">
+    <h2><span class="ico">💡</span>この冬、安くするなら</h2>
+    <div id="tips"></div>
+
+    <div class="pr" id="prGoods">
+      <span class="prlab">PR</span>
+      <h3>🧣 「からだを暖める」グッズを足すと、エアコンの温度を下げやすい</h3>
+      <p>電気毛布・着る毛布・窓の断熱シート・すきま風テープなどは、数百〜数千円で買えて、毎日の暖房費を下げる助けになります。</p>
+      <!-- AFFILIATE:danbou_goods -->
+      <div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングで「電気毛布」「断熱シート」を探す</a></div>
+    </div>
+    <div class="pr" id="prFuru">
+      <span class="prlab">PR</span>
+      <h3>🎁 古いヒーターの買い替えは、ふるさと納税の返礼品も候補に</h3>
+      <p>ふるさと納税の返礼品には、家電や寝具を選べる自治体もあります。今年の上限額の範囲なら、実質2,000円の負担で受け取れます。</p>
+      <!-- AFFILIATE:furusato -->
+      <div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738779" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738779" height="1" width="1" border="0">ふるなびで家電の返礼品を見る</a></div>
+      <p class="hint">上限額は <a href="https://yope1016.github.io/apps/furusato-jogen-2026/">ふるさと納税 上限額シミュレーター</a> で確認できます。</p>
+    </div>
+    <div class="pr slot" id="prPlan">
+      <span class="prlab">PR</span>
+      <h3>⚡ 電気・ガスの料金プランを見直す</h3>
+      <!-- AFFILIATE:denki_gas_hikaku -->
+    </div>
+  </section>
+
+  <section class="card" style="animation-delay:.25s">
+    <h2><span class="ico">⚙️</span>単価の設定（検針票の数字に合わせると正確）</h2>
+    <div class="g3">
+      <label><span class="rl">電気 1kWhあたり（円）</span><input type="number" id="pE" min="1" max="100" step="0.1" value="31" inputmode="decimal"></label>
+      <label><span class="rl">灯油 1Lあたり（円）</span><input type="number" id="pK" min="1" max="400" step="1" value="143" inputmode="decimal"></label>
+      <label><span class="rl">ガスの種類</span><select id="gT"><option value="city">都市ガス</option><option value="lp">プロパン（LP）ガス</option></select></label>
+      <label><span class="rl">ガス 1㎥あたり（円）</span><input type="number" id="pG" min="1" max="2000" step="1" value="170" inputmode="decimal"></label>
+      <label><span class="rl">エアコンの大きさ</span><select id="acS"><option value="6">6畳用</option><option value="10">10畳用</option><option value="14">14畳用</option></select></label>
+      <label><span class="rl">寒さ（地域）</span><select id="cl"><option value="1">ふつう（関東〜九州）</option><option value="1.3">寒い（東北・北陸・内陸）</option><option value="0.8">暖かい（沖縄・南九州）</option></select></label>
+    </div>
+    <p class="hint">電気31円は、家電の電気代の表示に使われる目安単価（全国家庭電気製品公正取引協議会、税込）。灯油143円は2026年10月26日時点の全国平均の店頭価格（18L 2,580円）。ガスは地域と会社で大きく違うので、検針票の「料金÷使用量」を入れてください。寒い地域ではエアコン・ヒーターの消費が増える分を係数でかけています（こたつ・電気毛布はかけません）。</p>
+  </section>
+
+  <section class="card faq" style="animation-delay:.3s">
+    <h2><span class="ico">❓</span>よくある質問</h2>
+    <details><summary>エアコンとこたつ、どっちが安い？</summary><p>1時間あたりでは、こたつ（約3円）の方がエアコン（6畳で約14円）より安くなります。ただし、こたつは体のまわりしか暖まりません。部屋全体を暖めるならエアコン、ひとりでじっとしている時間はこたつ、と使い分けるのがおすすめです。</p></details>
+    <details><summary>電気ストーブは電気代が高いって本当？</summary><p>電気ストーブ（800W）は1時間約25円、セラミックファンヒーター（1,200W）は約37円で、エアコンの2〜3倍かかる目安です。脱衣所やトイレなど、短い時間だけ使う場所に向いています。</p></details>
+    <details><summary>灯油ストーブやガスファンヒーターは安い？</summary><p>灯油ファンヒーターは灯油の値段しだいで1時間約36円（灯油143円/L、0.25L/時の目安）。ガスファンヒーターは都市ガスなら約26円、プロパンガスでは割高になりがちです。暖まるのが速く、パワーがある点は強みです。換気を忘れずに。</p></details>
+    <details><summary>2026年冬の電気代の補助はいつから？申請は必要？</summary><p>報道では2026年12月使用分から2027年2月使用分まで。電気の値引きは12月1円、1月・2月4.5円/kWhです。電力会社・ガス会社の料金から自動で値引きされるため、家庭での申請は不要とされています。正式な内容は資源エネルギー庁の発表で確認してください。</p></details>
+    <details><summary>計算はどのくらい正確？</summary><p>器具ごとの消費電力は、一般的な製品の「平均的な運転時」の目安です。部屋の広さ・断熱・外気温・設定温度・製品の性能で大きく変わります。ここでの数字は、器具同士の比較と、ざっくりした予算づくりに使ってください。</p></details>
+  </section>
+
+  <section class="card" style="animation-delay:.35s">
+    <h2><span class="ico">📚</span>出典・計算の前提</h2>
+    <ul class="src">
+      <li>電気の目安単価 31円/kWh（税込）：全国家庭電気製品公正取引協議会「電力料金目安単価」（2022年7月改定）</li>
+      <li>電気・ガス料金支援（12月1円、1・2月4.5円/kWh）：2026年10月29日の首相表明の報道（Selectra Japan まとめ https://selectra.jp/energy/news/electricity-gas-subsidy-restart-january-2027 ）。最新は資源エネルギー庁 https://www.enecho.meti.go.jp/category/gekihen_lp/</li>
+      <li>灯油の全国平均 143.3円/L（2026年10月26日調査）：Selectra Japan 灯油価格 https://selectra.jp/energy/kerosene</li>
+      <li>消費電力の目安：エアコン（暖房・安定運転時の平均）6畳0.45kW／10畳0.65kW／14畳0.9kW、電気ストーブ0.8kW、セラミックファンヒーター1.2kW、オイルヒーター0.7kW（サーモ運転の平均）、こたつ0.1kW（中・平均）、ホットカーペット2畳0.25kW（中）、電気毛布0.04kW、足元パネルヒーター0.16kW。灯油ファンヒーター0.25L/時＋電気0.012kW、ガスファンヒーター都市ガス0.15㎥/時（LPガス0.065㎥/時）＋電気0.015kW。いずれも一般的な製品の目安（当サイトの推定）</li>
+    </ul>
+  </section>
+
+<style id="hl-hub-css">
+.hl-hub{--hl-bg:#ffffff;--hl-fg:#1d2433;--hl-sub:#5b6478;--hl-line:rgba(30,40,70,.10);--hl-tile:#f5f7fc;--hl-acc:#5b5bf0;--hl-acc2:#18b6a4;
+margin:28px auto 8px;max-width:760px;padding:22px 18px 18px;border-radius:22px;background:var(--hl-bg);color:var(--hl-fg);
+border:1px solid var(--hl-line);box-shadow:0 10px 30px rgba(40,50,90,.08);font-size:15px;line-height:1.55;box-sizing:border-box}
+@media (prefers-color-scheme:dark){.hl-hub{--hl-bg:#171b26;--hl-fg:#eef1f8;--hl-sub:#a3abc0;--hl-line:rgba(255,255,255,.10);--hl-tile:#202636;--hl-acc:#8c8cff;--hl-acc2:#3fd6c3;box-shadow:none}}
+.hl-hub *{box-sizing:border-box}
+.hl-hub h2{margin:0 0 4px;font-size:18px;display:flex;align-items:center;gap:8px}
+.hl-hub .hl-lead{margin:0 0 14px;color:var(--hl-sub);font-size:13px}
+.hl-hub .hl-pick{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:620px){.hl-hub .hl-pick{grid-template-columns:repeat(3,1fr)}}
+.hl-hub a.hl-c{display:flex;gap:10px;align-items:center;padding:13px 14px;border-radius:16px;text-decoration:none;color:var(--hl-fg);
+background:var(--hl-tile);background:linear-gradient(135deg,color-mix(in srgb,var(--hl-acc) 14%,var(--hl-tile)),color-mix(in srgb,var(--hl-acc2) 10%,var(--hl-tile)));
+border:1px solid var(--hl-line);min-height:56px;transition:transform .15s ease,box-shadow .15s ease}
+.hl-hub a.hl-c:hover,.hl-hub a.hl-c:focus-visible{transform:translateY(-2px);box-shadow:0 8px 18px rgba(60,60,160,.15)}
+.hl-hub .hl-i{font-size:22px;line-height:1;flex:none;width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:var(--hl-bg)}
+.hl-hub .hl-t b{display:block;font-size:14px}
+.hl-hub .hl-t span{display:block;font-size:12px;color:var(--hl-sub)}
+.hl-hub details{margin-top:14px;border-top:1px solid var(--hl-line);padding-top:12px}
+.hl-hub summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--hl-acc);padding:6px 0;list-style:none}
+.hl-hub summary::-webkit-details-marker{display:none}
+.hl-hub summary::after{content:none!important;display:none!important}
+.hl-hub summary{background:none!important;border:0!important;margin:0!important}
+.hl-hub summary::before{content:"＋ ";}
+.hl-hub details[open] summary::before{content:"－ ";}
+.hl-hub h3{margin:12px 0 6px;font-size:13px;color:var(--hl-sub);font-weight:700}
+.hl-hub ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:6px}
+@media (min-width:620px){.hl-hub ul{grid-template-columns:1fr 1fr}}
+.hl-hub li a,.hl-hub li a:visited{display:flex;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--hl-tile);color:var(--hl-fg);text-decoration:none;font-size:14px;min-height:44px}
+.hl-hub li a:hover{outline:2px solid color-mix(in srgb,var(--hl-acc) 40%,transparent)}
+.hl-hub li.hl-me a{opacity:.55;pointer-events:none}
+.hl-hub li.hl-me a::after{content:"（このページ）";font-size:12px;color:var(--hl-sub)}
+.hl-hub .hl-all{display:inline-block;margin-top:14px;font-size:13px;color:var(--hl-acc);text-decoration:none;font-weight:700}
+</style>
+<!-- HITORILAB:HUB v1 （全アプリ共通の内部リンク。2026-11-03） -->
+<section class="hl-hub" aria-label="ほかの無料ツール">
+<h2><span>🧰</span>次にやることも、無料ツールで</h2><p class="hl-lead">登録なし・入力内容はどこにも送信されません。</p>
+<div class="hl-pick"><a class="hl-c" href="https://yope1016.github.io/apps/bonus-tedori-2026/"><span class="hl-i">💴</span><span class="hl-t"><b>冬のボーナス 手取り計算機</b><span>光熱費の予算を先に確保</span></span></a><a class="hl-c" href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/"><span class="hl-i">📅</span><span class="hl-t"><b>年末年始 何連休？</b><span>家にいる日数を確認</span></span></a><a class="hl-c" href="https://yope1016.github.io/apps/oosouji-buntan-2026/"><span class="hl-i">🧹</span><span class="hl-t"><b>大掃除の分担ジェネレーター</b><span>エアコンのフィルター掃除も</span></span></a></div>
+<details><summary>ひとりラボの無料ツールをすべて見る（20本）</summary>
+<h3>お金・税金（年末調整〜確定申告）</h3><ul>
+<li><a href="https://yope1016.github.io/apps/furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額シミュレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/nencho-navi-2026/"><span>📝</span>年末調整 書き方ナビ</a></li>
+<li><a href="https://yope1016.github.io/apps/gensen-choshu-checker-2026/"><span>🧾</span>源泉徴収票の見方とチェッカー</a></li>
+<li><a href="https://yope1016.github.io/apps/kakutei-shindan-2026/"><span>🩺</span>確定申告が必要か1分診断</a></li>
+<li><a href="https://yope1016.github.io/apps/iryohi-kojo-2026/"><span>💊</span>医療費控除 いくら戻る？</a></li>
+<li><a href="https://yope1016.github.io/apps/jutaku-loan-kojo-2026/"><span>🏠</span>住宅ローン控除 いくら戻る？</a></li>
+<li><a href="https://yope1016.github.io/apps/fuyou-kabe-2026/"><span>🧱</span>扶養の壁チェッカー</a></li>
+<li><a href="https://yope1016.github.io/apps/bonus-tedori-2026/"><span>💴</span>冬のボーナス 手取り計算機</a></li>
+<li class="hl-me"><a href="https://yope1016.github.io/apps/danbou-denkidai-2026/"><span>🔥</span>暖房の電気代 くらべる計算機</a></li>
+</ul>
+<h3>年末年始の行事</h3><ul>
+<li><a href="https://yope1016.github.io/apps/bonenkai-kanji-2026/"><span>🍻</span>忘年会 幹事の段取り表</a></li>
+<li><a href="https://yope1016.github.io/apps/warikan-keisha/"><span>🧮</span>傾斜割り勘計算</a></li>
+<li><a href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/"><span>📅</span>年末年始 何連休？</a></li>
+<li><a href="https://yope1016.github.io/apps/oosouji-buntan-2026/"><span>🧹</span>大掃除の分担ジェネレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/otoshidama-souba-2027/"><span>🧧</span>お年玉 相場計算機</a></li>
+<li><a href="https://yope1016.github.io/apps/nenga-hitokoto-2027/"><span>✍️</span>年賀状ひとことジェネレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/mochu-hagaki-calendar-2026/"><span>🕯️</span>喪中はがき 逆算カレンダー</a></li>
+<li><a href="https://yope1016.github.io/apps/kanchu-nengajimai-2027/"><span>✉️</span>寒中見舞い・年賀状じまい 文例</a></li>
+</ul>
+<h3>引っ越し・新生活</h3><ul>
+<li><a href="https://yope1016.github.io/apps/hikkoshi-checklist/"><span>✅</span>引っ越し手続きチェックリスト</a></li>
+<li><a href="https://yope1016.github.io/apps/hikkoshi-shoki-hiyou/"><span>📦</span>引っ越しの初期費用 計算機</a></li>
+<li><a href="https://yope1016.github.io/apps/net-kaisen-shindan/"><span>📶</span>ネット回線 選び方診断</a></li>
+</ul>
+</details><a class="hl-all" href="https://yope1016.github.io/apps/">ツール一覧のトップへ →</a></section></main>
+<div class="toast" id="toast"></div>
+<footer>© ひとりラボ ・ 入力内容はどこにも送信されません</footer>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var URL_APP="https://yope1016.github.io/apps/danbou-denkidai-2026/";
+function yen(n){return Math.round(n).toLocaleString("ja-JP")}
+function r1(n){return Math.round(n*10)/10}
+
+var AC={"6":0.45,"10":0.65,"14":0.9};
+/* kind: room or body. kw = electricity, ker = L/h, gas = m3/h (city) */
+var DEV=[
+ {id:"ac",em:"❄️",nm:"エアコン（暖房）",sub:"部屋全体・省エネ機の平均",kind:"room",kw:null,cold:true},
+ {id:"kotatsu",em:"🍊",nm:"こたつ",sub:"中・サーモ運転の平均 約100W",kind:"body",kw:0.1,cold:false},
+ {id:"blanket",em:"🛏️",nm:"電気毛布",sub:"敷き毛布・中 約40W",kind:"body",kw:0.04,cold:false},
+ {id:"carpet",em:"🟫",nm:"ホットカーペット",sub:"2畳・中 約250W",kind:"body",kw:0.25,cold:false},
+ {id:"panel",em:"🦶",nm:"足元パネルヒーター",sub:"デスク下 約160W",kind:"body",kw:0.16,cold:false},
+ {id:"stove",em:"🔆",nm:"電気ストーブ",sub:"ハロゲン・カーボン 800W",kind:"room",kw:0.8,cold:true},
+ {id:"ceramic",em:"🌀",nm:"セラミックファンヒーター",sub:"強 1,200W",kind:"room",kw:1.2,cold:true},
+ {id:"oil",em:"♨️",nm:"オイルヒーター",sub:"中・サーモ運転の平均 約700W",kind:"room",kw:0.7,cold:true},
+ {id:"kero",em:"🛢️",nm:"灯油ファンヒーター",sub:"中 0.25L/時＋電気",kind:"room",kw:0.012,ker:0.25,cold:true},
+ {id:"gas",em:"🔥",nm:"ガスファンヒーター",sub:"中・都市ガス0.15㎥/時＋電気",kind:"room",kw:0.015,gas:0.15,cold:true}
+];
+var MONTHS=[{m:"12月",d:31,w:1,sub:1},{m:"1月",d:31,w:1,sub:4.5},{m:"2月",d:28,w:1,sub:4.5},{m:"3月",d:31,w:0.5,sub:0}];
+var PRESET={
+ home:{ac:9,kotatsu:0,blanket:7,carpet:0,panel:4,stove:0,ceramic:1,oil:0,kero:0,gas:0},
+ night:{ac:4,kotatsu:3,blanket:7,carpet:0,panel:0,stove:0,ceramic:0,oil:0,kero:0,gas:0},
+ family:{ac:10,kotatsu:5,blanket:8,carpet:4,panel:0,stove:0,ceramic:1,oil:0,kero:0,gas:0},
+ stove:{ac:0,kotatsu:3,blanket:0,carpet:0,panel:0,stove:4,ceramic:2,oil:0,kero:5,gas:0}
+};
+var state={h:{},on:{},subsidy:true};
+DEV.forEach(function(d){state.h[d.id]=0;state.on[d.id]=false});
+
+function P(){
+  var e=parseFloat($("pE").value),k=parseFloat($("pK").value),g=parseFloat($("pG").value);
+  return {e:(e>0&&e<200)?e:31,k:(k>0&&k<500)?k:143,g:(g>0&&g<3000)?g:170,lp:$("gT").value==="lp",ac:AC[$("acS").value]||0.45,cl:parseFloat($("cl").value)||1};
+}
+/* per-hour cost and kWh of a device */
+function hourly(d,p,withCold){
+  var f=(withCold&&d.cold)?p.cl:1;
+  var kw=(d.id==="ac"?p.ac:d.kw)*f;
+  var c=kw*p.e;
+  if(d.ker)c+=d.ker*f*p.k;
+  if(d.gas)c+=(p.lp?0.065:d.gas)*f*p.g;
+  return {yen:c,kwh:kw};
+}
+
+/* theme */
+var root=document.documentElement,mode=$("mode");
+function setMode(t){root.setAttribute("data-theme",t);mode.textContent=t==="dark"?"☀️ ライト":"🌙 ダーク"}
+var dark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;
+setMode(dark?"dark":"light");
+mode.addEventListener("click",function(){setMode(root.getAttribute("data-theme")==="dark"?"light":"dark")});
+var toastT;
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove("show")},2000)}
+
+function renderRank(){
+  var p=P();
+  var arr=DEV.map(function(d){return {d:d,c:hourly(d,p,false).yen}}).sort(function(a,b){return a.c-b.c});
+  var max=arr[arr.length-1].c||1;
+  $("rank").innerHTML=arr.map(function(x,i){
+    var d=x.d,nm=d.id==="ac"?"エアコン（"+$("acS").value+"畳用）":d.nm;
+    return '<div class="rk"><span class="em">'+d.em+'</span><div><div class="nm">'+(i+1)+'. '+nm+'<span class="tag '+d.kind+'">'+(d.kind==="room"?"部屋":"からだ")+'</span><small>'+(d.id==="gas"&&p.lp?"中・LPガス0.065㎥/時＋電気":d.id==="ac"?"暖房・安定運転時の平均 "+Math.round(p.ac*1000)+"W":d.sub)+'</small></div><div class="bar"><i style="width:'+Math.max(3,x.c/max*100).toFixed(1)+'%"></i></div></div><div class="v">'+(x.c<10?r1(x.c):Math.round(x.c))+'円<small>/時</small></div></div>';
+  }).join("");
+}
+
+function renderDevs(){
+  var p=P();
+  $("devs").innerHTML=DEV.map(function(d){
+    var on=state.on[d.id],h=state.h[d.id];
+    var nm=d.id==="ac"?"エアコン（"+$("acS").value+"畳用）":d.nm;
+    return '<div class="dev'+(on?' on':'')+'" data-id="'+d.id+'"><div class="hd" data-tg="'+d.id+'"><span class="em">'+d.em+'</span><span class="t">'+nm+'<small>1時間 約'+(function(c){return c<10?r1(c):Math.round(c)})(hourly(d,p,true).yen)+'円</small></span><button type="button" class="sw" role="switch" aria-checked="'+on+'" aria-label="'+nm+'を使う"></button></div>'+
+      '<div class="bd"><div class="hrs"><input type="range" min="0.5" max="24" step="0.5" value="'+(h||1)+'" data-h="'+d.id+'" aria-label="1日に使う時間"><output id="o_'+d.id+'">'+(h||1)+'時間/日</output></div><div class="mini" id="m_'+d.id+'"></div></div></div>';
+  }).join("");
+}
+
+function calc(){
+  var p=P(),rows=[],tot=0,totSub=0,totKwh=0,mon=MONTHS.map(function(){return {c:0,s:0}});
+  DEV.forEach(function(d){
+    if(!state.on[d.id]||!state.h[d.id])return;
+    var hr=hourly(d,p,true),h=state.h[d.id],c=0;
+    MONTHS.forEach(function(m,i){
+      var hrs=h*m.d*m.w,cost=hr.yen*hrs,kwh=hr.kwh*hrs,sub=state.subsidy?kwh*m.sub:0;
+      mon[i].c+=cost;mon[i].s+=sub;c+=cost;totSub+=sub;totKwh+=kwh;
+    });
+    tot+=c;rows.push({d:d,c:c,day:hr.yen*h,hr:hr.yen,h:h});
+  });
+  return {p:p,rows:rows,tot:tot,sub:totSub,net:tot-totSub,kwh:totKwh,mon:mon};
+}
+
+var lastNet=0;
+function animNum(el,to){
+  var from=lastNet,st=null;lastNet=to;
+  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches){el.textContent=yen(to);return}
+  function step(t){if(!st)st=t;var k=Math.min(1,(t-st)/450);el.textContent=yen(from+(to-from)*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+}
+
+function render(){
+  var r=calc();
+  DEV.forEach(function(d){
+    var m=$("m_"+d.id);if(!m)return;
+    var hr=hourly(d,r.p,true),h=state.h[d.id]||0;
+    m.innerHTML='1日 <b>'+yen(hr.yen*h)+'円</b> ・ 1か月（31日） <b>'+yen(hr.yen*h*31)+'円</b>';
+  });
+  animNum($("total"),r.net);
+  var days=0;MONTHS.forEach(function(m){days+=m.d});
+  var m3=r.mon[0].c+r.mon[1].c+r.mon[2].c-r.mon[0].s-r.mon[1].s-r.mon[2].s;
+  $("perMonth").textContent=yen(m3/3)+"円";
+  var dayNet=0;r.rows.forEach(function(x){dayNet+=x.day});
+  $("perDay").textContent=yen(dayNet)+"円";
+  $("subsidy").textContent="−"+yen(r.sub)+"円";
+  $("kwh").textContent=yen(r.kwh)+"kWh";
+  $("totalSub").textContent=r.rows.length?("補助なしなら "+yen(r.tot)+"円 ・ 器具"+r.rows.length+"台 ・ 12/1〜3/31"):"上で使う暖房を選ぶと計算します";
+  var mx=0;r.mon.forEach(function(x){mx=Math.max(mx,x.c)});mx=mx||1;
+  $("months").innerHTML=r.mon.map(function(x,i){
+    var net=x.c-x.s;
+    return '<div class="mo"><div class="col"><i style="height:'+(net/mx*100).toFixed(1)+'%"></i>'+(x.s>0?'<i class="sub" style="height:'+Math.max(3,x.s/mx*100).toFixed(1)+'%"></i>':'')+'</div><b>'+yen(net)+'円</b>'+(x.s>0?'<em>補助 −'+yen(x.s)+'円</em>':'<em>&nbsp;</em>')+MONTHS[i].m+'</div>';
+  }).join("");
+  r.rows.sort(function(a,b){return b.c-a.c});
+  $("byDev").innerHTML=r.rows.length?r.rows.map(function(x){
+    var nm=x.d.id==="ac"?"エアコン（"+$("acS").value+"畳用）":x.d.nm;
+    return '<tr><td>'+x.d.em+' '+nm+'（'+x.h+'時間/日）</td><td>'+yen(x.c)+'円</td></tr>';
+  }).join(""):'';
+  renderTips(r);
+  share(r);
+}
+
+function renderTips(r){
+  var p=r.p,tips=[],ac=DEV[0],acH=hourly(ac,p,true).yen,season=0;
+  MONTHS.forEach(function(m){season+=m.d*m.w});
+  r.rows.forEach(function(x){
+    if(["stove","ceramic","oil"].indexOf(x.d.id)>=0&&x.h>=2){
+      var sv=(x.hr-acH)*x.h*season;
+      if(sv>100)tips.push({em:"🔁",t:x.d.nm+"の時間をエアコンに置きかえる",p:"部屋を暖めるのが目的なら、同じ時間でもエアコンの方が安くすみます。脱衣所など短時間の場所だけに残すのがコツ。",s:sv});
+    }
+    if(x.d.id==="kero"||x.d.id==="gas"){
+      var sv2=(x.hr-acH)*x.h*season;
+      if(sv2>300)tips.push({em:"⚖️",t:x.d.nm+"の一部をエアコンに",p:"立ち上がりはファンヒーター、暖まったらエアコンで保つ、と分けると燃料代を減らせる目安です。換気も忘れずに。",s:sv2*0.5});
+    }
+  });
+  var acRow=r.rows.filter(function(x){return x.d.id==="ac"})[0];
+  if(acRow){
+    tips.push({em:"🌡️",t:"エアコンの設定温度を1℃下げる",p:"暖房は設定温度を1℃下げると消費電力が約10%減るといわれます。着る毛布や電気毛布と組み合わせると下げやすくなります。",s:acRow.c*0.1});
+    tips.push({em:"🧽",t:"エアコンのフィルターを月1〜2回そうじ",p:"フィルターが目詰まりすると暖まりにくくなり、電気代がかさみます。大掃除のついでに。",s:0});
+    if(!state.on.blanket&&acRow.h>=8)tips.push({em:"🛏️",t:"寝るときはエアコンを切って電気毛布に",p:"夜間の2時間をエアコン→電気毛布に置きかえた場合の目安です。",s:(acH-hourly(DEV[2],p,true).yen)*2*season});
+  }
+  if(state.on.kotatsu)tips.push({em:"🍊",t:"こたつは上掛けと敷き布団をセットで",p:"熱が逃げにくくなり、「中」や「弱」でも十分暖かくなります。",s:0});
+  tips.push({em:"🪟",t:"窓とすきま風の対策",p:"部屋の熱は窓から多く逃げます。厚手のカーテン、断熱シート、すきま風テープで、どの暖房でも効きがよくなります。",s:0});
+  tips.sort(function(a,b){return b.s-a.s});
+  $("tips").innerHTML=tips.slice(0,5).map(function(t){
+    return '<div class="tip"><span class="em">'+t.em+'</span><div><b>'+t.t+'</b><p>'+t.p+'</p></div>'+(t.s>0?'<div class="save">−'+yen(t.s)+'円<small>この冬の目安</small></div>':'')+'</div>';
+  }).join("");
+}
+
+function txt(r){
+  return "この冬（12〜3月）のうちの暖房費は約"+yen(r.net)+"円の計算でした（補助の値引き後）。器具別の比較と安くする組み合わせはこちら🔥";
+}
+function share(r){
+  var t=txt(r);
+  $("xs").href="https://twitter.com/intent/tweet?text="+encodeURIComponent(t)+"&url="+encodeURIComponent(URL_APP);
+  $("ls").href="https://line.me/R/msg/text/?"+encodeURIComponent(t+"\n"+URL_APP);
+}
+$("cp").addEventListener("click",function(){
+  var r=calc(),lines=["【この冬の暖房費（12〜3月）】","合計 約"+yen(r.net)+"円（補助なし "+yen(r.tot)+"円）"];
+  r.rows.forEach(function(x){lines.push("・"+(x.d.id==="ac"?"エアコン":x.d.nm)+" "+x.h+"時間/日："+yen(x.c)+"円")});
+  lines.push(URL_APP);
+  var s=lines.join("\n");
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).then(function(){toast("コピーしました")},function(){toast("コピーできませんでした")})}
+  else toast("コピーできませんでした");
+});
+
+/* events */
+$("devs").addEventListener("click",function(e){
+  if(e.target.closest(".bd"))return;
+  var hd=e.target.closest("[data-tg]");if(!hd)return;
+  var id=hd.getAttribute("data-tg");
+  state.on[id]=!state.on[id];
+  if(state.on[id]&&!state.h[id])state.h[id]=id==="blanket"?7:id==="ceramic"||id==="stove"?1:4;
+  clearPreset();renderDevs();render();
+});
+$("devs").addEventListener("input",function(e){
+  var id=e.target.getAttribute("data-h");if(!id)return;
+  state.h[id]=parseFloat(e.target.value);
+  $("o_"+id).textContent=state.h[id]+"時間/日";
+  clearPreset();render();
+});
+function clearPreset(){Array.prototype.forEach.call(document.querySelectorAll("#presets button"),function(b){b.setAttribute("aria-pressed","false")})}
+function applyPreset(k){
+  var p=PRESET[k];
+  DEV.forEach(function(d){state.h[d.id]=p[d.id]||0;state.on[d.id]=!!p[d.id]});
+  Array.prototype.forEach.call(document.querySelectorAll("#presets button"),function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-p")===k))});
+  renderDevs();render();
+}
+$("presets").addEventListener("click",function(e){var b=e.target.closest("button");if(b)applyPreset(b.getAttribute("data-p"))});
+$("subSeg").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  state.subsidy=b.getAttribute("data-s")==="1";
+  Array.prototype.forEach.call(this.querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",String(x===b))});
+  render();
+});
+["pE","pK","pG","acS","cl"].forEach(function(id){$(id).addEventListener("input",function(){renderRank();renderDevs();render()})});
+$("gT").addEventListener("change",function(){if(this.value==="lp"&&$("pG").value==="170")$("pG").value=650;if(this.value==="city"&&$("pG").value==="650")$("pG").value=170;renderRank();renderDevs();render()});
+
+renderRank();applyPreset("home");
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

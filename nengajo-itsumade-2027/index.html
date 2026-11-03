@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>年賀状はいつまでに出す？2027 投函日チェッカー｜元日に届く締切と準備の逆算</title>
+<meta name="description" content="2027年（令和9年）の年賀状は12月20日から受付、12月27日までの投函で元日に届く目安。投函する日を入れると「いつ届くか」を判定し、印刷サービス・自宅印刷・手書きごとに準備を逆算。枚数からはがき代（1枚85円）と手書きの所要時間も計算。登録不要。">
+<meta name="theme-color" content="#9f1239">
+<link rel="canonical" href="https://yope1016.github.io/apps/nengajo-itsumade-2027/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:title" content="年賀状はいつまでに出す？2027 投函日チェッカー">
+<meta property="og:description" content="元日に届くのは12/27投函まで（目安）。投函日を入れると届く日を判定、準備のスケジュールとはがき代も1画面で。">
+<meta property="og:url" content="https://yope1016.github.io/apps/nengajo-itsumade-2027/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📮</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"年賀状はいつまでに出す？2027 投函日チェッカー","url":"https://yope1016.github.io/apps/nengajo-itsumade-2027/","applicationCategory":"LifestyleApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"2027年の年賀状はいつまでに出せば元日に届く？","acceptedAnswer":{"@type":"Answer","text":"日本郵便の案内では、2027年用の年賀状の引受は2026年12月20日から始まり、12月27日までに投函すれば元日に届く目安です（前年より2日遅い設定）。12月28日以降の投函は、元日に届かない可能性があります。"}},
+{"@type":"Question","name":"2027年用の年賀はがきはいくら？","acceptedAnswer":{"@type":"Answer","text":"通常の年賀はがきは1枚85円、寄付金付は90円です。2026年11月2日から2027年1月15日まで販売されます。私製はがきを年賀状にする場合は85円分の切手を貼り、表面に赤字で「年賀」と書きます。"}},
+{"@type":"Question","name":"12月20日より前に投函するとどうなる？","acceptedAnswer":{"@type":"Answer","text":"引受の開始前に投函すると、年賀状としてではなく通常の郵便として扱われ、年内に届いてしまうことがあります。書き終えても、12月20日から27日の間にポストに入れましょう。"}}
+]}]}
+</script>
+<style>
+:root{
+  --bg:#f8f4f1;--card:#fff;--ink:#22161a;--sub:#6b5a5f;--line:#ece1df;
+  --pri:#be123c;--gold:#b7791f;--ok:#15803d;--warn:#c2410c;--ng:#9f1239;--chip:#f9eef0;
+  --shadow:0 14px 34px -16px rgba(120,20,40,.35);
+  --grad:linear-gradient(135deg,#4c0519 0%,#9f1239 40%,#e11d48 75%,#f5b942 120%);
+  --r:20px;
+}
+:root[data-theme="dark"]{--bg:#120a0c;--card:#1d1215;--ink:#f6ecee;--sub:#c3aab0;--line:#3a262b;--chip:#2a1a1e;--pri:#fb7190;--gold:#f2c14e;--ok:#4ade80;--warn:#fb923c;--ng:#fda4af;--shadow:0 14px 34px -16px rgba(0,0,0,.75)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#120a0c;--card:#1d1215;--ink:#f6ecee;--sub:#c3aab0;--line:#3a262b;--chip:#2a1a1e;--pri:#fb7190;--gold:#f2c14e;--ok:#4ade80;--warn:#fb923c;--ng:#fda4af;--shadow:0 14px 34px -16px rgba(0,0,0,.75)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+button,input,select{font-family:inherit;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:22px 0 104px}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 12%,rgba(255,255,255,.25),transparent 40%),radial-gradient(circle at 8% 95%,rgba(255,215,120,.25),transparent 45%)}
+.hero:after{content:"";position:absolute;right:-60px;bottom:-60px;width:240px;height:240px;border-radius:50%;border:26px solid rgba(255,255,255,.08)}
+.fl{position:absolute;font-size:28px;opacity:.65;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+@keyframes float{50%{transform:translateY(-14px) rotate(8deg)}}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px}
+.promo-note{font-size:11px;color:rgba(255,255,255,.85);text-align:right;position:relative;z-index:2}
+.hero h1{font-size:clamp(26px,7.2vw,40px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.42em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+main{margin-top:-72px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(12px)}}
+.card h2{font-size:19px;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.ico{width:38px;height:38px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:20px;background:var(--chip)}
+.hint{font-size:13px;color:var(--sub);margin-top:8px}
+/* countdown */
+.cdg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:620px){.cdg{grid-template-columns:repeat(4,1fr)}}
+.cdt{border-radius:16px;padding:14px 12px;background:var(--chip);position:relative;overflow:hidden}
+.cdt.main{background:linear-gradient(135deg,#9f1239,#e11d48);color:#fff}
+.cdt .l{font-size:12px;font-weight:800;opacity:.85}
+.cdt .n{font-size:34px;font-weight:900;line-height:1.1;font-variant-numeric:tabular-nums;margin-top:4px}
+.cdt .n span{font-size:14px;font-weight:800;margin-left:2px}
+.cdt .d{font-size:12px;opacity:.85;margin-top:2px}
+.cdt.done{opacity:.55}
+/* checker */
+.rl{display:block;font-size:13px;font-weight:800;color:var(--sub);margin:14px 0 6px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 14px;font-weight:800;font-size:14px;cursor:pointer;min-height:44px;transition:.2s}
+.seg button[aria-pressed="true"]{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 6px 14px -6px var(--pri)}
+input[type=date],input[type=number],select{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);min-height:48px}
+input:focus,select:focus{outline:2px solid var(--pri);outline-offset:1px}
+.verdict{margin-top:16px;border-radius:18px;padding:18px;border:2px solid var(--line);position:relative;transition:.3s}
+.verdict .big{font-size:22px;font-weight:900;line-height:1.35;display:flex;gap:10px;align-items:flex-start}
+.verdict .big i{font-style:normal;font-size:30px;line-height:1}
+.verdict p{font-size:14px;color:var(--sub);margin-top:8px}
+.verdict.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 8%,transparent)}
+.verdict.warn{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 9%,transparent)}
+.verdict.ng{border-color:var(--ng);background:color-mix(in srgb,var(--ng) 9%,transparent)}
+.verdict.info{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 9%,transparent)}
+.strip{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:14px}
+.strip div{border-radius:10px;padding:6px 2px;text-align:center;font-size:11px;font-weight:800;background:var(--chip);color:var(--sub);line-height:1.3}
+.strip div b{display:block;font-size:15px;color:var(--ink)}
+.strip .g{background:color-mix(in srgb,var(--ok) 18%,transparent)}
+.strip .y{background:color-mix(in srgb,var(--warn) 18%,transparent)}
+.strip .sel{outline:2.5px solid var(--pri);outline-offset:-2px}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--sub);margin-top:8px}
+.legend span:before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px;background:var(--c)}
+/* plan */
+.two{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:620px){.two{grid-template-columns:1fr 1fr}}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.kpi div{background:var(--chip);border-radius:14px;padding:12px 8px;text-align:center}
+.kpi .l{font-size:11.5px;font-weight:800;color:var(--sub)}
+.kpi .v{font-size:22px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1.2;margin-top:2px}
+.kpi .v small{font-size:12px;margin-left:1px}
+.tl{list-style:none;margin-top:16px;position:relative;padding-left:22px}
+.tl:before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{position:relative;padding:6px 0 10px}
+.tl li:before{content:"";position:absolute;left:-20px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--pri);border:2px solid var(--card)}
+.tl li.past{opacity:.5}
+.tl li.past:before{background:var(--sub)}
+.tl li.next:before{background:var(--warn);box-shadow:0 0 0 4px color-mix(in srgb,var(--warn) 30%,transparent)}
+.tl .dt{font-size:13px;font-weight:900;color:var(--pri)}
+.tl li.next .dt{color:var(--warn)}
+.tl .dt em{font-style:normal;font-size:11px;font-weight:800;margin-left:6px;background:var(--warn);color:#fff;border-radius:6px;padding:1px 6px}
+.tl .tx{font-size:14px}
+.alert{margin-top:12px;border-radius:14px;padding:12px 14px;background:color-mix(in srgb,var(--ng) 10%,transparent);border:1.5px solid var(--ng);font-size:14px;font-weight:700}
+.row2{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:14px;padding:11px 16px;font-weight:800;font-size:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;cursor:pointer;min-height:46px;flex:1 1 140px;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.pri{background:var(--pri);border-color:var(--pri);color:#fff}
+.btn.x{background:#111;border-color:#111;color:#fff}
+.btn.line{background:#06c755;border-color:#06c755;color:#fff}
+/* price table */
+.pt{width:100%;border-collapse:separate;border-spacing:0 6px;font-size:14px}
+.pt td{padding:10px 12px;background:var(--chip)}
+.pt td:first-child{border-radius:12px 0 0 12px;font-weight:700}
+.pt td:last-child{border-radius:0 12px 12px 0;text-align:right;font-weight:900;white-space:nowrap}
+/* PR */
+.pr{border:1.5px solid var(--gold);border-radius:18px;padding:16px;position:relative;background:linear-gradient(135deg,rgba(183,121,31,.09),rgba(190,18,60,.05));margin-top:18px}
+.prlab{position:absolute;top:-10px;left:14px;background:var(--gold);color:#fff;font-size:11px;font-weight:900;border-radius:6px;padding:1px 8px;letter-spacing:.1em}
+.pr h3{font-size:16px;margin-bottom:6px}
+.pr p{font-size:14px;color:var(--sub)}
+.afl{margin-top:10px}
+.afl a{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:15px;padding:10px 14px;border-radius:12px;background:var(--card);border:1.5px solid var(--line);text-decoration:none;min-height:44px;line-height:1.4}
+.afl a:after{content:"→"}
+.afl img{position:absolute;width:1px;height:1px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#22161a;color:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;transition:.3s;z-index:9;opacity:0}
+.toast.show{transform:translateX(-50%);opacity:1}
+.faq details{border-top:1px solid var(--line);padding:12px 0}
+.faq summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"＋";color:var(--pri)}
+.faq details[open] summary:after{content:"－"}
+.faq details p{margin-top:8px;font-size:14px;color:var(--sub)}
+.src{font-size:12.5px;color:var(--sub);list-style:none;display:flex;flex-direction:column;gap:6px;word-break:break-all}
+footer{text-align:center;font-size:12px;color:var(--sub);padding:10px 0 30px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="fl" style="left:5%;top:62%">🐑</span>
+  <span class="fl" style="right:8%;top:28%;animation-delay:-2s">📮</span>
+  <span class="fl" style="right:24%;top:68%;animation-delay:-4s">🎍</span>
+  <div class="wrap">
+    <div class="topbar"><span class="brand">ひとりラボ</span><button class="mode" id="mode" type="button">🌙 ダーク</button></div>
+    <p class="promo-note">※ページ内に広告（PR）を含みます</p>
+    <h1><small>NENGAJO 2027 ・ 令和9年 未年</small>年賀状、<br>いつまでに出す？</h1>
+    <p class="lead">投函する日を選ぶと「元日に届くか」を判定。印刷・自宅プリンター・手書きごとに、今日から何をすればいいかを逆算します。</p>
+    <div class="badges"><span class="badge">元日配達は 12/27 投函まで（目安）</span><span class="badge">受付は 12/20 から</span><span class="badge">はがき 1枚85円</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2><span class="ico">⏳</span>今日から数えて、あと何日？</h2>
+    <div class="cdg" id="cdg"></div>
+    <p class="hint">日付は日本郵便の2027年用年賀はがきの案内にもとづく目安です（2026年11月時点）。</p>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📮</span>この日に出したら、いつ届く？</h2>
+    <span class="rl">ポストに入れる日</span>
+    <div class="seg" id="quick"></div>
+    <input type="date" id="post" min="2026-11-01" max="2027-02-28" aria-label="投函する日" style="margin-top:10px">
+    <div class="verdict" id="verdict" aria-live="polite"></div>
+    <div class="strip" id="strip"></div>
+    <div class="legend"><span style="--c:color-mix(in srgb,var(--ok) 40%,transparent)">元日に届く目安</span><span style="--c:color-mix(in srgb,var(--warn) 40%,transparent)">元日に届かない可能性</span></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">🗓️</span>準備のスケジュールを逆算</h2>
+    <div class="two">
+      <div><span class="rl" style="margin-top:0">作り方</span>
+        <select id="how">
+          <option value="print">印刷サービスに注文する</option>
+          <option value="home">自宅のプリンターで印刷</option>
+          <option value="hand">ぜんぶ手書き</option>
+          <option value="app">スマホで作って投函まで代行</option>
+        </select></div>
+      <div><span class="rl" style="margin-top:0">出す枚数</span>
+        <input type="number" id="num" inputmode="numeric" min="1" max="2000" value="40"></div>
+    </div>
+    <span class="rl">はがきの種類</span>
+    <div class="seg" id="kind"></div>
+    <span class="rl">投函する予定日</span>
+    <input type="date" id="target" min="2026-12-20" max="2026-12-31" value="2026-12-24" aria-label="投函する予定日">
+    <div class="kpi" id="kpi"></div>
+    <ul class="tl" id="tl"></ul>
+    <div id="alert"></div>
+    <div class="row2">
+      <button class="btn pri" id="ics" type="button">📅 カレンダーに登録（.ics）</button>
+      <button class="btn" id="copy" type="button">📋 予定をコピー</button>
+    </div>
+    <div class="row2" style="margin-top:8px">
+      <a class="btn x" id="xs" href="#" target="_blank" rel="noopener">𝕏 でシェア</a>
+      <a class="btn line" id="ls" href="#" target="_blank" rel="noopener">LINE で送る</a>
+    </div>
+    <p class="hint">印刷サービス・アプリの注文締切はお店ごとに違います。必ず各サービスの案内で確認してください。ここでの日数は余裕をみた目安です。</p>
+
+    <div class="pr" id="prPrint">
+      <span class="prlab">PR</span>
+      <h3>🖨️ 印刷に任せるなら、早めの注文がおトク</h3>
+      <p>多くの印刷サービスは早めに注文するほど割引が大きく、12月に入ると混み合います。デザイン選びだけ先に済ませておくのがコツです。</p>
+      <!-- AFFILIATE:nenga_print -->
+      <div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+36B9P6+33J0+15OK2A" rel="nofollow">当日出荷☆喪中・年賀状印刷は年賀状スクウェアで</a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGAV2+36B9P6+33J0+15OK2A" alt=""></div>
+      <div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+383KII+1IEW+I52SY" rel="nofollow">挨拶状ドットコム 年賀状</a>
+<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGAV2+383KII+1IEW+I52SY" alt=""></div>
+    </div>
+    <div class="pr" id="prApp">
+      <span class="prlab">PR</span>
+      <h3>📱 パソコンもプリンターもないなら、スマホで</h3>
+      <p>スマホで写真とデザインを選ぶだけで作れるサービスなら、年末の忙しい時期でもすき間時間で終わります。</p>
+      <!-- AFFILIATE:nenga_app -->
+      <div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3CV1CQ+758+15OK2A" rel="nofollow">スマホからアプリ不要で簡単に年賀状が作成できます【イメージングゲート】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BGAV2+3CV1CQ+758+15OK2A" alt=""></div>
+    </div>
+    <div class="pr" id="prHome">
+      <span class="prlab">PR</span>
+      <h3>🖋️ 自宅で刷るなら、インクを先に確保</h3>
+      <p>年賀状を刷る直前にインク切れ、はよくある失敗です。枚数が多い年は、互換インクなどで替えを1セット用意しておくと安心です。</p>
+      <!-- AFFILIATE:ink -->
+      <div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3E1WKA+34XA+65MEA" rel="nofollow">インク革命.com</a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGAV2+3E1WKA+34XA+65MEA" alt=""></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">💴</span>2027年用 年賀状の料金</h2>
+    <table class="pt">
+      <tr><td>年賀はがき（通常）</td><td>85円</td></tr>
+      <tr><td>年賀はがき（寄付金付）</td><td>90円</td></tr>
+      <tr><td>私製はがき＋切手（表に赤字で「年賀」）</td><td>85円分</td></tr>
+    </table>
+    <p class="hint">年賀はがきの販売は2026年11月2日〜2027年1月15日。料金は2026年11月時点の案内です。重さや大きさが規格を超えると料金が変わるので、写真や飾りを貼る場合は郵便局で確認してください。</p>
+    <p class="hint">添える一言に迷ったら → <a href="../nenga-hitokoto-2027/">年賀状ひとことジェネレーター</a>　／　出す前に → <a href="../mochu-hagaki-calendar-2026/">喪中はがきが届いた相手を確認</a></p>
+  </section>
+
+  <section class="card faq">
+    <h2><span class="ico">❓</span>よくある質問</h2>
+    <details><summary>2027年の年賀状はいつまでに出せば元日に届く？</summary><p>日本郵便の案内では、引受は<b>2026年12月20日（日）から</b>、<b>12月27日（日）までの投函</b>で元日に届く目安です。前年より2日遅い設定になりました。12月28日以降の投函は元日に届かない可能性があります。</p></details>
+    <details><summary>12月20日より前にポストに入れたらどうなる？</summary><p>引受が始まる前に投函すると、年賀状としてではなく<b>通常の郵便として年内に届いてしまう</b>ことがあります。書き終えても、12月20日〜27日の間に投函しましょう。</p></details>
+    <details><summary>12月28日以降や元日に出したら？</summary><p>年が明けてから届きます。松の内（関東では1月7日まで、関西などでは1月15日までとする地域も）に届くなら年賀状として失礼にはあたりません。普通郵便は土日・祝日の配達がないため、日数に余裕をみて投函してください。</p></details>
+    <details><summary>松の内を過ぎてしまったら？</summary><p>1月8日以降は、年賀状ではなく<b>寒中見舞い</b>として送るのが一般的です（立春の前日、2027年は2月3日ごろまで）。文例は <a href="../kanchu-nengajimai-2027/">寒中見舞い・年賀状じまい 文例メーカー</a> で作れます。</p></details>
+    <details><summary>入力した内容は保存・送信される？</summary><p>いいえ。判定と計算はすべてお使いの端末の中で行い、どこにも送信しません。ページを閉じると消えます。</p></details>
+  </section>
+
+  <section class="card">
+    <h2><span class="ico">📚</span>参考にした情報</h2>
+    <ul class="src">
+      <li>時事通信「年賀はがきの販売開始＝投函目安、来月27日までに―日本郵便」（2026年11月2日。引受開始12月20日、元日配達の目安12月27日、販売は1月15日まで、当初発行5億5592万枚）nippon.com掲載 https://www.nippon.com/ja/articles/-/56751</li>
+      <li>はがきナビ「【2027年用】年賀状はいつまでに出す？」（年賀はがき通常85円・寄付金付90円、私製はがきの「年賀」表記）https://hagaki-navi.com/nengajo-itsumade-2027/</li>
+      <li>最新の情報は日本郵便の公式サイト https://www.post.japanpost.jp/ で確認してください。</li>
+    </ul>
+    <p class="src" style="margin-top:8px">準備の日数（印刷の注文から到着まで、手書き1枚あたりの時間など）は、このツールが設定した目安で、各サービスの公式の締切ではありません。（2026年11月時点の情報）</p>
+  </section>
+<style id="hl-hub-css">
+.hl-hub{--hl-bg:#ffffff;--hl-fg:#1d2433;--hl-sub:#5b6478;--hl-line:rgba(30,40,70,.10);--hl-tile:#f5f7fc;--hl-acc:#5b5bf0;--hl-acc2:#18b6a4;
+margin:28px auto 8px;max-width:760px;padding:22px 18px 18px;border-radius:22px;background:var(--hl-bg);color:var(--hl-fg);
+border:1px solid var(--hl-line);box-shadow:0 10px 30px rgba(40,50,90,.08);font-size:15px;line-height:1.55;box-sizing:border-box}
+@media (prefers-color-scheme:dark){.hl-hub{--hl-bg:#171b26;--hl-fg:#eef1f8;--hl-sub:#a3abc0;--hl-line:rgba(255,255,255,.10);--hl-tile:#202636;--hl-acc:#8c8cff;--hl-acc2:#3fd6c3;box-shadow:none}}
+.hl-hub *{box-sizing:border-box}
+.hl-hub h2{margin:0 0 4px;font-size:18px;display:flex;align-items:center;gap:8px}
+.hl-hub .hl-lead{margin:0 0 14px;color:var(--hl-sub);font-size:13px}
+.hl-hub .hl-pick{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:620px){.hl-hub .hl-pick{grid-template-columns:repeat(3,1fr)}}
+.hl-hub a.hl-c{display:flex;gap:10px;align-items:center;padding:13px 14px;border-radius:16px;text-decoration:none;color:var(--hl-fg);
+background:var(--hl-tile);background:linear-gradient(135deg,color-mix(in srgb,var(--hl-acc) 14%,var(--hl-tile)),color-mix(in srgb,var(--hl-acc2) 10%,var(--hl-tile)));
+border:1px solid var(--hl-line);min-height:56px;transition:transform .15s ease,box-shadow .15s ease}
+.hl-hub a.hl-c:hover,.hl-hub a.hl-c:focus-visible{transform:translateY(-2px);box-shadow:0 8px 18px rgba(60,60,160,.15)}
+.hl-hub .hl-i{font-size:22px;line-height:1;flex:none;width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:var(--hl-bg)}
+.hl-hub .hl-t b{display:block;font-size:14px}
+.hl-hub .hl-t span{display:block;font-size:12px;color:var(--hl-sub)}
+.hl-hub details{margin-top:14px;border-top:1px solid var(--hl-line);padding-top:12px}
+.hl-hub summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--hl-acc);padding:6px 0;list-style:none}
+.hl-hub summary::-webkit-details-marker{display:none}
+.hl-hub summary::after{content:none!important;display:none!important}
+.hl-hub summary{background:none!important;border:0!important;margin:0!important}
+.hl-hub summary::before{content:"＋ ";}
+.hl-hub details[open] summary::before{content:"－ ";}
+.hl-hub h3{margin:12px 0 6px;font-size:13px;color:var(--hl-sub);font-weight:700}
+.hl-hub ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:6px}
+@media (min-width:620px){.hl-hub ul{grid-template-columns:1fr 1fr}}
+.hl-hub li a,.hl-hub li a:visited{display:flex;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--hl-tile);color:var(--hl-fg);text-decoration:none;font-size:14px;min-height:44px}
+.hl-hub li a:hover{outline:2px solid color-mix(in srgb,var(--hl-acc) 40%,transparent)}
+.hl-hub li.hl-me a{opacity:.55;pointer-events:none}
+.hl-hub li.hl-me a::after{content:"（このページ）";font-size:12px;color:var(--hl-sub)}
+.hl-hub .hl-all{display:inline-block;margin-top:14px;font-size:13px;color:var(--hl-acc);text-decoration:none;font-weight:700}
+</style>
+<!-- HITORILAB:HUB v1 （全アプリ共通の内部リンク。2026-11-03） -->
+<section class="hl-hub" aria-label="ほかの無料ツール">
+<h2><span>🧰</span>次にやることも、無料ツールで</h2><p class="hl-lead">登録なし・入力内容はどこにも送信されません。</p>
+<div class="hl-pick"><a class="hl-c" href="https://yope1016.github.io/apps/nenga-hitokoto-2027/"><span class="hl-i">✍️</span><span class="hl-t"><b>年賀状ひとことジェネレーター</b><span>添える一言を3秒で</span></span></a><a class="hl-c" href="https://yope1016.github.io/apps/mochu-hagaki-calendar-2026/"><span class="hl-i">🕯️</span><span class="hl-t"><b>喪中はがき 逆算カレンダー</b><span>出す前に宛先を確認</span></span></a><a class="hl-c" href="https://yope1016.github.io/apps/kanchu-nengajimai-2027/"><span class="hl-i">✉️</span><span class="hl-t"><b>寒中見舞い・年賀状じまい 文例</b><span>出しそびれたときは</span></span></a></div>
+<details><summary>ひとりラボの無料ツールをすべて見る（20本）</summary>
+<h3>お金・税金（年末調整〜確定申告）</h3><ul>
+<li><a href="https://yope1016.github.io/apps/furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額シミュレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/nencho-navi-2026/"><span>📝</span>年末調整 書き方ナビ</a></li>
+<li><a href="https://yope1016.github.io/apps/gensen-choshu-checker-2026/"><span>🧾</span>源泉徴収票の見方とチェッカー</a></li>
+<li><a href="https://yope1016.github.io/apps/kakutei-shindan-2026/"><span>🩺</span>確定申告が必要か1分診断</a></li>
+<li><a href="https://yope1016.github.io/apps/iryohi-kojo-2026/"><span>💊</span>医療費控除 いくら戻る？</a></li>
+<li><a href="https://yope1016.github.io/apps/jutaku-loan-kojo-2026/"><span>🏠</span>住宅ローン控除 いくら戻る？</a></li>
+<li><a href="https://yope1016.github.io/apps/fuyou-kabe-2026/"><span>🧱</span>扶養の壁チェッカー</a></li>
+<li><a href="https://yope1016.github.io/apps/bonus-tedori-2026/"><span>💴</span>冬のボーナス 手取り計算機</a></li>
+</ul>
+<h3>年末年始の行事</h3><ul>
+<li><a href="https://yope1016.github.io/apps/bonenkai-kanji-2026/"><span>🍻</span>忘年会 幹事の段取り表</a></li>
+<li><a href="https://yope1016.github.io/apps/warikan-keisha/"><span>🧮</span>傾斜割り勘計算</a></li>
+<li><a href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/"><span>📅</span>年末年始 何連休？</a></li>
+<li><a href="https://yope1016.github.io/apps/oosouji-buntan-2026/"><span>🧹</span>大掃除の分担ジェネレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/otoshidama-souba-2027/"><span>🧧</span>お年玉 相場計算機</a></li>
+<li class="hl-me"><a href="https://yope1016.github.io/apps/nengajo-itsumade-2027/"><span>📮</span>年賀状 いつまでに出す？</a></li>
+<li><a href="https://yope1016.github.io/apps/nenga-hitokoto-2027/"><span>✍️</span>年賀状ひとことジェネレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/mochu-hagaki-calendar-2026/"><span>🕯️</span>喪中はがき 逆算カレンダー</a></li>
+<li><a href="https://yope1016.github.io/apps/kanchu-nengajimai-2027/"><span>✉️</span>寒中見舞い・年賀状じまい 文例</a></li>
+</ul>
+<h3>引っ越し・新生活</h3><ul>
+<li><a href="https://yope1016.github.io/apps/hikkoshi-checklist/"><span>✅</span>引っ越し手続きチェックリスト</a></li>
+<li><a href="https://yope1016.github.io/apps/hikkoshi-shoki-hiyou/"><span>📦</span>引っ越しの初期費用 計算機</a></li>
+<li><a href="https://yope1016.github.io/apps/net-kaisen-shindan/"><span>📶</span>ネット回線 選び方診断</a></li>
+</ul>
+</details><a class="hl-all" href="https://yope1016.github.io/apps/">ツール一覧のトップへ →</a></section></main>
+<div class="toast" id="toast"></div>
+<footer>© ひとりラボ ・ 入力内容はどこにも送信されません</footer>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var URL_APP="https://yope1016.github.io/apps/nengajo-itsumade-2027/";
+var WD=["日","月","火","水","木","金","土"];
+function D(y,m,d){return new Date(y,m-1,d)}
+function today(){var n=new Date();return new Date(n.getFullYear(),n.getMonth(),n.getDate())}
+function add(d,n){var x=new Date(d.getTime());x.setDate(x.getDate()+n);return x}
+function diff(a,b){return Math.round((b-a)/86400000)}
+function fmt(d){return (d.getMonth()+1)+"/"+d.getDate()+"（"+WD[d.getDay()]+"）"}
+function iso(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
+function parse(s){var p=(s||"").split("-");if(p.length!==3)return null;var d=D(+p[0],+p[1],+p[2]);return isNaN(d)?null:d}
+function yen(n){return Math.round(n).toLocaleString("ja-JP")}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+var START=D(2026,12,20),LAST=D(2026,12,27),GANJITSU=D(2027,1,1),MATSU=D(2027,1,7),SALEEND=D(2027,1,15),RISSHUN=D(2027,2,4);
+var HOL={"2027-01-01":1,"2027-01-11":1,"2026-11-23":1};
+
+/* theme */
+var root=document.documentElement,mode=$("mode");
+function setMode(t){root.setAttribute("data-theme",t);mode.textContent=t==="dark"?"☀️ ライト":"🌙 ダーク"}
+var dark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;
+setMode(dark?"dark":"light");
+mode.addEventListener("click",function(){setMode(root.getAttribute("data-theme")==="dark"?"light":"dark")});
+
+var toastT;
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove("show")},2000)}
+function copy(txt,msg){
+  function fb(){var a=document.createElement("textarea");a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(a);toast(msg)}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){toast(msg)},fb)}else fb();
+}
+
+/* countdown */
+function renderCD(){
+  var t=today(),items=[[START,"受付スタート","この日から投函OK"],[LAST,"元日に届く締切","この日までに投函",1],[GANJITSU,"元日","2027年1月1日"],[SALEEND,"年賀はがき販売終了","2027年1月15日"]];
+  $("cdg").innerHTML=items.map(function(it){
+    var n=diff(t,it[0]),done=n<0;
+    var num=done?"済":(n===0?"今日":n+"<span>日</span>");
+    return '<div class="cdt'+(it[3]?" main":"")+(done?" done":"")+'"><div class="l">'+it[1]+'</div><div class="n">'+num+'</div><div class="d">'+fmt(it[0])+"・"+it[2]+'</div></div>';
+  }).join("");
+}
+
+/* checker */
+function bizAdd(d,n){var x=new Date(d.getTime()),c=0;while(c<n){x=add(x,1);var w=x.getDay();if(w===0||w===6||HOL[iso(x)])continue;c++}return x}
+function judge(p){
+  if(p<START){
+    var n=diff(p,START);
+    return{c:"ng",i:"⚠️",h:"まだ受付前です。この日に出すと年内に届いてしまうかも",t:"引受は12月20日（日）から。それより前に投函すると、年賀状ではなく通常の郵便として扱われることがあります。書き終えたら、あと"+n+"日待って12/20〜12/27に投函しましょう。"};
+  }
+  if(p<=LAST){
+    var left=diff(p,LAST);
+    return{c:"ok",i:"🎍",h:"元日（1/1）に届く目安です",t:left===0?"締切の目安当日です。集荷の時間はポストごとに違うので、できれば午前中に。窓口に持ち込むとより確実です。":"元日配達の締切（12/27）まで、あと"+left+"日の余裕があります。"};
+  }
+  if(p<GANJITSU){
+    return{c:"warn",i:"⏰",h:"元日には届かない可能性があります",t:"12月28日以降の投函は、年明けに順次配達されます。松の内（関東は1月7日まで）に届けば年賀状として失礼にはあたりません。急ぐ相手には、先に新年のあいさつをメッセージで送っておくと安心です。"};
+  }
+  if(p<=MATSU){
+    var e=bizAdd(p,2);
+    if(e<=MATSU)return{c:"ok",i:"📨",h:fmt(e)+"ごろに届く見込み（松の内）",t:"普通郵便は投函から2日ほど（土日・祝日を除く）が目安です。元日に届いた年賀状への返事なら、この時期で大丈夫です。"};
+    return{c:"warn",i:"📨",h:fmt(e)+"ごろ着の見込み。関東の松の内（1/7）を過ぎるかも",t:"関西など松の内を1月15日までとする地域なら年賀状のままでOK。関東の相手で1/8以降に届きそうなら、寒中見舞いに切り替えるのが無難です。"};
+  }
+  if(p<RISSHUN)return{c:"info",i:"❄️",h:"この時期は「寒中見舞い」にしましょう",t:"松の内を過ぎたら、年賀状ではなく寒中見舞い（立春の前日＝2027年2月3日ごろまで）として送るのが一般的です。年賀はがきは使わず、通常のはがきで。"};
+  return{c:"info",i:"🌸",h:"立春を過ぎたら「余寒見舞い」になります",t:"2月4日（立春）以降は、寒中見舞いではなく余寒見舞いとして送ります。"};
+}
+var post=$("post");
+function renderCheck(){
+  var p=parse(post.value)||today(),j=judge(p);
+  var v=$("verdict");v.className="verdict "+j.c;
+  v.innerHTML='<div class="big"><i>'+j.i+'</i><span>'+fmt(p)+'に投函すると…<br>'+esc(j.h)+'</span></div><p>'+j.t+(j.c==="info"?' → <a href="../kanchu-nengajimai-2027/">寒中見舞いの文例を作る</a>':'')+'</p>';
+  var s="";for(var i=0;i<14;i++){var d=add(START,i),cls=d<=LAST?"g":(d<GANJITSU?"y":"");if(iso(d)===iso(p))cls+=" sel";s+='<div class="'+cls+'">'+WD[d.getDay()]+"<b>"+d.getDate()+"</b></div>"}
+  $("strip").innerHTML=s;
+  [].forEach.call($("quick").children,function(b){b.setAttribute("aria-pressed",b.dataset.d===iso(p)?"true":"false")});
+}
+var Q=[["今日",iso(today())],["12/20",'2026-12-20'],["12/24",'2026-12-24'],["12/27",'2026-12-27'],["12/29",'2026-12-29'],["1/4",'2027-01-04']];
+$("quick").innerHTML=Q.map(function(q){return '<button type="button" data-d="'+q[1]+'" aria-pressed="false">'+q[0]+'</button>'}).join("");
+$("quick").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;post.value=b.dataset.d;renderCheck()});
+post.addEventListener("input",renderCheck);
+var t0=today();post.value=iso(t0<START?D(2026,12,24):t0);
+
+/* plan */
+var KIND=[["n","通常 85円",85],["k","寄付金付 90円",90],["s","私製＋切手 85円",85]],kind="n";
+$("kind").innerHTML=KIND.map(function(k){return '<button type="button" data-k="'+k[0]+'" aria-pressed="'+(k[0]===kind)+'">'+k[1]+'</button>'}).join("");
+$("kind").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;kind=b.dataset.k;[].forEach.call(this.children,function(x){x.setAttribute("aria-pressed",x.dataset.k===kind?"true":"false")});renderPlan()});
+
+var MIN={print:1,home:2.5,hand:6,app:0.5};
+function steps(how,T,n){
+  var mochu=[-12,"喪中はがきが届いた相手を宛先から外す（喪中はがきは12月上旬までに届くのが一般的）"];
+  if(how==="print")return[[-28,"住所録を整理して、出す相手と枚数を決める"],mochu,[-11,"デザインを決めて印刷を注文（早割はこの頃までが多い）"],[-5,"印刷したはがきが届く（混雑期は日数に余裕を）"],[-3,"宛名と、手書きのひとことを添える"],[0,"ポストに投函"]];
+  if(how==="home")return[[-24,"年賀はがきとインクを買う（足りない色を確認）"],mochu,[-12,"デザインを作って、1枚だけ試し刷り"],[-8,"裏面を本番印刷"],[-5,"宛名を印刷（住所録ソフトやアプリで）"],[-2,"ひとことを書き添える"],[0,"ポストに投函"]];
+  if(how==="hand"){
+    var h=n*MIN.hand/60,days=Math.max(1,Math.ceil(h/1));
+    return[[-days-9,"年賀はがきとペンを買う"],mochu,[-days-2,"書き始める（1日1時間で約"+days+"日分。1枚6分の目安）"],[-1,"書き損じと宛名の見直し"],[0,"ポストに投函"]];
+  }
+  return[[-18,"使う写真を選んで、住所録をアプリに入れる"],mochu,[-6,"デザインを決めて注文（投函代行の締切は各サービスで確認）"],[0,"投函（代行の場合はサービス側がポストへ）"]];
+}
+function renderPlan(){
+  var how=$("how").value,n=Math.max(1,Math.min(2000,parseInt($("num").value,10)||1));
+  var T=parse($("target").value)||D(2026,12,24);if(T<START)T=START;if(T>D(2026,12,31))T=D(2026,12,31);
+  var price=KIND.filter(function(k){return k[0]===kind})[0][2];
+  var st=steps(how,T,n).map(function(s){return{d:add(T,s[0]),t:s[1]}}).sort(function(a,b){return a.d-b.d});
+  var t=today(),nextI=-1;
+  for(var i=0;i<st.length;i++){if(st[i].d>=t){nextI=i;break}}
+  var mins=n*MIN[how],tm=mins>=60?(Math.round(mins/6)/10)+"<small>時間</small>":Math.round(mins)+"<small>分</small>";
+  var first=st[0].d,fd=diff(t,first);
+  $("kpi").innerHTML='<div><div class="l">はがき代</div><div class="v">'+yen(n*price)+'<small>円</small></div></div><div><div class="l">作業時間の目安</div><div class="v">'+tm+'</div></div><div><div class="l">準備スタート</div><div class="v">'+(fd>0?fd+'<small>日後</small>':(fd===0?'今日':'<span style="color:var(--ng)">遅れ</span>'))+'</div></div>';
+  $("tl").innerHTML=st.map(function(s,i){
+    var c=i<nextI||nextI<0?"past":(i===nextI?"next":"");
+    return '<li class="'+c+'"><div class="dt">'+fmt(s.d)+(i===nextI?"<em>次はこれ</em>":"")+'</div><div class="tx">'+esc(s.t)+'</div></li>';
+  }).join("");
+  var al="";
+  if(T>LAST)al='<div class="alert">⚠️ '+fmt(T)+'の投函だと、元日に届かない可能性があります。元日に届けたいなら12/27（日）までに。</div>';
+  else if(fd<0&&nextI>0)al='<div class="alert">⏰ 最初の目安日（'+fmt(first)+'）を過ぎています。「次はこれ」から進めれば、まだ間に合います。</div>';
+  $("alert").innerHTML=al;
+  ["prPrint","prApp","prHome"].forEach(function(id){$(id).style.display=""});
+  var order={print:["prPrint","prApp","prHome"],app:["prApp","prPrint","prHome"],home:["prHome","prPrint","prApp"],hand:["prPrint","prApp","prHome"]}[how];
+  var box=$("prPrint").parentNode;
+  order.forEach(function(id){box.appendChild($(id))});
+  plan={st:st,n:n,T:T,price:price,how:how};
+  var share="年賀状、元日に届くのは12/27投函まで（目安）📮\n"+n+"枚なら、はがき代"+yen(n*price)+"円。準備のスケジュールを逆算してくれるツール👇\n"+URL_APP;
+  $("xs").href="https://twitter.com/intent/tweet?text="+encodeURIComponent(share);
+  $("ls").href="https://line.me/R/share?text="+encodeURIComponent(share);
+}
+var plan=null;
+["how","num","target"].forEach(function(id){$(id).addEventListener("input",renderPlan)});
+$("copy").addEventListener("click",function(){
+  if(!plan)return;
+  var txt="【年賀状 2027 準備スケジュール】\n"+plan.st.map(function(s){return fmt(s.d)+" "+s.t}).join("\n")+"\n枚数："+plan.n+"枚／はがき代："+yen(plan.n*plan.price)+"円\n※元日に届くのは12/27投函まで（目安）\n"+URL_APP;
+  copy(txt,"コピーしました");
+});
+$("ics").addEventListener("click",function(){
+  if(!plan)return;
+  var now=new Date(),stamp=now.toISOString().replace(/[-:]/g,"").split(".")[0]+"Z";
+  var L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//hitorilab//nengajo2027//JA","CALSCALE:GREGORIAN"];
+  plan.st.forEach(function(s,i){
+    var a=iso(s.d).replace(/-/g,""),b=iso(add(s.d,1)).replace(/-/g,"");
+    L.push("BEGIN:VEVENT","UID:nenga2027-"+i+"-"+a+"@hitorilab","DTSTAMP:"+stamp,"DTSTART;VALUE=DATE:"+a,"DTEND;VALUE=DATE:"+b,"SUMMARY:年賀状："+s.t.replace(/[,;]/g," "),"END:VEVENT");
+  });
+  L.push("BEGIN:VEVENT","UID:nenga2027-last@hitorilab","DTSTAMP:"+stamp,"DTSTART;VALUE=DATE:20261227","DTEND;VALUE=DATE:20261228","SUMMARY:年賀状 元日に届く投函の締切（目安）","END:VEVENT","END:VCALENDAR");
+  var blob=new Blob([L.join("\r\n")],{type:"text/calendar"}),u=URL.createObjectURL(blob),a=document.createElement("a");
+  a.href=u;a.download="nengajo-2027.ics";document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(u)},1000);toast("カレンダー用ファイルを保存しました");
+});
+
+renderCD();renderCheck();renderPlan();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
