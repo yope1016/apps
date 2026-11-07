@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>年末ジャンボ 2026 期待値シミュレーター｜何枚買うといくら戻る？1万人で試す</title>
+<meta name="description" content="年末ジャンボ宝くじ2026（第1134回）と年末ジャンボミニ（第1135回）の公式の当せん金と本数から、買う枚数ごとの期待値・当たる確率を計算。1万人が同じ買い方をしたらどうなるかをシミュレーションします。">
+<meta name="theme-color" content="#1b1f4b">
+<style>
+:root{
+  --bg:#f6f4ee;--card:#ffffff;--ink:#1d1b2e;--sub:#64607a;--line:#e6e1d4;
+  --navy:#1b1f4b;--navy2:#2d3480;--gold:#c99a22;--gold2:#f2c94c;--red:#d64545;--green:#1f8a5b;--warn:#b45309;
+  --chip:#f7f2e4;--shadow:0 10px 30px rgba(30,25,70,.12);--r:20px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0f1024;--card:#1a1c38;--ink:#f3f1ff;--sub:#b3afcf;--line:#2e3058;
+  --navy:#0b0c1e;--navy2:#2d3480;--gold:#f2c94c;--gold2:#ffe08a;--red:#ff7a7a;--green:#5fd39a;--warn:#fbbf24;--chip:#24264a;--shadow:0 10px 30px rgba(0,0,0,.45)}
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--navy2)}
+@media (prefers-color-scheme:dark){a{color:var(--gold2)}}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header.hero{background:radial-gradient(120% 140% at 100% 0%,#3a42a8 0%,#1b1f4b 55%,#0b0c1e 100%);color:#fff;padding:34px 0 66px;position:relative;overflow:hidden}
+header.hero:before,header.hero:after{content:"";position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(242,201,76,.55),rgba(242,201,76,0) 70%)}
+header.hero:before{left:-70px;bottom:-90px;width:260px;height:260px}
+header.hero:after{right:-40px;top:-50px;width:200px;height:200px;animation:glow 4s ease-in-out infinite alternate}
+@keyframes glow{from{opacity:.6}to{opacity:1}}
+.hero .wrap{padding-bottom:0;position:relative;z-index:1}
+.badge{display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em}
+h1{font-size:clamp(24px,6.4vw,34px);line-height:1.3;margin:14px 0 8px;font-weight:900}
+h1 em{font-style:normal;color:var(--gold2)}
+h1 small{display:block;font-size:.55em;font-weight:700;opacity:.9;margin-top:4px}
+.hero p{margin:0;opacity:.92;font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
+.kpi{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:10px 8px;text-align:center}
+.kpi b{display:block;white-space:nowrap;font-size:clamp(16px,4.8vw,24px);color:var(--gold2);font-weight:900;line-height:1.15;font-variant-numeric:tabular-nums}
+.kpi span{font-size:11px;opacity:.85}
+main{margin-top:-42px;position:relative;z-index:2}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:20px 18px;margin-bottom:18px;border:1px solid var(--line);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h2{font-size:19px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:inline-grid;place-items:center;background:linear-gradient(135deg,var(--gold2),var(--gold));font-size:17px;flex:none}
+.lead{color:var(--sub);font-size:13px;margin:0 0 14px}
+label.f{display:block;font-weight:700;font-size:14px;margin:16px 0 8px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{flex:1 1 auto;min-height:44px;padding:8px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--chip);color:var(--ink);font-size:14px;font-weight:700;cursor:pointer;transition:.15s}
+.seg button[aria-pressed=true]{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;border-color:transparent;box-shadow:0 6px 14px rgba(27,31,75,.3)}
+@media (prefers-color-scheme:dark){.seg button[aria-pressed=true]{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1a1300}}
+.stepper{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.stepper button{width:48px;height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--chip);font-size:22px;font-weight:900;color:var(--ink);cursor:pointer}
+.stepper output{font-size:30px;font-weight:900;min-width:96px;text-align:center;font-variant-numeric:tabular-nums}
+.stepper output small{font-size:14px;color:var(--sub)}
+.quick{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.quick button{min-height:38px;padding:4px 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--sub);font-weight:700;font-size:13px;cursor:pointer}
+.cost{font-size:13px;color:var(--sub);margin-top:6px}
+.result{margin-top:18px;border-radius:18px;padding:18px;background:linear-gradient(135deg,rgba(242,201,76,.18),rgba(45,52,128,.08));border:1px solid var(--line)}
+.result .lbl{font-size:13px;color:var(--sub);font-weight:700}
+.result .num{font-size:clamp(30px,9vw,42px);font-weight:900;line-height:1.15;color:var(--navy2);font-variant-numeric:tabular-nums}
+@media (prefers-color-scheme:dark){.result .num{color:var(--gold2)}}
+.result .num small{font-size:16px;color:var(--ink)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mini{background:var(--card);border-radius:14px;padding:10px 12px;border:1px solid var(--line)}
+.mini b{display:block;font-size:19px;font-variant-numeric:tabular-nums;line-height:1.3}
+.mini span{font-size:12px;color:var(--sub)}
+.note{font-size:12px;color:var(--sub);margin-top:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1a1300;font-weight:900;font-size:16px;cursor:pointer;box-shadow:0 8px 18px rgba(201,154,34,.35);margin-top:16px}
+.btn:active{transform:scale(.98)}
+/* sim */
+.dist{display:grid;gap:8px;margin-top:14px}
+.row{display:grid;grid-template-columns:118px 1fr 64px;gap:8px;align-items:center;font-size:13px}
+.row .bar{height:16px;border-radius:999px;background:var(--line);overflow:hidden}
+.row .bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--navy2),#6f78e0);width:0;transition:width .6s ease}
+.row.win .bar i{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.row .c{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
+.big3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.big3 .mini{text-align:center}
+.big3 .mini b{font-size:22px}
+.lucky{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--chip);font-size:14px;border-left:4px solid var(--gold)}
+/* table */
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}
+th,td{padding:8px 5px;white-space:nowrap;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left;white-space:normal;min-width:3.5em}
+th{font-size:12px;color:var(--sub);font-weight:700}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.vs .mini b{font-size:16px}
+.vs .mini.hl{border:2px solid var(--gold)}
+/* schedule */
+.sch{list-style:none;margin:0;padding:0}
+.sch li{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line)}
+.sch li:last-child{border-bottom:0}
+.sch .day{flex:none;width:60px;height:60px;border-radius:16px;display:grid;place-items:center;text-align:center;background:var(--chip);border:1px solid var(--line);font-weight:900;line-height:1.05}
+.sch .day small{display:block;font-size:10px;color:var(--sub);font-weight:700}
+.sch .t{font-weight:800;font-size:14px;flex:1}
+.sch .t small{display:block;font-weight:400;font-size:12px;color:var(--sub)}
+.sch .cd{flex:none;text-align:right;font-weight:900;font-size:13px}
+.sch .cd b{display:block;font-size:20px;color:var(--navy2);font-variant-numeric:tabular-nums}
+@media (prefers-color-scheme:dark){.sch .cd b{color:var(--gold2)}}
+.sch li.past{opacity:.45}
+.ics{margin-top:4px;background:none;border:1px solid var(--line);color:var(--sub);border-radius:8px;font-size:11px;padding:3px 8px;cursor:pointer;min-height:28px}
+.tips{margin:0;padding-left:20px;font-size:14px}
+.tips li{margin-bottom:6px}
+.safe{border-left:5px solid var(--warn);background:linear-gradient(135deg,rgba(251,191,36,.12),transparent)}
+/* PR */
+.pr{border:1.5px dashed var(--gold);border-radius:16px;padding:14px;margin-top:14px;background:linear-gradient(135deg,rgba(242,201,76,.12),transparent);position:relative}
+.pr .prl{display:inline-block;font-size:11px;font-weight:900;background:var(--gold);color:#fff;padding:1px 8px;border-radius:6px;margin-bottom:6px}
+.pr p{margin:4px 0;font-size:14px}
+.pr a{font-weight:800}
+.pr img[width="1"]{position:absolute;width:1px;height:1px;opacity:0}
+/* links */
+.rec{display:grid;gap:10px}
+.rec a{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);padding:12px;border-radius:14px;background:var(--chip);border:1px solid var(--line);min-height:56px}
+.rec a .e{font-size:24px;flex:none}
+.rec a b{display:block;font-size:14px}
+.rec a span{font-size:12px;color:var(--sub)}
+details.all{margin-top:12px}
+details.all summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}
+.alllist{columns:2;column-gap:14px;font-size:13px;padding-left:18px;margin:6px 0 0}
+.alllist li{break-inside:avoid;margin-bottom:6px}
+@media (max-width:420px){.alllist{columns:1}.row{grid-template-columns:100px 1fr 56px}}
+footer{font-size:12px;color:var(--sub);text-align:center;padding:10px 16px 40px}
+footer ul{text-align:left;padding-left:18px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">🎫 年末ジャンボ 2026（第1134回）対応</span>
+    <h1>年末ジャンボ<br><em>期待値</em>シミュレーター<small>何枚買うと、平均いくら戻る？</small></h1>
+    <p>公式の当せん金と本数から計算。1万人が同じ買い方をしたらどうなるかも試せます。</p>
+    <div class="kpis">
+      <div class="kpi"><b>約150円</b><span>1枚300円の<br>平均の戻り</span></div>
+      <div class="kpi"><b>1/2000万</b><span>1等（7億円）<br>の確率</span></div>
+      <div class="kpi"><b id="kDays">--</b><span id="kLbl">発売まで</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ① 期待値 -->
+<section class="card" id="calc">
+  <h2><span class="ic">🧮</span>何枚買う？平均でいくら戻る？</h2>
+  <p class="lead">くじの種類と枚数を選ぶと、平均の戻り（期待値）と、当たる確率がわかります。</p>
+
+  <label class="f">くじの種類</label>
+  <div class="seg" id="segKind">
+    <button type="button" data-v="jumbo" aria-pressed="true">年末ジャンボ</button>
+    <button type="button" data-v="mini" aria-pressed="false">ジャンボミニ</button>
+  </div>
+
+  <label class="f">買い方</label>
+  <div class="seg" id="segWay">
+    <button type="button" data-v="ren" aria-pressed="true">連番</button>
+    <button type="button" data-v="bara" aria-pressed="false">バラ</button>
+  </div>
+
+  <label class="f">枚数</label>
+  <div class="stepper">
+    <button type="button" id="nMinus" aria-label="10枚減らす">−</button>
+    <output id="nOut">10<small> 枚</small></output>
+    <button type="button" id="nPlus" aria-label="10枚増やす">＋</button>
+  </div>
+  <div class="quick" id="quick">
+    <button type="button" data-n="10">10枚</button>
+    <button type="button" data-n="30">30枚</button>
+    <button type="button" data-n="50">50枚</button>
+    <button type="button" data-n="100">100枚</button>
+  </div>
+  <div class="cost" id="cost"></div>
+
+  <div class="result" aria-live="polite">
+    <div class="lbl">平均で戻ってくる金額（期待値）</div>
+    <div class="num" id="evMain">--</div>
+    <div class="grid2">
+      <div class="mini"><span>平均で戻らない金額</span><b id="evLoss">--</b></div>
+      <div class="mini"><span>1万円以上が当たる確率</span><b id="p1man">--</b></div>
+      <div class="mini"><span>100万円以上が当たる確率</span><b id="p100">--</b></div>
+      <div class="mini"><span>最低でも戻る額</span><b id="minBack">--</b></div>
+    </div>
+    <p class="note" id="evNote"></p>
+  </div>
+</section>
+
+<!-- ② 1万人シミュレーション -->
+<section class="card" id="sim">
+  <h2><span class="ic">👥</span>1万人が同じ買い方をしたら？</h2>
+  <p class="lead">上で選んだ買い方で、1万人がそれぞれ買ったときの結果を、公式の当せん確率どおりにランダムで試します。押すたびに結果が変わります。</p>
+  <button type="button" class="btn" id="simBtn">🎲 1万人で試す</button>
+  <div id="simOut" hidden>
+    <div class="big3">
+      <div class="mini"><span>買った額より<br>増えた人</span><b id="sWin">--</b></div>
+      <div class="mini"><span>真ん中の人の<br>戻り</span><b id="sMed">--</b></div>
+      <div class="mini"><span>1万人の<br>戻り率</span><b id="sRate">--</b></div>
+    </div>
+    <div class="dist" id="dist"></div>
+    <div class="lucky" id="sLucky"></div>
+    <p class="note">※ 1万人でも戻り率が50%を下回ることが多いのは、戻りの大半が「数十本しかない高額当せん」に集中しているためです。何度か押して比べてみてください。<br>※ 1枚ずつの当せん確率をもとにした模擬計算です（連番の前後賞は1等とセットで計算）。実際の抽せん結果を予想するものではありません。</p>
+  </div>
+</section>
+
+<!-- ③ 当せん金と確率 -->
+<section class="card" id="table">
+  <h2><span class="ic">📋</span>当せん金と確率の一覧</h2>
+  <p class="lead" id="tblLead"></p>
+  <div class="tblwrap"><table>
+    <thead><tr><th>等級</th><th>当せん金</th><th>本数※</th><th>確率（1枚）</th></tr></thead>
+    <tbody id="tbody"></tbody>
+  </table></div>
+  <p class="note">※ 本数は1ユニットあたり。</p>
+  <h3 style="font-size:15px;margin:18px 0 0">⚖️ ジャンボとミニ、どっちがいい？</h3>
+  <div class="vs">
+    <div class="mini" id="vsJ"></div>
+    <div class="mini" id="vsM"></div>
+  </div>
+  <p class="note">どちらも平均の戻りは約50%で同じ。「とにかく夢の7億円」ならジャンボ、「100万円以上が少しでも当たりやすい方」ならミニ、という違いです。</p>
+  <h3 style="font-size:15px;margin:18px 0 6px">🌏 1等の「2000万分の1」ってどれくらい？</h3>
+  <ul class="tips">
+    <li>5万人が入る大きな会場を<strong>400個</strong>満員にして、その中からたった1人。</li>
+    <li>毎日10枚買い続けても、1等を引く確率が50%になるまで<strong>約3,800年</strong>かかる計算。</li>
+    <li>100万円以上（4等以上）なら、ジャンボで約30万分の1、ミニで25万分の1。</li>
+  </ul>
+</section>
+
+<!-- ④ 日程 -->
+<section class="card" id="schedule">
+  <h2><span class="ic">🗓</span>発売日・抽せん日カレンダー</h2>
+  <p class="lead">今日からの残り日数を自動で計算します。日付のボタンでカレンダーに登録できます。</p>
+  <ul class="sch" id="sch"></ul>
+  <p class="note">※ 年末ジャンボとジャンボミニは同じ日程です。当せん金は「支払開始日から1年」を過ぎると受け取れなくなります（支払開始日は公式の発表を確認）。</p>
+</section>
+
+<!-- ⑤ 年末のお金 -->
+<section class="card" id="furusato">
+  <h2><span class="ic">🎁</span>同じ年末のお金、確実に得するなら</h2>
+  <p class="lead">宝くじは「夢を楽しむ予算」で。年内に、確実に得をする手続きも締切が近づいています。</p>
+  <ul class="tips">
+    <li><strong>ふるさと納税は12/31まで</strong>が2026年分。上限額の範囲なら、自己負担2,000円で返礼品がもらえます。宝くじの発売終了（12/25）とほぼ同じ時期です。</li>
+    <li>上限額がわからない人は、先に <a href="https://yope1016.github.io/apps/furusato-jogen-2026/">ふるさと納税 上限額シミュレーター</a> で確認。</li>
+    <li>ボーナスの使い道を決めるなら <a href="https://yope1016.github.io/apps/bonus-tedori-2026/">冬のボーナス 手取り計算機</a> で手取りを先に確認。</li>
+  </ul>
+  <div class="pr">
+    <span class="prl">PR</span>
+    <p>🎍 <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738779" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738779" height="1" width="1" border="0">ふるなびで年内の返礼品を探す</a></p>
+    <p>🐟 <a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+2WSC0Q+4PXI+BWVTE" rel="nofollow">ポケマルふるさと納税</a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGAV2+2WSC0Q+4PXI+BWVTE" alt=""></p>
+    <p>💰 <a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+4EYS2I+3XCC+BXIYQ" rel="nofollow">松井証券ではじめるiDeCo</a>
+<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4BGAV2+4EYS2I+3XCC+BXIYQ" alt="">（掛金が所得控除になる制度）</p>
+    <!-- AFFILIATE:nisa -->
+  </div>
+</section>
+
+<!-- ⑥ 買う前・当たったら -->
+<section class="card safe" id="tips">
+  <h2><span class="ic">💡</span>買う前に・当たったら</h2>
+  <ul class="tips">
+    <li><strong>当せん確率は、いつ・どこで買っても同じ</strong>です。「売り場」や「開運日」で確率は変わりません。</li>
+    <li>当せん金は<strong>所得税・住民税がかかりません</strong>。ただし、家族などに分けると贈与税の対象になることがあります（高額のときは税務署・税理士に相談を）。</li>
+    <li>券は<strong>なくさない・汚さない・折らない</strong>。裏面に名前を書いておくと安心。番号をスマホで撮っておくのもおすすめ。</li>
+    <li>1万円を超える当せん金は、売り場ではなく銀行の窓口での受け取りになる場合があります（詳しくは公式で確認）。</li>
+    <li><strong>生活費や借りたお金では買わない</strong>。使う金額は先に決めておきましょう。</li>
+  </ul>
+  <div class="pr">
+    <span class="prl">PR</span>
+    <p>👛 <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングで「宝くじ入れ・ケース」を探す</a></p>
+    <p style="font-size:12px;color:var(--sub)">（サイトのトップが開きます。券を折らずにしまえるケースは数百円から）</p>
+  </div>
+</section>
+
+<!-- 内部リンク集 -->
+<section class="card" id="more">
+  <h2><span class="ic">🧰</span>年末年始にあわせて使える無料ツール</h2>
+  <div class="rec">
+    <a href="https://yope1016.github.io/apps/furusato-jogen-2026/"><span class="e">🎁</span><div><b>ふるさと納税 上限額シミュレーター</b><span>12/31までに寄付する前に</span></div></a>
+    <a href="https://yope1016.github.io/apps/bonus-tedori-2026/"><span class="e">💴</span><div><b>冬のボーナス 手取り計算機 2026</b><span>宝くじの予算を決める前に</span></div></a>
+    <a href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/"><span class="e">🗓</span><div><b>年末年始 何連休？有給シミュレーター</b><span>12/31の抽せんは家で見る？</span></div></a>
+  </div>
+  <details class="all">
+    <summary>ひとりラボの全ツール一覧（25本）</summary>
+    <ul class="alllist">
+      <li><a href="https://yope1016.github.io/apps/warikan-keisha/">傾斜割り勘計算（幹事用）</a></li>
+      <li><a href="https://yope1016.github.io/apps/nenga-hitokoto-2027/">年賀状ひとことジェネレーター 2027</a></li>
+      <li><a href="https://yope1016.github.io/apps/furusato-jogen-2026/">ふるさと納税 上限額シミュレーター</a></li>
+      <li><a href="https://yope1016.github.io/apps/nencho-navi-2026/">年末調整 書き方ナビ 2026</a></li>
+      <li><a href="https://yope1016.github.io/apps/kakutei-shindan-2026/">確定申告が必要か1分診断</a></li>
+      <li><a href="https://yope1016.github.io/apps/oosouji-buntan-2026/">大掃除の分担ジェネレーター</a></li>
+      <li><a href="https://yope1016.github.io/apps/otoshidama-souba-2027/">お年玉 相場計算機 2027</a></li>
+      <li><a href="https://yope1016.github.io/apps/hikkoshi-checklist/">引っ越し手続きチェックリスト</a></li>
+      <li><a href="https://yope1016.github.io/apps/mochu-hagaki-calendar-2026/">喪中はがき 逆算カレンダー</a></li>
+      <li><a href="https://yope1016.github.io/apps/hikkoshi-shoki-hiyou/">引っ越しの初期費用 計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/net-kaisen-shindan/">ネット回線 選び方診断</a></li>
+      <li><a href="https://yope1016.github.io/apps/bonenkai-kanji-2026/">忘年会 幹事の段取り表</a></li>
+      <li><a href="https://yope1016.github.io/apps/kanchu-nengajimai-2027/">寒中見舞い・年賀状じまい 文例メーカー</a></li>
+      <li><a href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/">年末年始 何連休？有給シミュレーター</a></li>
+      <li><a href="https://yope1016.github.io/apps/iryohi-kojo-2026/">医療費控除 いくら戻る？計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/jutaku-loan-kojo-2026/">住宅ローン控除 いくら戻る？計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/fuyou-kabe-2026/">扶養の壁チェッカー 2026</a></li>
+      <li><a href="https://yope1016.github.io/apps/bonus-tedori-2026/">冬のボーナス 手取り計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/gensen-choshu-checker-2026/">源泉徴収票の見方とチェッカー</a></li>
+      <li><a href="https://yope1016.github.io/apps/xmas-yosan-2026/">クリスマス予算プランナー</a></li>
+      <li><a href="https://yope1016.github.io/apps/nengajo-itsumade-2027/">年賀状 投函日チェッカー 2027</a></li>
+      <li><a href="https://yope1016.github.io/apps/danbou-denkidai-2026/">暖房の電気代 くらべる計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/kisei-koutsuhi-2026/">帰省 車と新幹線どっちが安い？</a></li>
+      <li><a href="https://yope1016.github.io/apps/osechi-yosan-2027/">おせち 予算と注文締切カレンダー</a></li>
+      <li><strong>年末ジャンボ 期待値シミュレーター（このページ）</strong></li>
+    </ul>
+  </details>
+</section>
+</main>
+
+<footer>
+  <p>当せん金・本数は、年末ジャンボ宝くじ（第1134回全国、23ユニット・1ユニット2,000万枚）と年末ジャンボミニ（第1135回全国、15ユニット・1ユニット1,000万枚）の発売予定の発表にもとづきます。発売直前に変わることがあるため、購入・受け取りの前に公式の情報を確認してください。このページは宝くじの購入をすすめるものではありません。入力内容はこの端末の中だけで計算し、送信・保存しません。</p>
+  <p>参考：</p>
+  <ul>
+    <li><a href="https://www.mizuhobank.co.jp/takarakuji/yotei/index.html" rel="nofollow">みずほ銀行 宝くじ：発売予定（第1134回・第1135回）</a></li>
+    <li><a href="https://www.takarakuji-official.jp/" rel="nofollow">宝くじ公式サイト</a></li>
+  </ul>
+  <p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var yen=function(n){return Math.round(n).toLocaleString("ja-JP")+"円"};
+function man(n){ // 金額を読みやすく
+  if(n>=1e8){var o=n/1e8;return (o%1?o.toFixed(1):o)+"億円"}
+  if(n>=1e4){var m=n/1e4;return (m>=100?Math.round(m).toLocaleString("ja-JP"):(m%1?m.toFixed(1):m))+"万円"}
+  return n.toLocaleString("ja-JP")+"円";
+}
+/* ---------- 公式の当せん金と本数（1ユニットあたり） ---------- */
+var K={
+ jumbo:{name:"年末ジャンボ",round:"第1134回",unit:2e7,units:23,total:"1,380億円",
+  P:[
+   {g:"1等",a:7e8,n:1},{g:"1等の前後賞",a:1.5e8,n:2,adj:1},{g:"1等の組違い賞",a:1e5,n:199},
+   {g:"2等",a:1e8,n:1},{g:"3等",a:1e7,n:2},{g:"4等",a:1e6,n:60},
+   {g:"5等",a:1e4,n:60000},{g:"6等",a:3000,n:200000},{g:"7等",a:300,n:2000000,last:1}
+  ]},
+ mini:{name:"年末ジャンボミニ",round:"第1135回",unit:1e7,units:15,total:"450億円",
+  P:[
+   {g:"1等",a:3e7,n:10},{g:"1等の前後賞",a:1e7,n:20,adj:1},{g:"2等",a:1e6,n:10},
+   {g:"3等",a:3e4,n:3000},{g:"4等",a:1e4,n:30000},{g:"5等",a:3000,n:100000},{g:"6等",a:300,n:1000000,last:1}
+  ]}
+};
+Object.keys(K).forEach(function(k){var s=0;K[k].P.forEach(function(p){p.p=p.n/K[k].unit;s+=p.a*p.n});K[k].ev=s/K[k].unit;});
+
+var st={kind:"jumbo",way:"ren",n:10};
+function probAtLeast(P,n,min){ // 1枚の確率から、n枚で1本以上の確率
+  var q=0;P.forEach(function(p){if(p.a>=min)q+=p.p});
+  return 1-Math.pow(1-q,n);
+}
+function fmtP(p){
+  if(p<=0)return "0%";
+  if(p>=0.01)return (p*100).toFixed(1)+"%";
+  var inv=Math.round(1/p);
+  return "約"+inv.toLocaleString("ja-JP")+"分の1";
+}
+function calc(){
+  var k=K[st.kind],n=st.n,cost=n*300,ev=k.ev*n;
+  $("nOut").innerHTML=n+"<small> 枚</small>";
+  $("cost").textContent="購入額："+yen(cost)+"（1枚300円）";
+  $("evMain").innerHTML=Math.round(ev).toLocaleString()+"<small>円（購入額の"+Math.round(ev/cost*100)+"%）</small>";
+  $("evLoss").textContent="約"+yen(cost-ev);
+  $("p1man").textContent=fmtP(probAtLeast(k.P,n,1e4));
+  $("p100").textContent=fmtP(probAtLeast(k.P,n,1e6));
+  var sets=Math.floor(n/10);
+  $("minBack").textContent=sets?yen(sets*300):"0円";
+  var nt="";
+  if(st.kind==="jumbo"&&st.way==="ren")nt="連番は1等が当たると前後賞2本もついて最大10億円。";
+  else if(st.kind==="jumbo")nt="バラは番号が散らばるので「1等と前後賞を別々に当てる」可能性がある買い方。平均の戻りは連番と同じです。";
+  else if(st.way==="ren")nt="ミニの連番は1等＋前後賞で最大5,000万円。";
+  else nt="ミニのバラも平均の戻りは連番と同じです。";
+  nt+=" 10枚ごとに末等（300円）が必ず1本入ります。";
+  $("evNote").textContent=nt;
+  renderTable();
+}
+function renderTable(){
+  var k=K[st.kind],tb=$("tbody");tb.innerHTML="";
+  k.P.forEach(function(p){
+    var tr=document.createElement("tr");
+    tr.innerHTML="<td>"+p.g+"</td><td>"+man(p.a)+"</td><td>"+p.n.toLocaleString()+"本</td><td>"+(p.p>=0.01?(p.p*100)+"%":"1/"+Math.round(1/p.p).toLocaleString())+"</td>";
+    tb.appendChild(tr);
+  });
+  $("tblLead").textContent=k.name+"（"+k.round+"）：1ユニット"+(k.unit/1e4).toLocaleString()+"万枚 × "+k.units+"ユニット（発売総額 "+k.total+"）。平均の戻りは1枚あたり約"+Math.round(k.ev)+"円＝約"+Math.round(k.ev/3)+"%。";
+  ["jumbo","mini"].forEach(function(id){
+    var x=K[id],box=$(id==="jumbo"?"vsJ":"vsM");
+    box.className="mini"+(id===st.kind?" hl":"");
+    box.innerHTML="<span>"+x.name+"</span><b>最高 "+(id==="jumbo"?"10億円":"5,000万円")+"</b>"+
+      "<span>100万円以上：1枚 "+fmtP(probAtLeast(x.P,1,1e6))+"</span><br><span>1万円以上：1枚 "+fmtP(probAtLeast(x.P,1,1e4))+"</span>";
+  });
+}
+function bindSeg(id,key){
+  $(id).addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;st[key]=b.dataset.v;
+    [].forEach.call(this.children,function(c){c.setAttribute("aria-pressed",c===b)});calc();$("simOut").hidden=true;});
+}
+bindSeg("segKind","kind");bindSeg("segWay","way");
+$("nMinus").onclick=function(){if(st.n>10){st.n-=10;calc();$("simOut").hidden=true}};
+$("nPlus").onclick=function(){if(st.n<300){st.n+=10;calc();$("simOut").hidden=true}};
+$("quick").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;st.n=+b.dataset.n;calc();$("simOut").hidden=true;});
+
+/* ---------- 1万人シミュレーション ---------- */
+function simOne(k,n,ren){
+  var tot=0,sets=Math.floor(n/10),rest=n-sets*10,best=0;
+  var last=k.P[k.P.length-1];
+  tot+=sets*last.a; if(sets)best=last.a;
+  for(var i=0;i<n;i++){
+    var r=Math.random(),acc=0;
+    for(var j=0;j<k.P.length;j++){
+      var p=k.P[j];
+      if(p.last){ if(i>=sets*10){acc+=p.p;if(r<acc){tot+=p.a;if(p.a>best)best=p.a;break}} continue;}
+      if(p.adj&&ren)continue; // 連番の前後賞は1等とセット
+      acc+=p.p;
+      if(r<acc){
+        var w=p.a;
+        if(ren&&j===0)w+=k.P[1].a*2; // 1等＋前後賞
+        tot+=w;if(w>best)best=w;break;
+      }
+    }
+  }
+  return {tot:tot,best:best};
+}
+function bins(c){
+  var b=[{l:"購入額の半分未満",f:function(t){return t<c/2}},{l:"半分〜購入額未満",f:function(t){return t>=c/2&&t<c}}];
+  if(c<1e4)b.push({l:"購入額〜1万円未満",f:function(t){return t>=c&&t<1e4}});
+  b.push({l:(c<1e4?"1万円":"購入額")+"〜100万円",w:1,f:function(t){return t>=Math.max(c,1e4)&&t<1e6}});
+  b.push({l:"100万円以上",w:1,f:function(t){return t>=1e6}});
+  return b;
+}
+$("simBtn").onclick=function(){
+  var k=K[st.kind],n=st.n,c=n*300,ren=st.way==="ren",N=10000,res=[],sum=0,win=0,bestAll=0,cnt=[0,0,0,0,0],BINS=bins(c);
+  for(var i=0;i<N;i++){var o=simOne(k,n,ren);res.push(o.tot);sum+=o.tot;if(o.tot>c)win++;if(o.tot>bestAll)bestAll=o.tot;
+    for(var b=0;b<BINS.length;b++){if(BINS[b].f(o.tot,c)){cnt[b]++;break}}}
+  res.sort(function(a,b){return a-b});
+  $("simOut").hidden=false;
+  $("sWin").textContent=win.toLocaleString()+"人";
+  $("sMed").textContent=yen(res[N/2]);
+  $("sRate").textContent=Math.round(sum/(N*c)*100)+"%";
+  var d=$("dist");d.innerHTML="";
+  BINS.forEach(function(bn,i){
+    var row=document.createElement("div");row.className="row"+(bn.w?" win":"");
+    var pct=cnt[i]/N*100;
+    row.innerHTML="<span>"+bn.l+"</span><div class=\"bar\"><i></i></div><span class=\"c\">"+cnt[i].toLocaleString()+"人</span>";
+    d.appendChild(row);
+    setTimeout(function(){row.querySelector("i").style.width=Math.max(pct,cnt[i]?1.5:0)+"%"},30);
+  });
+  var lk="この1万人で一番ついていた人は <strong>"+man(bestAll)+"</strong> の戻り。";
+  lk+=" 1万人が使ったのは合計 "+man(N*c)+"、戻ったのは "+man(sum)+"。";
+  if(bestAll<1e6)lk+=" 100万円以上は1人も当たりませんでした（"+(n*N).toLocaleString()+"枚買ってもこの通り）。";
+  $("sLucky").innerHTML=lk;
+};
+
+/* ---------- 日程 ---------- */
+var TODAY=new Date();TODAY.setHours(0,0,0,0);
+var WD=["日","月","火","水","木","金","土"];
+var SCH=[
+ {d:"2026-10-23",t:"インターネット申込の開始",s:"宝くじ公式サイトから"},
+ {d:"2026-11-24",t:"売り場での発売開始",s:"年末ジャンボ・ジャンボミニ"},
+ {d:"2026-12-25",t:"発売の最終日",s:"売り場・インターネットとも"},
+ {d:"2026-12-31",t:"抽せん日",s:"当せん番号は公式サイトで発表"}
+];
+SCH.forEach(function(x,i){var p=x.d.split("-");x.dt=new Date(+p[0],+p[1]-1,+p[2]);x.i=i});
+function left(x){return Math.round((x.dt-TODAY)/864e5)}
+function renderSch(){
+  var ul=$("sch");ul.innerHTML="";
+  SCH.forEach(function(x){
+    var n=left(x),li=document.createElement("li");if(n<0)li.className="past";
+    li.innerHTML='<div class="day">'+(x.dt.getMonth()+1)+'/'+x.dt.getDate()+'<small>（'+WD[x.dt.getDay()]+'）</small></div>'+
+      '<div class="t">'+x.t+'<small>'+x.s+'</small>'+(n>=0?'<button type="button" class="ics" data-i="'+x.i+'">📅 カレンダーに追加</button>':'')+'</div>'+
+      '<div class="cd">'+(n<0?'<b style="font-size:13px">済み</b>':n===0?'<b>今日</b>':'あと<b>'+n+'</b>日')+'</div>';
+    ul.appendChild(li);
+  });
+  var s=SCH[1],e=SCH[2],dr=SCH[3],nS=left(s),nE=left(e),nD=left(dr);
+  if(nS>0){$("kDays").textContent=nS+"日";$("kLbl").innerHTML="売り場の<br>発売まで";}
+  else if(nE>=0){$("kDays").textContent=(nE===0?"今日":nE+"日");$("kLbl").innerHTML="発売終了<br>まで";}
+  else if(nD>=0){$("kDays").textContent=(nD===0?"今日":nD+"日");$("kLbl").innerHTML="抽せん<br>まで";}
+  else{$("kDays").textContent="終了";$("kLbl").innerHTML="2026年の<br>年末ジャンボ";}
+}
+$("sch").addEventListener("click",function(e){
+  var b=e.target.closest(".ics");if(!b)return;var x=SCH[+b.dataset.i];
+  var pad=function(n){return("0"+n).slice(-2)};
+  var d=x.dt,ds=d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate());
+  var nx=new Date(d.getTime()+864e5),ns=nx.getFullYear()+pad(nx.getMonth()+1)+pad(nx.getDate());
+  var ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//hitorilab//jumbo//JA","BEGIN:VEVENT",
+    "UID:jumbo2026-"+x.i+"@hitorilab","DTSTAMP:"+ds+"T000000","DTSTART;VALUE=DATE:"+ds,"DTEND;VALUE=DATE:"+ns,
+    "SUMMARY:【年末ジャンボ】"+x.t,"DESCRIPTION:最新の情報は宝くじ公式サイトで確認してください",
+    "BEGIN:VALARM","TRIGGER:-P1D","ACTION:DISPLAY","DESCRIPTION:年末ジャンボ："+x.t+"は明日","END:VALARM",
+    "END:VEVENT","END:VCALENDAR"].join("\r\n");
+  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([ics],{type:"text/calendar"}));
+  a.download="jumbo-"+ds+".ics";document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500);
+});
+
+calc();renderSch();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

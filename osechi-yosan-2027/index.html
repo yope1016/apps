@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>おせち 予算と注文締切カレンダー 2027｜何人前でいくら？いつまでに頼む？</title>
+<meta name="description" content="2027年用おせちの予算を人数と好みから計算。コンビニ・寿司チェーン・百貨店系の早割と注文締切をカウントダウン表示し、一部手作りにした場合の費用と年末の段取りも出します。">
+<meta name="theme-color" content="#b3261e">
+<style>
+:root{
+  --bg:#fbf6ef;--bg2:#f3e9da;--card:#ffffff;--ink:#2a1d14;--sub:#6e5a4a;--line:#eadccb;
+  --red:#c0392b;--red2:#e0574a;--gold:#c9962b;--gold2:#f0c75e;--green:#2f7d5b;--warn:#b45309;
+  --chip:#fff4e3;--shadow:0 10px 30px rgba(120,60,20,.12);--r:20px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#17110d;--bg2:#221811;--card:#2a1f17;--ink:#f8eee3;--sub:#c8b4a2;--line:#3f2f23;
+  --red:#ff6b5b;--red2:#ff8a70;--gold:#f0c75e;--gold2:#ffdf8a;--green:#5fd39a;--warn:#fbbf24;--chip:#3a2a1d;--shadow:0 10px 30px rgba(0,0,0,.4)}
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--red)}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header.hero{background:radial-gradient(120% 140% at 0% 0%,#e0574a 0%,#b3261e 45%,#6d1410 100%);color:#fff;padding:34px 0 64px;position:relative;overflow:hidden}
+header.hero:after{content:"";position:absolute;right:-60px;top:-40px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(240,199,94,.55),rgba(240,199,94,0) 70%)}
+.hero .wrap{padding-bottom:0;position:relative;z-index:1}
+.badge{display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em}
+h1{font-size:clamp(24px,6.4vw,34px);line-height:1.3;margin:14px 0 8px;font-weight:900}
+h1 small{display:block;font-size:.55em;font-weight:700;opacity:.9;margin-top:4px}
+.hero p{margin:0;opacity:.92;font-size:14px}
+.next{margin-top:18px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:12px 14px;display:flex;gap:12px;align-items:center}
+.next .big{font-size:30px;font-weight:900;color:var(--gold2);line-height:1;min-width:64px;text-align:center}
+.next .big span{font-size:12px;display:block;color:#fff;opacity:.85;font-weight:700;margin-top:4px}
+.next .txt{font-size:13px}
+main{margin-top:-40px;position:relative;z-index:2}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:20px 18px;margin-bottom:18px;border:1px solid var(--line);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h2{font-size:19px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:inline-grid;place-items:center;background:linear-gradient(135deg,var(--gold2),var(--gold));font-size:17px;flex:none}
+.lead{color:var(--sub);font-size:13px;margin:0 0 14px}
+label.f{display:block;font-weight:700;font-size:14px;margin:14px 0 8px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{flex:1 1 auto;min-height:44px;padding:8px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--chip);color:var(--ink);font-size:14px;font-weight:700;cursor:pointer;transition:.15s}
+.seg button[aria-pressed=true]{background:linear-gradient(135deg,var(--red2),var(--red));color:#fff;border-color:transparent;box-shadow:0 6px 14px rgba(192,57,43,.3)}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper button{width:48px;height:48px;border-radius:14px;border:1.5px solid var(--line);background:var(--chip);font-size:22px;font-weight:900;color:var(--ink);cursor:pointer}
+.stepper output{font-size:30px;font-weight:900;min-width:90px;text-align:center}
+.stepper output small{font-size:14px;color:var(--sub)}
+.result{margin-top:18px;border-radius:18px;padding:18px;background:linear-gradient(135deg,rgba(201,150,43,.14),rgba(192,57,43,.10));border:1px solid var(--line)}
+.result .lbl{font-size:13px;color:var(--sub);font-weight:700}
+.result .num{font-size:clamp(30px,9vw,42px);font-weight:900;line-height:1.15;color:var(--red);font-variant-numeric:tabular-nums}
+.result .num small{font-size:16px;color:var(--ink)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mini{background:var(--card);border-radius:14px;padding:10px 12px;border:1px solid var(--line)}
+.mini b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.mini span{font-size:12px;color:var(--sub)}
+.note{font-size:12px;color:var(--sub);margin-top:10px}
+.chk{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:14px;min-height:44px}
+.chk input{width:22px;height:22px;accent-color:var(--red)}
+/* deadlines */
+.filter{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px;-webkit-overflow-scrolling:touch}
+.filter button{flex:none;min-height:40px;padding:6px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--chip);color:var(--ink);font-weight:700;font-size:13px;cursor:pointer}
+.filter button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.dl{list-style:none;margin:0;padding:0}
+.dl li{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line)}
+.dl li:last-child{border-bottom:0}
+.dl .day{flex:none;width:58px;height:58px;border-radius:16px;display:grid;place-items:center;text-align:center;background:var(--chip);border:1px solid var(--line);font-weight:900;line-height:1.05}
+.dl .day small{display:block;font-size:10px;color:var(--sub);font-weight:700}
+.dl .body{flex:1;min-width:0}
+.dl .t{font-weight:800;font-size:14px}
+.dl .s{font-size:12px;color:var(--sub)}
+.dl .cd{flex:none;text-align:right;font-weight:900;font-size:13px}
+.dl .cd b{font-size:20px;display:block;color:var(--red);font-variant-numeric:tabular-nums}
+.dl li.past{opacity:.45}
+.dl li.past .cd b{color:var(--sub);font-size:13px}
+.dl li.soon .day{background:linear-gradient(135deg,var(--red2),var(--red));color:#fff;border-color:transparent}
+.dl li.soon .day small{color:#fff;opacity:.85}
+.tag{display:inline-block;font-size:10px;font-weight:800;padding:1px 7px;border-radius:999px;margin-right:4px;vertical-align:1px}
+.tag.e{background:#fde7c4;color:#7a4b00}.tag.c{background:#fcd9d4;color:#8a1c12}.tag.r{background:#d7efe4;color:#185c3f}
+@media (prefers-color-scheme:dark){.tag.e{background:#5a3d10;color:#ffe2a8}.tag.c{background:#5b1d17;color:#ffc4bb}.tag.r{background:#163f2e;color:#b6f0d3}}
+.ics{margin-top:4px;background:none;border:1px solid var(--line);color:var(--sub);border-radius:8px;font-size:11px;padding:3px 8px;cursor:pointer;min-height:28px}
+/* items */
+.items{display:grid;gap:8px}
+.item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;border:1px solid var(--line);background:var(--chip)}
+.item .nm{flex:1;font-weight:700;font-size:14px}
+.item .nm small{display:block;font-weight:400;color:var(--sub);font-size:11px}
+.tg{display:flex;border-radius:10px;overflow:hidden;border:1.5px solid var(--line);flex:none}
+.tg button{min-height:40px;padding:0 12px;border:0;background:var(--card);color:var(--sub);font-weight:800;font-size:13px;cursor:pointer}
+.tg button[aria-pressed=true].b{background:var(--gold);color:#fff}
+.tg button[aria-pressed=true].h{background:var(--green);color:#fff}
+.bar{height:12px;border-radius:999px;background:var(--line);overflow:hidden;margin:6px 0 2px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold2),var(--red));border-radius:999px;transition:width .4s}
+.plan{margin-top:12px;display:grid;gap:8px}
+.plan div{padding:10px 12px;border-radius:12px;background:var(--chip);border-left:4px solid var(--green);font-size:13px}
+.plan b{display:block;font-size:14px}
+.safe{border-left:5px solid var(--warn);background:linear-gradient(135deg,rgba(251,191,36,.12),transparent)}
+.safe ul{margin:6px 0 0;padding-left:20px;font-size:14px}
+/* PR */
+.pr{border:1.5px dashed var(--gold);border-radius:16px;padding:14px;margin-top:14px;background:linear-gradient(135deg,rgba(240,199,94,.12),transparent)}
+.pr .prl{display:inline-block;font-size:11px;font-weight:900;background:var(--gold);color:#fff;padding:1px 8px;border-radius:6px;margin-bottom:6px}
+.pr p{margin:4px 0;font-size:14px}
+.pr a{font-weight:800}
+.pr img[width="1"]{position:absolute;width:1px;height:1px;opacity:0}
+/* links */
+.rec{display:grid;gap:10px}
+.rec a{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);padding:12px;border-radius:14px;background:var(--chip);border:1px solid var(--line);min-height:56px}
+.rec a .e{font-size:24px;flex:none}
+.rec a b{display:block;font-size:14px}
+.rec a span{font-size:12px;color:var(--sub)}
+details.all{margin-top:12px}
+details.all summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}
+.alllist{columns:2;column-gap:14px;font-size:13px;padding-left:18px;margin:6px 0 0}
+.alllist li{break-inside:avoid;margin-bottom:6px}
+@media (max-width:420px){.alllist{columns:1}}
+footer{font-size:12px;color:var(--sub);text-align:center;padding:10px 16px 40px}
+footer ul{text-align:left;padding-left:18px}
+.sr{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">🎍 2027年 お正月用</span>
+    <h1>おせち 予算と<br>注文締切カレンダー<small>何人前でいくら？ いつまでに頼めばいい？</small></h1>
+    <p>人数と好みを選ぶだけで、予算の目安と、早割・注文締切までの残り日数がわかります。</p>
+    <div class="next" id="nextBox" aria-live="polite">
+      <div class="big" id="nextDays">--<span>日</span></div>
+      <div class="txt" id="nextTxt">次の締切を計算中…</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ① 予算 -->
+<section class="card" id="budget">
+  <h2><span class="ic">💴</span>おせちの予算はいくら？</h2>
+  <p class="lead">人数・好み・グレードから「買うならこの価格帯」を出します。</p>
+
+  <label class="f">食べる人数</label>
+  <div class="stepper">
+    <button type="button" id="pMinus" aria-label="人数を減らす">−</button>
+    <output id="pOut">4<small> 人</small></output>
+    <button type="button" id="pPlus" aria-label="人数を増やす">＋</button>
+  </div>
+
+  <label class="f">好み</label>
+  <div class="seg" id="segStyle">
+    <button type="button" data-v="wa" aria-pressed="true">定番の和風</button>
+    <button type="button" data-v="mix" aria-pressed="false">和洋中ミックス</button>
+    <button type="button" data-v="solo" aria-pressed="false">少人数・個食</button>
+  </div>
+
+  <label class="f">グレード</label>
+  <div class="seg" id="segGrade">
+    <button type="button" data-v="save" aria-pressed="false">節約</button>
+    <button type="button" data-v="std" aria-pressed="true">ふつう</button>
+    <button type="button" data-v="lux" aria-pressed="false">ごほうび</button>
+  </div>
+
+  <label class="chk"><input type="checkbox" id="sweets"> スイーツおせちも追加する（約4,000円）</label>
+  <label class="chk"><input type="checkbox" id="early" checked> 早割（約10%引き）に間に合わせる</label>
+
+  <div class="result" aria-live="polite">
+    <div class="lbl">予算の目安（税込）</div>
+    <div class="num" id="bMain">--</div>
+    <div class="grid2">
+      <div class="mini"><span>1人あたり</span><b id="bPer">--</b></div>
+      <div class="mini"><span>おすすめのサイズ</span><b id="bSize">--</b></div>
+      <div class="mini"><span>早割での節約</span><b id="bEarly">--</b></div>
+      <div class="mini"><span>買いやすい場所</span><b id="bWhere" style="font-size:15px">--</b></div>
+    </div>
+    <p class="note" id="bNote"></p>
+  </div>
+
+  <div class="pr">
+    <span class="prl">PR</span>
+    <p>予算が決まったら、通販のおせちを価格順で見比べ（サイトのトップが開きます）：</p>
+    <p>🛒 <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングで「おせち」と検索</a></p>
+    <p>📦 <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892740429" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892740429" height="1" width="1" border="0">Amazonでおせち・重箱を見る</a></p>
+    <!-- AFFILIATE:osechi -->
+  </div>
+</section>
+
+<!-- ② 締切 -->
+<section class="card" id="deadline">
+  <h2><span class="ic">⏰</span>早割・注文締切カレンダー</h2>
+  <p class="lead">2027年用おせちの主な締切です（今日から残り日数を自動計算）。日付をタップするとカレンダー登録できます。</p>
+  <div class="filter" id="filter" role="group" aria-label="絞り込み">
+    <button type="button" data-f="all" aria-pressed="true">すべて</button>
+    <button type="button" data-f="cvs" aria-pressed="false">コンビニ</button>
+    <button type="button" data-f="sushi" aria-pressed="false">寿司・料亭</button>
+    <button type="button" data-f="early" aria-pressed="false">早割だけ</button>
+    <button type="button" data-f="open" aria-pressed="false">まだ間に合う</button>
+  </div>
+  <ul class="dl" id="dlList"></ul>
+  <p class="note">※ 2026年9〜10月時点の各社発表・報道をもとにした目安です。人気の商品は締切前に売り切れることがあります。最新の締切・在庫は必ず各社の公式サイトで確認してください。<br>通販サイト（楽天・Yahoo!・Amazonなど）の締切はショップごとに違い、12月中旬〜下旬が多めです。</p>
+</section>
+
+<!-- ③ 一部手作り -->
+<section class="card" id="diy">
+  <h2><span class="ic">🍳</span>一部だけ手作りにすると？</h2>
+  <p class="lead">約6割の人が「一部手作り・一部購入」派（楽天市場の調査）。品目ごとに「買う／作る」を選ぶと、費用と手間がわかります。</p>
+  <div class="items" id="items"></div>
+  <div class="result" aria-live="polite">
+    <div class="grid2" style="margin-top:0">
+      <div class="mini"><span>単品で揃えた合計</span><b id="dTotal">--</b></div>
+      <div class="mini"><span>手作りの作業時間</span><b id="dTime">--</b></div>
+    </div>
+    <div class="note" style="margin-top:12px">買う：作る の費用の割合</div>
+    <div class="bar"><i id="dBar" style="width:50%"></i></div>
+    <p class="note" id="dSave"></p>
+  </div>
+  <h3 style="font-size:15px;margin:16px 0 0">🗓 手作り品の年末段取り</h3>
+  <div class="plan" id="plan"></div>
+
+  <div class="pr">
+    <span class="prl">PR</span>
+    <p>買ったおせちに「蟹・いくら・数の子」を足して豪華にするなら、産地直送のお取り寄せ：</p>
+    <p>🦀 <a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+31JSUY+4PXI+61RIA" rel="nofollow">旬の海鮮を直送でお取り寄せ ポケットマルシェ</a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGAV2+31JSUY+4PXI+61RIA" alt=""></p>
+  </div>
+</section>
+
+<!-- ④ ふるさと納税 -->
+<section class="card" id="furusato">
+  <h2><span class="ic">🎁</span>ふるさと納税でおせちを頼む</h2>
+  <p class="lead">おせちは返礼品でも人気。今年の上限額の範囲なら、実質2,000円の自己負担で頼めます。</p>
+  <ul style="margin:0;padding-left:20px;font-size:14px">
+    <li>返礼品のおせちは<strong>受付終了が早め</strong>で、届く日が年末に決まっているものが多いです（受付期限・配送日は各返礼品のページで確認）。</li>
+    <li>寄付は12/31までが2026年分。年末は駆け込みで品切れが増えます。</li>
+    <li>上限額がわからない人は、先に <a href="https://yope1016.github.io/apps/furusato-jogen-2026/">ふるさと納税 上限額シミュレーター</a> で確認。</li>
+  </ul>
+  <div class="pr">
+    <span class="prl">PR</span>
+    <p>🎍 <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738779" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738779" height="1" width="1" border="0">ふるなびで「おせち」の返礼品を探す</a></p>
+    <p>🐟 <a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+2WSC0Q+4PXI+BWVTE" rel="nofollow">ポケマルふるさと納税</a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGAV2+2WSC0Q+4PXI+BWVTE" alt=""></p>
+  </div>
+</section>
+
+<!-- ⑤ 安全 -->
+<section class="card safe" id="safe">
+  <h2><span class="ic">⚠️</span>届いてから・食べるまでの注意</h2>
+  <ul>
+    <li>冷凍おせちは<strong>商品に書かれた方法・時間どおり</strong>に解凍する（冷蔵庫でゆっくり解凍するものが多い）。常温での放置や、解凍後の再冷凍は避ける。</li>
+    <li>届いたらすぐに中身と消費期限を確認。冷蔵品は冷蔵庫へ。</li>
+    <li>取り分けは清潔な箸で。食べ残しは冷蔵して早めに食べきる。</li>
+    <li>手作り品も冷蔵保存し、作り置きの日数は控えめに。体調の悪い人・小さな子・高齢の人がいる家庭はとくに注意。</li>
+    <li>アレルギーのある人は、商品ページの原材料・アレルゲン表示を必ず確認。</li>
+  </ul>
+</section>
+
+<!-- 内部リンク集 -->
+<section class="card" id="more">
+  <h2><span class="ic">🧰</span>年末年始にあわせて使える無料ツール</h2>
+  <div class="rec">
+    <a href="https://yope1016.github.io/apps/nengajo-itsumade-2027/"><span class="e">📮</span><div><b>年賀状 いつまでに出す？投函日チェッカー</b><span>元日に届く締切と準備の逆算</span></div></a>
+    <a href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/"><span class="e">🗓</span><div><b>年末年始 何連休？有給シミュレーター</b><span>帰省・おせちの受け取り日を決める前に</span></div></a>
+    <a href="https://yope1016.github.io/apps/otoshidama-souba-2027/"><span class="e">🧧</span><div><b>お年玉 相場計算機 2027</b><span>年齢別・関係別の相場と総額</span></div></a>
+  </div>
+  <details class="all">
+    <summary>ひとりラボの全ツール一覧（24本）</summary>
+    <ul class="alllist">
+      <li><a href="https://yope1016.github.io/apps/warikan-keisha/">傾斜割り勘計算（幹事用）</a></li>
+      <li><a href="https://yope1016.github.io/apps/nenga-hitokoto-2027/">年賀状ひとことジェネレーター 2027</a></li>
+      <li><a href="https://yope1016.github.io/apps/furusato-jogen-2026/">ふるさと納税 上限額シミュレーター</a></li>
+      <li><a href="https://yope1016.github.io/apps/nencho-navi-2026/">年末調整 書き方ナビ 2026</a></li>
+      <li><a href="https://yope1016.github.io/apps/kakutei-shindan-2026/">確定申告が必要か1分診断</a></li>
+      <li><a href="https://yope1016.github.io/apps/oosouji-buntan-2026/">大掃除の分担ジェネレーター</a></li>
+      <li><a href="https://yope1016.github.io/apps/otoshidama-souba-2027/">お年玉 相場計算機 2027</a></li>
+      <li><a href="https://yope1016.github.io/apps/hikkoshi-checklist/">引っ越し手続きチェックリスト</a></li>
+      <li><a href="https://yope1016.github.io/apps/mochu-hagaki-calendar-2026/">喪中はがき 逆算カレンダー</a></li>
+      <li><a href="https://yope1016.github.io/apps/hikkoshi-shoki-hiyou/">引っ越しの初期費用 計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/net-kaisen-shindan/">ネット回線 選び方診断</a></li>
+      <li><a href="https://yope1016.github.io/apps/bonenkai-kanji-2026/">忘年会 幹事の段取り表</a></li>
+      <li><a href="https://yope1016.github.io/apps/kanchu-nengajimai-2027/">寒中見舞い・年賀状じまい 文例メーカー</a></li>
+      <li><a href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/">年末年始 何連休？有給シミュレーター</a></li>
+      <li><a href="https://yope1016.github.io/apps/iryohi-kojo-2026/">医療費控除 いくら戻る？計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/jutaku-loan-kojo-2026/">住宅ローン控除 いくら戻る？計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/fuyou-kabe-2026/">扶養の壁チェッカー 2026</a></li>
+      <li><a href="https://yope1016.github.io/apps/bonus-tedori-2026/">冬のボーナス 手取り計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/gensen-choshu-checker-2026/">源泉徴収票の見方とチェッカー</a></li>
+      <li><a href="https://yope1016.github.io/apps/xmas-yosan-2026/">クリスマス予算プランナー</a></li>
+      <li><a href="https://yope1016.github.io/apps/nengajo-itsumade-2027/">年賀状 投函日チェッカー 2027</a></li>
+      <li><a href="https://yope1016.github.io/apps/danbou-denkidai-2026/">暖房の電気代 くらべる計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/kisei-koutsuhi-2026/">帰省 車と新幹線どっちが安い？</a></li>
+      <li><strong>おせち 予算と注文締切カレンダー（このページ）</strong></li>
+    </ul>
+  </details>
+</section>
+</main>
+
+<footer>
+  <p>予算は各社の2027年用おせちの価格帯をもとにした目安で、実際の価格は商品により異なります。入力内容はこの端末の中だけで計算し、送信・保存しません。</p>
+  <p>参考：</p>
+  <ul>
+    <li><a href="https://news.mynavi.jp/article/20260924-4987471/" rel="nofollow">マイナビニュース：ファミマのおせち2027（2026/9/24）</a></li>
+    <li><a href="https://macaro-ni.jp/178469" rel="nofollow">macaroni：2027年 コンビニのおせち（2026/10/8更新）</a></li>
+    <li><a href="https://macaro-ni.jp/178473" rel="nofollow">macaroni：2027年 寿司チェーン・日本料理店のおせち（2026/10/15更新）</a></li>
+    <li><a href="https://www.commercepick.com/?p=75206" rel="nofollow">楽天市場 おせち調査（2025年10月実施）</a></li>
+  </ul>
+  <p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var yen=function(n){return Math.round(n).toLocaleString("ja-JP")+"円"};
+var TODAY=new Date();TODAY.setHours(0,0,0,0);
+
+/* ---------- 締切データ（2027年用） ---------- */
+var DL=[
+ {d:"2026-10-31",t:"くら寿司 早割（最大3,000円引き）",s:"受け取り 12/30・31",g:"sushi",k:"e"},
+ {d:"2026-11-01",t:"がってん寿司 予約締切",s:"受け取り 12/29〜1/1",g:"sushi",k:"c"},
+ {d:"2026-11-25",t:"にぎりの徳兵衛 予約締切",s:"受け取り 12/28〜30",g:"sushi",k:"c"},
+ {d:"2026-11-30",time:"09:00",t:"ファミリーマート 早割（10%引き）",s:"朝9時まで・ファミマオンライン",g:"cvs",k:"e"},
+ {d:"2026-11-30",time:"23:59",t:"セブン‐イレブン 早割（7NOWアプリ）",s:"23:59まで",g:"cvs",k:"e"},
+ {d:"2026-12-10",time:"18:00",t:"ローソン 宅配受取の締切／店頭予約の特典期限",s:"お届け 12/30・31",g:"cvs",k:"c"},
+ {d:"2026-12-12",t:"セブン‐イレブン 宅配受取の締切",s:"",g:"cvs",k:"c"},
+ {d:"2026-12-13",t:"なだ万 予約締切",s:"",g:"sushi",k:"c"},
+ {d:"2026-12-22",time:"23:00",t:"ファミリーマート 通常予約の締切",s:"店舗受取 12/31・宅配 12/29〜31",g:"cvs",k:"c"},
+ {d:"2026-12-23",t:"くら寿司 予約締切",s:"受け取り 12/30・31",g:"sushi",k:"c"},
+ {d:"2026-12-23",t:"ローソン アプリ予約の締切",s:"",g:"cvs",k:"c"},
+ {d:"2026-12-25",time:"18:00",t:"ローソン 店頭受取の締切",s:"受け取り 12/30・31",g:"cvs",k:"c"},
+ {d:"2026-12-28",t:"セブン‐イレブン 店頭受取の締切",s:"",g:"cvs",k:"c"},
+ {d:"2026-12-29",time:"10:29",t:"セブン‐イレブン 7NOWアプリの締切",s:"",g:"cvs",k:"c"},
+ {d:"2026-12-31",t:"おせちの受け取り（多くの商品）",s:"冷凍品は商品の表示どおりに解凍",g:"recv",k:"r"}
+];
+DL.forEach(function(x,i){var p=x.d.split("-");x.dt=new Date(+p[0],+p[1]-1,+p[2]);x.i=i;
+  var hm=(x.time||"23:59").split(":");x.end=new Date(+p[0],+p[1]-1,+p[2],+hm[0],+hm[1]);});
+var WD=["日","月","火","水","木","金","土"];
+function daysLeft(x){return Math.round((x.dt-TODAY)/864e5)}
+function isPast(x){return new Date()>x.end}
+var curF="all";
+function renderDL(){
+  var ul=$("dlList");ul.innerHTML="";
+  DL.filter(function(x){
+    if(curF==="all")return true;
+    if(curF==="early")return x.k==="e";
+    if(curF==="open")return !isPast(x);
+    return x.g===curF;
+  }).forEach(function(x){
+    var li=document.createElement("li"),n=daysLeft(x),past=isPast(x);
+    if(past)li.className="past";else if(n<=7)li.className="soon";
+    var tag=x.k==="e"?'<span class="tag e">早割</span>':x.k==="r"?'<span class="tag r">受け取り</span>':'<span class="tag c">締切</span>';
+    var cd=past?'<b>終了</b>':(n===0?'<b>今日</b>まで':'あと<b>'+n+'</b>日');
+    li.innerHTML='<div class="day">'+(x.dt.getMonth()+1)+'/'+x.dt.getDate()+'<small>（'+WD[x.dt.getDay()]+'）'+(x.time?x.time:'')+'</small></div>'+
+      '<div class="body"><div class="t">'+tag+x.t+'</div>'+(x.s?'<div class="s">'+x.s+'</div>':'')+
+      (past?'':'<button type="button" class="ics" data-i="'+x.i+'">📅 カレンダーに追加</button>')+'</div>'+
+      '<div class="cd">'+cd+'</div>';
+    ul.appendChild(li);
+  });
+  if(!ul.children.length)ul.innerHTML='<li><div class="body"><div class="s">該当する締切はありません。</div></div></li>';
+}
+$("filter").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;curF=b.dataset.f;
+  [].forEach.call(this.children,function(c){c.setAttribute("aria-pressed",c===b)});renderDL();
+});
+$("dlList").addEventListener("click",function(e){
+  var b=e.target.closest(".ics");if(!b)return;var x=DL[+b.dataset.i];
+  var pad=function(n){return("0"+n).slice(-2)};
+  var d=x.dt,ds=d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate());
+  var n=new Date(d.getTime()+864e5),ns=n.getFullYear()+pad(n.getMonth()+1)+pad(n.getDate());
+  var ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//hitorilab//osechi//JA","BEGIN:VEVENT",
+    "UID:osechi-"+x.i+"-"+ds+"@hitorilab","DTSTAMP:"+ds+"T000000","DTSTART;VALUE=DATE:"+ds,"DTEND;VALUE=DATE:"+ns,
+    "SUMMARY:【おせち】"+x.t+(x.time?"（"+x.time+"まで）":""),"DESCRIPTION:最新の締切は公式サイトで確認してください",
+    "BEGIN:VALARM","TRIGGER:-P3D","ACTION:DISPLAY","DESCRIPTION:おせちの締切まであと3日","END:VALARM",
+    "END:VEVENT","END:VCALENDAR"].join("\r\n");
+  var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([ics],{type:"text/calendar"}));
+  a.download="osechi-"+ds+".ics";document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500);
+});
+function renderNext(){
+  var nx=DL.filter(function(x){return !isPast(x)&&x.k!=="r"}).sort(function(a,b){return a.end-b.end})[0];
+  if(!nx){$("nextDays").innerHTML="🎍<span>&nbsp;</span>";$("nextTxt").textContent="今シーズンの主な締切は終了しました。店頭の当日販売や、スーパーの単品を組み合わせるのがおすすめ。";return}
+  var n=daysLeft(nx);
+  $("nextDays").innerHTML=(n===0?"今日":n)+"<span>"+(n===0?"まで":"日後")+"</span>";
+  $("nextTxt").innerHTML="次の締切："+(nx.dt.getMonth()+1)+"/"+nx.dt.getDate()+"（"+WD[nx.dt.getDay()]+"）<br><strong>"+nx.t+"</strong>";
+}
+
+/* ---------- 予算 ---------- */
+var st={p:4,style:"wa",grade:"std"};
+var PER={save:2500,std:4500,lux:8000};           // 1人前の目安（税込）
+var STY={wa:1,mix:1.05,solo:1.2};                 // 個食は割高
+function sizeLabel(p,s){
+  if(s==="solo")return p+"人前（個食×"+p+"）";
+  if(p<=1)return "1人前（一段）";if(p===2)return "2人前（一〜二段）";
+  if(p<=4)return "3〜4人前（二〜三段）";return p+"人前（三段＋α）";
+}
+function where(g,s){
+  if(s==="solo")return "通販・コンビニ";
+  if(g==="save")return "コンビニ・スーパー";if(g==="std")return "コンビニ・通販・寿司";return "百貨店・料亭";
+}
+function calcBudget(){
+  var base=PER[st.grade]*STY[st.style]*st.p;
+  if(st.p>=5&&st.style!=="solo")base*=0.95;      // 大人数は割安
+  var sw=$("sweets").checked?3980:0;
+  var lo=base*0.85,hi=base*1.15;
+  var early=$("early").checked;
+  var e=early?base*0.1:0;
+  var fmt=function(n){return Math.round(n/1000)*1000};
+  var mlo=fmt(lo-(early?lo*0.1:0)+sw),mhi=fmt(hi-(early?hi*0.1:0)+sw);
+  $("bMain").innerHTML=mlo.toLocaleString()+"<small>〜</small>"+mhi.toLocaleString()+"<small>円</small>";
+  $("bPer").textContent="約"+yen(Math.round(((mlo+mhi)/2)/st.p/100)*100);
+  $("bSize").textContent=sizeLabel(st.p,st.style);$("bSize").style.fontSize="15px";
+  $("bEarly").textContent=early?"約"+yen(Math.round(e/100)*100):"0円";
+  $("bWhere").textContent=where(st.grade,st.style);
+  var nt="";
+  if(st.grade==="save")nt="節約なら、二段重を買って、かまぼこ・黒豆などを単品で足すのが安く済みやすいです。";
+  else if(st.grade==="lux")nt="料亭・百貨店のおせちは締切が早め（12月中旬まで）で、人気品は早く売り切れます。";
+  else nt="コンビニの2027年用おせちは、早割価格で約1万〜2.9万円の商品が中心です。";
+  if(st.style==="solo")nt+=" 少人数・個食おせちは楽天市場で前年比約1.5倍と伸びている人気ジャンルです。";
+  $("bNote").textContent=nt+"（目安）";
+}
+function bindSeg(id,key){
+  $(id).addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;st[key]=b.dataset.v;
+    [].forEach.call(this.children,function(c){c.setAttribute("aria-pressed",c===b)});calcBudget();calcDiy();});
+}
+bindSeg("segStyle","style");bindSeg("segGrade","grade");
+$("pMinus").onclick=function(){if(st.p>1){st.p--;upP()}};
+$("pPlus").onclick=function(){if(st.p<10){st.p++;upP()}};
+function upP(){$("pOut").innerHTML=st.p+"<small> 人</small>";calcBudget();calcDiy();}
+$("sweets").onchange=calcBudget;$("early").onchange=calcBudget;
+
+/* ---------- 一部手作り ---------- */
+// buy=単品で買う（4人分の目安）, home=材料費, min=作業時間（分）, day=作る日, memo
+var IT=[
+ {n:"紅白かまぼこ",m:"切るだけ",buy:700,home:700,min:5,day:31,h:false},
+ {n:"黒豆",m:"前日から浸す",buy:1200,home:600,min:180,day:29,h:false},
+ {n:"数の子",m:"塩抜きに一晩",buy:2000,home:1300,min:30,day:30,h:false},
+ {n:"田作り",m:"",buy:800,home:300,min:20,day:30,h:true},
+ {n:"伊達巻",m:"",buy:900,home:400,min:40,day:30,h:false},
+ {n:"栗きんとん",m:"",buy:1200,home:700,min:60,day:30,h:true},
+ {n:"紅白なます",m:"日持ちしやすい",buy:500,home:250,min:20,day:29,h:true},
+ {n:"筑前煮（煮しめ）",m:"",buy:1500,home:800,min:60,day:31,h:true},
+ {n:"えびの旨煮",m:"",buy:2000,home:1200,min:30,day:31,h:false},
+ {n:"昆布巻き",m:"",buy:1000,home:500,min:90,day:30,h:false}
+];
+function renderItems(){
+  var box=$("items");box.innerHTML="";
+  IT.forEach(function(x,i){
+    var d=document.createElement("div");d.className="item";
+    d.innerHTML='<div class="nm">'+x.n+(x.m?'<small>'+x.m+'</small>':'')+'</div>'+
+      '<div class="tg" role="group" aria-label="'+x.n+'"><button type="button" class="b" data-i="'+i+'" data-h="0" aria-pressed="'+!x.h+'">買う</button>'+
+      '<button type="button" class="h" data-i="'+i+'" data-h="1" aria-pressed="'+x.h+'">作る</button></div>';
+    box.appendChild(d);
+  });
+}
+$("items").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;IT[+b.dataset.i].h=b.dataset.h==="1";renderItems();calcDiy();
+});
+function calcDiy(){
+  var k=st.p/4,buy=0,home=0,min=0,allBuy=0;
+  IT.forEach(function(x){allBuy+=x.buy*k;if(x.h){home+=x.home*k;min+=x.min*(0.7+0.3*k)}else buy+=x.buy*k});
+  var tot=buy+home;
+  $("dTotal").textContent="約"+yen(Math.round(tot/100)*100);
+  var h=Math.floor(min/60),m=Math.round(min%60/5)*5;
+  $("dTime").textContent=min?((h?h+"時間":"")+(m?m+"分":"")):"0分";
+  $("dBar").style.width=(tot?buy/tot*100:100)+"%";
+  var sv=allBuy-tot;
+  $("dSave").textContent=(sv>0?"全部単品で買うより約"+yen(Math.round(sv/100)*100)+"安くなります。":"手作りの品目を選ぶと、節約額が表示されます。")+"（"+st.p+"人分・スーパーの単品と材料費の概算）";
+  var days={29:[],30:[],31:[]};
+  IT.forEach(function(x){if(x.h)days[x.day].push(x.n)});
+  var pl=$("plan");pl.innerHTML="";
+  var lab={29:"12/29（火）日持ちするものから",30:"12/30（水）甘いもの・焼きもの",31:"12/31（木）煮もの・仕上げ"};
+  var any=false;
+  [29,30,31].forEach(function(dd){if(days[dd].length){any=true;var d=document.createElement("div");d.innerHTML="<b>"+lab[dd]+"</b>"+days[dd].join("・");pl.appendChild(d)}});
+  if(IT.some(function(x){return x.h&&x.n==="黒豆"})){var d2=document.createElement("div");d2.innerHTML="<b>12/28（月）夜</b>黒豆を水（調味液）に浸しておく";pl.insertBefore(d2,pl.firstChild)}
+  if(!any)pl.innerHTML='<div><b>すべて購入</b>12/31の受け取り時間だけ空けておけばOK。届いたら中身と消費期限を確認。</div>';
+}
+
+renderDL();renderNext();calcBudget();renderItems();calcDiy();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

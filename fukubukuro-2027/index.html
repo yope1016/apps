@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>福袋 2027 予約・抽選カレンダー＆お得度チェッカー｜ひとりラボ</title>
+<meta name="description" content="スタバ・ドトール・珈琲館・コメダなど福袋2027の予約・抽選の締切をカウントダウン。当選発表・決済期限をカレンダーに登録、中身のお得度と福袋の予算も1画面で計算できる無料ツール。">
+<link rel="canonical" href="https://yope1016.github.io/apps/fukubukuro-2027/">
+<style>
+:root{--bg:#fff8f3;--bg2:#ffeef0;--card:#ffffff;--ink:#2a1b1f;--sub:#7a6267;--line:#f1dfe2;--acc:#e0344f;--acc2:#f59e0b;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#fff1e6;--shadow:0 10px 30px rgba(170,40,60,.10)}
+@media (prefers-color-scheme:dark){:root{--bg:#1a1013;--bg2:#24141a;--card:#2a1a20;--ink:#fbecef;--sub:#c4a9af;--line:#3d2830;--acc:#ff5d75;--acc2:#fbbf24;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#3a2329;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:30px;line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:8px}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;min-height:40px}
+.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.ev{border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0;position:relative;overflow:hidden}
+.ev::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c,var(--acc))}
+.ev h3{margin:0 0 2px;font-size:16px}
+.ev .meta{font-size:13px;color:var(--sub)}
+.st{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;color:#fff;margin-right:6px;vertical-align:middle}
+.st.now{background:var(--ok)}.st.soon{background:var(--warn)}.st.end{background:var(--off)}.st.tbd{background:#8b5cf6}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:6px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 108px;font-weight:700;font-variant-numeric:tabular-nums}
+.steps li.past{color:var(--off);text-decoration:line-through}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button.pri{background:linear-gradient(90deg,var(--acc),#f0506a);color:#fff;font-weight:700}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],input[type=text],input[type=date],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.row{display:grid;grid-template-columns:1fr 110px 44px;gap:6px;margin:6px 0}
+.row button{padding:0;justify-content:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.big{font-size:40px;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.big.plus{color:var(--ok)}.big.minus{color:var(--acc)}
+.bar{height:12px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),var(--acc2));width:0;transition:width .6s ease}
+.bar.over i{background:linear-gradient(90deg,var(--acc2),var(--acc))}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px}
+.chk input{width:22px;height:22px;accent-color:var(--acc)}
+.chk .p{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--sub)}
+.tips li{margin:6px 0;font-size:14px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#1a1013;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.pr a{color:var(--acc);font-weight:700}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;transition:transform .3s;z-index:9}
+.toast.on{transform:translateX(-50%) translateY(0)}
+@media (max-width:420px){.steps li .d{flex-basis:92px}.big{font-size:34px}.stat b{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="badge">🎍 2026-2027 年末年始版</span>
+<h1><span class="em">福袋 2027</span><br>予約・抽選の締切カレンダー</h1>
+<p class="lead">締切までのカウントダウン／当選発表と決済期限をカレンダー登録／中身のお得度と予算もまとめて計算</p>
+</header>
+
+<section class="card">
+<div class="hero">
+<div class="stat"><b id="sNow">-</b><span>いま受付中</span></div>
+<div class="stat"><b id="sNext">-</b><span id="sNextL">次の締切まで</span></div>
+</div>
+<p class="note" style="margin:10px 0 0">日程は2026年11月4日時点の各社発表・報道をもとにした<b>目安</b>です。変更されることがあるため、申し込み前に必ず公式サイトで確認してください。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">🗓️</span>予約・抽選スケジュール</h2>
+<div class="tabs" id="tabs"></div>
+<div id="evs"></div>
+<div class="btns"><button class="pri" id="icsAll">📥 表示中の日程をまとめてカレンダーに登録（.ics）</button></div>
+<p class="note">.ics はiPhone・Android・Googleカレンダーで開けます。各締切の前日に通知が入ります。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">🧮</span>福袋のお得度チェッカー</h2>
+<p class="note" style="margin-top:0">「定価の合計」より大事なのは「<b>実際に使うもの</b>」の合計。使わないものは0円として数えると、本当にお得かがわかります。</p>
+<label for="price">福袋の価格（税込・円）</label>
+<input type="number" id="price" inputmode="numeric" value="9500" min="0">
+<label>中身（定価）と、使う？　<span style="font-size:11px">※最初の金額は入力例（仮の値）です。実際の定価に書き換えてください</span></label>
+<div id="items"></div>
+<div class="btns"><button id="addItem">＋ 中身を追加</button><button id="resetItems">例に戻す</button></div>
+<div class="result">
+<div class="note">使うものだけで見た、お得額</div>
+<div class="big" id="gain">-</div>
+<div class="note" id="gainSub">-</div>
+<div class="bar" id="gBar"><i></i></div>
+<div class="note" id="gainMsg"></div>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">👛</span>福袋の予算プランナー</h2>
+<label for="budget">年末年始の福袋予算（円）</label>
+<input type="number" id="budget" inputmode="numeric" value="20000" min="0">
+<div id="plan"></div>
+<div class="row" style="grid-template-columns:1fr 110px 44px">
+<input type="text" id="cName" placeholder="ほかの福袋（例：初売りの服）">
+<input type="number" id="cPrice" inputmode="numeric" placeholder="円">
+<button id="cAdd" aria-label="追加">＋</button>
+</div>
+<div class="result">
+<div class="note">選んだ福袋の合計</div>
+<div class="big" id="pSum">0円</div>
+<div class="bar" id="pBar"><i></i></div>
+<div class="note" id="pMsg"></div>
+</div>
+<p class="note">抽選は外れることもあるので、予算は「全部当たった場合」で見ておくと安心です。入力はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">💡</span>外さないための5つのコツ</h2>
+<ol class="tips">
+<li><b>抽選は「当選＝購入」ではない</b>：当選後に決済期限があり、過ぎると無効になるものが多い（スタバは12/2まで）。当選発表日と決済期限は必ずカレンダーへ。</li>
+<li><b>会員登録とログインは前日までに</b>：受付初日はアクセスが集中しやすい。住所・決済方法の登録を済ませておく。</li>
+<li><b>公式以外の「福袋サイト」に注意</b>：大幅値引きをうたう偽の通販サイトの手口があります。URLが公式か確認し、銀行振込だけのサイトは避ける。</li>
+<li><b>転売品は高くつく</b>：フリマの福袋は定価より高く、中身が抜かれていることも。外れたら公式の再販・店頭分を待つ。</li>
+<li><b>中身が公開されている福袋を選ぶ</b>：使い切れる中身なら満足度が高い。上のチェッカーで「使う分」だけ計算してから決める。</li>
+</ol>
+</section>
+
+<section class="card">
+<h2><span class="ic">🛍️</span>ネットで買える福袋・初売りを探す</h2>
+<div class="pr">
+<span class="lbl">PR</span>
+<p style="margin:0 0 6px;font-size:14px">抽選に外れたとき・お店に行けないときは、ネット通販の福袋や初売りセールも候補に。</p>
+<p style="margin:4px 0"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングで福袋を探す</a></p>
+<p style="margin:4px 0"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892740429" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892740429" height="1" width="1" border="0">Amazon.co.jp(アマゾン)</a></p>
+<!-- AFFILIATE:fukubukuro -->
+<p style="margin:4px 0"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+31JSUY+4PXI+61RIA" rel="nofollow">旬の海鮮を直送でお取り寄せ ポケットマルシェ</a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGAV2+31JSUY+4PXI+61RIA" alt=""></p>
+<p class="note" style="margin:6px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での購入により当サイトが報酬を受け取ることがあります。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>年末年始にあわせて使える無料ツール</h2>
+<div class="rec">
+<a href="../otoshidama-souba-2027/">🧧 お年玉 相場計算機 2027</a>
+<a href="../nenmatsu-jumbo-kitaichi-2026/">🎟️ 年末ジャンボ 期待値シミュレーター 2026</a>
+<a href="../bonus-tedori-2026/">💴 冬のボーナス 手取り計算機 2026</a>
+</div>
+<details><summary>ひとりラボのツール一覧（27本）</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>出典：スターバックス公式（https://www.starbucks.co.jp/youkou/luckybag/）の案内を紹介する記事（るるぶ&amp;more. 2026/10/30、tabimogu 2026/11/4 ほか）。日程は目安です。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+var Y=function(s){return new Date(s.replace(' ','T')+':00+09:00');};
+// type: s=受付開始 e=締切 r=発表 p=決済期限 g=受取/発売
+var EVENTS=[
+{id:'sbux',name:'スターバックス 福袋2027',cat:'cafe',price:'9,500円（送料無料）',how:'公式オンラインストアの抽選のみ（店頭販売なし）・1人1回',c:'#0f9d76',
+ steps:[['s','2026-11-04 10:00','エントリー開始'],['e','2026-11-15 23:59','エントリー締切'],['r','2026-11-25 11:00','当選発表（予定・11〜17時ごろ）'],['p','2026-12-02 23:59','購入手続きの期限（過ぎると無効）'],['g','2027-01-01 00:00','お届け（1/1〜1/7から選択）']]},
+{id:'doutor',name:'ドトール 福袋2027（シナモロール）',cat:'cafe',price:'2,400〜12,000円（全9種）',how:'予約制・数量限定（店舗により取り扱いが異なる）',c:'#b45309',
+ steps:[['s','2026-10-30 10:00','オンライン・店頭の予約開始'],['e','2026-11-30 23:59','オンライン予約の締切（目安）'],['e','2026-12-25 20:00','店頭予約の締切（目安）'],['g','2026-12-26 00:00','店頭での受け取り開始']]},
+{id:'coffeekan',name:'珈琲館 ハッピーバッグ2027（すみっコぐらし）',cat:'cafe',price:'4,980円',how:'店頭の事前予約＋オンライン販売（1人4個まで）',c:'#7c3aed',
+ steps:[['s','2026-10-27 09:00','店頭の事前予約開始'],['g','2026-12-03 00:00','販売開始（予約分の受け取りは12/3〜12/11）'],['s','2026-12-03 20:00','オンライン販売開始']]},
+{id:'komeda',name:'コメダ珈琲店 福袋2027',cat:'cafe',price:'未発表（全7種・うち5種はコラボ）',how:'店舗ごとに順次予約',c:'#dc2626',
+ steps:[['s','2026-11-12 09:00','予約開始（店舗ごとに順次）']]},
+{id:'tullys',name:'タリーズ HAPPY BAG 2027',cat:'tbd',price:'未発表',how:'2027の日程は未発表（前年はWeb予約11/12開始・発売12/12）',c:'#8b5cf6',tbd:true,steps:[]},
+{id:'kaldi',name:'カルディ 福袋2027',cat:'tbd',price:'未発表（前年の食品の福袋は5,500円）',how:'2027の日程は未発表（前年はアプリ抽選 11/19〜12/3、当選発表12/15）',c:'#8b5cf6',tbd:true,steps:[]}
+];
+var TABS=[['all','すべて'],['open','受付中'],['cafe','カフェ'],['tbd','未発表']];
+var cur='all';
+var $=function(id){return document.getElementById(id);};
+function fmtD(d){var w='日月火水木金土'[d.getDay()];return (d.getMonth()+1)+'/'+d.getDate()+'（'+w+'）';}
+function hm(d){var h=d.getHours(),m=d.getMinutes();return (h===0&&m===0)?'':' '+h+':'+(m<10?'0':'')+m;}
+function status(ev,now){
+ if(ev.tbd)return ['tbd','未発表'];
+ var st=null,en=null;ev.steps.forEach(function(s){var d=Y(s[1]);if(s[0]==='s'&&!st)st=d;if(s[0]==='e')en=d;});
+ if(!en){var g=st;return g&&now<g?['soon','まもなく']:['now','予約受付中'];}
+ if(st&&now<st)return['soon','まもなく'];
+ if(now<=en)return['now','受付中'];
+ var last=Y(ev.steps[ev.steps.length-1][1]);return now<last?['end','受付終了']:['end','終了'];
+}
+function nextStep(ev,now){for(var i=0;i<ev.steps.length;i++){var d=Y(ev.steps[i][1]);if(d>now)return [d,ev.steps[i][2]];}return null;}
+function cdText(ms){var d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4);return d>0?d+'<small>日</small> '+h+'<small>時間</small>':h+'<small>時間</small> '+m+'<small>分</small>';}
+function visible(now){return EVENTS.filter(function(ev){if(cur==='all')return true;if(cur==='open')return status(ev,now)[0]==='now';return ev.cat===cur;});}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function render(){
+ var now=new Date();
+ $('tabs').innerHTML=TABS.map(function(t){return '<button class="tab'+(t[0]===cur?' on':'')+'" data-t="'+t[0]+'">'+t[1]+'</button>';}).join('');
+ var list=visible(now);
+ $('evs').innerHTML=list.length?list.map(function(ev){
+  var s=status(ev,now),n=nextStep(ev,now);
+  var h='<div class="ev" style="--c:'+ev.c+'"><h3><span class="st '+s[0]+'">'+s[1]+'</span>'+esc(ev.name)+'</h3><div class="meta">💰 '+esc(ev.price)+'<br>📝 '+esc(ev.how)+'</div>';
+  if(n)h+='<div class="cd">'+cdText(n[0]-now)+'</div><div class="meta">次：'+esc(n[1])+'（'+fmtD(n[0])+hm(n[0])+'）まで</div>';
+  if(ev.steps.length){h+='<ul class="steps">'+ev.steps.map(function(st){var d=Y(st[1]);return '<li class="'+(d<now?'past':'')+'"><span class="d">'+fmtD(d)+hm(d)+'</span><span>'+esc(st[2])+'</span></li>';}).join('')+'</ul>';
+   h+='<div class="btns"><button data-ics="'+ev.id+'">📅 カレンダーに登録</button></div>';}
+  return h+'</div>';}).join(''):'<p class="note">該当する福袋はありません。</p>';
+ var open=EVENTS.filter(function(e){return status(e,now)[0]==='now';}).length;
+ $('sNow').textContent=open+'件';
+ var best=null;EVENTS.forEach(function(e){e.steps.forEach(function(st){if(st[0]!=='e'&&st[0]!=='p')return;var d=Y(st[1]);if(d>now&&(!best||d<best[0]))best=[d,e.name];});});
+ if(best){var dd=Math.ceil((best[0]-now)/864e5);$('sNext').textContent=dd+'日';$('sNextL').textContent=best[1].replace(/ 福袋2027.*/,'')+'の締切まで';}else{$('sNext').textContent='—';}
+}
+$('tabs').addEventListener('click',function(e){var t=e.target.getAttribute('data-t');if(t){cur=t;render();}});
+$('evs').addEventListener('click',function(e){var id=e.target.getAttribute('data-ics');if(id)dlIcs(EVENTS.filter(function(x){return x.id===id;}),id);});
+$('icsAll').addEventListener('click',function(){var l=visible(new Date()).filter(function(e){return e.steps.length;});if(!l.length){toast('登録できる日程がありません');return;}dlIcs(l,'all');});
+function ic(d){var u=new Date(d.getTime());function p(n){return (n<10?'0':'')+n;}return u.getUTCFullYear()+p(u.getUTCMonth()+1)+p(u.getUTCDate())+'T'+p(u.getUTCHours())+p(u.getUTCMinutes())+'00Z';}
+function dlIcs(list,name){
+ var L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//hitorilab//fukubukuro2027//JA','CALSCALE:GREGORIAN'];var i=0,stamp=ic(new Date());
+ list.forEach(function(ev){ev.steps.forEach(function(st){var d=Y(st[1]);var e=new Date(d.getTime()+30*6e4);
+  L.push('BEGIN:VEVENT','UID:fk27-'+ev.id+'-'+(i++)+'@hitorilab','DTSTAMP:'+stamp,'DTSTART:'+ic(d),'DTEND:'+ic(e),'SUMMARY:'+ev.name+'：'+st[2],'DESCRIPTION:日程は目安です。公式サイトで確認してください（ひとりラボ 福袋2027カレンダー）');
+  if(st[0]==='e'||st[0]==='p'||st[0]==='r')L.push('BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+ev.name+' '+st[2],'TRIGGER:-P1D','END:VALARM');
+  L.push('END:VEVENT');});});
+ L.push('END:VCALENDAR');
+ var b=new Blob([L.join('\r\n')],{type:'text/calendar'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='fukubukuro2027_'+name+'.ics';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);toast('カレンダーのファイルを作成しました');
+}
+// お得度
+var DEF=[['トートバッグ',3000,1],['ステンレスボトル',4500,1],['グッズ（ランダム）3点',3000,0],['コーヒー豆 2種',3000,1],['ドリンクチケット 7枚',4900,1]];
+var items=[];
+function resetItems(){items=DEF.map(function(x){return {n:x[0],p:x[1],u:!!x[2]};});drawItems();}
+function drawItems(){
+ $('items').innerHTML=items.map(function(it,i){return '<div class="row" style="grid-template-columns:28px 1fr 96px 44px;align-items:center"><input type="checkbox" data-u="'+i+'"'+(it.u?' checked':'')+' aria-label="使う" style="width:22px;height:22px;accent-color:var(--acc)"><input type="text" data-n="'+i+'" value="'+esc(it.n)+'"><input type="number" inputmode="numeric" data-p="'+i+'" value="'+it.p+'"><button data-x="'+i+'" aria-label="削除">✕</button></div>';}).join('');calcGain();
+}
+$('items').addEventListener('input',function(e){var t=e.target,i;
+ if((i=t.getAttribute('data-n'))!==null)items[i].n=t.value;
+ if((i=t.getAttribute('data-p'))!==null)items[i].p=Math.max(0,+t.value||0);
+ if((i=t.getAttribute('data-u'))!==null)items[i].u=t.checked;calcGain();});
+$('items').addEventListener('change',function(e){var i=e.target.getAttribute('data-u');if(i!==null){items[i].u=e.target.checked;calcGain();}});
+$('items').addEventListener('click',function(e){var i=e.target.getAttribute('data-x');if(i!==null){items.splice(+i,1);drawItems();}});
+$('addItem').addEventListener('click',function(){items.push({n:'',p:0,u:true});drawItems();});
+$('resetItems').addEventListener('click',resetItems);
+$('price').addEventListener('input',calcGain);
+function yen(n){return Math.round(n).toLocaleString('ja-JP')+'円';}
+function calcGain(){
+ var price=Math.max(0,+$('price').value||0),all=0,use=0;items.forEach(function(it){all+=it.p;if(it.u)use+=it.p;});
+ var g=use-price,el=$('gain');el.textContent=(g>=0?'+':'−')+yen(Math.abs(g));el.className='big '+(g>=0?'plus':'minus');
+ $('gainSub').textContent='定価の合計 '+yen(all)+' ／ 使う分 '+yen(use)+' ／ 価格 '+yen(price);
+ var r=price?use/price:0;$('gBar').querySelector('i').style.width=Math.min(100,r*50)+'%';
+ $('gainMsg').textContent=!price?'価格を入れてください':r>=1.5?'使う分だけで価格の'+r.toFixed(1)+'倍。かなりお得です 🎉':r>=1?'使う分で元は取れます（'+r.toFixed(2)+'倍）':'使う分だけだと価格を下回ります。中身を確認してから決めるのがおすすめ';
+}
+// 予算
+var PLAN=[['スターバックス（9,500円）',9500,true],['ドトール（7,500円のセット）',7500,false],['珈琲館（4,980円）',4980,false]];
+var plan=PLAN.map(function(x){return {n:x[0],p:x[1],c:x[2]};});
+function drawPlan(){
+ $('plan').innerHTML=plan.map(function(x,i){return '<label class="chk"><input type="checkbox" data-c="'+i+'"'+(x.c?' checked':'')+'><span>'+esc(x.n)+'</span><span class="p">'+yen(x.p)+'</span></label>';}).join('');calcPlan();
+}
+$('plan').addEventListener('change',function(e){var i=e.target.getAttribute('data-c');if(i!==null){plan[i].c=e.target.checked;calcPlan();}});
+$('cAdd').addEventListener('click',function(){var n=$('cName').value.trim()||'ほかの福袋',p=Math.max(0,+$('cPrice').value||0);if(!p){toast('金額を入れてください');return;}plan.push({n:n+'（'+p.toLocaleString('ja-JP')+'円）',p:p,c:true});$('cName').value='';$('cPrice').value='';drawPlan();});
+$('budget').addEventListener('input',calcPlan);
+function calcPlan(){
+ var b=Math.max(0,+$('budget').value||0),s=0;plan.forEach(function(x){if(x.c)s+=x.p;});
+ $('pSum').textContent=yen(s);var r=b?s/b:0,bar=$('pBar');bar.querySelector('i').style.width=Math.min(100,r*100)+'%';bar.className='bar'+(s>b?' over':'');
+ $('pMsg').textContent=!b?'予算を入れてください':s>b?'予算を '+yen(s-b)+' オーバー。優先度の低いものを外してみましょう':'予算の残り '+yen(b-s)+'（初売り・お年玉の分に回せます）';
+}
+// 内部リンク
+var APPS=[['warikan-keisha','傾斜割り勘計算（幹事用）'],['nenga-hitokoto-2027','年賀状ひとことジェネレーター 2027'],['furusato-jogen-2026','ふるさと納税 上限額シミュレーター 2026'],['nencho-navi-2026','年末調整 書き方ナビ 2026'],['kakutei-shindan-2026','確定申告が必要か1分診断 2026'],['oosouji-buntan-2026','大掃除の分担ジェネレーター 2026'],['otoshidama-souba-2027','お年玉 相場計算機 2027'],['hikkoshi-checklist','引っ越し手続きチェックリスト'],['mochu-hagaki-calendar-2026','喪中はがき いつまでに出す？逆算カレンダー'],['hikkoshi-shoki-hiyou','引っ越しの初期費用 計算機'],['net-kaisen-shindan','ネット回線 選び方診断'],['bonenkai-kanji-2026','忘年会 幹事の段取り表 2026'],['kanchu-nengajimai-2027','寒中見舞い・年賀状じまい 文例メーカー'],['nenmatsu-renkyu-2026','年末年始 何連休？有給シミュレーター'],['iryohi-kojo-2026','医療費控除 いくら戻る？計算機'],['jutaku-loan-kojo-2026','住宅ローン控除 いくら戻る？計算機'],['fuyou-kabe-2026','扶養の壁チェッカー 2026'],['bonus-tedori-2026','冬のボーナス 手取り計算機 2026'],['gensen-choshu-checker-2026','源泉徴収票の見方とチェッカー'],['xmas-yosan-2026','クリスマス予算プランナー 2026'],['nengajo-itsumade-2027','年賀状 いつまでに出す？投函日チェッカー'],['danbou-denkidai-2026','暖房の電気代 くらべる計算機'],['kisei-koutsuhi-2026','帰省 車と新幹線どっちが安い？'],['osechi-yosan-2027','おせち 予算と注文締切カレンダー 2027'],['nenmatsu-jumbo-kitaichi-2026','年末ジャンボ 期待値シミュレーター 2026'],['oseibo-navi-2026','お歳暮 いつまで？相場とのし 早見ナビ'],['fukubukuro-2027','福袋 2027 予約・抽選カレンダー（このページ）']];
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+var tt;function toast(m){var t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on');},1800);}
+resetItems();drawPlan();render();setInterval(render,60000);
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

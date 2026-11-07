@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>帰省は車と新幹線どっちが安い？交通費くらべ 2026-2027年末年始｜高速代・ガソリン代・新幹線代を往復で比較</title>
+<meta name="description" content="年末年始の帰省、車（ガソリン代＋高速代）と新幹線、どっちが安い？人数・行き先・燃費を選ぶだけで往復の交通費と1人あたりを比較。年末年始（2026年12月26日〜2027年1月11日）はETC休日割引が使えない点も反映。登録不要。">
+<meta name="theme-color" content="#0f3b6e">
+<link rel="canonical" href="https://yope1016.github.io/apps/kisei-koutsuhi-2026/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ひとりラボ">
+<meta property="og:title" content="帰省は車と新幹線どっちが安い？交通費くらべ 2026-2027">
+<meta property="og:description" content="人数と行き先を選ぶだけ。車（ガソリン＋高速）と新幹線の往復交通費、1人あたり、かかる時間を1画面で比較。">
+<meta property="og:url" content="https://yope1016.github.io/apps/kisei-koutsuhi-2026/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@hitorilab_tools">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"帰省は車と新幹線どっちが安い？交通費くらべ 2026-2027","url":"https://yope1016.github.io/apps/kisei-koutsuhi-2026/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"年末年始は高速道路の休日割引が使える？","acceptedAnswer":{"@type":"Answer","text":"使えません。2026年度は2026年12月26日から2027年1月11日までが、ETC休日割引の適用除外日とされています。深夜割引（0〜4時に高速道路を走行）は、現行ルールでは年末年始も対象です。"}},
+{"@type":"Question","name":"帰省は車と新幹線どっちが安い？","acceptedAnswer":{"@type":"Answer","text":"1人なら新幹線の方が安いか同じくらいになることが多く、2〜3人以上で乗り合わせると車の方が安くなりやすい傾向です。車はガソリン代と高速代を人数で割れる一方、新幹線は人数分かかるためです。かかる時間や渋滞、運転の疲れも合わせて比べてください。"}},
+{"@type":"Question","name":"年末年始の新幹線は高い？","acceptedAnswer":{"@type":"Answer","text":"指定席は時期によって料金が変わり、年末年始のピークは最繁忙期（通常期より400円高い）や繁忙期（200円高い）になることが多いです。自由席の料金は変わりません。正確な期間は各JRの公式サイトで確認してください。"}}
+]}]}
+</script>
+<style>
+:root{
+  --bg:#f2f5fa;--card:#fff;--ink:#14202e;--sub:#5a6b80;--line:#e1e8f2;--chip:#eef3fa;
+  --pri:#1d6fd8;--hot:#ea580c;--gold:#b7791f;--ok:#15803d;--warn:#c2410c;
+  --shadow:0 14px 34px -16px rgba(15,50,110,.35);
+  --grad:linear-gradient(135deg,#0b2545 0%,#13467f 40%,#2f7fd6 72%,#f59e0b 125%);
+  --r:20px;
+}
+:root[data-theme="dark"]{--bg:#0b1119;--card:#131c28;--ink:#eaf1fa;--sub:#a6b6c9;--line:#243246;--chip:#1b2636;--pri:#6aa8ff;--hot:#fb923c;--gold:#f2c14e;--ok:#4ade80;--warn:#fb923c;--shadow:0 14px 34px -16px rgba(0,0,0,.75)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1119;--card:#131c28;--ink:#eaf1fa;--sub:#a6b6c9;--line:#243246;--chip:#1b2636;--pri:#6aa8ff;--hot:#fb923c;--gold:#f2c14e;--ok:#4ade80;--warn:#fb923c;--shadow:0 14px 34px -16px rgba(0,0,0,.75)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:var(--pri)}
+button,input,select{font-family:inherit;font-size:16px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.hero{background:var(--grad);color:#fff;position:relative;overflow:hidden;padding:22px 0 104px}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 10%,rgba(255,255,255,.22),transparent 40%),radial-gradient(circle at 10% 100%,rgba(255,170,60,.28),transparent 45%)}
+.fl{position:absolute;font-size:26px;opacity:.6;animation:float 7s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+@keyframes float{50%{transform:translateY(-14px) rotate(10deg)}}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;position:relative;z-index:2}
+.brand{font-weight:800;font-size:14px;letter-spacing:.08em}
+.mode{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;min-height:40px}
+.promo-note{font-size:11px;color:rgba(255,255,255,.85);text-align:right;position:relative;z-index:2}
+.hero h1{font-size:clamp(25px,7vw,40px);line-height:1.25;font-weight:900;position:relative;z-index:2}
+.hero h1 small{display:block;font-size:.42em;font-weight:700;opacity:.92;margin-bottom:6px;letter-spacing:.12em}
+.lead{margin-top:12px;font-size:15px;opacity:.95;position:relative;z-index:2}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:2}
+.badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700}
+main{margin-top:-72px;position:relative;z-index:3;padding-bottom:40px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 18px;margin-bottom:16px;border:1px solid var(--line);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(12px)}}
+.card h2{font-size:19px;display:flex;align-items:center;gap:10px;margin-bottom:12px;line-height:1.35}
+.ico{width:38px;height:38px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:20px;background:var(--chip)}
+.hint{font-size:13px;color:var(--sub);margin-top:8px}
+.rl{display:block;font-size:13px;font-weight:800;color:var(--sub);margin:14px 0 6px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 14px;font-weight:800;font-size:14px;cursor:pointer;min-height:44px;transition:.2s}
+.seg button[aria-pressed="true"]{background:var(--pri);border-color:var(--pri);color:#fff;box-shadow:0 6px 14px -6px var(--pri)}
+input[type=number],select{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);min-height:48px}
+input:focus,select:focus{outline:2px solid var(--pri);outline-offset:1px}
+.g3{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (min-width:620px){.g3{grid-template-columns:repeat(3,1fr)}}
+/* ranking */
+.rank{display:flex;flex-direction:column;gap:8px}
+.rk{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center}
+.rk .em{font-size:20px;text-align:center}
+.rk .nm{font-size:14px;font-weight:800;line-height:1.3}
+.rk .nm small{display:block;font-size:11px;color:var(--sub);font-weight:700}
+.rk .bar{height:8px;border-radius:99px;background:var(--chip);margin-top:4px;overflow:hidden}
+.rk .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#2f7fd6,#f59e0b,#ea580c);transform-origin:left;animation:grow .8s ease both}
+@keyframes grow{from{transform:scaleX(0)}}
+.rk .v{font-size:18px;font-weight:900;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.rk .v small{font-size:11px;color:var(--sub);font-weight:700;display:block}
+.tag{display:inline-block;font-size:10px;font-weight:900;border-radius:6px;padding:0 6px;margin-left:4px;vertical-align:2px}
+.tag.room{background:color-mix(in srgb,var(--pri) 15%,transparent);color:var(--pri)}
+.tag.body{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}
+/* devices */
+.dev{border:1.5px solid var(--line);border-radius:16px;padding:12px;margin-top:10px;transition:.2s;background:var(--card)}
+.dev.on{border-color:var(--pri);background:color-mix(in srgb,var(--pri) 5%,var(--card))}
+.dev .hd{display:flex;align-items:center;gap:10px;cursor:pointer;min-height:44px}
+.dev .hd .em{font-size:24px}
+.dev .hd .t{flex:1;font-weight:800;font-size:15px;line-height:1.35}
+.dev .hd .t small{display:block;font-size:12px;color:var(--sub);font-weight:700}
+.sw{width:50px;height:30px;border-radius:99px;background:var(--line);position:relative;flex:none;transition:.2s;border:0;cursor:pointer}
+.sw:after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:.2s}
+.sw[aria-checked="true"]{background:var(--pri)}
+.sw[aria-checked="true"]:after{left:23px}
+.dev .bd{display:none;margin-top:10px}
+.dev.on .bd{display:block}
+.hrs{display:flex;align-items:center;gap:10px}
+.hrs input[type=range]{flex:1;accent-color:var(--pri);height:36px}
+.hrs output{font-weight:900;font-size:18px;min-width:72px;text-align:right;font-variant-numeric:tabular-nums}
+.dev .mini{font-size:13px;color:var(--sub);margin-top:4px}
+.dev .mini b{color:var(--ink)}
+.preset{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+/* result */
+.res{border-radius:20px;padding:20px;color:#fff;background:linear-gradient(135deg,#0b2545,#1d5fae 60%,#e07a14 130%);position:relative;overflow:hidden}
+.res:after{content:"❄️";position:absolute;right:12px;top:6px;font-size:54px;opacity:.18}
+.res .l{font-size:13px;font-weight:800;opacity:.9}
+.res .big{font-size:clamp(38px,11vw,54px);font-weight:900;line-height:1.1;font-variant-numeric:tabular-nums;margin:4px 0}
+.res .big span{font-size:18px;margin-left:4px}
+.res .s{font-size:14px;opacity:.95}
+.kpi{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.kpi div{background:rgba(255,255,255,.14);border-radius:14px;padding:10px 12px}
+.kpi b{display:block;font-size:22px;font-weight:900;font-variant-numeric:tabular-nums}
+.kpi small{font-size:12px;opacity:.9}
+.months{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px;align-items:end}
+.mo{text-align:center;font-size:12px;font-weight:800;color:var(--sub)}
+.mo .col{height:120px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.mo .col i{display:block;width:70%;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,#f59e0b,#2f7fd6);animation:rise .8s ease both;transform-origin:bottom;position:relative}
+.mo .col i.sub{background:repeating-linear-gradient(45deg,rgba(21,128,61,.55) 0 6px,rgba(21,128,61,.25) 6px 12px);border-radius:4px;margin-top:2px}
+@keyframes rise{from{transform:scaleY(0)}}
+.mo b{display:block;font-size:14px;color:var(--ink);font-variant-numeric:tabular-nums}
+.mo em{font-style:normal;color:var(--ok);font-size:11px;display:block}
+.tbl{width:100%;border-collapse:separate;border-spacing:0 6px;font-size:14px;margin-top:8px}
+.tbl td{padding:9px 10px;background:var(--chip)}
+.tbl td:first-child{border-radius:12px 0 0 12px;font-weight:700}
+.tbl td:last-child{border-radius:0 12px 12px 0;text-align:right;font-weight:900;white-space:nowrap;font-variant-numeric:tabular-nums}
+/* tips */
+.tip{display:flex;gap:12px;padding:12px;border-radius:16px;background:var(--chip);margin-top:10px;align-items:flex-start}
+.tip .em{font-size:24px;line-height:1.2}
+.tip b{display:block;font-size:15px}
+.tip p{font-size:13px;color:var(--sub)}
+.tip .save{margin-left:auto;font-weight:900;color:var(--ok);white-space:nowrap;font-size:15px;text-align:right}
+.tip .save small{display:block;font-size:11px;color:var(--sub);font-weight:700}
+.empty{padding:16px;border-radius:14px;background:var(--chip);color:var(--sub);font-size:14px;text-align:center}
+/* buttons */
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:6px;border-radius:14px;min-height:48px;font-weight:800;font-size:15px;text-decoration:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.x{background:#111;color:#fff;border-color:#111}
+.btn.line{background:#06c755;color:#fff;border-color:#06c755}
+.btn.cp{grid-column:1/-1;background:var(--pri);color:#fff;border-color:var(--pri)}
+/* PR */
+.pr{border:1.5px solid var(--gold);border-radius:18px;padding:16px;position:relative;background:linear-gradient(135deg,rgba(183,121,31,.09),rgba(29,111,216,.05));margin-top:18px}
+.prlab{position:absolute;top:-10px;left:14px;background:var(--gold);color:#fff;font-size:11px;font-weight:900;border-radius:6px;padding:1px 8px;letter-spacing:.1em}
+.pr h3{font-size:16px;margin-bottom:6px}
+.pr p{font-size:14px;color:var(--sub)}
+.afl{margin-top:10px}
+.afl a{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:15px;padding:10px 14px;border-radius:12px;background:var(--card);border:1.5px solid var(--line);text-decoration:none;min-height:44px;line-height:1.4}
+.afl a:after{content:"→"}
+.afl img{position:absolute;width:1px;height:1px}
+.slot{display:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#14202e;color:#fff;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:700;transition:.3s;z-index:9;opacity:0}
+.toast.show{transform:translateX(-50%);opacity:1}
+.faq details{border-top:1px solid var(--line);padding:12px 0}
+.faq summary{font-weight:800;cursor:pointer;font-size:15px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"＋";color:var(--pri)}
+.faq details[open] summary:after{content:"－"}
+.faq p{font-size:14px;color:var(--sub);margin-top:8px}
+.src{font-size:12px;color:var(--sub);line-height:1.6}
+.src li{margin-left:18px;margin-top:4px;word-break:break-all}
+footer{text-align:center;font-size:12px;color:var(--sub);padding:20px 16px 36px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* kisei */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.vsc{border-radius:18px;padding:16px 14px;color:#fff;position:relative;overflow:hidden}
+.vsc.car{background:linear-gradient(135deg,#0b2545,#1d6fd8)}
+.vsc.train{background:linear-gradient(135deg,#3b1d5e,#d9468f)}
+.vsc.win:before{content:"安い！";position:absolute;top:10px;right:10px;background:#fde047;color:#3a2a00;font-size:11px;font-weight:900;border-radius:99px;padding:2px 9px;animation:pop .5s ease both}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+.vsc .l{font-size:13px;font-weight:800;opacity:.92;padding-right:46px}
+.vsc .big{font-size:clamp(22px,6.6vw,40px);font-weight:900;line-height:1.15;font-variant-numeric:tabular-nums;margin:2px 0;white-space:nowrap}
+.vsc .big small{font-size:14px;margin-left:2px}
+.vsc .pp{font-size:13px;opacity:.95}
+.vsc .pp b{font-size:17px}
+.vsc .tm{margin-top:8px;font-size:12px;background:rgba(255,255,255,.16);border-radius:10px;padding:6px 8px}
+.verdict{margin-top:14px;padding:14px 16px;border-radius:16px;background:var(--chip);font-size:15px;font-weight:700;line-height:1.6}
+.verdict b{color:var(--hot);font-size:18px}
+.cmpbar{margin-top:14px}
+.cb{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:center;margin-top:8px;font-size:13px;font-weight:800}
+.cb .tr{height:26px;border-radius:99px;background:var(--chip);overflow:hidden;display:flex}
+.cb .tr i{display:block;height:100%;transform-origin:left;animation:grow .8s ease both}
+.cb .tr i.f{background:#2f7fd6}.cb .tr i.t{background:#f59e0b}.cb .tr i.p{background:#94a3b8}.cb .tr i.s{background:#d9468f}.cb .tr i.k{background:#f472b6}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;font-size:12px;color:var(--sub)}
+.legend span:before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px;background:var(--c)}
+.step{display:flex;align-items:center;gap:10px}
+.step button{width:44px;height:44px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:22px;font-weight:900;cursor:pointer}
+.step output{min-width:46px;text-align:center;font-size:22px;font-weight:900;font-variant-numeric:tabular-nums}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.note{border-left:4px solid var(--warn);background:color-mix(in srgb,var(--warn) 8%,var(--card));border-radius:12px;padding:10px 12px;font-size:13px;margin-top:12px}
+.be{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.be span{font-size:13px;font-weight:800;border-radius:10px;padding:6px 10px;background:var(--chip);font-variant-numeric:tabular-nums}
+.be span.c{background:color-mix(in srgb,var(--pri) 18%,var(--card));color:var(--pri)}
+.be span.t{background:color-mix(in srgb,#d9468f 18%,var(--card));color:#d9468f}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="fl" style="left:7%;top:64%">🚗</span>
+  <span class="fl" style="right:10%;top:28%;animation-delay:-2s">🚄</span>
+  <span class="fl" style="right:32%;top:72%;animation-delay:-4s">🍙</span>
+  <div class="wrap">
+    <div class="topbar"><span class="brand">ひとりラボ</span><button class="mode" id="mode" type="button">🌙 ダーク</button></div>
+    <p class="promo-note">※ページ内に広告（PR）を含みます</p>
+    <h1><small>2026-2027 年末年始の帰省</small>車と新幹線<br>どっちが安い？</h1>
+    <p class="lead">行き先と人数を選ぶだけ。<b>ガソリン代＋高速代</b>と<b>新幹線代</b>を往復で比べて、1人あたりとかかる時間まで出します。</p>
+    <div class="badges"><span class="badge">🛣️ 年末年始は休日割引なしを反映</span><span class="badge">🔒 登録なし・送信なし</span><span class="badge">📱 スマホで30秒</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" style="animation-delay:.05s">
+    <h2><span class="ico">📍</span>どこへ帰る？（東京から）</h2>
+    <div class="seg" id="dest">
+      <button type="button" data-d="nagoya">名古屋</button>
+      <button type="button" data-d="osaka">大阪</button>
+      <button type="button" data-d="hiroshima">広島</button>
+      <button type="button" data-d="hakata">博多</button>
+      <button type="button" data-d="sendai">仙台</button>
+      <button type="button" data-d="custom">自分で入力</button>
+    </div>
+    <p class="hint">距離と運賃は東京発の目安です。ほかの出発地・行き先は「自分で入力」か、下の数字を書きかえてください。</p>
+    <div class="g2" style="margin-top:6px">
+      <label><span class="rl">片道の道のり（km）</span><input type="number" id="km" min="1" max="3000" step="1" inputmode="numeric"></label>
+      <label><span class="rl">うち高速道路（km）</span><input type="number" id="hw" min="0" max="3000" step="1" inputmode="numeric"></label>
+      <label><span class="rl">新幹線 大人片道（円）</span><input type="number" id="fare" min="0" max="100000" step="10" inputmode="numeric"></label>
+      <label><span class="rl">新幹線の乗車時間（時間）</span><input type="number" id="tt" min="0" max="20" step="0.1" inputmode="decimal"></label>
+    </div>
+    <p class="hint" id="destNote"></p>
+  </section>
+
+  <section class="card" style="animation-delay:.1s">
+    <h2><span class="ico">👨‍👩‍👧</span>だれと行く？</h2>
+    <div class="g2">
+      <div><span class="rl">大人（12歳以上）</span><div class="step"><button type="button" data-s="ad" data-v="-1" aria-label="大人を減らす">−</button><output id="ad">1</output><button type="button" data-s="ad" data-v="1" aria-label="大人を増やす">＋</button></div></div>
+      <div><span class="rl">子ども（6〜11歳）</span><div class="step"><button type="button" data-s="ch" data-v="-1" aria-label="子どもを減らす">−</button><output id="ch">0</output><button type="button" data-s="ch" data-v="1" aria-label="子どもを増やす">＋</button></div></div>
+    </div>
+    <p class="hint">新幹線の子ども料金は大人のおよそ半額で計算します。小学校に入る前の子は、ひざの上なら無料（大人1人につき2人まで）なので、ここには入れなくてOKです。</p>
+    <span class="rl">新幹線の時期（指定席の料金）</span>
+    <div class="seg" id="season">
+      <button type="button" data-v="0">通常期</button>
+      <button type="button" data-v="200">繁忙期 +200円</button>
+      <button type="button" data-v="400" aria-pressed="true">最繁忙期 +400円</button>
+      <button type="button" data-v="-1">自由席</button>
+    </div>
+    <p class="hint">年末年始のピーク（12月末〜1月初め）は最繁忙期・繁忙期になることが多いです。正確な期間はJR各社の公式サイトで確認してください。自由席は「指定席−530円」で計算します。</p>
+  </section>
+
+  <section class="card" style="animation-delay:.15s">
+    <h2><span class="ico">🚗</span>車の条件</h2>
+    <div class="g2">
+      <label><span class="rl">燃費（km/L）</span><input type="number" id="eff" min="3" max="40" step="0.5" value="15" inputmode="decimal"></label>
+      <label><span class="rl">ガソリン 1Lあたり（円）</span><input type="number" id="gas" min="50" max="300" step="1" value="170" inputmode="numeric"></label>
+      <label><span class="rl">高速代 片道（円・空欄で自動）</span><input type="number" id="tollIn" min="0" max="100000" step="10" placeholder="自動で計算" inputmode="numeric"></label>
+      <label><span class="rl">駐車場・その他 往復（円）</span><input type="number" id="park" min="0" max="100000" step="100" value="0" inputmode="numeric"></label>
+    </div>
+    <span class="rl">高速道路の割引</span>
+    <div class="seg" id="disc">
+      <button type="button" data-v="0" aria-pressed="true">割引なし</button>
+      <button type="button" data-v="30">深夜割引（0〜4時に走る）</button>
+    </div>
+    <div class="note">⚠️ <b>年末年始（2026年12月26日〜2027年1月11日）はETC休日割引が使えません。</b> 土日でもこの期間は割引なしで計算しています。深夜割引は現行ルールでは年末年始も対象です（2026年度中に見直し予定）。</div>
+    <span class="rl">渋滞</span>
+    <div class="seg" id="jam">
+      <button type="button" data-v="1">空いている日</button>
+      <button type="button" data-v="1.2" aria-pressed="true">ふつうの混雑</button>
+      <button type="button" data-v="1.5">ピーク日（12/29〜30・1/2〜3ごろ）</button>
+    </div>
+    <p class="hint">燃費15km/Lは普通車のおおよその実燃費。ガソリン170円は2026年10月下旬のレギュラーの全国平均（民間調査）の目安です。高速代は空欄なら距離から自動で計算します（普通車・ETC・目安）。</p>
+  </section>
+
+  <section class="card" style="animation-delay:.2s" id="resultCard">
+    <h2><span class="ico">🧾</span>往復の交通費くらべ</h2>
+    <div class="vs">
+      <div class="vsc car" id="vCar"><div class="l">🚗 車</div><div class="big"><span id="carT">0</span><small>円</small></div><div class="pp">1人あたり <b id="carP">0円</b></div><div class="tm" id="carTm">—</div></div>
+      <div class="vsc train" id="vTrain"><div class="l">🚄 新幹線</div><div class="big"><span id="trT">0</span><small>円</small></div><div class="pp">1人あたり <b id="trP">0円</b></div><div class="tm" id="trTm">—</div></div>
+    </div>
+    <div class="verdict" id="verdict">—</div>
+    <div class="cmpbar" id="cmp"></div>
+    <div class="legend"><span style="--c:#2f7fd6">ガソリン</span><span style="--c:#f59e0b">高速代</span><span style="--c:#94a3b8">駐車場など</span><span style="--c:#d9468f">新幹線 大人</span><span style="--c:#f472b6">新幹線 子ども</span></div>
+    <span class="rl">人数が変わると？（往復の合計）</span>
+    <div class="be" id="be"></div>
+    <table class="tbl" id="detail"></table>
+    <div class="row2" style="margin-top:14px">
+      <a class="btn x" id="xs" href="#" target="_blank" rel="noopener">𝕏 でシェア</a>
+      <a class="btn line" id="ls" href="#" target="_blank" rel="noopener">LINE で送る</a>
+      <button class="btn cp" type="button" id="cp">📋 結果をコピー</button>
+    </div>
+  </section>
+
+  <section class="card" style="animation-delay:.25s">
+    <h2><span class="ico">💡</span>帰省の交通費を安くするコツ</h2>
+    <div class="tip"><span class="em">🌙</span><div><b>車なら深夜割引の時間帯をまたぐ</b><p>0〜4時に高速道路を走っていれば、ETCの深夜割引（3割引）の対象になります（現行ルール）。眠いときは無理せず休憩を。</p></div></div>
+    <div class="tip"><span class="em">🎫</span><div><b>新幹線は早めのネット予約割引を</b><p>JR各社のネット予約には、早く買うほど安くなる割引きっぷがあります。年末年始は対象外の日もあるので、発売日に条件を確認しましょう。</p></div></div>
+    <div class="tip"><span class="em">📅</span><div><b>ピークを1日ずらす</b><p>12月29〜30日の下り、1月2〜3日の上りは渋滞と混雑のピークになりがち。有給を1日足すだけで、移動がぐっと楽になることも。</p></div></div>
+    <p class="hint">連休の日数と有給の使い方は <a href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/">年末年始 何連休？有給シミュレーター</a> で確認できます。</p>
+
+    <div class="pr" id="prGift">
+      <span class="prlab">PR</span>
+      <h3>🎁 帰省の手土産、移動の前にネットで</h3>
+      <p>当日バタバタしないように、手土産やお年玉のポチ袋は先にネットで用意しておくと安心です。</p>
+      <!-- AFFILIATE:temiyage -->
+      <div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングで「帰省 手土産」を探す</a></div>
+      <p class="hint">お年玉の金額は <a href="https://yope1016.github.io/apps/otoshidama-souba-2027/">お年玉 相場計算機</a> で。</p>
+    </div>
+    <div class="pr slot" id="prBus">
+      <span class="prlab">PR</span>
+      <h3>🚌 もっと安く：高速バスを比べる</h3>
+      <!-- AFFILIATE:kousoku_bus -->
+    </div>
+    <div class="pr slot" id="prRent">
+      <span class="prlab">PR</span>
+      <h3>🚙 車がない人は：レンタカー・カーシェア</h3>
+      <!-- AFFILIATE:rentacar -->
+    </div>
+    <div class="pr slot" id="prYado">
+      <span class="prlab">PR</span>
+      <h3>🏨 実家に泊まれないときの宿</h3>
+      <!-- AFFILIATE:travel_yado -->
+    </div>
+  </section>
+
+  <section class="card faq" style="animation-delay:.3s">
+    <h2><span class="ico">❓</span>よくある質問</h2>
+    <details><summary>年末年始は高速の休日割引が使える？</summary><p>使えません。2026年度は2026年12月26日（土）〜2027年1月11日（月・祝）が休日割引の適用除外日です。この期間は土日・祝日でも割引されません。深夜割引（0〜4時）は現行ルールでは対象です。</p></details>
+    <details><summary>何人から車の方が安くなる？</summary><p>行き先と燃費しだいですが、東京〜大阪（燃費15km/L・最繁忙期の指定席）なら、大人1人では新幹線の方が約3千円安く、大人2人で乗り合わせると車の方が2万円以上安くなる計算です。上の「人数が変わると？」で、あなたの条件の分かれ目を確認できます。</p></details>
+    <details><summary>高速代の自動計算はどのくらい正確？</summary><p>普通車・ETCの全国路線網の料金のしくみ（1kmあたり24.6円＋150円、100km超は長距離の割引、消費税10%）で計算した目安です。首都高・大都市近郊区間・一部の路線は単価が高く、実際より数%〜1割ほど安く出ることがあります。正確な料金はNEXCOの料金検索（ドラぷら など）で調べて、「高速代 片道」に入れてください。</p></details>
+    <details><summary>子どもの新幹線代は？</summary><p>6〜11歳（小学生）は、運賃・料金ともにおよそ大人の半額です。小学校入学前の子は、大人1人につき2人まで、座席を使わなければ無料です。</p></details>
+    <details><summary>車の時間はどう計算している？</summary><p>高速道路を時速80km、一般道を時速30kmで走り、2時間ごとに15分休む前提です。そこに渋滞の度合い（ふつう1.2倍、ピーク1.5倍）をかけています。年末年始の渋滞予測は、NEXCO各社が12月中旬ごろに発表します。</p></details>
+  </section>
+
+  <section class="card" style="animation-delay:.35s">
+    <h2><span class="ico">📚</span>出典・計算の前提</h2>
+    <ul class="src">
+      <li>2026年度のETC休日割引の適用除外日（年末年始 2026年12月26日〜2027年1月11日）：JAF Mate Online https://jafmate.jp/car/traffic_topics_20260419_1198935.html</li>
+      <li>高速料金の計算（24.6円/km＋150円、100〜200km 25%・200km超 30%の長距離逓減）：JAF Mate Online https://jafmate.jp/car/traffic_topics_20250513_1197485.html（消費税10%を加算して10円単位に丸めた目安）</li>
+      <li>深夜割引の見直しは2026年度中の導入予定（それまでは現行ルール）：JAF Mate Online https://jafmate.jp/car/traffic_topcs_20260315_1198813.html</li>
+      <li>レギュラーガソリンの全国平均 170.1円/L（2026年10月26日、グーネット調べ）：https://carview.yahoo.co.jp/news/detail/4d7df22c870314616fa698b7c777cb45fbd69957</li>
+      <li>東海道・山陽新幹線「のぞみ」通常期の指定席（東京〜名古屋11,300円、新大阪14,720円、広島19,760円、博多23,810円）と季節の加算（繁忙期+200円、最繁忙期+400円）：たびりす https://tabiris.com/archives/nozomi-sagaku/</li>
+      <li>東北新幹線「はやぶさ」東京〜仙台 通常期の指定席 11,630円（2026年3月の運賃改定後）：https://tabiblo007.com/tohoku-shinkansen-ryokin/</li>
+      <li>距離（東京IC〜名古屋IC約325km、〜吹田IC約505km、〜広島IC約815km、〜福岡IC約1,090km、川口JCT〜仙台宮城IC約320km）は当サイトの概算。運賃・料金は改定されることがあるため、JR各社・NEXCO各社の公式情報で確認してください。</li>
+    </ul>
+  </section>
+
+<style id="hl-hub-css">
+.hl-hub{--hl-bg:#ffffff;--hl-fg:#1d2433;--hl-sub:#5b6478;--hl-line:rgba(30,40,70,.10);--hl-tile:#f5f7fc;--hl-acc:#5b5bf0;--hl-acc2:#18b6a4;
+margin:28px auto 8px;max-width:760px;padding:22px 18px 18px;border-radius:22px;background:var(--hl-bg);color:var(--hl-fg);
+border:1px solid var(--hl-line);box-shadow:0 10px 30px rgba(40,50,90,.08);font-size:15px;line-height:1.55;box-sizing:border-box}
+@media (prefers-color-scheme:dark){.hl-hub{--hl-bg:#171b26;--hl-fg:#eef1f8;--hl-sub:#a3abc0;--hl-line:rgba(255,255,255,.10);--hl-tile:#202636;--hl-acc:#8c8cff;--hl-acc2:#3fd6c3;box-shadow:none}}
+.hl-hub *{box-sizing:border-box}
+.hl-hub h2{margin:0 0 4px;font-size:18px;display:flex;align-items:center;gap:8px}
+.hl-hub .hl-lead{margin:0 0 14px;color:var(--hl-sub);font-size:13px}
+.hl-hub .hl-pick{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:620px){.hl-hub .hl-pick{grid-template-columns:repeat(3,1fr)}}
+.hl-hub a.hl-c{display:flex;gap:10px;align-items:center;padding:13px 14px;border-radius:16px;text-decoration:none;color:var(--hl-fg);
+background:var(--hl-tile);background:linear-gradient(135deg,color-mix(in srgb,var(--hl-acc) 14%,var(--hl-tile)),color-mix(in srgb,var(--hl-acc2) 10%,var(--hl-tile)));
+border:1px solid var(--hl-line);min-height:56px;transition:transform .15s ease,box-shadow .15s ease}
+.hl-hub a.hl-c:hover,.hl-hub a.hl-c:focus-visible{transform:translateY(-2px);box-shadow:0 8px 18px rgba(60,60,160,.15)}
+.hl-hub .hl-i{font-size:22px;line-height:1;flex:none;width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:var(--hl-bg)}
+.hl-hub .hl-t b{display:block;font-size:14px}
+.hl-hub .hl-t span{display:block;font-size:12px;color:var(--hl-sub)}
+.hl-hub details{margin-top:14px;border-top:1px solid var(--hl-line);padding-top:12px}
+.hl-hub summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--hl-acc);padding:6px 0;list-style:none}
+.hl-hub summary::-webkit-details-marker{display:none}
+.hl-hub summary::after{content:none!important;display:none!important}
+.hl-hub summary{background:none!important;border:0!important;margin:0!important}
+.hl-hub summary::before{content:"＋ ";}
+.hl-hub details[open] summary::before{content:"－ ";}
+.hl-hub h3{margin:12px 0 6px;font-size:13px;color:var(--hl-sub);font-weight:700}
+.hl-hub ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:6px}
+@media (min-width:620px){.hl-hub ul{grid-template-columns:1fr 1fr}}
+.hl-hub li a,.hl-hub li a:visited{display:flex;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--hl-tile);color:var(--hl-fg);text-decoration:none;font-size:14px;min-height:44px}
+.hl-hub li a:hover{outline:2px solid color-mix(in srgb,var(--hl-acc) 40%,transparent)}
+.hl-hub li.hl-me a{opacity:.55;pointer-events:none}
+.hl-hub li.hl-me a::after{content:"（このページ）";font-size:12px;color:var(--hl-sub)}
+.hl-hub .hl-all{display:inline-block;margin-top:14px;font-size:13px;color:var(--hl-acc);text-decoration:none;font-weight:700}
+</style>
+
+<!-- HITORILAB:HUB v2 （全アプリ共通の内部リンク。2026-11-04） -->
+<section class="hl-hub" aria-label="ほかの無料ツール">
+<h2><span>🧰</span>次にやることも、無料ツールで</h2><p class="hl-lead">登録なし・入力内容はどこにも送信されません。</p>
+<div class="hl-pick"><a class="hl-c" href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/"><span class="hl-i">📅</span><span class="hl-t"><b>年末年始 何連休？</b><span>有給を足して帰省日を決める</span></span></a><a class="hl-c" href="https://yope1016.github.io/apps/otoshidama-souba-2027/"><span class="hl-i">🧧</span><span class="hl-t"><b>お年玉 相場計算機</b><span>甥っ子・姪っ子の分も先に</span></span></a><a class="hl-c" href="https://yope1016.github.io/apps/bonus-tedori-2026/"><span class="hl-i">💴</span><span class="hl-t"><b>冬のボーナス 手取り計算機</b><span>帰省の予算を先に確保</span></span></a></div>
+<details><summary>ひとりラボの無料ツールをすべて見る（23本）</summary>
+<h3>お金・税金（年末調整〜確定申告）</h3><ul>
+<li><a href="https://yope1016.github.io/apps/furusato-jogen-2026/"><span>🎁</span>ふるさと納税 上限額シミュレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/nencho-navi-2026/"><span>📝</span>年末調整 書き方ナビ</a></li>
+<li><a href="https://yope1016.github.io/apps/gensen-choshu-checker-2026/"><span>🧾</span>源泉徴収票の見方とチェッカー</a></li>
+<li><a href="https://yope1016.github.io/apps/kakutei-shindan-2026/"><span>🩺</span>確定申告が必要か1分診断</a></li>
+<li><a href="https://yope1016.github.io/apps/iryohi-kojo-2026/"><span>💊</span>医療費控除 いくら戻る？</a></li>
+<li><a href="https://yope1016.github.io/apps/jutaku-loan-kojo-2026/"><span>🏠</span>住宅ローン控除 いくら戻る？</a></li>
+<li><a href="https://yope1016.github.io/apps/fuyou-kabe-2026/"><span>🧱</span>扶養の壁チェッカー</a></li>
+<li><a href="https://yope1016.github.io/apps/bonus-tedori-2026/"><span>💴</span>冬のボーナス 手取り計算機</a></li>
+<li><a href="https://yope1016.github.io/apps/danbou-denkidai-2026/"><span>🔥</span>暖房の電気代 くらべる計算機</a></li>
+</ul>
+<h3>年末年始の行事</h3><ul>
+<li><a href="https://yope1016.github.io/apps/bonenkai-kanji-2026/"><span>🍻</span>忘年会 幹事の段取り表</a></li>
+<li><a href="https://yope1016.github.io/apps/warikan-keisha/"><span>🧮</span>傾斜割り勘計算</a></li>
+<li><a href="https://yope1016.github.io/apps/xmas-yosan-2026/"><span>🎄</span>クリスマス予算プランナー</a></li>
+<li><a href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/"><span>📅</span>年末年始 何連休？</a></li>
+<li class="hl-me"><a href="https://yope1016.github.io/apps/kisei-koutsuhi-2026/"><span>🚗</span>帰省 車と新幹線どっちが安い？</a></li>
+<li><a href="https://yope1016.github.io/apps/oosouji-buntan-2026/"><span>🧹</span>大掃除の分担ジェネレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/otoshidama-souba-2027/"><span>🧧</span>お年玉 相場計算機</a></li>
+<li><a href="https://yope1016.github.io/apps/nenga-hitokoto-2027/"><span>✍️</span>年賀状ひとことジェネレーター</a></li>
+<li><a href="https://yope1016.github.io/apps/nengajo-itsumade-2027/"><span>📮</span>年賀状 投函日チェッカー</a></li>
+<li><a href="https://yope1016.github.io/apps/mochu-hagaki-calendar-2026/"><span>🕯️</span>喪中はがき 逆算カレンダー</a></li>
+<li><a href="https://yope1016.github.io/apps/kanchu-nengajimai-2027/"><span>✉️</span>寒中見舞い・年賀状じまい 文例</a></li>
+</ul>
+<h3>引っ越し・新生活</h3><ul>
+<li><a href="https://yope1016.github.io/apps/hikkoshi-checklist/"><span>✅</span>引っ越し手続きチェックリスト</a></li>
+<li><a href="https://yope1016.github.io/apps/hikkoshi-shoki-hiyou/"><span>📦</span>引っ越しの初期費用 計算機</a></li>
+<li><a href="https://yope1016.github.io/apps/net-kaisen-shindan/"><span>📶</span>ネット回線 選び方診断</a></li>
+</ul>
+</details><a class="hl-all" href="https://yope1016.github.io/apps/">ツール一覧のトップへ →</a></section></main>
+<div class="toast" id="toast"></div>
+<footer>© ひとりラボ ・ 入力内容はどこにも送信されません</footer>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var URL_APP="https://yope1016.github.io/apps/kisei-koutsuhi-2026/";
+var D={
+  nagoya:{n:"名古屋",km:350,hw:325,fare:11300,tt:1.7},
+  osaka:{n:"大阪",km:520,hw:505,fare:14720,tt:2.5},
+  hiroshima:{n:"広島",km:830,hw:815,fare:19760,tt:4.0},
+  hakata:{n:"博多",km:1100,hw:1090,fare:23810,tt:5.0},
+  sendai:{n:"仙台",km:350,hw:320,fare:11630,tt:1.6},
+  custom:{n:"",km:300,hw:250,fare:10000,tt:2.0}
+};
+var S={d:"osaka",ad:2,ch:0,season:400,disc:0,jam:1.2};
+var yen=function(v){return Math.round(v).toLocaleString("ja-JP")};
+var num=function(id,def){var v=parseFloat($(id).value);return isFinite(v)&&v>=0?v:def};
+
+/* theme */
+var root=document.documentElement,mode=$("mode");
+function setMode(t){root.setAttribute("data-theme",t);mode.textContent=t==="dark"?"☀️ ライト":"🌙 ダーク"}
+setMode(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+mode.addEventListener("click",function(){setMode(root.getAttribute("data-theme")==="dark"?"light":"dark")});
+var toastT;
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove("show")},2000)}
+
+function press(segId,attr,val){
+  [].forEach.call($(segId).querySelectorAll("button"),function(b){b.setAttribute("aria-pressed",String(b.getAttribute(attr)===String(val)))});
+}
+function setDest(k){
+  S.d=k;var d=D[k];
+  $("km").value=d.km;$("hw").value=d.hw;$("fare").value=d.fare;$("tt").value=d.tt;
+  press("dest","data-d",k);
+  $("destNote").textContent=k==="custom"?"道のり・高速の距離はカーナビや地図アプリのルート検索で、新幹線代は乗換案内で調べて入れてください。":"東京駅〜"+d.n+"駅（新幹線・通常期の指定席）、車は都内〜"+d.n+"市内の目安です。";
+  calc();
+}
+
+/* 高速料金（普通車・ETC・全国路線網の目安） */
+function toll(km){
+  if(km<=0)return 0;
+  var a=Math.min(km,100)*24.6,b=Math.min(Math.max(km-100,0),100)*24.6*0.75,c=Math.max(km-200,0)*24.6*0.7;
+  return Math.round((a+b+c+150)*1.1/10)*10;
+}
+function childFare(f){return Math.floor(f/2/10)*10}
+function hm(h){var m=Math.round(h*60);return Math.floor(m/60)+"時間"+(m%60?("0"+m%60).slice(-2)+"分":"")}
+
+function costs(ad,ch){
+  var km=num("km",0),hw=Math.min(num("hw",0),km),fare=num("fare",0),eff=Math.max(num("eff",15),1),gas=num("gas",170),park=num("park",0);
+  var tIn=$("tollIn").value.trim(),tollOne=tIn===""?toll(hw):num("tollIn",0);
+  tollOne=Math.round(tollOne*(1-S.disc/100)/10)*10;
+  var fuel=km*2/eff*gas,tolls=tollOne*2;
+  var adF=S.season<0?Math.max(fare-530,0):fare+S.season;
+  var trA=adF*2*ad,trC=childFare(adF)*2*ch;
+  return {fuel:fuel,toll:tolls,tollOne:tollOne,park:park,car:fuel+tolls+park,trA:trA,trC:trC,train:trA+trC,adF:adF,km:km,hw:hw};
+}
+
+function calc(){
+  var c=costs(S.ad,S.ch),n=S.ad+S.ch;
+  $("ad").textContent=S.ad;$("ch").textContent=S.ch;
+  $("carT").textContent=yen(c.car);$("trT").textContent=yen(c.train);
+  $("carP").textContent=yen(c.car/n)+"円";$("trP").textContent=yen(c.train/n)+"円";
+  var km=c.km,hw=c.hw,drive=hw/80+(km-hw)/30;drive=drive+Math.floor(drive/2)*0.25;drive*=S.jam;
+  var tt=num("tt",0);
+  $("carTm").textContent="⏱ 片道 約"+hm(drive)+"（渋滞×"+S.jam+"）";
+  $("trTm").textContent="⏱ 片道 約"+hm(tt)+"＋駅までの移動";
+  var carWin=c.car<c.train;
+  $("vCar").classList.toggle("win",carWin);$("vTrain").classList.toggle("win",!carWin&&c.train<c.car);
+  var diff=Math.abs(c.train-c.car);
+  var v;
+  if(diff<1000)v="どっちもほぼ同じ（差は<b>"+yen(diff)+"円</b>）。かかる時間とラクさで選んでOK。";
+  else if(carWin)v="🚗 <b>車の方が "+yen(diff)+"円 安い</b>（1人あたり "+yen(diff/n)+"円）。そのかわり運転は片道 約"+hm(drive)+"。";
+  else v="🚄 <b>新幹線の方が "+yen(diff)+"円 安い</b>（1人あたり "+yen(diff/n)+"円）。しかも片道 約"+hm(Math.max(drive-tt,0))+" 早い計算。";
+  $("verdict").innerHTML=v;
+  var mx=Math.max(c.car,c.train,1);
+  var w=function(x){return (x/mx*100).toFixed(2)+"%"};
+  $("cmp").innerHTML='<div class="cb"><span>🚗 車</span><div class="tr"><i class="f" style="width:'+w(c.fuel)+'"></i><i class="t" style="width:'+w(c.toll)+'"></i><i class="p" style="width:'+w(c.park)+'"></i></div></div>'+
+    '<div class="cb"><span>🚄 新幹線</span><div class="tr"><i class="s" style="width:'+w(c.trA)+'"></i><i class="k" style="width:'+w(c.trC)+'"></i></div></div>';
+  var be="";
+  for(var a=1;a<=5;a++){var x=costs(a,0),cw=x.car<x.train;be+='<span class="'+(cw?"c":"t")+'">大人'+a+'人：'+(cw?"🚗":"🚄")+" "+yen(Math.abs(x.train-x.car))+"円おトク</span>"}
+  $("be").innerHTML=be;
+  $("detail").innerHTML=
+    "<tr><td>⛽ ガソリン代（往復 "+yen(km*2)+"km）</td><td>"+yen(c.fuel)+"円</td></tr>"+
+    "<tr><td>🛣️ 高速代（片道 "+yen(c.tollOne)+"円×2"+($("tollIn").value.trim()===""?"・自動":"")+(S.disc?"・深夜割引":"")+"）</td><td>"+yen(c.toll)+"円</td></tr>"+
+    (c.park?"<tr><td>🅿️ 駐車場・その他</td><td>"+yen(c.park)+"円</td></tr>":"")+
+    "<tr><td>🚄 新幹線 大人 "+S.ad+"人（片道 "+yen(c.adF)+"円）</td><td>"+yen(c.trA)+"円</td></tr>"+
+    (S.ch?"<tr><td>🚄 新幹線 子ども "+S.ch+"人（片道 "+yen(childFare(c.adF))+"円）</td><td>"+yen(c.trC)+"円</td></tr>":"");
+  var dn=D[S.d].n||"実家";
+  var t="帰省（東京→"+dn+"・"+n+"人・往復）\n🚗 車 "+yen(c.car)+"円\n🚄 新幹線 "+yen(c.train)+"円\n→ "+(diff<1000?"ほぼ同じ":(carWin?"車":"新幹線")+"が "+yen(diff)+"円 安い")+"\n#帰省 #年末年始";
+  $("xs").href="https://twitter.com/intent/tweet?text="+encodeURIComponent(t)+"&url="+encodeURIComponent(URL_APP);
+  $("ls").href="https://line.me/R/msg/text/?"+encodeURIComponent(t+"\n"+URL_APP);
+  $("cp").dataset.t=t+"\n"+URL_APP;
+}
+
+[].forEach.call($("dest").querySelectorAll("button"),function(b){b.addEventListener("click",function(){setDest(b.getAttribute("data-d"))})});
+[].forEach.call(document.querySelectorAll(".step button"),function(b){b.addEventListener("click",function(){
+  var k=b.getAttribute("data-s"),v=+b.getAttribute("data-v"),min=k==="ad"?1:0;
+  S[k]=Math.min(Math.max(S[k]+v,min),9);calc();
+})});
+function segBind(id,key){[].forEach.call($(id).querySelectorAll("button"),function(b){b.addEventListener("click",function(){S[key]=+b.getAttribute("data-v");press(id,"data-v",b.getAttribute("data-v"));calc()})})}
+segBind("season","season");segBind("disc","disc");segBind("jam","jam");
+["km","hw","fare","tt","eff","gas","tollIn","park"].forEach(function(id){$(id).addEventListener("input",calc)});
+$("cp").addEventListener("click",function(){
+  var s=$("cp").dataset.t||"";
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).then(function(){toast("コピーしました")},function(){toast("コピーできませんでした")})}
+  else toast("コピーできませんでした");
+});
+setDest("osaka");
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

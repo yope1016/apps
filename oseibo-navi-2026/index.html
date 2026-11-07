@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>お歳暮 2026 いつまで？相場とのし早見ナビ｜地域別の時期・遅れたときの書き方・お礼状</title>
+<meta name="description" content="お歳暮2026を贈る時期を地域別に表示し、今日の日付から「御歳暮・御年賀・寒中御見舞」のどれで贈るかを判定。相手別の相場、贈る人数の合計予算、のしの書き方プレビュー、喪中のとき、お礼状の文例までまとめた無料ツールです。">
+<link rel="canonical" href="https://yope1016.github.io/apps/oseibo-navi-2026/">
+<meta name="theme-color" content="#7a1f2b">
+<style>
+:root{
+  --bg:#f7f2ea;--card:#fffdf9;--ink:#2a1d1a;--sub:#6e5d57;--line:#eadfd2;
+  --red:#b3263a;--red2:#7a1f2b;--gold:#b8892a;--gold2:#e9c46a;--green:#2f7d5b;--warn:#b45309;
+  --chip:#f6ede1;--shadow:0 10px 30px rgba(90,30,30,.12);--r:20px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#160f10;--card:#221819;--ink:#f7eee9;--sub:#c3b1aa;--line:#3a2a2b;
+  --red:#ff7b8a;--red2:#e05566;--gold:#e9c46a;--gold2:#ffe3a1;--green:#6fd3a2;--warn:#fbbf24;--chip:#2e2122;--shadow:0 10px 30px rgba(0,0,0,.5)}
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--red2)}
+@media (prefers-color-scheme:dark){a{color:var(--gold2)}}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header.hero{background:radial-gradient(120% 140% at 100% 0%,#c8394c 0%,#7a1f2b 55%,#3a0d14 100%);color:#fff;padding:34px 0 66px;position:relative;overflow:hidden}
+header.hero:before{content:"";position:absolute;left:-60px;bottom:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(233,196,106,.5),rgba(233,196,106,0) 70%)}
+header.hero:after{content:"";position:absolute;right:18px;top:16px;width:120px;height:120px;border-radius:50%;border:2px dashed rgba(255,227,161,.35);animation:spin 30s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero .wrap{padding-bottom:0;position:relative;z-index:1}
+.badge{display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700}
+h1{font-size:clamp(24px,6.4vw,34px);line-height:1.3;margin:14px 0 8px;font-weight:900}
+h1 em{font-style:normal;color:var(--gold2)}
+h1 small{display:block;font-size:.55em;font-weight:700;opacity:.9;margin-top:4px}
+.hero p{margin:0;opacity:.92;font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
+.kpi{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:10px 6px;text-align:center}
+.kpi b{display:block;white-space:nowrap;font-size:clamp(16px,4.8vw,24px);color:var(--gold2);font-weight:900;line-height:1.15;font-variant-numeric:tabular-nums}
+.kpi span{font-size:11px;opacity:.85}
+main{margin-top:-42px;position:relative;z-index:2}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:20px 18px;margin-bottom:18px;border:1px solid var(--line);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h2{font-size:19px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:inline-grid;place-items:center;background:linear-gradient(135deg,var(--gold2),var(--gold));font-size:17px;flex:none}
+h3{font-size:15px;margin:18px 0 6px}
+.lead{color:var(--sub);font-size:13px;margin:0 0 14px}
+label.f{display:block;font-weight:700;font-size:14px;margin:16px 0 8px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{flex:1 1 auto;min-height:44px;padding:8px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--chip);color:var(--ink);font-size:14px;font-weight:700;cursor:pointer;transition:.15s}
+.seg button[aria-pressed=true]{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;border-color:transparent;box-shadow:0 6px 14px rgba(122,31,43,.3)}
+@media (prefers-color-scheme:dark){.seg button[aria-pressed=true]{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#2a1a00}}
+input[type=date],input[type=text]{width:100%;min-height:48px;border-radius:12px;border:1.5px solid var(--line);background:var(--chip);color:var(--ink);font-size:16px;padding:8px 12px;font-family:inherit}
+.result{margin-top:18px;border-radius:18px;padding:18px;background:linear-gradient(135deg,rgba(233,196,106,.2),rgba(179,38,58,.08));border:1px solid var(--line)}
+.result .lbl{font-size:13px;color:var(--sub);font-weight:700}
+.result .num{font-size:clamp(28px,8.5vw,40px);font-weight:900;line-height:1.2;color:var(--red2);font-variant-numeric:tabular-nums}
+@media (prefers-color-scheme:dark){.result .num{color:var(--gold2)}}
+.result .num small{font-size:15px;color:var(--ink);font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mini{background:var(--card);border-radius:14px;padding:10px 12px;border:1px solid var(--line)}
+.mini b{display:block;font-size:17px;font-variant-numeric:tabular-nums;line-height:1.35}
+.mini span{font-size:12px;color:var(--sub)}
+.note{font-size:12px;color:var(--sub);margin-top:10px}
+/* timeline */
+.tl{position:relative;height:56px;margin:18px 4px 6px}
+.tl .seg2{position:absolute;top:18px;height:16px;border-radius:999px}
+.tl .s1{background:linear-gradient(90deg,var(--red),var(--red2))}
+.tl .s2{background:linear-gradient(90deg,var(--gold2),var(--gold))}
+.tl .s3{background:#8aa3c7}
+.tl .now{position:absolute;top:6px;width:3px;height:40px;background:var(--ink);border-radius:2px}
+.tl .now:after{content:"今日";position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:900;white-space:nowrap}
+.tl .tick{position:absolute;top:38px;font-size:10px;color:var(--sub);transform:translateX(-50%);white-space:nowrap}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--sub)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+/* budget */
+.ppl{display:grid;gap:8px}
+.prow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--chip);border:1px solid var(--line)}
+.prow b{font-size:14px;display:block}
+.prow span{font-size:12px;color:var(--sub)}
+.stp{display:flex;align-items:center;gap:6px}
+.stp button{width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-size:20px;font-weight:900;color:var(--ink);cursor:pointer}
+.stp output{min-width:28px;text-align:center;font-weight:900;font-size:18px;font-variant-numeric:tabular-nums}
+/* noshi */
+.noshi{margin:14px auto 0;max-width:280px;aspect-ratio:3/4.2;background:#fff;color:#1a1a1a;border-radius:6px;box-shadow:0 6px 20px rgba(0,0,0,.18);position:relative;overflow:hidden;font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif}
+.noshi .mz{position:absolute;left:0;right:0;top:40%;height:7%;display:flex;flex-direction:column;justify-content:space-between}
+.noshi .mz i{display:block;height:2px}
+.noshi .mz i:nth-child(odd){background:#c62839}
+.noshi .mz i:nth-child(even){background:#bdbdbd}
+.noshi.plain .mz{display:none}
+.noshi .bow{position:absolute;left:50%;top:36%;transform:translateX(-50%);width:44%;height:15%}
+.noshi.plain .bow{display:none}
+.noshi .bow:before,.noshi .bow:after{content:"";position:absolute;top:0;width:48%;height:100%;border:3px solid #c62839;border-radius:50%}
+.noshi .bow:before{left:0}.noshi .bow:after{right:0}
+.noshi .fold{position:absolute;right:8%;top:5%;width:12%;height:20%;background:linear-gradient(135deg,#fff 0 45%,#f2c94c 45% 55%,#fff 55%);border:1px solid #c62839;clip-path:polygon(50% 0,100% 18%,100% 100%,0 100%,0 18%)}
+.noshi.plain .fold{display:none}
+.noshi .omote{position:absolute;left:50%;top:7%;transform:translateX(-50%);writing-mode:vertical-rl;font-size:clamp(26px,8vw,34px);letter-spacing:.12em;font-weight:700}
+.noshi .na{position:absolute;left:50%;top:55%;transform:translateX(-50%);writing-mode:vertical-rl;font-size:clamp(18px,5.4vw,24px);letter-spacing:.2em}
+.copy{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:48px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;font-weight:900;font-size:15px;cursor:pointer;margin-top:12px}
+.copy:active{transform:scale(.98)}
+.letter{white-space:pre-wrap;background:var(--chip);border:1px solid var(--line);border-radius:14px;padding:14px;font-size:14px;margin-top:12px;font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif}
+.tips{margin:0;padding-left:20px;font-size:14px}
+.tips li{margin-bottom:6px}
+.safe{border-left:5px solid var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+th,td{padding:8px 5px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;color:var(--sub);font-weight:700}
+td.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:700}
+.tblwrap{overflow-x:auto}
+/* PR */
+.pr{border:1.5px dashed var(--gold);border-radius:16px;padding:14px;margin-top:14px;background:linear-gradient(135deg,rgba(233,196,106,.14),transparent);position:relative}
+.pr .prl{display:inline-block;font-size:11px;font-weight:900;background:var(--gold);color:#fff;padding:1px 8px;border-radius:6px;margin-bottom:6px}
+.pr p{margin:4px 0;font-size:14px}
+.pr a{font-weight:800}
+.pr img[width="1"]{position:absolute;width:1px;height:1px;opacity:0}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:800;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:9}
+.toast.on{opacity:1;transform:translateX(-50%)}
+/* links */
+.rec{display:grid;gap:10px}
+.rec a{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);padding:12px;border-radius:14px;background:var(--chip);border:1px solid var(--line);min-height:56px}
+.rec a .e{font-size:24px;flex:none}
+.rec a b{display:block;font-size:14px}
+.rec a span{font-size:12px;color:var(--sub)}
+details.all{margin-top:12px}
+details.all summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;align-items:center}
+.alllist{columns:2;column-gap:14px;font-size:13px;padding-left:18px;margin:6px 0 0}
+.alllist li{break-inside:avoid;margin-bottom:6px}
+@media (max-width:420px){.alllist{columns:1}}
+footer{font-size:12px;color:var(--sub);text-align:center;padding:10px 16px 40px}
+footer ul{text-align:left;padding-left:18px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">🎁 2026年（令和8年）のお歳暮に対応</span>
+    <h1>お歳暮 <em>いつまで？</em><br>相場とのし 早見ナビ<small>地域を選ぶだけで、時期と書き方がわかる</small></h1>
+    <p>今日の日付から「御歳暮・御年賀・寒中御見舞」のどれで贈るかを自動で判定します。</p>
+    <div class="kpis">
+      <div class="kpi"><b>3〜5千円</b><span>いちばん多い<br>相場の目安</span></div>
+      <div class="kpi"><b>12/20頃</b><span>届けたい<br>目安の日</span></div>
+      <div class="kpi"><b id="kDays">--</b><span id="kLbl">贈る期間の<br>終わりまで</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ① 時期 -->
+<section class="card" id="jiki">
+  <h2><span class="ic">🗾</span>あなたの地域は、いつからいつまで？</h2>
+  <p class="lead">贈る相手が住んでいる地域を選んでください（届け先の地域の習わしに合わせるのが一般的です）。</p>
+  <label class="f">相手の地域</label>
+  <div class="seg" id="segArea">
+    <button type="button" data-v="hokkaido" aria-pressed="false">北海道</button>
+    <button type="button" data-v="tohoku" aria-pressed="false">東北</button>
+    <button type="button" data-v="kanto" aria-pressed="true">関東</button>
+    <button type="button" data-v="hokuriku" aria-pressed="false">北陸</button>
+    <button type="button" data-v="tokai" aria-pressed="false">東海</button>
+    <button type="button" data-v="kansai" aria-pressed="false">関西</button>
+    <button type="button" data-v="chushi" aria-pressed="false">中国・四国</button>
+    <button type="button" data-v="kyushu" aria-pressed="false">九州</button>
+    <button type="button" data-v="okinawa" aria-pressed="false">沖縄</button>
+  </div>
+  <label class="f" for="dt">届く日（または贈る日）</label>
+  <input type="date" id="dt" min="2026-11-01" max="2027-02-28">
+  <div class="result" aria-live="polite">
+    <div class="lbl">この日に届くなら、のしの表書きは</div>
+    <div class="num" id="omoteMain">--</div>
+    <p style="margin:6px 0 0;font-size:14px" id="omoteWhy"></p>
+    <div class="grid2">
+      <div class="mini"><span>お歳暮として贈る期間</span><b id="rng">--</b></div>
+      <div class="mini"><span>年を越したら「御年賀」</span><b id="nenga">--</b></div>
+      <div class="mini"><span>その後は「寒中御見舞」</span><b id="kanchu">--</b></div>
+      <div class="mini"><span>届けたい目安</span><b>12/20頃まで</b></div>
+    </div>
+    <div class="tl" id="tl" aria-hidden="true"></div>
+    <div class="legend"><span><i style="background:var(--red)"></i>御歳暮</span><span><i style="background:var(--gold)"></i>御年賀</span><span><i style="background:#8aa3c7"></i>寒中御見舞</span></div>
+    <p class="note" id="areaNote"></p>
+  </div>
+</section>
+
+<!-- ② 相場と予算 -->
+<section class="card" id="souba">
+  <h2><span class="ic">💴</span>相手別の相場と、合計の予算</h2>
+  <p class="lead">贈る相手の人数を入れると、相場の目安から合計の予算がわかります。</p>
+  <div class="ppl" id="ppl"></div>
+  <div class="result" aria-live="polite">
+    <div class="lbl">合計の予算の目安（送料ふくまず）</div>
+    <div class="num" id="bTotal">0<small>円</small></div>
+    <div class="grid2">
+      <div class="mini"><span>贈る件数</span><b id="bCount">0件</b></div>
+      <div class="mini"><span>送料の目安（1件 約1,000円）</span><b id="bShip">0円</b></div>
+    </div>
+    <p class="note">※ 相場は百貨店・ギフト各社の案内でよく見られる目安です（一般に3,000〜5,000円、特にお世話になった相手は5,000〜1万円）。お中元を贈っている相手には、お歳暮をお中元と同じか少し高めにするのが一般的とされます。多くのギフトショップは「送料無料」の品もあるので、送料は品選びで変わります。</p>
+  </div>
+  <div class="pr">
+    <span class="prl">PR</span>
+    <p>🛍 <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングで「お歳暮 ギフト」を予算から探す</a></p>
+    <p>📦 <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892740429" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892740429" height="1" width="1" border="0">Amazon.co.jp(アマゾン)</a>（「お歳暮」で検索）</p>
+    <p>🦀 <a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+31JSUY+4PXI+61RIA" rel="nofollow">旬の海鮮を直送でお取り寄せ ポケットマルシェ</a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGAV2+31JSUY+4PXI+61RIA" alt="">（生産者から直送。喪中の相手には生もの以外を）</p>
+    <!-- AFFILIATE:oseibo_gift -->
+    <p style="font-size:12px;color:var(--sub)">（各サイトのトップなどが開きます。のし・送り先の指定ができるかは商品ページで確認してください）</p>
+  </div>
+</section>
+
+<!-- ③ のし -->
+<section class="card" id="noshi">
+  <h2><span class="ic">🎀</span>のしの書き方プレビュー</h2>
+  <p class="lead">上で選んだ日付に合わせて、表書きが自動で変わります。名前は画面に表示するだけで、送信・保存はしません。</p>
+  <label class="f" for="nm">名入れ（名字だけが一般的）</label>
+  <input type="text" id="nm" maxlength="12" placeholder="例：山田" value="山田">
+  <label class="f">のし紙の種類</label>
+  <div class="seg" id="segNoshi">
+    <button type="button" data-v="norm" aria-pressed="true">ふつう（紅白蝶結び）</button>
+    <button type="button" data-v="plain" aria-pressed="false">喪中（無地の短冊）</button>
+  </div>
+  <div class="noshi" id="noshiBox"><div class="fold"></div><div class="omote" id="nOmote">御歳暮</div><div class="mz"><i></i><i></i><i></i><i></i><i></i></div><div class="bow"></div><div class="na" id="nName">山田</div></div>
+  <ul class="tips" style="margin-top:14px">
+    <li>水引は<strong>紅白の蝶結び（花結び）</strong>。何度あってもよいお礼なので、ほどいて結び直せる形を使います。</li>
+    <li>表書きは水引の上に「御歳暮」、下に贈る人の名前（名字、または会社名＋氏名）。</li>
+    <li>相手か自分が<strong>喪中</strong>のときは、紅白の水引・のしのない<strong>無地の短冊や白い紙</strong>にします。</li>
+    <li>直接手渡すなら「外のし」、配送なら「内のし」（包装紙の内側）を選ぶ人が多いです。</li>
+  </ul>
+</section>
+
+<!-- ④ 喪中・やめ方 -->
+<section class="card safe" id="mochu">
+  <h2><span class="ic">🕊</span>喪中のとき・やめたいとき・贈ってはいけない相手</h2>
+  <ul class="tips">
+    <li><strong>喪中でも贈ってよい</strong>：お歳暮はお祝いではなく、1年のお礼なので、相手や自分が喪中でも贈れるとされます。ただし<strong>四十九日（忌明け）までは控え</strong>、間に合わなければ年明けに「寒中御見舞」として贈ります。</li>
+    <li>喪中の相手には、<strong>華やかな花やお祝いの印象が強い品は避け</strong>、ひとことお悔やみの気持ちを添えると丁寧です。</li>
+    <li><strong>一度きりのお礼なら</strong>「御歳暮」ではなく「御礼」にすると、毎年贈る約束になりません。</li>
+    <li><strong>やめたいとき</strong>は、いきなりやめず、お歳暮→年賀状などのあいさつだけに切り替えるのがよくある方法です。</li>
+    <li><strong>公務員や、取引先で受け取りを禁止している会社</strong>には贈れないことがあります。会社の規程や相手の方針を先に確認しましょう。</li>
+  </ul>
+</section>
+
+<!-- ⑤ お礼状 -->
+<section class="card" id="reijou">
+  <h2><span class="ic">✉️</span>受け取ったら：お礼状の文例メーカー</h2>
+  <p class="lead">配送で届いたときは、受け取ったことの報告を兼ねて、できれば3日以内にお礼を伝えます。相手と品物を選ぶと文例ができます。</p>
+  <label class="f">相手</label>
+  <div class="seg" id="segTo">
+    <button type="button" data-v="boss" aria-pressed="true">上司・恩師</button>
+    <button type="button" data-v="family" aria-pressed="false">親・親戚</button>
+    <button type="button" data-v="friend" aria-pressed="false">友人</button>
+    <button type="button" data-v="biz" aria-pressed="false">取引先</button>
+  </div>
+  <label class="f">届いた品</label>
+  <div class="seg" id="segItem">
+    <button type="button" data-v="food" aria-pressed="true">食べ物</button>
+    <button type="button" data-v="sweets" aria-pressed="false">お菓子</button>
+    <button type="button" data-v="drink" aria-pressed="false">お酒・飲み物</button>
+    <button type="button" data-v="goods" aria-pressed="false">日用品</button>
+  </div>
+  <div class="letter" id="letter"></div>
+  <button type="button" class="copy" id="copyBtn">📋 文例をコピー</button>
+  <p class="note">※ 友人へはLINEやメールでもかまいません。目上の人や取引先には、はがきか手紙がより丁寧です。お返しは基本的に不要とされます（気になるときは年賀状やあいさつで気持ちを伝えます）。</p>
+</section>
+
+<!-- 内部リンク集 -->
+<section class="card" id="more">
+  <h2><span class="ic">🧰</span>年末年始にあわせて使える無料ツール</h2>
+  <div class="rec">
+    <a href="https://yope1016.github.io/apps/kanchu-nengajimai-2027/"><span class="e">❄️</span><div><b>寒中見舞い・年賀状じまい 文例メーカー</b><span>お歳暮が年明けになったら、添える手紙に</span></div></a>
+    <a href="https://yope1016.github.io/apps/nengajo-itsumade-2027/"><span class="e">📮</span><div><b>年賀状 いつまでに出す？投函日チェッカー</b><span>お歳暮の次は年賀状の準備</span></div></a>
+    <a href="https://yope1016.github.io/apps/bonus-tedori-2026/"><span class="e">💴</span><div><b>冬のボーナス 手取り計算機</b><span>お歳暮の予算を決める前に</span></div></a>
+  </div>
+  <details class="all">
+    <summary>ひとりラボの全ツール一覧（26本）</summary>
+    <ul class="alllist">
+      <li><a href="https://yope1016.github.io/apps/warikan-keisha/">傾斜割り勘計算（幹事用）</a></li>
+      <li><a href="https://yope1016.github.io/apps/nenga-hitokoto-2027/">年賀状ひとことジェネレーター 2027</a></li>
+      <li><a href="https://yope1016.github.io/apps/furusato-jogen-2026/">ふるさと納税 上限額シミュレーター</a></li>
+      <li><a href="https://yope1016.github.io/apps/nencho-navi-2026/">年末調整 書き方ナビ 2026</a></li>
+      <li><a href="https://yope1016.github.io/apps/kakutei-shindan-2026/">確定申告が必要か1分診断</a></li>
+      <li><a href="https://yope1016.github.io/apps/oosouji-buntan-2026/">大掃除の分担ジェネレーター</a></li>
+      <li><a href="https://yope1016.github.io/apps/otoshidama-souba-2027/">お年玉 相場計算機 2027</a></li>
+      <li><a href="https://yope1016.github.io/apps/hikkoshi-checklist/">引っ越し手続きチェックリスト</a></li>
+      <li><a href="https://yope1016.github.io/apps/mochu-hagaki-calendar-2026/">喪中はがき 逆算カレンダー</a></li>
+      <li><a href="https://yope1016.github.io/apps/hikkoshi-shoki-hiyou/">引っ越しの初期費用 計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/net-kaisen-shindan/">ネット回線 選び方診断</a></li>
+      <li><a href="https://yope1016.github.io/apps/bonenkai-kanji-2026/">忘年会 幹事の段取り表</a></li>
+      <li><a href="https://yope1016.github.io/apps/kanchu-nengajimai-2027/">寒中見舞い・年賀状じまい 文例メーカー</a></li>
+      <li><a href="https://yope1016.github.io/apps/nenmatsu-renkyu-2026/">年末年始 何連休？有給シミュレーター</a></li>
+      <li><a href="https://yope1016.github.io/apps/iryohi-kojo-2026/">医療費控除 いくら戻る？計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/jutaku-loan-kojo-2026/">住宅ローン控除 いくら戻る？計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/fuyou-kabe-2026/">扶養の壁チェッカー 2026</a></li>
+      <li><a href="https://yope1016.github.io/apps/bonus-tedori-2026/">冬のボーナス 手取り計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/gensen-choshu-checker-2026/">源泉徴収票の見方とチェッカー</a></li>
+      <li><a href="https://yope1016.github.io/apps/xmas-yosan-2026/">クリスマス予算プランナー</a></li>
+      <li><a href="https://yope1016.github.io/apps/nengajo-itsumade-2027/">年賀状 投函日チェッカー 2027</a></li>
+      <li><a href="https://yope1016.github.io/apps/danbou-denkidai-2026/">暖房の電気代 くらべる計算機</a></li>
+      <li><a href="https://yope1016.github.io/apps/kisei-koutsuhi-2026/">帰省 車と新幹線どっちが安い？</a></li>
+      <li><a href="https://yope1016.github.io/apps/osechi-yosan-2027/">おせち 予算と注文締切カレンダー</a></li>
+      <li><a href="https://yope1016.github.io/apps/nenmatsu-jumbo-kitaichi-2026/">年末ジャンボ 期待値シミュレーター</a></li>
+      <li><strong>お歳暮 相場とのし 早見ナビ（このページ）</strong></li>
+    </ul>
+  </details>
+</section>
+</main>
+
+<footer>
+  <p>時期・相場・のしは、百貨店やカレンダーサイトの案内にもとづく一般的な目安です。地域や家のしきたり、相手との関係で変わるため、迷ったら家族や地域の人、贈る店に確認してください。入力内容はこの端末の中だけで使い、送信・保存しません。</p>
+  <p>参考：</p>
+  <ul>
+    <li><a href="https://www.mistore.jp/gifts/seibo/seibo_manner" rel="nofollow">三越伊勢丹オンラインストア：お歳暮のマナー</a></li>
+    <li><a href="https://www.takashimaya.co.jp/giftnavi/season_02.html" rel="nofollow">高島屋 ギフトナビ：お歳暮</a></li>
+    <li><a href="https://bestcalendar.jp/guides/saiji/oseibo-jiki" rel="nofollow">ベストカレンダー：お歳暮の時期（2026年）</a></li>
+  </ul>
+  <p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+<div class="toast" id="toast">コピーしました</div>
+
+<script>
+(function(){
+"use strict";
+var $=function(id){return document.getElementById(id)};
+var WD=["日","月","火","水","木","金","土"];
+function D(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2])}
+function f(d){return (d.getMonth()+1)+"/"+d.getDate()+"（"+WD[d.getDay()]+"）"}
+function sf(d){return (d.getMonth()+1)+"/"+d.getDate()}
+function iso(d){var p=function(n){return("0"+n).slice(-2)};return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())}
+var TODAY=new Date();TODAY.setHours(0,0,0,0);
+
+/* 地域ごとの目安（近年は11月下旬から贈る人も多い） */
+var AREA={
+ hokkaido:{n:"北海道",s:"2026-12-01",e:"2026-12-20",mat:7,note:"北海道は関東と同じく12月初めから贈るのが一般的とされます（12月中旬からとする案内もあります）。"},
+ tohoku:{n:"東北",s:"2026-12-01",e:"2026-12-20",mat:7,note:"東北は12月初めから。地域によっては松の内を1/15までとする所もあります。"},
+ kanto:{n:"関東",s:"2026-12-01",e:"2026-12-20",mat:7,note:"関東は近年、11月下旬から贈る人も増えています。"},
+ hokuriku:{n:"北陸",s:"2026-12-13",e:"2026-12-20",mat:15,note:"北陸は関西と同じく12/13の「正月事始め」からとする案内が多いです（12月初めから贈る人も増えています）。"},
+ tokai:{n:"東海",s:"2026-12-13",e:"2026-12-20",mat:15,note:"東海は12/13からとする案内が多いです（12月初めから贈る人も増えています）。"},
+ kansai:{n:"関西",s:"2026-12-13",e:"2026-12-20",mat:15,note:"関西は12/13の「正月事始め」から贈るのが伝統的です。"},
+ chushi:{n:"中国・四国",s:"2026-12-13",e:"2026-12-20",mat:15,note:"中国・四国は12/13からとする案内が多いです（12月初めから贈る人も増えています）。"},
+ kyushu:{n:"九州",s:"2026-12-13",e:"2026-12-20",mat:15,note:"九州は12/13からとする案内が多いです（12月初めから贈る人も増えています）。"},
+ okinawa:{n:"沖縄",s:"2026-12-01",e:"2026-12-25",mat:7,note:"沖縄は12月初めから12/25頃までとする案内が多いです。"}
+};
+var st={area:"kanto",noshi:"norm",to:"boss",item:"food"};
+var LAST=D("2026-12-31"),RISSHUN=D("2027-02-04"),YOKAN_END=D("2027-02-28");
+
+function judge(d){
+  var a=AREA[st.area],s=D(a.s),e=D(a.e),mat=new Date(2027,0,a.mat);
+  if(d<D("2026-11-20"))return {o:"（まだ早め）",w:"お歳暮は11月下旬〜12月に届くようにします。品物の予約や早割は今からでもOK。",c:"norm"};
+  if(d<s)return {o:"御歳暮",w:a.n+"の目安（"+f(s)+"〜）より少し早めですが、近年は11月下旬から贈る人も多く、問題ないとされます。",c:"norm"};
+  if(d<=e)return {o:"御歳暮",w:a.n+"のお歳暮の時期の中心です。",c:"norm"};
+  if(d<=LAST)return {o:"御歳暮",w:"年内なら「御歳暮」で大丈夫。ただし年末は相手が留守のこともあるので、届く日を先に伝えると安心です。",c:"norm"};
+  if(d<=mat)return {o:"御年賀",w:"年を越したので、松の内（"+a.n+"は1/"+a.mat+"まで）は「御年賀」にします。",c:"nenga"};
+  if(d<RISSHUN)return {o:"寒中御見舞",w:"松の内を過ぎたので、立春の前日（2/3）までは「寒中御見舞」（目上の人には「寒中御伺」）にします。",c:"kanchu"};
+  if(d<=YOKAN_END)return {o:"余寒御見舞",w:"立春（2/4）を過ぎたら「余寒御見舞」（目上の人には「余寒御伺」）。2月末頃までが目安です。",c:"kanchu"};
+  return {o:"御礼",w:"時期を外れたときは「御礼」として贈るのが無難です。",c:"kanchu"};
+}
+function renderJiki(){
+  var a=AREA[st.area],s=D(a.s),e=D(a.e),mat=new Date(2027,0,a.mat);
+  var d=$("dt").value?D($("dt").value):TODAY;
+  var j=judge(d);
+  $("omoteMain").textContent=j.o;
+  $("omoteWhy").textContent=f(d)+"に届く場合："+j.w;
+  $("rng").textContent=sf(s)+"〜"+sf(e);
+  $("nenga").textContent="1/1〜"+sf(mat);
+  $("kanchu").textContent=sf(new Date(2027,0,a.mat+1))+"〜2/3";
+  $("areaNote").textContent="※ "+a.note+" 年内（12/31）までに届けば「御歳暮」で贈れますが、年末は相手が忙しいので12/20頃までに届くようにするのがおすすめです。";
+  // timeline 11/20〜2/3
+  var t0=D("2026-11-20").getTime(),t1=D("2027-02-04").getTime(),W=function(x){return Math.max(0,Math.min(100,(x-t0)/(t1-t0)*100))};
+  var tl=$("tl");
+  tl.innerHTML='<div class="seg2 s1" style="left:'+W(s)+'%;width:'+(W(new Date(2027,0,1))-W(s))+'%"></div>'+
+    '<div class="seg2 s2" style="left:'+W(new Date(2027,0,1))+'%;width:'+(W(new Date(2027,0,a.mat+1))-W(new Date(2027,0,1)))+'%"></div>'+
+    '<div class="seg2 s3" style="left:'+W(new Date(2027,0,a.mat+1))+'%;width:'+(100-W(new Date(2027,0,a.mat+1)))+'%"></div>'+
+    '<span class="tick" style="left:'+W(s)+'%">'+(s.getMonth()+1)+"/"+s.getDate()+'</span>'+
+    '<span class="tick" style="left:'+W(new Date(2027,0,1))+'%">1/1</span>'+
+    '<span class="tick" style="left:96%">2/3</span>'+
+    ((d>=D("2026-11-20")&&d<RISSHUN)?'<div class="now" style="left:'+W(d)+'%"></div>':'');
+  var nw=tl.querySelector(".now");
+  if(nw){nw.style.marginLeft="-1px";if(iso(d)!==iso(TODAY))nw.classList.add("pick");}
+  // KPI
+  var left=Math.round((e-TODAY)/864e5);
+  if(left>=0){$("kDays").textContent=left+"日";$("kLbl").innerHTML=a.n+"の目安<br>（"+(e.getMonth()+1)+"/"+e.getDate()+"）まで";}
+  else{var l2=Math.round((LAST-TODAY)/864e5);$("kDays").textContent=l2>=0?l2+"日":"年明け";$("kLbl").innerHTML=l2>=0?"年内（12/31）<br>まで":"御年賀・<br>寒中御見舞へ";}
+  renderNoshi(j.o);
+}
+var tlStyle=document.createElement("style");tlStyle.textContent=".tl .now.pick:after{content:'この日'}";document.head.appendChild(tlStyle);
+
+/* 相場 */
+var PPL=[
+ {k:"parents",n:"両親・義理の両親",lo:3000,hi:5000},
+ {k:"relative",n:"親戚",lo:3000,hi:5000},
+ {k:"boss",n:"上司",lo:3000,hi:5000},
+ {k:"special",n:"特にお世話になった人・仲人",lo:5000,hi:10000},
+ {k:"biz",n:"取引先（会社として）",lo:5000,hi:10000},
+ {k:"teacher",n:"習い事の先生・恩師",lo:3000,hi:5000},
+ {k:"friend",n:"友人・知人",lo:2000,hi:3000}
+];
+var cnt={};PPL.forEach(function(p){cnt[p.k]=0});cnt.parents=1;
+function yen(n){return n.toLocaleString("ja-JP")+"円"}
+function renderPpl(){
+  var box=$("ppl");box.innerHTML="";
+  PPL.forEach(function(p){
+    var r=document.createElement("div");r.className="prow";
+    r.innerHTML='<div><b>'+p.n+'</b><span>相場 '+yen(p.lo)+'〜'+yen(p.hi)+'</span></div>'+
+      '<div class="stp"><button type="button" data-k="'+p.k+'" data-d="-1" aria-label="'+p.n+'を減らす">−</button><output>'+cnt[p.k]+'</output><button type="button" data-k="'+p.k+'" data-d="1" aria-label="'+p.n+'を増やす">＋</button></div>';
+    box.appendChild(r);
+  });
+  var lo=0,hi=0,c=0;PPL.forEach(function(p){lo+=p.lo*cnt[p.k];hi+=p.hi*cnt[p.k];c+=cnt[p.k]});
+  $("bTotal").innerHTML=c?(lo.toLocaleString()+"<small>〜</small>"+hi.toLocaleString()+"<small>円</small>"):"0<small>円</small>";
+  $("bCount").textContent=c+"件";
+  $("bShip").textContent=c?"約"+yen(c*1000):"0円";
+}
+$("ppl").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var k=b.dataset.k;cnt[k]=Math.max(0,Math.min(30,cnt[k]+(+b.dataset.d)));renderPpl();});
+
+/* のし */
+function renderNoshi(o){
+  var plain=st.noshi==="plain";
+  var omote=o;
+  if(omote==="（まだ早め）")omote="御歳暮";
+  $("noshiBox").className="noshi"+(plain?" plain":"");
+  $("nOmote").textContent=omote;
+  $("nName").textContent=($("nm").value||"").trim()||"山田";
+}
+$("nm").addEventListener("input",function(){$("nName").textContent=this.value.trim()||"山田"});
+
+/* お礼状 */
+var ITEM={food:["結構なお品","さっそく家族でおいしくいただきました。"],sweets:["おいしいお菓子","さっそく家族でお茶の時間にいただきました。"],drink:["結構なお品","年末年始にゆっくり味わわせていただきます。"],goods:["重宝なお品","さっそく毎日使わせていただいております。"]};
+function letter(){
+  var it=ITEM[st.item],t="";
+  if(st.to==="boss")t="拝啓　師走の候、○○様にはますますご清祥のこととお喜び申し上げます。\nさて、このたびはご丁寧にお歳暮の品をお贈りいただき、誠にありがとうございました。\n"+it[0]+"をいただき、"+it[1]+"\n日ごろお世話になっておりますのはこちらのほうですのに、いつもお心にかけていただき恐縮しております。\n寒さが厳しくなってまいりますので、どうぞお体を大切に、よいお年をお迎えください。\nまずは略儀ながら書中にてお礼申し上げます。\n敬具";
+  else if(st.to==="family")t="お父さん、お母さん（○○おじさん、おばさん）\n\nお歳暮が届きました。いつもありがとう。\n"+(st.item==="goods"?"便利なものをありがとう。":"とてもおいしそうで、")+it[1]+"\nこちらはみんな元気にしています。寒くなってきたので、体に気をつけてね。\n年末年始に会えるのを楽しみにしています。";
+  else if(st.to==="friend")t="○○さん\n\nお歳暮届いたよ、ありがとう！\n"+(st.item==="sweets"?"おいしいお菓子、":st.item==="drink"?"いい飲み物、":st.item==="goods"?"使えるものを":"おいしいもの、")+(st.item==="goods"?"ありがとう。さっそく使ってます。":"さっそく家でいただきました。")+"\n気をつかってくれてうれしいです。また年明けにでもゆっくり会おうね。\n寒くなってきたので、体に気をつけて、よいお年を！";
+  else t="拝啓　師走の候、貴社ますますご清栄のこととお喜び申し上げます。\n平素は格別のご高配を賜り、厚く御礼申し上げます。\nさて、このたびはご丁寧にお歳暮の品をお贈りいただき、誠にありがとうございました。\n"+it[0]+"を頂戴し、社員一同ありがたく"+(st.item==="goods"?"使わせていただいております。":"いただいております。")+"\n今後とも変わらぬお引き立てのほど、よろしくお願い申し上げます。\n略儀ながら書中にて御礼申し上げます。\n敬具";
+  $("letter").textContent=t;
+}
+$("copyBtn").onclick=function(){
+  var t=$("letter").textContent,ok=function(){var x=$("toast");x.classList.add("on");setTimeout(function(){x.classList.remove("on")},1400)};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok()})}else{fb(t);ok()}
+};
+function fb(t){var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(e){}ta.remove()}
+
+function bindSeg(id,key,fn){
+  $(id).addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;st[key]=b.dataset.v;
+    [].forEach.call(this.children,function(c){c.setAttribute("aria-pressed",c===b)});fn();});
+}
+bindSeg("segArea","area",renderJiki);
+bindSeg("segNoshi","noshi",renderJiki);
+bindSeg("segTo","to",letter);bindSeg("segItem","item",letter);
+var init=TODAY<D("2026-11-01")?D("2026-12-10"):TODAY;
+$("dt").value=iso(init>D("2027-02-28")?D("2027-02-28"):init);
+$("dt").addEventListener("change",renderJiki);
+renderJiki();renderPpl();letter();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

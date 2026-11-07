@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>スタッドレス 交換の時期と費用 計算機 2026｜ひとりラボ</title>
+<meta name="description" content="スタッドレスタイヤはいつ替える？地域別の交換の目安（気温・初雪）と、工賃・保管料・タイヤ代を1年あたりで計算。製造番号と溝の深さで買い替えの判定もできる無料ツール。">
+<link rel="canonical" href="https://yope1016.github.io/apps/studless-koukan-2026/">
+<style>
+:root{--bg:#f4f8fd;--bg2:#e3effc;--card:#ffffff;--ink:#14243a;--sub:#5d6f86;--line:#dbe6f3;--acc:#1d6fe0;--acc2:#38bdf8;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#eaf3fe;--shadow:0 10px 30px rgba(29,111,224,.10)}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1522;--bg2:#12213a;--card:#16243a;--ink:#e8f1fc;--sub:#9fb2c9;--line:#26395a;--acc:#5aa2ff;--acc2:#38bdf8;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#1d3150;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:30px;line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:8px}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;min-height:40px}
+.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.ev{border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0;position:relative;overflow:hidden}
+.ev::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c,var(--acc))}
+.ev h3{margin:0 0 2px;font-size:16px}
+.ev .meta{font-size:13px;color:var(--sub)}
+.st{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;color:#fff;margin-right:6px;vertical-align:middle}
+.st.now{background:var(--ok)}.st.soon{background:var(--warn)}.st.end{background:var(--off)}.st.tbd{background:#8b5cf6}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:6px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 108px;font-weight:700;font-variant-numeric:tabular-nums}
+.steps li.past{color:var(--off);text-decoration:line-through}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button.pri{background:linear-gradient(90deg,var(--acc),#3b8cf0);color:#fff;font-weight:700}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],input[type=text],input[type=date],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.row{display:grid;grid-template-columns:1fr 110px 44px;gap:6px;margin:6px 0}
+.row button{padding:0;justify-content:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.big{font-size:40px;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.big.plus{color:var(--ok)}.big.minus{color:var(--acc)}
+.bar{height:12px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),var(--acc2));width:0;transition:width .6s ease}
+.bar.over i{background:linear-gradient(90deg,var(--acc2),var(--acc))}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px}
+.chk input{width:22px;height:22px;accent-color:var(--acc)}
+.chk .p{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--sub)}
+.tips li{margin:6px 0;font-size:14px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#0d1522;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.pr a{color:var(--acc);font-weight:700}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;transition:transform .3s;z-index:9}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 140px;border:1px solid var(--line);background:var(--card)}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.kv{margin-top:10px;font-size:14px}.kv div{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px dashed var(--line)}.kv b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tipbox{margin-top:10px;background:var(--chip);border-radius:14px;padding:12px;font-size:14px}
+.big.warn{color:var(--warn)}
+header .flake{display:inline-block;animation:spin 8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="badge">❄️ 2026-2027 冬版</span>
+<h1><span class="em">スタッドレス</span><br>交換の時期と費用 計算機</h1>
+<p class="lead">住んでいる地域で「いつ替える？」がわかる／工賃・保管・タイヤ代を1年あたりで計算／製造年と溝で「買い替え？」も判定</p>
+</header>
+
+<section class="card">
+<h2><span class="ic">📍</span>いつ替える？ 地域別の目安</h2>
+<label for="reg">住んでいる地域</label>
+<select id="reg"></select>
+<label class="chk" style="border:0;padding:8px 0 0"><input type="checkbox" id="trip"> 年末年始に雪の多い地域へ帰省・旅行する</label>
+<div class="result" id="tRes">
+<div class="note" id="tLbl">交換の目安</div>
+<div class="big" id="tBig" style="font-size:30px">-</div>
+<div class="note" id="tSub"></div>
+</div>
+<ul class="tips" id="tTips"></ul>
+<details><summary>2026年の初雪（北海道・青森）の観測</summary>
+<div id="snow" class="note"></div>
+</details>
+</section>
+
+<section class="card">
+<h2><span class="ic">🧮</span>費用シミュレーター（1年あたり）</h2>
+<div class="grid2">
+<div><label for="car">車のサイズ</label><select id="car"><option value="k">軽自動車（〜14インチ）</option><option value="n" selected>普通車（15〜17インチ）</option><option value="l">SUV・大きい車（18インチ〜）</option></select></div>
+<div><label for="shop">交換を頼む先</label><select id="shop"><option value="yohin">カー用品店</option><option value="gs">ガソリンスタンド</option><option value="dealer">ディーラー</option><option value="shutcho">出張交換の業者</option><option value="diy">自分で交換（DIY）</option></select></div>
+</div>
+<label>交換のしかた</label>
+<div class="seg" id="mode"><button data-v="wheel" class="on">ホイール付きで履き替え</button><button data-v="kumikae">ホイールはそのまま、タイヤだけ組み替え</button></div>
+<div class="grid2">
+<div><label for="fee">交換の工賃（4本・1回）</label><input type="number" id="fee" inputmode="numeric" min="0"></div>
+<div><label for="hokan">保管料（1年）</label><input type="number" id="hokan" inputmode="numeric" min="0" value="0"></div>
+</div>
+<p class="note">工賃は相場の下限に近い目安を自動で入れています。お店の料金がわかれば書き換えてください。保管は自宅なら0円。お店の保管サービスを使うなら、その料金を入れてください。</p>
+<label>今年、新しいスタッドレスを買う？</label>
+<div class="seg" id="buy"><button data-v="none" class="on">買わない（手持ちを使う）</button><button data-v="tire">タイヤだけ買う</button><button data-v="set">ホイールとセットで買う</button></div>
+<div class="grid2" id="buyBox" style="display:none">
+<div><label for="tp">タイヤ4本の価格</label><input type="number" id="tp" inputmode="numeric" min="0"></div>
+<div id="wpBox"><label for="wp">ホイール4本の価格</label><input type="number" id="wp" inputmode="numeric" min="0"></div>
+<div><label for="life">使う年数（スタッドレスは3〜4年が目安）</label><input type="number" id="life" inputmode="numeric" min="1" max="10" value="4"></div>
+</div>
+<p class="note" id="buyNote" style="display:none">タイヤ・ホイールの金額は入力例（仮の値）です。銘柄やサイズで大きく変わるので、見積もりの金額に書き換えてください。ホイールは長く使えるため、タイヤの2倍の年数で割って計算します。</p>
+<div class="result">
+<div class="note">スタッドレスにかかる費用（1年あたり）</div>
+<div class="big" id="yr">-</div>
+<div class="bar"><i id="yrBar"></i></div>
+<div class="note" id="yrSub"></div>
+</div>
+<div class="kv" id="brk"></div>
+<div class="tipbox" id="pay"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔍</span>今のタイヤ、まだ使える？</h2>
+<div class="grid2">
+<div><label for="dot">製造番号（側面の4桁の数字）</label><input type="text" id="dot" inputmode="numeric" maxlength="4" placeholder="例：3922"></div>
+<div><label for="mm">溝の深さ（mm）</label><input type="number" id="mm" inputmode="decimal" step="0.5" min="0" max="15" placeholder="例：7"></div>
+</div>
+<label class="chk" style="border:0"><input type="checkbox" id="plat"> プラットホーム（冬用の摩耗サイン）が出ている</label>
+<label class="chk" style="border:0;padding-top:0"><input type="checkbox" id="hard"> ゴムが硬い・ひび割れがある</label>
+<div class="result" id="jRes"><div class="note">判定</div><div class="big" id="jBig" style="font-size:28px">-</div><div class="note" id="jSub">製造番号か溝の深さを入れてください</div></div>
+<p class="note">製造番号は「前2桁＝週、後ろ2桁＝年」です（例：3922＝2022年の第39週）。溝は新品で約10mm、半分（約5mm）まで減ると冬の性能が大きく落ちると言われます。判定は目安です。最終的にはタイヤ販売店で点検してもらってください。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">⚠️</span>安全のための5つの注意</h2>
+<ol class="tips">
+<li><b>4本とも同時に</b>スタッドレスにする（前後で混ぜると、曲がるときや止まるときに不安定になります）。</li>
+<li><b>プラットホームが出たら冬用としては使えません。</b>雪道・凍った道は走れないので、早めに買い替えを。</li>
+<li>交換したあとは、しばらく走ったら<b>ナットの締め直し</b>をお店で確認してもらうと安心です。</li>
+<li>大雪の時は、スタッドレスでも<b>チェーンが必要な区間</b>（チェーン規制）があります。帰省先の道路情報も事前に確認を。</li>
+<li>スタッドレスでも、凍った路面では<b>止まるまでの距離が長くなります</b>。車間距離を多めに、急ブレーキ・急ハンドルを避けてください。</li>
+</ol>
+</section>
+
+<section class="card">
+<h2><span class="ic">🛒</span>タイヤを買う・頼む</h2>
+<div class="pr">
+<span class="lbl">PR</span>
+<p class="note" style="margin:0 0 6px">ネットで買って、近くのお店で取り付けてもらうと安くなることがあります。サイズ（例：195/65R15）は今のタイヤの側面で確認できます。</p>
+<p style="margin:4px 0"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングでスタッドレスタイヤを探す</a></p>
+<p style="margin:4px 0"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892740429" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892740429" height="1" width="1" border="0">Amazon.co.jp(アマゾン)</a></p>
+<!-- AFFILIATE:tire_tsuhan -->
+<!-- AFFILIATE:tire_hokan -->
+<!-- AFFILIATE:jidousha_hoken -->
+<p class="note" style="margin:6px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での購入により当サイトが報酬を受け取ることがあります。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>冬の準備にあわせて使える無料ツール</h2>
+<div class="rec">
+<a href="../kisei-koutsuhi-2026/">🚗 帰省 車と新幹線どっちが安い？交通費くらべ</a>
+<a href="../danbou-denkidai-2026/">🔥 暖房の電気代 くらべる計算機</a>
+<a href="../nenmatsu-renkyu-2026/">📅 年末年始 何連休？有給シミュレーター</a>
+</div>
+<details><summary>ひとりラボのツール一覧（28本）</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>参考：くらしのマーケットマガジン「スタッドレスタイヤ交換の費用相場」（2024/12更新）、ミツモア「タイヤ交換の費用相場」（2025/7更新）、ウェザーニュース（2026/10/22・10/28の初雪の記事）。料金は目安で、地域・お店・時期によって変わります。</p>
+<p>入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+'use strict';
+var $=function(i){return document.getElementById(i);};
+function yen(n){return Math.round(n).toLocaleString('ja-JP')+'円';}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function toast(m){var t=$('toast');t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on');},1800);}
+var now=new Date();
+// ---- 地域 ----
+var REG=[
+ {id:'hk',n:'北海道',early:true,rule:'日中の気温が10℃以下になったら',when:'9月下旬〜10月中旬',snow:'札幌の初雪は10/28（平年並み）でした'},
+ {id:'th',n:'東北',early:true,rule:'日中の気温が10℃以下になったら',when:'9月下旬〜10月中旬',snow:'青森の初雪は10/28（平年より11日早い）でした'},
+ {id:'hs',n:'北陸・甲信越',rule:'朝晩の気温が7℃以下になったら',when:'雪が降り出す約1か月前'},
+ {id:'kt',n:'関東・東海',rule:'最低気温が5℃以下になったら',when:'雪の予報が出る前（平地は降らない年も）'},
+ {id:'ks',n:'関西・中国・四国・九州',rule:'雪の予報が出たら',when:'山間部・峠道を走る人は早めに'}
+];
+$('reg').innerHTML=REG.map(function(r,i){return '<option value="'+i+'"'+(i===3?' selected':'')+'>'+r.n+'</option>';}).join('');
+$('snow').innerHTML='ウェザーニュースによると、2026年は10/22に稚内・旭川（平年より3日遅い）、10/28に札幌（平年並み）・函館・室蘭・帯広・釧路・網走・青森で初雪を観測。青森は平年より11日、釧路は10日早い初雪でした（みぞれを含む自動観測）。';
+function drawTime(){
+ var r=REG[+$('reg').value],trip=$('trip').checked,big,sub,lbl='交換の目安';
+ var m=now.getMonth()+1,d=now.getDate();
+ if(r.early&&(m>10||(m===10&&d>15)||m<4)){big='もう交換の時期です';sub='目安は'+r.when+'。まだの人は、雪が積もる前にできるだけ早く。'+(r.snow?r.snow+'。':'');}
+ else{big=r.rule;sub='時期の目安：'+r.when+'。お店は雪の予報が出ると一気に混むので、気温が下がり始めたら予約を。';}
+ var tips=['冬用タイヤは「雪が降り出す約1か月前」の交換がよく勧められます（慣らし走行と予約の混雑をさけるため）。','春にノーマルへ戻すのは、最後の雪から2〜3週間後、最低気温が7℃を下回らなくなってからが目安です。'];
+ if(trip&&!r.early){lbl='帰省・旅行する人の目安';big='出発の2週間前までに交換';sub='住んでいる地域で雪が降らなくても、行き先が雪国なら必要です。年末は店が混むので、12月の早い時期に予約を。';tips.unshift('帰省先の峠道・高速道路は、大雪の時にチェーン規制がかかることがあります。スタッドレスでもチェーンを積んでおくと安心です。');}
+ $('tLbl').textContent=lbl;$('tBig').textContent=big;$('tSub').textContent=sub;
+ $('tTips').innerHTML=tips.map(function(t){return '<li>'+esc(t)+'</li>';}).join('');
+}
+$('reg').addEventListener('change',drawTime);$('trip').addEventListener('change',drawTime);
+// ---- 費用 ----
+var FEE={wheel:{yohin:{k:3300,n:4000,l:5600},gs:{k:4000,n:4000,l:5600},dealer:{k:4400,n:6600,l:8000},shutcho:{k:5000,n:5000,l:6600},diy:{k:0,n:0,l:0}},
+ kumikae:{yohin:{k:4400,n:6800,l:8800},gs:{k:4400,n:6800,l:8800},dealer:{k:8000,n:10000,l:16000},shutcho:{k:6800,n:8000,l:12000},diy:{k:4400,n:6800,l:8800}}};
+var TP={k:40000,n:70000,l:110000},WP={k:20000,n:30000,l:45000};
+var st={mode:'wheel',buy:'none'},feeEdited=false,priceEdited=false;
+function seg(id,key){$(id).addEventListener('click',function(e){var v=e.target.getAttribute('data-v');if(!v)return;st[key]=v;[].forEach.call($(id).children,function(b){b.classList.toggle('on',b===e.target);});if(key==='mode')feeEdited=false;if(key==='buy'&&v==='set'&&st.mode!=='wheel'){st.mode='wheel';feeEdited=false;[].forEach.call($('mode').children,function(x){x.classList.toggle('on',x.getAttribute('data-v')==='wheel');});toast('ホイール付きセットなので「履き替え」で計算します');}refresh();});}
+seg('mode','mode');seg('buy','buy');
+function autoFee(){var c=$('car').value,s=$('shop').value;return FEE[st.mode][s][c];}
+function refresh(){
+ var c=$('car').value;
+ if(!feeEdited)$('fee').value=autoFee();
+ if(!priceEdited){$('tp').value=TP[c];$('wp').value=WP[c];}
+ $('buyBox').style.display=st.buy==='none'?'none':'grid';$('buyNote').style.display=st.buy==='none'?'none':'block';
+ $('wpBox').style.display=st.buy==='set'?'block':'none';
+ calc();
+}
+['car','shop'].forEach(function(i){$(i).addEventListener('change',function(){feeEdited=false;if(i==='car')priceEdited=false;refresh();});});
+$('fee').addEventListener('input',function(){feeEdited=true;calc();});
+['tp','wp'].forEach(function(i){$(i).addEventListener('input',function(){priceEdited=true;calc();});});
+['hokan','life'].forEach(function(i){$(i).addEventListener('input',calc);});
+function calc(){
+ var c=$('car').value,s=$('shop').value,fee=Math.max(0,+$('fee').value||0),hk=Math.max(0,+$('hokan').value||0),life=Math.max(1,+$('life').value||4);
+ var swap=fee*2,tire=0,wheel=0;
+ if(st.buy!=='none')tire=Math.max(0,+$('tp').value||0)/life;
+ if(st.buy==='set')wheel=Math.max(0,+$('wp').value||0)/(life*2);
+ var tot=swap+hk+tire+wheel;
+ $('yr').textContent=yen(tot);$('yrBar').style.width=Math.min(100,tot/60000*100)+'%';
+ $('yrSub').textContent='1か月あたり 約'+yen(tot/12)+'';
+ var rows=[['交換の工賃（冬に替える＋春に戻す＝年2回）',swap],['保管料',hk]];
+ if(st.buy!=='none')rows.push(['タイヤ代（'+life+'年で割った1年分）',tire]);
+ if(st.buy==='set')rows.push(['ホイール代（'+(life*2)+'年で割った1年分）',wheel]);
+ $('brk').innerHTML=rows.map(function(r){return '<div><span>'+esc(r[0])+'</span><b>'+yen(r[1])+'</b></div>';}).join('');
+ var w=FEE.wheel[s==='diy'?'yohin':s][c],k=FEE.kumikae[s==='diy'?'yohin':s][c],diff=(k-w)*2,wp=WP[c];
+ var msg;
+ if(s==='diy'&&st.mode==='kumikae')msg='💡 タイヤの組み替え（ホイールからの付け外し）は専用の機械が必要なので、お店に頼みましょう。工賃はカー用品店の目安で計算しています。';
+ else if(st.mode==='kumikae')msg='💡 ホイール付きのセットにすると、組み替えより工賃が年 約'+yen(diff)+' 安くなります。ホイール代（約'+yen(wp)+'）は 約'+(diff>0?Math.ceil(wp/diff):'-')+'年で元が取れる計算です。さらに、春の交換を自分でできるようになります。';
+ else msg='💡 ホイール付きなので、組み替えに比べて工賃が年 約'+yen(diff)+' 安くすんでいます。'+(s!=='diy'?'自分で交換すれば、工賃は年 約'+yen(fee*2)+' 浮きます（ジャッキ・トルクレンチが必要。不安ならお店へ）。':'');
+ $('pay').textContent=msg;
+}
+// ---- 判定 ----
+function judge(){
+ var dot=$('dot').value.replace(/\D/g,''),mm=parseFloat($('mm').value),plat=$('plat').checked,hard=$('hard').checked;
+ var age=null,txt=[];
+ if(dot.length===4){var wk=+dot.slice(0,2),yr=2000+(+dot.slice(2));if(wk>=1&&wk<=53&&yr<=now.getFullYear()){var made=new Date(yr,0,1+(wk-1)*7);age=(now-made)/31557600000;txt.push(yr+'年製・約'+age.toFixed(1)+'年');}else txt.push('製造番号が読み取れません');}
+ if(!isNaN(mm))txt.push('溝 '+mm+'mm（新品の約'+Math.round(mm/10*100)+'%）');
+ var v,cl;
+ if(plat||(!isNaN(mm)&&mm<=5)){v='買い替えてください';cl='minus';txt.push('冬用としての性能が足りません');}
+ else if(age!==null&&age>=5){v='買い替えを検討';cl='minus';txt.push('製造から5年以上はゴムが硬くなりやすい');}
+ else if(hard||(age!==null&&age>=3)||(!isNaN(mm)&&mm<=6)){v='今季は点検してから';cl='warn';txt.push('3〜4年が寿命の目安。お店でゴムの硬さを見てもらうと安心');}
+ else if(age!==null||!isNaN(mm)){v='まだ使えそう';cl='plus';}
+ else{v='-';cl='';txt=['製造番号か溝の深さを入れてください'];}
+ $('jBig').textContent=v;$('jBig').className='big '+cl;$('jBig').style.fontSize='28px';$('jSub').textContent=txt.join(' ／ ');
+}
+['dot','mm','plat','hard'].forEach(function(i){$(i).addEventListener('input',judge);$(i).addEventListener('change',judge);});
+// ---- リンク集 ----
+var APPS=[['warikan-keisha','傾斜割り勘計算（幹事用）'],['nenga-hitokoto-2027','年賀状ひとことジェネレーター 2027'],['furusato-jogen-2026','ふるさと納税 上限額シミュレーター 2026'],['nencho-navi-2026','年末調整 書き方ナビ 2026'],['kakutei-shindan-2026','確定申告が必要か1分診断 2026'],['oosouji-buntan-2026','大掃除の分担ジェネレーター 2026'],['otoshidama-souba-2027','お年玉 相場計算機 2027'],['hikkoshi-checklist','引っ越し手続きチェックリスト'],['mochu-hagaki-calendar-2026','喪中はがき いつまでに出す？逆算カレンダー'],['hikkoshi-shoki-hiyou','引っ越しの初期費用 計算機'],['net-kaisen-shindan','ネット回線 選び方診断'],['bonenkai-kanji-2026','忘年会 幹事の段取り表 2026'],['kanchu-nengajimai-2027','寒中見舞い・年賀状じまい 文例メーカー'],['nenmatsu-renkyu-2026','年末年始 何連休？有給シミュレーター'],['iryohi-kojo-2026','医療費控除 いくら戻る？計算機'],['jutaku-loan-kojo-2026','住宅ローン控除 いくら戻る？計算機'],['fuyou-kabe-2026','扶養の壁チェッカー 2026'],['bonus-tedori-2026','冬のボーナス 手取り計算機 2026'],['gensen-choshu-checker-2026','源泉徴収票の見方とチェッカー'],['xmas-yosan-2026','クリスマス予算プランナー 2026'],['nengajo-itsumade-2027','年賀状 いつまでに出す？投函日チェッカー'],['danbou-denkidai-2026','暖房の電気代 くらべる計算機'],['kisei-koutsuhi-2026','帰省 車と新幹線どっちが安い？'],['osechi-yosan-2027','おせち 予算と注文締切カレンダー 2027'],['nenmatsu-jumbo-kitaichi-2026','年末ジャンボ 期待値シミュレーター 2026'],['oseibo-navi-2026','お歳暮 いつまで？相場とのし 早見ナビ'],['fukubukuro-2027','福袋 2027 予約・抽選カレンダー'],['studless-koukan-2026','スタッドレス 交換の時期と費用（このページ）']];
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+drawTime();refresh();judge();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
