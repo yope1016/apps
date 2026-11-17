@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ふるさと納税 ワンストップ特例 使える？期限と書類チェッカー 2026｜ひとりラボ</title>
+<meta name="description" content="3つの質問で、ふるさと納税のワンストップ特例が使えるか（5自治体まで・確定申告なし）を判定。寄付リストで申請書の出し忘れをチェックし、2027年1月10日必着の締切までの残り日数と、同封する書類（マイナンバーカード等）がわかる無料ツール。">
+<link rel="canonical" href="https://yope1016.github.io/apps/onestop-tokurei-2026/">
+<style>
+:root{--bg:#f3f8fc;--bg2:#dcecf9;--card:#ffffff;--ink:#14243a;--sub:#5a6b80;--line:#d8e4ef;--acc:#2b7de9;--acc2:#ff8a3d;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#e9f2fb;--shadow:0 10px 30px rgba(43,125,233,.13)}
+@media (prefers-color-scheme:dark){:root{--bg:#0c1522;--bg2:#13233a;--card:#142033;--ink:#e8f0fa;--sub:#9fb2c8;--line:#24364f;--acc:#6aaeff;--acc2:#ffa866;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#1c2d46;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:30px;line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:8px}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;min-height:40px}
+.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.ev{border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0;position:relative;overflow:hidden}
+.ev::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c,var(--acc))}
+.ev h3{margin:0 0 2px;font-size:16px}
+.ev .meta{font-size:13px;color:var(--sub)}
+.st{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;color:#fff;margin-right:6px;vertical-align:middle}
+.st.now{background:var(--ok)}.st.soon{background:var(--warn)}.st.end{background:var(--off)}.st.tbd{background:#8b5cf6}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:6px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 108px;font-weight:700;font-variant-numeric:tabular-nums}
+.steps li.past{color:var(--off);text-decoration:line-through}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button.pri{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],input[type=text],input[type=date],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.row{display:grid;grid-template-columns:1fr 110px 44px;gap:6px;margin:6px 0}
+.row button{padding:0;justify-content:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.big{font-size:40px;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.big.plus{color:var(--ok)}.big.minus{color:var(--acc)}
+.bar{height:12px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),var(--acc2));width:0;transition:width .6s ease}
+.bar.over i{background:linear-gradient(90deg,var(--acc2),var(--acc))}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px}
+.chk input{width:22px;height:22px;accent-color:var(--acc)}
+.chk .p{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--sub)}
+.tips li{margin:6px 0;font-size:14px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#0d1522;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.pr a{color:var(--acc);font-weight:700}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;transition:transform .3s;z-index:9}
+.item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:12px 0;border-top:1px dashed var(--line)}
+.item .e{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--chip);font-size:22px}
+.item .t b{display:block;font-size:15px}.item .t span{font-size:12px;color:var(--sub)}
+.qty{display:flex;align-items:center;gap:4px}.qty button{width:40px;height:40px;min-height:40px;padding:0;justify-content:center;font-size:20px;font-weight:700}.qty output{min-width:26px;text-align:center;font-weight:800;font-size:18px;font-variant-numeric:tabular-nums}
+.item.sel .e{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.vs .side{border-radius:16px;padding:14px;text-align:center;border:1px solid var(--line);background:var(--card)}
+.vs .side.pro{background:linear-gradient(135deg,var(--chip),var(--card))}
+.vs .side h3{margin:0;font-size:14px;color:var(--sub)}
+.vs .side .n{font-size:clamp(20px,6vw,28px);font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.25;margin:4px 0}
+.vs .side .n.diy{color:var(--warn)}
+.tag{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;white-space:nowrap}
+.tag.p{background:var(--acc)}.tag.d{background:var(--warn)}.tag.m{background:#8b5cf6}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}.tbl th,.tbl td{padding:8px 4px;border-top:1px dashed var(--line);text-align:left;vertical-align:top}.tbl td.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.setok{margin-top:10px;border-radius:14px;padding:12px;background:linear-gradient(90deg,rgba(109,74,255,.14),rgba(255,122,89,.14));font-size:14px;display:none}
+.setok.on{display:block;animation:up .4s ease both}
+header .sp{display:inline-block;animation:tw 2.4s ease-in-out infinite}@keyframes tw{50%{transform:scale(1.25) rotate(15deg)}}
+.range{width:100%;accent-color:var(--acc)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 90px;border:1px solid var(--line);background:var(--card)}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.kv{margin-top:10px;font-size:14px}.kv div{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px dashed var(--line)}.kv b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tipbox{margin-top:10px;background:var(--chip);border-radius:14px;padding:12px;font-size:14px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.item .sell{font-size:11px;font-weight:800;color:var(--acc2)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.three .side{border-radius:16px;padding:12px 8px;text-align:center;border:1px solid var(--line);background:var(--card)}
+.three .side.best{border:2px solid var(--acc);background:linear-gradient(135deg,var(--chip),var(--card))}
+.three h3{margin:0;font-size:12px;color:var(--sub)}
+.three .n{font-size:clamp(15px,4.6vw,22px);font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.3;margin:4px 0}
+.three .crown{font-size:11px;font-weight:800;color:#fff;background:var(--acc);border-radius:999px;padding:1px 8px;display:inline-block;margin-bottom:2px}
+.grp{font-size:12px;font-weight:800;color:var(--sub);margin:14px 0 0;letter-spacing:.05em}
+.warnbox{margin-top:10px;border-radius:14px;padding:12px;font-size:13px;background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.35)}
+
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px}
+.cal .h{font-size:11px;text-align:center;color:var(--sub);font-weight:700}
+.cal .d{border-radius:10px;padding:4px 2px;min-height:58px;font-size:10px;text-align:center;background:var(--chip);border:1px solid transparent;line-height:1.3;cursor:pointer}
+.cal .d b{display:block;font-size:13px}
+.cal .d.x{background:transparent;cursor:default}
+.cal .d.fam{background:rgba(15,157,118,.14)}
+.cal .d.care{background:rgba(255,138,61,.16)}
+.cal .d.away{background:rgba(154,160,166,.18);color:var(--off)}
+.cal .d.sel{border-color:var(--acc)}
+.cal .d .m{display:block;font-size:15px;margin-top:2px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--sub);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+.daybox{margin-top:10px;border-radius:14px;padding:12px;background:var(--chip);font-size:14px;min-height:48px}
+.hero3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hero3 .stat b{font-size:clamp(18px,5.4vw,26px)}
+.grid2>div{min-width:0}input[type=date]{min-width:0;max-width:100%;-webkit-appearance:none;appearance:none}
+.seg button{flex-direction:column;justify-content:center;text-align:center;line-height:1.35;gap:0;padding:8px 6px}.seg button small{font-size:11px;opacity:.85}
+.mlist li{margin:4px 0;font-size:14px}
+.afl{margin:6px 0;font-size:14px}.afl a{color:var(--acc);font-weight:700}.afl img{display:inline}
+.pr .grp{margin:10px 0 2px}
+#nPreset button{flex:1 1 60px}
+.three .note{line-height:1.5}
+
+.q{padding:10px 0;border-top:1px dashed var(--line)}.q:first-of-type{border-top:0}
+.qt{font-weight:700;margin:0 0 8px;font-size:15px}
+.qty.big2{justify-content:center;gap:10px}.qty.big2 output{font-size:34px;min-width:50px}.qty.big2 .unit{font-size:14px;color:var(--sub);margin-left:-6px}
+.result.ok{background:linear-gradient(135deg,rgba(15,157,118,.16),var(--card))}.result.ng{background:linear-gradient(135deg,rgba(255,138,61,.18),var(--card))}.result.mid{background:linear-gradient(135deg,rgba(139,92,246,.16),var(--card))}
+.result p{font-size:14px;text-align:left;margin:8px 0 0}
+.vi{font-size:40px;line-height:1.1;animation:pop .5s ease both}@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.vt{font-size:clamp(19px,5.4vw,24px);font-weight:800;margin-top:4px}
+.result.ok .vt{color:var(--ok)}.result.ng .vt{color:var(--acc2)}.result.mid .vt{color:#8b5cf6}
+.warn{background:rgba(217,119,6,.12);border-radius:12px;padding:10px}
+.drow{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px;margin:8px 0;border:1px solid var(--line);border-radius:14px;transition:background .3s}
+.drow input[data-k=name]{grid-column:1/-1}
+.drow.done{background:rgba(15,157,118,.10);border-color:var(--ok)}
+.dchk{display:flex;align-items:center;gap:8px;margin:0;font-size:14px;color:var(--ink);min-height:44px}.dchk input{width:22px;height:22px;accent-color:var(--ok)}
+.drow .del{justify-self:end;width:44px;padding:0;justify-content:center;color:var(--sub)}
+.empty{font-size:13px;color:var(--sub);text-align:center;padding:12px;border:1px dashed var(--line);border-radius:14px}
+.kv3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.kv3 div{background:var(--chip);border-radius:14px;padding:10px 6px;text-align:center}.kv3 b{display:block;font-size:clamp(16px,5vw,22px);color:var(--acc);font-variant-numeric:tabular-nums}.kv3 span{font-size:11px;color:var(--sub)}
+.online{margin-top:12px;border-radius:14px;padding:12px;background:linear-gradient(90deg,rgba(43,125,233,.12),rgba(255,138,61,.12));font-size:14px}
+.steps li .d{flex:0 0 96px}
+.grp{font-size:12px;font-weight:700;color:var(--sub);margin:10px 0 2px}
+.afl{padding:6px 0}.afl a{color:var(--acc);font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="badge">2026年（令和8年）の寄付・無料</span>
+<h1>ふるさと納税<br><span class="em">ワンストップ特例</span>いける？<br>期限と書類チェッカー <span class="sp">📮</span></h1>
+<p class="lead">3つ答えるだけで「ワンストップでOK」か「確定申告が必要」かを判定。<br>寄付した自治体を入れると、申請の締切（2027年1月10日必着）までの残り日数と、出し忘れがひと目でわかります。</p>
+</header>
+
+<section class="card">
+<h2><span class="ic">⏳</span>申請の締切まで</h2>
+<div class="hero">
+<div class="stat"><b id="dLeft">-</b><span>2027年1月10日（日）必着まで</span></div>
+<div class="stat"><b id="dPost">-</b><span>年内に投函する目安（12/25）まで</span></div>
+</div>
+<p class="note" style="margin-top:8px">2026年1月1日〜12月31日の寄付分が対象です。年末年始は郵便が混み、自治体の窓口も休みになります。<b>12月の寄付分も、申請書が届いたらすぐに出す</b>のが安全です。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">✅</span>ステップ1：ワンストップ特例が使える？</h2>
+<p class="note" style="margin:0 0 6px">3つの質問に答えてください。</p>
+<div class="q">
+<p class="qt">① 2026年分の確定申告をする予定はありますか？</p>
+<div class="seg" data-q="shinkoku">
+<button type="button" data-v="no" class="on">しない</button>
+<button type="button" data-v="yes">する／しなければならない</button>
+<button type="button" data-v="unk">わからない</button>
+</div>
+<details id="shinDetail"><summary>確定申告が必要になる主なケース</summary>
+<ul class="tips">
+<li>医療費控除を受けたい（ドラッグストアの購入を含む）</li>
+<li>住宅ローン控除の<b>1年目</b>（2年目以降は年末調整でOK）</li>
+<li>副業の所得が年20万円を超えた・個人事業をしている</li>
+<li>給与の年収が2,000万円を超える、給与を2か所以上からもらっている</li>
+<li>年の途中で退職して年末調整を受けていない</li>
+</ul>
+<p class="note">ほかにもケースがあります。<a href="../kakutei-shindan-2026/">確定申告が必要か1分診断</a>で確認できます。</p>
+</details>
+</div>
+<div class="q">
+<p class="qt">② 2026年に寄付した（する予定の）自治体はいくつ？</p>
+<div class="qty big2"><button type="button" id="cMinus" aria-label="減らす">−</button><output id="cnt">3</output><span class="unit">自治体</span><button type="button" id="cPlus" aria-label="増やす">＋</button></div>
+<p class="note">同じ自治体に何回寄付しても「1つ」と数えます。下の寄付リストに入力すると自動で数えます。</p>
+</div>
+<div class="q">
+<p class="qt">③ 寄付した後に、引っ越し・結婚などで住所や名前が変わった？</p>
+<div class="seg" data-q="move">
+<button type="button" data-v="no" class="on">変わっていない</button>
+<button type="button" data-v="yes">変わった（変わる予定）</button>
+</div>
+</div>
+<div class="result" id="verdict"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">📝</span>ステップ2：寄付リストで出し忘れチェック</h2>
+<p class="note" style="margin:0 0 6px">自治体名・寄付日・金額を入れて、申請書を出したらチェック。入力はこの画面の中だけで計算し、どこにも送信・保存しません（ページを閉じると消えます）。</p>
+<div id="list"></div>
+<div class="btns"><button type="button" id="add">＋ 寄付を追加</button><button type="button" id="sample">例を入れる</button><button type="button" id="clear">全部消す</button></div>
+<div class="kv3" id="sum"></div>
+<div class="bar" id="pbar"><i></i></div>
+<p class="note" id="pnote"></p>
+<div class="btns"><button type="button" class="pri" id="copy">📋 チェック結果をコピー</button></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">📎</span>ステップ3：同封する書類</h2>
+<p class="note" style="margin:0 0 6px">本人確認書類のコピーが必要です。持っているものを選んでください。</p>
+<div class="seg" id="idType">
+<button type="button" data-v="card" class="on">マイナンバーカードがある</button>
+<button type="button" data-v="notice">通知カード／住民票（番号入り）</button>
+</div>
+<ol class="steps" id="docs"></ol>
+<div class="online">
+<b>📱 オンライン申請もできます</b>
+<p class="note" style="margin:4px 0 0">寄付した自治体がオンライン申請に対応していれば、マイナンバーカードとスマホで申請でき、郵送もコピーも要りません。対応しているか・どのアプリを使うかは自治体や寄付したサイトによって違うので、寄付完了のメールや自治体のページで確認してください。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🗓️</span>これからの流れ</h2>
+<ol class="steps" id="flow"></ol>
+</section>
+
+<section class="card">
+<h2><span class="ic">⚠️</span>よくある失敗</h2>
+<ol class="tips">
+<li><b>ワンストップを出したのに確定申告をした</b>：確定申告をするとワンストップ特例の申請は<b>すべて無効</b>になります。医療費控除などで申告するときは、ふるさと納税の寄付も全部、申告書に書いてください（受領証明書が必要）。</li>
+<li><b>申請書は「寄付ごと」</b>：同じ自治体に2回寄付したら、申請書も2枚必要です（数えるときは1自治体）。</li>
+<li><b>6自治体目に寄付した</b>：6つ以上になるとワンストップは使えず、確定申告が必要です。年末の駆け込みで数えまちがえやすいポイントです。</li>
+<li><b>12月31日の寄付は「決済日」</b>：年内の寄付として扱われるかは、クレジットカードなら決済完了日など、支払い方法で変わります。年末ぎりぎりは避けると安心です。</li>
+<li><b>上限額をこえた</b>：上限をこえた分は自己負担になります。寄付の前に<a href="../furusato-jogen-2026/">上限額シミュレーター</a>で確認を。</li>
+</ol>
+</section>
+
+<section class="card">
+<h2><span class="ic">🎁</span>年内の駆け込み寄付は、上限に余裕があるうちに</h2>
+<div class="pr">
+<span class="lbl">PR</span>
+<p class="note" style="margin:0 0 6px">いまからでも12月31日までの寄付は2026年分になります。上限額と自治体の数（ワンストップなら5つまで）を確かめてから選びましょう。返礼品の内容・発送時期・申請書の届け方はリンク先でご確認ください。</p>
+<p class="grp">ふるさと納税のサイト</p>
+<!-- AFFILIATE:furusato_vc -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738779" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738779" height="1" width="1" border="0">ふるなびで返礼品をさがす</a></div>
+<!-- AFFILIATE:furusato_a8_1 -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" rel="nofollow">ふるさと本舗</a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGAV2+2ZRI1M+5IMU+5YRHE" alt=""></div>
+<!-- AFFILIATE:furusato_a8_2 -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+2XDRMI+54OC+5YJRM" rel="nofollow">au PAY ふるさと納税</a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGAV2+2XDRMI+54OC+5YJRM" alt=""></div>
+<!-- AFFILIATE:furusato_a8_3 -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+2WSC0Q+4PXI+BWVTE" rel="nofollow">ポケマルふるさと納税</a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGAV2+2WSC0Q+4PXI+BWVTE" alt=""></div>
+<div id="prTax">
+<p class="grp">確定申告をスマホ・PCで済ませる</p>
+<!-- AFFILIATE:kaikei_1 -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3U4LWA+35XE+601S2" rel="nofollow">やよいの白色申告オンライン</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGAV2+3U4LWA+35XE+601S2" alt=""></div>
+<!-- AFFILIATE:kaikei_2 -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+33XJA2+3SPO+9FDXOI" rel="nofollow">クラウド記帳代行で会計を自動化【freee会計】</a>
+<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGAV2+33XJA2+3SPO+9FDXOI" alt=""></div>
+<p class="note" style="margin:4px 0 0">会社員で医療費控除だけなら、国税庁の「確定申告書等作成コーナー」（無料）でも作れます。副業や個人事業がある人は会計ソフトが便利です。</p>
+</div>
+<p class="note" style="margin:8px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での申し込み・購入により当サイトが報酬を受け取ることがあります。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>あわせて使える無料ツール</h2>
+<div class="rec">
+<a href="../furusato-jogen-2026/">🧮 ふるさと納税 上限額シミュレーター 2026</a>
+<a href="../kakutei-shindan-2026/">📄 確定申告が必要か1分診断 2026</a>
+<a href="../iryohi-kojo-2026/">🏥 医療費控除 いくら戻る？計算機</a>
+<a href="../gensen-choshu-checker-2026/">🧾 源泉徴収票の見方とチェッカー</a>
+</div>
+<details><summary>ひとりラボのツール一覧（29本）</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>参考：総務省「ふるさと納税ポータルサイト」（ワンストップ特例制度：確定申告が不要な給与所得者等で、1年間の寄付先が5団体以内の場合に利用でき、寄付した翌年の1月10日までに寄付先の自治体へ申請書を提出。住所等に変更があった場合は変更届出書を同じ期限までに提出）。必要書類・オンライン申請の可否・申請書の受付方法は自治体によって異なる場合があります。最終的な判断は寄付先の自治体・お住まいの市区町村・税務署の案内をご確認ください。</p>
+<p>入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+'use strict';
+var $=function(i){return document.getElementById(i);};
+function yen(n){return Math.round(n).toLocaleString('ja-JP')+'円';}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function toast(m){var t=$('toast');t.textContent=m;t.style.transform='translateX(-50%) translateY(0)';clearTimeout(toast.h);toast.h=setTimeout(function(){t.style.transform='translateX(-50%) translateY(80px)';},1800);}
+var DEAD=new Date(2027,0,10),POST=new Date(2026,11,25);
+function today(){var d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate());}
+function days(to){return Math.round((to-today())/864e5);}
+function md(d){return (d.getMonth()+1)+'/'+d.getDate();}
+var ans={shinkoku:'no',move:'no'},idType='card',manualCnt=3,rows=[],uid=0;
+
+/* セグメントボタン */
+Array.prototype.forEach.call(document.querySelectorAll('.seg[data-q]'),function(g){
+g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+Array.prototype.forEach.call(g.children,function(x){x.classList.toggle('on',x===b);});
+ans[g.getAttribute('data-q')]=b.getAttribute('data-v');judge();});});
+$('idType').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+Array.prototype.forEach.call(this.children,function(x){x.classList.toggle('on',x===b);});idType=b.getAttribute('data-v');docs();});
+$('cMinus').onclick=function(){if(rows.length){toast('寄付リストから自動で数えています');return;}manualCnt=Math.max(0,manualCnt-1);judge();};
+$('cPlus').onclick=function(){if(rows.length){toast('寄付リストから自動で数えています');return;}manualCnt=Math.min(30,manualCnt+1);judge();};
+
+function towns(){var m={};rows.forEach(function(r){var k=r.name.replace(/\s/g,'');if(k)m[k]=1;});return Object.keys(m).length;}
+function count(){return rows.length?towns():manualCnt;}
+
+function judge(){
+var c=count();$('cnt').textContent=c;
+var v=$('verdict'),h='',cls='';
+if(ans.shinkoku==='yes'){
+cls='ng';h='<div class="vi">🧾</div><div class="vt">確定申告で控除を受けます</div><p>確定申告をすると、ワンストップ特例の申請は使われません（出していても無効）。<b>寄付した全部の自治体</b>を申告書に書き、寄付金受領証明書をそろえてください。申告の期間は2027年2月16日〜3月15日が目安です。</p>';
+}else if(c>5){
+cls='ng';h='<div class="vi">🙅</div><div class="vt">'+c+'自治体なので、ワンストップは使えません</div><p>ワンストップ特例は<b>5自治体まで</b>です。確定申告で寄付金控除を受けてください（寄付金受領証明書が必要）。'+(c===6?'<br>※まだ寄付していない自治体があるなら、5つ以内に収めるとワンストップのままにできます。':'')+'</p>';
+}else if(ans.shinkoku==='unk'){
+cls='mid';h='<div class="vi">🤔</div><div class="vt">確定申告が必要かを先に確認</div><p>自治体の数は'+c+'つでワンストップの条件内です。確定申告が不要ならワンストップでOK。医療費控除・住宅ローン控除1年目・副業などがあると申告が必要になります。<a href="../kakutei-shindan-2026/">1分診断</a>で確かめましょう。</p>';
+}else if(c===0){
+cls='mid';h='<div class="vi">🎁</div><div class="vt">まだ寄付していない場合</div><p>確定申告をしない会社員などなら、年内に<b>5自治体まで</b>寄付すればワンストップ特例が使えます。</p>';
+}else{
+cls='ok';h='<div class="vi">🎉</div><div class="vt">ワンストップ特例でOK！</div><p>'+c+'自治体（あと'+(5-c)+'自治体まで追加OK）。寄付ごとに申請書を出せば、確定申告なしで翌年度の住民税から控除されます。</p>';
+}
+if(ans.move==='yes'&&!(ans.shinkoku==='yes'||c>5)){h+='<p class="warn">📮 住所・名前が変わった場合は、申請済みの自治体に<b>「申請事項変更届出書」</b>も2027年1月10日までに出してください。出さないと控除が正しく反映されないことがあります。</p>';}
+v.className='result '+cls;v.innerHTML=h;
+$('prTax').style.display=(cls==='ng'||ans.shinkoku==='unk')?'':'none';
+summary();
+}
+
+function docs(){
+var a=['ワンストップ特例の申請書（寄付先から届く。届かない・なくした場合は自治体のサイトからダウンロードできることが多い）'];
+if(idType==='card'){a.push('マイナンバーカードの<b>表と裏</b>のコピー（これ1枚で番号と本人確認の両方になります）');}
+else{a.push('番号がわかる書類のコピー：通知カード（記載が今と同じ場合）またはマイナンバー入りの住民票の写し');a.push('本人確認書類のコピー：運転免許証・パスポートなど（写真つき1点。ない場合は健康保険の資格確認書・年金手帳など2点）');}
+a.push('寄付ごとに1セット。同じ自治体への2回目の寄付も、もう1セット必要です');
+$('docs').innerHTML=a.map(function(t,i){return '<li><span class="d">'+(i+1)+'</span><span>'+t+'</span></li>';}).join('');
+}
+
+function flow(){
+var L=[[new Date(2026,11,25),'年内に申請書を投函する目安（年末年始の郵便の遅れを見込んで）'],[new Date(2026,11,31),'2026年分の寄付の締切（決済の完了日に注意）'],[DEAD,'ワンストップ特例の申請書・変更届出書の締切（必着）'],[new Date(2027,2,15),'（確定申告をする場合）申告の期限の目安'],[new Date(2027,4,31),'住民税の決定通知書が届く時期（5〜6月）。「寄附金税額控除」の欄で反映を確認']];
+var t=today();
+$('flow').innerHTML=L.map(function(x){return '<li class="'+(x[0]<t?'past':'')+'"><span class="d">'+x[0].getFullYear()+'/'+md(x[0])+'</span><span>'+x[1]+'</span></li>';}).join('');
+}
+
+function row(r){
+return '<div class="drow'+(r.done?' done':'')+'" data-id="'+r.id+'">'+
+'<input type="text" placeholder="自治体名（例：○○町）" value="'+esc(r.name)+'" data-k="name" aria-label="自治体名">'+
+'<input type="date" value="'+esc(r.date)+'" min="2026-01-01" max="2026-12-31" data-k="date" aria-label="寄付日">'+
+'<input type="number" placeholder="金額" value="'+(r.amt||'')+'" min="0" step="1000" inputmode="numeric" data-k="amt" aria-label="金額">'+
+'<label class="dchk"><input type="checkbox" data-k="done"'+(r.done?' checked':'')+'>申請済み</label>'+
+'<button type="button" class="del" aria-label="この行を消す">✕</button></div>';
+}
+function render(){$('list').innerHTML=rows.length?rows.map(row).join(''):'<p class="empty">まだ入力がありません。「＋ 寄付を追加」から入れてください。</p>';judge();}
+$('list').addEventListener('input',function(e){var el=e.target,k=el.getAttribute('data-k');if(!k)return;var id=+el.closest('.drow').getAttribute('data-id');
+rows.forEach(function(r){if(r.id===id){if(k==='done'){r.done=el.checked;el.closest('.drow').classList.toggle('done',r.done);}else if(k==='amt'){r.amt=parseFloat(el.value)||0;}else{r[k]=el.value;}}});judge();});
+$('list').addEventListener('click',function(e){if(!e.target.classList.contains('del'))return;var id=+e.target.closest('.drow').getAttribute('data-id');rows=rows.filter(function(r){return r.id!==id;});render();});
+$('add').onclick=function(){rows.push({id:++uid,name:'',date:'',amt:0,done:false});render();var ins=$('list').querySelectorAll('input[data-k=name]');if(ins.length)ins[ins.length-1].focus();};
+$('sample').onclick=function(){rows=[{id:++uid,name:'A町',date:'2026-06-12',amt:10000,done:true},{id:++uid,name:'B市',date:'2026-09-03',amt:15000,done:true},{id:++uid,name:'A町',date:'2026-11-20',amt:8000,done:false},{id:++uid,name:'C村',date:'2026-12-20',amt:12000,done:false}];render();toast('例を入れました');};
+$('clear').onclick=function(){rows=[];render();};
+
+function summary(){
+var n=rows.length,done=rows.filter(function(r){return r.done;}).length,tot=rows.reduce(function(s,r){return s+(r.amt||0);},0),tw=towns();
+$('sum').innerHTML='<div><b>'+tw+'</b><span>自治体</span></div><div><b>'+done+'/'+n+'</b><span>申請書（寄付の件数）</span></div><div><b>'+(tot?yen(tot):'-')+'</b><span>寄付の合計</span></div>';
+var p=n?done/n*100:0;$('pbar').querySelector('i').style.width=p+'%';
+var msg='';
+if(!n){msg='寄付を入れると、出し忘れと自治体の数を自動でチェックします。';}
+else if(tw>5){msg='⚠️ '+tw+'自治体になっています。ワンストップは5自治体までなので、確定申告が必要です。';}
+else if(done===n){msg='🎉 全部の申請が済んでいます。あとは来年5〜6月の住民税の通知で確認するだけ。';}
+else{var left=rows.filter(function(r){return !r.done;});msg='📮 未申請が'+left.length+'件：'+left.map(function(r){return esc(r.name||'（名前なし）')+(r.date?'（'+r.date.slice(5).replace('-','/')+'）':'');}).join('、')+'。締切まであと'+Math.max(0,days(DEAD))+'日です。';
+var late=rows.some(function(r){return r.date&&r.date>='2026-12-20';});if(late)msg+=' 12月下旬の寄付は申請書が届くのが年明けになることも。オンライン申請や自治体サイトのダウンロードも検討を。';}
+$('pnote').innerHTML=msg;
+}
+
+$('copy').onclick=function(){
+var tw=count(),lines=['【ワンストップ特例チェック】','自治体の数：'+tw+'（ワンストップは5まで）','確定申告：'+({no:'しない',yes:'する',unk:'未確認'})[ans.shinkoku],'判定：'+$('verdict').querySelector('.vt').textContent,'締切：2027年1月10日（日）必着（あと'+Math.max(0,days(DEAD))+'日）'];
+rows.forEach(function(r){lines.push((r.done?'☑ ':'☐ ')+(r.name||'（名前なし）')+' '+(r.date||'')+' '+(r.amt?yen(r.amt):''));});
+lines.push('https://yope1016.github.io/apps/onestop-tokurei-2026/');
+var t=lines.join('\n');
+function ok(){toast('コピーしました');}
+function fb(){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok();}catch(e){toast('コピーできませんでした');}document.body.removeChild(ta);}
+if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,fb);}else{fb();}
+};
+
+var dl=days(DEAD),dp=days(POST);
+$('dLeft').textContent=dl>=0?dl+'日':'締切済み';
+$('dPost').textContent=dp>=0?dp+'日':'過ぎました';
+
+var APPS=[["warikan-keisha", "傾斜割り勘計算（幹事用）"], ["nenga-hitokoto-2027", "年賀状ひとことジェネレーター 2027"], ["furusato-jogen-2026", "ふるさと納税 上限額シミュレーター 2026"], ["nencho-navi-2026", "年末調整 書き方ナビ 2026"], ["kakutei-shindan-2026", "確定申告が必要か1分診断 2026"], ["oosouji-buntan-2026", "大掃除の分担ジェネレーター 2026"], ["otoshidama-souba-2027", "お年玉 相場計算機 2027"], ["hikkoshi-checklist", "引っ越し手続きチェックリスト"], ["mochu-hagaki-calendar-2026", "喪中はがき いつまでに出す？逆算カレンダー"], ["hikkoshi-shoki-hiyou", "引っ越しの初期費用 計算機"], ["net-kaisen-shindan", "ネット回線 選び方診断"], ["bonenkai-kanji-2026", "忘年会 幹事の段取り表 2026"], ["kanchu-nengajimai-2027", "寒中見舞い・年賀状じまい 文例メーカー"], ["nenmatsu-renkyu-2026", "年末年始 何連休？有給シミュレーター"], ["iryohi-kojo-2026", "医療費控除 いくら戻る？計算機"], ["jutaku-loan-kojo-2026", "住宅ローン控除 いくら戻る？計算機"], ["fuyou-kabe-2026", "扶養の壁チェッカー 2026"], ["bonus-tedori-2026", "冬のボーナス 手取り計算機 2026"], ["gensen-choshu-checker-2026", "源泉徴収票の見方とチェッカー"], ["xmas-yosan-2026", "クリスマス予算プランナー 2026"], ["nengajo-itsumade-2027", "年賀状 いつまでに出す？投函日チェッカー"], ["danbou-denkidai-2026", "暖房の電気代 くらべる計算機"], ["kisei-koutsuhi-2026", "帰省 車と新幹線どっちが安い？"], ["osechi-yosan-2027", "おせち 予算と注文締切カレンダー 2027"], ["nenmatsu-jumbo-kitaichi-2026", "年末ジャンボ 期待値シミュレーター 2026"], ["oseibo-navi-2026", "お歳暮 いつまで？相場とのし 早見ナビ"], ["fukubukuro-2027", "福袋 2027 予約・抽選カレンダー"], ["studless-koukan-2026", "スタッドレス 交換の時期と費用 計算機"]];
+APPS.push(['onestop-tokurei-2026','ふるさと納税 ワンストップ特例チェッカー（このページ）']);
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+docs();flow();render();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>家事按分 計算機｜家賃・電気代・ネット代は何%経費？根拠メモつき｜ひとりラボ</title>
+<meta name="description" content="在宅ワークの家賃・電気代・ネット代・スマホ代は何%経費にできる？部屋の広さと仕事の時間から家事按分の目安を計算し、年間の経費・節税額と、税務署に説明できる根拠メモまで作れる無料ツール。個人事業主・副業・フリーランス向け。">
+<link rel="canonical" href="https://yope1016.github.io/apps/kaji-anbun-keisan/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="家事按分 計算機｜家賃・電気・ネット 何%経費にできる？">
+<meta property="og:description" content="部屋の広さと仕事の時間から按分率の目安を計算。年間の経費・節税額と、税務署に説明できる根拠メモまで。">
+<meta property="og:url" content="https://yope1016.github.io/apps/kaji-anbun-keisan/">
+<meta property="og:site_name" content="ひとりラボ｜無料Webツール集">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "家事按分 計算機", "url": "https://yope1016.github.io/apps/kaji-anbun-keisan/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "ja", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "description": "在宅ワークの家賃・電気代・ネット代・スマホ代は何%経費にできる？部屋の広さと仕事の時間から家事按分の目安を計算し、年間の経費・節税額と、税務署に説明できる根拠メモまで作れる無料ツール。個人事業主・副業・フリーランス向け。"}</script>
+<style>
+:root{--bg:#f4fbf8;--bg2:#d9f3e8;--card:#ffffff;--ink:#1d1a33;--sub:#625d7e;--line:#d6eae1;--acc:#0f8a6a;--acc2:#2f7cf6;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#e6f6ef;--shadow:0 10px 30px rgba(15,138,106,.13)}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1714;--bg2:#12271f;--card:#14211c;--ink:#efeefa;--sub:#a9a4c6;--line:#24392f;--acc:#4fd1a5;--acc2:#7fb0ff;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#1b3128;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+header .sp{display:inline-block;animation:tw 2.4s ease-in-out infinite}@keyframes tw{50%{transform:scale(1.25) rotate(12deg)}}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px;flex:0 0 auto}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:clamp(22px,6.4vw,30px);line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:8px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 110px;font-weight:700;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid2>div{min-width:0}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.result p{font-size:14px;text-align:left;margin:8px 0 0}
+.big{font-size:clamp(32px,9vw,42px);font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--acc);animation:pop .5s ease both}@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+.bar{height:14px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0;transition:width .6s ease}
+.note{font-size:12px;color:var(--sub)}
+.range{width:100%;accent-color:var(--acc)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 90px;border:1px solid var(--line);background:var(--card);flex-direction:column;justify-content:center;text-align:center;line-height:1.35;gap:0;padding:8px 6px}
+.seg button small{font-size:11px;opacity:.85}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.kv{margin-top:10px;font-size:14px}.kv div{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px dashed var(--line)}.kv b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.kv3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.kv3 div{background:var(--chip);border-radius:14px;padding:10px 6px;text-align:center;min-width:0}.kv3 b{display:block;font-size:clamp(15px,4.8vw,21px);color:var(--acc);font-variant-numeric:tabular-nums}.kv3 span{font-size:11px;color:var(--sub)}
+.warnbox{margin-top:10px;border-radius:14px;padding:12px;font-size:13px;background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.35)}
+.tipbox{margin-top:10px;background:var(--chip);border-radius:14px;padding:12px;font-size:14px}
+.chart{display:flex;align-items:flex-end;gap:3px;height:150px;margin-top:12px;padding:0 2px;border-bottom:1px solid var(--line)}
+.chart .c{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;height:100%;position:relative}
+.chart .c i{display:block;background:linear-gradient(180deg,var(--acc2),var(--acc));border-radius:6px 6px 0 0;transition:height .6s ease}
+.chart .c em{display:block;background:var(--line);border-radius:6px 6px 0 0}
+.chart .c.k i{background:linear-gradient(180deg,#ffd166,var(--acc2))}
+.axis{display:flex;gap:3px;font-size:10px;color:var(--sub);margin-top:2px}.axis span{flex:1 1 0;text-align:center;min-width:0;overflow:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--sub);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px;color:var(--ink);margin:0}
+.chk input{width:22px;height:22px;accent-color:var(--acc);flex:0 0 auto}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;table-layout:fixed}.tbl th,.tbl td{padding:8px 4px;border-top:1px dashed var(--line);text-align:left;vertical-align:top;word-break:break-word}.tbl th:first-child{width:26%}.tbl thead th{color:var(--sub);font-size:12px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#fff;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.grp{font-size:12px;font-weight:700;color:var(--sub);margin:10px 0 2px}
+.afl{padding:6px 0;font-size:14px}.afl a{color:var(--acc);font-weight:700}.afl img{display:inline}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.pill{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;background:var(--ok);margin-right:4px;vertical-align:1px}
+.pill.w{background:var(--warn)}.pill.g{background:var(--off)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<style>
+.it{padding:12px 0;border-top:1px dashed var(--line)}
+.it .hd{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;font-size:15px}
+.it .hd .v{color:var(--acc);font-variant-numeric:tabular-nums;white-space:nowrap}
+.it .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}.it .row>div{min-width:0}
+.it .why{font-size:12px;color:var(--sub);margin-top:4px}
+.it.off{opacity:.55}
+.memo{width:100%;min-height:150px;font:inherit;font-size:13px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);resize:vertical}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--card);padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.donut{width:120px;height:120px;border-radius:50%;margin:0 auto;display:grid;place-items:center;background:conic-gradient(var(--acc) 0deg,var(--line) 0deg);transition:background .5s}
+.donut span{width:84px;height:84px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-weight:800;font-size:20px;color:var(--acc);font-variant-numeric:tabular-nums}
+.hero3{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;text-align:left}
+@media (max-width:420px){.hero3{grid-template-columns:1fr;text-align:center}}
+</style>
+<div class="wrap">
+<header>
+<span class="badge">個人事業主・副業・フリーランス向け</span>
+<h1>家事按分<span class="em">計算機</span><br>家賃・電気・ネット 何%経費？ <span class="sp">🏠</span></h1>
+<p class="lead">在宅で仕事をしている人のための按分ツール。<br>部屋の広さと仕事の時間から<b>按分率の目安</b>を出し、年間の経費と節税額、<b>税務署に説明できる根拠メモ</b>まで作ります。</p>
+</header>
+
+<section class="card">
+<h2><span class="ic">📐</span>按分の根拠を入れる</h2>
+<div class="grid2">
+<div><label for="area">住まいの広さ（㎡）</label><input type="number" id="area" inputmode="decimal" value="50" min="1" step="1"></div>
+<div><label for="warea">仕事に使うスペース（㎡）</label><input type="number" id="warea" inputmode="decimal" value="10" min="0" step="1"><div class="note">6畳 ≒ 10㎡</div></div>
+</div>
+<label class="sw"><input type="checkbox" id="sennyo">仕事スペースは仕事専用（生活には使っていない）</label>
+<div class="grid2">
+<div><label for="wh">家で仕事をする時間（週）</label><input type="number" id="wh" inputmode="numeric" value="40" min="0" step="1"></div>
+<div><label for="ah">家で起きている時間（週）</label><input type="number" id="ah" inputmode="numeric" value="84" min="1" step="1"><div class="note">平日12時間×7日 ≒ 84時間</div></div>
+</div>
+<div class="kv3">
+<div><b id="rArea">20%</b><span>面積の割合</span></div>
+<div><b id="rTime">48%</b><span>時間の割合</span></div>
+<div><b id="rRent">10%</b><span>家賃の目安</span></div>
+</div>
+<p class="note" id="rentWhy" style="margin:8px 0 0"></p>
+</section>
+
+<section class="card">
+<h2><span class="ic">🧾</span>費用ごとの按分率（毎月の金額）</h2>
+<p class="note" style="margin:0">按分率は上の根拠から自動で入ります。実態に合わせてスライダーで調整できます。使っていない費用は金額を0に。</p>
+<div id="items"></div>
+<div class="btns"><button type="button" id="reset">↺ 按分率を自動の目安に戻す</button></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">✨</span>結果：経費にできる金額（年間）</h2>
+<div class="result">
+<div class="hero3">
+<div class="donut" id="donut"><span id="avg">0%</span></div>
+<div>
+<div class="note">年間の経費計上額（目安）</div>
+<div class="big" id="total">0円</div>
+<div class="note" id="totalSub"></div>
+</div>
+</div>
+<label for="rate" style="text-align:left">あなたの税金のかかり方（所得税＋住民税＋国保の合計の目安）</label>
+<div class="seg" id="rate"><button type="button" data-v="15">15%<small>所得〜200万</small></button><button type="button" data-v="25" class="on">25%<small>〜400万</small></button><button type="button" data-v="35">35%<small>〜700万</small></button><button type="button" data-v="45">45%<small>それ以上</small></button></div>
+<div class="kv3">
+<div><b id="save">0円</b><span>節税の目安（年）</span></div>
+<div><b id="save5">0円</b><span>5年分</span></div>
+<div><b id="mon">0円</b><span>経費（月）</span></div>
+</div>
+<div class="kv" id="tbl"></div>
+</div>
+<div class="warnbox" id="warn" style="display:none"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">📝</span>按分の根拠メモ（コピーして保存）</h2>
+<p class="note" style="margin:0 0 8px">税務調査で聞かれたときに説明できるよう、按分の考え方を書き残しておくのがおすすめです。会計ソフトの「家事按分」設定のメモ欄にも貼れます。</p>
+<textarea class="memo" id="memo" readonly></textarea>
+<div class="btns"><button type="button" id="copy">📋 メモをコピー</button></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🛠️</span>按分は会計ソフトに任せるとラク</h2>
+<p style="font-size:14px;margin:0">家事按分は、1年分の家賃や電気代を記帳したあと、決算のときに按分率をかけて「事業主貸」に振り替えるのが基本です。クラウド会計ソフトなら<b>按分率を一度登録するだけで、決算時に自動で振り替え</b>てくれるものが多く、手計算のミスも防げます。<b id="softMsg"></b></p>
+<div class="pr">
+<span class="lbl">PR</span>
+<p class="grp">クラウド会計ソフト（家事按分・青色申告・e-Tax対応）</p>
+<!-- AFFILIATE:kaikei_freee -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+33XJA2+3SPO+9FDXOI" rel="nofollow">クラウド記帳代行で会計を自動化【freee会計】</a>
+<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGAV2+33XJA2+3SPO+9FDXOI" alt=""></div>
+<!-- AFFILIATE:kaikei_mf -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3SXQOQ+4JGQ+60OXE" rel="nofollow">6つのサービスがセットで使える マネーフォワード クラウド会計</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGAV2+3SXQOQ+4JGQ+60OXE" alt=""></div>
+<!-- AFFILIATE:kaikei_yayoi_aoiro -->
+<p class="grp">仕事用の回線・スマホを分けると按分がいらない</p>
+<!-- AFFILIATE:hikari_kaisen -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+5CB1Y2+3SPO+CKJSMQ" rel="nofollow">安定した光回線で快適に使える【ahamo光】</a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGAV2+5CB1Y2+3SPO+CKJSMQ" alt=""></div>
+<!-- AFFILIATE:kakuyasu_sim -->
+<p class="note" style="margin:0">仕事専用の回線や2台目のスマホにすると、その料金は全額を経費にでき、按分の説明も不要になります。</p>
+<p class="note" style="margin:8px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での申し込みにより当サイトが報酬を受け取ることがあります。サービスの選択はご自身の判断で行ってください。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">❓</span>よくある質問</h2>
+<details><summary>そもそも家事按分とは？</summary><p style="font-size:14px">家賃や電気代のように、仕事と生活の両方に使う費用（家事関連費）のうち、仕事に使った部分だけを必要経費にすることです。所得税法では、業務に必要な部分を「明らかに区分できる」場合に、その部分を必要経費にできるとされています。そのため、面積・時間・走行距離など、説明できる基準で割合を決めることが大切です。</p></details>
+<details><summary>按分率に上限や決まった数字はある？</summary><p style="font-size:14px">法律で決まった割合はありません。実態に合った合理的な基準で決めます。ただし、生活の場でもある自宅の家賃を高い割合で計上すると説明が難しくなるため、このツールは家賃に「面積×（専用でなければ）時間」の目安を使っています。白色申告の場合は、原則として業務に使う部分が主（おおむね50%超）であることが求められ、それ以下でも明らかに区分できれば認められる、という扱いです。</p></details>
+<details><summary>持ち家でも按分できる？</summary><p style="font-size:14px">持ち家の場合、住宅ローンの返済額そのもの（元本）は経費になりません。按分できるのは、住宅ローンの利息、建物の減価償却費、固定資産税、火災保険料、管理費などです。また、仕事に使う割合が大きいと住宅ローン控除の対象が減ることがあります。持ち家の人は税理士か税務署に確認するのがおすすめです。</p></details>
+<details><summary>水道代・ガス代は？</summary><p style="font-size:14px">一般的な在宅ワークでは、水道・ガスは仕事との関係を説明しにくく、按分しないことが多い費用です。美容・飲食・撮影など、仕事で明らかに水やガスを使う業種なら、使用量の記録をもとに按分を検討してください。このツールの初期値は0%です。</p></details>
+<details><summary>副業の会社員でも使える？</summary><p style="font-size:14px">副業の所得を「事業所得」または「雑所得」として申告する場合、仕事に使った部分は必要経費にできます。ただし、副業の売上より経費が大きくなるような計上は認められにくいので、実態に合わせて控えめに決めましょう。</p></details>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>あわせて使いたい</h2>
+<div class="rec">
+<a href="../kakutei-shindan-2026/">📝 確定申告が必要か1分診断 2026</a>
+<a href="../net-kaisen-shindan/">📶 ネット回線 選び方診断</a>
+<a href="../danbou-denkidai-2026/">🔌 暖房の電気代 計算機 2026</a>
+<a href="../iryohi-kojo-2026/">🏥 医療費控除 いくら戻る？計算機</a>
+</div>
+<details><summary>ひとりラボのツール一覧</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>参考：国税庁 タックスアンサー「No.2210 やさしい必要経費の知識」、所得税法施行令第96条（家事関連費）、所得税基本通達45-1・45-2、freee「家事按分とは？」。</p>
+<p>按分率と節税額は目安です。節税の目安は「経費の増加額×選んだ税率」で概算しており、実際の税額は所得・控除・お住まいの市区町村によって変わります。按分率は実態に合わせてご自身の責任で決め、判断に迷う場合は税理士または税務署にご相談ください。</p>
+<p>入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<div class="toast" id="toast">コピーしました</div>
+<script>
+(function(){
+'use strict';
+function $(i){return document.getElementById(i);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+var APPS=[["warikan-keisha", "傾斜割り勘計算（幹事用）"], ["nenga-hitokoto-2027", "年賀状ひとことジェネレーター 2027"], ["furusato-jogen-2026", "ふるさと納税 上限額シミュレーター 2026"], ["nencho-navi-2026", "年末調整 書き方ナビ 2026"], ["kakutei-shindan-2026", "確定申告が必要か1分診断 2026"], ["oosouji-buntan-2026", "大掃除の分担ジェネレーター 2026"], ["otoshidama-souba-2027", "お年玉 相場計算機 2027"], ["hikkoshi-checklist", "引っ越し手続きチェックリスト"], ["mochu-hagaki-calendar-2026", "喪中はがき いつまでに出す？逆算カレンダー"], ["hikkoshi-shoki-hiyou", "引っ越しの初期費用 計算機"], ["net-kaisen-shindan", "ネット回線 選び方診断"], ["bonenkai-kanji-2026", "忘年会 幹事の段取り表 2026"], ["kanchu-nengajimai-2027", "寒中見舞い・年賀状じまい 文例メーカー"], ["nenmatsu-renkyu-2026", "年末年始 何連休？有給シミュレーター"], ["iryohi-kojo-2026", "医療費控除 いくら戻る？計算機"], ["jutaku-loan-kojo-2026", "住宅ローン控除 いくら戻る？計算機"], ["fuyou-kabe-2026", "扶養の壁チェッカー 2026"], ["bonus-tedori-2026", "冬のボーナス 手取り計算機 2026"], ["gensen-choshu-checker-2026", "源泉徴収票の見方とチェッカー"], ["xmas-yosan-2026", "クリスマス予算プランナー 2026"], ["nengajo-itsumade-2027", "年賀状 いつまでに出す？投函日チェッカー"], ["danbou-denkidai-2026", "暖房の電気代 くらべる計算機"], ["kisei-koutsuhi-2026", "帰省 車と新幹線どっちが安い？"], ["osechi-yosan-2027", "おせち 予算と注文締切カレンダー 2027"], ["nenmatsu-jumbo-kitaichi-2026", "年末ジャンボ 期待値シミュレーター 2026"], ["oseibo-navi-2026", "お歳暮 いつまで？相場とのし 早見ナビ"], ["fukubukuro-2027", "福袋 2027 予約・抽選カレンダー"], ["studless-koukan-2026", "スタッドレス 交換の時期と費用 計算機"]];
+function num(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0;}
+function yen(n){return Math.round(n).toLocaleString('ja-JP')+'円';}
+function pct(x){return Math.round(x*100)+'%';}
+var rate=25;
+var ITEMS=[
+ {k:'rent',n:'🏠 家賃',v:80000,basis:'rent'},
+ {k:'elec',n:'⚡ 電気代',v:9000,basis:'time'},
+ {k:'net',n:'📶 ネット回線',v:5000,basis:'time'},
+ {k:'phone',n:'📱 スマホ代',v:4000,basis:'phone'},
+ {k:'water',n:'🚰 水道・ガス',v:6000,basis:'zero'},
+ {k:'car',n:'🚗 車（ガソリン・駐車場など）',v:0,basis:'car'}
+];
+var manual={};
+function basisR(){
+ var a=num('area'),w=Math.min(num('warea'),a),wh=num('wh'),ah=Math.max(num('ah'),1);
+ var ra=a>0?w/a:0,rt=Math.min(wh/ah,1),sn=$('sennyo').checked;
+ return {ra:ra,rt:rt,sn:sn,rent:sn?ra:ra*rt,time:rt,phone:Math.min(Math.round(rt*10)/10,0.5),zero:0,car:null};
+}
+function build(){
+ $('items').innerHTML=ITEMS.map(function(it){
+  var extra=it.basis==='car'?'<div class="grid2"><div><label for="km_all">月の走行距離（km）</label><input type="number" id="km_all" inputmode="numeric" value="600" min="0"></div><div><label for="km_w">うち仕事の距離（km）</label><input type="number" id="km_w" inputmode="numeric" value="150" min="0"></div></div>':'';
+  return '<div class="it" id="it_'+it.k+'"><div class="hd"><span>'+it.n+'</span><span class="v" id="y_'+it.k+'">0円/年</span></div>'+
+  '<div class="row"><div><label for="a_'+it.k+'">毎月の金額（円）</label><input type="number" id="a_'+it.k+'" inputmode="numeric" value="'+it.v+'" min="0" step="500"></div>'+
+  '<div><label for="p_'+it.k+'">按分率 <b id="pv_'+it.k+'">0%</b></label><input type="range" class="range" id="p_'+it.k+'" min="0" max="100" step="1" value="0"></div></div>'+extra+
+  '<div class="why" id="w_'+it.k+'"></div></div>';
+ }).join('');
+ ITEMS.forEach(function(it){
+  $('a_'+it.k).addEventListener('input',calc);
+  $('p_'+it.k).addEventListener('input',function(){manual[it.k]=true;calc();});
+ });
+ ['km_all','km_w'].forEach(function(i){$(i).addEventListener('input',function(){manual.car=false;calc();});});
+}
+function auto(it,b){
+ if(it.basis==='car'){var all=num('km_all'),wk=Math.min(num('km_w'),all);return all>0?wk/all:0;}
+ return b[it.basis];
+}
+function why(it,b){
+ switch(it.basis){
+  case 'rent':return b.sn?'仕事専用スペースの面積の割合（'+pct(b.ra)+'）':'面積の割合 '+pct(b.ra)+' × 時間の割合 '+pct(b.rt)+'（生活と兼用のため）';
+  case 'time':return '在宅で起きている時間のうち仕事の時間の割合（'+pct(b.rt)+'）';
+  case 'phone':return '仕事の時間の割合をもとに、私用との兼用を考えて上限50%の目安。通話・通信の明細で業務の割合が分かればその数字に';
+  case 'zero':return '一般的な在宅ワークでは按分しないことが多い費用（業種によっては使用量で按分）';
+  case 'car':var all=num('km_all'),wk=Math.min(num('km_w'),all);return '走行距離の割合（仕事 '+wk+'km ÷ 全体 '+all+'km）。運転日誌をつけておくと説明しやすい';
+ }
+ return '';
+}
+function calc(){
+ var b=basisR();
+ $('rArea').textContent=pct(b.ra);$('rTime').textContent=pct(b.rt);$('rRent').textContent=pct(b.rent);
+ $('rentWhy').textContent=b.sn?'仕事専用のスペースなので、家賃は面積の割合で按分します。':'生活と兼用のスペースなので、家賃は「面積×時間」で控えめに按分します。';
+ var tot=0,base=0,rows=[],memo=[],w=[];
+ ITEMS.forEach(function(it){
+  var p=$('p_'+it.k);
+  if(!manual[it.k]){p.value=Math.round(auto(it,b)*100);}
+  var r=(parseFloat(p.value)||0)/100,m=num('a_'+it.k),y=m*12*r;
+  $('pv_'+it.k).textContent=pct(r);$('y_'+it.k).textContent=yen(y)+'/年';
+  $('w_'+it.k).textContent=(manual[it.k]?'手動で調整中。自動の目安：'+pct(auto(it,b))+'（':'')+why(it,b)+(manual[it.k]?'）':'');
+  $('it_'+it.k).className='it'+(m>0?'':' off');
+  tot+=y;base+=m*12;
+  if(m>0){rows.push('<div><span>'+esc(it.n)+'（'+pct(r)+'）</span><b>'+yen(y)+'</b></div>');
+   memo.push('・'+it.n.replace(/^\S+\s/,'')+'：月'+Math.round(m).toLocaleString('ja-JP')+'円 × '+pct(r)+' ＝ 年'+Math.round(y).toLocaleString('ja-JP')+'円（根拠：'+(manual[it.k]?'実態にあわせて設定。参考 ':'')+why(it,b)+'）');}
+  if(it.k==='rent'&&r>0.5&&m>0)w.push('家賃の按分率が50%を超えています。生活の場でもある自宅の場合、高い割合は説明を求められやすい部分です。間取り図や仕事部屋の写真など、根拠を残しておきましょう。');
+  if(it.k==='phone'&&r>0.8&&m>0)w.push('スマホの按分率が80%を超えています。私用でも使う1台なら、仕事専用の2台目を持つほうが説明しやすくなります。');
+  if(it.k==='water'&&r>0&&m>0)w.push('水道・ガスを按分する場合は、仕事で使っていることを使用量の記録などで説明できるようにしておきましょう。');
+ });
+ var avg=base>0?tot/base:0;
+ $('total').textContent=yen(tot);$('totalSub').textContent='対象の費用 年'+yen(base)+' のうち';
+ $('avg').textContent=pct(avg);$('donut').style.background='conic-gradient(var(--acc) '+Math.round(avg*360)+'deg,var(--line) 0deg)';
+ var sv=Math.round(tot*rate/100/100)*100;
+ $('save').textContent=yen(sv);$('save5').textContent=yen(sv*5);$('mon').textContent=yen(tot/12);
+ $('tbl').innerHTML=rows.join('');
+ if(b.rt>=1)w.push('仕事の時間が起きている時間と同じかそれ以上になっています。時間の入力を確認してください。');
+ $('warn').style.display=w.length?'':'none';$('warn').innerHTML=w.map(esc).join('<br><br>');
+ $('softMsg').textContent=sv>=10000?' 今回の節税の目安は年'+yen(sv)+'。按分の自動化だけでなく、青色申告の65万円控除も取りやすくなります。':'';
+ $('memo').value='【家事按分の根拠メモ】\n作成日：'+new Date().toLocaleDateString('ja-JP')+'\n住まいの広さ '+num('area')+'㎡ ／ 仕事スペース '+Math.min(num('warea'),num('area'))+'㎡（'+(b.sn?'仕事専用':'生活と兼用')+'）\n家での仕事時間 週'+num('wh')+'時間 ／ 家で起きている時間 週'+num('ah')+'時間\n\n'+(memo.join('\n')||'（金額が入っていません）')+'\n\n合計：年'+Math.round(tot).toLocaleString('ja-JP')+'円を必要経費に計上\n※実態が変わったら按分率を見直す。間取り図・作業日報・運転日誌などを保存。';
+}
+$('rate').addEventListener('click',function(e){var x=e.target.closest('button');if(!x)return;rate=parseFloat(x.getAttribute('data-v'));Array.prototype.forEach.call(this.children,function(c){c.className=c===x?'on':'';});calc();});
+['area','warea','wh','ah','sennyo'].forEach(function(i){$(i).addEventListener('input',calc);$(i).addEventListener('change',calc);});
+$('reset').addEventListener('click',function(){manual={};calc();});
+$('copy').addEventListener('click',function(){var t=$('memo');var done=function(){var o=$('toast');o.className='toast on';setTimeout(function(){o.className='toast';},1600);};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t.value).then(done,function(){t.select();document.execCommand('copy');done();});}else{t.select();document.execCommand('copy');done();}});
+build();
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+calc();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

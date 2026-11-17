@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>冬休みの昼ごはん代と預け先 まるごと計算 2026-2027｜ひとりラボ</title>
+<meta name="description" content="冬休みの期間・子どもの人数・働き方を入れるだけで、給食がない日の昼ごはん代、学童やシッターなど預け先が必要な日数と費用、毎日の献立カレンダーを出す無料ツール。留守番の日は火を使わないメニューに。">
+<link rel="canonical" href="https://yope1016.github.io/apps/fuyuyasumi-hirugohan-2026/">
+<style>
+:root{--bg:#f3f8fc;--bg2:#dcecf9;--card:#ffffff;--ink:#14243a;--sub:#5a6b80;--line:#d8e4ef;--acc:#2b7de9;--acc2:#ff8a3d;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#e9f2fb;--shadow:0 10px 30px rgba(43,125,233,.13)}
+@media (prefers-color-scheme:dark){:root{--bg:#0c1522;--bg2:#13233a;--card:#142033;--ink:#e8f0fa;--sub:#9fb2c8;--line:#24364f;--acc:#6aaeff;--acc2:#ffa866;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#1c2d46;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:30px;line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:8px}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;min-height:40px}
+.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.ev{border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0;position:relative;overflow:hidden}
+.ev::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c,var(--acc))}
+.ev h3{margin:0 0 2px;font-size:16px}
+.ev .meta{font-size:13px;color:var(--sub)}
+.st{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;color:#fff;margin-right:6px;vertical-align:middle}
+.st.now{background:var(--ok)}.st.soon{background:var(--warn)}.st.end{background:var(--off)}.st.tbd{background:#8b5cf6}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:6px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 108px;font-weight:700;font-variant-numeric:tabular-nums}
+.steps li.past{color:var(--off);text-decoration:line-through}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button.pri{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],input[type=text],input[type=date],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.row{display:grid;grid-template-columns:1fr 110px 44px;gap:6px;margin:6px 0}
+.row button{padding:0;justify-content:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.big{font-size:40px;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.big.plus{color:var(--ok)}.big.minus{color:var(--acc)}
+.bar{height:12px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),var(--acc2));width:0;transition:width .6s ease}
+.bar.over i{background:linear-gradient(90deg,var(--acc2),var(--acc))}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px}
+.chk input{width:22px;height:22px;accent-color:var(--acc)}
+.chk .p{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--sub)}
+.tips li{margin:6px 0;font-size:14px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#0d1522;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.pr a{color:var(--acc);font-weight:700}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;transition:transform .3s;z-index:9}
+.item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:12px 0;border-top:1px dashed var(--line)}
+.item .e{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--chip);font-size:22px}
+.item .t b{display:block;font-size:15px}.item .t span{font-size:12px;color:var(--sub)}
+.qty{display:flex;align-items:center;gap:4px}.qty button{width:40px;height:40px;min-height:40px;padding:0;justify-content:center;font-size:20px;font-weight:700}.qty output{min-width:26px;text-align:center;font-weight:800;font-size:18px;font-variant-numeric:tabular-nums}
+.item.sel .e{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.vs .side{border-radius:16px;padding:14px;text-align:center;border:1px solid var(--line);background:var(--card)}
+.vs .side.pro{background:linear-gradient(135deg,var(--chip),var(--card))}
+.vs .side h3{margin:0;font-size:14px;color:var(--sub)}
+.vs .side .n{font-size:clamp(20px,6vw,28px);font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.25;margin:4px 0}
+.vs .side .n.diy{color:var(--warn)}
+.tag{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;white-space:nowrap}
+.tag.p{background:var(--acc)}.tag.d{background:var(--warn)}.tag.m{background:#8b5cf6}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}.tbl th,.tbl td{padding:8px 4px;border-top:1px dashed var(--line);text-align:left;vertical-align:top}.tbl td.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.setok{margin-top:10px;border-radius:14px;padding:12px;background:linear-gradient(90deg,rgba(109,74,255,.14),rgba(255,122,89,.14));font-size:14px;display:none}
+.setok.on{display:block;animation:up .4s ease both}
+header .sp{display:inline-block;animation:tw 2.4s ease-in-out infinite}@keyframes tw{50%{transform:scale(1.25) rotate(15deg)}}
+.range{width:100%;accent-color:var(--acc)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 90px;border:1px solid var(--line);background:var(--card)}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.kv{margin-top:10px;font-size:14px}.kv div{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px dashed var(--line)}.kv b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tipbox{margin-top:10px;background:var(--chip);border-radius:14px;padding:12px;font-size:14px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.item .sell{font-size:11px;font-weight:800;color:var(--acc2)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.three .side{border-radius:16px;padding:12px 8px;text-align:center;border:1px solid var(--line);background:var(--card)}
+.three .side.best{border:2px solid var(--acc);background:linear-gradient(135deg,var(--chip),var(--card))}
+.three h3{margin:0;font-size:12px;color:var(--sub)}
+.three .n{font-size:clamp(15px,4.6vw,22px);font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.3;margin:4px 0}
+.three .crown{font-size:11px;font-weight:800;color:#fff;background:var(--acc);border-radius:999px;padding:1px 8px;display:inline-block;margin-bottom:2px}
+.grp{font-size:12px;font-weight:800;color:var(--sub);margin:14px 0 0;letter-spacing:.05em}
+.warnbox{margin-top:10px;border-radius:14px;padding:12px;font-size:13px;background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.35)}
+
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px}
+.cal .h{font-size:11px;text-align:center;color:var(--sub);font-weight:700}
+.cal .d{border-radius:10px;padding:4px 2px;min-height:58px;font-size:10px;text-align:center;background:var(--chip);border:1px solid transparent;line-height:1.3;cursor:pointer}
+.cal .d b{display:block;font-size:13px}
+.cal .d.x{background:transparent;cursor:default}
+.cal .d.fam{background:rgba(15,157,118,.14)}
+.cal .d.care{background:rgba(255,138,61,.16)}
+.cal .d.away{background:rgba(154,160,166,.18);color:var(--off)}
+.cal .d.sel{border-color:var(--acc)}
+.cal .d .m{display:block;font-size:15px;margin-top:2px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--sub);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+.daybox{margin-top:10px;border-radius:14px;padding:12px;background:var(--chip);font-size:14px;min-height:48px}
+.hero3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hero3 .stat b{font-size:clamp(18px,5.4vw,26px)}
+.grid2>div{min-width:0}input[type=date]{min-width:0;max-width:100%;-webkit-appearance:none;appearance:none}
+.seg button{flex-direction:column;justify-content:center;text-align:center;line-height:1.35;gap:0;padding:8px 6px}.seg button small{font-size:11px;opacity:.85}
+.mlist li{margin:4px 0;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="badge">2026-2027 冬休み版・無料</span>
+<h1>冬休みの<span class="em">昼ごはん代と預け先</span><br>まるごと計算 <span class="sp">⛄</span></h1>
+<p class="lead">期間と働き方を入れるだけ。給食がない日の昼ごはん代、預け先が要る日数と費用、<br>毎日の献立カレンダーまで一気に出します。</p>
+</header>
+
+<section class="card">
+<h2><span class="ic">📅</span>冬休みの期間</h2>
+<div class="seg" id="preset">
+<button type="button" data-s="2026-12-25" data-e="2027-01-07" class="on">よくある日程<br><small>12/25〜1/7</small></button>
+<button type="button" data-s="2026-12-26" data-e="2027-01-12">少し長め<br><small>12/26〜1/12</small></button>
+<button type="button" data-s="2026-12-25" data-e="2027-01-17">雪の多い地域の例<br><small>12/25〜1/17</small></button>
+</div>
+<div class="grid2">
+<div><label for="ds">始まり（最初の休みの日）</label><input type="date" id="ds" value="2026-12-25"></div>
+<div><label for="de">終わり（最後の休みの日）</label><input type="date" id="de" value="2027-01-07"></div>
+</div>
+<p class="note">学校・自治体によって違います。学校のおたよりで日付を確認して入れてください。</p>
+<label for="away">帰省・旅行などで家で昼ごはんを食べない日数</label>
+<input type="number" id="away" min="0" max="30" value="3" inputmode="numeric">
+</section>
+
+<section class="card">
+<h2><span class="ic">👧</span>子ども</h2>
+<div class="item"><span class="e">🧒</span><span class="t"><b>未就学（3〜6歳）</b><span>量の目安 0.7人分</span></span><span class="qty"><button type="button" data-k="k0" data-d="-1">−</button><output id="k0">0</output><button type="button" data-k="k0" data-d="1">＋</button></span></div>
+<div class="item"><span class="e">🎒</span><span class="t"><b>小学1〜3年</b><span>量の目安 0.9人分</span></span><span class="qty"><button type="button" data-k="k1" data-d="-1">−</button><output id="k1">1</output><button type="button" data-k="k1" data-d="1">＋</button></span></div>
+<div class="item"><span class="e">📚</span><span class="t"><b>小学4〜6年</b><span>量の目安 1.0人分</span></span><span class="qty"><button type="button" data-k="k2" data-d="-1">−</button><output id="k2">1</output><button type="button" data-k="k2" data-d="1">＋</button></span></div>
+<div class="item"><span class="e">🏀</span><span class="t"><b>中学生</b><span>量の目安 1.3人分</span></span><span class="qty"><button type="button" data-k="k3" data-d="-1">−</button><output id="k3">0</output><button type="button" data-k="k3" data-d="1">＋</button></span></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🍙</span>昼ごはんのスタイル</h2>
+<div class="seg" id="style">
+<button type="button" data-v="save">節約<br><small>手作り中心</small></button>
+<button type="button" data-v="mix" class="on">バランス<br><small>手作り＋冷凍・惣菜</small></button>
+<button type="button" data-v="easy">ラク優先<br><small>惣菜・外食多め</small></button>
+</div>
+<details><summary>1食あたりの単価を変える（小学校高学年1人分の目安）</summary>
+<div class="grid2">
+<div><label for="c0">🍳 手作り</label><input type="number" id="c0" value="300" min="0" step="10" inputmode="numeric"></div>
+<div><label for="c1">🧊 作り置き・冷凍食品</label><input type="number" id="c1" value="350" min="0" step="10" inputmode="numeric"></div>
+<div><label for="c2">🏪 惣菜・コンビニ</label><input type="number" id="c2" value="550" min="0" step="10" inputmode="numeric"></div>
+<div><label for="c3">🍜 外食</label><input type="number" id="c3" value="900" min="0" step="10" inputmode="numeric"></div>
+</div>
+<p class="note">単価は当サイトの目安です。お住まいの地域の物価や家庭の食べる量に合わせて変えてください。</p>
+</details>
+</section>
+
+<section class="card">
+<h2><span class="ic">💼</span>おうちの人の働き方と預け先</h2>
+<div class="seg" id="work">
+<button type="button" data-v="both" class="on">共働き<br><small>平日は日中不在</small></button>
+<button type="button" data-v="remote">在宅勤務あり<br><small>昼は家にいる日も</small></button>
+<button type="button" data-v="home">日中も家にいる<br><small>預け先なし</small></button>
+</div>
+<div id="workOpt">
+<label class="chk" style="border:0"><input type="checkbox" id="nenmatsu" checked>会社は年末年始（12/29〜1/3）お休み</label>
+<div id="remoteOpt" style="display:none"><label for="remoteDays">平日のうち在宅勤務の日の割合</label>
+<input type="range" class="range" id="remoteDays" min="0" max="100" step="10" value="40"><p class="note" style="margin:0">在宅の日：<b id="remoteLbl">40%</b>（昼ごはんは家で一緒に）</p></div>
+<label for="care">平日の預け先</label>
+<select id="care">
+<option value="gakudo">学童（在籍中・冬休みはお弁当）</option>
+<option value="minkan">民間学童・冬休みの一時利用</option>
+<option value="sitter">ベビーシッター（時間で依頼）</option>
+<option value="jiji">祖父母・親せき</option>
+<option value="rusu">子どもだけで留守番（高学年以上）</option>
+</select>
+<div class="grid2">
+<div><label for="careCost" id="careCostLbl">追加の費用（1日・子ども1人）</label><input type="number" id="careCost" value="0" min="0" step="100" inputmode="numeric"></div>
+<div><label for="bento">お弁当1食の単価</label><input type="number" id="bento" value="350" min="0" step="10" inputmode="numeric"></div>
+</div>
+<p class="note" id="careNote"></p>
+</div>
+</section>
+
+<section class="card" id="res">
+<h2><span class="ic">🧮</span>冬休みの合計（目安）</h2>
+<div class="result">
+<p class="note" style="margin:0">昼ごはん代＋預け先の費用</p>
+<div class="big minus" id="total">0円</div>
+<p class="note" style="margin:0" id="totalSub"></p>
+</div>
+<div class="hero3" style="margin-top:12px">
+<div class="stat"><b id="sDays">0</b><span>冬休み（日）</span></div>
+<div class="stat"><b id="sLunch">0</b><span>家の昼ごはん（回）</span></div>
+<div class="stat"><b id="sCare">0</b><span>預け先が要る日</span></div>
+</div>
+<div class="kv" id="kv"></div>
+<div class="tipbox" id="kyushoku"></div>
+<div class="btns"><button type="button" class="pri" id="copy">📋 結果をコピー（家族に共有）</button></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🗓️</span>献立カレンダー</h2>
+<p class="note" style="margin:0">日付をタップすると、その日の昼ごはん案が出ます。「別の案」で入れ替えられます。</p>
+<div class="legend"><span><i style="background:rgba(15,157,118,.35)"></i>家族が家にいる日</span><span><i style="background:rgba(255,138,61,.4)"></i>預け先・留守番の日</span><span><i style="background:rgba(154,160,166,.4)"></i>帰省・外出</span></div>
+<div class="cal" id="cal"></div>
+<div class="daybox" id="daybox">日付を選んでください。</div>
+<div class="btns"><button type="button" id="shuffle">🔀 献立を全部入れ替える</button></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">✅</span>冬休みのお昼をラクにするコツ</h2>
+<ol class="tips">
+<li><b>休みに入る前の週末に「作り置き3品＋冷凍2品」</b>を用意しておくと、最初の1週間がかなりラクになります。カレー・ミートソース・そぼろは、ごはん・パン・麺のどれにも使い回せます。</li>
+<li><b>年末年始（12/29〜1/3）</b>は家族がそろう日が多く、おせち・お雑煮・年越しそばの食材が余りがち。カレンダーでは<b>残りものアレンジ</b>の日にしています。</li>
+<li>お弁当は、<b>しっかり加熱してよく冷ましてから</b>ふたをします。暖房のきいた部屋に長く置かないこと、保冷剤を入れることも大切です。</li>
+<li><b>子どもだけの留守番の日は「火を使わないメニュー」</b>に限定しています。電子レンジは、加熱しすぎると容器や食べ物が熱くなりやけどの原因になるので、<b>温める時間をメモに書いて</b>おきましょう。卵は殻ごと・容器ごとレンジに入れると破裂のおそれがあります。</li>
+<li>留守番は、家の鍵のかけ方・来客や電話に出ないルール・困ったときの連絡先を、事前に一緒に確認しておくと安心です。</li>
+</ol>
+</section>
+
+<section class="card">
+<h2><span class="ic">🛒</span>冬休み前にそろえておくと便利なもの</h2>
+<div class="pr">
+<span class="lbl">PR</span>
+<p class="note" style="margin:0 0 6px">冷凍の主食・レンジ調理グッズ・保温のお弁当箱・レトルトをまとめて用意しておくと、平日のお昼がぐっとラクになります。</p>
+<p style="margin:4px 0"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピング</a>（冷凍食品・お弁当箱・レンジ調理器を探す）</p>
+<p style="margin:4px 0"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892740429" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892740429" height="1" width="1" border="0">Amazon.co.jp(アマゾン)</a>（まとめ買い・定期おトク便）</p>
+<!-- AFFILIATE:mealkit -->
+<!-- AFFILIATE:reitou_bento -->
+<!-- AFFILIATE:babysitter -->
+<!-- AFFILIATE:kids_online_gakushu -->
+<p class="note" style="margin:6px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での申し込み・購入により当サイトが報酬を受け取ることがあります。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>年末年始の準備にあわせて使える無料ツール</h2>
+<div class="rec">
+<a href="../nenmatsu-renkyu-2026/">🗓️ 年末年始 何連休？有給シミュレーター</a>
+<a href="../otoshidama-souba-2027/">🧧 お年玉 相場計算機 2027</a>
+<a href="../osechi-yosan-2027/">🍱 おせち 予算と注文締切カレンダー 2027</a>
+<a href="../danbou-denkidai-2026/">🔥 暖房の電気代 くらべる計算機（家にいる時間が増える冬に）</a>
+</div>
+<details><summary>ひとりラボのツール一覧（29本）</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>参考：文部科学省「学校給食費の抜本的な負担軽減」（令和8年4月から公立小学校が対象。国の支援の基準額は完全給食で児童1人あたり月5,200円）。冬休みの日程・昼食の単価・預け先の費用は当サイトの目安で、地域や施設によって大きく違います。実際の金額は学校・学童・各サービスでご確認ください。</p>
+<p>入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+'use strict';
+var $=function(i){return document.getElementById(i);};
+function yen(n){return Math.round(n).toLocaleString('ja-JP')+'円';}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+var KF=[0.7,0.9,1.0,1.3];
+var kids=[0,1,1,0];
+var style='mix',work='both',seed=0;
+var MIX={save:[0.7,0.2,0.1,0],mix:[0.45,0.3,0.2,0.05],easy:[0.2,0.3,0.35,0.15]};
+var TN=['手作り','作り置き・冷凍','惣菜・コンビニ','外食'];
+var TE=['🍳','🧊','🏪','🍜'];
+/* 献立： [名前, ひとこと, 火を使わずに食べられるか(1=留守番OK)] */
+var M={
+0:[['焼きうどん','冷蔵庫の野菜を全部入れて10分',0],['オムライス','ケチャップで名前を書くと喜ぶ',0],['具だくさん味噌汁＋おにぎり','冷える日に。余った野菜で',0],['ホットサンド','ハム・チーズ・卵で手早く',0],['親子丼','鶏むね肉で安く',0],['ナポリタン','ウインナーとピーマンで',0],['チャーハン','冷やごはんの消費に',0],['ちゃんぽん風ラーメン','袋麺に野菜をたっぷり',0],['手巻きおにぎりバイキング','具を並べて自分で作る（休日向き）',1],['お好み焼き','キャベツ半玉が消える',0],['肉うどん','甘辛の牛肉で',0],['ピザトースト','食パンで。トースターで5分',0]],
+1:[['作り置きカレー','前の晩に多めに作ってレンジで温める',1],['ミートソーススパゲッティ','ソースを冷凍しておけば麺をゆでるだけ（留守番の日は冷凍パスタで）',1],['冷凍チャーハン＋スープ','カップスープはお湯のポットで',1],['そぼろ丼','そぼろを冷凍しておくと便利',1],['冷凍うどん（レンジ）','めんつゆ・ねぎ・天かす',1],['冷凍の焼きおにぎり＋豚汁','豚汁は作り置きをレンジで',1],['冷凍ピザ','トースターかレンジで',1],['作り置きの牛丼','具を小分けで冷凍',1],['冷凍ギョーザ＋ごはん','フライパン不要のレンジ用で',1],['ハヤシライス','作り置きをレンジで',1]],
+2:[['お弁当（スーパー）','夕方の値引きを翌日のお昼に',1],['パン屋のパン＋牛乳','好きなパンを1つずつ',1],['惣菜のからあげ＋おにぎり','トースターで温め直すとカリッと',1],['コンビニのパスタ','サラダを1品足して',1],['回転寿司のテイクアウト','年末は混むので予約がおすすめ',1],['惣菜のコロッケ＋ロールパン','コロッケパンにして',1]],
+3:[['ファミレス','平日のランチセットはお得',0],['うどん・そば屋','安くてすぐ出てくる',0],['ハンバーガー','たまのごほうびに',0],['フードコート','買い物ついでに',0]],
+b:[['おにぎり＋からあげ＋卵焼き','定番。からあげは冷凍のでOK',1],['のり弁','のり・おかか・ちくわ天',1],['そぼろ弁当','2色そぼろで彩りよく',1],['サンドイッチ','ハム・卵・ツナ（保冷剤を忘れずに）',1],['ハンバーグ弁当','冷凍ハンバーグ＋ブロッコリー',1],['焼きそば弁当','よく冷ましてから詰める',1]],
+n:[['年越しそばの準備日：軽めのおにぎり','夜にそばを食べるので軽めに',0],['お雑煮','元日はおせちとお雑煮で',0],['おせちの残りアレンジ','かまぼこ・伊達巻をパンにはさむ',0],['お餅ピザ','余ったお餅＋チーズ＋ケチャップ',0],['七草がゆ','1/7は胃を休めるおかゆで',0]]
+};
+function ymd(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
+function parse(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+var HOL={'2027-01-01':'元日','2027-01-11':'成人の日','2026-12-23':'','2027-02-11':'建国記念の日'};
+var CARE={
+gakudo:{cost:0,per:'child',bento:1,lbl:'追加の費用（1日・子ども1人）',note:'在籍中の学童は、冬休みも月額の範囲で使えることが多い一方、お弁当の持参が必要なところがほとんどです。延長料金や冬休みだけのおやつ代がある場合は入れてください。'},
+minkan:{cost:5000,per:'child',bento:1,lbl:'利用料（1日・子ども1人）',note:'民間学童の冬休みの一時利用は、1日数千円〜1万円程度のところが多いようです（施設により大きく違う当サイトの目安）。昼食つきの施設なら、お弁当の単価を0円にしてください。'},
+sitter:{cost:20000,per:'family',bento:0,lbl:'シッター代（1日・家族あたり）',note:'時給2,000〜3,000円台×8〜9時間の目安です（交通費・手数料は別のことも）。自治体のベビーシッター利用支援の対象になる場合があります。お昼は作り置きを温めてもらう想定です。'},
+jiji:{cost:500,per:'child',bento:0,lbl:'お礼・食費（1日・子ども1人）',note:'祖父母にお願いする日の、食費やお礼の目安を入れてください。お昼は作り置きを持たせる想定です。'},
+rusu:{cost:0,per:'child',bento:0,lbl:'追加の費用（1日・子ども1人）',note:'留守番の日の昼ごはんは「火を使わずに温めるだけ」のメニューに限定しています。低学年だけでの長時間の留守番は避け、家庭のルールと連絡手段を決めておきましょう。'}
+};
+var cache={};
+function kidsF(){var f=0;for(var i=0;i<4;i++)f+=kids[i]*KF[i];return f;}
+function kidsN(){return kids[0]+kids[1]+kids[2]+kids[3];}
+function rnd(n){seed=(seed*9301+49297)%233280;return Math.floor(seed/233280*n);}
+function build(){
+var s=parse($('ds').value||'2026-12-25'),e=parse($('de').value||'2027-01-07');
+if(e<s){var t=s;s=e;e=t;}
+var days=[],d=new Date(s);
+while(d<=e&&days.length<45){days.push(new Date(d));d.setDate(d.getDate()+1);}
+var nen=$('nenmatsu').checked,awayN=Math.max(0,Math.min(days.length,+$('away').value||0));
+var care=$('care').value,rem=(+$('remoteDays').value||0)/100;
+/* 帰省は12/30から順に割り当てる */
+var awaySet={},cnt=0,start=-1;
+for(var i=0;i<days.length;i++){if(ymd(days[i])>='2026-12-30'){start=i;break;}}
+if(start<0)start=0;
+for(i=start;i<days.length&&cnt<awayN;i++){awaySet[i]=1;cnt++;}
+for(i=start-1;i>=0&&cnt<awayN;i--){awaySet[i]=1;cnt++;}
+var out=[],wd=0,remAcc=0,mix=MIX[style],acc=[0,0,0,0];
+seed=37+(cache.shuffle|0);
+for(i=0;i<days.length;i++){
+var x=days[i],k=ymd(x),w=x.getDay(),hol=(k in HOL)&&HOL[k]!=='';
+var off=(w===0||w===6||hol);var nenOff=nen&&k>='2026-12-29'&&k<='2027-01-03';
+var o={date:x,key:k,w:w,kind:'fam',type:0};
+if(awaySet[i]){o.kind='away';}
+else if(work!=='home'&&!off&&!nenOff){
+ remAcc+=rem; if(work==='remote'&&remAcc>=1){remAcc-=1;o.kind='fam';}else{o.kind='care';}
+}
+if(o.kind==='fam'){
+ if(k>='2026-12-31'&&k<='2027-01-03'||k==='2027-01-07'){o.type='n';}
+ else{var best=0,bv=-9;for(var j=0;j<4;j++){var v=mix[j]*(wd+1)-acc[j];if(v>bv){bv=v;best=j;}}acc[best]++;wd++;o.type=best;}
+}else if(o.kind==='care'){
+ o.type=CARE[care].bento?'b':1;
+}
+out.push(o);
+}
+/* 献立を割り当て */
+var used={};
+out.forEach(function(o){
+ if(o.kind==='away')return;
+ var pool=M[o.type];
+ if(o.type==='n'){var map={'2026-12-31':0,'2027-01-01':1,'2027-01-02':2,'2027-01-03':3,'2027-01-07':4};o.menu=pool[map[o.key]];return;}
+ if(o.kind==='care'&&care==='rusu'){pool=pool.filter(function(m){return m[2]===1;});}
+ var tries=0,idx;
+ do{idx=rnd(pool.length);tries++;}while(used[o.type+':'+pool[idx][0]]&&tries<12);
+ used[o.type+':'+pool[idx][0]]=1;
+ if(Object.keys(used).length>30)used={};
+ o.menu=pool[idx];o.pool=pool;
+});
+return out;
+}
+var plan=[];
+function calc(){
+plan=build();
+var f=kidsF(),n=kidsN(),c=[+$('c0').value||0,+$('c1').value||0,+$('c2').value||0,+$('c3').value||0];
+var care=$('care').value,cc=+$('careCost').value||0,bento=+$('bento').value||0;
+var lunch=0,careSum=0,lunchCnt=0,careDays=0,byType=[0,0,0,0],bentoSum=0,nenSum=0,away=0;
+plan.forEach(function(o){
+ if(o.kind==='away'){away++;return;}
+ lunchCnt++;
+ var u;
+ if(o.type==='b'){u=bento;bentoSum+=u*f;}
+ else if(o.type==='n'){u=c[0];nenSum+=u*f;}
+ else{u=c[o.type];byType[o.type]+=u*f;}
+ lunch+=u*f;
+ if(o.kind==='care'){careDays++;careSum+=CARE[care].per==='family'?(n?cc:0):cc*n;}
+});
+var tot=lunch+careSum;
+$('total').textContent=n?yen(tot):'子どもの人数を入れてください';
+$('totalSub').textContent=n?('子ども'+n+'人・1日あたり 約'+yen(tot/Math.max(1,plan.length))):'';
+$('sDays').textContent=plan.length;$('sLunch').textContent=lunchCnt;$('sCare').textContent=careDays;
+var rows=[];
+for(var j=0;j<4;j++)if(byType[j])rows.push([TE[j]+' '+TN[j],byType[j]]);
+if(nenSum)rows.push(['🎍 年末年始（残りものアレンジ）',nenSum]);
+if(bentoSum)rows.push(['🍱 お弁当（預け先の日）',bentoSum]);
+rows.push(['<b>昼ごはん代の合計</b>',lunch]);
+if(work!=='home')rows.push(['🏫 預け先の費用（'+careDays+'日）',careSum]);
+$('kv').innerHTML=rows.map(function(r){return '<div><span>'+r[0]+'</span><b>'+yen(r[1])+'</b></div>';}).join('');
+var per=lunchCnt&&n?lunch/lunchCnt/n:0;
+$('kyushoku').innerHTML='🍽️ <b>給食とくらべると</b>：公立小学校の給食は2026年4月から国の負担軽減の対象になり、保護者の負担は原則なくなりました（国の基準額は1人月5,200円。超える分を集める自治体もあります）。冬休みは昼ごはん代がまるごと家計の負担になり、今回の試算では<b>子ども1人1食 約'+yen(per)+'</b>、冬休み全体で<b>'+yen(lunch)+'</b>です。'+(away?'（帰省などの'+away+'日は含めていません）':'');
+cal();
+}
+var WD=['日','月','火','水','木','金','土'];
+var selKey=null;
+function icon(o){if(o.kind==='away')return '🚗';if(o.type==='n')return '🎍';if(o.type==='b')return '🍱';return TE[o.type];}
+function cal(){
+if(!plan.length){$('cal').innerHTML='';return;}
+var h=WD.map(function(x){return '<div class="h">'+x+'</div>';}).join('');
+var first=plan[0].w;for(var i=0;i<first;i++)h+='<div class="d x"></div>';
+plan.forEach(function(o,i){
+ h+='<div class="d '+o.kind+(o.key===selKey?' sel':'')+'" data-i="'+i+'" role="button" tabindex="0" aria-label="'+(o.date.getMonth()+1)+'月'+o.date.getDate()+'日"><b>'+(o.date.getMonth()+1)+'/'+o.date.getDate()+'</b><span class="m">'+icon(o)+'</span></div>';
+});
+$('cal').innerHTML=h;
+if(selKey){var f=plan.filter(function(o){return o.key===selKey;})[0];if(f)show(plan.indexOf(f));}
+}
+function show(i){
+var o=plan[i];if(!o)return;selKey=o.key;
+var t=(o.date.getMonth()+1)+'月'+o.date.getDate()+'日（'+WD[o.w]+'）';
+var who=o.kind==='away'?'帰省・外出':o.kind==='care'?({gakudo:'学童',minkan:'民間学童',sitter:'シッター',jiji:'祖父母',rusu:'留守番'})[$('care').value]+'の日':'家族が家にいる日';
+var body;
+if(o.kind==='away')body='家での昼ごはんはありません。移動中の飲み物と軽食を忘れずに。';
+else body='<b style="font-size:16px">'+icon(o)+' '+esc(o.menu[0])+'</b><br><span class="note">'+esc(o.menu[1])+(o.kind==='care'&&$('care').value==='rusu'?'／火を使わずに温めるだけ':'')+'</span>';
+$('daybox').innerHTML='<div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span><b>'+t+'</b> <span class="note">'+who+'</span></span>'+(o.pool?'<button type="button" id="alt" style="min-height:36px;padding:6px 10px">🔄 別の案</button>':'')+'</div><div style="margin-top:6px">'+body+'</div>';
+var a=$('alt');if(a)a.onclick=function(){var p=o.pool,cur=o.menu,nx;var g=0;do{nx=p[Math.floor(Math.random()*p.length)];g++;}while(nx===cur&&g<10);o.menu=nx;show(i);};
+var ds=document.querySelectorAll('.cal .d');for(var k=0;k<ds.length;k++)ds[k].classList.toggle('sel',ds[k].getAttribute('data-i')==String(i));
+}
+$('cal').addEventListener('click',function(ev){var t=ev.target.closest('.d');if(t&&t.hasAttribute('data-i'))show(+t.getAttribute('data-i'));});
+$('cal').addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){var t=ev.target.closest('.d');if(t&&t.hasAttribute('data-i')){ev.preventDefault();show(+t.getAttribute('data-i'));}}});
+function seg(id,cb){var el=$(id);el.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;[].forEach.call(el.querySelectorAll('button'),function(x){x.classList.toggle('on',x===b);});cb(b);});}
+seg('preset',function(b){$('ds').value=b.getAttribute('data-s');$('de').value=b.getAttribute('data-e');calc();});
+seg('style',function(b){style=b.getAttribute('data-v');calc();});
+seg('work',function(b){work=b.getAttribute('data-v');$('workOpt').style.display=work==='home'?'none':'';$('remoteOpt').style.display=work==='remote'?'':'none';calc();});
+function careSet(){var c=CARE[$('care').value];$('careCost').value=c.cost;$('careCostLbl').textContent=c.lbl;$('careNote').textContent=c.note;$('bento').parentNode.style.display=c.bento?'':'none';}
+$('care').addEventListener('change',function(){careSet();calc();});
+[].forEach.call(document.querySelectorAll('.qty button'),function(b){b.addEventListener('click',function(){var k=b.getAttribute('data-k'),i=+k.slice(1);kids[i]=Math.max(0,Math.min(6,kids[i]+(+b.getAttribute('data-d'))));$(k).textContent=kids[i];calc();});});
+['ds','de','away','c0','c1','c2','c3','careCost','bento','nenmatsu'].forEach(function(id){$(id).addEventListener('input',calc);$(id).addEventListener('change',calc);});
+$('remoteDays').addEventListener('input',function(){$('remoteLbl').textContent=this.value+'%';calc();});
+$('shuffle').addEventListener('click',function(){cache.shuffle=(cache.shuffle|0)+7;calc();toast('献立を入れ替えました');});
+function toast(m){var t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('on');},1800);}
+$('copy').addEventListener('click',function(){
+var lines=['【冬休みの昼ごはん代と預け先】',$('ds').value+'〜'+$('de').value+'（'+plan.length+'日）','合計の目安：'+$('total').textContent,'家の昼ごはん：'+$('sLunch').textContent+'回／預け先が要る日：'+$('sCare').textContent+'日','','献立：'];
+plan.forEach(function(o){if(o.kind!=='away')lines.push((o.date.getMonth()+1)+'/'+o.date.getDate()+' '+o.menu[0]);});
+lines.push('','https://yope1016.github.io/apps/fuyuyasumi-hirugohan-2026/');
+var txt=lines.join('\n');
+function done(){toast('コピーしました');}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fb);}else fb();
+function fb(){var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);}
+});
+var APPS=[['warikan-keisha','傾斜割り勘計算（幹事用）'],['nenga-hitokoto-2027','年賀状ひとことジェネレーター 2027'],['furusato-jogen-2026','ふるさと納税 上限額シミュレーター 2026'],['nencho-navi-2026','年末調整 書き方ナビ 2026'],['kakutei-shindan-2026','確定申告が必要か1分診断 2026'],['oosouji-buntan-2026','大掃除の分担ジェネレーター 2026'],['otoshidama-souba-2027','お年玉 相場計算機 2027'],['hikkoshi-checklist','引っ越し手続きチェックリスト'],['mochu-hagaki-calendar-2026','喪中はがき いつまでに出す？逆算カレンダー'],['hikkoshi-shoki-hiyou','引っ越しの初期費用 計算機'],['net-kaisen-shindan','ネット回線 選び方診断'],['bonenkai-kanji-2026','忘年会 幹事の段取り表 2026'],['kanchu-nengajimai-2027','寒中見舞い・年賀状じまい 文例メーカー'],['nenmatsu-renkyu-2026','年末年始 何連休？有給シミュレーター'],['iryohi-kojo-2026','医療費控除 いくら戻る？計算機'],['jutaku-loan-kojo-2026','住宅ローン控除 いくら戻る？計算機'],['fuyou-kabe-2026','扶養の壁チェッカー 2026'],['bonus-tedori-2026','冬のボーナス 手取り計算機 2026'],['gensen-choshu-checker-2026','源泉徴収票の見方とチェッカー'],['xmas-yosan-2026','クリスマス予算プランナー 2026'],['nengajo-itsumade-2027','年賀状 いつまでに出す？投函日チェッカー'],['danbou-denkidai-2026','暖房の電気代 くらべる計算機'],['kisei-koutsuhi-2026','帰省 車と新幹線どっちが安い？'],['osechi-yosan-2027','おせち 予算と注文締切カレンダー 2027'],['nenmatsu-jumbo-kitaichi-2026','年末ジャンボ 期待値シミュレーター 2026'],['oseibo-navi-2026','お歳暮 いつまで？相場とのし 早見ナビ'],['fukubukuro-2027','福袋 2027 予約・抽選カレンダー'],['studless-koukan-2026','スタッドレス 交換の時期と費用 計算機'],['fuyuyasumi-hirugohan-2026','冬休みの昼ごはん代と預け先 計算（このページ）']];
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+careSet();calc();
+})();
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

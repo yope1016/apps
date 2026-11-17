@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>減価償却 計算機｜パソコン・車は今年いくら経費？40万円未満の特例・中古車にも対応｜ひとりラボ</title>
+<meta name="description" content="パソコンや車を買ったら、今年いくら経費にできる？取得価額と使い始めた月を入れるだけで、消耗品・一括償却・少額減価償却資産の特例（2026年4月以後の取得は40万円未満）・定額法を比べて、毎年の経費と節税の目安を表示。中古資産の耐用年数（簡便法）にも対応。個人事業主・副業・フリーランス向けの無料ツール。">
+<link rel="canonical" href="https://yope1016.github.io/apps/genka-shokyaku-keisan/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="減価償却 計算機｜パソコン・車は今年いくら経費にできる？">
+<meta property="og:description" content="10万・20万・40万円の境目と定額法を自動で比較。中古車の耐用年数、毎年の経費、節税の目安まで1画面で。">
+<meta property="og:url" content="https://yope1016.github.io/apps/genka-shokyaku-keisan/">
+<meta property="og:site_name" content="ひとりラボ｜無料Webツール集">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "減価償却 計算機", "url": "https://yope1016.github.io/apps/genka-shokyaku-keisan/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "ja", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "description": "パソコンや車の減価償却を、消耗品・一括償却・少額減価償却資産の特例・定額法で比べて、毎年の経費と節税の目安を表示する無料ツール。中古資産の耐用年数（簡便法）にも対応。"}</script>
+<style>
+:root{--bg:#f6f5ff;--bg2:#e2e0ff;--card:#ffffff;--ink:#1d1a33;--sub:#625d7e;--line:#e0ddf5;--acc:#5b4bdb;--acc2:#0ea5b7;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#eeecff;--shadow:0 10px 30px rgba(91,75,219,.14)}
+@media (prefers-color-scheme:dark){:root{--bg:#100f1c;--bg2:#1b1836;--card:#18162b;--ink:#efeefa;--sub:#a9a4c6;--line:#2c2950;--acc:#a99bff;--acc2:#4fd1e0;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#24203f;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+header .sp{display:inline-block;animation:tw 2.4s ease-in-out infinite}@keyframes tw{50%{transform:scale(1.25) rotate(12deg)}}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px;flex:0 0 auto}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:clamp(22px,6.4vw,30px);line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:8px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 110px;font-weight:700;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid2>div{min-width:0}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.result p{font-size:14px;text-align:left;margin:8px 0 0}
+.big{font-size:clamp(32px,9vw,42px);font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--acc);animation:pop .5s ease both}@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+.bar{height:14px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0;transition:width .6s ease}
+.note{font-size:12px;color:var(--sub)}
+.range{width:100%;accent-color:var(--acc)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 90px;border:1px solid var(--line);background:var(--card);flex-direction:column;justify-content:center;text-align:center;line-height:1.35;gap:0;padding:8px 6px}
+.seg button small{font-size:11px;opacity:.85}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.kv{margin-top:10px;font-size:14px}.kv div{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px dashed var(--line)}.kv b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.kv3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.kv3 div{background:var(--chip);border-radius:14px;padding:10px 6px;text-align:center;min-width:0}.kv3 b{display:block;font-size:clamp(15px,4.8vw,21px);color:var(--acc);font-variant-numeric:tabular-nums}.kv3 span{font-size:11px;color:var(--sub)}
+.warnbox{margin-top:10px;border-radius:14px;padding:12px;font-size:13px;background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.35)}
+.tipbox{margin-top:10px;background:var(--chip);border-radius:14px;padding:12px;font-size:14px}
+.chart{display:flex;align-items:flex-end;gap:3px;height:150px;margin-top:12px;padding:0 2px;border-bottom:1px solid var(--line)}
+.chart .c{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;height:100%;position:relative}
+.chart .c i{display:block;background:linear-gradient(180deg,var(--acc2),var(--acc));border-radius:6px 6px 0 0;transition:height .6s ease}
+.chart .c em{display:block;background:var(--line);border-radius:6px 6px 0 0}
+.chart .c.k i{background:linear-gradient(180deg,#ffd166,var(--acc2))}
+.axis{display:flex;gap:3px;font-size:10px;color:var(--sub);margin-top:2px}.axis span{flex:1 1 0;text-align:center;min-width:0;overflow:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--sub);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px;color:var(--ink);margin:0}
+.chk input{width:22px;height:22px;accent-color:var(--acc);flex:0 0 auto}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;table-layout:fixed}.tbl th,.tbl td{padding:8px 4px;border-top:1px dashed var(--line);text-align:left;vertical-align:top;word-break:break-word}.tbl th:first-child{width:26%}.tbl thead th{color:var(--sub);font-size:12px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#fff;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.grp{font-size:12px;font-weight:700;color:var(--sub);margin:10px 0 2px}
+.afl{padding:6px 0;font-size:14px}.afl a{color:var(--acc);font-weight:700}.afl img{display:inline}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.pill{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;background:var(--ok);margin-right:4px;vertical-align:1px}
+.pill.w{background:var(--warn)}.pill.g{background:var(--off)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<style>
+.it{padding:12px 0;border-top:1px dashed var(--line)}
+.it .hd{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:700;font-size:15px}
+.it .hd .v{color:var(--acc);font-variant-numeric:tabular-nums;white-space:nowrap}
+.it .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}.it .row>div{min-width:0}
+.it .why{font-size:12px;color:var(--sub);margin-top:4px}
+.it.off{opacity:.55}
+.memo{width:100%;min-height:150px;font:inherit;font-size:13px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);resize:vertical}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--card);padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:.3s;pointer-events:none;z-index:9}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.donut{width:120px;height:120px;border-radius:50%;margin:0 auto;display:grid;place-items:center;background:conic-gradient(var(--acc) 0deg,var(--line) 0deg);transition:background .5s}
+.donut span{width:84px;height:84px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-weight:800;font-size:20px;color:var(--acc);font-variant-numeric:tabular-nums}
+.hero3{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;text-align:left}
+@media (max-width:420px){.hero3{grid-template-columns:1fr;text-align:center}}
+</style>
+<style>
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:6px}
+.chips button{flex-direction:column;justify-content:center;text-align:center;line-height:1.3;gap:2px;border:1px solid var(--line);background:var(--card);padding:8px 4px}
+.chips button .e{font-size:22px}
+.chips button small{font-size:11px;color:var(--sub)}
+.chips button.on{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:700}
+.chips button.on small{color:#fff;opacity:.9}
+.opt{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:14px;margin-top:8px;cursor:pointer;background:var(--card);text-align:left;width:100%;font:inherit;color:var(--ink);min-height:44px}
+.opt .r{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);flex:0 0 auto}
+.opt.on{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc) inset}
+.opt.on .r{border:6px solid var(--acc)}
+.opt.ng{opacity:.5;cursor:not-allowed}
+.opt .t{font-weight:700;font-size:15px}
+.opt .s{font-size:12px;color:var(--sub);display:block;font-weight:400}
+.opt .y{font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.opt .y small{display:block;font-size:11px;color:var(--sub);font-weight:600}
+.sw{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--ink);margin:12px 0 0}
+.sw input{width:22px;height:22px;accent-color:var(--acc)}
+.memo{width:100%;min-height:160px;font:inherit;font-size:13px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);resize:vertical}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:10px;font-size:11px;text-align:center}
+.ladder div{border-radius:10px;padding:8px 2px;background:var(--chip);color:var(--sub);line-height:1.35}
+.ladder div b{display:block;font-size:13px;color:var(--ink)}
+.ladder div.on{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff}
+.ladder div.on b{color:#fff}
+.chart .c b{position:absolute;top:-16px;left:0;right:0;text-align:center;font-size:9px;color:var(--sub);font-weight:600;white-space:nowrap}
+</style>
+<div class="wrap">
+<header>
+<span class="badge">個人事業主・副業・フリーランス向け</span>
+<h1>減価償却<span class="em">計算機</span><br>パソコン・車は今年いくら経費？ <span class="sp">💻</span></h1>
+<p class="lead">買ったものの値段と使い始めた月を入れるだけ。<br><b>10万・20万・40万円の境目</b>と定額法を自動で比べて、<b>今年いちばん多く経費にできる方法</b>と毎年の経費を出します。</p>
+</header>
+
+<section class="card">
+<h2><span class="ic">🧰</span>何を買った？</h2>
+<div class="chips" id="kind"></div>
+<div id="customBox" style="display:none"><label for="life">法定耐用年数（年）</label><input type="number" id="life" inputmode="numeric" value="5" min="2" max="20" step="1"><div class="note">国税庁の「耐用年数表」で確認できます（2〜20年に対応）。</div></div>
+<div class="grid2">
+<div><label for="price">買った値段（取得価額・円）</label><input type="number" id="price" inputmode="numeric" value="250000" min="0" step="1000"><div class="note">本体＋送料・設定費など。税込か税抜かは下の注を参照</div></div>
+<div><label for="share">事業で使う割合 <b id="shareV">80%</b></label><input type="range" class="range" id="share" min="10" max="100" step="5" value="80" style="margin-top:14px"><div class="note">私用と兼用なら使用時間や走行距離で</div></div>
+</div>
+<div class="grid2">
+<div><label for="sy">使い始めた年</label><select id="sy"><option value="2025">2025年</option><option value="2026" selected>2026年</option><option value="2027">2027年</option></select></div>
+<div><label for="sm">使い始めた月</label><select id="sm"></select></div>
+</div>
+<p class="note" style="margin:6px 0 0">※減価償却は「買った日」ではなく<b>事業に使い始めた日（事業供用日）</b>から。12月に届いて年内に使い始めれば、今年の経費になります。</p>
+<label class="sw"><input type="checkbox" id="used">中古で買った</label>
+<div id="usedBox" style="display:none">
+<div class="grid2">
+<div><label for="ey">新品から経過した年数</label><input type="number" id="ey" inputmode="numeric" value="4" min="0" step="1"></div>
+<div><label for="em">＋月数</label><input type="number" id="em" inputmode="numeric" value="0" min="0" max="11" step="1"></div>
+</div>
+<div class="tipbox" id="usedWhy"></div>
+</div>
+<label style="margin-top:14px">確定申告の種類</label>
+<div class="seg" id="blue"><button type="button" data-v="1" class="on">青色申告<small>特例が使える</small></button><button type="button" data-v="0">白色申告<small>特例は使えない</small></button></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🪜</span>値段の境目でルールが変わる</h2>
+<div class="ladder" id="ladder">
+<div data-k="sho"><b>10万円未満</b>消耗品<br>全額その年</div>
+<div data-k="ikk"><b>20万円未満</b>一括償却<br>3年で1/3ずつ</div>
+<div data-k="tok"><b id="tokLbl">40万円未満</b>少額特例<br>全額その年（青色）</div>
+<div data-k="tei"><b>それ以上</b>減価償却<br>耐用年数で分割</div>
+</div>
+<p class="note" id="ladderNote" style="margin:8px 0 0"></p>
+</section>
+
+<section class="card">
+<h2><span class="ic">⚖️</span><span>使える方法をくらべる（<span id="yr1">2026</span>年分の経費）</span></h2>
+<p class="note" style="margin:0">タップで方法を選ぶと、下の結果とグラフが切り替わります。</p>
+<div id="opts"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">✨</span>結果</h2>
+<div class="result">
+<div class="note" id="resLbl">今年の経費（事業で使う分）</div>
+<div class="big" id="first">0円</div>
+<div class="note" id="firstSub"></div>
+<label style="text-align:left">あなたの税金のかかり方（所得税＋住民税＋国保の合計の目安）</label>
+<div class="seg" id="rate"><button type="button" data-v="15">15%<small>所得〜200万</small></button><button type="button" data-v="25" class="on">25%<small>〜400万</small></button><button type="button" data-v="35">35%<small>〜700万</small></button><button type="button" data-v="45">45%<small>それ以上</small></button></div>
+<div class="kv3">
+<div><b id="save1">0円</b><span>今年の節税の目安</span></div>
+<div><b id="saveAll">0円</b><span>全期間の合計</span></div>
+<div><b id="years">0年</b><span>経費にする期間</span></div>
+</div>
+<div class="chart" id="chart"></div>
+<div class="axis" id="axis"></div>
+<div class="legend"><span><i style="background:linear-gradient(180deg,var(--acc2),var(--acc))"></i>その年の経費（事業分）</span><span><i style="background:var(--line)"></i>私用分（経費にならない）</span></div>
+<div class="kv" id="tbl"></div>
+</div>
+<div class="warnbox" id="warn" style="display:none"></div>
+<div class="tipbox" id="tip"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">📝</span><span>固定資産台帳メモ（コピーして保存）</span></h2>
+<p class="note" style="margin:0 0 8px">減価償却する資産は、確定申告書の「減価償却費の計算」欄に書く内容と同じ情報を残しておくと、翌年以降の計算がラクです。</p>
+<textarea class="memo" id="memo" readonly></textarea>
+<div class="btns"><button type="button" id="copy">📋 メモをコピー</button></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🛠️</span>減価償却は会計ソフトに任せるとラク</h2>
+<p style="font-size:14px;margin:0">減価償却は、買った年だけでなく<b>何年も続けて計算・記帳</b>が必要です。クラウド会計ソフトなら、固定資産台帳に登録するだけで毎年の償却費と仕訳を自動で作り、確定申告書の「減価償却費の計算」欄にも反映してくれるものが多く、計算のし忘れを防げます。<b id="softMsg"></b></p>
+<div class="pr">
+<span class="lbl">PR</span>
+<p class="grp">クラウド会計ソフト（固定資産台帳・青色申告・e-Tax対応）</p>
+<!-- AFFILIATE:kaikei_freee -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+33XJA2+3SPO+9FDXOI" rel="nofollow">クラウド記帳代行で会計を自動化【freee会計】</a>
+<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGAV2+33XJA2+3SPO+9FDXOI" alt=""></div>
+<!-- AFFILIATE:kaikei_mf -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3SXQOQ+4JGQ+60OXE" rel="nofollow">6つのサービスがセットで使える マネーフォワード クラウド会計</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGAV2+3SXQOQ+4JGQ+60OXE" alt=""></div>
+<!-- AFFILIATE:kaikei_yayoi_aoiro -->
+<p class="grp">仕事用のパソコン・周辺機器を探す</p>
+<!-- AFFILIATE:shopping_amazon -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892740429" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892740429" height="1" width="1" border="0">Amazonで仕事用のパソコン・モニターを見る</a></div>
+<!-- AFFILIATE:pc_shop -->
+<!-- AFFILIATE:chuko_car -->
+<p class="note" style="margin:8px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での申し込み・購入により当サイトが報酬を受け取ることがあります。サービスや商品の選択はご自身の判断で行ってください。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">❓</span>よくある質問</h2>
+<details><summary>10万円・20万円・40万円の境目は税込？税抜？</summary><p style="font-size:14px">消費税の経理方式によります。消費税の免税事業者（売上1,000万円以下で課税事業者を選んでいない人など）は<b>税込の金額</b>で判定します。課税事業者で税抜経理をしている場合は税抜の金額で判定します。インボイス登録をしていない副業・個人事業主の多くは税込で判定することになります。</p></details>
+<details><summary>少額減価償却資産の特例（40万円未満）は誰が使える？</summary><p style="font-size:14px">青色申告をしている中小企業者等（個人事業主は常時使用する従業員が400人以下）が対象で、白色申告では使えません。令和8年度の税制改正で、<b>2026年（令和8年）4月1日以後に取得した資産は40万円未満</b>に広がりました（それより前の取得は30万円未満）。1年間で使える合計額は300万円までで、適用期限は2029年（令和11年）3月31日までです。</p></details>
+<details><summary>一括償却と少額特例、どちらも使える値段ならどっちが得？</summary><p style="font-size:14px">10万〜20万円未満で青色申告なら両方選べます。今年の経費を最大にしたいなら少額特例（全額）、毎年の所得をならしたいなら一括償却（3年で1/3ずつ）。また、少額特例と通常の減価償却で処理した資産は<b>償却資産税（固定資産税）の申告対象</b>になりますが、一括償却資産は対象外です（市区町村ごとの課税標準の合計が150万円未満なら課税されません）。</p></details>
+<details><summary>中古車が「節税に強い」と言われるのはなぜ？</summary><p style="font-size:14px">中古資産は、残りの耐用年数を「簡便法」で短く見積もれるためです。普通自動車（法定6年）の場合、4年落ちなら（6年−4年）＋4年×20%＝2.8年→端数を切り捨てて<b>2年</b>になり、2年で償却が終わります。新車より1年あたりの経費が大きくなります。ただし、車は私用分を除く必要があり、高すぎる事業割合は説明を求められやすい点に注意してください。</p></details>
+<details><summary>定率法は使えない？</summary><p style="font-size:14px">個人事業主は、届出をしなければ<b>定額法</b>で計算します（建物などは定額法のみ）。定率法を使いたい場合は、税務署に「減価償却資産の償却方法の届出書」を出す必要があります。このツールは定額法で計算しています。</p></details>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>あわせて使いたい</h2>
+<div class="rec">
+<a href="../kakutei-shindan-2026/">📝 確定申告が必要か1分診断 2026</a>
+<a href="../bonus-tedori-2026/">💴 冬のボーナス 手取り計算機 2026</a>
+<a href="../studless-koukan-2026/">🚗 スタッドレス 交換の時期と費用 計算機</a>
+<a href="../net-kaisen-shindan/">📶 ネット回線 選び方診断</a>
+</div>
+<details><summary>ひとりラボのツール一覧</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>参考：国税庁 タックスアンサー「No.2100 減価償却のあらまし」「No.2105 中古資産の耐用年数」「No.2106 定額法と定率法による減価償却」「No.2108 少額の減価償却資産になるかどうかの判定の例示」、減価償却資産の耐用年数等に関する省令（別表第一・第三・第八）、令和8年度税制改正（租税特別措置法第28条の2）に関する税理士事務所の解説。</p>
+<p>経費の額と節税額は目安です。償却費は1円未満を切り捨て、最後は備忘価額1円を残して計算しています。節税の目安は「経費×選んだ税率」で概算しており、実際の税額は所得・控除・お住まいの市区町村によって変わります。耐用年数は資産の種類・構造・用途で変わるため、判断に迷う場合は税理士または税務署にご相談ください。</p>
+<p>入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<div class="toast" id="toast">コピーしました</div>
+<script>
+(function(){
+'use strict';
+function $(i){return document.getElementById(i);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+var APPS=[["warikan-keisha", "傾斜割り勘計算（幹事用）"], ["nenga-hitokoto-2027", "年賀状ひとことジェネレーター 2027"], ["furusato-jogen-2026", "ふるさと納税 上限額シミュレーター 2026"], ["nencho-navi-2026", "年末調整 書き方ナビ 2026"], ["kakutei-shindan-2026", "確定申告が必要か1分診断 2026"], ["oosouji-buntan-2026", "大掃除の分担ジェネレーター 2026"], ["otoshidama-souba-2027", "お年玉 相場計算機 2027"], ["hikkoshi-checklist", "引っ越し手続きチェックリスト"], ["mochu-hagaki-calendar-2026", "喪中はがき いつまでに出す？逆算カレンダー"], ["hikkoshi-shoki-hiyou", "引っ越しの初期費用 計算機"], ["net-kaisen-shindan", "ネット回線 選び方診断"], ["bonenkai-kanji-2026", "忘年会 幹事の段取り表 2026"], ["kanchu-nengajimai-2027", "寒中見舞い・年賀状じまい 文例メーカー"], ["nenmatsu-renkyu-2026", "年末年始 何連休？有給シミュレーター"], ["iryohi-kojo-2026", "医療費控除 いくら戻る？計算機"], ["jutaku-loan-kojo-2026", "住宅ローン控除 いくら戻る？計算機"], ["fuyou-kabe-2026", "扶養の壁チェッカー 2026"], ["bonus-tedori-2026", "冬のボーナス 手取り計算機 2026"], ["gensen-choshu-checker-2026", "源泉徴収票の見方とチェッカー"], ["xmas-yosan-2026", "クリスマス予算プランナー 2026"], ["nengajo-itsumade-2027", "年賀状 いつまでに出す？投函日チェッカー"], ["danbou-denkidai-2026", "暖房の電気代 くらべる計算機"], ["kisei-koutsuhi-2026", "帰省 車と新幹線どっちが安い？"], ["osechi-yosan-2027", "おせち 予算と注文締切カレンダー 2027"], ["nenmatsu-jumbo-kitaichi-2026", "年末ジャンボ 期待値シミュレーター 2026"], ["oseibo-navi-2026", "お歳暮 いつまで？相場とのし 早見ナビ"], ["fukubukuro-2027", "福袋 2027 予約・抽選カレンダー"], ["studless-koukan-2026", "スタッドレス 交換の時期と費用 計算機"]];
+function yen(n){return Math.round(n).toLocaleString('ja-JP')+'円';}
+function man(n){return n>=10000?(Math.round(n/1000)/10)+'万':Math.round(n).toLocaleString('ja-JP');}
+var RATE={2:.5,3:.334,4:.25,5:.2,6:.167,7:.143,8:.125,9:.112,10:.1,11:.091,12:.084,13:.077,14:.072,15:.067,16:.063,17:.059,18:.056,19:.053,20:.05};
+var KINDS=[
+ {k:'pc',e:'💻',n:'パソコン',L:4,d:'器具備品（電子計算機）'},
+ {k:'car',e:'🚗',n:'普通自動車',L:6,d:'車両運搬具（普通自動車）'},
+ {k:'kei',e:'🚙',n:'軽自動車',L:4,d:'車両運搬具（軽自動車・小型車）'},
+ {k:'bike',e:'🏍️',n:'バイク',L:3,d:'車両運搬具（二輪自動車）'},
+ {k:'cam',e:'📷',n:'カメラ',L:5,d:'器具備品（写真機）'},
+ {k:'mfp',e:'🖨️',n:'複合機',L:5,d:'器具備品（複写機）'},
+ {k:'desk',e:'🪑',n:'机・いす',L:8,d:'器具備品（金属製以外の事務机・いす）'},
+ {k:'soft',e:'💿',n:'ソフトウェア',L:5,d:'無形固定資産（ソフトウェア）'},
+ {k:'etc',e:'✏️',n:'その他',L:0,d:'耐用年数を入力'}
+];
+var kind='pc',blue=1,rate=25,sel=null;
+$('kind').innerHTML=KINDS.map(function(x){return '<button type="button" data-k="'+x.k+'"'+(x.k===kind?' class="on"':'')+'><span class="e">'+x.e+'</span>'+x.n+'<small>'+(x.L?x.L+'年':'入力')+'</small></button>';}).join('');
+var sm=$('sm');for(var m=1;m<=12;m++){var o=document.createElement('option');o.value=m;o.textContent=m+'月';if(m===12)o.selected=true;sm.appendChild(o);}
+function num(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0;}
+function K(){for(var i=0;i<KINDS.length;i++)if(KINDS[i].k===kind)return KINDS[i];return KINDS[0];}
+function legalLife(){var x=K();if(x.L)return x.L;var l=Math.round(num('life'));return Math.min(Math.max(l||5,2),20);}
+function lifeInfo(){
+ var L=legalLife();
+ if(!$('used').checked)return {n:L,L:L,used:false};
+ var E=Math.round(num('ey'))*12+Math.min(Math.round(num('em')),11),Lm=L*12,n,f;
+ if(E>=Lm){n=Math.floor(Lm*0.2/12);f='法定耐用年数をすべて経過：'+L+'年×20%＝'+(L*0.2).toFixed(1)+'年';}
+ else{var mm=(Lm-E)+E*0.2;n=Math.floor(mm/12);f='（'+L+'年−経過'+(E/12).toFixed(1)+'年）＋経過'+(E/12).toFixed(1)+'年×20%＝'+(mm/12).toFixed(2)+'年';}
+ var n2=Math.max(n,2);
+ return {n:n2,L:L,used:true,f:f+' → 端数切り捨て'+(n<2?'で2年未満のため2年':'で'+n+'年')};
+}
+function plans(){
+ var P=Math.floor(num('price')),y=parseInt($('sy').value,10),m=parseInt($('sm').value,10),sh=parseInt($('share').value,10)/100;
+ var li=lifeInfo(),r=RATE[li.n]||Math.round(1000/li.n)/1000;
+ var late=(y>2026)||(y===2026&&m>=4),lim=late?400000:300000;
+ var out=[];
+ // 定額法
+ var rows=[],book=P,yy=y,first=true,guard=0;
+ while(book>1&&guard<60){var d=first?Math.floor(P*r*(13-m)/12):Math.floor(P*r);if(d>book-1)d=book-1;if(d<=0)break;book-=d;rows.push({y:yy,d:d,e:Math.floor(d*sh)});yy++;first=false;guard++;}
+ out.push({k:'tei',t:'定額法で減価償却',s:'耐用年数'+li.n+'年・償却率'+r.toFixed(3)+'・'+y+'年は'+(13-m)+'か月分',rows:rows,ok:P>0,why:''});
+ // 消耗品
+ out.push({k:'sho',t:'消耗品費として全額',s:'10万円未満なら、使い始めた年に全額',rows:[{y:y,d:P,e:Math.floor(P*sh)}],ok:P>0&&P<100000,why:'10万円以上なので使えません'});
+ // 一括償却
+ var t=Math.floor(P/3);
+ out.push({k:'ikk',t:'一括償却資産（3年で1/3ずつ）',s:'20万円未満。月数に関係なく毎年1/3',rows:[{y:y,d:t,e:Math.floor(t*sh)},{y:y+1,d:t,e:Math.floor(t*sh)},{y:y+2,d:P-2*t,e:Math.floor((P-2*t)*sh)}],ok:P>0&&P<200000,why:'20万円以上なので使えません'});
+ // 少額特例
+ var tw=!blue?'白色申告では使えません':(P>=lim?(lim/10000)+'万円以上なので使えません'+(late?'':'（2026年3月までの取得は30万円未満）'):'');
+ out.push({k:'tok',t:'少額減価償却資産の特例（全額）',s:'青色申告・'+(lim/10000)+'万円未満'+(late?'（2026年4月以後の取得）':'（2026年3月までの取得）')+'・年300万円まで',rows:[{y:y,d:P,e:Math.floor(P*sh)}],ok:P>=100000&&!!blue&&P<lim,why:P>0&&P<100000?'10万円未満は消耗品費で全額になるため不要です':tw});
+ return {P:P,y:y,m:m,sh:sh,li:li,r:r,lim:lim,late:late,list:out};
+}
+function bestKey(pl){var b=null,bv=-1;pl.list.forEach(function(o){if(o.ok&&o.k!=='sho'||o.ok&&o.k==='sho'){var v=o.rows[0].e;if(v>bv){bv=v;b=o.k;}}});return b||'tei';}
+function calc(){
+ var x=K();$('customBox').style.display=x.L?'none':'';$('usedBox').style.display=$('used').checked?'':'none';
+ $('shareV').textContent=$('share').value+'%';
+ var pl=plans(),P=pl.P;
+ $('yr1').textContent=pl.y;$('tokLbl').textContent=(pl.lim/10000)+'万円未満';
+ var best=bestKey(pl);
+ if(!sel||!pl.list.some(function(o){return o.k===sel&&o.ok;}))sel=best;
+ var cat=P<100000?'sho':P<200000?'ikk':P<pl.lim?'tok':'tei';
+ Array.prototype.forEach.call($('ladder').children,function(c){c.className=c.getAttribute('data-k')===cat?'on':'';});
+ $('ladderNote').textContent=yen(P)+'は「'+{sho:'10万円未満',ikk:'10万〜20万円未満',tok:'20万〜'+(pl.lim/10000)+'万円未満',tei:(pl.lim/10000)+'万円以上'}[cat]+'」の区分です。'+(pl.late?'2026年4月以後に使い始めた資産なので、少額特例の上限は40万円未満です。':'2026年3月までに取得した資産なので、少額特例の上限は30万円未満です。');
+ $('opts').innerHTML=pl.list.slice().sort(function(a,b){return (b.ok-a.ok)||(b.rows[0].e-a.rows[0].e);}).map(function(o){
+  return '<button type="button" class="opt'+(o.k===sel?' on':'')+(o.ok?'':' ng')+'" data-k="'+o.k+'"'+(o.ok?'':' disabled')+'><span class="r"></span><span><span class="t">'+(o.k===best&&o.ok?'<span class="pill">今年最大</span>':'')+(o.ok?'':'<span class="pill g">対象外</span>')+esc(o.t)+'</span><span class="s">'+esc(o.ok?o.s:o.why)+'</span></span><span class="y">'+(o.ok?yen(o.rows[0].e):'—')+'<small>'+(o.ok?o.rows.length+'年で経費に':'')+'</small></span></button>';
+ }).join('');
+ var cur=null;pl.list.forEach(function(o){if(o.k===sel)cur=o;});
+ var rows=cur.rows,tot=0;rows.forEach(function(r){tot+=r.e;});
+ $('resLbl').textContent=pl.y+'年分の経費（事業で使う'+Math.round(pl.sh*100)+'%分）';
+ $('first').textContent=yen(rows[0].e);
+ $('firstSub').textContent=cur.t+'｜全期間の経費 合計'+yen(tot);
+ $('save1').textContent=yen(Math.round(rows[0].e*rate/100/100)*100);
+ $('saveAll').textContent=yen(Math.round(tot*rate/100/100)*100);
+ $('years').textContent=rows.length+'年';
+ var mx=0;rows.forEach(function(r){if(r.d>mx)mx=r.d;});
+ var show=rows.slice(0,12);
+ $('chart').innerHTML=show.map(function(r){var h=mx?r.e/mx*100:0,hp=mx?(r.d-r.e)/mx*100:0;return '<div class="c"><b>'+man(r.e)+'</b><em style="height:'+hp+'%"></em><i style="height:'+h+'%"></i></div>';}).join('');
+ $('axis').innerHTML=show.map(function(r){return '<span>'+String(r.y).slice(2)+'年</span>';}).join('');
+ var bk=P;
+ $('tbl').innerHTML='<div><span style="color:var(--sub)">年分</span><span style="color:var(--sub)">償却費 → 経費（事業分）</span></div>'+rows.map(function(r){bk-=r.d;return '<div><span>'+r.y+'年</span><b>'+yen(r.d)+' → '+yen(r.e)+'</b></div>';}).join('')+(cur.k==='tei'?'<div><span>最後に残る帳簿価額</span><b>'+yen(bk)+'（備忘価額）</b></div>':'');
+ var w=[];
+ if(pl.li.used)$('usedWhy').innerHTML='中古の耐用年数（簡便法）：'+esc(pl.li.f)+'<br>→ このツールでは<b>'+pl.li.n+'年</b>で計算します（償却率 '+pl.r.toFixed(3)+'）。';
+ if(sel==='tok')w.push('少額特例は、1年間に使い始めた対象資産の合計が300万円までです。また、確定申告書（決算書の減価償却欄）に特例を使う旨を書く必要があります。');
+ if((sel==='tok'||sel==='tei')&&x.k!=='soft')w.push('少額特例・定額法で処理した資産は、償却資産税（固定資産税）の申告対象です。毎年1月末までに市区町村へ申告します（課税標準の合計が150万円未満なら課税なし）。');
+ if((x.k==='car'||x.k==='kei')&&pl.sh>0.7)w.push('車の事業割合が70%を超えています。私用でも乗る車は、運転日誌など走行距離の記録を残しておくと説明しやすくなります。');
+ if(pl.m===12&&pl.y===2026&&sel==='tei')w.push('12月に使い始めた場合、定額法では今年は1か月分しか経費になりません。対象になるなら少額特例のほうが今年の経費は大きくなります。');
+ $('warn').style.display=w.length?'':'none';$('warn').innerHTML=w.map(esc).join('<br><br>');
+ var tk=null,te=null;pl.list.forEach(function(o){if(o.k==='tok')tk=o;if(o.k==='tei')te=o;});
+ var tip='';
+ if(pl.li.used&&pl.li.n<pl.li.L&&te.rows.length>0){var nw=RATE[pl.li.L]||1/pl.li.L;tip='💡 中古なので耐用年数は'+pl.li.L+'年→'+pl.li.n+'年に短縮。1年分まるまる使った年の経費は、新車なら約'+yen(Math.floor(P*nw)*pl.sh)+'のところ、'+yen(Math.floor(P*pl.r)*pl.sh)+'になります。';}
+ else if(tk.ok&&te.rows.length)tip='💡 同じ'+yen(P)+'でも、定額法なら'+pl.y+'年の経費は'+yen(te.rows[0].e)+'、少額特例なら'+yen(tk.rows[0].e)+'。差は'+yen(tk.rows[0].e-te.rows[0].e)+'です。';
+ else if(!blue&&P>=200000&&P<pl.lim)tip='💡 青色申告なら、この値段は少額特例で今年全額（'+yen(Math.floor(P*pl.sh))+'）を経費にできます。白色のままだと定額法で'+yen(te.rows[0].e)+'です。';
+ else if(P>=pl.lim&&P<pl.lim*1.15)tip='💡 '+(pl.lim/10000)+'万円まであと'+yen(P-pl.lim+1)+'。付属品を別に買う・値引き後の金額など、取得価額の範囲を確認すると区分が変わることがあります（1つの資産として通常使う単位で判定します）。';
+ else tip='💡 減価償却は「使い始めた日」から。年をまたぐ前に使い始めれば、その年の分から経費にできます。';
+ $('tip').textContent=tip;
+ var sv=Math.round(rows[0].e*rate/100/100)*100;
+ $('softMsg').textContent=cur.k==='tei'&&rows.length>1?' この資産は'+rows.length+'年間、毎年の計算と記帳が続きます。':(sv>=10000?' 今年の節税の目安は'+yen(sv)+'。特例の記載や台帳づくりも会計ソフトなら自動です。':'');
+ $('memo').value='【固定資産台帳メモ】\n作成日：'+new Date().toLocaleDateString('ja-JP')+'\n資産：'+x.n+'（'+x.d+'）'+(pl.li.used?'・中古':'')+'\n取得価額：'+yen(P)+'\n事業供用日：'+pl.y+'年'+pl.m+'月\n耐用年数：'+pl.li.n+'年'+(pl.li.used?'（簡便法：'+pl.li.f+'）':'')+'\n処理方法：'+cur.t+(cur.k==='tei'?'（償却率'+pl.r.toFixed(3)+'）':'')+'\n事業専用割合：'+Math.round(pl.sh*100)+'%\n\n'+rows.map(function(r){return '・'+r.y+'年分：償却費 '+r.d.toLocaleString('ja-JP')+'円 → 必要経費 '+r.e.toLocaleString('ja-JP')+'円';}).join('\n')+'\n\n※事業割合の根拠（使用時間・走行距離など）と領収書を保存。';
+}
+$('kind').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;kind=b.getAttribute('data-k');Array.prototype.forEach.call(this.children,function(c){c.className=c===b?'on':'';});var x=K();if(x.k==='car'&&num('price')<500000){$('price').value=1800000;$('used').checked=true;$('share').value=60;}else if(x.k==='kei'&&num('price')<300000){$('price').value=1200000;$('share').value=60;}else if((x.k==='pc'||x.k==='cam'||x.k==='mfp')&&num('price')>=1000000){$('price').value=250000;$('used').checked=false;$('share').value=80;}sel=null;calc();});
+$('opts').addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.disabled)return;sel=b.getAttribute('data-k');calc();});
+$('blue').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;blue=parseInt(b.getAttribute('data-v'),10);Array.prototype.forEach.call(this.children,function(c){c.className=c===b?'on':'';});sel=null;calc();});
+$('rate').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;rate=parseFloat(b.getAttribute('data-v'));Array.prototype.forEach.call(this.children,function(c){c.className=c===b?'on':'';});calc();});
+['price','share','sy','sm','used','ey','em','life'].forEach(function(i){$(i).addEventListener('input',function(){if(i==='price'||i==='sy'||i==='sm'||i==='used'||i==='ey'||i==='em')sel=null;calc();});$(i).addEventListener('change',calc);});
+$('copy').addEventListener('click',function(){var t=$('memo');var done=function(){var o=$('toast');o.className='toast on';setTimeout(function(){o.className='toast';},1600);};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t.value).then(done,function(){t.select();document.execCommand('copy');done();});}else{t.select();document.execCommand('copy');done();}});
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+calc();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

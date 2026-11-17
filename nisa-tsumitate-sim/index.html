@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>新NISA 積立シミュレーター｜毎月いくらで何年後いくら？目標から逆算も｜ひとりラボ</title>
+<meta name="description" content="新NISAの積立をかんたん試算。毎月の積立額・期間・利回りから将来の残高と非課税で得する額を計算。「◯年後に◯万円」から毎月の必要額を逆算、年360万・生涯1,800万の枠チェック、取り崩し額の目安も。無料ツール。">
+<link rel="canonical" href="https://yope1016.github.io/apps/nisa-tsumitate-sim/">
+<style>
+:root{--bg:#f4fbf8;--bg2:#d9f3e8;--card:#ffffff;--ink:#1d1a33;--sub:#625d7e;--line:#d6eae1;--acc:#0f8a6a;--acc2:#2f7cf6;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#e6f6ef;--shadow:0 10px 30px rgba(15,138,106,.13)}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1714;--bg2:#12271f;--card:#14211c;--ink:#efeefa;--sub:#a9a4c6;--line:#24392f;--acc:#4fd1a5;--acc2:#7fb0ff;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#1b3128;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+header .sp{display:inline-block;animation:tw 2.4s ease-in-out infinite}@keyframes tw{50%{transform:scale(1.25) rotate(12deg)}}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px;flex:0 0 auto}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:clamp(22px,6.4vw,30px);line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:8px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 110px;font-weight:700;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid2>div{min-width:0}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.result p{font-size:14px;text-align:left;margin:8px 0 0}
+.big{font-size:clamp(32px,9vw,42px);font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--acc);animation:pop .5s ease both}@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+.bar{height:14px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0;transition:width .6s ease}
+.note{font-size:12px;color:var(--sub)}
+.range{width:100%;accent-color:var(--acc)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 90px;border:1px solid var(--line);background:var(--card);flex-direction:column;justify-content:center;text-align:center;line-height:1.35;gap:0;padding:8px 6px}
+.seg button small{font-size:11px;opacity:.85}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.kv{margin-top:10px;font-size:14px}.kv div{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px dashed var(--line)}.kv b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.kv3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.kv3 div{background:var(--chip);border-radius:14px;padding:10px 6px;text-align:center;min-width:0}.kv3 b{display:block;font-size:clamp(15px,4.8vw,21px);color:var(--acc);font-variant-numeric:tabular-nums}.kv3 span{font-size:11px;color:var(--sub)}
+.warnbox{margin-top:10px;border-radius:14px;padding:12px;font-size:13px;background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.35)}
+.tipbox{margin-top:10px;background:var(--chip);border-radius:14px;padding:12px;font-size:14px}
+.chart{display:flex;align-items:flex-end;gap:3px;height:150px;margin-top:12px;padding:0 2px;border-bottom:1px solid var(--line)}
+.chart .c{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;height:100%;position:relative}
+.chart .c i{display:block;background:linear-gradient(180deg,var(--acc2),var(--acc));border-radius:6px 6px 0 0;transition:height .6s ease}
+.chart .c em{display:block;background:var(--line);border-radius:6px 6px 0 0}
+.chart .c.k i{background:linear-gradient(180deg,#ffd166,var(--acc2))}
+.axis{display:flex;gap:3px;font-size:10px;color:var(--sub);margin-top:2px}.axis span{flex:1 1 0;text-align:center;min-width:0;overflow:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--sub);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px;color:var(--ink);margin:0}
+.chk input{width:22px;height:22px;accent-color:var(--acc);flex:0 0 auto}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;table-layout:fixed}.tbl th,.tbl td{padding:8px 4px;border-top:1px dashed var(--line);text-align:left;vertical-align:top;word-break:break-word}.tbl th:first-child{width:26%}.tbl thead th{color:var(--sub);font-size:12px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#fff;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.grp{font-size:12px;font-weight:700;color:var(--sub);margin:10px 0 2px}
+.afl{padding:6px 0;font-size:14px}.afl a{color:var(--acc);font-weight:700}.afl img{display:inline}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.pill{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;background:var(--ok);margin-right:4px;vertical-align:1px}
+.pill.w{background:var(--warn)}.pill.g{background:var(--off)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="badge">新NISA・つみたて投資枠／成長投資枠</span>
+<h1><span class="em">NISA 積立</span>シミュレーター <span class="sp">🌱</span></h1>
+<p class="lead">毎月いくら・何年・何%で入れると、いくらになる？<br>「◯年後に◯万円ほしい」から毎月の額を逆算もできます。</p>
+</header>
+
+<section class="card">
+<div class="hero">
+<div class="stat"><b id="hVal">--</b><span id="hLbl">◯年後の残高（目安）</span></div>
+<div class="stat"><b id="hTax">--</b><span>非課税で得する額（目安）</span></div>
+</div>
+<p class="note" style="text-align:center;margin:8px 0 0">入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">🧭</span>どっちで計算する？</h2>
+<div class="seg" id="mode">
+<button type="button" data-m="f" class="on">積立額から<small>いくらになる？</small></button>
+<button type="button" data-m="g">目標額から<small>毎月いくら必要？</small></button>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">💴</span>条件を入れる</h2>
+<div id="fBox">
+<label for="mon" style="text-align:center">毎月の積立</label>
+<div class="cd" style="text-align:center"><span id="monOut">30,000</span><small> 円／月</small></div>
+<input type="range" class="range" id="mon" min="1000" max="300000" step="1000" value="30000" aria-label="毎月の積立">
+<div class="seg" style="margin-top:6px" id="quick">
+<button type="button" data-v="10000">1万</button><button type="button" data-v="30000">3万</button><button type="button" data-v="50000">5万</button><button type="button" data-v="100000">10万</button><button type="button" data-v="300000">30万</button>
+</div>
+</div>
+<div id="gBox" style="display:none">
+<label for="goal">目標の金額（万円）</label>
+<input type="number" id="goal" inputmode="numeric" value="2000" min="10" step="10">
+</div>
+<div class="grid2">
+<div><label for="yrs">積み立てる期間</label>
+<select id="yrs"></select></div>
+<div><label for="ret">想定の運用利回り（年）</label>
+<select id="ret"><option value="0">0%（増えも減りもしない）</option><option value="1">1%</option><option value="3">3%</option><option value="4">4%</option><option value="5" selected>5%</option><option value="7">7%</option></select></div>
+</div>
+<div class="grid2">
+<div><label for="init">最初にまとめて入れる額（円）</label><input type="number" id="init" inputmode="numeric" value="0" min="0" step="10000"></div>
+<div><label for="bon">ボーナス月に追加（年2回・円）</label><input type="number" id="bon" inputmode="numeric" value="0" min="0" step="10000"></div>
+</div>
+<div class="kv3">
+<div><b id="yAmt">--</b><span>1年に入れる額</span></div>
+<div><b id="tsuL">--</b><span>つみたて枠 年120万の残り</span></div>
+<div><b id="capY">--</b><span>生涯1,800万に届く年</span></div>
+</div>
+<div class="warnbox" id="overBox" style="display:none"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">📈</span>結果</h2>
+<div class="result" id="res">
+<div class="note" id="rLbl">--</div>
+<div class="big" id="rVal">--</div>
+<div class="kv3">
+<div><b id="rPrin">--</b><span>入れたお金（元本）</span></div>
+<div><b id="rGain">--</b><span>増えた分（運用益）</span></div>
+<div><b id="rTax">--</b><span>非課税で得する額</span></div>
+</div>
+<p id="rMsg"></p>
+</div>
+<div class="chart" id="chart" aria-label="残高の推移"></div>
+<div class="axis" id="axis"></div>
+<div class="legend"><span><i style="background:linear-gradient(180deg,var(--acc2),var(--acc))"></i>増えた分（運用益）</span><span><i style="background:var(--line)"></i>入れたお金（元本）</span></div>
+<h3 style="font-size:15px;margin:16px 0 4px">生涯の枠（1,800万円）、どれくらい使う？</h3>
+<div class="bar"><i id="capBar"></i></div>
+<p class="note" id="capNote" style="margin:0"></p>
+<div class="warnbox">⚠️ 投資信託や株式は値下がりして元本を割ることがあります。結果は「想定利回りで毎月同じように増えた場合」の試算で、将来の成果を約束するものではありません。非課税で得する額は、同じ運用を課税口座でした場合の税金（運用益の20.315%）との差です。</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔍</span>利回りでどれだけ変わる？</h2>
+<table class="tbl" id="cmp"><thead><tr><th>利回り</th><th>残高</th><th>増えた分</th><th>非課税の差</th></tr></thead><tbody></tbody></table>
+<p class="note" style="margin:8px 0 0">同じ積立額・同じ期間で、利回りだけを変えた場合の目安です。全世界株式や米国株式の指数に連動する投資信託は、長い期間の平均で年数%の値動きをしてきましたが、年によっては大きく下がることもあります。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">☕</span>貯まったら、毎月いくら使える？</h2>
+<div class="grid2">
+<div><label for="wr">取り崩しながらの運用利回り（年）</label>
+<select id="wr"><option value="0">0%</option><option value="2">2%</option><option value="3" selected>3%</option><option value="4">4%</option></select></div>
+<div><label for="wy">何年かけて使う？</label>
+<select id="wy"><option>10</option><option>15</option><option selected>20</option><option>25</option><option>30</option></select></div>
+</div>
+<div class="result"><div class="note">結果の残高を、残りを運用しながら毎月同じ額ずつ使うと</div><div class="big" id="wOut">--</div><p class="note" id="wNote" style="text-align:center"></p></div>
+<div class="tipbox">💡 NISAは売るときも非課税で、売った分の枠（元本ぶん）は翌年に復活します。売却した年の中ですぐに枠を戻せるようにする案は、金融庁の2027年度の税制改正要望に入っていますが、2026年11月時点では決まっていません。</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🧩</span>新NISAの枠のおさらい</h2>
+<table class="tbl">
+<thead><tr><th></th><th>つみたて投資枠</th><th>成長投資枠</th></tr></thead>
+<tbody>
+<tr><th>1年に入れられる額</th><td>120万円（月10万円まで）</td><td>240万円</td></tr>
+<tr><th>生涯の枠</th><td colspan="2">2つあわせて1,800万円（うち成長投資枠は1,200万円まで）。入れた元本で数えます</td></tr>
+<tr><th>買えるもの</th><td>長期・積立・分散に向くとして金融庁の条件を満たす投資信託</td><td>上場株式・投資信託など（一部の対象外商品あり）</td></tr>
+<tr><th>非課税の期間</th><td colspan="2">無期限</td></tr>
+<tr><th>売ったとき</th><td colspan="2">売った分の元本ぶんの枠が翌年に復活（年間の枠の上限は変わらない）</td></tr>
+</tbody>
+</table>
+<p class="note" style="margin:8px 0 0">2つの枠は同じ年に併用できるので、1年に最大360万円まで入れられます。毎月10万円を超える積立は、成長投資枠でも積み立てる形になります。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">🏦</span>NISA口座・お金の相談</h2>
+<div class="pr">
+<span class="lbl">PR</span>
+<p class="grp">NISA口座をつくる（ネット証券）</p>
+<!-- AFFILIATE:net_shoken_nisa -->
+<p class="note" style="margin:0">NISA口座はすべての金融機関を通じて1人1口座（1年ごとに金融機関を変えることはできます）。買える投資信託の数・クレジットカード積立のポイント・アプリの使いやすさでくらべて選びましょう。</p>
+<p class="grp">NISAのあとは、iDeCoで所得税・住民税も減らす</p>
+<!-- AFFILIATE:ideco -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+4EYS2I+3XCC+BXIYQ" rel="nofollow">松井証券ではじめるiDeCo</a>
+<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4BGAV2+4EYS2I+3XCC+BXIYQ" alt=""></div>
+<p class="note" style="margin:0">iDeCoは原則60歳まで引き出せない代わりに、掛金が全額所得控除になります。</p>
+<p class="grp">家計とあわせて、いくら積み立てるかをプロに無料相談</p>
+<!-- AFFILIATE:fp_soudan_2 -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892740434" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892740434" height="1" width="1" border="0">【一世帯1回限り】豪華特典を無料FP相談でプレゼント！</a></div>
+<p class="note" style="margin:8px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での申し込みにより当サイトが報酬を受け取ることがあります。投資には元本割れのリスクがあります。金融機関や商品の選択はご自身の判断で行ってください。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">❓</span>よくある質問</h2>
+<details><summary>毎月10万円より多く積み立てたい</summary><p style="font-size:14px">つみたて投資枠は年120万円（月10万円）までです。超える分は成長投資枠（年240万円）で投資信託を積み立てられる金融機関が多く、2つあわせて年360万円まで入れられます。</p></details>
+<details><summary>途中で売ったら枠はどうなる？</summary><p style="font-size:14px">売った商品の買ったときの金額（元本ぶん）が、翌年に生涯の枠（1,800万円）として復活します。年間の枠（つみたて120万・成長240万）は増えません。</p></details>
+<details><summary>利回りは何%で考えればいい？</summary><p style="font-size:14px">決まった正解はありません。下がる年も含めて、控えめな数字（3〜4%など）と、うまくいった場合（5〜7%など）の両方で試し、控えめな方でも困らない額にするのが一般的な考え方です。</p></details>
+<details><summary>NISAとiDeCo、どっちが先？</summary><p style="font-size:14px">いつでも引き出せるNISAは使い道が自由、iDeCoは60歳まで引き出せない代わりに掛金で税金が減ります。生活防衛資金を確保したうえで、使う時期に合わせて両方を組み合わせる人が多いです。</p></details>
+<details><summary>子どもの分も積み立てたい</summary><p style="font-size:14px">2027年1月から、0〜17歳が使える「こどもNISA」（年60万円・総額600万円）が始まります。親のNISAとは別の枠です。</p></details>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>あわせて使える無料ツール</h2>
+<div class="rec">
+<a href="../bonus-tedori-2026/">💰 冬のボーナス 手取り計算機 2026（NISAに回せる額の目安に）</a>
+<a href="../nenmatsu-jumbo-kitaichi-2026/">🎰 年末ジャンボ 期待値シミュレーター 2026（同じ3,000円を積み立てたら？）</a>
+<a href="../otoshidama-souba-2027/">🧧 お年玉 相場計算機 2027</a>
+<a href="../furusato-jogen-2026/">🧮 ふるさと納税 上限額シミュレーター 2026</a>
+</div>
+<details><summary>ひとりラボのツール一覧</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>参考：金融庁「NISAを知る」（つみたて投資枠 年120万円・成長投資枠 年240万円、非課税保有限度額1,800万円〔うち成長投資枠1,200万円〕、非課税期間は無期限、売却分の枠は翌年以降に再利用可）／金融庁「令和9年度税制改正要望」（2026年8月：非課税保有限度額の当年中の復活などを要望。2026年11月時点で未決定）／生命保険文化センター「NISA」（2026年6月更新）。</p>
+<p>計算は目安です。毎月の積立は月初に入れ、想定利回りで毎月複利で増えるとして計算しています（手数料・信託報酬は利回りに含めて考えてください）。ボーナス月の追加は6月と12月に入れる計算です。年間の枠（360万円）と生涯の枠（1,800万円）を超える分は入れない計算で、生涯の枠は入れた元本で数えています（途中で売らない前提）。2026年11月時点の情報です。</p>
+<p>入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<script>
+(function(){
+'use strict';
+function $(i){return document.getElementById(i);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function man(n){n=Math.max(0,n);return n>=100000000?(Math.round(n/1000000)/100).toLocaleString('ja-JP')+'億円':n>=10000?(Math.round(n/1000)/10).toLocaleString('ja-JP')+'万円':Math.round(n).toLocaleString('ja-JP')+'円';}
+var APPS=[["warikan-keisha", "傾斜割り勘計算（幹事用）"], ["nenga-hitokoto-2027", "年賀状ひとことジェネレーター 2027"], ["furusato-jogen-2026", "ふるさと納税 上限額シミュレーター 2026"], ["nencho-navi-2026", "年末調整 書き方ナビ 2026"], ["kakutei-shindan-2026", "確定申告が必要か1分診断 2026"], ["oosouji-buntan-2026", "大掃除の分担ジェネレーター 2026"], ["otoshidama-souba-2027", "お年玉 相場計算機 2027"], ["hikkoshi-checklist", "引っ越し手続きチェックリスト"], ["mochu-hagaki-calendar-2026", "喪中はがき いつまでに出す？逆算カレンダー"], ["hikkoshi-shoki-hiyou", "引っ越しの初期費用 計算機"], ["net-kaisen-shindan", "ネット回線 選び方診断"], ["bonenkai-kanji-2026", "忘年会 幹事の段取り表 2026"], ["kanchu-nengajimai-2027", "寒中見舞い・年賀状じまい 文例メーカー"], ["nenmatsu-renkyu-2026", "年末年始 何連休？有給シミュレーター"], ["iryohi-kojo-2026", "医療費控除 いくら戻る？計算機"], ["jutaku-loan-kojo-2026", "住宅ローン控除 いくら戻る？計算機"], ["fuyou-kabe-2026", "扶養の壁チェッカー 2026"], ["bonus-tedori-2026", "冬のボーナス 手取り計算機 2026"], ["gensen-choshu-checker-2026", "源泉徴収票の見方とチェッカー"], ["xmas-yosan-2026", "クリスマス予算プランナー 2026"], ["nengajo-itsumade-2027", "年賀状 いつまでに出す？投函日チェッカー"], ["danbou-denkidai-2026", "暖房の電気代 くらべる計算機"], ["kisei-koutsuhi-2026", "帰省 車と新幹線どっちが安い？"], ["osechi-yosan-2027", "おせち 予算と注文締切カレンダー 2027"], ["nenmatsu-jumbo-kitaichi-2026", "年末ジャンボ 期待値シミュレーター 2026"], ["oseibo-navi-2026", "お歳暮 いつまで？相場とのし 早見ナビ"], ["fukubukuro-2027", "福袋 2027 予約・抽選カレンダー"], ["studless-koukan-2026", "スタッドレス 交換の時期と費用 計算機"]];
+var YCAP=3600000,TSU=1200000,LCAP=18000000,TAX=0.20315;
+var ys=$('yrs');[5,10,15,20,25,30,35,40].forEach(function(y){var o=document.createElement('option');o.value=y;o.textContent=y+'年';if(y===20)o.selected=true;ys.appendChild(o);});
+var mode='f';
+function sim(mon,yrs,rp,init,bon){
+var r=rp/100/12,bal=0,prin=0,over=0,rows=[],capY=null,y1=0;
+for(var y=0;y<yrs;y++){
+var yin=0;
+for(var m=0;m<12;m++){
+var a=mon;if(y===0&&m===0)a+=init;if(m===5||m===11)a+=bon;
+var room=Math.min(YCAP-yin,LCAP-prin);var put=Math.max(0,Math.min(a,room));over+=a-put;
+yin+=put;prin+=put;bal=(bal+put)*(1+r);
+}
+if(y===0)y1=yin;
+if(capY===null&&prin>=LCAP)capY=y+1;
+rows.push([y+1,bal,prin]);
+}
+return {bal:bal,prin:prin,over:over,rows:rows,capY:capY,y1:y1};
+}
+function need(goal,yrs,rp,init,bon){
+var lo=0,hi=3000000;
+for(var i=0;i<40;i++){var mid=(lo+hi)/2;if(sim(mid,yrs,rp,init,bon).bal>=goal)hi=mid;else lo=mid;}
+return Math.ceil(hi/100)*100;
+}
+function calc(){
+var yrs=+$('yrs').value,rp=+$('ret').value,init=Math.max(0,+$('init').value||0),bon=Math.max(0,+$('bon').value||0),mon=+$('mon').value;
+var goal=Math.max(0,(+$('goal').value||0)*10000),msg='';
+if(mode==='g'){mon=need(goal,yrs,rp,init,bon);}
+$('monOut').textContent=mon.toLocaleString('ja-JP');
+var s=sim(mon,yrs,rp,init,bon);
+var gain=Math.max(0,s.bal-s.prin),tax=gain*TAX;
+var want=mon*12+init+bon*2;
+$('yAmt').textContent=man(s.y1);
+$('tsuL').textContent=man(Math.max(0,TSU-mon*12));
+$('capY').textContent=s.capY?(s.capY+'年目'):'届かない';
+var ob=$('overBox'),w=[];
+if(mon>100000)w.push('毎月 '+man(mon)+' は、つみたて投資枠（月10万円）を超えます。超える分は成長投資枠での積立になります（このツールでは2つの枠をあわせて計算）。');
+if(want>YCAP||s.over>0)w.push('年360万円・生涯1,800万円を超える分 <b>'+man(s.over)+'</b> はNISAに入れられないため、計算から外しています。');
+if(init>2400000)w.push('最初の一括は、成長投資枠（年240万円）とつみたて投資枠の残りの範囲までです。');
+ob.style.display=w.length?'':'none';ob.innerHTML='⚠️ '+w.join('<br>⚠️ ');
+$('rLbl').textContent=(mode==='g'?'目標 '+man(goal)+' に必要な毎月の積立':yrs+'年後の残高の目安');
+$('rVal').textContent=mode==='g'?mon.toLocaleString('ja-JP')+'円／月':man(s.bal);
+$('hLbl').textContent=mode==='g'?'目標に必要な毎月の額':yrs+'年後の残高（目安）';
+$('hVal').textContent=mode==='g'?mon.toLocaleString('ja-JP')+'円':man(s.bal);
+$('rPrin').textContent=man(s.prin);$('rGain').textContent=man(gain);$('rTax').textContent=man(tax);$('hTax').textContent=man(tax);
+if(mode==='g'){
+msg='毎月 <b>'+mon.toLocaleString('ja-JP')+'円</b> を'+yrs+'年、年'+rp+'%で増えた場合に、およそ '+man(s.bal)+' になります。';
+if(s.over>0||s.bal+1<goal)msg='NISAの枠（年360万円・生涯1,800万円）の中だけでは、この期間で目標に届きません。期間を延ばすか、目標を見直してみてください。';
+}else{
+msg=rp===0?'利回り0%では増えも減りもしない計算です。利回りを変えると、長く積み立てるほど差が大きくなります。':'入れたお金 '+man(s.prin)+' が、年'+rp+'%で増えた場合の目安です。増えた分 '+man(gain)+' に税金がかからないので、課税口座より約 <b>'+man(tax)+'</b> 多く残ります。';
+}
+$('rMsg').innerHTML=msg;
+var rows=s.rows,mx=0;rows.forEach(function(x){mx=Math.max(mx,x[1],x[2]);});
+var step=rows.length>12?Math.ceil(rows.length/8):1;
+$('chart').innerHTML=rows.map(function(x){var h=mx>0?x[1]/mx*100:0,p=mx>0?x[2]/mx*100:0;return '<div class="c" title="'+x[0]+'年目：'+man(x[1])+'"><i style="height:'+Math.max(0,h-p).toFixed(1)+'%"></i><em style="height:'+p.toFixed(1)+'%"></em></div>';}).join('');
+$('axis').innerHTML=rows.map(function(x,i){return '<span>'+((i%step===step-1||i===rows.length-1)?x[0]+'年':'')+'</span>';}).join('');
+var pc=Math.min(100,s.prin/LCAP*100);$('capBar').style.width=pc.toFixed(1)+'%';
+$('capNote').innerHTML='元本 '+man(s.prin)+' ／ 1,800万円（'+pc.toFixed(0)+'%）'+(s.capY?'。<b>'+s.capY+'年目</b>に生涯の枠がいっぱいになります（その後は入れたお金をそのまま非課税で運用）。':'。枠の残り '+man(LCAP-s.prin)+'。');
+$('cmp').tBodies[0].innerHTML=[0,3,5,7].map(function(p){var t=sim(mon,yrs,p,init,bon),g=Math.max(0,t.bal-t.prin);return '<tr'+(p===rp?' style="font-weight:700"':'')+'><td>年'+p+'%</td><td>'+man(t.bal)+'</td><td>'+man(g)+'</td><td>'+man(g*TAX)+'</td></tr>';}).join('');
+var wr=+$('wr').value/100/12,wy=+$('wy').value*12,pay=wr>0?s.bal*wr/(1-Math.pow(1+wr,-wy)):s.bal/wy;
+$('wOut').textContent=man(pay)+'／月';
+$('wNote').textContent=$('wy').value+'年間（'+$('wr').value+'%で運用しながら）。合計 '+man(pay*wy)+' を使える目安です。';
+}
+$('mode').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;mode=b.getAttribute('data-m');Array.prototype.forEach.call(this.children,function(x){x.className=x===b?'on':'';});$('fBox').style.display=mode==='f'?'':'none';$('gBox').style.display=mode==='g'?'':'none';calc();});
+$('quick').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;$('mon').value=b.getAttribute('data-v');calc();});
+['mon','yrs','ret','init','bon','goal','wr','wy'].forEach(function(i){$(i).addEventListener('input',calc);$(i).addEventListener('change',calc);});
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+calc();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

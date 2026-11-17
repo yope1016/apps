@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ボーナスをもらって辞める 退職日シミュレーター 2026冬｜伝える日・有給消化・最終出社日を逆算｜ひとりラボ</title>
+<meta name="description" content="冬のボーナスをもらってから退職したい人へ。支給日・就業規則の申し出期限・引き継ぎ日数・有給の残りから、退職を伝える日・最終出社日・退職日を逆算。月末退職と社会保険料、住民税の一括徴収、年末調整まで1画面でチェック。無料ツール。">
+<link rel="canonical" href="https://yope1016.github.io/apps/bonus-taishoku-2026/">
+<style>
+:root{--bg:#f4fbf8;--bg2:#d9f3e8;--card:#ffffff;--ink:#1d1a33;--sub:#625d7e;--line:#d6eae1;--acc:#0f8a6a;--acc2:#2f7cf6;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#e6f6ef;--shadow:0 10px 30px rgba(15,138,106,.13)}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1714;--bg2:#12271f;--card:#14211c;--ink:#efeefa;--sub:#a9a4c6;--line:#24392f;--acc:#4fd1a5;--acc2:#7fb0ff;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#1b3128;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+header .sp{display:inline-block;animation:tw 2.4s ease-in-out infinite}@keyframes tw{50%{transform:scale(1.25) rotate(12deg)}}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px;flex:0 0 auto}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:clamp(22px,6.4vw,30px);line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:8px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 110px;font-weight:700;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid2>div{min-width:0}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.result p{font-size:14px;text-align:left;margin:8px 0 0}
+.big{font-size:clamp(32px,9vw,42px);font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--acc);animation:pop .5s ease both}@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+.bar{height:14px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0;transition:width .6s ease}
+.note{font-size:12px;color:var(--sub)}
+.range{width:100%;accent-color:var(--acc)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 90px;border:1px solid var(--line);background:var(--card);flex-direction:column;justify-content:center;text-align:center;line-height:1.35;gap:0;padding:8px 6px}
+.seg button small{font-size:11px;opacity:.85}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.kv{margin-top:10px;font-size:14px}.kv div{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px dashed var(--line)}.kv b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.kv3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.kv3 div{background:var(--chip);border-radius:14px;padding:10px 6px;text-align:center;min-width:0}.kv3 b{display:block;font-size:clamp(15px,4.8vw,21px);color:var(--acc);font-variant-numeric:tabular-nums}.kv3 span{font-size:11px;color:var(--sub)}
+.warnbox{margin-top:10px;border-radius:14px;padding:12px;font-size:13px;background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.35)}
+.tipbox{margin-top:10px;background:var(--chip);border-radius:14px;padding:12px;font-size:14px}
+.chart{display:flex;align-items:flex-end;gap:3px;height:150px;margin-top:12px;padding:0 2px;border-bottom:1px solid var(--line)}
+.chart .c{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;height:100%;position:relative}
+.chart .c i{display:block;background:linear-gradient(180deg,var(--acc2),var(--acc));border-radius:6px 6px 0 0;transition:height .6s ease}
+.chart .c em{display:block;background:var(--line);border-radius:6px 6px 0 0}
+.chart .c.k i{background:linear-gradient(180deg,#ffd166,var(--acc2))}
+.axis{display:flex;gap:3px;font-size:10px;color:var(--sub);margin-top:2px}.axis span{flex:1 1 0;text-align:center;min-width:0;overflow:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--sub);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px;color:var(--ink);margin:0}
+.chk input{width:22px;height:22px;accent-color:var(--acc);flex:0 0 auto}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;table-layout:fixed}.tbl th,.tbl td{padding:8px 4px;border-top:1px dashed var(--line);text-align:left;vertical-align:top;word-break:break-word}.tbl th:first-child{width:26%}.tbl thead th{color:var(--sub);font-size:12px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#fff;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.grp{font-size:12px;font-weight:700;color:var(--sub);margin:10px 0 2px}
+.afl{padding:6px 0;font-size:14px}.afl a{color:var(--acc);font-weight:700}.afl img{display:inline}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.pill{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;background:var(--ok);margin-right:4px;vertical-align:1px}
+.pill.w{background:var(--warn)}.pill.g{background:var(--off)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+.tl{list-style:none;padding:0;margin:10px 0 0;position:relative}
+.tl li{position:relative;padding:8px 0 10px 26px;border-left:2px solid var(--line);margin-left:8px;font-size:14px}
+.tl li:before{content:"";position:absolute;left:-8px;top:12px;width:14px;height:14px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px var(--chip)}
+.tl li.w:before{background:var(--warn)}
+.tl li b.dt{display:block;font-size:16px;font-variant-numeric:tabular-nums}
+.plan{border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:10px;background:var(--card)}
+.plan.best{border:2px solid var(--acc);box-shadow:var(--shadow)}
+.plan h3{margin:0 0 4px;font-size:15px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.plan .d{font-size:22px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums}
+.plan ul{margin:6px 0 0;padding-left:18px;font-size:13px}
+.plan ul li{margin:3px 0}
+input[type=date]{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.sw{display:flex;align-items:center;gap:10px;font-size:14px;margin:12px 0 0;color:var(--ink)}
+.sw input{width:22px;height:22px;accent-color:var(--acc)}
+.hero .stat b{font-size:clamp(19px,5.4vw,30px);white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="badge">冬のボーナス後の転職・退職 2026</span>
+<h1><span class="em">ボーナスをもらって辞める</span><br>退職日シミュレーター <span class="sp">🗓️</span></h1>
+<p class="lead">いつ伝えて、いつまで出社して、何日に辞めるのがいい？<br>支給日・就業規則・引き継ぎ・有給の残りから逆算します。</p>
+</header>
+
+<section class="card">
+<div class="hero">
+<div class="stat"><b id="hTell">--</b><span>退職を伝える日（目安）</span></div>
+<div class="stat"><b id="hRet">--</b><span>おすすめの退職日</span></div>
+</div>
+<p class="note" style="text-align:center;margin:8px 0 0" id="hNote"></p>
+<p class="note" style="text-align:center;margin:4px 0 0">入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">💴</span>ボーナスと会社のルール</h2>
+<div class="grid2">
+<div><label for="bd">冬のボーナスの支給日</label><input type="date" id="bd" value="2026-12-10"></div>
+<div><label for="gap">支給日の何営業日あとに伝える？</label>
+<select id="gap"><option value="1" selected>翌営業日</option><option value="2">2営業日後</option><option value="3">3営業日後</option><option value="5">1週間後（5営業日）</option><option value="10">2週間後（10営業日）</option></select></div>
+</div>
+<label for="rule">就業規則の「退職の申し出」期限</label>
+<div class="seg" id="rule">
+<button type="button" data-v="d14">2週間前<small>民法の原則</small></button>
+<button type="button" data-v="m1" class="on">1か月前<small>よくある規定</small></button>
+<button type="button" data-v="m2">2か月前</button>
+<button type="button" data-v="m3">3か月前</button>
+</div>
+<p class="note" style="margin:6px 0 0">わからなければ「1か月前」のままでOK。就業規則（社内ポータルや人事のページ）に書いてあります。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">🧳</span>引き継ぎと有給</h2>
+<label for="hk" style="text-align:center">引き継ぎで出社する日数</label>
+<div class="cd" style="text-align:center"><span id="hkOut">10</span><small> 営業日</small></div>
+<input type="range" class="range" id="hk" min="0" max="40" step="1" value="10" aria-label="引き継ぎで出社する日数">
+<label for="yk" style="text-align:center">残っている有給休暇</label>
+<div class="cd" style="text-align:center"><span id="ykOut">10</span><small> 日</small></div>
+<input type="range" class="range" id="yk" min="0" max="40" step="1" value="10" aria-label="残っている有給休暇">
+<label class="sw"><input type="checkbox" id="nny" checked>12/29〜1/3 は会社の休み（営業日に数えない）</label>
+<label class="sw"><input type="checkbox" id="hasNew">転職先の入社日が決まっている</label>
+<div id="newBox" style="display:none"><label for="nd">転職先の入社日</label><input type="date" id="nd" value="2027-02-01"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🗓️</span>あなたのスケジュール</h2>
+<ol class="tl" id="tl"></ol>
+<div class="warnbox" id="warn" style="display:none"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">⚖️</span>退職日の候補をくらべる</h2>
+<div id="plans"></div>
+<p class="note" style="margin:10px 0 0">社会保険（健康保険・厚生年金）は退職日の翌日に資格を失い、保険料は「資格を失った日の前の月」の分までかかります。月末に辞めるとその月の分も給与から引かれ（会社が半分負担）、月末より前に辞めるとその月は自分で国民健康保険・国民年金に入る形になります（同じ月に次の会社に入る場合を除く）。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">✅</span>辞めたあとの手続きチェック</h2>
+<p class="note" style="margin:0 0 4px">チェックはこの画面の中だけ（保存されません）。</p>
+<div id="todo"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🚀</span>次の仕事・お金の準備</h2>
+<div class="pr">
+<span class="lbl">PR</span>
+<p class="grp">ボーナス後の転職活動（転職エージェント）</p>
+<!-- AFFILIATE:assign_agent -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892740430" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892740430" height="1" width="1" border="0">20〜30代のキャリア相談・転職支援【ASSIGN AGENT】</a></div>
+<p class="note" style="margin:0">内定と入社日が決まってから退職を伝えると、空白期間（国保・国民年金の手続き）を作らずにすみます。</p>
+<!-- AFFILIATE:tenshoku_agent -->
+<p class="grp">会社のDC・iDeCo、辞めたらどうする？</p>
+<!-- AFFILIATE:ideco -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+4EYS2I+3XCC+BXIYQ" rel="nofollow">松井証券ではじめるiDeCo</a>
+<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4BGAV2+4EYS2I+3XCC+BXIYQ" alt=""></div>
+<p class="note" style="margin:0">企業型確定拠出年金（DC）に入っていた人は、退職後に iDeCo か転職先のDCへ移す手続きが必要です（6か月ほど放っておくと自動で移され、手数料がかかり運用もされない状態になります）。</p>
+<p class="grp">退職後の保険・お金の段取りを、プロに無料相談</p>
+<!-- AFFILIATE:fp_soudan_2 -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892740434" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892740434" height="1" width="1" border="0">【一世帯1回限り】豪華特典を無料FP相談でプレゼント！</a></div>
+<p class="note" style="margin:8px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での申し込みにより当サイトが報酬を受け取ることがあります。サービスの選択はご自身の判断で行ってください。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">❓</span>よくある質問</h2>
+<details><summary>ボーナスの前に「辞めます」と言うとどうなる？</summary><p style="font-size:14px">多くの会社は「支給日に在籍している人に払う」と決めていて（支給日在籍要件）、支給日の前に退職日がくると払われないことがあります。また、査定期間の評価に「将来の貢献への期待」を含める会社では、先に伝えると金額に影響する可能性も。支給日まで（できれば振り込みを確認するまで）は伝えないのが安全です。ルールは会社ごとなので、就業規則・賃金規程を確認してください。</p></details>
+<details><summary>就業規則が「3か月前」でも従わないとダメ？</summary><p style="font-size:14px">期間の定めのない雇用（正社員など）は、民法では退職を申し出てから2週間で辞められるとされています（民法627条1項）。ただ、円満に辞めて有給を使い切るには、会社の規定に沿って早めに相談する方がスムーズです。契約社員など期間の定めがある雇用は扱いが違います。迷ったら労働基準監督署の総合労働相談コーナー（無料）へ。</p></details>
+<details><summary>有給は全部使える？</summary><p style="font-size:14px">有給は退職日までしか使えません。引き継ぎ日数と合わせて、最終出社日と退職日を上司と早めに決めましょう。このツールは「引き継ぎのあとにまとめて有給を使う」前提で計算しています。</p></details>
+<details><summary>12月に辞めると年末調整はどうなる？</summary><p style="font-size:14px">12月の最後の給与の前に辞めると、会社で年末調整をしないことが多いです。年内に次の会社に入るなら前の会社の源泉徴収票を出して転職先で年末調整、入らないなら翌年の確定申告で精算します（払いすぎた税金が戻ることが多い）。</p></details>
+<details><summary>住民税が一気に引かれるって本当？</summary><p style="font-size:14px">1月1日〜4月30日に辞めると、5月分までの残りの住民税が最後の給与（または退職金）からまとめて引かれるのが原則です。6月〜12月に辞めると、残りは自分で納める「普通徴収」に切り替わるのが一般的です（希望すれば一括で引いてもらうことも、転職先で天引きを続けてもらうこともできます）。</p></details>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>あわせて使える無料ツール</h2>
+<div class="rec">
+<a href="../bonus-tedori-2026/">💰 冬のボーナス 手取り計算機 2026</a>
+<a href="../gensen-choshu-checker-2026/">🧾 源泉徴収票の見方とチェッカー 2026（転職先に出す前に）</a>
+<a href="../kakutei-shindan-2026/">📝 確定申告が必要か1分診断 2026（年内に再就職しない人）</a>
+<a href="../hikkoshi-checklist/">📦 引っ越し手続きチェックリスト（転職で引っ越す人）</a>
+</div>
+<details><summary>ひとりラボのツール一覧</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>参考：民法627条1項（期間の定めのない雇用の解約の申入れ）／日本年金機構「厚生年金保険の保険料」（資格喪失日の属する月の前月までの保険料）・国民年金保険料（令和8年度 月額17,920円）／協会けんぽ「任意継続」（退職日の翌日から20日以内に申出）／各市区町村の国民健康保険・国民年金の届出（退職日の翌日から14日以内）／地方税法321条の5（退職時の住民税の一括徴収）。</p>
+<p>計算は目安です。営業日は土日・祝日（2026年11月〜2027年5月）を除いて数え、「12/29〜1/3は会社の休み」をオンにするとその期間も除きます。引き継ぎは伝えた日から出社、有給は最終出社日の翌営業日から続けて使う前提です。ボーナスの支給条件・退職の手続き・有給の扱いは会社ごとに違うため、必ず就業規則と人事に確認してください。2026年11月時点の情報です。</p>
+<p>入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<script>
+(function(){
+'use strict';
+function $(i){return document.getElementById(i);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+var APPS=[["warikan-keisha", "傾斜割り勘計算（幹事用）"], ["nenga-hitokoto-2027", "年賀状ひとことジェネレーター 2027"], ["furusato-jogen-2026", "ふるさと納税 上限額シミュレーター 2026"], ["nencho-navi-2026", "年末調整 書き方ナビ 2026"], ["kakutei-shindan-2026", "確定申告が必要か1分診断 2026"], ["oosouji-buntan-2026", "大掃除の分担ジェネレーター 2026"], ["otoshidama-souba-2027", "お年玉 相場計算機 2027"], ["hikkoshi-checklist", "引っ越し手続きチェックリスト"], ["mochu-hagaki-calendar-2026", "喪中はがき いつまでに出す？逆算カレンダー"], ["hikkoshi-shoki-hiyou", "引っ越しの初期費用 計算機"], ["net-kaisen-shindan", "ネット回線 選び方診断"], ["bonenkai-kanji-2026", "忘年会 幹事の段取り表 2026"], ["kanchu-nengajimai-2027", "寒中見舞い・年賀状じまい 文例メーカー"], ["nenmatsu-renkyu-2026", "年末年始 何連休？有給シミュレーター"], ["iryohi-kojo-2026", "医療費控除 いくら戻る？計算機"], ["jutaku-loan-kojo-2026", "住宅ローン控除 いくら戻る？計算機"], ["fuyou-kabe-2026", "扶養の壁チェッカー 2026"], ["bonus-tedori-2026", "冬のボーナス 手取り計算機 2026"], ["gensen-choshu-checker-2026", "源泉徴収票の見方とチェッカー"], ["xmas-yosan-2026", "クリスマス予算プランナー 2026"], ["nengajo-itsumade-2027", "年賀状 いつまでに出す？投函日チェッカー"], ["danbou-denkidai-2026", "暖房の電気代 くらべる計算機"], ["kisei-koutsuhi-2026", "帰省 車と新幹線どっちが安い？"], ["osechi-yosan-2027", "おせち 予算と注文締切カレンダー 2027"], ["nenmatsu-jumbo-kitaichi-2026", "年末ジャンボ 期待値シミュレーター 2026"], ["oseibo-navi-2026", "お歳暮 いつまで？相場とのし 早見ナビ"], ["fukubukuro-2027", "福袋 2027 予約・抽選カレンダー"], ["studless-koukan-2026", "スタッドレス 交換の時期と費用 計算機"]];
+var HOL={'2026-11-03':1,'2026-11-23':1,'2027-01-01':1,'2027-01-11':1,'2027-02-11':1,'2027-02-23':1,'2027-03-22':1,'2027-04-29':1,'2027-05-03':1,'2027-05-04':1,'2027-05-05':1};
+var W='日月火水木金土';
+function pd(v){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v||'');return m?new Date(+m[1],+m[2]-1,+m[3]):null;}
+function key(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
+function add(d,n){var x=new Date(d.getTime());x.setDate(x.getDate()+n);return x;}
+function fmt(d){return (d.getMonth()+1)+'/'+d.getDate()+'（'+W[d.getDay()]+'）';}
+function fmtY(d){return d.getFullYear()+'年'+fmt(d);}
+function nny(){return $('nny').checked;}
+function biz(d){var w=d.getDay();if(w===0||w===6)return false;if(HOL[key(d)])return false;if(nny()){var m=d.getMonth(),t=d.getDate();if((m===11&&t>=29)||(m===0&&t<=3))return false;}return true;}
+function nextBiz(d){var x=d;while(!biz(x))x=add(x,1);return x;}
+function addBiz(d,n){var x=d;while(n>0){x=add(x,1);if(biz(x))n--;}return x;}
+function eom(d){return new Date(d.getFullYear(),d.getMonth()+1,0);}
+function isEom(d){return add(d,1).getDate()===1;}
+function addMon(d,n){var x=new Date(d.getFullYear(),d.getMonth()+n,d.getDate());if(x.getDate()!==d.getDate())x=new Date(d.getFullYear(),d.getMonth()+n+1,0);return x;}
+function days(a,b){return Math.round((b-a)/86400000);}
+var rule='m1';
+function noticeEnd(t){if(rule==='d14')return add(t,14);return addMon(t,+rule.slice(1));}
+function ruleTxt(){return {d14:'2週間',m1:'1か月',m2:'2か月',m3:'3か月'}[rule];}
+function shaho(r,nd){
+ var m=r.getMonth()+1;
+ if(isEom(r))return {c:'',t:m+'月分の社会保険料は給与から（会社が半分負担）。翌月1日から次の保険へ'};
+ if(nd&&nd.getFullYear()===r.getFullYear()&&nd.getMonth()===r.getMonth()&&nd>r)return {c:'',t:'同じ月のうちに次の会社に入るので、'+m+'月分は転職先の保険に'};
+ return {c:'w',t:m+'月分は会社の保険料なし → 自分で国民健康保険・国民年金（月17,920円）に入る'};
+}
+function jumin(r){
+ var m=r.getMonth()+1;
+ if(m<=4)return {c:'w',t:'住民税：5月分までの残りを最後の給与からまとめて天引き（原則）'};
+ if(m===5)return {c:'',t:'住民税：5月分を給与から天引きして、その年度の分は終わり'};
+ return {c:'',t:'住民税：残りは自分で納める「普通徴収」に切り替え（一括や転職先での天引き継続も可）'};
+}
+function nencho(r,nd){
+ if(r.getFullYear()!==2026)return null;
+ if(nd&&nd.getFullYear()===2026)return {c:'',t:'年内に転職先へ入社 → 源泉徴収票を出して転職先で年末調整'};
+ return {c:'w',t:'12月の最後の給与より前に辞めると、会社で年末調整されないことが多い → 2027年に確定申告（戻ることが多い）'};
+}
+function calc(){
+ $('hkOut').textContent=$('hk').value;$('ykOut').textContent=$('yk').value;
+ $('newBox').style.display=$('hasNew').checked?'':'none';
+ var bd=pd($('bd').value);if(!bd){return;}
+ var hk=+$('hk').value,yk=+$('yk').value,gap=+$('gap').value;
+ var nd=$('hasNew').checked?pd($('nd').value):null;
+ var tell=addBiz(bd,gap);
+ var lastW=hk>0?(hk===1?tell:addBiz(tell,hk-1)):tell;
+ var ykEnd=yk>0?addBiz(lastW,yk):lastW;
+ var nEnd=noticeEnd(tell);
+ var earliest=ykEnd>nEnd?ykEnd:nEnd;
+ var warn=[];
+ var plans=[];
+ plans.push({id:'a',name:'最短で辞める',d:earliest});
+ var me=eom(earliest);if(key(me)!==key(earliest))plans.push({id:'b',name:'月末に合わせる',d:me});
+ if(nd){var pre=add(nd,-1);if(pre>=earliest){if(key(pre)!==key(earliest)&&key(pre)!==key(me))plans.push({id:'c',name:'入社日の前日',d:pre});}
+  else warn.push('⚠️ 入社日（'+fmtY(nd)+'）の前日までに、最短の退職日（'+fmtY(earliest)+'）が間に合いません。引き継ぎの日数を減らす・有給の一部を使わない・伝える日を早める（ボーナス支給日のあとで）・入社日を相談する、のどれかが必要です。');}
+ plans.forEach(function(p){
+  if(nd)p.gap=days(p.d,nd)-1;
+  p.s=shaho(p.d,nd);p.j=jumin(p.d);p.n=nencho(p.d,nd);
+ });
+ var best;
+ if(nd){var ok=plans.filter(function(p){return p.d<nd;});var ng=ok.filter(function(p){return p.s.c==='';});var pool=ng.length?ng:(ok.length?ok:plans);best=pool[pool.length-1];pool.forEach(function(p){if(p.d>best.d&&p.d<nd)best=p;});}
+ else{best=plans.filter(function(p){return p.id==='b';})[0]||plans[0];}
+ if(nEnd>ykEnd)warn.push('💡 就業規則の申し出期限（'+ruleTxt()+'）のほうが、引き継ぎ＋有給より遅く終わります。最終出社から退職日までの間（'+fmt(add(ykEnd,1))+'〜）は、出社するか欠勤扱いかを会社と相談しましょう。早めに伝えられるなら、もう少し後ろの支給日でも間に合います。');
+ // hero
+ $('hTell').textContent=fmt(tell);
+ var bad=nd&&best.d>=nd;
+ $('hRet').textContent=bad?'要相談':fmt(best.d);
+ var today=new Date();today=new Date(today.getFullYear(),today.getMonth(),today.getDate());
+ var dl=days(today,tell);
+ $('hNote').textContent=dl>0?'伝える日まであと'+dl+'日。それまでは転職活動・引き継ぎ資料づくりを静かに進めておきましょう。':(dl===0?'今日が伝える日の目安です。':'伝える日の目安を過ぎています。支給日を入れ直してみてください。');
+ // timeline
+ var tl=[];
+ tl.push(['',bd,'💴 ボーナス支給日','振り込みを確認するまでは退職の話はしないのが安全']);
+ tl.push(['',tell,'🗣️ 上司に退職を伝える','まずは直属の上司に口頭で。退職届の日付・最終出社日・有給の使い方をここで相談']);
+ if(hk>0)tl.push(['',lastW,'🧳 最終出社日','引き継ぎ'+hk+'営業日（伝えた日から）。貸与品の返却・あいさつもここまでに']);
+ if(yk>0)tl.push(['',ykEnd,'🏖️ 有給消化おわり','有給'+yk+'日を'+fmt(addBiz(lastW,1))+'から続けて使う']);
+ tl.push([nEnd>ykEnd?'w':'',nEnd,'📜 就業規則の期限（'+ruleTxt()+'）','伝えた日から'+ruleTxt()+'。これより前の退職日は会社との合意が必要']);
+ tl.push([bad?'w':'',best.d,bad?'⚠️ 退職日（このままだと入社日に間に合わない）':'🎉 退職日（おすすめ）',best.name+'の案']);
+ if(nd)tl.push(['',nd,'🏢 転職先に入社','']);
+ tl.sort(function(a,b){return a[1]-b[1];});
+ $('tl').innerHTML=tl.map(function(x){return '<li class="'+x[0]+'"><b class="dt">'+fmtY(x[1])+'</b><b>'+esc(x[2])+'</b><br><span class="note">'+esc(x[3])+'</span></li>';}).join('');
+ warn=warn.filter(Boolean);
+ $('warn').style.display=warn.length?'':'none';$('warn').innerHTML=warn.map(esc).join('<br><br>');
+ // plans
+ $('plans').innerHTML=plans.map(function(p){
+  var li=[p.s,p.j,p.n].filter(Boolean).map(function(z){return '<li>'+(z.c?'<span class="pill w">注意</span>':'<span class="pill">OK</span>')+esc(z.t)+'</li>';}).join('');
+  var g='';if(nd){g=p.d>=nd?'<li><span class="pill w">注意</span>入社日を過ぎています</li>':(p.gap>0?'<li><span class="pill g">空白</span>入社まで'+p.gap+'日あきます</li>':'<li><span class="pill">OK</span>空白期間なし</li>');}
+  return '<div class="plan'+(p===best&&!bad?' best':'')+'"><h3>'+(p===best&&!bad?'<span class="pill">おすすめ</span>':'')+esc(p.name)+'</h3><div class="d">'+fmtY(p.d)+'</div><ul>'+g+li+'</ul></div>';
+ }).join('');
+ // todo
+ var r=best.d,r1=add(r,1);
+ var todo=[
+  ['退職届を出す（会社の書式があればそれで）',''],
+  ['健康保険証（資格確認書）・社員証・貸与品を返す','最終出社日まで'],
+  ['離職票・源泉徴収票・年金手帳（基礎年金番号）を受け取る','退職後に郵送されることが多い'],
+ ];
+ if(!nd||days(r,nd)>1){
+  todo.push(['健康保険を切り替える：任意継続（'+fmt(add(r1,19))+'まで）か国民健康保険（'+fmt(add(r1,13))+'まで）','扶養に入れる家族がいる人は家族の保険も確認']);
+  todo.push(['国民年金への切り替え（'+fmt(add(r1,13))+'まで・市区町村の窓口）','月17,920円（令和8年度）。配偶者の扶養に入る場合は配偶者の会社で手続き']);
+ }else{todo.push(['転職先に、基礎年金番号・前職の源泉徴収票・雇用保険被保険者証を出す','']);}
+ todo.push(['企業型DCに入っていた人は、iDeCoか転職先のDCへ移す','放っておくと自動移換で手数料がかかる']);
+ if(r.getFullYear()===2026&&!(nd&&nd.getFullYear()===2026))todo.push(['2027年2/16〜3/15に確定申告（2026年分）','還付申告は2月より前でも出せます']);
+ $('todo').innerHTML=todo.map(function(t,i){return '<label class="chk"><input type="checkbox"><span>'+esc(t[0])+(t[1]?'<br><span class="note">'+esc(t[1])+'</span>':'')+'</span></label>';}).join('');
+}
+$('rule').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;rule=b.getAttribute('data-v');Array.prototype.forEach.call(this.children,function(x){x.className=x===b?'on':'';});calc();});
+['bd','gap','hk','yk','nny','hasNew','nd'].forEach(function(i){$(i).addEventListener('input',calc);$(i).addEventListener('change',calc);});
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+calc();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>青色申告 節税額シミュレーター 2026｜65万・75万円控除でいくら得？白色と比較｜ひとりラボ</title>
+<meta name="description" content="青色申告にすると所得税・住民税・国民健康保険がいくら下がる？売上と経費を入れるだけで、白色・10万・55万・65万円控除、2027年分から新設の75万円控除までの節税額を比較。2027年分からの紙申告10万円への減額にも対応。無料ツール。">
+<link rel="canonical" href="https://yope1016.github.io/apps/aoiro-setsuzei-2026/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="青色申告で いくら得？節税額シミュレーター（65万・75万円控除）">
+<meta property="og:description" content="売上と経費を入れるだけで、所得税＋住民税＋国保の差を白色と比較。2027年分の75万円控除・紙申告10万円への減額にも対応。">
+<meta property="og:url" content="https://yope1016.github.io/apps/aoiro-setsuzei-2026/">
+<meta property="og:site_name" content="ひとりラボ｜無料Webツール集">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "青色申告 節税額シミュレーター 2026", "url": "https://yope1016.github.io/apps/aoiro-setsuzei-2026/", "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": "ja", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "description": "青色申告にすると所得税・住民税・国民健康保険がいくら下がる？売上と経費を入れるだけで、白色・10万・55万・65万円控除、2027年分から新設の75万円控除までの節税額を比較。2027年分からの紙申告10万円への減額にも対応。無料ツール。"}</script>
+<style>
+:root{--bg:#f4fbf8;--bg2:#d9f3e8;--card:#ffffff;--ink:#1d1a33;--sub:#625d7e;--line:#d6eae1;--acc:#0f8a6a;--acc2:#2f7cf6;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#e6f6ef;--shadow:0 10px 30px rgba(15,138,106,.13)}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1714;--bg2:#12271f;--card:#14211c;--ink:#efeefa;--sub:#a9a4c6;--line:#24392f;--acc:#4fd1a5;--acc2:#7fb0ff;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#1b3128;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+header .sp{display:inline-block;animation:tw 2.4s ease-in-out infinite}@keyframes tw{50%{transform:scale(1.25) rotate(12deg)}}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px;flex:0 0 auto}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:clamp(22px,6.4vw,30px);line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:8px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 110px;font-weight:700;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.grid2>div{min-width:0}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.result p{font-size:14px;text-align:left;margin:8px 0 0}
+.big{font-size:clamp(32px,9vw,42px);font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--acc);animation:pop .5s ease both}@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+.bar{height:14px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0;transition:width .6s ease}
+.note{font-size:12px;color:var(--sub)}
+.range{width:100%;accent-color:var(--acc)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 90px;border:1px solid var(--line);background:var(--card);flex-direction:column;justify-content:center;text-align:center;line-height:1.35;gap:0;padding:8px 6px}
+.seg button small{font-size:11px;opacity:.85}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.kv{margin-top:10px;font-size:14px}.kv div{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px dashed var(--line)}.kv b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.kv3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.kv3 div{background:var(--chip);border-radius:14px;padding:10px 6px;text-align:center;min-width:0}.kv3 b{display:block;font-size:clamp(15px,4.8vw,21px);color:var(--acc);font-variant-numeric:tabular-nums}.kv3 span{font-size:11px;color:var(--sub)}
+.warnbox{margin-top:10px;border-radius:14px;padding:12px;font-size:13px;background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.35)}
+.tipbox{margin-top:10px;background:var(--chip);border-radius:14px;padding:12px;font-size:14px}
+.chart{display:flex;align-items:flex-end;gap:3px;height:150px;margin-top:12px;padding:0 2px;border-bottom:1px solid var(--line)}
+.chart .c{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;height:100%;position:relative}
+.chart .c i{display:block;background:linear-gradient(180deg,var(--acc2),var(--acc));border-radius:6px 6px 0 0;transition:height .6s ease}
+.chart .c em{display:block;background:var(--line);border-radius:6px 6px 0 0}
+.chart .c.k i{background:linear-gradient(180deg,#ffd166,var(--acc2))}
+.axis{display:flex;gap:3px;font-size:10px;color:var(--sub);margin-top:2px}.axis span{flex:1 1 0;text-align:center;min-width:0;overflow:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--sub);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px;color:var(--ink);margin:0}
+.chk input{width:22px;height:22px;accent-color:var(--acc);flex:0 0 auto}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;table-layout:fixed}.tbl th,.tbl td{padding:8px 4px;border-top:1px dashed var(--line);text-align:left;vertical-align:top;word-break:break-word}.tbl th:first-child{width:26%}.tbl thead th{color:var(--sub);font-size:12px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#fff;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.grp{font-size:12px;font-weight:700;color:var(--sub);margin:10px 0 2px}
+.afl{padding:6px 0;font-size:14px}.afl a{color:var(--acc);font-weight:700}.afl img{display:inline}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.pill{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;background:var(--ok);margin-right:4px;vertical-align:1px}
+.pill.w{background:var(--warn)}.pill.g{background:var(--off)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<style>
+.tier{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;padding:10px 0;border-top:1px dashed var(--line);font-size:14px}
+.tier .nm{font-weight:700}.tier .nm small{display:block;font-weight:400;color:var(--sub);font-size:12px}
+.tier .v{font-weight:800;font-variant-numeric:tabular-nums;color:var(--acc);text-align:right;white-space:nowrap}
+.tier .bar{grid-column:1/3;margin:2px 0 0;height:10px}
+.tier.me{background:var(--chip);border-radius:12px;padding:10px;border-top:0;margin-top:4px}
+.tier.zero .v{color:var(--off)}
+.yr{display:flex;gap:6px}.yr button{flex:1 1 0;flex-direction:column;line-height:1.3;border:1px solid var(--line);background:var(--card)}.yr button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.sw{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:14px;color:var(--ink)}.sw input{width:22px;height:22px;accent-color:var(--acc)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.cmp div{border-radius:14px;padding:10px;font-size:13px;border:1px solid var(--line)}.cmp b{display:block;font-size:15px;margin-bottom:4px}
+</style>
+<div class="wrap">
+<header>
+<span class="badge">2026年分・2027年分以降 対応</span>
+<h1>青色申告で<span class="em">いくら得？</span><br>節税額シミュレーター <span class="sp">💰</span></h1>
+<p class="lead">白色・青色10万・55万・65万、そして2027年分から新設の<b>75万円控除</b>まで。<br>あなたの所得で「所得税＋住民税＋国保」がいくら変わるかを1画面で。</p>
+</header>
+
+<section class="card">
+<h2><span class="ic">🧮</span>あなたの数字を入れる</h2>
+<label>どの年の申告？</label>
+<div class="yr" id="yr"><button data-v="2026" class="on">2026年分<br><small>2027年3月に申告</small></button><button data-v="2027">2027年分以降<br><small>2028年3月〜申告</small></button></div>
+<div class="grid2">
+<div><label for="uri">事業の売上（年間）</label><input type="number" id="uri" inputmode="numeric" value="6000000" min="0" step="100000"></div>
+<div><label for="kei">経費（年間）</label><input type="number" id="kei" inputmode="numeric" value="2000000" min="0" step="100000"></div>
+</div>
+<div class="grid2">
+<div><label for="hoka">ほかの所得（給与所得など）</label><input type="number" id="hoka" inputmode="numeric" value="0" min="0" step="100000"><div class="note">会社員の副業なら給与所得を</div></div>
+<div><label for="koj">社会保険料・iDeCo等の控除</label><input type="number" id="koj" inputmode="numeric" value="900000" min="0" step="10000"><div class="note">国民年金・国保・iDeCo・生命保険料控除など</div></div>
+</div>
+<label class="sw"><input type="checkbox" id="kokuho" checked>国民健康保険に入っている（保険料も下がる）</label>
+<div id="kokuhoBox"><label for="rate">国保の所得割の率（市区町村で違います・目安 8〜12%）</label><input type="range" class="range" id="rate" min="6" max="14" step="0.5" value="10"><div class="note" id="rateV">10%</div></div>
+<label class="sw"><input type="checkbox" id="big">前々年の売上が1,000万円を超えている（2027年分〜の簡易簿記の条件）</label>
+</section>
+
+<section class="card">
+<h2><span class="ic">✨</span>白色申告とくらべた節税額（年間）</h2>
+<div class="result">
+<div class="note" id="bestNm">e-Taxで65万円控除なら</div>
+<div class="big" id="bestV">0円</div>
+<div class="note">所得税（復興税込み）＋住民税＋国保の合計の差</div>
+<div class="kv3"><div><b id="kS">0</b><span>所得税</span></div><div><b id="kJ">0</b><span>住民税</span></div><div><b id="kK">0</b><span>国保</span></div></div>
+</div>
+<div id="tiers" style="margin-top:12px"></div>
+<div class="tipbox" id="tip"></div>
+<div class="warnbox" id="warn" style="display:none"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">📅</span>2026年分と2027年分以降で何が変わる？</h2>
+<div class="cmp">
+<div><b>2026年分（今年）</b>複式簿記＋e-Tax：<b style="display:inline">65万</b><br>複式簿記＋紙の申告：55万<br>簡易簿記：10万</div>
+<div><b>2027年分から</b>e-Tax＋優良な電子帳簿 または 請求書データ等の自動連携：<b style="display:inline">75万</b>（届出が必要）<br>複式簿記＋e-Tax：65万<br>複式簿記＋<span style="color:var(--warn);font-weight:700">紙の申告：10万に減る</span><br>簡易簿記：10万（前々年の売上1,000万円超は0）</div>
+</div>
+<p class="note" style="margin-top:10px">ポイント：2027年分からは「紙で出すと55万円→10万円」に減ります。65万・75万を取るには、<b>複式簿記で帳簿をつけて e-Tax で出す</b>のが前提。75万は、1月1日の時点で「優良な電子帳簿」の要件を満たしているか、請求書などのデータを会計ソフトに自動で取り込んでいることが条件です（届出も必要）。</p>
+<ol class="steps" id="sched"></ol>
+</section>
+
+<section class="card">
+<h2><span class="ic">🛠️</span>65万・75万を取る近道：会計ソフト</h2>
+<p style="font-size:14px;margin:0">複式簿記を手でつけるのは大変ですが、会計ソフトなら銀行やカードの明細を取り込むだけで仕訳ができ、そのまま e-Tax で提出できます。<b id="softMsg">節税額にくらべて、ソフト代（年1万〜4万円前後）は十分に元が取れるかを上の数字で確かめてください。</b></p>
+<div class="pr">
+<span class="lbl">PR</span>
+<p class="grp">クラウド会計ソフト（青色申告・e-Tax対応）</p>
+<!-- AFFILIATE:kaikei_freee -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+33XJA2+3SPO+9FDXOI" rel="nofollow">クラウド記帳代行で会計を自動化【freee会計】</a>
+<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGAV2+33XJA2+3SPO+9FDXOI" alt=""></div>
+<!-- AFFILIATE:kaikei_mf -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3SXQOQ+4JGQ+60OXE" rel="nofollow">6つのサービスがセットで使える マネーフォワード クラウド会計</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGAV2+3SXQOQ+4JGQ+60OXE" alt=""></div>
+<!-- AFFILIATE:kaikei_yayoi_aoiro -->
+<p class="note" style="margin:0">75万円控除を狙うなら、「優良な電子帳簿」や請求書データの自動連携に対応しているかを各社の案内で確認してください。</p>
+<p class="grp">もっと節税：iDeCo（掛金がまるごと所得控除）</p>
+<!-- AFFILIATE:ideco -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+4EYS2I+3XCC+BXIYQ" rel="nofollow">松井証券ではじめるiDeCo</a>
+<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4BGAV2+4EYS2I+3XCC+BXIYQ" alt=""></div>
+<p class="note" style="margin:8px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での申し込みにより当サイトが報酬を受け取ることがあります。サービスの選択はご自身の判断で行ってください。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">❓</span>よくある質問</h2>
+<details><summary>いまから青色申告にできる？</summary><p style="font-size:14px">青色申告にするには、税務署に「青色申告承認申請書」を出します。期限は、青色にしたい年の3月15日まで（その年の1月16日以後に開業した人は、開業日から2か月以内）。2026年分を青色にできるのは、原則として2026年3月15日までに出した人か、2026年の途中に開業して2か月以内に出した人です。2027年分から青色にしたい人は、2027年3月15日までに出せば間に合います。</p></details>
+<details><summary>副業でも青色申告できる？</summary><p style="font-size:14px">青色申告ができるのは「事業所得」「不動産所得」「山林所得」がある人です。副業の収入が「雑所得」にあたる場合は青色申告の対象外です。事業所得か雑所得かは、継続性・規模・帳簿の保存などで判断されます。迷う場合は税務署や税理士に確認してください。</p></details>
+<details><summary>控除額は所得より大きくなる？</summary><p style="font-size:14px">いいえ。青色申告特別控除は、控除前の事業所得（と不動産所得）の金額が上限です。たとえば事業所得が40万円なら、65万円控除でも差し引けるのは40万円までです。このツールもその前提で計算しています。</p></details>
+<details><summary>国保の保険料まで下がるのはなぜ？</summary><p style="font-size:14px">国民健康保険の所得割は、多くの市区町村で「前年の総所得金額など − 43万円」をもとに計算されます。青色申告特別控除は所得そのものを減らすので、国保の保険料も下がります（保険料には上限があり、率も市区町村で違います）。</p></details>
+<details><summary>住民税の「均等割」や事業税は？</summary><p style="font-size:14px">住民税の均等割は所得に関係なく同じなので、差には入れていません。個人事業税は青色申告特別控除を差し引かずに計算するため、青色にしても変わりません。</p></details>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>あわせて使いたい</h2>
+<div class="rec">
+<a href="../kakutei-shindan-2026/">📝 確定申告が必要か1分診断 2026</a>
+<a href="../iryohi-kojo-2026/">🏥 医療費控除 いくら戻る？計算機</a>
+<a href="../furusato-jogen-2026/">🎁 ふるさと納税 上限額シミュレーター 2026</a>
+<a href="../gensen-choshu-checker-2026/">🧾 源泉徴収票の見方とチェッカー 2026</a>
+</div>
+<details><summary>ひとりラボのツール一覧</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>参考：国税庁「No.2072 青色申告特別控除」「No.2070 青色申告制度」「No.1199 基礎控除」「No.2260 所得税の税率」、弥生「青色申告改正あんしんガイド」（2027年分以降の75万円控除）、創業手帳「基礎控除104万円」（2026年11月更新）。</p>
+<p>計算は目安です。所得税は 2026年分の基礎控除（合計所得489万円以下104万円・655万円以下67万円・2,350万円以下62万円 ほか）と超過累進税率に復興特別所得税2.1%を加えて計算し、2027年分も同じ基礎控除を使っています。住民税は所得割10%（基礎控除43万円）で、調整控除・均等割・税額控除は含みません。国保は「所得−43万円」×入力した率で、上限額や軽減は含みません。2026年11月時点の情報で、制度は変わることがあります。実際の申告は税務署・税理士に確認してください。</p>
+<p>入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<script>
+(function(){
+'use strict';
+function $(i){return document.getElementById(i);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+var APPS=[["warikan-keisha", "傾斜割り勘計算（幹事用）"], ["nenga-hitokoto-2027", "年賀状ひとことジェネレーター 2027"], ["furusato-jogen-2026", "ふるさと納税 上限額シミュレーター 2026"], ["nencho-navi-2026", "年末調整 書き方ナビ 2026"], ["kakutei-shindan-2026", "確定申告が必要か1分診断 2026"], ["oosouji-buntan-2026", "大掃除の分担ジェネレーター 2026"], ["otoshidama-souba-2027", "お年玉 相場計算機 2027"], ["hikkoshi-checklist", "引っ越し手続きチェックリスト"], ["mochu-hagaki-calendar-2026", "喪中はがき いつまでに出す？逆算カレンダー"], ["hikkoshi-shoki-hiyou", "引っ越しの初期費用 計算機"], ["net-kaisen-shindan", "ネット回線 選び方診断"], ["bonenkai-kanji-2026", "忘年会 幹事の段取り表 2026"], ["kanchu-nengajimai-2027", "寒中見舞い・年賀状じまい 文例メーカー"], ["nenmatsu-renkyu-2026", "年末年始 何連休？有給シミュレーター"], ["iryohi-kojo-2026", "医療費控除 いくら戻る？計算機"], ["jutaku-loan-kojo-2026", "住宅ローン控除 いくら戻る？計算機"], ["fuyou-kabe-2026", "扶養の壁チェッカー 2026"], ["bonus-tedori-2026", "冬のボーナス 手取り計算機 2026"], ["gensen-choshu-checker-2026", "源泉徴収票の見方とチェッカー"], ["xmas-yosan-2026", "クリスマス予算プランナー 2026"], ["nengajo-itsumade-2027", "年賀状 いつまでに出す？投函日チェッカー"], ["danbou-denkidai-2026", "暖房の電気代 くらべる計算機"], ["kisei-koutsuhi-2026", "帰省 車と新幹線どっちが安い？"], ["osechi-yosan-2027", "おせち 予算と注文締切カレンダー 2027"], ["nenmatsu-jumbo-kitaichi-2026", "年末ジャンボ 期待値シミュレーター 2026"], ["oseibo-navi-2026", "お歳暮 いつまで？相場とのし 早見ナビ"], ["fukubukuro-2027", "福袋 2027 予約・抽選カレンダー"], ["studless-koukan-2026", "スタッドレス 交換の時期と費用 計算機"]];
+var year='2026';
+function num(id){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:0;}
+function yen(n){return Math.round(n).toLocaleString('ja-JP')+'円';}
+function man(n){var m=n/10000;return (Math.abs(m)>=10?Math.round(m):Math.round(m*10)/10).toLocaleString('ja-JP')+'万';}
+function kiso(g){if(g<=4890000)return 1040000;if(g<=6550000)return 670000;if(g<=23500000)return 620000;if(g<=24000000)return 480000;if(g<=24500000)return 320000;if(g<=25000000)return 160000;return 0;}
+function shotoku(t){t=Math.floor(t/1000)*1000;if(t<=0)return 0;var r;
+ if(t<=1949000)r=t*.05;else if(t<=3299000)r=t*.1-97500;else if(t<=6949000)r=t*.2-427500;else if(t<=8999000)r=t*.23-636000;else if(t<=17999000)r=t*.33-1536000;else if(t<=39999000)r=t*.4-2796000;else r=t*.45-4796000;
+ return Math.floor(r*1.021/100)*100;}
+function taxes(jig,D,hoka,koj,kk,rate){
+ var g=hoka+Math.max(0,jig-Math.min(D,jig));
+ var it=shotoku(g-kiso(g)-koj);
+ var jt=g<=24000000?Math.max(0,g-430000-koj):Math.max(0,g-koj);
+ var rt=Math.floor(Math.floor(jt/1000)*1000*.10/100)*100;
+ var kh=kk?Math.max(0,g-430000)*rate/100:0;
+ return {s:it,j:rt,k:kh,t:it+rt+kh};
+}
+function tiers(){
+ var big=$('big').checked;
+ if(year==='2026')return [
+  {n:'白色申告',d:0,sub:'控除なし'},
+  {n:'青色・簡易簿記',d:100000,sub:'10万円控除'},
+  {n:'青色・複式簿記＋紙で申告',d:550000,sub:'55万円控除'},
+  {n:'青色・複式簿記＋e-Tax',d:650000,sub:'65万円控除',best:1}];
+ return [
+  {n:'白色申告',d:0,sub:'控除なし'},
+  {n:'青色・簡易簿記',d:big?0:100000,sub:big?'前々年の売上1,000万円超は0円':'10万円控除'},
+  {n:'青色・複式簿記＋紙で申告',d:100000,sub:'10万円控除（2026年分の55万から減額）'},
+  {n:'青色・複式簿記＋e-Tax',d:650000,sub:'65万円控除',best:1},
+  {n:'e-Tax＋優良な電子帳簿 or 自動連携',d:750000,sub:'75万円控除（届出が必要）'}];
+}
+function calc(){
+ var uri=num('uri'),kei=num('kei'),hoka=num('hoka'),koj=num('koj'),kk=$('kokuho').checked,rate=parseFloat($('rate').value)||10;
+ $('rateV').textContent=rate+'%';$('kokuhoBox').style.display=kk?'':'none';
+ var jig=Math.max(0,uri-kei);
+ var base=taxes(jig,0,hoka,koj,kk,rate);
+ var T=tiers(),res=T.map(function(t){var x=taxes(jig,t.d,hoka,koj,kk,rate);return {t:t,x:x,save:base.t-x.t};});
+ var mx=Math.max.apply(null,res.map(function(r){return r.save;}))||1;
+ var b65=res.filter(function(r){return r.t.best;})[0];
+ $('bestNm').textContent=(year==='2026'?'2026年分':'2027年分以降')+'、e-Taxで65万円控除なら 1年で';
+ var v=$('bestV');v.textContent=yen(b65.save);v.style.animation='none';void v.offsetWidth;v.style.animation='';
+ $('kS').textContent=man(base.s-b65.x.s);$('kJ').textContent=man(base.j-b65.x.j);$('kK').textContent=kk?man(base.k-b65.x.k):'—';
+ $('tiers').innerHTML=res.map(function(r){
+  var eff=Math.min(r.t.d,jig);
+  return '<div class="tier'+(r.t.best?' me':'')+(r.save<=0?' zero':'')+'"><div class="nm">'+esc(r.t.n)+'<small>'+esc(r.t.sub)+(eff<r.t.d?'（所得が少ないため '+man(eff)+'円まで）':'')+'</small></div><div class="v">'+(r.save>0?'＋'+yen(r.save):'0円')+'</div><div class="bar"><i style="width:'+Math.max(0,r.save/mx*100)+'%"></i></div></div>';
+ }).join('');
+ var tip=[];
+ if(year==='2027'){var p=res[2],e=res[3],s=res[4];
+  tip.push('2027年分からは、紙の申告（'+yen(p.save)+'）と e-Tax（'+yen(e.save)+'）の差が <b>'+yen(e.save-p.save)+'</b> に広がります。');
+  if(s.save>e.save)tip.push('75万円控除にすると、さらに <b>＋'+yen(s.save-e.save)+'</b>。');
+ }else{
+  tip.push('紙の申告（55万）より e-Tax（65万）の方が <b>'+yen(res[3].save-res[2].save)+'</b> 得。2027年分からは紙だと10万円控除に減るので、今年から e-Tax に慣れておくのがおすすめです。');
+ }
+ tip.push('5年続けると、65万円控除で約 <b>'+man(b65.save*5)+'円</b> の差になります（毎年同じ所得の場合）。');
+ $('tip').innerHTML=tip.join('<br>');
+ var w=[];
+ if(jig<=0)w.push('売上から経費を引いた事業所得が0円以下のため、青色申告特別控除の効果はありません（青色の「純損失の繰越し（3年）」は使えます）。');
+ else if(base.t<=0)w.push('いまの数字だと、白色でも所得税・住民税（所得割）・国保の所得割がかからない水準のため、節税額は0円です。');
+ if(jig>0&&jig<650000)w.push('事業所得が'+man(jig)+'円なので、控除は所得の金額までしか使えません。');
+ if(uri>10000000&&!$('big').checked&&year==='2027')w.push('売上が1,000万円を超えている年の2年後は、簡易簿記の10万円控除が0円になります。上の「前々年の売上が1,000万円を超えている」をオンにして確認してください。');
+ $('warn').style.display=w.length?'':'none';$('warn').innerHTML=w.map(esc).join('<br>');
+ $('softMsg').textContent=b65.save>=10000?'65万円控除の節税額は年'+yen(b65.save)+'。会計ソフト代（年1万〜4万円前後）を引いても得になりやすい数字です。':'今の所得だと節税額は小さめ。帳簿をつける手間とくらべて判断してください。';
+ var sc=year==='2026'?[
+  ['2026/12/31','2026年分の帳簿を締める','年末の在庫・未払い・売掛を確認'],
+  ['2027/1/1','2027年分の75万円控除を狙うなら、この日までに会計ソフトを「優良な電子帳簿」の設定にしておく','1月1日時点で要件を満たす必要あり'],
+  ['2027/2/16〜3/15','2026年分の確定申告（e-Taxで65万円）','還付申告は2/16より前でも出せます'],
+  ['2027/3/15','白色の人：2027年分から青色にするなら「青色申告承認申請書」の期限','']
+ ]:[
+  ['2027/1/1','75万円控除の要件（優良な電子帳簿 など）を満たしておく','年の途中からの切り替えは不可'],
+  ['2027/3/15','白色の人：2027年分から青色にする申請の期限',''],
+  ['2027年中','複式簿記で記帳・e-Taxの準備（マイナンバーカード）',''],
+  ['2028/2/16〜3/15','2027年分の確定申告（75万円控除はこの期限までに届出）','']
+ ];
+ $('sched').innerHTML=sc.map(function(x){return '<li><span class="d">'+esc(x[0])+'</span><span><b>'+esc(x[1])+'</b>'+(x[2]?'<br><span class="note">'+esc(x[2])+'</span>':'')+'</span></li>';}).join('');
+}
+$('yr').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;year=b.getAttribute('data-v');Array.prototype.forEach.call(this.children,function(x){x.className=x===b?'on':'';});calc();});
+['uri','kei','hoka','koj','kokuho','rate','big'].forEach(function(i){$(i).addEventListener('input',calc);$(i).addEventListener('change',calc);});
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+calc();
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

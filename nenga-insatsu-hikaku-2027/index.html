@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>年賀状 印刷代くらべ 2027｜自宅で刷る？ネット印刷？スマホ注文？｜ひとりラボ</title>
+<meta name="description" content="年賀状の枚数と仕上がり（シンプル・イラスト・写真入り）を選ぶだけで、自宅プリンター・ネット印刷・スマホ注文の総額と手間をくらべる無料ツール。何枚で安さが逆転するかのグラフと、元日に届けるための締切（12/27）つき。">
+<link rel="canonical" href="https://yope1016.github.io/apps/nenga-insatsu-hikaku-2027/">
+<style>
+:root{--bg:#f3f8fc;--bg2:#dcecf9;--card:#ffffff;--ink:#14243a;--sub:#5a6b80;--line:#d8e4ef;--acc:#2b7de9;--acc2:#ff8a3d;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#e9f2fb;--shadow:0 10px 30px rgba(43,125,233,.13)}
+@media (prefers-color-scheme:dark){:root{--bg:#0c1522;--bg2:#13233a;--card:#142033;--ink:#e8f0fa;--sub:#9fb2c8;--line:#24364f;--acc:#6aaeff;--acc2:#ffa866;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#1c2d46;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:30px;line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:8px}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;min-height:40px}
+.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.ev{border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0;position:relative;overflow:hidden}
+.ev::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c,var(--acc))}
+.ev h3{margin:0 0 2px;font-size:16px}
+.ev .meta{font-size:13px;color:var(--sub)}
+.st{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;color:#fff;margin-right:6px;vertical-align:middle}
+.st.now{background:var(--ok)}.st.soon{background:var(--warn)}.st.end{background:var(--off)}.st.tbd{background:#8b5cf6}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:6px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 108px;font-weight:700;font-variant-numeric:tabular-nums}
+.steps li.past{color:var(--off);text-decoration:line-through}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button.pri{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],input[type=text],input[type=date],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.row{display:grid;grid-template-columns:1fr 110px 44px;gap:6px;margin:6px 0}
+.row button{padding:0;justify-content:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.big{font-size:40px;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.big.plus{color:var(--ok)}.big.minus{color:var(--acc)}
+.bar{height:12px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),var(--acc2));width:0;transition:width .6s ease}
+.bar.over i{background:linear-gradient(90deg,var(--acc2),var(--acc))}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px}
+.chk input{width:22px;height:22px;accent-color:var(--acc)}
+.chk .p{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--sub)}
+.tips li{margin:6px 0;font-size:14px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#0d1522;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.pr a{color:var(--acc);font-weight:700}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;transition:transform .3s;z-index:9}
+.item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:12px 0;border-top:1px dashed var(--line)}
+.item .e{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--chip);font-size:22px}
+.item .t b{display:block;font-size:15px}.item .t span{font-size:12px;color:var(--sub)}
+.qty{display:flex;align-items:center;gap:4px}.qty button{width:40px;height:40px;min-height:40px;padding:0;justify-content:center;font-size:20px;font-weight:700}.qty output{min-width:26px;text-align:center;font-weight:800;font-size:18px;font-variant-numeric:tabular-nums}
+.item.sel .e{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.vs .side{border-radius:16px;padding:14px;text-align:center;border:1px solid var(--line);background:var(--card)}
+.vs .side.pro{background:linear-gradient(135deg,var(--chip),var(--card))}
+.vs .side h3{margin:0;font-size:14px;color:var(--sub)}
+.vs .side .n{font-size:clamp(20px,6vw,28px);font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.25;margin:4px 0}
+.vs .side .n.diy{color:var(--warn)}
+.tag{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;white-space:nowrap}
+.tag.p{background:var(--acc)}.tag.d{background:var(--warn)}.tag.m{background:#8b5cf6}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}.tbl th,.tbl td{padding:8px 4px;border-top:1px dashed var(--line);text-align:left;vertical-align:top}.tbl td.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.setok{margin-top:10px;border-radius:14px;padding:12px;background:linear-gradient(90deg,rgba(109,74,255,.14),rgba(255,122,89,.14));font-size:14px;display:none}
+.setok.on{display:block;animation:up .4s ease both}
+header .sp{display:inline-block;animation:tw 2.4s ease-in-out infinite}@keyframes tw{50%{transform:scale(1.25) rotate(15deg)}}
+.range{width:100%;accent-color:var(--acc)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 90px;border:1px solid var(--line);background:var(--card)}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.kv{margin-top:10px;font-size:14px}.kv div{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px dashed var(--line)}.kv b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tipbox{margin-top:10px;background:var(--chip);border-radius:14px;padding:12px;font-size:14px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.item .sell{font-size:11px;font-weight:800;color:var(--acc2)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.three .side{border-radius:16px;padding:12px 8px;text-align:center;border:1px solid var(--line);background:var(--card)}
+.three .side.best{border:2px solid var(--acc);background:linear-gradient(135deg,var(--chip),var(--card))}
+.three h3{margin:0;font-size:12px;color:var(--sub)}
+.three .n{font-size:clamp(15px,4.6vw,22px);font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.3;margin:4px 0}
+.three .crown{font-size:11px;font-weight:800;color:#fff;background:var(--acc);border-radius:999px;padding:1px 8px;display:inline-block;margin-bottom:2px}
+.grp{font-size:12px;font-weight:800;color:var(--sub);margin:14px 0 0;letter-spacing:.05em}
+.warnbox{margin-top:10px;border-radius:14px;padding:12px;font-size:13px;background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.35)}
+
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px}
+.cal .h{font-size:11px;text-align:center;color:var(--sub);font-weight:700}
+.cal .d{border-radius:10px;padding:4px 2px;min-height:58px;font-size:10px;text-align:center;background:var(--chip);border:1px solid transparent;line-height:1.3;cursor:pointer}
+.cal .d b{display:block;font-size:13px}
+.cal .d.x{background:transparent;cursor:default}
+.cal .d.fam{background:rgba(15,157,118,.14)}
+.cal .d.care{background:rgba(255,138,61,.16)}
+.cal .d.away{background:rgba(154,160,166,.18);color:var(--off)}
+.cal .d.sel{border-color:var(--acc)}
+.cal .d .m{display:block;font-size:15px;margin-top:2px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--sub);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+.daybox{margin-top:10px;border-radius:14px;padding:12px;background:var(--chip);font-size:14px;min-height:48px}
+.hero3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hero3 .stat b{font-size:clamp(18px,5.4vw,26px)}
+.grid2>div{min-width:0}input[type=date]{min-width:0;max-width:100%;-webkit-appearance:none;appearance:none}
+.seg button{flex-direction:column;justify-content:center;text-align:center;line-height:1.35;gap:0;padding:8px 6px}.seg button small{font-size:11px;opacity:.85}
+.mlist li{margin:4px 0;font-size:14px}
+.afl{margin:6px 0;font-size:14px}.afl a{color:var(--acc);font-weight:700}.afl img{display:inline}
+.pr .grp{margin:10px 0 2px}
+#nPreset button{flex:1 1 60px}
+.three .note{line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="badge">2027年（令和9年）用・無料</span>
+<h1>年賀状、<span class="em">自宅で刷る？頼む？</span><br>印刷代くらべ 2027 <span class="sp">🎍</span></h1>
+<p class="lead">枚数と仕上がりを選ぶだけ。自宅プリンター・ネット印刷・スマホ注文の<br>3つの総額と手間をくらべて、あなたにいちばん安くてラクな方法を出します。</p>
+</header>
+
+<section class="card">
+<h2><span class="ic">✉️</span>何枚出す？</h2>
+<div class="result" style="margin-top:0">
+<div class="big" id="nLbl">50枚</div>
+<input type="range" class="range" id="n" min="5" max="300" step="5" value="50" aria-label="枚数">
+<div class="seg" id="nPreset" style="margin-top:6px">
+<button type="button" data-n="20">20枚</button><button type="button" data-n="50">50枚</button><button type="button" data-n="100">100枚</button><button type="button" data-n="200">200枚</button>
+</div>
+</div>
+<label class="chk"><input type="checkbox" id="atena" checked>宛名も印刷したい（手書きしない）</label>
+<label class="chk"><input type="checkbox" id="haveP" checked>家にカラーのインクジェットプリンターがある</label>
+</section>
+
+<section class="card">
+<h2><span class="ic">🎨</span>仕上がり</h2>
+<div class="seg" id="kind">
+<button type="button" data-v="simple">シンプル<br><small>文字＋小さめのイラスト</small></button>
+<button type="button" data-v="illust" class="on">イラスト全面<br><small>干支のデザイン</small></button>
+<button type="button" data-v="photo">写真入り<br><small>家族・子どもの写真</small></button>
+</div>
+<p class="note" id="kindNote"></p>
+<details><summary>単価を自分で変える（目安の数字を手直し）</summary>
+<div class="grid2">
+<div><label for="hagaki">年賀はがき 1枚（自宅用）</label><input type="number" id="hagaki" value="85" min="0" inputmode="numeric"></div>
+<div><label for="ink">インク代 1枚あたり（裏面）</label><input type="number" id="ink" value="20" min="0" inputmode="numeric"></div>
+<div><label for="svBase">ネット印刷：基本料金</label><input type="number" id="svBase" value="2500" min="0" step="100" inputmode="numeric"></div>
+<div><label for="svPer">ネット印刷：1枚あたり印刷料</label><input type="number" id="svPer" value="45" min="0" inputmode="numeric"></div>
+<div><label for="off">ネット印刷：早割・割引（%）</label><input type="number" id="off" value="20" min="0" max="80" inputmode="numeric"></div>
+<div><label for="ship">ネット印刷：送料</label><input type="number" id="ship" value="0" min="0" step="10" inputmode="numeric"></div>
+<div><label for="spPer">スマホ注文：1枚あたり（はがき代込）</label><input type="number" id="spPer" value="190" min="0" inputmode="numeric"></div>
+<div><label for="wage">あなたの時間の価値（時給）</label><input type="number" id="wage" value="1200" min="0" step="100" inputmode="numeric"></div>
+</div>
+<p class="note">ネット印刷・スマホ注文の料金はサービスやデザインで大きく違います。ここの数字は当サイトの目安です。気になるサービスの料金表の数字を入れると、そのまま比較できます。</p>
+</details>
+</section>
+
+<section class="card" id="res">
+<h2><span class="ic">🏆</span>くらべた結果</h2>
+<div class="three" id="three"></div>
+<div class="setok on" id="verdict"></div>
+<div class="kv" id="kv"></div>
+<h3 style="font-size:15px;margin:16px 0 2px">枚数ごとの総額（どこで逆転する？）</h3>
+<div id="chart" aria-label="枚数ごとの総額のグラフ"></div>
+<div class="legend"><span><i style="background:var(--warn)"></i>自宅で印刷</span><span><i style="background:var(--acc)"></i>ネット印刷</span><span><i style="background:#8b5cf6"></i>スマホ注文</span></div>
+<p class="note" id="cross"></p>
+<div class="btns"><button type="button" class="pri" id="copy">📋 結果をコピー</button></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">⏰</span>元日に届けるための締切</h2>
+<div class="cd" id="cdTop"></div>
+<ol class="steps" id="steps"></ol>
+<p class="note">日本郵便の発表では、2027年用の年賀状は<b>12月20日（日）から受付</b>、元日に届けるための投函の目安は<b>12月27日（日）まで</b>（例年より2日遅くなりました）。印刷サービスの納期は混み具合で変わるので、各サービスでご確認ください。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">💡</span>安く・ラクにするコツ</h2>
+<ol class="tips">
+<li><b>早割を使う</b>：ネット印刷は時期が早いほど割引が大きいのが一般的です。郵便局のプリントサービスもWeb申込で印刷料金が最大30%割引（〜2027年1月15日）と発表されています。</li>
+<li><b>はがき代は同じ</b>：どの方法でも年賀はがき1枚85円（通常）は必ずかかります。差がつくのは「印刷代」と「手間」です。</li>
+<li><b>宛名印刷の有無が大きい</b>：100枚の宛名を手書きすると3時間以上かかることも。宛名印刷が無料のサービスなら、手間の差はさらに広がります。</li>
+<li><b>自宅印刷は「失敗分」も計算</b>：紙づまりや色ズレで数枚は無駄になりがちです。予備を5%ほど見込んでいます。</li>
+<li><b>出す枚数を見直す</b>：やり取りが少なくなった相手には、今年から年賀状じまいや寒中見舞いに切り替える人も増えています。</li>
+</ol>
+</section>
+
+<section class="card">
+<h2><span class="ic">🖨️</span>結果が出たら、そのまま注文・準備</h2>
+<div class="pr">
+<span class="lbl">PR</span>
+<p class="note" style="margin:0 0 6px" id="prLead">ネットで注文すれば、デザインを選んで文面を入れるだけ。宛名印刷・投函代行に対応したサービスもあります。料金・納期・早割の期限はリンク先で必ずご確認ください。</p>
+<div id="prSv">
+<p class="grp">ネットで印刷を頼む</p>
+<!-- AFFILIATE:nenga_print_1 -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+36B9P6+33J0+15OK2A" rel="nofollow">当日出荷☆喪中・年賀状印刷は年賀状スクウェアで</a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGAV2+36B9P6+33J0+15OK2A" alt=""></div>
+<!-- AFFILIATE:nenga_print_2 -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+383KII+1IEW+I52SY" rel="nofollow">挨拶状ドットコム 年賀状</a>
+<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGAV2+383KII+1IEW+I52SY" alt=""></div>
+</div>
+<div id="prSp">
+<p class="grp">スマホで作って注文する</p>
+<!-- AFFILIATE:nenga_smartphone -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3CV1CQ+758+15OK2A" rel="nofollow">スマホからアプリ不要で簡単に年賀状が作成できます【イメージングゲート】</a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BGAV2+3CV1CQ+758+15OK2A" alt=""></div>
+</div>
+<div id="prHome">
+<p class="grp">自宅で印刷する（インクの準備）</p>
+<!-- AFFILIATE:printer_ink -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+3E1WKA+34XA+65MEA" rel="nofollow">インク革命.com</a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGAV2+3E1WKA+34XA+65MEA" alt=""></div>
+</div>
+<p class="note" style="margin:8px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での申し込み・購入により当サイトが報酬を受け取ることがあります。互換インクを使う場合は、お使いのプリンターの対応機種と保証の扱いをご確認ください。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>年賀状づくりに使える無料ツール</h2>
+<div class="rec">
+<a href="../nenga-hitokoto-2027/">✍️ 年賀状ひとことジェネレーター 2027（相手別の添え書き）</a>
+<a href="../nengajo-itsumade-2027/">📮 年賀状 いつまでに出す？投函日チェッカー</a>
+<a href="../mochu-hagaki-calendar-2026/">🕊️ 喪中はがき いつまでに出す？逆算カレンダー</a>
+<a href="../kanchu-nengajimai-2027/">❄️ 寒中見舞い・年賀状じまい 文例メーカー</a>
+</div>
+<details><summary>ひとりラボのツール一覧（29本）</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>参考：日本郵便「2027（令和9）年用年賀葉書等の発行・販売」（2026年8月31日。販売開始11月2日、年賀状の受付12月20日〜、元日配達の差出目安12月27日、郵便局のプリントサービスのWeb割引）。年賀はがきの料金は通常85円（写真用など券種によって異なります）。インク代・印刷料金・作業時間は当サイトの目安で、プリンターの機種やサービス・デザインによって大きく違います。</p>
+<p>入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+'use strict';
+var $=function(i){return document.getElementById(i);};
+function yen(n){return Math.round(n).toLocaleString('ja-JP')+'円';}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function hm(min){min=Math.round(min);var h=Math.floor(min/60),m=min%60;return h?(h+'時間'+(m?m+'分':'')):(m+'分');}
+/* 仕上がり別の目安：インク代/枚、写真用はがきの差額、ネット印刷の基本料金と1枚あたり、スマホ注文の1枚あたり（はがき代込） */
+var K={
+simple:{ink:10,hag:85,base:1500,per:25,sp:170,note:'文字中心のデザインはインクが少なく、自宅印刷がいちばん有利になりやすい仕上がりです。'},
+illust:{ink:20,hag:85,base:2500,per:45,sp:190,note:'全面イラストはインク代が上がります。50枚を超えるとネット印刷との差が縮まります。'},
+photo:{ink:35,hag:95,base:3500,per:75,sp:230,note:'写真入りは、自宅ではインクジェット写真用の年賀はがき（通常より高い券種）とインクを多く使います。仕上がりの差が出やすいので、ネット印刷を選ぶ人が多い仕上がりです。'}
+};
+var kind='illust';
+function v(id){var x=parseFloat($(id).value);return isFinite(x)&&x>=0?x:0;}
+function cost(n){
+var atena=$('atena').checked,haveP=$('haveP').checked;
+var hag=v('hagaki'),ink=v('ink'),wage=v('wage');
+var spare=Math.ceil(n*0.05);
+/* 自宅：はがき（予備5%）＋インク（宛名は1枚3円）＋プリンターがなければ購入の目安 */
+var home=(n+spare)*hag+(n+spare)*ink+(atena?n*3:0)+(haveP?0:9000);
+var homeMin=30+n*1.2+(atena?10+n*0.3:n*2);
+/* ネット印刷：はがき代＋（基本料＋1枚あたり）×（1−割引）＋送料。宛名印刷は無料のサービスが多い前提 */
+var svPrint=(v('svBase')+v('svPer')*n)*(1-Math.min(80,v('off'))/100);
+var sv=n*85+svPrint+v('ship');
+var svMin=25+(atena?15:n*2);
+/* スマホ注文：1枚あたり（はがき代込）。宛名は住所録を入力 */
+var sp=n*v('spPer');
+var spMin=15+(atena?n*0.5:n*2);
+return {home:home,homeMin:homeMin,sv:sv,svMin:svMin,sp:sp,spMin:spMin,wage:wage,spare:spare};
+}
+function setKind(k){kind=k;var o=K[k];$('ink').value=o.ink;$('hagaki').value=o.hag;$('svBase').value=o.base;$('svPer').value=o.per;$('spPer').value=o.sp;$('kindNote').textContent=o.note;
+[].forEach.call(document.querySelectorAll('#kind button'),function(b){b.classList.toggle('on',b.getAttribute('data-v')===k);});}
+var last=null;
+function calc(){
+var n=Math.round(v('n'))||50;$('nLbl').textContent=n+'枚';
+[].forEach.call(document.querySelectorAll('#nPreset button'),function(b){b.classList.toggle('on',+b.getAttribute('data-n')===n);});
+var c=cost(n),w=c.wage/60;
+var opts=[
+{k:'home',name:'自宅で印刷',y:c.home,m:c.homeMin,col:'var(--warn)'},
+{k:'sv',name:'ネット印刷',y:c.sv,m:c.svMin,col:'var(--acc)'},
+{k:'sp',name:'スマホ注文',y:c.sp,m:c.spMin,col:'#8b5cf6'}];
+opts.forEach(function(o){o.t=o.y+o.m*w;});
+var cheap=opts.slice().sort(function(a,b){return a.y-b.y;})[0];
+var best=opts.slice().sort(function(a,b){return a.t-b.t;})[0];
+$('three').innerHTML=opts.map(function(o){
+return '<div class="side'+(o===best?' best':'')+'">'+(o===best?'<span class="crown">おすすめ</span>':'')+(o===cheap&&o!==best?'<span class="crown" style="background:var(--ok)">最安</span>':'')+'<h3>'+o.name+'</h3><div class="n" style="color:'+o.col+'">'+yen(o.y)+'</div><div class="note">1枚 '+yen(o.y/n)+'<br>手間 約'+hm(o.m)+'</div></div>';}).join('');
+var msg;
+if(best===cheap){msg='🎉 <b>'+best.name+'</b>が、お金でも手間込みでもいちばんおトクです。';}
+else{msg='💴 お金だけなら<b>'+cheap.name+'</b>（'+yen(cheap.y)+'）が最安。でも、あなたの時間（時給'+yen(c.wage)+'）も入れると<b>'+best.name+'</b>のほうが実質 '+yen(cheap.t-best.t)+' おトクです。';}
+if(!$('haveP').checked)msg+='<br><span class="note">※自宅印刷には、プリンターの購入費の目安（9,000円）を足しています。</span>';
+$('verdict').innerHTML=msg;
+$('kv').innerHTML='<div><span>はがき代（どの方法でもかかる分）</span><b>'+yen(n*85)+'</b></div>'+
+'<div><span>自宅印刷の予備はがき（失敗分の5%）</span><b>'+c.spare+'枚</b></div>'+
+'<div><span>ネット印刷の印刷料（割引後）</span><b>'+yen(c.sv-n*85-v('ship'))+'</b></div>'+
+'<div><span>自宅とネット印刷の差</span><b>'+(c.home>c.sv?'ネットが ':'自宅が ')+yen(Math.abs(c.home-c.sv))+' 安い</b></div>';
+var pr=$('prSv').parentNode;var order=best.k==='home'?['prHome','prSv','prSp']:best.k==='sp'?['prSp','prSv','prHome']:['prSv','prSp','prHome'];
+order.forEach(function(id){pr.insertBefore($(id),pr.querySelector('.note:last-child'));});
+chart(n);
+last={n:n,opts:opts,best:best,cheap:cheap};
+}
+function chart(n){
+var W=320,H=170,P=34,max=300,pts={home:[],sv:[],sp:[]},top=0,i,c;
+for(i=10;i<=max;i+=10){c=cost(i);pts.home.push([i,c.home]);pts.sv.push([i,c.sv]);pts.sp.push([i,c.sp]);top=Math.max(top,c.home,c.sv,c.sp);}
+top=Math.ceil(top/10000)*10000||10000;
+function X(x){return P+(W-P-8)*(x/max);}function Y(y){return H-22-(H-34)*(y/top);}
+function path(a){return a.map(function(p,j){return (j?'L':'M')+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1);}).join(' ');}
+var s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" style="max-width:640px;display:block;margin:6px auto 0">';
+for(i=0;i<=4;i++){var yy=Y(top*i/4);s+='<line x1="'+P+'" x2="'+(W-8)+'" y1="'+yy+'" y2="'+yy+'" stroke="currentColor" stroke-opacity=".12"/><text x="'+(P-4)+'" y="'+(yy+3)+'" font-size="9" text-anchor="end" fill="currentColor" fill-opacity=".6">'+(top*i/4/10000)+'万</text>';}
+[0,100,200,300].forEach(function(t){s+='<text x="'+X(t)+'" y="'+(H-8)+'" font-size="9" text-anchor="middle" fill="currentColor" fill-opacity=".6">'+t+'枚</text>';});
+s+='<line x1="'+X(n)+'" x2="'+X(n)+'" y1="10" y2="'+(H-22)+'" stroke="currentColor" stroke-opacity=".35" stroke-dasharray="3 3"/>';
+s+='<path d="'+path(pts.home)+'" fill="none" stroke="var(--warn)" stroke-width="2.5"/><path d="'+path(pts.sv)+'" fill="none" stroke="var(--acc)" stroke-width="2.5"/><path d="'+path(pts.sp)+'" fill="none" stroke="#8b5cf6" stroke-width="2.5"/></svg>';
+$('chart').innerHTML=s;
+/* 逆転する枚数 */
+var cr='',prev=null;
+var w=v('wage')/60;
+for(i=5;i<=300;i+=5){c=cost(i);var b=(c.home+c.homeMin*w)<=(c.sv+c.svMin*w)?'home':'sv';if(prev&&b!==prev){cr='手間（時給'+yen(v('wage'))+'）も入れると、<b>'+i+'枚前後</b>で自宅印刷とネット印刷が逆転します（'+(b==='sv'?'これより多いならネット印刷':'これより多いなら自宅印刷')+'がおトク）。';break;}prev=b;}
+c=cost(n);var gap=c.sv-c.home;
+$('cross').innerHTML='グラフはお金だけの総額です。'+(gap>0?'お金だけなら自宅印刷が '+yen(gap)+' 安く、':'お金だけでもネット印刷が '+yen(-gap)+' 安く、')+'その差で約'+hm(Math.max(0,c.homeMin-c.svMin))+'の作業を買うかどうかが判断の分かれ目です。<br>'+(cr||'この条件では、手間込みでも5〜300枚のあいだで自宅印刷とネット印刷の順位は逆転しません。');
+}
+function steps(){
+var now=new Date(),y=now.getFullYear();
+var post=new Date(2026,11,27),order=new Date(2026,11,18),early=new Date(2026,11,10);
+var L=[[early,'ネット印刷の注文の目安（年末の混雑前・割引が残っているうちに）'],[order,'ネット印刷・スマホ注文の注文の目安（配送・投函代行の日数を見込んで）'],[new Date(2026,11,20),'年賀状の受付が始まる（この日から年賀ポストへ）'],[post,'元日に届けるための投函の目安（日本郵便）'],[new Date(2027,0,7),'松の内の目安（これ以降は寒中見舞いに）']];
+var today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+var d=Math.round((post-today)/86400000);
+$('cdTop').innerHTML=d>0?('元日配達の投函目安まで あと '+d+'<small> 日（12/27）</small>'):(d===0?'今日が元日配達の投函目安です':'元日配達の目安は過ぎました<small>（早めに投函を）</small>');
+var W='日月火水木金土';
+$('steps').innerHTML=L.map(function(a){var x=a[0];return '<li class="'+(x<today?'past':'')+'"><span class="d">'+(x.getMonth()+1)+'/'+x.getDate()+'（'+W[x.getDay()]+'）</span><span>'+a[1]+'</span></li>';}).join('');
+}
+function toast(t){var e=$('toast');e.textContent=t;e.classList.add('on');setTimeout(function(){e.classList.remove('on');},1800);}
+$('copy').addEventListener('click',function(){
+if(!last)return;var t='【年賀状 印刷代くらべ 2027】'+last.n+'枚\n'+last.opts.map(function(o){return '・'+o.name+'：'+yen(o.y)+'（手間 約'+hm(o.m)+'）';}).join('\n')+'\nおすすめ：'+last.best.name+'\nhttps://yope1016.github.io/apps/nenga-insatsu-hikaku-2027/';
+function ok(){toast('コピーしました');}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok();});}else{fb(t);ok();}
+function fb(s){var a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(a);}
+});
+$('n').addEventListener('input',calc);
+[].forEach.call(document.querySelectorAll('#nPreset button'),function(b){b.addEventListener('click',function(){$('n').value=b.getAttribute('data-n');calc();});});
+[].forEach.call(document.querySelectorAll('#kind button'),function(b){b.addEventListener('click',function(){setKind(b.getAttribute('data-v'));calc();});});
+['atena','haveP','hagaki','ink','svBase','svPer','off','ship','spPer','wage'].forEach(function(id){$(id).addEventListener('input',calc);$(id).addEventListener('change',calc);});
+var APPS=[["warikan-keisha", "傾斜割り勘計算（幹事用）"], ["nenga-hitokoto-2027", "年賀状ひとことジェネレーター 2027"], ["furusato-jogen-2026", "ふるさと納税 上限額シミュレーター 2026"], ["nencho-navi-2026", "年末調整 書き方ナビ 2026"], ["kakutei-shindan-2026", "確定申告が必要か1分診断 2026"], ["oosouji-buntan-2026", "大掃除の分担ジェネレーター 2026"], ["otoshidama-souba-2027", "お年玉 相場計算機 2027"], ["hikkoshi-checklist", "引っ越し手続きチェックリスト"], ["mochu-hagaki-calendar-2026", "喪中はがき いつまでに出す？逆算カレンダー"], ["hikkoshi-shoki-hiyou", "引っ越しの初期費用 計算機"], ["net-kaisen-shindan", "ネット回線 選び方診断"], ["bonenkai-kanji-2026", "忘年会 幹事の段取り表 2026"], ["kanchu-nengajimai-2027", "寒中見舞い・年賀状じまい 文例メーカー"], ["nenmatsu-renkyu-2026", "年末年始 何連休？有給シミュレーター"], ["iryohi-kojo-2026", "医療費控除 いくら戻る？計算機"], ["jutaku-loan-kojo-2026", "住宅ローン控除 いくら戻る？計算機"], ["fuyou-kabe-2026", "扶養の壁チェッカー 2026"], ["bonus-tedori-2026", "冬のボーナス 手取り計算機 2026"], ["gensen-choshu-checker-2026", "源泉徴収票の見方とチェッカー"], ["xmas-yosan-2026", "クリスマス予算プランナー 2026"], ["nengajo-itsumade-2027", "年賀状 いつまでに出す？投函日チェッカー"], ["danbou-denkidai-2026", "暖房の電気代 くらべる計算機"], ["kisei-koutsuhi-2026", "帰省 車と新幹線どっちが安い？"], ["osechi-yosan-2027", "おせち 予算と注文締切カレンダー 2027"], ["nenmatsu-jumbo-kitaichi-2026", "年末ジャンボ 期待値シミュレーター 2026"], ["oseibo-navi-2026", "お歳暮 いつまで？相場とのし 早見ナビ"], ["fukubukuro-2027", "福袋 2027 予約・抽選カレンダー"], ["studless-koukan-2026", "スタッドレス 交換の時期と費用 計算機"], ["nenga-insatsu-hikaku-2027", "年賀状 印刷代くらべ 2027（このページ）"]];
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+setKind('illust');steps();calc();
+})();
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

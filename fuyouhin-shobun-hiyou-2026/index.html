@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>不用品 捨てる・回収・売る どれが安い？処分費用くらべ 2026｜ひとりラボ</title>
+<meta name="description" content="ソファ・ベッド・冷蔵庫・洗濯機など、年末に手放したい不用品の処分費用を、自治体の粗大ごみ・家電リサイクル・回収業者の積み放題・フリマで売る場合でくらべる無料ツール。無許可業者の注意点も。">
+<link rel="canonical" href="https://yope1016.github.io/apps/fuyouhin-shobun-hiyou-2026/">
+<style>
+:root{--bg:#f7f6ff;--bg2:#e9e6ff;--card:#ffffff;--ink:#1d1a3a;--sub:#625e80;--line:#e1ddf5;--acc:#6d4aff;--acc2:#ff7a59;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#efecff;--shadow:0 10px 30px rgba(109,74,255,.13)}
+@media (prefers-color-scheme:dark){:root{--bg:#0f0d1f;--bg2:#1b1636;--card:#1a1730;--ink:#ecebff;--sub:#a9a5c9;--line:#2f2a52;--acc:#a08bff;--acc2:#ff9b7f;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#252047;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:30px;line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:8px}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;min-height:40px}
+.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.ev{border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0;position:relative;overflow:hidden}
+.ev::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c,var(--acc))}
+.ev h3{margin:0 0 2px;font-size:16px}
+.ev .meta{font-size:13px;color:var(--sub)}
+.st{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;color:#fff;margin-right:6px;vertical-align:middle}
+.st.now{background:var(--ok)}.st.soon{background:var(--warn)}.st.end{background:var(--off)}.st.tbd{background:#8b5cf6}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:6px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 108px;font-weight:700;font-variant-numeric:tabular-nums}
+.steps li.past{color:var(--off);text-decoration:line-through}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button.pri{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],input[type=text],input[type=date],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.row{display:grid;grid-template-columns:1fr 110px 44px;gap:6px;margin:6px 0}
+.row button{padding:0;justify-content:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.big{font-size:40px;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.big.plus{color:var(--ok)}.big.minus{color:var(--acc)}
+.bar{height:12px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),var(--acc2));width:0;transition:width .6s ease}
+.bar.over i{background:linear-gradient(90deg,var(--acc2),var(--acc))}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px}
+.chk input{width:22px;height:22px;accent-color:var(--acc)}
+.chk .p{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--sub)}
+.tips li{margin:6px 0;font-size:14px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#0d1522;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.pr a{color:var(--acc);font-weight:700}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;transition:transform .3s;z-index:9}
+.item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:12px 0;border-top:1px dashed var(--line)}
+.item .e{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--chip);font-size:22px}
+.item .t b{display:block;font-size:15px}.item .t span{font-size:12px;color:var(--sub)}
+.qty{display:flex;align-items:center;gap:4px}.qty button{width:40px;height:40px;min-height:40px;padding:0;justify-content:center;font-size:20px;font-weight:700}.qty output{min-width:26px;text-align:center;font-weight:800;font-size:18px;font-variant-numeric:tabular-nums}
+.item.sel .e{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.vs .side{border-radius:16px;padding:14px;text-align:center;border:1px solid var(--line);background:var(--card)}
+.vs .side.pro{background:linear-gradient(135deg,var(--chip),var(--card))}
+.vs .side h3{margin:0;font-size:14px;color:var(--sub)}
+.vs .side .n{font-size:clamp(20px,6vw,28px);font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.25;margin:4px 0}
+.vs .side .n.diy{color:var(--warn)}
+.tag{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;white-space:nowrap}
+.tag.p{background:var(--acc)}.tag.d{background:var(--warn)}.tag.m{background:#8b5cf6}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}.tbl th,.tbl td{padding:8px 4px;border-top:1px dashed var(--line);text-align:left;vertical-align:top}.tbl td.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.setok{margin-top:10px;border-radius:14px;padding:12px;background:linear-gradient(90deg,rgba(109,74,255,.14),rgba(255,122,89,.14));font-size:14px;display:none}
+.setok.on{display:block;animation:up .4s ease both}
+header .sp{display:inline-block;animation:tw 2.4s ease-in-out infinite}@keyframes tw{50%{transform:scale(1.25) rotate(15deg)}}
+.range{width:100%;accent-color:var(--acc)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 90px;border:1px solid var(--line);background:var(--card)}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.kv{margin-top:10px;font-size:14px}.kv div{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px dashed var(--line)}.kv b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tipbox{margin-top:10px;background:var(--chip);border-radius:14px;padding:12px;font-size:14px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.item .sell{font-size:11px;font-weight:800;color:var(--acc2)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.three .side{border-radius:16px;padding:12px 8px;text-align:center;border:1px solid var(--line);background:var(--card)}
+.three .side.best{border:2px solid var(--acc);background:linear-gradient(135deg,var(--chip),var(--card))}
+.three h3{margin:0;font-size:12px;color:var(--sub)}
+.three .n{font-size:clamp(15px,4.6vw,22px);font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.3;margin:4px 0}
+.three .crown{font-size:11px;font-weight:800;color:#fff;background:var(--acc);border-radius:999px;padding:1px 8px;display:inline-block;margin-bottom:2px}
+.grp{font-size:12px;font-weight:800;color:var(--sub);margin:14px 0 0;letter-spacing:.05em}
+.warnbox{margin-top:10px;border-radius:14px;padding:12px;font-size:13px;background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.35)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="badge">📦 2026 年末の片づけ版</span>
+<h1><span class="em">不用品</span>、捨てる・回収・売る<br>どれが安い？ 処分費用くらべ</h1>
+<p class="lead">ソファ・ベッド・冷蔵庫…手放したいものを選ぶだけ。自治体の粗大ごみ、回収業者の積み放題、売る場合の手取りを並べて、いちばん得な方法がわかります<span class="sp">✨</span></p>
+</header>
+
+<section class="card">
+<h2><span class="ic">✅</span>手放したいものを選ぶ</h2>
+<p class="note" style="margin:0">＋で数を増やします。<span class="sell">💰売れるかも</span> は状態がよければフリマや買取で値段がつきやすいものです。</p>
+<div id="items"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🙋</span>あなたの状況</h2>
+<label>玄関先（指定の場所）まで、自分で運び出せる？</label>
+<div class="seg" id="carry">
+<button type="button" data-v="1" class="on">運べる</button>
+<button type="button" data-v="0">運べない・2階から重い物</button>
+</div>
+<label>いつまでに片づけたい？</label>
+<div class="seg" id="hurry">
+<button type="button" data-v="0" class="on">年内ならOK</button>
+<button type="button" data-v="1">1〜2週間以内</button>
+<button type="button" data-v="2">今週中・引っ越し前</button>
+</div>
+<label class="chk" style="color:var(--ink);margin-top:8px"><input type="checkbox" id="sellOn" checked> 💰売れるかも のものは、まず売ってみる</label>
+</section>
+
+<section class="card" id="resCard">
+<h2><span class="ic">⚖️</span>くらべた結果</h2>
+<div class="three">
+<div class="side" id="sA"><h3>🏛️ 自治体に出す</h3><div class="n" id="aN">-</div><div class="note" id="aS">粗大ごみ＋家電</div></div>
+<div class="side" id="sB"><h3>🚚 回収業者</h3><div class="n" id="bN">-</div><div class="note" id="bS">積み放題の相場</div></div>
+<div class="side" id="sC"><h3>💰 売れる物は売る</h3><div class="n" id="cN">-</div><div class="note" id="cS">残りを自治体へ</div></div>
+</div>
+<div class="result">
+<div class="note">あなたへのおすすめ</div>
+<div class="big plus" id="recN" style="font-size:clamp(22px,6.5vw,32px)">-</div>
+<div class="note" id="recS"></div>
+</div>
+<div class="warnbox" id="gapBox" style="display:none"></div>
+<table class="tbl" id="tbl"></table>
+<p class="note">※自治体の手数料は船橋市・名古屋市の料金表（2025〜2026年）の幅、家電リサイクル料金は大田区の案内（2026年6月更新）の下限の目安、回収業者はミツモアの成約データ（2026年3月・5月）の相場です。お住まいの市区町村・メーカー・業者で金額は変わるので、申し込む前に必ず確認してください。</p>
+<div class="btns"><button type="button" class="pri" id="copy">📋 結果をコピー（家族に共有）</button></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🧮</span>フリマで売ったら手取りいくら？</h2>
+<div class="grid2">
+<div><label for="price">売れる値段（円）</label><input type="number" id="price" inputmode="numeric" value="3000" min="0" step="100"></div>
+<div><label for="ship">送料（自分で負担）</label><input type="number" id="ship" inputmode="numeric" value="750" min="0" step="10"></div>
+</div>
+<div class="kv" id="fm"></div>
+<p class="note">手数料の目安：メルカリ10%、Yahoo!フリマ5%、ラクマ4.5〜10%（前月の販売実績で変わる。ここでは10%で計算）。2024年8月時点の各社の公表に基づく目安です。大型家具・家電は送料が高くなりやすいので、「梱包・発送たのメル便」など大型向けの配送料も確認しましょう。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">📅</span>年末に片づけるなら、いつ動く？</h2>
+<div class="result" style="margin-top:0">
+<div class="note">今日から12月28日まで</div>
+<div class="cd" id="cdN">-</div>
+<div class="note" id="cdS"></div>
+</div>
+<ul class="tips">
+<li>粗大ごみは<b>事前の申し込みが必要</b>な自治体がほとんどです。年末は大掃除・引っ越しの人で受付が混み、<b>収集日が先になる</b>ことがあります。出すと決めたら早めに申し込みましょう。</li>
+<li>多くの自治体は<b>年末年始に収集や受付が休み</b>になります。休みの期間はお住まいの市区町村のお知らせで確認を。</li>
+<li>エアコン・テレビ・冷蔵庫（冷凍庫）・洗濯機（衣類乾燥機）は<b>粗大ごみに出せません</b>（家電リサイクル法）。買い替えの店か、家電リサイクル受付センター、指定引取場所への持ち込みで。</li>
+</ul>
+</section>
+
+<section class="card">
+<h2><span class="ic">⚠️</span>トラブルと事故を防ぐ注意</h2>
+<ol class="tips">
+<li><b>「無料回収」をうたう巡回トラック・チラシに注意。</b>家庭の不用品を回収するには、市区町村の<b>一般廃棄物の許可</b>が必要です。積み込んだ後に高額を請求される、不法投棄されるといったトラブルが報告されています（環境省・千葉市）。業者に頼むときは、<b>許可の有無と、書面の見積もり</b>を必ず確認しましょう。</li>
+<li>見積もりより大きく高くなることもあります。ミツモアの調査では、支払額が見積もりより<b>2割以上増えた人が約4人に1人</b>（2026年3月・5月）。品目を追加するときは、その場で金額を確認。</li>
+<li><b>モバイルバッテリー・充電式の電池が入った物</b>（電動自転車のバッテリー、加熱式たばこ、ハンディ扇風機など）は、粗大ごみや不燃ごみに混ぜないでください。<b>収集車や処理施設の火災</b>の原因になります。電池を外して、自治体の決まった方法か回収協力店へ。</li>
+<li>スプレー缶・カセットボンベは中身を使い切ってから。灯油の残ったストーブは灯油を抜いてから出します。</li>
+<li>冷蔵庫は<b>前日に電源を抜いて霜取り・水抜き</b>、洗濯機も<b>水抜き</b>をしておくと、運び出しで水がもれません。</li>
+<li>重い家具は<b>2人以上で</b>。階段では無理をせず、手袋をつけ、床や壁を毛布で保護しましょう。</li>
+</ol>
+</section>
+
+<section class="card">
+<h2><span class="ic">🛒</span>引っ越し・梱包の準備</h2>
+<div class="pr">
+<span class="lbl">PR</span>
+<p class="note" style="margin:0 0 6px">引っ越しが決まっている人は、荷物を減らしてから見積もりを取ると安くなりやすいです。フリマ発送用の段ボール・梱包材、ごみ袋もまとめて用意しておくと楽です。</p>
+<p style="margin:4px 0">引っ越しの見積もり：<a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+4ZSY8Q+4HN6+TS3OI" rel="nofollow">【ハコブ引っ越しサービス】</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGAV2+4ZSY8Q+4HN6+TS3OI" alt=""></p>
+<p style="margin:4px 0"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892738780" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892738780" height="1" width="1" border="0">Yahoo!ショッピングで段ボール・梱包材・ごみ袋を探す</a></p>
+<p style="margin:4px 0"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892740429" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892740429" height="1" width="1" border="0">Amazon.co.jp(アマゾン)</a></p>
+<!-- AFFILIATE:fuyouhin_kaishu -->
+<!-- AFFILIATE:takuhai_kaitori -->
+<!-- AFFILIATE:kaden_kaitori -->
+<p class="note" style="margin:6px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での申し込み・購入により当サイトが報酬を受け取ることがあります。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>年末の準備にあわせて使える無料ツール</h2>
+<div class="rec">
+<a href="../oosouji-buntan-2026/">🧹 大掃除の分担ジェネレーター（家族で割り振る）</a>
+<a href="../hikkoshi-checklist/">📋 引っ越し手続きチェックリスト</a>
+<a href="../hikkoshi-shoki-hiyou/">🏠 引っ越しの初期費用 計算機</a>
+</div>
+<details><summary>ひとりラボのツール一覧（29本）</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>参考：船橋市「粗大ごみの手数料」（2025/10/6更新）、名古屋市「粗大ごみの手数料の例」（2026/9/30更新）、大田区「家電リサイクル法対象品目の出し方」（2026/6/10更新）、BCN＋R（パナソニック・東芝のエアコンのリサイクル料金を2026年2月から550円に改定）、ミツモア「不用品回収の料金相場」（2026年3月・5月の成約データ）、環境省 報道発表（不用品回収業者の実態調査）、千葉市「不用品回収業者にご注意ください」（2025/7/30更新）、Shopify Japan「ラクマの手数料」（2024/8）。金額は目安です。</p>
+<p>入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+'use strict';
+var $=function(i){return document.getElementById(i);};
+function yen(n){return Math.round(n).toLocaleString('ja-JP')+'円';}
+function num(n){return Math.round(n).toLocaleString('ja-JP');}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+/* id, 絵文字, 名前, 補足, 種類(g=粗大ごみ k=家電4品目), 自治体の下限, 上限（家電はリサイクル料金）, 荷台の大きさ(軽トラ1台=1), 重い(2人作業), 売れやすさ(0/1/2), 業者の追加料金 下限, 上限, グループ */
+var P=[
+['s1','🪑','ソファ（1人用）','',  'g',500,740,0.15,0,1,0,0,'家具'],
+['s2','🛋️','ソファ（2人以上）','','g',1000,1500,0.3,1,1,0,0,'家具'],
+['bs','🛏️','ベッド（シングル）','フレームのみ','g',1000,1110,0.25,0,0,0,1000,'家具'],
+['bd','🛏️','ベッド（ダブル・2段）','フレームのみ','g',1480,2500,0.35,1,0,0,1000,'家具'],
+['mt','🟫','マットレス（スプリング入り）','','g',1110,2000,0.2,0,0,0,1000,'家具'],
+['ta','🗄️','タンス・大きな収納家具','長い辺が1.2〜1.5m以上','g',1480,2000,0.3,1,1,800,1000,'家具'],
+['sh','📚','本棚・小さめの収納','','g',740,1500,0.15,0,1,0,0,'家具'],
+['tb','🍽️','ダイニングテーブル','','g',1110,1500,0.2,0,1,0,0,'家具'],
+['ch','💺','椅子','1脚','g',250,370,0.05,0,1,0,0,'家具'],
+['ko','🔥','こたつ','','g',370,1000,0.1,0,1,0,0,'家具'],
+['fu','🛌','布団（2〜3枚）','','g',250,370,0.1,0,0,0,1000,'家具'],
+['cp','🧶','カーペット（3〜6畳）','','g',250,370,0.05,0,0,0,0,'家具'],
+['bi','🚲','自転車','電動はバッテリーを外す','g',370,1000,0.1,0,1,0,0,'そのほか'],
+['mw','📟','電子レンジ','','g',500,740,0.05,0,2,0,100,'そのほか'],
+['ac','❄️','エアコン','取り外し工事は別料金','k',550,550,0.15,0,1,0,0,'家電'],
+['tv','📺','テレビ（16型以上）','15型以下は1,320円〜','k',2420,2420,0.1,0,2,0,1000,'家電'],
+['rs','🧊','冷蔵庫（170L以下）','','k',3740,3740,0.2,0,1,800,2000,'家電'],
+['rl','🧊','冷蔵庫（171L以上）','','k',4730,4730,0.35,1,1,800,2000,'家電'],
+['wm','🌀','洗濯機・衣類乾燥機','','k',2530,2530,0.25,1,1,400,2000,'家電']
+];
+var KADEN_HAUL=[3500,4000]; /* 家電リサイクル受付センターの収集運搬 基本料金の目安（大田区） */
+var q={};P.forEach(function(p){q[p[0]]=0;});q.s2=1;q.bs=1;q.rs=1;
+var carry=1,hurry=0;
+function render(){
+ var g='',h='';
+ P.forEach(function(p){
+  if(p[12]!==g){g=p[12];h+='<div class="grp">'+esc(g==='家電'?'家電4品目（粗大ごみに出せない）':g)+'</div>';}
+  var sub=(p[4]==='k'?'リサイクル料金 '+yen(p[5])+'〜':'粗大ごみ '+yen(p[5])+(p[6]>p[5]?'〜'+yen(p[6]):''))+(p[3]?'・'+p[3]:'');
+  h+='<div class="item'+(q[p[0]]?' sel':'')+'" id="it_'+p[0]+'"><div class="e">'+p[1]+'</div><div class="t"><b>'+esc(p[2])+(p[9]?' <span class="sell">💰売れるかも</span>':'')+'</b><span>'+esc(sub)+'</span></div><div class="qty"><button type="button" data-k="'+p[0]+'" data-d="-1" aria-label="'+esc(p[2])+'を減らす">−</button><output id="q_'+p[0]+'">'+q[p[0]]+'</output><button type="button" data-k="'+p[0]+'" data-d="1" aria-label="'+esc(p[2])+'を増やす">＋</button></div></div>';
+ });
+ $('items').innerHTML=h;
+}
+render();
+$('items').addEventListener('click',function(e){
+ var b=e.target.closest('button');if(!b)return;
+ var k=b.getAttribute('data-k'),d=+b.getAttribute('data-d');
+ q[k]=Math.max(0,Math.min(9,q[k]+d));
+ $('q_'+k).textContent=q[k];$('it_'+k).classList.toggle('sel',q[k]>0);calc();
+});
+function seg(id,fn){$(id).addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(this.children,function(c){c.classList.toggle('on',c===b);});fn(+b.getAttribute('data-v'));calc();});}
+seg('carry',function(v){carry=v;});seg('hurry',function(v){hurry=v;});
+$('sellOn').addEventListener('change',calc);
+/* 積み放題の相場（ミツモア 2026年3月・5月の成約データ q1〜q3） */
+function truck(vol,heavy){
+ if(vol<=0)return null;
+ if(vol<=0.35&&!heavy)return ['乗用車1台分',5600,7000];
+ if(vol<=1)return heavy?['軽トラック（2人作業）',10000,14000]:['軽トラック（1人作業）',8800,11000];
+ if(vol<=1.8)return ['1tトラック',15000,20000];
+ if(vol<=3)return ['2tトラック',20000,28000];
+ return ['2tトラック2台',39800,50000];
+}
+var last='';
+function calc(){
+ var sellOn=$('sellOn').checked;
+ var aLo=0,aHi=0,kN=0,vol=0,heavy=false,addLo=0,addHi=0,rows=[],any=false,cLo=0,cHi=0,ckN=0,sold=[],kList=[];
+ P.forEach(function(p){
+  var n=q[p[0]];if(!n)return;any=true;
+  var lo=p[5]*n,hi=p[6]*n;
+  aLo+=lo;aHi+=hi;
+  if(p[4]==='k'){kN+=n;kList.push(p[2]);}
+  vol+=p[7]*n;if(p[8])heavy=true;addLo+=p[10]*n;addHi+=p[11]*n;
+  var s=sellOn&&p[9]>0;
+  if(s){sold.push(p[2]);}else{cLo+=lo;cHi+=hi;if(p[4]==='k')ckN+=n;}
+  rows.push('<tr><td>'+p[1]+' '+esc(p[2])+(n>1?' ×'+n:'')+'</td><td class="r">'+(p[4]==='k'?'リサイクル<br>':'')+yen(lo)+(hi>lo?'〜<br>'+yen(hi):'')+'</td><td>'+(p[4]==='k'?'<span class="tag m">家電リサイクル</span>':'<span class="tag p">粗大ごみ</span>')+(p[9]?' <span class="tag d">売れるかも</span>':'')+'</td></tr>');
+ });
+ if(!any){['aN','bN','cN'].forEach(function(i){$(i).textContent='-';});$('recN').textContent='手放すものを選んでください';$('recS').textContent='';$('tbl').innerHTML='';$('gapBox').style.display='none';last='';return;}
+ /* 家電は受付センターで収集運搬（1台ごとの目安で多めに計算） */
+ aLo+=KADEN_HAUL[0]*kN;aHi+=KADEN_HAUL[1]*kN;
+ cLo+=KADEN_HAUL[0]*ckN;cHi+=KADEN_HAUL[1]*ckN;
+ var tr=truck(vol,heavy);
+ var bLo=tr[1]+addLo,bHi=tr[2]+addHi;
+ $('aN').innerHTML=num(aLo)+'〜<br>'+yen(aHi);
+ $('aS').textContent=carry?'予約して自分で運び出し':'運び出しは自分で（要相談）';
+ $('bN').innerHTML=num(bLo)+'〜<br>'+yen(bHi);
+ $('bS').textContent=tr[0]+'・家の中から運び出し';
+ if(sold.length){$('cN').innerHTML=num(cLo)+'〜<br>'+yen(cHi);$('cS').textContent='売れた分は＋収入／'+sold.length+'品を出品';}
+ else{$('cN').textContent='-';$('cS').textContent=sellOn?'売れそうな物がありません':'オフにしています';}
+ /* おすすめ */
+ var aMid=(aLo+aHi)/2,bMid=(bLo+bHi)/2,cMid=(cLo+cHi)/2;
+ var best,why;
+ if(!carry||hurry===2){best='B';why=(!carry?'自分で運び出すのが難しいので、':'急ぎなので、')+'家の中から運び出してくれる<b>回収業者</b>が向いています。自治体との差額は約'+yen(Math.max(0,bMid-aMid))+'。';}
+ else if(sold.length&&cMid<aMid){best='C';why='売れそうな物（'+esc(sold.join('・'))+'）は先に<b>フリマ・買取</b>へ。売れ残ったら自治体に出せば、処分費は最大で約'+yen(aMid-cMid)+'浮きます。'+(hurry===1?'<br>※1〜2週間で片づけたいなら、出品は期限を決めて。':'');}
+ else if(bMid-aMid<3000){best='B';why='自治体との差は約'+yen(Math.max(0,bMid-aMid))+'だけ。手間を考えると<b>回収業者</b>にまとめて頼むのもアリです。';}
+ else{best='A';why='<b>自治体の粗大ごみ</b>がいちばん安く、回収業者より約'+yen(bMid-aMid)+'お得。年末は受付が混むので早めに予約を。';}
+ var nm={A:'🏛️ 自治体に出す',B:'🚚 回収業者にまとめて',C:'💰 売れる物は売る＋自治体'};
+ $('recN').textContent=nm[best];
+ $('recS').innerHTML=why+(kN?'<br>家電（'+esc(kList.join('・'))+'）は、買い替えなら<b>新しい家電を買う店</b>に引き取ってもらうのが手軽です。':'');
+ ['A','B','C'].forEach(function(x){$('s'+x).classList.toggle('best',x===best);var c=$('s'+x).querySelector('.crown');if(c)c.remove();if(x===best){var s=document.createElement('span');s.className='crown';s.textContent='おすすめ';$('s'+x).insertBefore(s,$('s'+x).firstChild);}});
+ var gb=$('gapBox');
+ if(best==='B'){gb.style.display='block';gb.innerHTML='⚠️ 業者に頼むときは、<b>市区町村の一般廃棄物の許可</b>があるか（または許可業者と提携しているか）と、<b>書面の見積もり</b>を確認しましょう。追加の品目はその場で金額を確認。';}
+ else gb.style.display='none';
+ $('tbl').innerHTML='<tr><th>品目</th><th class="r" style="text-align:right">自治体の料金</th><th>区分</th></tr>'+rows.join('')+(kN?'<tr><td>🚛 家電の収集運搬（目安）</td><td class="r">'+yen(KADEN_HAUL[0]*kN)+'〜<br>'+yen(KADEN_HAUL[1]*kN)+'</td><td><span class="tag m">受付センター</span></td></tr>':'');
+ last='【不用品の処分費用くらべ】\n自治体：'+yen(aLo)+'〜'+yen(aHi)+'\n回収業者（'+tr[0]+'）：'+yen(bLo)+'〜'+yen(bHi)+(sold.length?'\n売れる物は売る＋残りを自治体：'+yen(cLo)+'〜'+yen(cHi):'')+'\nおすすめ：'+nm[best].replace(/^\S+\s/,'')+'\nhttps://yope1016.github.io/apps/fuyouhin-shobun-hiyou-2026/';
+}
+calc();
+/* フリマ手取り */
+function fm(){
+ var pr=Math.max(0,+$('price').value||0),sh=Math.max(0,+$('ship').value||0);
+ var L=[['メルカリ',0.10,200],['Yahoo!フリマ',0.05,100],['ラクマ（10%の場合）',0.10,210]];
+ $('fm').innerHTML=L.map(function(x){var net=pr-Math.floor(pr*x[1])-sh;return '<div><span>'+esc(x[0])+'（手数料'+Math.round(x[1]*100)+'%）</span><b style="color:'+(net>0?'var(--ok)':'var(--warn)')+'">'+yen(net)+'</b></div>';}).join('')+'<div><span class="note">振込手数料（目安）：メルカリ200円・Yahoo!フリマ100円・ラクマ210円。条件で無料になる場合あり</span><span></span></div>';
+}
+$('price').addEventListener('input',fm);$('ship').addEventListener('input',fm);fm();
+function toast(t){var el=$('toast');el.textContent=t;el.classList.add('on');setTimeout(function(){el.classList.remove('on');},1800);}
+$('copy').addEventListener('click',function(){
+ if(!last){toast('先に手放すものを選んでください');return;}
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(last).then(function(){toast('コピーしました');},function(){toast('コピーできませんでした');});}
+ else{toast('このブラウザではコピーできません');}
+});
+(function(){
+ var now=new Date();var t=new Date(now.getFullYear(),11,28);
+ var d=Math.ceil((t-new Date(now.getFullYear(),now.getMonth(),now.getDate()))/86400000);
+ if(d>0){$('cdN').innerHTML='あと <span>'+d+'</span><small> 日</small>';
+  $('cdS').textContent=d>21?'粗大ごみの予約は今のうちに。売る物は11月中に出品すると、売れ残っても年内に処分できます':'年末が近づいています。急ぐ物は回収業者、急がない物は年明けの粗大ごみも検討を';}
+ else{$('cdN').textContent='年末年始';$('cdS').textContent='自治体の受付・収集の休みを確認してから申し込みましょう';}
+})();
+var APPS=[['warikan-keisha','傾斜割り勘計算（幹事用）'],['nenga-hitokoto-2027','年賀状ひとことジェネレーター 2027'],['furusato-jogen-2026','ふるさと納税 上限額シミュレーター 2026'],['nencho-navi-2026','年末調整 書き方ナビ 2026'],['kakutei-shindan-2026','確定申告が必要か1分診断 2026'],['oosouji-buntan-2026','大掃除の分担ジェネレーター 2026'],['otoshidama-souba-2027','お年玉 相場計算機 2027'],['hikkoshi-checklist','引っ越し手続きチェックリスト'],['mochu-hagaki-calendar-2026','喪中はがき いつまでに出す？逆算カレンダー'],['hikkoshi-shoki-hiyou','引っ越しの初期費用 計算機'],['net-kaisen-shindan','ネット回線 選び方診断'],['bonenkai-kanji-2026','忘年会 幹事の段取り表 2026'],['kanchu-nengajimai-2027','寒中見舞い・年賀状じまい 文例メーカー'],['nenmatsu-renkyu-2026','年末年始 何連休？有給シミュレーター'],['iryohi-kojo-2026','医療費控除 いくら戻る？計算機'],['jutaku-loan-kojo-2026','住宅ローン控除 いくら戻る？計算機'],['fuyou-kabe-2026','扶養の壁チェッカー 2026'],['bonus-tedori-2026','冬のボーナス 手取り計算機 2026'],['gensen-choshu-checker-2026','源泉徴収票の見方とチェッカー'],['xmas-yosan-2026','クリスマス予算プランナー 2026'],['nengajo-itsumade-2027','年賀状 いつまでに出す？投函日チェッカー'],['danbou-denkidai-2026','暖房の電気代 くらべる計算機'],['kisei-koutsuhi-2026','帰省 車と新幹線どっちが安い？'],['osechi-yosan-2027','おせち 予算と注文締切カレンダー 2027'],['nenmatsu-jumbo-kitaichi-2026','年末ジャンボ 期待値シミュレーター 2026'],['oseibo-navi-2026','お歳暮 いつまで？相場とのし 早見ナビ'],['fukubukuro-2027','福袋 2027 予約・抽選カレンダー'],['studless-koukan-2026','スタッドレス 交換の時期と費用 計算機'],['fuyouhin-shobun-hiyou-2026','不用品 処分費用くらべ（このページ）']];
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+})();
+</script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

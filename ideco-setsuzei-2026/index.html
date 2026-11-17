@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>iDeCo 節税額 計算機 2026（12月からの上限6.2万円対応）｜ひとりラボ</title>
+<meta name="description" content="働き方・年収・毎月の掛金を入れるだけで、iDeCoで戻る所得税・住民税の目安、60歳・65歳までの節税の合計と運用額、手数料、ふるさと納税の上限への影響を計算。2026年12月分からの上限引き上げ（会社員 月2.3万円→6.2万円など）に対応した無料ツール。">
+<link rel="canonical" href="https://yope1016.github.io/apps/ideco-setsuzei-2026/">
+<style>
+:root{--bg:#f3f8fc;--bg2:#dcecf9;--card:#ffffff;--ink:#14243a;--sub:#5a6b80;--line:#d8e4ef;--acc:#2b7de9;--acc2:#ff8a3d;--ok:#0f9d76;--warn:#d97706;--off:#9aa0a6;--chip:#e9f2fb;--shadow:0 10px 30px rgba(43,125,233,.13)}
+@media (prefers-color-scheme:dark){:root{--bg:#0c1522;--bg2:#13233a;--card:#142033;--ink:#e8f0fa;--sub:#9fb2c8;--line:#24364f;--acc:#6aaeff;--acc2:#ffa866;--ok:#34d399;--warn:#fbbf24;--off:#7c7f84;--chip:#1c2d46;--shadow:0 10px 30px rgba(0,0,0,.35)}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg2),var(--bg) 340px);line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 48px}
+header{padding:28px 0 8px;text-align:center}
+.badge{display:inline-block;background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700;font-size:12px;padding:4px 12px;border-radius:999px;letter-spacing:.05em}
+h1{font-size:clamp(22px,6vw,32px);line-height:1.35;margin:12px 0 6px}
+h1 .em{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--sub);font-size:14px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:16px 0;box-shadow:var(--shadow);animation:up .5s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h2{font-size:18px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+h2 .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--chip);font-size:18px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--chip);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-size:30px;line-height:1.2;color:var(--acc);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--sub)}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:8px}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;min-height:40px}
+.tab.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.ev{border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0;position:relative;overflow:hidden}
+.ev::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c,var(--acc))}
+.ev h3{margin:0 0 2px;font-size:16px}
+.ev .meta{font-size:13px;color:var(--sub)}
+.st{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;color:#fff;margin-right:6px;vertical-align:middle}
+.st.now{background:var(--ok)}.st.soon{background:var(--warn)}.st.end{background:var(--off)}.st.tbd{background:#8b5cf6}
+.cd{font-size:26px;font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;margin:6px 0 2px}
+.cd small{font-size:13px;font-weight:600;color:var(--sub)}
+.steps{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+.steps li{display:flex;gap:8px;padding:6px 0;border-top:1px dashed var(--line)}
+.steps li .d{flex:0 0 108px;font-weight:700;font-variant-numeric:tabular-nums}
+.steps li.past{color:var(--off);text-decoration:line-through}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+button,.btn{font:inherit;font-size:14px;border:0;border-radius:12px;padding:10px 14px;min-height:44px;cursor:pointer;background:var(--chip);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button.pri{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;font-weight:700}
+button:active{transform:scale(.97)}
+label{font-size:13px;color:var(--sub);display:block;margin:10px 0 4px}
+input[type=number],input[type=text],input[type=date],select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);min-height:44px}
+.row{display:grid;grid-template-columns:1fr 110px 44px;gap:6px;margin:6px 0}
+.row button{padding:0;justify-content:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result{margin-top:14px;border-radius:16px;padding:16px;background:linear-gradient(135deg,var(--chip),var(--card));border:1px solid var(--line);text-align:center}
+.big{font-size:40px;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.big.plus{color:var(--ok)}.big.minus{color:var(--acc)}
+.bar{height:12px;border-radius:999px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),var(--acc2));width:0;transition:width .6s ease}
+.bar.over i{background:linear-gradient(90deg,var(--acc2),var(--acc))}
+.chk{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px dashed var(--line);font-size:15px}
+.chk input{width:22px;height:22px;accent-color:var(--acc)}
+.chk .p{margin-left:auto;font-weight:700;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:var(--sub)}
+.tips li{margin:6px 0;font-size:14px}
+.pr{border:2px dashed var(--acc2);border-radius:16px;padding:14px;margin-top:10px}
+.pr .lbl{display:inline-block;font-size:11px;font-weight:800;background:var(--acc2);color:#0d1522;border-radius:6px;padding:1px 8px;margin-bottom:6px}
+.pr a{color:var(--acc);font-weight:700}
+.links a{display:block;color:var(--ink);text-decoration:none;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.links a:hover{color:var(--acc)}
+.rec{display:grid;gap:8px;margin-bottom:10px}
+.rec a{display:block;background:var(--chip);border-radius:14px;padding:12px;font-weight:700;color:var(--ink);text-decoration:none}
+details summary{cursor:pointer;font-weight:700;padding:6px 0}
+footer{text-align:center;font-size:12px;color:var(--sub);margin-top:24px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;transition:transform .3s;z-index:9}
+.item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:12px 0;border-top:1px dashed var(--line)}
+.item .e{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--chip);font-size:22px}
+.item .t b{display:block;font-size:15px}.item .t span{font-size:12px;color:var(--sub)}
+.qty{display:flex;align-items:center;gap:4px}.qty button{width:40px;height:40px;min-height:40px;padding:0;justify-content:center;font-size:20px;font-weight:700}.qty output{min-width:26px;text-align:center;font-weight:800;font-size:18px;font-variant-numeric:tabular-nums}
+.item.sel .e{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.vs .side{border-radius:16px;padding:14px;text-align:center;border:1px solid var(--line);background:var(--card)}
+.vs .side.pro{background:linear-gradient(135deg,var(--chip),var(--card))}
+.vs .side h3{margin:0;font-size:14px;color:var(--sub)}
+.vs .side .n{font-size:clamp(20px,6vw,28px);font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.25;margin:4px 0}
+.vs .side .n.diy{color:var(--warn)}
+.tag{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;color:#fff;white-space:nowrap}
+.tag.p{background:var(--acc)}.tag.d{background:var(--warn)}.tag.m{background:#8b5cf6}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}.tbl th,.tbl td{padding:8px 4px;border-top:1px dashed var(--line);text-align:left;vertical-align:top}.tbl td.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.setok{margin-top:10px;border-radius:14px;padding:12px;background:linear-gradient(90deg,rgba(109,74,255,.14),rgba(255,122,89,.14));font-size:14px;display:none}
+.setok.on{display:block;animation:up .4s ease both}
+header .sp{display:inline-block;animation:tw 2.4s ease-in-out infinite}@keyframes tw{50%{transform:scale(1.25) rotate(15deg)}}
+.range{width:100%;accent-color:var(--acc)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{flex:1 1 90px;border:1px solid var(--line);background:var(--card)}
+.seg button.on{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.kv{margin-top:10px;font-size:14px}.kv div{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px dashed var(--line)}.kv b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tipbox{margin-top:10px;background:var(--chip);border-radius:14px;padding:12px;font-size:14px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.item .sell{font-size:11px;font-weight:800;color:var(--acc2)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+.three .side{border-radius:16px;padding:12px 8px;text-align:center;border:1px solid var(--line);background:var(--card)}
+.three .side.best{border:2px solid var(--acc);background:linear-gradient(135deg,var(--chip),var(--card))}
+.three h3{margin:0;font-size:12px;color:var(--sub)}
+.three .n{font-size:clamp(15px,4.6vw,22px);font-weight:800;color:var(--acc);font-variant-numeric:tabular-nums;line-height:1.3;margin:4px 0}
+.three .crown{font-size:11px;font-weight:800;color:#fff;background:var(--acc);border-radius:999px;padding:1px 8px;display:inline-block;margin-bottom:2px}
+.grp{font-size:12px;font-weight:800;color:var(--sub);margin:14px 0 0;letter-spacing:.05em}
+.warnbox{margin-top:10px;border-radius:14px;padding:12px;font-size:13px;background:rgba(217,119,6,.12);border:1px solid rgba(217,119,6,.35)}
+
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px}
+.cal .h{font-size:11px;text-align:center;color:var(--sub);font-weight:700}
+.cal .d{border-radius:10px;padding:4px 2px;min-height:58px;font-size:10px;text-align:center;background:var(--chip);border:1px solid transparent;line-height:1.3;cursor:pointer}
+.cal .d b{display:block;font-size:13px}
+.cal .d.x{background:transparent;cursor:default}
+.cal .d.fam{background:rgba(15,157,118,.14)}
+.cal .d.care{background:rgba(255,138,61,.16)}
+.cal .d.away{background:rgba(154,160,166,.18);color:var(--off)}
+.cal .d.sel{border-color:var(--acc)}
+.cal .d .m{display:block;font-size:15px;margin-top:2px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--sub);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:4px;vertical-align:-1px}
+.daybox{margin-top:10px;border-radius:14px;padding:12px;background:var(--chip);font-size:14px;min-height:48px}
+.hero3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hero3 .stat b{font-size:clamp(18px,5.4vw,26px)}
+.grid2>div{min-width:0}input[type=date]{min-width:0;max-width:100%;-webkit-appearance:none;appearance:none}
+.seg button{flex-direction:column;justify-content:center;text-align:center;line-height:1.35;gap:0;padding:8px 6px}.seg button small{font-size:11px;opacity:.85}
+.mlist li{margin:4px 0;font-size:14px}
+.afl{margin:6px 0;font-size:14px}.afl a{color:var(--acc);font-weight:700}.afl img{display:inline}
+.pr .grp{margin:10px 0 2px}
+#nPreset button{flex:1 1 60px}
+.three .note{line-height:1.5}
+
+.q{padding:10px 0;border-top:1px dashed var(--line)}.q:first-of-type{border-top:0}
+.qt{font-weight:700;margin:0 0 8px;font-size:15px}
+.qty.big2{justify-content:center;gap:10px}.qty.big2 output{font-size:34px;min-width:50px}.qty.big2 .unit{font-size:14px;color:var(--sub);margin-left:-6px}
+.result.ok{background:linear-gradient(135deg,rgba(15,157,118,.16),var(--card))}.result.ng{background:linear-gradient(135deg,rgba(255,138,61,.18),var(--card))}.result.mid{background:linear-gradient(135deg,rgba(139,92,246,.16),var(--card))}
+.result p{font-size:14px;text-align:left;margin:8px 0 0}
+.vi{font-size:40px;line-height:1.1;animation:pop .5s ease both}@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.vt{font-size:clamp(19px,5.4vw,24px);font-weight:800;margin-top:4px}
+.result.ok .vt{color:var(--ok)}.result.ng .vt{color:var(--acc2)}.result.mid .vt{color:#8b5cf6}
+.warn{background:rgba(217,119,6,.12);border-radius:12px;padding:10px}
+.drow{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px;margin:8px 0;border:1px solid var(--line);border-radius:14px;transition:background .3s}
+.drow input[data-k=name]{grid-column:1/-1}
+.drow.done{background:rgba(15,157,118,.10);border-color:var(--ok)}
+.dchk{display:flex;align-items:center;gap:8px;margin:0;font-size:14px;color:var(--ink);min-height:44px}.dchk input{width:22px;height:22px;accent-color:var(--ok)}
+.drow .del{justify-self:end;width:44px;padding:0;justify-content:center;color:var(--sub)}
+.empty{font-size:13px;color:var(--sub);text-align:center;padding:12px;border:1px dashed var(--line);border-radius:14px}
+.kv3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.kv3 div{background:var(--chip);border-radius:14px;padding:10px 6px;text-align:center}.kv3 b{display:block;font-size:clamp(16px,5vw,22px);color:var(--acc);font-variant-numeric:tabular-nums}.kv3 span{font-size:11px;color:var(--sub)}
+.online{margin-top:12px;border-radius:14px;padding:12px;background:linear-gradient(90deg,rgba(43,125,233,.12),rgba(255,138,61,.12));font-size:14px}
+.steps li .d{flex:0 0 96px}
+.grp{font-size:12px;font-weight:700;color:var(--sub);margin:10px 0 2px}
+.afl{padding:6px 0}.afl a{color:var(--acc);font-weight:700}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tg{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:10px 14px;font-size:14px;transition:all .2s}
+.tg.on{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#fff;border-color:transparent;font-weight:700;box-shadow:0 6px 16px rgba(43,125,233,.25)}
+.ev.dn{opacity:.6}.ev.dn .dchk span{text-decoration:line-through}
+.ev .btns{margin-top:6px}.ev .btns .btn,.ev .btns button{font-size:13px;min-height:40px;padding:8px 12px}
+.toast:empty{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="badge">2026年12月分から上限アップ対応</span>
+<h1>iDeCo <span class="em">節税額</span> 計算機 2026 <span class="sp">🐷</span></h1>
+<p class="lead">働き方・年収・掛金を入れるだけ。<br>税金がいくら戻るか、積立が終わるまでに増える額、手数料まで一画面で。</p>
+</header>
+
+<section class="card">
+<div class="hero">
+<div class="stat"><b id="hSave">--</b><span>1年で戻る税金（目安）</span></div>
+<div class="stat"><b id="hTotal">--</b><span>積立終了までの節税の合計</span></div>
+</div>
+<p class="note" style="text-align:center;margin:8px 0 0">入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">👤</span>あなたの働き方は？</h2>
+<div class="seg" id="kbn">
+<button type="button" data-v="k0" class="on">会社員<small>企業年金なし</small></button>
+<button type="button" data-v="k1">会社員・公務員<small>企業年金・共済あり</small></button>
+<button type="button" data-v="j">自営業<small>フリーランス</small></button>
+<button type="button" data-v="s">専業主婦・主夫<small>扶養内</small></button>
+</div>
+<div class="grid2">
+<div id="wIncome"><label for="inc" id="incLbl">年収（額面・万円）</label><input type="number" id="inc" inputmode="numeric" value="500" min="0" step="10"></div>
+<div><label for="age">いまの年齢</label><input type="number" id="age" inputmode="numeric" value="35" min="18" max="69" step="1"></div>
+<div id="wOther"><label for="oth" id="othLbl">会社の掛金（企業型DC＋DB等・月・円）</label><input type="number" id="oth" inputmode="numeric" value="0" min="0" step="1000"></div>
+<div><label for="endAge">何歳まで積み立てる？</label>
+<select id="endAge"><option value="60">60歳まで</option><option value="65" selected>65歳まで</option><option value="70">70歳まで（条件あり）</option></select></div>
+<div id="wSha"><label for="sha">社会保険料（年・万円）</label><input type="number" id="sha" inputmode="numeric" placeholder="空欄＝自動で推定" min="0" step="1"></div>
+<div><label for="ded">その他の所得控除（年・万円）</label><input type="number" id="ded" inputmode="numeric" value="0" min="0" step="1"></div>
+</div>
+<p class="note" style="margin:6px 0 0" id="kbnNote"></p>
+</section>
+
+<section class="card">
+<h2><span class="ic">💴</span>毎月いくら積み立てる？</h2>
+<div class="cd" style="text-align:center"><span id="amtOut">23,000</span><small> 円／月</small></div>
+<input type="range" class="range" id="amt" min="5000" max="62000" step="1000" value="23000" aria-label="毎月の掛金">
+<div class="seg" id="preset" style="margin-top:8px">
+<button type="button" data-v="10000">1万円</button>
+<button type="button" data-v="cur">いまの上限</button>
+<button type="button" data-v="new">新しい上限</button>
+</div>
+<div class="kv3">
+<div><b id="limCur">--</b><span>上限〜2026年11月分</span></div>
+<div><b id="limNew">--</b><span>上限 2026年12月分〜</span></div>
+<div><b id="limUp">--</b><span>増える枠（月）</span></div>
+</div>
+<p class="note" style="margin:8px 0 0">掛金は月5,000円以上、1,000円単位。上限は国民年金基金連合会の手続きで決まる区分ごとの額です。</p>
+</section>
+
+<section class="card">
+<h2><span class="ic">🧾</span>税金はいくら戻る？（1年）</h2>
+<div class="result" id="res">
+<div class="note">掛金 <b id="rAmt">--</b>／年 が全額、所得から引かれます</div>
+<div class="big plus" id="rSave">--</div>
+<div class="kv3">
+<div><b id="rIt">--</b><span>所得税（復興税込み）</span></div>
+<div><b id="rRt">--</b><span>住民税</span></div>
+<div><b id="rReal">--</b><span>実質の負担（年）</span></div>
+</div>
+<p id="rMsg"></p>
+</div>
+<h3 style="font-size:15px;margin:16px 0 4px">掛金ごとの節税額くらべ（年）</h3>
+<div id="cmp"></div>
+<p class="note" id="rateNote" style="margin:6px 0 0"></p>
+</section>
+
+<section class="card">
+<h2><span class="ic">📈</span>積立が終わるまでに、どれくらい？</h2>
+<div class="grid2">
+<div><label for="ret">想定の運用利回り（年）</label>
+<select id="ret"><option value="0">0%（定期預金など元本確保型に近い）</option><option value="1">1%</option><option value="3" selected>3%</option><option value="5">5%</option></select></div>
+<div><label>積み立てる期間</label><div class="cd" style="margin:0;font-size:22px"><span id="yrs">--</span><small> 年</small></div></div>
+</div>
+<div class="vs">
+<div class="side"><h3>積み立てた元本</h3><div class="n" id="fPrin">--</div></div>
+<div class="side pro"><h3>運用した場合の資産（目安）</h3><div class="n" id="fVal">--</div></div>
+</div>
+<div class="kv">
+<div><span>節税の合計（同じ年収・税率が続く場合）</span><b id="fTax">--</b></div>
+<div><span>手数料の合計（加入時2,829円＋月171円）</span><b id="fFee">--</b></div>
+<div><span>節税 ÷ 手数料</span><b id="fRatio">--</b></div>
+</div>
+<div class="warnbox">⚠️ iDeCoのお金は<b>原則60歳まで引き出せません</b>。投資信託は値下がりして元本を割ることがあります。受け取るときは退職所得控除・公的年金等控除の範囲を超えると課税されます。生活費の予備（数か月分）を残したうえで、無理のない額にしましょう。</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🎁</span>ふるさと納税をしている人は注意</h2>
+<p style="font-size:14px;margin:0">iDeCoで所得が減ると、ふるさと納税の上限額も少し下がります。</p>
+<div class="result"><div class="note">上限額が下がる目安</div><div class="big minus" id="fsDown">--</div></div>
+<div class="btns"><a class="btn" href="../furusato-jogen-2026/">🧮 ふるさと納税の上限を計算し直す ›</a></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🗓️</span>いつから・どうやって？</h2>
+<div class="seg" id="mem" style="margin-bottom:6px"><button type="button" data-v="0" class="on">まだ入っていない</button><button type="button" data-v="1">もう入っている</button></div>
+<ul class="steps" id="tl"></ul>
+<div class="tipbox" id="howto"></div>
+</section>
+
+<section class="card">
+<h2><span class="ic">🏦</span>iDeCoをはじめる・掛金を見直す</h2>
+<div class="pr">
+<span class="lbl">PR</span>
+<p class="note" style="margin:0 0 6px">運営管理手数料が0円の金融機関なら、毎月かかるのは国民年金基金連合会と信託銀行の171円だけです（加入時は別に2,829円）。</p>
+<p class="grp">口座管理料0円のiDeCo</p>
+<!-- AFFILIATE:ideco -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGAV2+4EYS2I+3XCC+BXIYQ" rel="nofollow">松井証券ではじめるiDeCo</a>
+<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4BGAV2+4EYS2I+3XCC+BXIYQ" alt=""></div>
+<!-- AFFILIATE:net_shoken_ideco -->
+<p class="grp">NISAとどっちを優先？老後のお金をまとめてプロに相談</p>
+<!-- AFFILIATE:fp_soudan_1 -->
+<div class="afl"><a href="https://px.a8.net/svt/ejp?a8mat=4BGD74+28YZTM+4GN2+1NJK7M" rel="nofollow">老後資金・資産形成をFPに無料相談！厳選プロが丁寧サポート【ガーデン】</a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGD74+28YZTM+4GN2+1NJK7M" alt=""></div>
+<!-- AFFILIATE:fp_soudan_2 -->
+<div class="afl"><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3786454&pid=892740434" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3786454&pid=892740434" height="1" width="1" border="0">【一世帯1回限り】豪華特典を無料FP相談でプレゼント！</a></div>
+<p class="note" style="margin:8px 0 0">※当サイトはアフィリエイトプログラムに参加しています。リンク先での申し込みにより当サイトが報酬を受け取ることがあります。投資には元本割れのリスクがあります。金融機関や商品の選択はご自身の判断で行ってください。</p>
+</div>
+</section>
+
+<section class="card">
+<h2><span class="ic">❓</span>よくある質問</h2>
+<details><summary>今から申し込んだら、今年（2026年）の税金も下がる？</summary><p style="font-size:14px">控除されるのは<b>その年の1月〜12月に実際に払った掛金</b>だけです。申し込みから最初の引き落としまでは1〜2か月ほどかかるため、11月以降の申し込みだと、初回は2027年の引き落としになり、2027年分の控除になることが多いです。すでに加入している人は、2026年分を年末調整（または確定申告）で申告します。</p></details>
+<details><summary>上限が上がったら、自動で掛金も増える？</summary><p style="font-size:14px">増えません。増やしたい人は、加入している金融機関で掛金の変更手続きをします（掛金の変更は原則として年1回）。</p></details>
+<details><summary>年末調整では何を出す？</summary><p style="font-size:14px">口座から引き落としの人は、秋ごろ国民年金基金連合会から届く「小規模企業共済等掛金払込証明書」を、保険料控除申告書と一緒に会社へ出します。給与天引き（事業主払込）の人は、会社が控除するので証明書は不要なことが多いです。自営業の人は確定申告で申告します。</p></details>
+<details><summary>専業主婦（主夫）にメリットはある？</summary><p style="font-size:14px">所得税・住民税がかからない人は、掛金の控除による節税はほぼありません。運用益が非課税になる点と、受け取るときの控除は使えますが、手数料（月171円〜）はかかります。NISAと比べて考えるのがおすすめです。</p></details>
+<details><summary>70歳まで入れるのは誰？</summary><p style="font-size:14px">2026年12月から、60歳以上70歳未満で老齢基礎年金やiDeCoの老齢給付金を受け取っていない人などが「第5号加入者」として加入・継続できます（企業型DCでマッチング拠出をしている人などは対象外。月の上限は6.2万円）。細かい条件は金融機関で確認してください。</p></details>
+</section>
+
+<section class="card">
+<h2><span class="ic">🔗</span>あわせて使える無料ツール</h2>
+<div class="rec">
+<a href="../nencho-navi-2026/">📝 年末調整 書き方ナビ 2026（iDeCoの欄の書き方）</a>
+<a href="../furusato-jogen-2026/">🧮 ふるさと納税 上限額シミュレーター 2026</a>
+<a href="../gensen-choshu-checker-2026/">🧾 源泉徴収票の見方とチェッカー</a>
+<a href="../bonus-tedori-2026/">💰 冬のボーナス 手取り計算機 2026</a>
+</div>
+<details><summary>ひとりラボのツール一覧（28本）</summary>
+<div class="links" id="links"></div>
+</details>
+</section>
+
+<footer>
+<p>参考：松井証券「iDeCo制度改正のお知らせ」（2026年12月分〔2027年1月26日引落分〕からの拠出限度額：第2号・企業年金なし 月2.3万円→6.2万円、企業年金あり・共済 月2万円→6.2万円〔企業年金等と合算〕、第1号 月6.8万円→7.5万円、第3号 月2.3万円のまま、第5号〔60歳以上70歳未満〕新設 月6.2万円）／大和証券「2026年12月 iDeCo制度改正」／松井証券「iDeCoの手数料」（加入時2,829円、加入者は月171円）／国税庁「令和7年度税制改正による所得税の基礎控除の見直し等について」／SmartHR Mag.「2026年の年末調整の改正点」（令和8年度税制改正：基礎控除 合計所得489万円以下104万円・655万円以下67万円・2,350万円以下62万円、給与所得控除の最低保障74万円）。</p>
+<p>計算は目安です。社会保険料は会社員なら年収の15%、自営業なら所得の15%で推定し、扶養控除などは「その他の所得控除」に入れた額だけを反映します。住民税は税率10%・基礎控除43万円で計算し、調整控除などは省いています。正確な額は勤務先・税務署・金融機関で確認してください。2026年11月時点の情報です。</p>
+<p>入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません。</p>
+<p>© ひとりラボ｜無料Webツール集</p>
+</footer>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+'use strict';
+function $(i){return document.getElementById(i);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function yen(n){return Math.round(n).toLocaleString('ja-JP')+'円';}
+function man(n){n=Math.max(0,n);return n>=10000?(Math.round(n/1000)/10).toLocaleString('ja-JP')+'万円':Math.round(n).toLocaleString('ja-JP')+'円';}
+var APPS=[["warikan-keisha", "傾斜割り勘計算（幹事用）"], ["nenga-hitokoto-2027", "年賀状ひとことジェネレーター 2027"], ["furusato-jogen-2026", "ふるさと納税 上限額シミュレーター 2026"], ["nencho-navi-2026", "年末調整 書き方ナビ 2026"], ["kakutei-shindan-2026", "確定申告が必要か1分診断 2026"], ["oosouji-buntan-2026", "大掃除の分担ジェネレーター 2026"], ["otoshidama-souba-2027", "お年玉 相場計算機 2027"], ["hikkoshi-checklist", "引っ越し手続きチェックリスト"], ["mochu-hagaki-calendar-2026", "喪中はがき いつまでに出す？逆算カレンダー"], ["hikkoshi-shoki-hiyou", "引っ越しの初期費用 計算機"], ["net-kaisen-shindan", "ネット回線 選び方診断"], ["bonenkai-kanji-2026", "忘年会 幹事の段取り表 2026"], ["kanchu-nengajimai-2027", "寒中見舞い・年賀状じまい 文例メーカー"], ["nenmatsu-renkyu-2026", "年末年始 何連休？有給シミュレーター"], ["iryohi-kojo-2026", "医療費控除 いくら戻る？計算機"], ["jutaku-loan-kojo-2026", "住宅ローン控除 いくら戻る？計算機"], ["fuyou-kabe-2026", "扶養の壁チェッカー 2026"], ["bonus-tedori-2026", "冬のボーナス 手取り計算機 2026"], ["gensen-choshu-checker-2026", "源泉徴収票の見方とチェッカー"], ["xmas-yosan-2026", "クリスマス予算プランナー 2026"], ["nengajo-itsumade-2027", "年賀状 いつまでに出す？投函日チェッカー"], ["danbou-denkidai-2026", "暖房の電気代 くらべる計算機"], ["kisei-koutsuhi-2026", "帰省 車と新幹線どっちが安い？"], ["osechi-yosan-2027", "おせち 予算と注文締切カレンダー 2027"], ["nenmatsu-jumbo-kitaichi-2026", "年末ジャンボ 期待値シミュレーター 2026"], ["oseibo-navi-2026", "お歳暮 いつまで？相場とのし 早見ナビ"], ["fukubukuro-2027", "福袋 2027 予約・抽選カレンダー"], ["studless-koukan-2026", "スタッドレス 交換の時期と費用 計算機"]];
+var S={kbn:'k0',mem:'0'};
+function kyuyoKojo(g){var c;if(g<=1900000)c=650000;else if(g<=3600000)c=g*0.3+80000;else if(g<=6600000)c=g*0.2+440000;else if(g<=8500000)c=g*0.1+1100000;else c=1950000;c=Math.max(c,740000);return Math.min(g,c);}
+function kyuyoKojoJ(g){var c;if(g<=1900000)c=650000;else if(g<=3600000)c=g*0.3+80000;else if(g<=6600000)c=g*0.2+440000;else if(g<=8500000)c=g*0.1+1100000;else c=1950000;return Math.min(g,c);}
+function kisoI(s){if(s<=4890000)return 1040000;if(s<=6550000)return 670000;if(s<=23500000)return 620000;if(s<=24000000)return 480000;if(s<=24500000)return 320000;if(s<=25000000)return 160000;return 0;}
+function kisoJ(s){if(s<=24000000)return 430000;if(s<=24500000)return 290000;if(s<=25000000)return 150000;return 0;}
+function itax(t){t=Math.floor(Math.max(0,t)/1000)*1000;var x;
+if(t<=1949000)x=t*0.05;else if(t<=3299000)x=t*0.1-97500;else if(t<=6949000)x=t*0.2-427500;else if(t<=8999000)x=t*0.23-636000;else if(t<=17999000)x=t*0.33-1536000;else if(t<=39999000)x=t*0.4-2796000;else x=t*0.45-4796000;
+return Math.max(0,x)*1.021;}
+function mrate(t){t=Math.max(0,t);if(t<=0)return 0;if(t<=1949000)return 5;if(t<=3299000)return 10;if(t<=6949000)return 20;if(t<=8999000)return 23;if(t<=17999000)return 33;if(t<=39999000)return 40;return 45;}
+function base(){
+var inc=Math.max(0,+$('inc').value||0)*10000,oth=Math.max(0,+$('oth').value||0),ded=Math.max(0,+$('ded').value||0)*10000;
+var shaV=$('sha').value===''?null:Math.max(0,+$('sha').value||0)*10000;
+var sI,sJ,sha;
+if(S.kbn==='s'){sI=0;sJ=0;sha=0;}
+else if(S.kbn==='j'){sI=inc;sJ=inc;sha=shaV===null?Math.round(inc*0.15):shaV;}
+else{sI=inc-kyuyoKojo(inc);sJ=inc-kyuyoKojoJ(inc);sha=shaV===null?Math.round(inc*0.15):shaV;}
+var tI=sI-sha-ded-kisoI(sI),tJ=sJ-sha-ded-kisoJ(sJ);
+return {inc:inc,oth:oth,tI:tI,tJ:tJ,sha:sha};
+}
+function limits(b){
+if(S.kbn==='k0')return [23000,62000];
+if(S.kbn==='k1')return [Math.max(0,Math.min(20000,55000-b.oth)),Math.max(0,62000-b.oth)];
+if(S.kbn==='j')return [Math.max(0,68000-b.oth),Math.max(0,75000-b.oth)];
+return [23000,23000];
+}
+function saving(b,yearly){
+var i=itax(b.tI)-itax(b.tI-yearly);
+var r=Math.max(0,Math.min(yearly,b.tJ))*0.1;if(b.tJ<=0)r=0;
+return {i:i,r:r,t:i+r};
+}
+function seg(id,key){var el=$(id);el.addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;S[key]=t.getAttribute('data-v');[].forEach.call(el.children,function(c){c.classList.toggle('on',c===t);});if(key==='kbn')onKbn();calc();});}
+function onKbn(){
+var k=S.kbn;
+$('wOther').style.display=(k==='k1'||k==='j')?'':'none';
+$('wIncome').style.display=k==='s'?'none':'';
+$('wSha').style.display=k==='s'?'none':'';
+$('incLbl').textContent=k==='j'?'事業所得（売上−経費・青色申告特別控除後・万円）':'年収（額面・万円）';
+$('othLbl').textContent=k==='j'?'国民年金基金・付加保険料（月・円）':'会社の掛金（企業型DC＋DB等・月・円）';
+$('oth').value=0;
+$('endAge').value=(k==='k0'||k==='k1')?'65':'60';
+var n={k0:'会社員で、会社に企業年金（企業型DC・DB）がない人。いまは月2.3万円まで、2026年12月分から月6.2万円まで。',
+k1:'企業型DCやDB、公務員の共済がある人。会社の掛金と合わせて月6.2万円まで（いまは月2万円が上限）。会社の掛金は給与明細や会社の年金の案内で確認。わからなければ0のまま目安として使えます。',
+j:'国民年金の第1号（自営業・フリーランス・学生など）。国民年金基金・付加保険料と合わせて、月6.8万円→7.5万円に。',
+s:'会社員・公務員の配偶者に扶養されている人（第3号）。上限は月2.3万円のままです。'}[k];
+$('kbnNote').textContent=n;
+}
+function calc(){
+var b=base(),L=limits(b),amt=+$('amt').value;
+$('amt').max=Math.max(5000,L[1]);if(amt>L[1])amt=Math.max(5000,L[1]);$('amt').value=amt;
+$('amtOut').textContent=amt.toLocaleString('ja-JP');
+$('limCur').textContent=man(L[0]);$('limNew').textContent=man(L[1]);$('limUp').textContent='+'+man(L[1]-L[0]);
+var y=amt*12,sv=saving(b,y);
+$('rAmt').textContent=man(y);$('rSave').textContent=yen(sv.t);$('rIt').textContent=man(sv.i);$('rRt').textContent=man(sv.r);$('rReal').textContent=man(y-sv.t);
+$('hSave').textContent=man(sv.t);
+var res=$('res'),msg;
+if(S.kbn==='s'||sv.t<1){res.className='result mid';msg='所得税・住民税がかからない（またはごく少ない）ため、節税の効果はほぼありません。運用益の非課税だけがメリットなので、手数料（月171円〜）とNISAとの比較で考えましょう。';}
+else{res.className='result ok';msg='掛金の <b>'+Math.round(sv.t/y*100)+'%</b> が税金で戻る計算です。月'+man(amt)+'を積み立てると、実質の負担は月 約'+man((y-sv.t)/12)+'。所得税は年末調整（自営業は確定申告）で戻り、住民税は翌年6月から下がります。';}
+if(L[0]<5000&&S.kbn!=='s'&&L[1]>=5000)msg+=' ※いまは会社の掛金で枠が埋まっていて加入できない計算ですが、12月分からは入れる可能性があります。';
+if(L[1]<5000)msg='会社などの掛金で上限が埋まっているため、iDeCoの掛金は出せない計算です（最低は月5,000円）。会社の企業型DCのマッチング拠出などを確認しましょう。';
+$('rMsg').innerHTML=msg;
+var opts=[[10000,'月1万円'],[L[0],'いまの上限'],[L[1],'新しい上限']].filter(function(o){return o[0]>=5000;});
+var mx=0,rows=opts.map(function(o){var s=saving(b,o[0]*12).t;mx=Math.max(mx,s);return [o,s];});
+$('cmp').innerHTML=rows.map(function(r){var w=mx>0?r[1]/mx*100:0;return '<div class="chk" style="display:block"><div style="display:flex;justify-content:space-between"><span>'+r[0][1]+'（月'+man(r[0][0])+'）</span><b>'+yen(r[1])+'</b></div><div class="bar"><i style="width:'+w.toFixed(1)+'%"></i></div></div>';}).join('');
+var rate=mrate(b.tI);
+$('rateNote').textContent=S.kbn==='s'?'':'あなたの所得税率（推定）：'+rate+'%＋住民税10%。課税所得（推定）：'+man(Math.max(0,b.tI))+'。社会保険料は'+($('sha').value===''?'推定で':'入力の')+man(b.sha)+'。2026年分の基礎控除・給与所得控除（令和8年度改正後）で計算。2027年分以降は控除額が変わる場合があります。';
+// long term
+var age=Math.min(69,Math.max(18,+$('age').value||35)),end=+$('endAge').value,yrs=Math.max(0,end-age);
+$('yrs').textContent=yrs;
+var r=(+$('ret').value)/100/12,n=yrs*12,fv=0;for(var i=0;i<n;i++){fv=fv*(1+r)+amt;}
+var fee=n>0?2829+171*n:0;
+$('fPrin').textContent=man(amt*n);$('fVal').textContent=man(Math.max(0,fv-fee));
+var tt=sv.t*yrs;$('fTax').textContent=man(tt);$('fFee').textContent=man(fee);$('fRatio').textContent=fee>0?(tt/fee).toFixed(1)+'倍':'--';
+$('hTotal').textContent=man(tt);
+// furusato
+var down=0;if(S.kbn!=='s'&&b.tJ>0){var ir=rate/100*1.021;down=Math.min(y,b.tJ)*0.1*0.2/Math.max(0.1,0.9-ir);}
+$('fsDown').textContent=down>0?'約'+yen(Math.round(down/100)*100)+'／年':'ほぼ変わりません';
+timeline();
+}
+function timeline(){
+var li;
+if(S.mem==='0'){
+li=[['今日','金融機関を選んで、iDeCoを申し込む（Webで書類請求・申込）'],['1〜2か月後','国民年金基金連合会の審査が終わり、口座開設の通知が届く'],['2027年1〜2月ごろ','最初の掛金の引き落とし（毎月26日）。11月以降の申し込みは2027年からになることが多い'],['2027年秋','「小規模企業共済等掛金払込証明書」が届く'],['2027年11月ごろ','年末調整で証明書を出す（自営業は2028年の確定申告）→ 所得税が戻る'],['2028年6月〜','住民税が下がる']];
+$('howto').innerHTML='💡 <b>選び方のポイント</b>：運営管理手数料が0円か／低コストのインデックスファンドがあるか／Webで掛金変更ができるか。iDeCoの口座は1人1つなので、最初の金融機関選びが大切です。';
+}else{
+li=[['2026年11月〜12月','今年の分は、届いた払込証明書を年末調整で会社に出す'],['いま〜','金融機関で掛金の変更手続き（書類やWeb。原則年1回まで）'],['2026年12月分','新しい上限が使える最初の掛金'],['2027年1月26日','12月分の掛金の引き落とし（2027年分の控除になる）'],['2027年6月〜','2026年分の掛金で住民税が下がる']];
+$('howto').innerHTML='💡 会社の企業型DCがある人は、会社の掛金によって増やせる額が変わります。変更の締切や手続きの方法は、加入している金融機関で確認しましょう。';
+}
+$('tl').innerHTML=li.map(function(x){return '<li><span class="d">'+esc(x[0])+'</span><span>'+esc(x[1])+'</span></li>';}).join('');
+}
+$('preset').addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;var b=base(),L=limits(b),v=t.getAttribute('data-v');var a=v==='cur'?L[0]:v==='new'?L[1]:+v;$('amt').value=Math.max(5000,a);calc();});
+seg('kbn','kbn');seg('mem','mem');
+['inc','age','oth','sha','ded','ret','endAge','amt'].forEach(function(i){$(i).addEventListener('input',calc);});
+$('links').innerHTML=APPS.map(function(a){return '<a href="../'+a[0]+'/">'+esc(a[1])+' ›</a>';}).join('');
+onKbn();calc();
+})();
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "807f8f4e9a5e4ff099a62c90f8891041"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
